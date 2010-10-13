@@ -205,8 +205,9 @@ public class GestionarMuestraMediador implements ActionListener,MouseListener,It
      		System.out.println("GestionarMediador.actionPerformed() jButtonAgregar");
      		altaMuestra.show();   
      		OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd",1);
-        	Muestra mu = new Muestra((altaMuestra.getData()[0]),Integer.parseInt(altaMuestra.getData()[1]),Float.parseFloat(altaMuestra.getData()[2]),Float.parseFloat(altaMuestra.getData()[3]),op);
+     		     	
         	if (altaMuestra.getData()[0] != null){  // alta
+        		Muestra mu = new Muestra((altaMuestra.getData()[0]),Integer.parseInt(altaMuestra.getData()[1]),Float.parseFloat(altaMuestra.getData()[2]),Float.parseFloat(altaMuestra.getData()[3]),op);
         		this.gestionarMuestra.getTablePanel().addRow(altaMuestra.getData());
         		InsertarMuestraBD(mu);
      
