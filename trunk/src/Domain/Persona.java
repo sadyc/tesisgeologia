@@ -16,7 +16,7 @@ public class Persona {
 	
 	private String nombre;
 	private String apellido;
-	private Integer dni;
+	private String dni;
 	
 	/**
 	 * Default constructor
@@ -24,7 +24,7 @@ public class Persona {
 	public Persona (){
 		this.nombre = null;
 		this.apellido = null;
-		this.dni = -1;
+		this.dni = null;
 	}
 	
 	/**
@@ -33,7 +33,7 @@ public class Persona {
 	 * @param apellido, apellido de la persona creada.
 	 * @param dni, DNI de la persona creada.
 	 */
-	public Persona(String nombre, String apellido, int dni) {
+	public Persona(String nombre, String apellido, String dni) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
@@ -80,7 +80,7 @@ public class Persona {
 	 * Metodo que permite obtener el DNI de la persona.
 	 * @return the dni
 	 */
-	public Integer getDni() {
+	public String getDni() {
 		return dni;
 	}
 
@@ -89,7 +89,7 @@ public class Persona {
 	 * Metodo que permite setear el DNI de la persona.
 	 * @param dni the dni to set
 	 */
-	public void setDni(Integer dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 

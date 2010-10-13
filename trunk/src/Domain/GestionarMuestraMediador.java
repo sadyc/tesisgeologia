@@ -11,9 +11,8 @@ import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import Domain.Singleton;
-
+import GUIs.GUIABMMuestra;
 import javax.jdo.Extent;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Transaction;
@@ -30,7 +29,7 @@ import javax.jdo.Transaction;
  */
 public class GestionarMuestraMediador implements ActionListener,MouseListener,ItemListener{
 
-	private GestionarMuestra gestionarMuestra = null;
+	private GUIABMMuestra gestionarMuestra = null;
 	Object [][] data = new Object [5] [5];
 	private Component frame;
 	private PersistenceManager pm = null;
@@ -39,7 +38,7 @@ public class GestionarMuestraMediador implements ActionListener,MouseListener,It
 	public GestionarMuestraMediador(String nombreVentana) {
 		super();
 		cargarBD();
-		this.gestionarMuestra = new GestionarMuestra(nombreVentana,data);
+		this.gestionarMuestra = new GUIABMMuestra(nombreVentana,data);
 		// se configura como escuchador de los evenetos de la ventana 
 		// al el mismo (mediador)
 		this.gestionarMuestra.setListenerButtons(this);
@@ -120,8 +119,11 @@ public class GestionarMuestraMediador implements ActionListener,MouseListener,It
 		 tx.begin();
 		 Extent e = pm.getExtent(Muestra.class, true);
 		 Iterator iter=e.iterator();
+		 System.out.println("nombre de la muestra  7");
 		 Muestra mu = new Muestra(); 
+		 System.out.println((gestionarMuestra.getTablePanel().getSelectedRow())+ " fila seleccionada");
 		 String nombreMuestra= ((gestionarMuestra.getTablePanel().getRow((gestionarMuestra.getTablePanel().getSelectedRow())))[0]);
+		 System.out.println("nombre de la muestra  "+nombreMuestra);
 		 while (iter.hasNext() && (mu.getNombreMuestra().compareTo(nombreMuestra))!=0){
 		   mu = (Muestra)iter.next();
 		 }
@@ -157,7 +159,7 @@ public class GestionarMuestraMediador implements ActionListener,MouseListener,It
 			 modificarMuestra.show();
 	         eliminarMuestraBD();
 			 gestionarMuestra.getTablePanel().removeRow(gestionarMuestra.getTablePanel().getSelectedRow());
-			 OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd",1);
+			 OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","1");
 			 Muestra mu = new Muestra((modificarMuestra.getData()[0]),Integer.parseInt(modificarMuestra.getData()[1]),Float.parseFloat(modificarMuestra.getData()[2]),Float.parseFloat(modificarMuestra.getData()[3]),op);
   			 InsertarMuestraBD(mu);
 			 this.gestionarMuestra.getTablePanel().addRow(modificarMuestra.getData());
@@ -186,11 +188,11 @@ public class GestionarMuestraMediador implements ActionListener,MouseListener,It
 		 gestionarMuestra.show();
 	}
 	
-	public GestionarMuestra getGestionarMuestra() {
+	public GUIABMMuestra getGestionarMuestra() {
 		return gestionarMuestra;
 	}
 	
-	public void setGestionarMuestra(GestionarMuestra gestionarMuestra) {
+	public void setGestionarMuestra(GUIABMMuestra gestionarMuestra) {
 		this.gestionarMuestra = gestionarMuestra;
 	}
 	
@@ -204,7 +206,7 @@ public class GestionarMuestraMediador implements ActionListener,MouseListener,It
 	   		AltaMuestraMediador altaMuestra = new AltaMuestraMediador();
      		System.out.println("GestionarMediador.actionPerformed() jButtonAgregar");
      		altaMuestra.show();   
-     		OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd",1);
+     		OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","1");
      		     	
         	if (altaMuestra.getData()[0] != null){  // alta
         		Muestra mu = new Muestra((altaMuestra.getData()[0]),Integer.parseInt(altaMuestra.getData()[1]),Float.parseFloat(altaMuestra.getData()[2]),Float.parseFloat(altaMuestra.getData()[3]),op);
