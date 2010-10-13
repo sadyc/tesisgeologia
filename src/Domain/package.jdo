@@ -32,7 +32,7 @@
                   <column length="30" jdbc-type="CHAR"/>
            </field>
            <field name="dni" persistence-modifier="persistent">
-                  <column jdbc-type="integer"/>
+                  <column length="15" jdbc-type="CHAR"/>
            </field>
 
  </class>
