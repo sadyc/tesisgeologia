@@ -157,7 +157,7 @@ public class GestionarMuestraMediador implements ActionListener,MouseListener,It
 	         System.out.println("Persisting products");
 	         ModificarMuestraMediador modificarMuestra = new ModificarMuestraMediador(gestionarMuestra.getTablePanel().getRow((gestionarMuestra.getTablePanel().getSelectedRow())));
 			 modificarMuestra.show();
-	         eliminarMuestraBD();
+	         //eliminarMuestraBD(mu);
 			 gestionarMuestra.getTablePanel().removeRow(gestionarMuestra.getTablePanel().getSelectedRow());
 			 OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","1");
 			 Muestra mu = new Muestra((modificarMuestra.getData()[0]),Integer.parseInt(modificarMuestra.getData()[1]),Float.parseFloat(modificarMuestra.getData()[2]),Float.parseFloat(modificarMuestra.getData()[3]),op);
@@ -206,10 +206,11 @@ public class GestionarMuestraMediador implements ActionListener,MouseListener,It
 	   		AltaMuestraMediador altaMuestra = new AltaMuestraMediador();
      		System.out.println("GestionarMediador.actionPerformed() jButtonAgregar");
      		altaMuestra.show();   
-     		OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","1");
+     		OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","12");
      		     	
         	if (altaMuestra.getData()[0] != null){  // alta
         		Muestra mu = new Muestra((altaMuestra.getData()[0]),Integer.parseInt(altaMuestra.getData()[1]),Float.parseFloat(altaMuestra.getData()[2]),Float.parseFloat(altaMuestra.getData()[3]),op);
+        		altaMuestra.getData() [4] = "12";
         		this.gestionarMuestra.getTablePanel().addRow(altaMuestra.getData());
         		InsertarMuestraBD(mu);
      

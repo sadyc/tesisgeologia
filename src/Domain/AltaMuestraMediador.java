@@ -62,6 +62,7 @@ public class AltaMuestraMediador  implements ActionListener,MouseListener,ItemLi
 			data [1] = altaMuestra.getPeso().getText();
 			data [2] = altaMuestra.getProfundidadInicial().getText();
 			data [3] = altaMuestra.getProfundidadFinal().getText();
+			data [4] = "1";
 			
 		
 			//cierra la ventana
