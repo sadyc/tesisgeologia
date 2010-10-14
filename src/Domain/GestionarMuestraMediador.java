@@ -147,7 +147,7 @@ public class GestionarMuestraMediador implements ActionListener,MouseListener,It
 	 * 
 	 * 
 	 */
-	public void ModificarMuestraBD(){
+	public void ModificarMuestraBD(ModificarMuestraMediador modificarMuestra){
 		pm = Singleton.getInstance();
 		tx = pm.currentTransaction();
 		try{
@@ -155,13 +155,15 @@ public class GestionarMuestraMediador implements ActionListener,MouseListener,It
 			 Extent e = pm.getExtent(OperadorDeLaboratorio.class, true);
 			 Iterator iter=e.iterator();
 	         System.out.println("Persisting products");
-	         ModificarMuestraMediador modificarMuestra = new ModificarMuestraMediador(gestionarMuestra.getTablePanel().getRow((gestionarMuestra.getTablePanel().getSelectedRow())));
-			 modificarMuestra.show();
-	         //eliminarMuestraBD(mu);
-			 gestionarMuestra.getTablePanel().removeRow(gestionarMuestra.getTablePanel().getSelectedRow());
-			 OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","1");
+	         
+			 
+			 OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","12");
+			 
 			 Muestra mu = new Muestra((modificarMuestra.getData()[0]),Integer.parseInt(modificarMuestra.getData()[1]),Float.parseFloat(modificarMuestra.getData()[2]),Float.parseFloat(modificarMuestra.getData()[3]),op);
-  			 InsertarMuestraBD(mu);
+			 gestionarMuestra.getTablePanel().removeRow(gestionarMuestra.getTablePanel().getSelectedRow());
+			 System.out.println("estoy aqui2"+ mu.getNombreMuestra());
+			 pm.deletePersistent(mu);
+			 InsertarMuestraBD(mu);
 			 this.gestionarMuestra.getTablePanel().addRow(modificarMuestra.getData());
 			 pm.makePersistent(mu);
              tx.commit();
@@ -233,8 +235,9 @@ public class GestionarMuestraMediador implements ActionListener,MouseListener,It
 			}
 			else{
 				ModificarMuestraMediador modificarMuestra = new ModificarMuestraMediador(gestionarMuestra.getTablePanel().getRow((gestionarMuestra.getTablePanel().getSelectedRow())));
-				if (modificarMuestra.getData()[0] != null){  // si apreto cancelar no me agrega nada
-					ModificarMuestraBD();				
+				modificarMuestra.show();
+				if (modificarMuestra.getData()[0] != null){  
+					ModificarMuestraBD(modificarMuestra);				
 				}	
 			}
 		}
