@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Domain;
+package comun;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -9,6 +9,7 @@ import java.util.HashSet;
 import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
+
 
 /**
  * Implementacion de la clase que define la muestra

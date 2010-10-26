@@ -1,4 +1,4 @@
-package GUIs;
+package cuGestionarMuestra;
 
 
 
@@ -12,8 +12,8 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
-import Domain.AltaMuestraMediador;
-import Domain.TablePanel;
+import comun.TablePanel;
+
 
 /**
  * @author TesisGeologia

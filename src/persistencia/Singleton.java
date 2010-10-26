@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Domain;
+package persistencia;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
@@ -40,12 +40,22 @@ public final class Singleton {
 		}
 		return pmi;
 	}
+	/**
+	public synchronized static PersistenceManagerFactory getInstancia(){
+
+		if (pmf == null){
+                    pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+
+                    System.out.println("DataNucleus AccessPlatform with JDO");
+                    System.out.println("===================================");
+
+		}
+		return pmf;
+	  }
 	
 	
 	
-	
-	
-	
+	*/
 	
 	
 	

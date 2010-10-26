@@ -1,4 +1,4 @@
-package GUIs;
+package comun;
 
 import java.awt.*;
 import java.awt.event.*;

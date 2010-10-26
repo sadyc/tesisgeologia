@@ -1,4 +1,4 @@
-package Domain;
+package cuGestionarMuestra;
 
 
 import java.awt.event.ActionEvent;
@@ -8,7 +8,8 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import GUIs.GUIMuestra;
+import comun.GUIMuestra;
+
 
 /**
  * @author TesisGeologia
@@ -16,7 +17,7 @@ import GUIs.GUIMuestra;
  * en este caso: ActionListener,MouseListener,ItemListener.
  */
 
-public class AltaMuestraMediador  implements ActionListener,MouseListener,ItemListener  {
+public class MediadorAltaMuestra  implements ActionListener,MouseListener,ItemListener  {
 	
 	private GUIMuestra altaMuestra = null;
 	private String [] data = new String [5];
@@ -24,7 +25,7 @@ public class AltaMuestraMediador  implements ActionListener,MouseListener,ItemLi
 	/**
 	 * This is the default constructor
 	 */
-	public AltaMuestraMediador() {
+	public MediadorAltaMuestra() {
 		super();
 		this.altaMuestra = new GUIMuestra();
 		altaMuestra.setTitle("Ingresar Muestra");
