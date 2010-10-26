@@ -1,6 +1,6 @@
 package Main;
 
-import Domain.GestionarMuestraMediador;
+import cuGestionarMuestra.MediadorGestionarMuestra;
 
  /**
  * @author TesisGeologia
@@ -25,7 +25,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-      	GestionarMuestraMediador gestionarDialogo = new GestionarMuestraMediador ("Sistema de Clasificacion de Suelos");
+      	MediadorGestionarMuestra gestionarDialogo = new MediadorGestionarMuestra ("Sistema de Clasificacion de Suelos");
 		gestionarDialogo.show();
 	}
 }

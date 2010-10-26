@@ -1,12 +1,14 @@
 /**
  * 
  */
-package Domain;
+package comun;
 
 import java.util.Collection;
 import java.util.HashSet;
 
 import javax.jdo.annotations.PersistenceCapable;
+
+
   
 /**
  * Implementacion de la clase que define un operador de laboratorio
@@ -31,8 +33,8 @@ public class OperadorDeLaboratorio extends Persona {
 	 * @param apellido, apellido del operador de laboratorio creado.
 	 * @param dni, DNI del operador de laboratorio creado.
 	 */
-	public OperadorDeLaboratorio(String nombre, String apellido, String dni) {
-		super(nombre, apellido, dni);
+	public OperadorDeLaboratorio(String nombre, String apellido, String dni, String tel, String email) {
+		super(nombre, apellido, dni, tel, email);
 	}
 	
 	/**

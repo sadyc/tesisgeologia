@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Domain;
+package comun;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
@@ -17,6 +17,9 @@ public class Persona {
 	private String nombre;
 	private String apellido;
 	private String dni;
+	private String tel;
+	private String email;
+	
 	
 	/**
 	 * Default constructor
@@ -25,6 +28,8 @@ public class Persona {
 		this.nombre = null;
 		this.apellido = null;
 		this.dni = null;
+		this.tel = null;
+		this.email = null;
 	}
 	
 	/**
@@ -33,10 +38,12 @@ public class Persona {
 	 * @param apellido, apellido de la persona creada.
 	 * @param dni, DNI de la persona creada.
 	 */
-	public Persona(String nombre, String apellido, String dni) {
+	public Persona(String nombre, String apellido, String dni, String tel, String email) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
+		this.tel = tel;
+		this.email = email;
 	}
 	
 
@@ -91,6 +98,38 @@ public class Persona {
 	 */
 	public void setDni(String dni) {
 		this.dni = dni;
+	}
+
+	/**
+	 * Metodo que permite obtener el telefono de la persona.
+	 * @return the tel
+	 */
+	public String getTel() {
+		return tel;
+	}
+
+	/**
+	 * Metodo que permite setear el telefono de la persona
+	 * @param tel the tel to set
+	 */
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	/**
+	 * Metodo que permite obtener el e-Mail de la persona.
+	 * @return the eMail
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * Metodo que permite setear el e-Mail de la persona
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

@@ -1,4 +1,4 @@
-package Domain;
+package cuGestionarMuestra;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +7,8 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import GUIs.GUIMuestra;
+import comun.GUIMuestra;
+
 
 
 /**
@@ -16,7 +17,7 @@ import GUIs.GUIMuestra;
  * Implementa las interfaces de acuerdo a los eventos que necesita tratar
  * en este caso: ActionListener,MouseListener,ItemListener. 
  */										  	
-public class ModificarMuestraMediador  implements ActionListener,MouseListener,ItemListener  {
+public class MediadorModificarMuestra  implements ActionListener,MouseListener,ItemListener  {
 	
 	private GUIMuestra modificarMuestra = null;
 	private String [] data = new String [5];
@@ -24,7 +25,7 @@ public class ModificarMuestraMediador  implements ActionListener,MouseListener,I
 	/**
 	 * This is the constructor whit parameters
 	 */
-	public ModificarMuestraMediador(String [] data) {
+	public MediadorModificarMuestra(String [] data) {
 		super();
 		this.modificarMuestra = new GUIMuestra(data);
 		modificarMuestra.setTitle("Modificar Muestra");
