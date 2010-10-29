@@ -25,8 +25,7 @@ public final class Singleton {
 	/**
 	 * Default constructor.
 	 */
-	public Singleton() {
-	} 
+	public Singleton() {} 
 	
 	/**
 	* Retorna la conexion a la base de datos obtenida
