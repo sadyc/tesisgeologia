@@ -13,6 +13,8 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import com.sun.org.apache.bcel.internal.generic.NEWARRAY;
+
 import comun.Muestra;
 
 /**
@@ -51,11 +53,9 @@ public class Persistencia {
             System.out.println("Persisting products");
             pmi.makePersistent(elemento);
         }
-        catch (Exception e){
-            if (tx.isActive()){
-                tx.rollback();
-            }
-     	}
+		catch (Exception e){
+		    realizarRollback();
+		}
         finally{
          pmi.close();
         }
@@ -68,17 +68,13 @@ public class Persistencia {
 	 */
 	public void eliminarObjeto (Object elemento) throws Exception {
 		try{
-			Extent e = pmi.getExtent(Muestra.class, true);
-		    Query q = pmi.newQuery(e,"cuit == "+elemento);
-		    q.deletePersistentAll(elemento);
-			Iterator iter=e.iterator();
 			
+		    //Query q = pmi.newQuery(elemento);
+		    //q.deletePersistentAll(elemento);
 			pmi.deletePersistent(elemento);
 		}	
 		catch (Exception e){
-		    if (tx.isActive()){
-		        tx.rollback();
-		    }
+		    realizarRollback();
 		}
 	    finally{
 	         pmi.close();
@@ -89,26 +85,38 @@ public class Persistencia {
 	 * Busca un elemento generico. Retorna lo encontrado.
 	 *
 	 */
-	public Object buscarObjeto () throws Exception{
-		Object a = new Object();
+	public Object buscarObjeto (int id) throws Exception{
+		Object aux = new Object();
 		try {
-			
+			Query q = pmi.newQuery("id=="+id);
+			aux = q.execute();
 		} catch (Exception e) {
-			
+			realizarRollback();
 		}
-		return (a);
+		return aux;
 	}
 	
 	public Collection buscarColeccion ()throws Exception{
-		Collection a = null;
-		return a;
+		Collection<Object> aux = null; 
+		try {
+			Query q = pmi.newQuery("");
+			aux = (Collection) q.execute();
+		} catch (Exception e) {
+			realizarRollback();
+		}
+		return aux;
 	}
 	
-	public void realizarRollback()throws Exception{}
+	public void realizarRollback()throws Exception{
+		if (tx.isActive()){
+	        tx.rollback();
+	    }
+	}
 
 	
 	public void cierraTransaccion()throws Exception{
 		tx.commit();
+		pmi.close();
 	}
 	
 	//metodos particulares de busqueda.
