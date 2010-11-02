@@ -128,20 +128,6 @@ public class GUIABMMuestra extends JFrame {
 	}
 	
 
-
-
-    /** 
-     *@return data  
-     * */
-	/**public static String[][] getData(){
-		String[][] data = {
-				{"11","12","13","14","1"},
-				{"21","22","23","24","2"},
-				{"31","32","33","","3"}
-				};
-		return data;
-	}*/
-
 	/** 
      *@return data  
      * */

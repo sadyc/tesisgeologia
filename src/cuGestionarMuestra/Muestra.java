@@ -1,14 +1,16 @@
 /**
  * 
  */
-package comun;
+package cuGestionarMuestra;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 
 import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
+
 
 
 /**
@@ -24,7 +26,10 @@ public class Muestra {
 	private float profundidadInicial;
 	private float profundidadFinal;
 	private Integer peso;
+	private Date fecha;
+	private float coeficienteUniformidad;
 	protected OperadorDeLaboratorio operador ;
+	protected Usuario usuario;
 	
 	
 
