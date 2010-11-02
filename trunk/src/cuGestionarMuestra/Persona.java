@@ -1,7 +1,7 @@
 /**
  * 
  */
-package comun;
+package cuGestionarMuestra;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;

@@ -15,8 +15,6 @@ import javax.jdo.Extent;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Transaction;
 
-import comun.Muestra;
-import comun.OperadorDeLaboratorio;
 
 
 

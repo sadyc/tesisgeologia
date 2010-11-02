@@ -1,4 +1,4 @@
-package comun;
+package cuGestionarMuestra;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -29,7 +29,7 @@ public class GUIMuestra extends JDialog {
 	 * This is the default constructor
 	 */
 	public GUIMuestra() {
-		// TODO Auto-generated constructor stub
+	
 		
 		super();
 		muestra = new JTextField(15);
@@ -46,7 +46,7 @@ public class GUIMuestra extends JDialog {
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
 	public GUIMuestra(String[] data) {
-		// TODO Auto-generated constructor stub
+	
 		super();
 		muestra = new JTextField(15);
 		profundidadInicial = new JTextField(15);

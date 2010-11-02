@@ -15,7 +15,7 @@ import javax.jdo.Transaction;
 
 import com.sun.org.apache.bcel.internal.generic.NEWARRAY;
 
-import comun.Muestra;
+import cuGestionarMuestra.Muestra;
 
 /**
  * @author TesisGeologia
@@ -40,7 +40,7 @@ public class Persistencia {
 			tx.begin();
 		}
 		catch (Exception e) {
-			// FAAAAAAAAAALTAAAAAAAAAAAAAAAAAAAAAAAA!!!!!!!!!
+			cierraTransaccion();
 		}
 	}
 	
@@ -69,7 +69,7 @@ public class Persistencia {
 	public void eliminarObjeto (Object elemento) throws Exception {
 		try{
 			
-		    //Query q = pmi.newQuery(elemento);
+		    //Query q = pmi.newQuery(elemento);                                <----------------  VER
 		    //q.deletePersistentAll(elemento);
 			pmi.deletePersistent(elemento);
 		}	

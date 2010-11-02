@@ -1,12 +1,14 @@
 /**
  * 
  */
-package comun;
+package cuGestionarMuestra;
 
 import java.util.Collection;
 import java.util.HashSet;
 
 import javax.jdo.annotations.PersistenceCapable;
+
+
 
 
   
