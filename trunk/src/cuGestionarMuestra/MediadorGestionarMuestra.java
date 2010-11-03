@@ -16,6 +16,8 @@ import javax.jdo.Extent;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Transaction;
 
+import cuCalcularClasificacion.Clasificacion;
+
 
 
 
@@ -33,7 +35,7 @@ import persistencia.Singleton;
  */
 public class MediadorGestionarMuestra implements ActionListener,MouseListener,ItemListener{
 
-	private GUIABMMuestra gestionarMuestra = null;
+	private GUIABMMuestra GUIABMMuestra = null;
 	private Object [][] data = new Object [50] [5];
 	private Component frame;
 	
@@ -41,11 +43,11 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	public MediadorGestionarMuestra(String nombreVentana) throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		this.gestionarMuestra = new GUIABMMuestra(nombreVentana,data);
+		this.GUIABMMuestra = new GUIABMMuestra(nombreVentana,data);
 		// se configura como escuchador de los evenetos de la ventana 
 		// al el mismo (mediador)
-		this.gestionarMuestra.setListenerButtons(this);
-		this.gestionarMuestra.setListenerTable(this);
+		this.GUIABMMuestra.setListenerButtons(this);
+		this.GUIABMMuestra.setListenerTable(this);
 		
 	}
 	
@@ -76,15 +78,15 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	
 			
 	public void show()	{
-		 gestionarMuestra.show();
+		 GUIABMMuestra.show();
 	}
 	
 	public GUIABMMuestra getGestionarMuestra() {
-		return gestionarMuestra;
+		return GUIABMMuestra;
 	}
 	
 	public void setGestionarMuestra(GUIABMMuestra gestionarMuestra) {
-		this.gestionarMuestra = gestionarMuestra;
+		this.GUIABMMuestra = gestionarMuestra;
 	}
 	
 	/**
@@ -94,16 +96,19 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
-	   	if (this.gestionarMuestra.getJButtonAgregar() == source){
-	   		MediadorAltaMuestra altaMuestra = new MediadorAltaMuestra();
+	   	if (this.GUIABMMuestra.getJButtonAgregar() == source){
+	   		//MediadorAltaMuestra altaMuestra = new MediadorAltaMuestra();
+	   		GUIMuestra guiMuestra = new GUIMuestra();
      		System.out.println("GestionarMediador.actionPerformed() jButtonAgregar");
-     		altaMuestra.show();   
+     		guiMuestra.show();   
      		OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","12","4665458","asd@gmail.com");
-     		     	
-        	if (altaMuestra.getData()[0] != null){ 
-        		Muestra mu = new Muestra((altaMuestra.getData()[0]),Integer.parseInt(altaMuestra.getData()[1]),Float.parseFloat(altaMuestra.getData()[2]),Float.parseFloat(altaMuestra.getData()[3]),op);
-        		altaMuestra.getData() [4] = "12";
-        		this.gestionarMuestra.getTablePanel().addRow(altaMuestra.getData());
+     		Ubicacion ubicacion = new Ubicacion();
+     		Usuario usuario = new Usuario();
+     		Clasificacion clasificacion = new Clasificacion();
+        	if (guiMuestra.getData()[0] != null){ 
+        		Muestra mu = new Muestra((guiMuestra.getData()[0]),Integer.parseInt(guiMuestra.getData()[1]),Float.parseFloat(guiMuestra.getData()[2]),Float.parseFloat(guiMuestra.getData()[3]),op,usuario,ubicacion,clasificacion);
+        		guiMuestra.getData() [4] = "12";
+        		this.GUIABMMuestra.getTablePanel().addRow(guiMuestra.getData());
         		try {
 					control.insertarMuestra(mu);
 				} catch (Exception e) {
@@ -112,8 +117,8 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
      
      		}
 	   	}
-		if (this.gestionarMuestra.getJButtonEliminar() == source){
-			if (gestionarMuestra.getTablePanel().getSelectedRow() == -1){
+		if (this.GUIABMMuestra.getJButtonEliminar() == source){
+			if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
 				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
@@ -121,7 +126,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 				int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	            if(quitOption==JOptionPane.YES_OPTION){
 	            	 
-	            	String [] fila = gestionarMuestra.getTablePanel().getRow(gestionarMuestra.getTablePanel().getSelectedRow());
+	            	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 	            	Muestra mu = new Muestra ();
 	            	try {
 						control.eliminarMuestra(mu);
@@ -131,15 +136,17 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	            }
 			}
 		}
-		if (this.gestionarMuestra.getJButtonModificar() == source){
-			if (gestionarMuestra.getTablePanel().getSelectedRow() == -1){
+		if (this.GUIABMMuestra.getJButtonModificar() == source){
+			if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
 				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(gestionarMuestra.getTablePanel().getRow((gestionarMuestra.getTablePanel().getSelectedRow())));
+				String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+				Muestra muestra = new Muestra(); 
+				GUIMuestra guiMuestra = new GUIMuestra(muestra);
 
-				modificarMuestra.show();
-				if (modificarMuestra.getData()[0] != null){  
+				guiMuestra.show();
+				if (guiMuestra.getData()[0] != null){  
 					
 					//ModificarMuestraBD(modificarMuestra);				
 
@@ -154,7 +161,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	 */
 	public void mouseClicked(MouseEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.gestionarMuestra.getTablePanel() == source)
+		if (this.GUIABMMuestra.getTablePanel() == source)
 			System.out.println("GestionarMediador.actionPerformed() jJTableTabla");
 		
 	}

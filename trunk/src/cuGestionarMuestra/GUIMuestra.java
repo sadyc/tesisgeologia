@@ -59,6 +59,7 @@ public class GUIMuestra extends JDialog {
 		peso = new JTextField(15);
 		this.muestra.setText(muestra.getNombreMuestra());
 		peso.setText(muestra.getPeso().toString());
+		
 		profundidadInicial.setText("");
 		profundidadFinal.setText("");
 		
@@ -219,6 +220,15 @@ public class GUIMuestra extends JDialog {
 			ubicacion.setName("Ubicacion");
 		}
 		return ubicacion;
+	}
+
+	public String[] getData() {
+		String[] data = new String[4];
+		data[0]= muestra.getText();
+		data[1]= peso.getText();
+		data[2]= profundidadInicial.getText();
+		data[3]= profundidadFinal.getText();
+		return data;
 	}
 	
 }
