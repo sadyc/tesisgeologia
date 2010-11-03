@@ -12,10 +12,22 @@ import cuGestionarMuestra.Muestra;
 public class Analisis {
 	private Integer porcentajePasante;
 	private Integer porcentajeRetenidoParcial;
-	private Integer porcentajeRetenidoAcumulado;
+	private Integer porcentajeRetenidoAcumulado;   //  FALTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	private Integer pesoRetenido;
-	private Muestra muestra;
-	private Tamiz tamiz;
+	protected Muestra muestra;
+	protected Tamiz tamiz;
+	
+	/**
+	 * Constructor con parametros
+	 */
+	public Analisis(Integer pesoRetenido, Muestra muestra, Tamiz tamiz){
+		this.pesoRetenido = pesoRetenido;
+		this.muestra = muestra;
+		this.tamiz=tamiz;
+		calcularPorcentajeRetenidoParcial();
+		calcularPorcentajePasante();
+		
+	}
 	
 	/**
 	 * @return the porcentajePasante
@@ -73,6 +85,26 @@ public class Analisis {
 	 */
 	public void setTamiz(Tamiz tamiz) {
 		this.tamiz = tamiz;
+	}
+	/**
+	 * Calcula el porcentaje retenido parcial del analisis de una muestra.
+	 */
+	public void calcularPorcentajeRetenidoParcial(){
+		porcentajeRetenidoParcial=(pesoRetenido*100)/muestra.getPeso();
+	}
+	
+	/**
+	 * Calcula el porcentaje pasante del analisis de una muestra.
+	 */
+	public void calcularPorcentajePasante(){
+		porcentajePasante=100-porcentajeRetenidoAcumulado;
+	}
+	
+	/**
+	 * Calcula el porcentaje retenido acumulado del analisis de una muestra. 
+	 */
+	public void calcularPorcentajeRetenidoAcumulado(){
+		//muestra.getAnalisis();
 	}
 	
 	/**
