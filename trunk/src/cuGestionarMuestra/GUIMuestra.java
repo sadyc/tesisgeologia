@@ -24,6 +24,8 @@ public class GUIMuestra extends JDialog {
 	private JTextField profundidadInicial;
 	private JTextField profundidadFinal;
 	private JTextField peso;
+	private JComboBox ubicacion;
+	private JLabel usuario;
 
 	/**
 	 * This is the default constructor
@@ -36,6 +38,9 @@ public class GUIMuestra extends JDialog {
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
+		ubicacion = new JComboBox();
+		usuario = new JLabel ("Usuario tanto...");
+		
 		aceptar = new JButton("Agregar Muestra");
 		cancelar = new JButton("Cancelar");
 		initialize();
@@ -45,17 +50,21 @@ public class GUIMuestra extends JDialog {
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
-	public GUIMuestra(String[] data) {
+	public GUIMuestra(Muestra muestra) {
 	
 		super();
-		muestra = new JTextField(15);
+		this.muestra = new JTextField(15);
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
-		muestra.setText(data[0]);
-		peso.setText(data[1]);
-		profundidadInicial.setText(data[2]);
-		profundidadFinal.setText(data[3]);
+		this.muestra.setText(muestra.getNombreMuestra());
+		peso.setText(muestra.getPeso().toString());
+		profundidadInicial.setText("");
+		profundidadFinal.setText("");
+		
+		
+		
+		usuario = new JLabel ("Usuario: "+muestra.usuario.getNombreUsuario());
 		aceptar = new JButton("Agregar Muestra");
 		cancelar = new JButton("Cancelar");
 		initialize();
@@ -158,6 +167,8 @@ public class GUIMuestra extends JDialog {
 			this.panelNorte.add(profundidadInicial);
 			this.panelNorte.add(new JLabel("Profundidad Final: "));
 			this.panelNorte.add(profundidadFinal);
+			this.panelNorte.add(ubicacion);
+			this.panelNorte.add(usuario);
 		}
 		return this.panelNorte;
 	}	
@@ -189,6 +200,26 @@ public class GUIMuestra extends JDialog {
 		this.aceptar.addActionListener(lis);
 		this.cancelar.addActionListener(lis);
 	}
-		
+	
+	public void setListenerComboBox(ItemListener lis){
+		this.ubicacion.addItemListener(lis);
+       
+	}
+	
+	
+	/**
+	 * This method initializes jComboBox	
+	 * 	
+	 * @return javax.swing.JComboBox	
+	 */
+	public JComboBox getJComboBox() {
+		if (ubicacion == null) {
+			ubicacion = new JComboBox();
+			ubicacion.setBounds(new java.awt.Rectangle(124,179,143,34));
+			ubicacion.setName("Ubicacion");
+		}
+		return ubicacion;
+	}
+	
 }
 
