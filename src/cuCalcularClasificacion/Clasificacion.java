@@ -6,12 +6,15 @@ package cuCalcularClasificacion;
 import java.util.Collection;
 import java.util.HashSet;
 
+import javax.jdo.annotations.PersistenceCapable;
+
 import comun.Muestra;
 
 /**
  * @author TesisGeologia
  * @version 1.0
  */
+@PersistenceCapable
 public class Clasificacion {
 	
 	protected String descripcion;
@@ -45,6 +48,22 @@ public class Clasificacion {
 	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	
+	/**
+	 * Metodo que permite agregar una muestra a la clasificacion.
+	 * @param muestra, muestra a ser agregada a la clasificacion.
+	 */
+	public void addMuestra (Muestra muestra){
+		this.muestras.add(muestra);
+	}
+	
+	/**
+	 * Metodo que permite quitar una muestra a la clasificacion.
+	 * @param muestra, muestra a ser eliminada a la clasificacion.
+	 */
+	public void removeMuesra (Muestra muestra){
+		muestras.remove(muestra);
 	}
 
 }
