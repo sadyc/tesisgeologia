@@ -8,9 +8,6 @@ import java.util.HashSet;
 
 import javax.jdo.annotations.PersistenceCapable;
 
-
-
-
   
 /**
  * Implementacion de la clase que define un operador de laboratorio

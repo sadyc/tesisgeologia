@@ -10,7 +10,7 @@ package cuGestionarMuestra;
  */
 public class Usuario extends Persona{
 	private String nombreUsuario;
-	private String contraseña;
+	private String password;
 	
 	/**
 	 * @return the nombreUsuario
@@ -28,16 +28,16 @@ public class Usuario extends Persona{
 	 * @return the contraseña
 	 */
 	public String getContraseña() {
-		return contraseña;
+		return password;
 	}
 	/**
 	 * @param contraseña the contraseña to set
 	 */
 	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+		this.password = contraseña;
 	}
 	
 	public String toString(){
-		return("nombre: " + nombreUsuario + "contraseña: " + contraseña);
+		return("nombre: " + nombreUsuario + "contraseña: " + password);
 	}
 }

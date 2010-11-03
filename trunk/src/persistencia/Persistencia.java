@@ -13,9 +13,7 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
-import com.sun.org.apache.bcel.internal.generic.NEWARRAY;
 
-import cuGestionarMuestra.Muestra;
 
 /**
  * @author TesisGeologia
@@ -40,7 +38,7 @@ public class Persistencia {
 			tx.begin();
 		}
 		catch (Exception e) {
-			cierraTransaccion();
+			realizarRollback();
 		}
 	}
 	
@@ -68,9 +66,6 @@ public class Persistencia {
 	 */
 	public void eliminarObjeto (Object elemento) throws Exception {
 		try{
-			
-		    //Query q = pmi.newQuery(elemento);                                <----------------  VER
-		    //q.deletePersistentAll(elemento);
 			pmi.deletePersistent(elemento);
 		}	
 		catch (Exception e){
@@ -85,10 +80,11 @@ public class Persistencia {
 	 * Busca un elemento generico. Retorna lo encontrado.
 	 *
 	 */
-	public Object buscarObjeto (int id) throws Exception{
+	public Object buscarObjeto (Class clase,int id) throws Exception{
 		Object aux = new Object();
 		try {
-			Query q = pmi.newQuery("id=="+id);
+			Extent e=pmi.getExtent(clase,true);
+			Query q = pmi.newQuery(e,"id=="+id);
 			aux = q.execute();
 		} catch (Exception e) {
 			realizarRollback();
@@ -96,10 +92,11 @@ public class Persistencia {
 		return aux;
 	}
 	
-	public Collection buscarColeccion ()throws Exception{
+	public Collection buscarColeccion (Class clase)throws Exception{
 		Collection<Object> aux = null; 
 		try {
-			Query q = pmi.newQuery("");
+			Extent e=pmi.getExtent(clase,true);
+			Query q = pmi.newQuery(e,"");
 			aux = (Collection) q.execute();
 		} catch (Exception e) {
 			realizarRollback();
