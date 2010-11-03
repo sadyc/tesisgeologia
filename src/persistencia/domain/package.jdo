@@ -3,25 +3,37 @@
     "-//Sun Microsystems, Inc.//DTD Java Data Objects Metadata 2.0//EN"
     "http://java.sun.com/dtd/jdo_2_0.dtd">
 <jdo>
-    <package name="Domain">
-        <class name="Domain.Muestra" identity-type="datastore">
+    <package name="domain">
+      <class name="cuGestionar.Muestra" identity-type="datastore">
               <inheritance strategy="new-table"/>
 		<field name="nombreMuestra" persistence-modifier="persistent">
                   <column length="30" jdbc-type="CHAR"/>
  		</field>
-            <field name="profundidadInicial" persistence-modifier="persistent">
-                   <column jdbc-type="FLOAT"/>
-            </field>
-            <field name="profundidadFinal" persistence-modifier="persistent">
-                   <column jdbc-type="FLOAT"/>
-            </field>
-            <field name="peso" persistence-modifier="persistent">
-                   <column jdbc-type="integer"/>
-            </field>
-            <field name="operador">
-               <column name="OPERADOR_ID"/>
-             </field>
-        </class>
+        <field name="profundidadInicial" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
+        <field name="profundidadFinal" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
+        <field name="peso" persistence-modifier="persistent">
+                 <column jdbc-type="integer"/>
+        </field>
+        <field name="fecha">
+                <column name="FECHA"/>
+        </field>
+        <field name="coeficienteUniformidad" persistence-modifier="persistent">
+                <column jdbc-type="FLOAT"/>
+        </field>
+        <field name="operador">
+                <column name="OPERADOR_ID"/>
+        </field>
+        <field name="ubicacion">
+                <column name="NOMBRE_UBICACION"/>
+        </field>
+        <field name="clasificacion">
+                <column name="CLASIFICACION"/>
+        </field>
+      </class>
 
 <class name="Persona" identity-type="datastore">
 	<inheritance strategy="subclass-table"/>
@@ -34,15 +46,65 @@
            <field name="dni" persistence-modifier="persistent">
                   <column length="15" jdbc-type="CHAR"/>
            </field>
+           <field name="tel" persistence-modifier="persistent">
+                  <column length="20" jdbc-type="CHAR"/>
+           </field>
+           <field name="email" persistence-modifier="persistent">
+                  <column length="60" jdbc-type="CHAR"/>
+           </field>
 
  </class>
        
 
  <class name="OperadorDeLaboratorio" extends="Persona" identity-type="datastore">
 	<field name="muestras" persistence-modifier="persistent" mapped-by="operador">
-		<collection element_type="Domain.Muestra"/>
+		<collection element_type="cuGestionar.Muestra"/>
 	</field>
-
  </class>
+ 
+ <class name="Usuario" extends="Persona" identity-type="datastore">
+	 <field name="nombreUsuario" persistence-modifier="persistent"> 
+                 <column length="30" jdbc-type="CHAR"/>
+           </field>
+           <field name="password" persistence-modifier="persistent">
+                  <column length="30" jdbc-type="CHAR"/>
+           </field>
+ </class>
+ 
+ <class name="Tamiz" identity-type="datastore">
+ 	<field name="numeroTamiz" persistence-modifier="persistent">
+           <column jdbc-type="integer"/>
+    </field>
+ 	<field name="aberturaMalla" persistence-modifier="persistent">
+           <column jdbc-type="integer"/>
+    </field>
+	<field name="analisisTamiz" persistence-modifier="persistent" mapped-by="tamiz">
+		<collection element_type="cuAnalisis.Analisis"/>
+	</field>
+ </class>
+
+ <class name="Analisis" identity-type="datastore">
+ 	<field name="porcentajePasante" persistence-modifier="persistent">
+           <column jdbc-type="integer"/>
+    </field>
+ 	<field name="porcentajeRetenidoParcial" persistence-modifier="persistent">
+           <column jdbc-type="integer"/>
+    </field>
+	<field name="porcentajeRetenidoAcumulado" persistence-modifier="persistent">
+           <column jdbc-type="integer"/>
+    </field>
+    <field name="pesoRetenido" persistence-modifier="persistent">
+           <column jdbc-type="integer"/>
+    </field>
+    <field name="muestra">
+          <column name="NOMBRE_MUESTRA"/>
+    </field>
+    <field name="tamiz">
+          <column name="NUMERO_TAMIZ"/>
+    </field>
+    
+ </class>
+ 
+ 
     </package>
 </jdo>
