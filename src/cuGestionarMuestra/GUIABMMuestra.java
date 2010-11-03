@@ -132,7 +132,7 @@ public class GUIABMMuestra extends JFrame {
      *@return data  
      * */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre","Peso","Profundidad Inicial","Profundidad Final", "Operador ID"};
+		String[] columnName = {"Nombre","Peso","Profundidad Inicial","Profundidad Final","Latitud","Longitud","Clasificacion","Usuario","Operador ID"};
 		return columnName;
 	}
 
@@ -166,14 +166,5 @@ public class GUIABMMuestra extends JFrame {
 		}
 		return this.tablePanel;
 	}
-	
-	/**
-	 * Metodo que elimina una fila de la tabla Panel
-	 *
-	 * @param nro  Corresponde al numero de la fila a eleminar
-	 */
-	public void EliminarFila(int nro){
-    	this.tablePanel.removeRow(nro);    	
-    }
 	
 }

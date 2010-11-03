@@ -11,6 +11,8 @@ import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
+import cuCalcularClasificacion.Clasificacion;
+
 
 
 /**
@@ -30,8 +32,8 @@ public class Muestra {
 	private float coeficienteUniformidad;
 	protected OperadorDeLaboratorio operador ;
 	protected Usuario usuario;
-	
-	
+	protected Ubicacion ubicacion;
+	protected Clasificacion clasificacion;
 
 	/**
 	 * Default contructors
@@ -42,6 +44,9 @@ public class Muestra {
 		profundidadFinal= -1;
 		peso= -1;
 		operador = new OperadorDeLaboratorio();
+		usuario = new Usuario();
+		ubicacion = new Ubicacion();
+		clasificacion = new Clasificacion();
 	}
 	
 	/**
@@ -52,12 +57,15 @@ public class Muestra {
 	 * @param profundidadFinal profundidad final de la muestra creada
 	 * @param peso peso de la muestra
 	 */
-	public Muestra(String nombreMuestra,Integer peso, float profundidadInicial,float profundidadFinal,  OperadorDeLaboratorio operador) {
+	public Muestra(String nombreMuestra,Integer peso, float profundidadInicial,float profundidadFinal,  OperadorDeLaboratorio operador, Usuario usuario, Ubicacion ubicacion, Clasificacion clasificacion) {
 		this.nombreMuestra = nombreMuestra;
 		this.profundidadInicial = profundidadInicial;
 		this.profundidadFinal = profundidadFinal;
 		this.peso = peso;
 		this.operador = operador;
+		this.usuario = usuario;
+		this.ubicacion = ubicacion;
+		this.clasificacion = clasificacion;
 	}
 		
 	/**
@@ -143,6 +151,83 @@ public class Muestra {
 	 */
 	public void setOperador(OperadorDeLaboratorio operador) {
 		this.operador = operador;
+	}
+
+	/**
+	 * @return the usuario
+	 */
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	/**
+	 * @return the ubicacion
+	 */
+	public Ubicacion getUbicacion() {
+		return ubicacion;
+	}
+
+	/**
+	 * @param ubicacion the ubicacion to set
+	 */
+	public void setUbicacion(Ubicacion ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+
+	/**
+	 * @return the clasificacion
+	 */
+	public Clasificacion getClasificacion() {
+		return clasificacion;
+	}
+
+	/**
+	 * @param clasificacion the clasificacion to set
+	 */
+	public void setClasificacion(Clasificacion clasificacion) {
+		this.clasificacion = clasificacion;
+	}
+
+	/**
+	 * @return the fecha
+	 */
+	public Date getFecha() {
+		return fecha;
+	}
+
+	/**
+	 * @param fecha the fecha to set
+	 */
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	/**
+	 * @return the coeficienteUniformidad
+	 */
+	public float getCoeficienteUniformidad() {
+		return coeficienteUniformidad;
+	}
+
+	/**
+	 * @param coeficienteUniformidad the coeficienteUniformidad to set
+	 */
+	public void setCoeficienteUniformidad(float coeficienteUniformidad) {
+		this.coeficienteUniformidad = coeficienteUniformidad;
+	}
+
+	/**
+	 * @param nombreMuestra the nombreMuestra to set
+	 */
+	public void setNombreMuestra(String nombreMuestra) {
+		this.nombreMuestra = nombreMuestra;
 	}
 
 }
