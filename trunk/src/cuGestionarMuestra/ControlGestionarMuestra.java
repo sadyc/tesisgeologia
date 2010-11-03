@@ -3,6 +3,8 @@
  */
 package cuGestionarMuestra;
 
+import java.util.Collection;
+
 import persistencia.Persistencia;
 
 /**
@@ -40,7 +42,7 @@ public class ControlGestionarMuestra {
 	}
 	
 	/**
-	 * Elimina una muestra con persistencia. 
+	 * Modifica una muestra con persistencia. 
 	 */
 	public void modificarMuestra(Muestra mu) throws Exception {
 		Persistencia persistencia = new Persistencia();
@@ -51,6 +53,22 @@ public class ControlGestionarMuestra {
 		} catch (Exception e) {
 			persistencia.realizarRollback();
 		}
+	}
+	
+	/**
+	 * Modifica una muestra con persistencia. 
+	 */
+	public Collection coleccionMuestras(Class clase) throws Exception {
+		Collection<Object> aux = null; 
+		Persistencia persistencia = new Persistencia();
+		try {
+			aux = (persistencia.buscarColeccion(clase));
+			persistencia.cierraTransaccion();
+			System.out.println("Muestra modificada con persistencia");
+		} catch (Exception e) {
+			persistencia.realizarRollback();
+		}
+		return aux;
 	}
 	
 	

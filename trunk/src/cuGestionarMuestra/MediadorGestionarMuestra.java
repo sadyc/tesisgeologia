@@ -7,6 +7,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.JFrame;
@@ -35,12 +36,11 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	private GUIABMMuestra gestionarMuestra = null;
 	private Object [][] data = new Object [50] [5];
 	private Component frame;
-	private PersistenceManager pm = null;
-	private Transaction tx = null;
 	
-	public MediadorGestionarMuestra(String nombreVentana) {
+	
+	public MediadorGestionarMuestra(String nombreVentana) throws Exception {
 		super();
-		cargarBD();
+		cargarTablaDeMuestras();
 		this.gestionarMuestra = new GUIABMMuestra(nombreVentana,data);
 		// se configura como escuchador de los evenetos de la ventana 
 		// al el mismo (mediador)
@@ -52,36 +52,26 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	
 	/**
 	 * Levanta informacion almacenada en la 
-	 * base de datos.
+	 * base de datos al atributo data de la clase mediador.
 	 */
-	public void cargarBD(){
-		pm = Singleton.getInstance();
-		tx = pm.currentTransaction();
+	public void cargarTablaDeMuestras()throws Exception{
+		ControlGestionarMuestra control = new ControlGestionarMuestra();
+		Muestra muestra = new Muestra();
+		Class clase = muestra.getClass();
+		Collection muestras = control.coleccionMuestras(clase);
+		Iterator<Muestra> it = muestras.iterator();
 		int i = 0;
-		try
-		{
-		    tx.begin();
-		    Extent e = pm.getExtent(Muestra.class, true);
-		    Iterator iter=e.iterator();
-		    Muestra mu = new Muestra();
-		    while (iter.hasNext()){
-		    	mu = (Muestra)iter.next();
-		    	data [i][0]= mu.getNombreMuestra();
-		        data [i][1]= mu.getPeso();		        
-		        data [i][2]= mu.getProfundidadInicial();
-		        data [i][3]= mu.getProfundidadFinal();
-		        data [i][4]= mu.getOperador().getDni();
-		        i++;
-		    }
-		    tx.commit();
+		while (it.hasNext()){
+			muestra = it.next();
+			data [i][0]= muestra.getNombreMuestra();
+		    data [i][1]= muestra.getPeso();		        
+		    data [i][2]= muestra.getProfundidadInicial();
+		    data [i][3]= muestra.getProfundidadFinal();
+		    data [i][4]= muestra.getOperador().getDni();
+		    i++;
 		}
-		catch (Exception e){
-		    if (tx.isActive()){
-		        tx.rollback();
-		    }
-		}
-        pm.close();
-    }
+	}
+	
 	
 	/**
 	 * 
