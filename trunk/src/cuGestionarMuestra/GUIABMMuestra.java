@@ -27,12 +27,17 @@ public class GUIABMMuestra extends JFrame {
 	 * @param title
 	 * @throws java.awt.HeadlessException
 	 */
-
-	private JPanel panelSur=null;
-	private TablePanel tablePanel=null;
-	private JButton jButtonAgregar = null;
-	private JButton jButtonEliminar = null;
-	private JButton jButtonModificar = null;
+	private JMenuBar menu ;
+	private JMenu archivo;
+	private JMenu editar;
+	private JMenu ayuda;
+	 
+	
+	private JPanel panelSur;
+	private TablePanel tablePanel;
+	private JButton jButtonAgregar;
+	private JButton jButtonEliminar;
+	private JButton jButtonModificar;
 	private Object [][] data;
 	
 	
@@ -45,6 +50,30 @@ public class GUIABMMuestra extends JFrame {
 	public GUIABMMuestra(String title, Object [][] datos) {
 		super(title);
 		data = datos;
+		menu = new JMenuBar();
+		archivo = new JMenu("Archivo");
+		editar = new JMenu("Editar");
+		ayuda = new JMenu("Ayuda");
+		menu.add(archivo);
+		menu.add(editar);
+		menu.add(ayuda);
+		JMenuItem copiar = new JMenuItem("Copiar");
+		JMenuItem cortar = new JMenuItem("Cortar");
+		JMenuItem pegar = new JMenuItem("Pegar");
+		editar.add(copiar);
+		editar.add(cortar);
+		editar.add(pegar);
+		JMenuItem buscar = new JMenuItem("Buscar");
+		JMenuItem agregar = new JMenuItem("Agregar Muestra");
+		JMenuItem modificar = new JMenuItem("Modificar Muestra");
+		JMenuItem salir = new JMenuItem("Salir");
+		archivo.add(agregar);
+		archivo.add(modificar);
+		archivo.add(buscar);
+		archivo.add(new JSeparator()); // Una rayita separadora.
+		archivo.add(salir);
+		JMenuItem version = new JMenuItem("Version");
+		ayuda.add(version);		
 		initialize();
 	}
 
@@ -57,9 +86,10 @@ public class GUIABMMuestra extends JFrame {
 		this.setSize(803, 200);
         // Seteamos el BorderLayout
 		this.getContentPane().setLayout(new BorderLayout());
- 		
+		this.setJMenuBar(this.getMenu());
 	 	// Se aaden los componentes al Frame
 	 	// Agregamos la tabla  al Frame
+		//this.getContentPane().add(this.getMenu(),BorderLayout.NORTH);
 	 	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
 	 	// Agregamos el Panel Sur al Frame
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
@@ -165,6 +195,20 @@ public class GUIABMMuestra extends JFrame {
 	 		this.tablePanel.setData(data, getColumName());			
 		}
 		return this.tablePanel;
+	}
+
+	/**
+	 * @return the menu
+	 */
+	public JMenuBar getMenu() {
+		return menu;
+	}
+
+	/**
+	 * @param menu the menu to set
+	 */
+	public void setMenu(JMenuBar menu) {
+		this.menu = menu;
 	}
 	
 }
