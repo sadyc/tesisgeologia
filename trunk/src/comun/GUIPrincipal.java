@@ -21,6 +21,7 @@ public class GUIPrincipal extends JFrame {
 	private JButton jButtongestionarMuestra;
 	private JButton jButtonclasificacion;
 	private JButton jButtonanalisis;
+	private JButton jButtoncerrar;
 	
 	/**
 	 * @return the gestionarMuestra
@@ -66,6 +67,17 @@ public class GUIPrincipal extends JFrame {
 	}
 
 
+	/**
+	 * @return the cerrar
+	 */
+	public JButton getJButtonCerrar() {
+		if (jButtoncerrar == null) {
+			jButtoncerrar  = new JButton();
+			jButtoncerrar.setBounds(new java.awt.Rectangle(21,113,89,34));
+			jButtoncerrar .setText("Cerrar");
+		}
+		return jButtoncerrar ;
+	}
 
 
 
@@ -132,8 +144,7 @@ public class GUIPrincipal extends JFrame {
 		if (this.panelSur==null) {
 			this.panelSur = new JPanel();
 			this.panelSur.setLayout(new FlowLayout(FlowLayout.CENTER));
-			JButton boton1 = new JButton("Cerrar");
-			this.panelSur.add(boton1);
+			this.panelSur.add(getJButtonCerrar());
 		}
 		return this.panelSur;
 	}
@@ -160,7 +171,7 @@ public class GUIPrincipal extends JFrame {
 		this.jButtongestionarMuestra.addActionListener(lis);
 		this.jButtonanalisis.addActionListener(lis);
 		this.jButtonclasificacion.addActionListener(lis);
-        
+        this.jButtoncerrar.addActionListener(lis);
 	}
 
 }

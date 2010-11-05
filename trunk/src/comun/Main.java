@@ -2,21 +2,17 @@ package comun;
 
 import javax.swing.WindowConstants;
 
-public class Main {
-	public static void main(String[] args) { 
-        try {
-       	 
-		 		GUIPrincipal exampleTable = new GUIPrincipal("SISTEMA DE CLASIFICACIÓN DE SUELOS");
+import cuGestionarMuestra.MediadorGestionarMuestra;
 
-		 	// Centramos el Frame en la pantalla
-		 		exampleTable.setLocationRelativeTo(null);
-		 		exampleTable.setVisible(true);
-		 		exampleTable.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-				 		
-		  }
-        catch (Exception exception) {
-      	    exception.printStackTrace();
+public class Main {
+	public static void main(String[] args) throws Exception{ 
+		try {
+			MediadorPrincipal gestionarMuestra = new MediadorPrincipal("Listado de Muestras");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         }
 	}
 
-}
+
