@@ -9,28 +9,20 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Vector;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.jdo.Extent;
-import javax.jdo.PersistenceManager;
-import javax.jdo.Transaction;
 
-import cuCalcularClasificacion.Clasificacion;
-
-
-
-
-import persistencia.Singleton;
+import persistencia.domain.Clasificacion;
+import persistencia.domain.Muestra;
+import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.Ubicacion;
+import persistencia.domain.Usuario;
 
 
 
 /**
  * @author TesisGeologia
- *
- */
-/**
- * @author NAVE
  *
  */
 public class MediadorGestionarMuestra implements ActionListener,MouseListener,ItemListener{

@@ -6,6 +6,7 @@ package cuGestionarMuestra;
 import java.util.Collection;
 
 import persistencia.Persistencia;
+import persistencia.domain.Muestra;
 
 /**
  * @author tesisGeologia
