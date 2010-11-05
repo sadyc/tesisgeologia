@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import comun.GUIPrincipal;
+import comun.MediadorPrincipal;
+
 /**
  * @author TesisGeologia
  *
@@ -51,6 +54,12 @@ public class MediadorLogin implements ActionListener{
 					JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Password'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 				}
 				else{
+					try {
+						MediadorPrincipal guiPrincipal = new MediadorPrincipal("SISTEMA DE CLASIFICACION DE SUELOS");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					login.dispose();
 				}
 			}
