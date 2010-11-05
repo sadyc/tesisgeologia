@@ -42,8 +42,9 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	
 	public MediadorGestionarMuestra(String nombreVentana) throws Exception {
 		super();
-		cargarTablaDeMuestras();
+		//cargarTablaDeMuestras();
 		this.GUIABMMuestra = new GUIABMMuestra(nombreVentana,data);
+		GUIABMMuestra.show();
 		// se configura como escuchador de los evenetos de la ventana 
 		// al el mismo (mediador)
 		this.GUIABMMuestra.setListenerButtons(this);
@@ -94,6 +95,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
+		System.out.print("asdasd");
 		Object source = arg0.getSource();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 	   	if (this.GUIABMMuestra.getJButtonAgregar() == source){
