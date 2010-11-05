@@ -1,6 +1,7 @@
 package comun;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -17,7 +18,57 @@ public class GUIPrincipal extends JFrame {
 	private JMenu archivo;
 	private JMenu editar;
 	private JMenu ayuda;
+	private JButton jButtongestionarMuestra;
+	private JButton jButtonclasificacion;
+	private JButton jButtonanalisis;
 	
+	/**
+	 * @return the gestionarMuestra
+	 */
+	public JButton getJButtonGestionarMuestra() {
+		if (jButtongestionarMuestra == null) {
+			jButtongestionarMuestra = new JButton();
+			jButtongestionarMuestra.setBounds(new java.awt.Rectangle(21,113,89,34));
+			jButtongestionarMuestra.setText("GESTIONAR MUESTRA");
+		}
+		return jButtongestionarMuestra;
+	}
+
+
+
+
+	/**
+	 * @return the clasificacion
+	 */
+	public JButton getJButtonClasificacion() {
+		if (jButtonclasificacion == null) {
+			jButtonclasificacion = new JButton();
+			jButtonclasificacion.setBounds(new java.awt.Rectangle(21,113,89,34));
+			jButtonclasificacion.setText("CLASIFICACION");
+		}
+		return jButtonclasificacion;
+	}
+
+
+
+
+
+	/**
+	 * @return the analisis
+	 */
+	public JButton getJButtonAnalisis() {
+		if (jButtonanalisis == null) {
+			jButtonanalisis  = new JButton();
+			jButtonanalisis.setBounds(new java.awt.Rectangle(21,113,89,34));
+			jButtonanalisis .setText("ANALISIS");
+		}
+		return jButtonanalisis ;
+	}
+
+
+
+
+
 	public GUIPrincipal(String title) throws Exception {
 		super(title);
 		if (this.menu==null) {
@@ -69,12 +120,9 @@ public class GUIPrincipal extends JFrame {
 		if (this.panelCentro==null) {
 			this.panelCentro= new JPanel();
 			this.panelCentro.setLayout(new GridBagLayout());
-			JButton boton1 = new JButton("GESTIONAR MUESTRA");
-			JButton boton2 = new JButton("REALIZAR ANÁLISIS");
-			JButton boton3 = new JButton("CLASIFICACIÓN");
-			this.panelCentro.add(boton1);
-			this.panelCentro.add(boton2);
-			this.panelCentro.add(boton3);
+			this.panelCentro.add(getJButtonGestionarMuestra());
+			this.panelCentro.add(getJButtonAnalisis());
+			this.panelCentro.add(getJButtonClasificacion());;
 		}
 		return this.panelCentro;
 	}
@@ -108,6 +156,12 @@ public class GUIPrincipal extends JFrame {
 		this.menu = menu;
 	}
 
+	public void setListenerButtons(ActionListener lis){
+		this.jButtongestionarMuestra.addActionListener(lis);
+		this.jButtonanalisis.addActionListener(lis);
+		this.jButtonclasificacion.addActionListener(lis);
+        
+	}
 
 }
 
