@@ -13,7 +13,7 @@ import java.util.Collection;
  */
 public class Tamiz {
 	private Integer numeroTamiz;
-	private Integer aberturaDeMalla;
+	private Integer aberturaMalla;
 	protected Collection<Analisis> analisisTamiz = new HashSet();
 	
 	/**
@@ -21,7 +21,7 @@ public class Tamiz {
 	 */
 	public Tamiz(Integer numeroTamiz, Integer aberturaDeMalla, Collection<Analisis> analisisTamiz) {
 		this.numeroTamiz = numeroTamiz;
-		this.aberturaDeMalla = aberturaDeMalla;
+		this.aberturaMalla = aberturaDeMalla;
 		this.analisisTamiz = analisisTamiz;
 	}
 	/**
@@ -37,16 +37,16 @@ public class Tamiz {
 		this.numeroTamiz = numeroTamiz;
 	}
 	/**
-	 * @return the aberturaDeMalla
+	 * @return the aberturaMalla
 	 */
-	public Integer getAberturaDeMalla() {
-		return aberturaDeMalla;
+	public Integer getAberturaMalla() {
+		return aberturaMalla;
 	}
 	/**
-	 * @param aberturaDeMalla the aberturaDeMalla to set
+	 * @param aberturaMalla the aberturaMalla to set
 	 */
-	public void setAberturaDeMalla(Integer aberturaDeMalla) {
-		this.aberturaDeMalla = aberturaDeMalla;
+	public void setAberturaMalla(Integer aberturaMalla) {
+		this.aberturaMalla = aberturaMalla;
 	}
 	/**
 	 * @return the muestras
@@ -65,7 +65,7 @@ public class Tamiz {
 	 * 
 	 */
 	public String toString() {
-		return ("numeroTamiz= " + numeroTamiz + ", aberturaDeMalla= "+ aberturaDeMalla );
+		return ("Numero Tamiz= " + numeroTamiz + ", Abertura De Malla= "+ aberturaMalla );
 	}
 	
 }
