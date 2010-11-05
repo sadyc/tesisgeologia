@@ -87,29 +87,16 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
-		System.out.print("asdasd");
 		Object source = arg0.getSource();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 	   	if (this.GUIABMMuestra.getJButtonAgregar() == source){
-	   		//MediadorAltaMuestra altaMuestra = new MediadorAltaMuestra();
-	   		GUIMuestra guiMuestra = new GUIMuestra();
-     		System.out.println("GestionarMediador.actionPerformed() jButtonAgregar");
-     		guiMuestra.show();   
-     		OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","12","4665458","asd@gmail.com");
-     		Ubicacion ubicacion = new Ubicacion();
-     		Usuario usuario = new Usuario();
-     		Clasificacion clasificacion = new Clasificacion();
-        	if (guiMuestra.getData()[0] != null){ 
-        		Muestra mu = new Muestra((guiMuestra.getData()[0]),Integer.parseInt(guiMuestra.getData()[1]),Float.parseFloat(guiMuestra.getData()[2]),Float.parseFloat(guiMuestra.getData()[3]),op,usuario,ubicacion,clasificacion);
-        		guiMuestra.getData() [4] = "12";
-        		this.GUIABMMuestra.getTablePanel().addRow(guiMuestra.getData());
-        		try {
-					control.insertarMuestra(mu);
-				} catch (Exception e) {
-					System.out.println("Error al insertar");
-				}
-     
-     		}
+	   		try {
+	   			System.out.println("Button Agregar Muestra");
+				MediadorMuestra altaMuestra = new MediadorMuestra("Ingresar Muestra");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	   		
 	   	}
 		if (this.GUIABMMuestra.getJButtonEliminar() == source){
 			if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
@@ -123,7 +110,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	            	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 	            	Muestra mu = new Muestra ();
 	            	try {
-						control.eliminarMuestra(mu);
+						//control.eliminarMuestra(mu);
 					} catch (Exception e) {
 						System.out.println("Error al eliminar");
 					}
@@ -137,7 +124,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 			else{
 				String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 				Muestra muestra = new Muestra(); 
-				GUIMuestra guiMuestra = new GUIMuestra(muestra);
+				GUIMuestra guiMuestra = new GUIMuestra("nombre de ventana",muestra);
 
 				guiMuestra.show();
 				if (guiMuestra.getData()[0] != null){  
