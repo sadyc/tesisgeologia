@@ -2,6 +2,7 @@ package Main;
 
 import cuGestionarMuestra.GUIABMMuestra;
 import cuGestionarMuestra.GUIMuestra;
+import cuGestionarMuestra.MediadorGestionarMuestra;
 import cuGestionarMuestra.Muestra;
 
  /**
@@ -25,11 +26,11 @@ public class Main {
 
 	/**
 	 * @param args
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Muestra s= new Muestra();
-      	GUIMuestra gestionarDi = new GUIMuestra();
-		gestionarDi.show();
+      	MediadorGestionarMuestra gestionarMuestra = new MediadorGestionarMuestra("Listado de Muestras");
 	}
 }
 
