@@ -3,7 +3,7 @@
  */
 package cuCalcularClasificacion.Clasificaciones;
 
-import cuCalcularClasificacion.Clasificacion;
+import persistencia.domain.Clasificacion;
 
 /**
  * @author TesisGeologia.
