@@ -1,9 +1,8 @@
 package Main;
 
-import cuGestionarMuestra.GUIABMMuestra;
-import cuGestionarMuestra.GUIMuestra;
+import persistencia.domain.Muestra;
 import cuGestionarMuestra.MediadorGestionarMuestra;
-import cuGestionarMuestra.Muestra;
+
 
  /**
  * @author TesisGeologia

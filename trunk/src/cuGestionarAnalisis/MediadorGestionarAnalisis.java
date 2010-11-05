@@ -58,11 +58,9 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
      	if (this.analisis.getJButtonAceptar() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregarMuestra");
 			data = analisis.getPesoRetenido().getText();
-			//cierra la ventana
 			analisis.dispose();
 		}
 		if (this.analisis.getJButtonCancelar() == source){
-			//cerrar ventana
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			analisis.dispose();
 		}

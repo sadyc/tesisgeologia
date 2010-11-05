@@ -5,6 +5,8 @@ import java.awt.event.*;
 //import java.awt.HeadlessException;
 
 import javax.swing.*;
+
+import persistencia.domain.Muestra;
 /**
  * @author TesisGeologia
  *
@@ -62,10 +64,7 @@ public class GUIMuestra extends JDialog {
 		
 		profundidadInicial.setText("");
 		profundidadFinal.setText("");
-		
-		
-		
-		usuario = new JLabel ("Usuario: "+muestra.usuario.getNombreUsuario());
+		usuario = new JLabel ("Usuario: "+muestra.getUsuario().getNombreUsuario());
 		aceptar = new JButton("Agregar Muestra");
 		cancelar = new JButton("Cancelar");
 		initialize();

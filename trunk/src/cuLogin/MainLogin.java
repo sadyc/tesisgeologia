@@ -7,8 +7,9 @@ public class MainLogin {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		MediadorLogin login = new MediadorLogin("aveeerga!");
+		MediadorLogin login = new MediadorLogin("LOGIN");
 		login.show();
+		
 
 	}
 

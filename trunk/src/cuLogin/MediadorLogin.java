@@ -28,10 +28,11 @@ public class MediadorLogin implements ActionListener{
 		this.login = new GUILogin(nombreVentana);
 		this.login.setListenerButtons(this);
 	}
-	
+
 	
 	public void show()	{
-		 login.show();
+		login.pack();
+		login.show();
 	}
 	
 	/**
