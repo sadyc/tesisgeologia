@@ -30,7 +30,6 @@ public class MediadorPrincipal implements ActionListener{
 	
 	public MediadorPrincipal(String nombreVentana) throws Exception {
 		super();
-		//cargarTablaDeMuestras();
 		this.GUIPrincipal = new GUIPrincipal(nombreVentana);
 		GUIPrincipal.show();
 		// se configura como escuchador de los evenetos de la ventana 

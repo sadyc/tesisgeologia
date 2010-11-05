@@ -23,61 +23,7 @@ public class GUIPrincipal extends JFrame {
 	private JButton jButtonanalisis;
 	private JButton jButtoncerrar;
 	
-	/**
-	 * @return the gestionarMuestra
-	 */
-	public JButton getJButtonGestionarMuestra() {
-		if (jButtongestionarMuestra == null) {
-			jButtongestionarMuestra = new JButton();
-			jButtongestionarMuestra.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtongestionarMuestra.setText("GESTIONAR MUESTRA");
-		}
-		return jButtongestionarMuestra;
-	}
-
-
-
-
-	/**
-	 * @return the clasificacion
-	 */
-	public JButton getJButtonClasificacion() {
-		if (jButtonclasificacion == null) {
-			jButtonclasificacion = new JButton();
-			jButtonclasificacion.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtonclasificacion.setText("CLASIFICACION");
-		}
-		return jButtonclasificacion;
-	}
-
-
-
-
-
-	/**
-	 * @return the analisis
-	 */
-	public JButton getJButtonAnalisis() {
-		if (jButtonanalisis == null) {
-			jButtonanalisis  = new JButton();
-			jButtonanalisis.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtonanalisis .setText("ANALISIS");
-		}
-		return jButtonanalisis ;
-	}
-
-
-	/**
-	 * @return the cerrar
-	 */
-	public JButton getJButtonCerrar() {
-		if (jButtoncerrar == null) {
-			jButtoncerrar  = new JButton();
-			jButtoncerrar.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtoncerrar .setText("Cerrar");
-		}
-		return jButtoncerrar ;
-	}
+	
 
 
 
@@ -167,6 +113,61 @@ public class GUIPrincipal extends JFrame {
 		this.menu = menu;
 	}
 
+	/**
+	 * @return the gestionarMuestra
+	 */
+	public JButton getJButtonGestionarMuestra() {
+		if (jButtongestionarMuestra == null) {
+			jButtongestionarMuestra = new JButton();
+			jButtongestionarMuestra.setBounds(new java.awt.Rectangle(21,113,89,34));
+			jButtongestionarMuestra.setText("GESTIONAR MUESTRA");
+		}
+		return jButtongestionarMuestra;
+	}
+
+
+
+
+	/**
+	 * @return the clasificacion
+	 */
+	public JButton getJButtonClasificacion() {
+		if (jButtonclasificacion == null) {
+			jButtonclasificacion = new JButton();
+			jButtonclasificacion.setBounds(new java.awt.Rectangle(21,113,89,34));
+			jButtonclasificacion.setText("CLASIFICACION");
+		}
+		return jButtonclasificacion;
+	}
+
+
+
+
+
+	/**
+	 * @return the analisis
+	 */
+	public JButton getJButtonAnalisis() {
+		if (jButtonanalisis == null) {
+			jButtonanalisis  = new JButton();
+			jButtonanalisis.setBounds(new java.awt.Rectangle(21,113,89,34));
+			jButtonanalisis .setText("ANALISIS");
+		}
+		return jButtonanalisis ;
+	}
+
+
+	/**
+	 * @return the cerrar
+	 */
+	public JButton getJButtonCerrar() {
+		if (jButtoncerrar == null) {
+			jButtoncerrar  = new JButton();
+			jButtoncerrar.setBounds(new java.awt.Rectangle(21,113,89,34));
+			jButtoncerrar .setText("Cerrar");
+		}
+		return jButtoncerrar ;
+	}
 	public void setListenerButtons(ActionListener lis){
 		this.jButtongestionarMuestra.addActionListener(lis);
 		this.jButtonanalisis.addActionListener(lis);
