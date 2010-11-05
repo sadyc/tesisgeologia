@@ -52,9 +52,10 @@ public class GUIMuestra extends JDialog {
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
-	public GUIMuestra(Muestra muestra) {
+	public GUIMuestra(String title,Muestra muestra) {
 	
 		super();
+		
 		this.muestra = new JTextField(15);
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
@@ -159,9 +160,9 @@ public class GUIMuestra extends JDialog {
 			profundidadFinal.setAlignmentX(Component.CENTER_ALIGNMENT);
 			peso.setAlignmentX(Component.CENTER_ALIGNMENT);
 			// Se aaden los componentes al panel Norte
-			this.panelNorte.add(new JLabel("Nombre: "));
+			this.panelNorte.add(new JLabel("Nombre (*): "));
 			this.panelNorte.add(muestra);
-			this.panelNorte.add(new JLabel("Peso: "));
+			this.panelNorte.add(new JLabel("Peso (*): "));
 			this.panelNorte.add(peso); 
 			this.panelNorte.add(new JLabel("Profundidad Inicial: "));
 			this.panelNorte.add(profundidadInicial);
