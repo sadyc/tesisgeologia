@@ -1,6 +1,8 @@
 package Main;
 
-import cuGestionarMuestra.MediadorGestionarMuestra;
+import cuGestionarMuestra.GUIABMMuestra;
+import cuGestionarMuestra.GUIMuestra;
+import cuGestionarMuestra.Muestra;
 
  /**
  * @author TesisGeologia
@@ -25,8 +27,9 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-      	MediadorGestionarMuestra gestionarDialogo = new MediadorGestionarMuestra ("Sistema de Clasificacion de Suelos");
-		gestionarDialogo.show();
+		Muestra s= new Muestra();
+      	GUIMuestra gestionarDi = new GUIMuestra();
+		gestionarDi.show();
 	}
 }
 
