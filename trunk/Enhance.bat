@@ -18,7 +18,7 @@ rem ejecuta el enhancer de los .class de la persistencia
 
 cd..
 
-%djav%\bin\java -cp %classpath%  -Dlog4j.configuration=file:log4j.properties org.datanucleus.enhancer.DataNucleusEnhancer %dpro%\classes\Domain\*.class
+%djav%\bin\java -cp %classpath%  -Dlog4j.configuration=file:log4j.properties org.datanucleus.enhancer.DataNucleusEnhancer %dpro%\classes\persistencia\domain\*.class
 
 
 pause

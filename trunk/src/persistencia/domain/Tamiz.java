@@ -6,11 +6,14 @@ package persistencia.domain;
 import java.util.HashSet;
 import java.util.Collection;
 
+import javax.jdo.annotations.PersistenceCapable;
+
 
 /**
  * @author TesisGeologia
  *
  */
+@PersistenceCapable
 public class Tamiz {
 	private Integer numeroTamiz;
 	private Integer aberturaMalla;

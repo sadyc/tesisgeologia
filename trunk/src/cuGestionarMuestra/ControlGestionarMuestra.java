@@ -14,6 +14,12 @@ import persistencia.domain.Muestra;
  */
 public class ControlGestionarMuestra {
 
+	
+	/**
+	 * Contructor por defecto
+	 */
+	public ControlGestionarMuestra(){}
+	
 	/**
 	 * Inserta una muestra con persistencia. 
 	 */ 

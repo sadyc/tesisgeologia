@@ -3,11 +3,14 @@
  */
 package persistencia.domain;
 
+import javax.jdo.annotations.PersistenceCapable;
+
 
 /**
  * @author TesisGeologia
  *
  */
+@PersistenceCapable
 public class Analisis {
 	private Integer porcentajePasante;
 	private Integer porcentajeRetenidoParcial;
