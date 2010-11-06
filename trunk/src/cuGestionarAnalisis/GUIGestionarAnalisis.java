@@ -6,7 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -17,7 +17,7 @@ import javax.swing.JSeparator;
 * @author TesisGeología
 *
 */
-public class GUIGestionarAnalisis extends JFrame {
+public class GUIGestionarAnalisis extends JDialog {
 
 	private JPanel panelCentro=null;
 	private JPanel panelSur=null;
@@ -35,8 +35,8 @@ public class GUIGestionarAnalisis extends JFrame {
 
 
 
-	public GUIGestionarAnalisis(String title) throws Exception {
-		super(title);
+	public GUIGestionarAnalisis() throws Exception {
+		super();
 		if (this.menu==null) {
 			menu = new JMenuBar();
 			archivo = new JMenu("Archivo");
@@ -74,7 +74,7 @@ public class GUIGestionarAnalisis extends JFrame {
 	 */
 	private  void initialize() {
 		
-		this.setSize(500,500);
+		this.setSize(500,400);
 		this.getContentPane().setLayout(new BorderLayout());
 	 	this.setJMenuBar(this.getMenu());	
 	 	this.getContentPane().add(this.getPanelCentro(),BorderLayout.CENTER);
@@ -86,9 +86,9 @@ public class GUIGestionarAnalisis extends JFrame {
 		if (this.panelCentro==null) {
 			this.panelCentro= new JPanel();
 			this.panelCentro.setLayout(new GridBagLayout());
-			this.panelCentro.add(getJButtonGestionarMuestra());
-			this.panelCentro.add(getJButtonAnalisis());
-			this.panelCentro.add(getJButtonClasificacion());;
+			this.panelCentro.add(getJButtonAgregarAnalisis());
+			this.panelCentro.add(getJButtonModificarAnalisis());
+			this.panelCentro.add(getJButtonEliminarAnalisis());;
 		}
 		return this.panelCentro;
 	}
@@ -122,9 +122,9 @@ public class GUIGestionarAnalisis extends JFrame {
 	}
 
 	/**
-	 * @return the gestionarMuestra
+	 * @return the 
 	 */
-	public JButton getJButtonGestionarMuestra() {
+	public JButton getJButtonAgregarAnalisis() {
 		if (jButtonAgregarAnalisis == null) {
 			jButtonAgregarAnalisis = new JButton();
 			jButtonAgregarAnalisis.setBounds(new java.awt.Rectangle(21,113,89,34));
@@ -137,9 +137,9 @@ public class GUIGestionarAnalisis extends JFrame {
 
 
 	/**
-	 * @return the clasificacion
+	 * @return the 
 	 */
-	public JButton getJButtonClasificacion() {
+	public JButton getJButtonEliminarAnalisis() {
 		if (jButtonEliminarAnalisis == null) {
 			jButtonEliminarAnalisis = new JButton();
 			jButtonEliminarAnalisis.setBounds(new java.awt.Rectangle(21,113,89,34));
@@ -153,9 +153,9 @@ public class GUIGestionarAnalisis extends JFrame {
 
 
 	/**
-	 * @return the analisis
+	 * @return the 
 	 */
-	public JButton getJButtonAnalisis() {
+	public JButton getJButtonModificarAnalisis() {
 		if (jButtonModificarAnalisis == null) {
 			jButtonModificarAnalisis  = new JButton();
 			jButtonModificarAnalisis.setBounds(new java.awt.Rectangle(21,113,89,34));
