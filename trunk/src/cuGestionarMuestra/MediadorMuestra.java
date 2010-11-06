@@ -88,7 +88,8 @@ public class MediadorMuestra implements ActionListener,MouseListener,ItemListene
 				JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				Muestra mu = new Muestra();
+				Muestra mu = new Muestra("s",1,2,3,op,usuario,ubicacion,clasificacion);
+				//Muestra mu = new Muestra();
 				//Muestra mu = new Muestra((GUIMuestra.getData()[0]),Integer.parseInt(GUIMuestra.getData()[1]),Float.parseFloat(GUIMuestra.getData()[2]),Float.parseFloat(GUIMuestra.getData()[3]),op,usuario,ubicacion,clasificacion);
 				//control.insertarObject(mu);
 				GUIMuestra.dispose();
@@ -99,5 +100,17 @@ public class MediadorMuestra implements ActionListener,MouseListener,ItemListene
 			GUIMuestra.dispose();
 		}
 	}
-	
+	public String[] getData() {
+		String[] data = new String[9];
+		data[0]= GUIMuestra.getMuestra().getText();
+		data[1]= GUIMuestra.getPeso().getText();
+		data[2]= GUIMuestra.getProfundidadInicial().getText();
+		data[3]= GUIMuestra.getProfundidadFinal().getText();
+		data[4]= "dsa";
+		data[5]=  "dsa";
+		data[6]=  "dsa";
+		data[7]= "dsa";
+		data[8]=  "dsa";
+		return data;
+	}
 }

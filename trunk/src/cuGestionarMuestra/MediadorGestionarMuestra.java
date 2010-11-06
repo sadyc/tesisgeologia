@@ -88,12 +88,20 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
+		Muestra muestra= new Muestra();
+		OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","12","4665458","asd@gmail.com");
+ 		Ubicacion ubicacion = new Ubicacion();
+ 		Usuario usuario = new Usuario();
+ 		Clasificacion clasificacion = new Clasificacion();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 	   	if (this.GUIABMMuestra.getJButtonAgregar() == source){
 	   		try {
 	   			System.out.println("Button Agregar Muestra");
-				MediadorMuestra altaMuestra = new MediadorMuestra("Ingresar Muestra");
-			} catch (Exception e) {
+				MediadorMuestra altaMuestra = new MediadorMuestra("Ingresar Muestra");	
+				if (altaMuestra.getData()[0] != null){  
+	     			this.GUIABMMuestra.getTablePanel().addRow(altaMuestra.getData());
+	     		}
+	   		} catch (Exception e) {
 				e.printStackTrace();
 			}
 	   		
@@ -106,8 +114,8 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 			    
 				int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	            if(quitOption==JOptionPane.YES_OPTION){
-	            	 
 	            	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+	            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 	            	Muestra mu = new Muestra ();
 	            	try {
 						//control.eliminarMuestra(mu);
@@ -123,8 +131,8 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 			}
 			else{
 				String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-				Muestra muestra = new Muestra(); 
-				GUIMuestra guiMuestra = new GUIMuestra("nombre de ventana",muestra);
+				Muestra muestra2 = new Muestra(); 
+				GUIMuestra guiMuestra = new GUIMuestra("nombre de ventana",muestra2);
 
 				guiMuestra.show();
 				if (guiMuestra.getData()[0] != null){  
@@ -163,9 +171,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	 * @returns data 
 	*/
 	
-	public Object[] getData(){
-		return this.data;
-	}
+
 	public void itemStateChanged(ItemEvent e) {
 	}
 
