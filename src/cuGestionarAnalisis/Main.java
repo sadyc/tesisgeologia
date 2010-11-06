@@ -6,14 +6,13 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		MediadorGestionarAnalisis probando = new MediadorGestionarAnalisis();
-		probando.show();
-		GUIGestionarAnalisis hola;
+		MediadorGestionarAnalisis hola;
 		try {
-			hola = new GUIGestionarAnalisis("hola chicos");
-			hola.show();
+			hola = new MediadorGestionarAnalisis();
+		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			System.out.println("hola cuate");
 			e.printStackTrace();
 		}
 		

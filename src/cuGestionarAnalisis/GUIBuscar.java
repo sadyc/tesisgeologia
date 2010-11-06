@@ -3,29 +3,23 @@
  */
 package cuGestionarAnalisis;
 
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import persistencia.domain.Muestra;
 
 /**
  * @author TesisGeologia
  *
  * Clase que define la interfaz para manipular un Analisis
  */
-public class GUIAnalisis extends JDialog {
+public class GUIBuscar extends JDialog {
 
 	/**
 	 * @param title
@@ -33,47 +27,33 @@ public class GUIAnalisis extends JDialog {
 	 */
 	private JButton aceptar;
 	private JButton cancelar;
-	private JButton seleccionarTamiz;
+	private JButton buscar;
 	private JPanel panelNorte;
 	private JPanel panelCentro;
 	private JPanel panelSur;
-	private JTextField pesoRetenido;
-	private JLabel muestra;
+	private JTextField claveBusqueda;
+	private JLabel claveBusquedaLabel;
 
 
 	/**
 	 * This is the default constructor
 	 */
-	public GUIAnalisis() {
+	public GUIBuscar() {
 		super();
-		pesoRetenido = new JTextField(15);
-		muestra = new JLabel("muestra tanto...");
-		aceptar = new JButton("Agregar Analisis");
+		claveBusqueda = new JTextField(15);
+		claveBusquedaLabel = new JLabel("Ingrese el ID del analisis a buscar: ");
+		aceptar = new JButton("Aceptar");
 		cancelar = new JButton("Cancelar");
-		seleccionarTamiz = new JButton("Seleccionar Tamiz");
+		buscar = new JButton("Buscar");
 		initialize();
 	}
 	
-	/**
-	 * This is the parametrized constructor used in modification
-	 * @param data  arreglo que almacena los datos de una pesoRetenido. 
-	 */
-	public GUIAnalisis(String data, Muestra muestra) {
-		super();
-		pesoRetenido = new JTextField(15);
-		this.muestra = new JLabel("muestra: "+muestra.getNombreMuestra());
-		this.pesoRetenido.setText(data);
-		this.aceptar = new JButton("Agregar muestra");
-		this.cancelar = new JButton("Cancelar");
-		this.seleccionarTamiz = new JButton("Seleccionar Tamiz");
-		initialize();
-	}
 	
 	/**
-	 * @return the pesoRetenido
+	 * @return the claveBusqueda
 	 */
-	public JTextField getPesoRetenido() {
-		return pesoRetenido;
+	public JTextField getClaveBusqueda() {
+		return claveBusqueda;
 	}
 
 	/**
@@ -106,17 +86,17 @@ public class GUIAnalisis extends JDialog {
 	}
 	
 	/**
-	 * @return the seleccionarTamiz
+	 * @return the buscar
 	 */
-	public JButton getJButtonSeleccionarTamiz() {
-		return seleccionarTamiz;
+	public JButton getJButtonBuscar() {
+		return buscar;
 	}
 
 	/**
-	 * @param seleccionarTamiz the seleccionarTamiz to set
+	 * @param buscar the buscar to set
 	 */
-	public void setSeleccionarTamiz(JButton seleccionarTamiz) {
-		this.seleccionarTamiz = seleccionarTamiz;
+	public void setJButtonBuscar(JButton seleccionarTamiz) {
+		this.buscar = seleccionarTamiz;
 	}
 
 
@@ -134,7 +114,7 @@ public class GUIAnalisis extends JDialog {
 		// Agregamos el Panel Norte al Frame
 	 	this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
 		// Agregamos el Panel Centro al Frame
-	 	this.getContentPane().add(this.getPanelCentro(),BorderLayout.CENTER);
+	 //	this.getContentPane().add(this.getPanelCentro(),BorderLayout.CENTER);
 	 	// Agregamos el Panel Sur al Frame
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	
@@ -151,8 +131,11 @@ public class GUIAnalisis extends JDialog {
 		if (this.panelNorte==null) {
 			this.panelNorte= new JPanel();
 			this.panelNorte.setLayout(new FlowLayout(FlowLayout.CENTER));
-			this.muestra.setAlignmentY(Component.CENTER_ALIGNMENT);
-			this.panelNorte.add(muestra);
+			this.claveBusquedaLabel.setAlignmentY(Component.LEFT_ALIGNMENT);
+			this.claveBusqueda.setAlignmentY(Component.CENTER_ALIGNMENT);
+			this.panelNorte.add(claveBusquedaLabel);
+			this.panelNorte.add(claveBusqueda);
+			this.panelNorte.add(buscar);
 		}
 		return this.panelNorte;
 	}	
@@ -167,9 +150,9 @@ public class GUIAnalisis extends JDialog {
 		if (this.panelCentro==null) {
 			this.panelCentro= new JPanel();
 			this.panelCentro.setLayout(new GridBagLayout());
-			pesoRetenido.setAlignmentX(Component.CENTER_ALIGNMENT);
+			claveBusqueda.setAlignmentX(Component.CENTER_ALIGNMENT);
 			this.panelCentro.add(new JLabel("Peso Retenido: "));
-			this.panelCentro.add(pesoRetenido);
+			this.panelCentro.add(claveBusqueda);
 			this.panelCentro.add(new JLabel("gramos"));
 		}
 		return this.panelCentro;
@@ -187,7 +170,7 @@ public class GUIAnalisis extends JDialog {
 			this.panelSur.setLayout(new FlowLayout());
 			this.panelSur.add(aceptar);
 			this.panelSur.add(cancelar);
-			this.panelSur.add(seleccionarTamiz);
+		
 		}
 		return this.panelSur;
 	}
@@ -200,7 +183,7 @@ public class GUIAnalisis extends JDialog {
 	public void setListenerButtons(ActionListener lis){
 		this.aceptar.addActionListener(lis);
 		this.cancelar.addActionListener(lis);
-		this.seleccionarTamiz.addActionListener(lis);
+		this.buscar.addActionListener(lis);
 	}
 	
 

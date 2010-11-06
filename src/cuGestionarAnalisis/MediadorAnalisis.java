@@ -7,6 +7,8 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import persistencia.domain.Analisis;
+
 
 
 /**
@@ -15,35 +17,40 @@ import java.awt.event.MouseListener;
  * en este caso: ActionListener,MouseListener,ItemListener.
  */
 
-public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,ItemListener  {
+public class MediadorAnalisis  implements ActionListener,MouseListener,ItemListener  {
 	
-	private GUIGestionarAnalisis gestionarAnalisis;
-	private MediadorAnalisis mediadorAnalisis;
-	private MediadorBuscar mediadorBuscar;
+	private GUIAnalisis guiAnalisis;
+	private String data;
+	private Analisis analisis;
 	
 	/**
 	 * This is the default constructor
-	 * @throws Exception 
 	 */
-	public MediadorGestionarAnalisis() throws Exception {
+	public MediadorAnalisis() {
 		super();
-		this.gestionarAnalisis = new GUIGestionarAnalisis();
-		gestionarAnalisis.setTitle("Gestionar Analisis");
-		gestionarAnalisis.setModal(true);
-		this.gestionarAnalisis.setListenerButtons(this);
+		this.guiAnalisis = new GUIAnalisis();
+		guiAnalisis.setTitle("Analisis por Tamiz de una Muestra");
+		guiAnalisis.setModal(true);
+		this.guiAnalisis.setListenerButtons(this);
 		show();
 	}
 		
 	public void show(){
-		gestionarAnalisis.show();
+		guiAnalisis.show();
 	}
 	
-	
 	/**
-	 * @return the 
+	 * @return the data
 	 */
-	public GUIGestionarAnalisis getGestionarAnalisis() {
-		return gestionarAnalisis;
+	public String getData() {
+		return data;
+	}
+
+	/**
+	 * @return the altaMuestra
+	 */
+	public GUIAnalisis getAnalisis() {
+		return guiAnalisis;
 	}	
 	
 	/**
@@ -52,22 +59,19 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-     	if (this.gestionarAnalisis.getJButtonAgregarAnalisis() == source){
+     	if (this.guiAnalisis.getJButtonAceptar() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
-			mediadorAnalisis = new MediadorAnalisis();
+			data = guiAnalisis.getPesoRetenido().getText();
+		//	analisis = new Analisis(data);    PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
+			guiAnalisis.dispose();
 		}
-		if (this.gestionarAnalisis.getJButtonModificarAnalisis() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");
-			mediadorBuscar = new MediadorBuscar();
-			
-		}
-		if (this.gestionarAnalisis.getJButtonEliminarAnalisis() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonEliminar");
-			
-		}
-		if (this.gestionarAnalisis.getJButtonCerrar() == source){
+		if (this.guiAnalisis.getJButtonCancelar() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
-			gestionarAnalisis.dispose();
+			guiAnalisis.dispose();
+		}
+		if (this.guiAnalisis.getJButtonSeleccionarTamiz() == source){
+			System.out.println("GestionarAnalisis.actionPerformed() jButtonSeleccionarTamiz");
+			guiAnalisis.dispose();
 		}
 	}
 
