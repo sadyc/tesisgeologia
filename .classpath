@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry path="src" kind="src"/>
-	<classpathentry path="lib/asm-3.1.jar" kind="lib"/>
-	<classpathentry path="lib/datanucleus-core-2.2.0-m1.jar" kind="lib"/>
-	<classpathentry path="lib/datanucleus-enhancer-2.1.0-release.jar" kind="lib"/>
-	<classpathentry path="lib/datanucleus-rdbms-2.2.0-m1.jar" kind="lib"/>
-	<classpathentry path="lib/jdo2-api-2.3-eb.jar" kind="lib"/>
-	<classpathentry path="lib/jdo-api-3.0.jar" kind="lib"/>
-	<classpathentry path="lib/log4j-1.2.7.jar" kind="lib"/>
-	<classpathentry path="lib/mysql-connector-java-5.1.12-bin.jar" kind="lib"/>
-	<classpathentry path="lib/persistence-api-1.0.2.jar" kind="lib"/>
-	<classpathentry path="lib/postgresql-8.4-701.jdbc3.jar" kind="lib"/>
-	<classpathentry path="org.eclipse.jdt.launching.JRE_CONTAINER" kind="con"/>
-	<classpathentry path="classes" kind="output"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/datanucleus-core-2.2.0-m1.jar"/>
+	<classpathentry kind="lib" path="lib/datanucleus-enhancer-2.1.0-release.jar"/>
+	<classpathentry kind="lib" path="lib/datanucleus-rdbms-2.2.0-m1.jar"/>
+	<classpathentry kind="lib" path="lib/jdo2-api-2.3-eb.jar"/>
+	<classpathentry kind="lib" path="lib/jdo-api-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.7.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.12-bin.jar"/>
+	<classpathentry kind="lib" path="lib/persistence-api-1.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-8.4-701.jdbc3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="output" path="classes"/>
 </classpath>

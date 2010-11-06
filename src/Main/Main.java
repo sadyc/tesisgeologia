@@ -1,7 +1,7 @@
 package Main;
 
-import persistencia.domain.Muestra;
 import cuGestionarMuestra.MediadorGestionarMuestra;
+import cuLogin.MediadorLogin;
 
 
  /**
@@ -28,7 +28,8 @@ public class Main {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		MediadorGestionarMuestra gestionarMuestra = new MediadorGestionarMuestra("Listado de Muestras");
+		MediadorLogin login = new MediadorLogin("Login");
+		login.show();
 	}
 }
 

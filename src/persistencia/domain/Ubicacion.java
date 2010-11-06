@@ -1,5 +1,8 @@
 package persistencia.domain;
 
+import javax.jdo.annotations.PersistenceCapable;
+
+@PersistenceCapable
 public class Ubicacion {
 
 	private enum Provincia {BuenosAires,Catamarca,Chaco,Chubut,CiudadAutónomadeBuenosAires,

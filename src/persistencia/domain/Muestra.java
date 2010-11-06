@@ -11,10 +11,6 @@ import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
-
-
-
-
 /**
  * Implementacion de la clase que define la muestra
  * @author TesisGeologia

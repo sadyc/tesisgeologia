@@ -3,10 +3,13 @@
  */
 package persistencia.domain;
 
+import javax.jdo.annotations.PersistenceCapable;
+
 /**
  * @author TesisGeologia
  *
  */
+@PersistenceCapable
 public class Cliente {
 	private String nombre;
 	private String apellido;
