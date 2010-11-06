@@ -43,8 +43,6 @@ public class GUIClasificacion {
 	 * This is the default constructor
 	 */
 	public GUIClasificacion() {
-	
-		
 		super();
 		muestra = new JTextField(15);
 		profundidadInicial = new JTextField(15);

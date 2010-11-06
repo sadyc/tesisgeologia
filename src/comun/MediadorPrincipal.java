@@ -74,7 +74,7 @@ public class MediadorPrincipal implements ActionListener{
 		if (this.GUIPrincipal.getJButtonAnalisis() == source){
 			try {
 				MediadorGestionarAnalisis gestionarAnalisis = new MediadorGestionarAnalisis();
-				gestionarAnalisis.show();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
