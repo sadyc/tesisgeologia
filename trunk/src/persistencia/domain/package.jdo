@@ -3,8 +3,8 @@
     "-//Sun Microsystems, Inc.//DTD Java Data Objects Metadata 2.0//EN"
     "http://java.sun.com/dtd/jdo_2_0.dtd">
 <jdo>
-    <package name="domain">
-      <class name="domain.Muestra" identity-type="datastore">
+    <package name="persistencia.domain">
+      <class name="persistencia.domain.Muestra" identity-type="datastore">
               <inheritance strategy="new-table"/>
 		<field name="nombreMuestra" persistence-modifier="persistent">
                   <column length="30" jdbc-type="CHAR"/>
@@ -19,7 +19,7 @@
                  <column jdbc-type="integer"/>
         </field>
         <field name="fecha">
-                <column name="FECHA"/>
+                <column jdbc-type="date"/>
         </field>
         <field name="coeficienteUniformidad" persistence-modifier="persistent">
                 <column jdbc-type="FLOAT"/>
