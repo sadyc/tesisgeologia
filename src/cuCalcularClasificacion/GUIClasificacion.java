@@ -12,6 +12,7 @@ import java.awt.event.ItemListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -22,7 +23,7 @@ import persistencia.domain.Muestra;
  * @author tesisGeologia.
  * 
  */
-public class GUIClasificacion {
+public class GUIClasificacion extends JDialog{
 
 	/**
 	 * @param title
@@ -30,6 +31,8 @@ public class GUIClasificacion {
 	 */
 	private JButton aceptar;
 	private JButton cancelar;
+	private JButton imprimir;
+	
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
 	private JTextField muestra;
@@ -161,16 +164,11 @@ public class GUIClasificacion {
 			profundidadFinal.setAlignmentX(Component.CENTER_ALIGNMENT);
 			peso.setAlignmentX(Component.CENTER_ALIGNMENT);
 			// Se aaden los componentes al panel Norte
-			this.panelNorte.add(new JLabel("Nombre (*): "));
-			this.panelNorte.add(muestra);
-			this.panelNorte.add(new JLabel("Peso (*): "));
-			this.panelNorte.add(peso); 
-			this.panelNorte.add(new JLabel("Profundidad Inicial: "));
-			this.panelNorte.add(profundidadInicial);
-			this.panelNorte.add(new JLabel("Profundidad Final: "));
-			this.panelNorte.add(profundidadFinal);
-			this.panelNorte.add(ubicacion);
-			this.panelNorte.add(usuario);
+			this.panelNorte.add(new JLabel("Ubicacion (*): Rio Cuarto"));
+			this.panelNorte.add(new JLabel("Peso (*): 980 kg"));
+			this.panelNorte.add(new JLabel("Profundidad Inicial: 2 mts"));
+			this.panelNorte.add(new JLabel("Profundidad Final: 3 mts"));
+			
 		}
 		return this.panelNorte;
 	}	
