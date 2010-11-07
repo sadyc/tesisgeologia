@@ -33,7 +33,6 @@ public class GUIMuestra extends JDialog {
 	 * This is the default constructor
 	 */
 	public GUIMuestra() {
-	
 		
 		super();
 		muestra = new JTextField(15);
@@ -41,8 +40,7 @@ public class GUIMuestra extends JDialog {
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
 		ubicacion = new JComboBox();
-		usuario = new JLabel ("Usuario tanto...");
-		
+		usuario = new JLabel ("Usuario tanto...");		
 		aceptar = new JButton("Agregar Muestra");
 		cancelar = new JButton("Cancelar");
 		initialize();
@@ -52,20 +50,19 @@ public class GUIMuestra extends JDialog {
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
-	public GUIMuestra(String title,Muestra muestra) {
+	public GUIMuestra(Object[] data) {
 	
 		super();
-		
-		this.muestra = new JTextField(15);
+		muestra = new JTextField(15);
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
-		this.muestra.setText(muestra.getNombreMuestra());
-		peso.setText(muestra.getPeso().toString());
-		
-		profundidadInicial.setText("");
-		profundidadFinal.setText("");
-		usuario = new JLabel ("Usuario: "+muestra.getUsuario().getNombreUsuario());
+		ubicacion = new JComboBox();
+		muestra.setText(data[0].toString());
+		peso.setText(data[1].toString());
+		profundidadInicial.setText(data[2].toString());
+		profundidadFinal.setText(data[3].toString());
+		usuario = new JLabel ("Usuario tanto...");		
 		aceptar = new JButton("Agregar Muestra");
 		cancelar = new JButton("Cancelar");
 		initialize();

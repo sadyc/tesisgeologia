@@ -28,7 +28,7 @@ import persistencia.domain.Usuario;
 public class MediadorGestionarMuestra implements ActionListener,MouseListener,ItemListener{
 
 	private GUIABMMuestra GUIABMMuestra = null;
-	private Object [][] data = new Object [50] [5];
+	private Object [][] data = new Object [4] [5];
 	private Component frame;
 	
 	
@@ -97,10 +97,8 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	   	if (this.GUIABMMuestra.getJButtonAgregar() == source){
 	   		try {
 	   			System.out.println("Button Agregar Muestra");
-				MediadorMuestra altaMuestra = new MediadorMuestra("Ingresar Muestra");	
-				System.out.println("quiero mostrar lo del arreglo "+ altaMuestra.getData()[2]);
+				MediadorAltaMuestra altaMuestra = new MediadorAltaMuestra("Ingresar Muestra");	
 				if (altaMuestra.getData()[0] != null){  
-					System.out.println("quiero mostrar lo del arreglo "+ altaMuestra.getData()[2]);
 					this.GUIABMMuestra.getTablePanel().addRow(altaMuestra.getData());
 	     		}
 	   		} catch (Exception e) {
@@ -113,8 +111,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-			    
-				int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+			    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	            if(quitOption==JOptionPane.YES_OPTION){
 	            	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 	            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
@@ -132,16 +129,24 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-				Muestra muestra2 = new Muestra(); 
-				GUIMuestra guiMuestra = new GUIMuestra("nombre de ventana",muestra2);
+				String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());//
+				//Muestra mu = new Muestra((fila[0]),Integer.parseInt(fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),op,usuario,ubicacion,clasificacion);
+				//muestra = new Muestra (fila[0],Integer.parseInt()[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0]);
+				
+				try {
+					MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(fila);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				//GUIMuestra guiMuestra = new GUIMuestra("nombre de ventana",muestra2);
 
-				guiMuestra.show();
-				if (guiMuestra.getData()[0] != null){  
+				
+				//if (guiMuestra.getData()[0] != null){  
 					
 					//ModificarMuestraBD(modificarMuestra);				
 
-				}	
+				//}	
 			}
 		}
 	}
