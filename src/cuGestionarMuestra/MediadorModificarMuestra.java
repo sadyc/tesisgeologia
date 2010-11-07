@@ -20,22 +20,25 @@ import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
 
 /**
- * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana Muestra
+ * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana Modificar Muestra
  * @author TesisGeologia
  *
  */
-public class MediadorMuestra implements ActionListener,MouseListener,ItemListener{
-	private GUIMuestra GUIMuestra = null;
+public class MediadorModificarMuestra implements ActionListener,MouseListener,ItemListener{
+	private GUIMuestra GUIMuestra;
 	private String[] data = new String [9];
 	private Component frame;
+	private Muestra muestra;
 
-	public MediadorMuestra(String nombreVentana) throws Exception {
+	public MediadorModificarMuestra(Object[] data) throws Exception {
 		super();
-		this.GUIMuestra = new GUIMuestra();
+		this.GUIMuestra = new GUIMuestra(data);
+		this.GUIMuestra.setListenerButtons(this);
 		GUIMuestra.show();
 		// se configura como escuchador de los evenetos de la ventana 
 		// al el mismo (mediador)
-		this.GUIMuestra.setListenerButtons(this);
+		
+		
 	}
 	
 
@@ -81,28 +84,19 @@ public class MediadorMuestra implements ActionListener,MouseListener,ItemListene
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		if (this.GUIMuestra.getJButtonAceptar() == source) {
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");
-			Muestra muestra= new Muestra();
-			OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","12","4665458","asd@gmail.com");
-     		Ubicacion ubicacion = new Ubicacion();
-     		Usuario usuario = new Usuario();
-     		Clasificacion clasificacion = new Clasificacion();
-     		if (GUIMuestra.getMuestra().getText().equals("") || GUIMuestra.getPeso().getText().equals("")  ){
+			
+			if (GUIMuestra.getMuestra().getText().equals("") || GUIMuestra.getPeso().getText().equals("")  ){
 				JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				data[0]= GUIMuestra.getMuestra().getText();
-				data[1]= GUIMuestra.getPeso().getText();
-				data[2]= GUIMuestra.getProfundidadInicial().getText();
-				data[3]= GUIMuestra.getProfundidadFinal().getText();
-				data[4]= "dsa";
-				data[5]=  "dsa";
-				data[6]=  "dsa";
-				data[7]= "dsa";
-				data[8]=  "dsa";
+				muestra.setNombreMuestra(GUIMuestra.getMuestra().getText());
+				muestra.setPeso(Integer.parseInt(GUIMuestra.getPeso().getText()));
+				muestra.setProfundidadInicial(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
+				muestra.setProfundidadFinal(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
+				
 				System.out.println("llene el arreglo");
-				Muestra mu = new Muestra("s",1,2,3,op,usuario,ubicacion,clasificacion);
 				//Muestra mu = new Muestra();
-				//Muestra mu = new Muestra((GUIMuestra.getData()[0]),Integer.parseInt(GUIMuestra.getData()[1]),Float.parseFloat(GUIMuestra.getData()[2]),Float.parseFloat(GUIMuestra.getData()[3]),op,usuario,ubicacion,clasificacion);
+				
 				try {
 					//control.insertarMuestra(mu);
 				} catch (Exception e) {
