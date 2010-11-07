@@ -49,7 +49,7 @@ public class ControlGestionarMuestra {
 	}
 			
 	/**
-	 * Retorna todos los elementos de la case pasada como persistente
+	 * Retorna todos los elementos de la clase pasada como persistente.
 	 */
 	public Collection coleccionMuestras(Class clase) throws Exception {
 		Collection<Object> aux = null; 

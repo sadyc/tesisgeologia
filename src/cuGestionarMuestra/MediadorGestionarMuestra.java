@@ -98,8 +98,10 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	   		try {
 	   			System.out.println("Button Agregar Muestra");
 				MediadorMuestra altaMuestra = new MediadorMuestra("Ingresar Muestra");	
+				System.out.println("quiero mostrar lo del arreglo "+ altaMuestra.getData()[2]);
 				if (altaMuestra.getData()[0] != null){  
-	     			this.GUIABMMuestra.getTablePanel().addRow(altaMuestra.getData());
+					System.out.println("quiero mostrar lo del arreglo "+ altaMuestra.getData()[2]);
+					this.GUIABMMuestra.getTablePanel().addRow(altaMuestra.getData());
 	     		}
 	   		} catch (Exception e) {
 				e.printStackTrace();

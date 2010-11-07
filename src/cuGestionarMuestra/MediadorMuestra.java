@@ -26,6 +26,7 @@ import persistencia.domain.Usuario;
  */
 public class MediadorMuestra implements ActionListener,MouseListener,ItemListener{
 	private GUIMuestra GUIMuestra = null;
+	private String[] data = new String [9];
 	private Component frame;
 
 	public MediadorMuestra(String nombreVentana) throws Exception {
@@ -36,6 +37,7 @@ public class MediadorMuestra implements ActionListener,MouseListener,ItemListene
 		// al el mismo (mediador)
 		this.GUIMuestra.setListenerButtons(this);
 	}
+	
 
 	@Override
 	public void itemStateChanged(ItemEvent arg0) {
@@ -76,7 +78,7 @@ public class MediadorMuestra implements ActionListener,MouseListener,ItemListene
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		//ControlGestionarMuestra control = new ControlGestionarMuestra();
+		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		if (this.GUIMuestra.getJButtonAceptar() == source) {
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");
 			Muestra muestra= new Muestra();
@@ -88,10 +90,25 @@ public class MediadorMuestra implements ActionListener,MouseListener,ItemListene
 				JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
+				data[0]= GUIMuestra.getMuestra().getText();
+				data[1]= GUIMuestra.getPeso().getText();
+				data[2]= GUIMuestra.getProfundidadInicial().getText();
+				data[3]= GUIMuestra.getProfundidadFinal().getText();
+				data[4]= "dsa";
+				data[5]=  "dsa";
+				data[6]=  "dsa";
+				data[7]= "dsa";
+				data[8]=  "dsa";
+				System.out.println("llene el arreglo");
 				Muestra mu = new Muestra("s",1,2,3,op,usuario,ubicacion,clasificacion);
 				//Muestra mu = new Muestra();
 				//Muestra mu = new Muestra((GUIMuestra.getData()[0]),Integer.parseInt(GUIMuestra.getData()[1]),Float.parseFloat(GUIMuestra.getData()[2]),Float.parseFloat(GUIMuestra.getData()[3]),op,usuario,ubicacion,clasificacion);
-				//control.insertarObject(mu);
+				try {
+					//control.insertarMuestra(mu);
+				} catch (Exception e) {
+					System.out.println("No inserta muestra");
+					e.printStackTrace();
+				}
 				GUIMuestra.dispose();
 				
 			}
@@ -101,16 +118,6 @@ public class MediadorMuestra implements ActionListener,MouseListener,ItemListene
 		}
 	}
 	public String[] getData() {
-		String[] data = new String[9];
-		data[0]= GUIMuestra.getMuestra().getText();
-		data[1]= GUIMuestra.getPeso().getText();
-		data[2]= GUIMuestra.getProfundidadInicial().getText();
-		data[3]= GUIMuestra.getProfundidadFinal().getText();
-		data[4]= "dsa";
-		data[5]=  "dsa";
-		data[6]=  "dsa";
-		data[7]= "dsa";
-		data[8]=  "dsa";
 		return data;
 	}
 }
