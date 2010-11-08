@@ -38,6 +38,7 @@ public class GUIABMMuestra extends JFrame {
 	private JButton jButtonAgregar;
 	private JButton jButtonEliminar;
 	private JButton jButtonModificar;
+	private JButton jButtonSalir;
 	private Object [][] data;
 	
 	
@@ -138,6 +139,20 @@ public class GUIABMMuestra extends JFrame {
 	}
 	
 	/**
+	 * This method initializes boton Salir	
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+	public JButton getJButtonSalir() {
+		if (jButtonSalir == null) {
+			jButtonSalir = new JButton();
+			jButtonSalir.setBounds(new java.awt.Rectangle(149,113,89,34));
+			jButtonSalir.setText("Salir");
+		}
+		return jButtonSalir;
+	}
+	
+	/**
 	 * Metodo que permite escuchar los botoner Agregar, Eliminar, Modificar.
 	 *
 	 *@param lis actionEvent asignado a los botones.
@@ -146,6 +161,7 @@ public class GUIABMMuestra extends JFrame {
 		this.jButtonAgregar.addActionListener(lis);
 		this.jButtonEliminar.addActionListener(lis);
 		this.jButtonModificar.addActionListener(lis);
+		this.jButtonSalir.addActionListener(lis);
         
 	}
 	/**
@@ -180,6 +196,7 @@ public class GUIABMMuestra extends JFrame {
 		this.panelSur.add(getJButtonAgregar());
 		this.panelSur.add(getJButtonModificar());
 		this.panelSur.add(getJButtonEliminar());
+		this.panelSur.add(getJButtonSalir());
 		}
 		return this.panelSur;
 	}

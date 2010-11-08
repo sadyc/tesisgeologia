@@ -149,6 +149,10 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 				//}	
 			}
 		}
+		if (this.GUIABMMuestra.getJButtonSalir() == source){
+			System.out.println("presionado boton salir");
+			GUIABMMuestra.dispose();
+		}
 	}
 	
 	/**
