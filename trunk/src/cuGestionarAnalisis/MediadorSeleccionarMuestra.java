@@ -33,7 +33,9 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 	public MediadorSeleccionarMuestra(String nombreVentana) throws Exception {
 		super();
 		//cargarTablaDeMuestras();
-		this.GUISeleccionarMuestra = new GUISeleccionarMuestra(nombreVentana,data);
+		this.GUISeleccionarMuestra = new GUISeleccionarMuestra(data);
+		GUISeleccionarMuestra.setTitle("Seleccionar una muestra");
+		GUISeleccionarMuestra.setModal(true);
 		GUISeleccionarMuestra.show();
 		// se configura como escuchador de los evenetos de la ventana 
 		// al el mismo (mediador)

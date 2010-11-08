@@ -1,27 +1,12 @@
 package comun;
 
-import cuCalcularClasificacion.MediadorCalcularClasificacion;
-import cuGestionarAnalisis.MediadorGestionarAnalisis;
-import cuGestionarMuestra.ControlGestionarMuestra;
-import cuGestionarMuestra.GUIABMMuestra;
-import cuGestionarMuestra.GUIMuestra;
-import cuGestionarMuestra.MediadorGestionarMuestra;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
-import persistencia.domain.Clasificacion;
-import persistencia.domain.Muestra;
-import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.Ubicacion;
-import persistencia.domain.Usuario;
+import cuCalcularClasificacion.MediadorCalcularClasificacion;
+import cuGestionarAnalisis.MediadorGestionarAnalisis;
+import cuGestionarAnalisis.MediadorSeleccionarMuestra;
+import cuGestionarMuestra.MediadorGestionarMuestra;
 
 public class MediadorPrincipal implements ActionListener{
 
@@ -82,8 +67,9 @@ public class MediadorPrincipal implements ActionListener{
 		}
 		if (this.GUIPrincipal.getJButtonClasificacion() == source){
 			try {
+				MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra("null");
 				MediadorCalcularClasificacion gestionarClasificacion = new MediadorCalcularClasificacion();
-				//gestionarClasificacion.show();
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

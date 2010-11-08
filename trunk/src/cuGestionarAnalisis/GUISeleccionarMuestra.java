@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -15,7 +15,7 @@ import javax.swing.JSeparator;
 
 import comun.TablePanel;
 
-public class GUISeleccionarMuestra extends JFrame	{
+public class GUISeleccionarMuestra extends JDialog	{
 
 	/**
 	 * @param title
@@ -36,8 +36,9 @@ public class GUISeleccionarMuestra extends JFrame	{
 	
 	private static final String systemDefault = javax.swing.UIManager.getSystemLookAndFeelClassName();	
 	
-	public GUISeleccionarMuestra(String title, Object [][] datos) {
-		super(title);
+	public GUISeleccionarMuestra(Object [][] datos) {
+		super();
+		
 		data = datos;
 		menu = new JMenuBar();
 		archivo = new JMenu("Archivo");
