@@ -6,9 +6,11 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		MediadorGestionarAnalisis hola;
+		MediadorSeleccionarMuestra hola;
 		try {
-			hola = new MediadorGestionarAnalisis();
+			Object [][] a = null;
+			hola = new MediadorSeleccionarMuestra("das");
+			hola.show();
 		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
