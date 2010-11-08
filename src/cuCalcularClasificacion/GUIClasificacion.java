@@ -63,7 +63,7 @@ public class GUIClasificacion extends JDialog{
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
-	public GUIClasificacion(String title,Muestra muestra) {
+	public GUIClasificacion(Muestra muestra) {
 	
 		super();
 		
@@ -145,7 +145,14 @@ public class GUIClasificacion extends JDialog{
 	 * @return void
 	 */
 	private  void initialize() {
-		
+		this.setSize(300 , 300);
+        // Seteamos el BorderLayout
+		this.getContentPane().setLayout(new BorderLayout()); 		
+	 	// Se aaden los componentes al Frame
+		// Agregamos el Panel Norte al Frame
+	 	this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
+	 	// Agregamos el Panel Sur al Frame
+	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	}
    
 	
@@ -168,6 +175,7 @@ public class GUIClasificacion extends JDialog{
 			this.panelNorte.add(new JLabel("Peso (*): 980 kg"));
 			this.panelNorte.add(new JLabel("Profundidad Inicial: 2 mts"));
 			this.panelNorte.add(new JLabel("Profundidad Final: 3 mts"));
+			this.panelNorte.add(new JLabel("Humedad: No"));
 			
 		}
 		return this.panelNorte;

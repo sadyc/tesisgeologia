@@ -94,7 +94,7 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 				muestra.setProfundidadInicial(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
 				muestra.setProfundidadFinal(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
 				
-				System.out.println("llene el arreglo");
+				
 				//Muestra mu = new Muestra();
 				
 				try {
