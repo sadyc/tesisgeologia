@@ -1,5 +1,8 @@
 package cuGestionarAnalisis;
 
+import comun.MediadorPrincipal;
+import comun.MediadorSeleccionarMuestra;
+
 public class Main {
 
 	/**
@@ -9,8 +12,8 @@ public class Main {
 		MediadorSeleccionarMuestra hola;
 		try {
 			Object [][] a = null;
-			hola = new MediadorSeleccionarMuestra("das");
-			hola.show();
+			MediadorPrincipal holaa = new MediadorPrincipal("asdk");
+			
 		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
