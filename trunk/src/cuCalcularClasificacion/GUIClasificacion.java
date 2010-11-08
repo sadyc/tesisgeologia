@@ -29,18 +29,15 @@ public class GUIClasificacion extends JDialog{
 	 * @param title
 	 * @throws java.awt.HeadlessException
 	 */
-	private JButton aceptar;
-	private JButton cancelar;
 	private JButton imprimir;
-	
+	private JButton cancelar;
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
 	private JTextField muestra;
 	private JTextField profundidadInicial;
 	private JTextField profundidadFinal;
 	private JTextField peso;
-	private JComboBox ubicacion;
-	private JLabel usuario;
+	
 
 	/**
 	 * This is the default constructor
@@ -51,10 +48,7 @@ public class GUIClasificacion extends JDialog{
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
-		ubicacion = new JComboBox();
-		usuario = new JLabel ("Usuario tanto...");
-		
-		aceptar = new JButton("Agregar Muestra");
+		imprimir = new JButton("Imprimir");
 		cancelar = new JButton("Cancelar");
 		initialize();
 	}
@@ -73,11 +67,9 @@ public class GUIClasificacion extends JDialog{
 		peso = new JTextField(15);
 		this.muestra.setText(muestra.getNombreMuestra());
 		peso.setText(muestra.getPeso().toString());
-		
 		profundidadInicial.setText("");
 		profundidadFinal.setText("");
-		usuario = new JLabel ("Usuario: "+muestra.getUsuario().getNombreUsuario());
-		aceptar = new JButton("Agregar Muestra");
+		imprimir = new JButton("Imprimir");
 		cancelar = new JButton("Cancelar");
 		initialize();
 	}
@@ -114,15 +106,15 @@ public class GUIClasificacion extends JDialog{
 	 * @return the aceptar
 	 */
 	public JButton getJButtonAceptar() {
-		return aceptar;
+		return imprimir;
 	}
 
 
 	/**
 	 * @param aceptar the aceptar to set
 	 */
-	public void setJButtonAceptar(JButton aceptar) {
-		this.aceptar = aceptar;
+	public void setJButtonImprimir(JButton imprimir) {
+		this.imprimir = imprimir;
 	}
 	
 	/**
@@ -171,11 +163,11 @@ public class GUIClasificacion extends JDialog{
 			profundidadFinal.setAlignmentX(Component.CENTER_ALIGNMENT);
 			peso.setAlignmentX(Component.CENTER_ALIGNMENT);
 			// Se aaden los componentes al panel Norte
-			this.panelNorte.add(new JLabel("Ubicacion (*): Rio Cuarto"));
-			this.panelNorte.add(new JLabel("Peso (*): 980 kg"));
+			this.panelNorte.add(new JLabel("Ubicacion : Rio Cuarto"));
+			this.panelNorte.add(new JLabel("Peso : 3253 gr"));
 			this.panelNorte.add(new JLabel("Profundidad Inicial: 2 mts"));
 			this.panelNorte.add(new JLabel("Profundidad Final: 3 mts"));
-			this.panelNorte.add(new JLabel("Humedad: No"));
+			this.panelNorte.add(new JLabel("Humedad: 40%"));
 			
 		}
 		return this.panelNorte;
@@ -193,7 +185,7 @@ public class GUIClasificacion extends JDialog{
 			this.panelSur.setLayout(new FlowLayout());
 			// Se instancian los componentes para el Panel Sur
 			// Se aaden los componentes al panel Sur
-			this.panelSur.add(aceptar);
+			this.panelSur.add(imprimir);
 			this.panelSur.add(cancelar);
 			}
 			return this.panelSur;
@@ -205,29 +197,11 @@ public class GUIClasificacion extends JDialog{
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
-		this.aceptar.addActionListener(lis);
+		this.imprimir.addActionListener(lis);
 		this.cancelar.addActionListener(lis);
 	}
 	
-	public void setListenerComboBox(ItemListener lis){
-		this.ubicacion.addItemListener(lis);
-       
-	}
 	
-	
-	/**
-	 * This method initializes jComboBox	
-	 * 	
-	 * @return javax.swing.JComboBox	
-	 */
-	public JComboBox getJComboBox() {
-		if (ubicacion == null) {
-			ubicacion = new JComboBox();
-			ubicacion.setBounds(new java.awt.Rectangle(124,179,143,34));
-			ubicacion.setName("Ubicacion");
-		}
-		return ubicacion;
-	}
 
 	public String[] getData() {
 		String[] data = new String[4];
