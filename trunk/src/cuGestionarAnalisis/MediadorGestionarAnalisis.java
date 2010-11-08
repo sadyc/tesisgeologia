@@ -56,7 +56,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 		Object source = arg0.getSource();
      	if (this.gestionarAnalisis.getJButtonAgregarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
-			
+			MediadorAnalisis analisis = new MediadorAnalisis();
 		}
 		if (this.gestionarAnalisis.getJButtonModificarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");
