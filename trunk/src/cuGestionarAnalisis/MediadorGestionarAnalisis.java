@@ -7,6 +7,8 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import comun.MediadorSeleccionarMuestra;
+
 
 
 /**
@@ -54,16 +56,11 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 		Object source = arg0.getSource();
      	if (this.gestionarAnalisis.getJButtonAgregarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
-			try {
-				mediadorSeleccionar = new MediadorSeleccionarMuestra("Seleccionar Muestra");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		}
 		if (this.gestionarAnalisis.getJButtonModificarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");
-			mediadorBuscar = new MediadorBuscar();
+			
 			
 		}
 		if (this.gestionarAnalisis.getJButtonEliminarAnalisis() == source){

@@ -1,4 +1,4 @@
-package cuGestionarAnalisis;
+package comun;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -13,7 +13,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
-import comun.TablePanel;
 
 public class GUISeleccionarMuestra extends JDialog	{
 

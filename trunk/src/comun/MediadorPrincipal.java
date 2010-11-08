@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
-import cuGestionarAnalisis.MediadorSeleccionarMuestra;
 import cuGestionarMuestra.MediadorGestionarMuestra;
 
 public class MediadorPrincipal implements ActionListener{
@@ -58,7 +57,9 @@ public class MediadorPrincipal implements ActionListener{
      	}
 		if (this.GUIPrincipal.getJButtonAnalisis() == source){
 			try {
+				MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra();
 				MediadorGestionarAnalisis gestionarAnalisis = new MediadorGestionarAnalisis();
+				
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -67,7 +68,7 @@ public class MediadorPrincipal implements ActionListener{
 		}
 		if (this.GUIPrincipal.getJButtonClasificacion() == source){
 			try {
-				MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra("null");
+				MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
 				MediadorCalcularClasificacion gestionarClasificacion = new MediadorCalcularClasificacion();
 				
 			} catch (Exception e) {

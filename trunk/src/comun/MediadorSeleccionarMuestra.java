@@ -1,4 +1,4 @@
-package cuGestionarAnalisis;
+package comun;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -13,34 +13,39 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
 import persistencia.domain.Clasificacion;
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
+import cuGestionarAnalisis.MediadorBuscar;
 import cuGestionarMuestra.ControlGestionarMuestra;
 import cuGestionarMuestra.MediadorAltaMuestra;
+import cuGestionarMuestra.MediadorModificarMuestra;
 
 
 
 public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,ItemListener {
 
 	private GUISeleccionarMuestra GUISeleccionarMuestra = null;
-	private Object [][] data = new Object [4] [5];
+	private Object [] seleccionado = new Object [4];
 	private Component frame;
 	
 	
-	public MediadorSeleccionarMuestra(String nombreVentana) throws Exception {
+	public MediadorSeleccionarMuestra() throws Exception {
 		super();
 		//cargarTablaDeMuestras();
+		Object [][] data = new Object [4] [5];
 		this.GUISeleccionarMuestra = new GUISeleccionarMuestra(data);
 		GUISeleccionarMuestra.setTitle("Seleccionar una muestra");
 		GUISeleccionarMuestra.setModal(true);
+		this.GUISeleccionarMuestra.setListenerButtons(this);
+		this.GUISeleccionarMuestra.setListenerTable(this);
 		GUISeleccionarMuestra.show();
 		// se configura como escuchador de los evenetos de la ventana 
 		// al el mismo (mediador)
-		this.GUISeleccionarMuestra.setListenerButtons(this);
-		this.GUISeleccionarMuestra.setListenerTable(this);
+		
 		
 	}
 	
@@ -71,12 +76,15 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
  		Clasificacion clasificacion = new Clasificacion();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		if (this.GUISeleccionarMuestra.getJButtonSeleccionar() == source){
-	   		try {
-	   			System.out.println("Button Seleccionar Muestra");
-				MediadorAnalisis analisis = new MediadorAnalisis();	
-				
-	   		} catch (Exception e) {
-				e.printStackTrace();
+			if (GUISeleccionarMuestra.getTablePanel().getSelectedRow() == -1){
+				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+			else{
+				//seleccionado = GUISeleccionarMuestra.getTablePanel().getRow(GUISeleccionarMuestra.getTablePanel().getSelectedRow());//
+				//Muestra mu = new Muestra((fila[0]),Integer.parseInt(fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),op,usuario,ubicacion,clasificacion);
+				//muestra = new Muestra (fila[0],Integer.parseInt()[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0]);
+				System.out.println("Button Seleccionar Muestra");
+	   			GUISeleccionarMuestra.dispose();	   		
 			}
 		}
 		if (this.GUISeleccionarMuestra.getJButtonBuscar() == source){
