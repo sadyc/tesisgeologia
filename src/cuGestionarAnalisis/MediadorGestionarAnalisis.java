@@ -18,7 +18,7 @@ import java.awt.event.MouseListener;
 public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,ItemListener  {
 	
 	private GUIGestionarAnalisis gestionarAnalisis;
-	private MediadorAnalisis mediadorAnalisis;
+	private MediadorSeleccionarMuestra mediadorSeleccionar;
 	private MediadorBuscar mediadorBuscar;
 	
 	/**
@@ -29,7 +29,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 		super();
 		this.gestionarAnalisis = new GUIGestionarAnalisis();
 		gestionarAnalisis.setTitle("Gestionar Analisis");
-		gestionarAnalisis.setModal(true);
+		//gestionarAnalisis.setModal(true);
 		this.gestionarAnalisis.setListenerButtons(this);
 		show();
 	}
@@ -54,7 +54,12 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 		Object source = arg0.getSource();
      	if (this.gestionarAnalisis.getJButtonAgregarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
-			mediadorAnalisis = new MediadorAnalisis();
+			try {
+				mediadorSeleccionar = new MediadorSeleccionarMuestra("Seleccionar Muestra");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if (this.gestionarAnalisis.getJButtonModificarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");
