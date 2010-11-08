@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -17,7 +18,7 @@ import javax.swing.JSeparator;
 * @author TesisGeología
 *
 */
-public class GUIGestionarAnalisis extends JDialog {
+public class GUIGestionarAnalisis extends JFrame {
 
 	private JPanel panelCentro=null;
 	private JPanel panelSur=null;
