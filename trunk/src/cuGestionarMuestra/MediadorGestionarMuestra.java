@@ -34,7 +34,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	
 	public MediadorGestionarMuestra(String nombreVentana) throws Exception {
 		super();
-		//cargarTablaDeMuestras();
+		cargarTablaDeMuestras();
 		this.GUIABMMuestra = new GUIABMMuestra(nombreVentana,data);
 		GUIABMMuestra.show();
 		this.GUIABMMuestra.setListenerButtons(this);
@@ -115,9 +115,9 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 	            	Muestra mu = new Muestra ();
 	            	try {
-						//control.eliminarMuestra(mu);
+						control.eliminarMuestra(mu);
 					} catch (Exception e) {
-						System.out.println("Error al eliminar");
+						e.printStackTrace();
 					}
 	            }
 			}
