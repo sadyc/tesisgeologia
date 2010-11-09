@@ -21,13 +21,15 @@ public class ControlGestionarAnalisis {
 	 */ 
 	public void insertarAnalisis(Analisis analisis) throws Exception{
 		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
 		try {
 			persistencia.insertarObjeto(analisis);
-			persistencia.cierraTransaccion();
+			persistencia.cerrarTransaccion();
 			System.out.println("Analisis insertado con persistencia");
 		} catch (Exception e) {
 			persistencia.realizarRollback();
 		}
+		persistencia.cerrarTransaccion();
 	}
 	
 	/**
@@ -37,7 +39,7 @@ public class ControlGestionarAnalisis {
 		Persistencia persistencia = new Persistencia();
 		try {
 			persistencia.eliminarObjeto(analisis);
-			persistencia.cierraTransaccion();
+			persistencia.cerrarTransaccion();
 			System.out.println("Analisis eliminado con persistencia");
 		} catch (Exception e) {
 			persistencia.realizarRollback();
@@ -52,7 +54,7 @@ public class ControlGestionarAnalisis {
 		Persistencia persistencia = new Persistencia();
 		try {
 			aux = (persistencia.buscarColeccion(clase));
-			persistencia.cierraTransaccion();
+			persistencia.cerrarTransaccion();
 			System.out.println("analisis coleccionados");
 		} catch (Exception e) {
 			persistencia.realizarRollback();
