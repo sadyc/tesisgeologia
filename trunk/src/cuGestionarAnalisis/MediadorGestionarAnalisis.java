@@ -27,10 +27,10 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	 * This is the default constructor
 	 * @throws Exception 
 	 */
-	public MediadorGestionarAnalisis() throws Exception {
+	public MediadorGestionarAnalisis(String titulo) throws Exception {
 		super();
 		this.gestionarAnalisis = new GUIGestionarAnalisis();
-		gestionarAnalisis.setTitle("Gestionar Analisis");
+		gestionarAnalisis.setTitle(titulo);
 		//gestionarAnalisis.setModal(true);
 		this.gestionarAnalisis.setListenerButtons(this);
 		show();

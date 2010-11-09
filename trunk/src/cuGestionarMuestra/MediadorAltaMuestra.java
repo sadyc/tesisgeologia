@@ -82,10 +82,14 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
+		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
+			//ediadorSeleccionarUbicacion   vamos a abrir una ventana  para seleccionar la ubicacion 
+			
+		}
 		if (this.GUIMuestra.getJButtonAceptar() == source) {
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");
 			Muestra muestra= new Muestra();
-			OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","12","4665458","asd@gmail.com");
+			OperadorDeLaboratorio op = new OperadorDeLaboratorio("nombre","apellido","dni","4665458","asd@gmail.com");
      		Ubicacion ubicacion = new Ubicacion();
      		Usuario usuario = new Usuario();
      		Clasificacion clasificacion = new Clasificacion();
@@ -97,17 +101,16 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 				data[1]= GUIMuestra.getPeso().getText();
 				data[2]= GUIMuestra.getProfundidadInicial().getText();
 				data[3]= GUIMuestra.getProfundidadFinal().getText();
-				data[4]= "dsa";
-				data[5]=  "dsa";
-				data[6]=  "dsa";
-				data[7]= "dsa";
-				data[8]=  "dsa";
-				System.out.println("llene el arreglo");
-				Muestra mu = new Muestra("s",1,2,3,op,usuario,ubicacion,clasificacion);
+				data[4]= "23º33'55\"";  // ubicacion.getLatitud
+				data[5]=  "23º33'55\""; // ubicacion.getLongitud
+				data[6]=  "111"; // muestra.getClasificacion
+				data[7]= "222"; // usuario.getNombre
+				data[8]=  "333"; // operador.getId
+				//Muestra mu = new Muestra("nombreMuestra",1,2,3,op,usuario,ubicacion,clasificacion);
 				//Muestra mu = new Muestra();
-				//Muestra mu = new Muestra((GUIMuestra.getData()[0]),Integer.parseInt(GUIMuestra.getData()[1]),Float.parseFloat(GUIMuestra.getData()[2]),Float.parseFloat(GUIMuestra.getData()[3]),op,usuario,ubicacion,clasificacion);
+				Muestra mu = new Muestra((GUIMuestra.getData()[0]),Integer.parseInt(GUIMuestra.getData()[1]),Float.parseFloat(GUIMuestra.getData()[2]),Float.parseFloat(GUIMuestra.getData()[3]),op,usuario,ubicacion,clasificacion);
 				try {
-					//control.insertarMuestra(mu);
+					control.insertarMuestra(mu);
 				} catch (Exception e) {
 					System.out.println("No inserta muestra");
 					e.printStackTrace();

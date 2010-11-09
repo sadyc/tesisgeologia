@@ -1,4 +1,4 @@
-package comun;
+package cuGestionarMuestra;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -7,59 +7,53 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Collection;
-import java.util.Iterator;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 
 import persistencia.domain.Clasificacion;
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
+
+import comun.GUISeleccionarMuestra;
+
 import cuGestionarAnalisis.MediadorBuscar;
-import cuGestionarMuestra.ControlGestionarMuestra;
-import cuGestionarMuestra.MediadorAltaMuestra;
-import cuGestionarMuestra.MediadorModificarMuestra;
 
+public class MediadorSeleccionarUbicacion implements ActionListener,MouseListener,ItemListener {
 
-
-public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,ItemListener {
-
-	private GUISeleccionarMuestra GUISeleccionarMuestra = null;
+	private GUISeleccionarUbicacion GUISeleccionarUbicacion = null;
 	private Object [] seleccionado = new Object [4];
 	private Component frame;
 	
 	
-	public MediadorSeleccionarMuestra() throws Exception {
+	public MediadorSeleccionarUbicacion() throws Exception {
 		super();
 		//cargarTablaDeMuestras();
 		Object [][] data = new Object [4] [5];
-		this.GUISeleccionarMuestra = new GUISeleccionarMuestra(data);
-		GUISeleccionarMuestra.setTitle("Seleccionar una muestra");
-		GUISeleccionarMuestra.setModal(true);
-		this.GUISeleccionarMuestra.setListenerButtons(this);
-		this.GUISeleccionarMuestra.setListenerTable(this);
-		GUISeleccionarMuestra.show();
+		this.GUISeleccionarUbicacion = new GUISeleccionarUbicacion(data);
+		GUISeleccionarUbicacion.setTitle("Seleccionar una muestra");
+		GUISeleccionarUbicacion.setModal(true);
+		this.GUISeleccionarUbicacion.setListenerButtons(this);
+		this.GUISeleccionarUbicacion.setListenerTable(this);
+		GUISeleccionarUbicacion.show();
 		
 		
 		
 	}
 	
 	/**
-	 * @return the gUISeleccionarMuestra
+	 * @return the gUISeleccionarUbicacion
 	 */
-	public GUISeleccionarMuestra getGUISeleccionarMuestra() {
-		return GUISeleccionarMuestra;
+	public GUISeleccionarUbicacion getGUISeleccionarUbicacion() {
+		return GUISeleccionarUbicacion;
 	}
 
 	/**
 	 * @param gUISeleccionarMuestra the gUISeleccionarMuestra to set
 	 */
-	public void setGUISeleccionarMuestra(GUISeleccionarMuestra gUISeleccionarMuestra) {
-		GUISeleccionarMuestra = gUISeleccionarMuestra;
+	public void setGUISeleccionarMuestra(GUISeleccionarUbicacion gUISeleccionarUbicacion) {
+		GUISeleccionarUbicacion = gUISeleccionarUbicacion;
 	}
 
 	
@@ -67,25 +61,19 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		Muestra muestra= new Muestra();
-		OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","12","4665458","asd@gmail.com");
- 		Ubicacion ubicacion = new Ubicacion();
- 		Usuario usuario = new Usuario();
- 		Clasificacion clasificacion = new Clasificacion();
-		ControlGestionarMuestra control = new ControlGestionarMuestra();
-		if (this.GUISeleccionarMuestra.getJButtonSeleccionar() == source){
-			if (GUISeleccionarMuestra.getTablePanel().getSelectedRow() == -1){
-				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		if (this.GUISeleccionarUbicacion.getJButtonSeleccionar() == source){
+			if (GUISeleccionarUbicacion.getTablePanel().getSelectedRow() == -1){
+				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
 				//seleccionado = GUISeleccionarMuestra.getTablePanel().getRow(GUISeleccionarMuestra.getTablePanel().getSelectedRow());//
 				//Muestra mu = new Muestra((fila[0]),Integer.parseInt(fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),op,usuario,ubicacion,clasificacion);
 				//muestra = new Muestra (fila[0],Integer.parseInt()[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0]);
-				System.out.println("Button Seleccionar Muestra");
-	   			GUISeleccionarMuestra.dispose();	   		
+				System.out.println("Button Seleccionar Ubicacion");
+	   			GUISeleccionarUbicacion.dispose();	   		
 			}
 		}
-		if (this.GUISeleccionarMuestra.getJButtonBuscar() == source){
+		if (this.GUISeleccionarUbicacion.getJButtonBuscar() == source){
 	   		try {
 	   			System.out.println("Button Buscar Muestra");
 				MediadorBuscar analisis = new MediadorBuscar();	
@@ -94,13 +82,13 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 				e.printStackTrace();
 			}
 		}
-		if (this.GUISeleccionarMuestra.getJButtonSalir() == source){
-			GUISeleccionarMuestra.dispose();
+		if (this.GUISeleccionarUbicacion.getJButtonSalir() == source){
+			GUISeleccionarUbicacion.dispose();
 		}
 	}
 	
 	public void show(){
-		GUISeleccionarMuestra.show();
+		GUISeleccionarUbicacion.show();
 	}
 	/**
 	 * Metodos que necesita definir al implementar la interface MouseListener 
@@ -108,7 +96,7 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 	 */
 	public void mouseClicked(MouseEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUISeleccionarMuestra.getTablePanel() == source)
+		if (this.GUISeleccionarUbicacion.getTablePanel() == source)
 			System.out.println("GestionarMediador.actionPerformed() jJTableTabla");
 		
 	}

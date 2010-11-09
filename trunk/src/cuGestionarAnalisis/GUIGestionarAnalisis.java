@@ -24,13 +24,19 @@ public class GUIGestionarAnalisis extends JFrame {
 	private JPanel panelSur=null;
 	private static final String systemDefault = javax.swing.UIManager.getSystemLookAndFeelClassName();	
 	private JMenuBar menu = null;
-	private JMenu archivo;
-	private JMenu editar;
+	private JMenu herramientas;
 	private JMenu ayuda;
 	private JButton jButtonAgregarAnalisis;
 	private JButton jButtonEliminarAnalisis;
 	private JButton jButtonModificarAnalisis;
-	private JButton jButtoncerrar;
+	private JButton jButtonSalir;
+	private JMenuItem agregarMenu;
+	private JMenuItem modificarMenu;
+	private JMenuItem eliminarMenu;
+	private JMenuItem buscarMenu;
+	private JMenuItem salirMenu;
+	private JMenuItem versionMenu;
+	
 	
 	
 
@@ -40,29 +46,27 @@ public class GUIGestionarAnalisis extends JFrame {
 		super();
 		if (this.menu==null) {
 			menu = new JMenuBar();
-			archivo = new JMenu("Archivo");
-			editar = new JMenu("Editar");
+			herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
-			menu.add(archivo);
-			menu.add(editar);
+			menu.add(herramientas);
 			menu.add(ayuda);
-			JMenuItem copiar = new JMenuItem("Copiar");
-			JMenuItem cortar = new JMenuItem("Cortar");
-			JMenuItem pegar = new JMenuItem("Pegar");
-			editar.add(copiar);
-			editar.add(cortar);
-			editar.add(pegar);
-			JMenuItem buscar = new JMenuItem("Buscar");
-			JMenuItem agregar = new JMenuItem("Agregar Analisis");
-			JMenuItem modificar = new JMenuItem("Modificar Analisis");
-			JMenuItem salir = new JMenuItem("Salir");
-			archivo.add(agregar);
-			archivo.add(modificar);
-			archivo.add(buscar);
-			archivo.add(new JSeparator()); // Una rayita separadora.
-			archivo.add(salir);
-			JMenuItem version = new JMenuItem("Version");
-			ayuda.add(version);
+			buscarMenu = new JMenuItem("Buscar");
+			agregarMenu = new JMenuItem("Agregar Analisis");
+			modificarMenu = new JMenuItem("Modificar Analisis");
+			eliminarMenu = new JMenuItem("Eliminar Analisis");
+			salirMenu = new JMenuItem("Salir");
+			herramientas.add(agregarMenu);
+			herramientas.add(modificarMenu);
+			herramientas.add(eliminarMenu);
+			herramientas.add(buscarMenu);
+			herramientas.add(new JSeparator()); // Una rayita separadora.
+			herramientas.add(salirMenu);
+			versionMenu = new JMenuItem("Version");
+			ayuda.add(versionMenu);
+			jButtonAgregarAnalisis = new JButton("AGREGAR ANALISIS");
+			jButtonEliminarAnalisis = new JButton("ELIMINAR ANALISIS");
+			jButtonModificarAnalisis  = new JButton("MODIFICAR ANALISIS");
+			jButtonSalir  = new JButton("SALIR");
 		}
 		initialize();
 	}
@@ -98,7 +102,7 @@ public class GUIGestionarAnalisis extends JFrame {
 	public JPanel getPanelSur() {
 		if (this.panelSur==null) {
 			this.panelSur = new JPanel();
-			this.panelSur.setLayout(new FlowLayout(FlowLayout.CENTER));
+			this.panelSur.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			this.panelSur.add(getJButtonCerrar());
 		}
 		return this.panelSur;
@@ -126,42 +130,20 @@ public class GUIGestionarAnalisis extends JFrame {
 	 * @return the 
 	 */
 	public JButton getJButtonAgregarAnalisis() {
-		if (jButtonAgregarAnalisis == null) {
-			jButtonAgregarAnalisis = new JButton();
-			jButtonAgregarAnalisis.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtonAgregarAnalisis.setText("AGREGAR ANALISIS");
-		}
 		return jButtonAgregarAnalisis;
 	}
-
-
-
 
 	/**
 	 * @return the 
 	 */
 	public JButton getJButtonEliminarAnalisis() {
-		if (jButtonEliminarAnalisis == null) {
-			jButtonEliminarAnalisis = new JButton();
-			jButtonEliminarAnalisis.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtonEliminarAnalisis.setText("ELIMINAR ANALISIS");
-		}
 		return jButtonEliminarAnalisis;
 	}
-
-
-
-
 
 	/**
 	 * @return the 
 	 */
 	public JButton getJButtonModificarAnalisis() {
-		if (jButtonModificarAnalisis == null) {
-			jButtonModificarAnalisis  = new JButton();
-			jButtonModificarAnalisis.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtonModificarAnalisis .setText("MODIFICAR ANALISIS");
-		}
 		return jButtonModificarAnalisis ;
 	}
 
@@ -170,18 +152,13 @@ public class GUIGestionarAnalisis extends JFrame {
 	 * @return the cerrar
 	 */
 	public JButton getJButtonCerrar() {
-		if (jButtoncerrar == null) {
-			jButtoncerrar  = new JButton();
-			jButtoncerrar.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtoncerrar .setText("Cerrar");
-		}
-		return jButtoncerrar ;
+		return jButtonSalir ;
 	}
 	public void setListenerButtons(ActionListener lis){
 		this.jButtonAgregarAnalisis.addActionListener(lis);
 		this.jButtonModificarAnalisis.addActionListener(lis);
 		this.jButtonEliminarAnalisis.addActionListener(lis);
-        this.jButtoncerrar.addActionListener(lis);
+        this.jButtonSalir.addActionListener(lis);
 	}
 
 }

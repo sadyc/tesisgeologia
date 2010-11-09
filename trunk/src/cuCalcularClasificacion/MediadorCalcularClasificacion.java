@@ -34,7 +34,7 @@ public class MediadorCalcularClasificacion implements ActionListener,MouseListen
 	public MediadorCalcularClasificacion() throws Exception {
 		super();
 		this.GUIClasificacion = new GUIClasificacion();
-		GUIClasificacion.setTitle("Clasificacion de la  Muestra");
+		GUIClasificacion.setTitle("Clasificacion de la Muestra");
 		GUIClasificacion.setModal(true);
 		
 		// se configura como escuchador de los evenetos de la ventana 

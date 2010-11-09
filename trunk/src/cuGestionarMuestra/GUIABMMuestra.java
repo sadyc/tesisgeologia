@@ -28,17 +28,20 @@ public class GUIABMMuestra extends JFrame {
 	 * @throws java.awt.HeadlessException
 	 */
 	private JMenuBar menu ;
-	private JMenu archivo;
-	private JMenu editar;
+	private JMenu herramientas;
 	private JMenu ayuda;
-	 
-	
 	private JPanel panelSur;
 	private TablePanel tablePanel;
 	private JButton jButtonAgregar;
 	private JButton jButtonEliminar;
 	private JButton jButtonModificar;
 	private JButton jButtonSalir;
+	private JMenuItem agregarMenu;
+	private JMenuItem modificarMenu;
+	private JMenuItem eliminarMenu;
+	private JMenuItem buscarMenu;
+	private JMenuItem salirMenu;
+	private JMenuItem versionMenu;
 	private Object [][] data;
 	
 	
@@ -52,29 +55,28 @@ public class GUIABMMuestra extends JFrame {
 		super(title);
 		data = datos;
 		menu = new JMenuBar();
-		archivo = new JMenu("Archivo");
-		editar = new JMenu("Editar");
+		herramientas = new JMenu("Herramientas");
 		ayuda = new JMenu("Ayuda");
-		menu.add(archivo);
-		menu.add(editar);
+		menu.add(herramientas);
 		menu.add(ayuda);
-		JMenuItem copiar = new JMenuItem("Copiar");
-		JMenuItem cortar = new JMenuItem("Cortar");
-		JMenuItem pegar = new JMenuItem("Pegar");
-		editar.add(copiar);
-		editar.add(cortar);
-		editar.add(pegar);
-		JMenuItem buscar = new JMenuItem("Buscar");
-		JMenuItem agregar = new JMenuItem("Agregar Muestra");
-		JMenuItem modificar = new JMenuItem("Modificar Muestra");
-		JMenuItem salir = new JMenuItem("Salir");
-		archivo.add(agregar);
-		archivo.add(modificar);
-		archivo.add(buscar);
-		archivo.add(new JSeparator()); // Una rayita separadora.
-		archivo.add(salir);
-		JMenuItem version = new JMenuItem("Version");
-		ayuda.add(version);		
+		buscarMenu = new JMenuItem("Buscar");
+		agregarMenu = new JMenuItem("Agregar Muestra");
+		modificarMenu = new JMenuItem("Modificar Muestra");
+		eliminarMenu = new JMenuItem("Eliminar Muestra");
+		salirMenu = new JMenuItem("Salir");
+		herramientas.add(agregarMenu);
+		herramientas.add(modificarMenu);
+		herramientas.add(eliminarMenu);
+		herramientas.add(new JSeparator());
+		herramientas.add(buscarMenu);
+		herramientas.add(new JSeparator()); // Una rayita separadora.
+		herramientas.add(salirMenu);
+		versionMenu = new JMenuItem("Version");
+		ayuda.add(versionMenu);		
+		jButtonAgregar = new JButton("AGREGAR");
+		jButtonModificar = new JButton("MODIFICAR");
+		jButtonEliminar = new JButton("ELIMINAR");
+		jButtonSalir = new JButton("SALIR");
 		initialize();
 	}
 
@@ -85,56 +87,36 @@ public class GUIABMMuestra extends JFrame {
 	 */
 	private  void initialize() {
 		this.setSize(803, 200);
-        // Seteamos el BorderLayout
 		this.getContentPane().setLayout(new BorderLayout());
 		this.setJMenuBar(this.getMenu());
-	 	// Se aaden los componentes al Frame
-	 	// Agregamos la tabla  al Frame
-		//this.getContentPane().add(this.getMenu(),BorderLayout.NORTH);
 	 	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
-	 	// Agregamos el Panel Sur al Frame
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	}
 	
 	/**
-	 * This method initializes botonAgregar	
+	 * This method retorna botonAgregar	
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
 	public JButton getJButtonAgregar() {
-		if (jButtonAgregar == null) {
-			jButtonAgregar = new JButton();
-			jButtonAgregar.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtonAgregar.setText("Agregar");
-		}
 		return jButtonAgregar;
 	}
 
 	/**
-	 * This method initializes botonCerrar	
+	 * This method retorna boton eliminar	
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
 	public JButton getJButtonEliminar() {
-		if (jButtonEliminar == null) {
-			jButtonEliminar = new JButton();
-			jButtonEliminar.setBounds(new java.awt.Rectangle(277,113,89,34));
-			jButtonEliminar.setText("Eliminar");
-		}
 		return jButtonEliminar;
 	}
 
 	/**
-	 * This method initializes botonModificar	
+	 * This method retorna botonModificar	
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
 	public JButton getJButtonModificar() {
-		if (jButtonModificar == null) {
-			jButtonModificar = new JButton();
-			jButtonModificar.setBounds(new java.awt.Rectangle(149,113,89,34));
-			jButtonModificar.setText("Modificar");
-		}
 		return jButtonModificar;
 	}
 	
@@ -144,11 +126,6 @@ public class GUIABMMuestra extends JFrame {
 	 * @return javax.swing.JButton	
 	 */
 	public JButton getJButtonSalir() {
-		if (jButtonSalir == null) {
-			jButtonSalir = new JButton();
-			jButtonSalir.setBounds(new java.awt.Rectangle(149,113,89,34));
-			jButtonSalir.setText("Salir");
-		}
 		return jButtonSalir;
 	}
 	
@@ -190,9 +167,7 @@ public class GUIABMMuestra extends JFrame {
 	public JPanel getPanelSur() {
 		if (this.panelSur==null) {
 		this.panelSur = new JPanel();
-		// Se pone el FlowLayout en el Panel Sur
 		this.panelSur.setLayout(new FlowLayout());
-		// Se aaden los componentes al panel Sur
 		this.panelSur.add(getJButtonAgregar());
 		this.panelSur.add(getJButtonModificar());
 		this.panelSur.add(getJButtonEliminar());
