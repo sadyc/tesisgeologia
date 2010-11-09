@@ -53,7 +53,7 @@ public class GUIABMMuestra extends JFrame {
 	 */
 	public GUIABMMuestra(String title, Object [][] datos) {
 		super(title);
-		data = datos;
+		data = datos.clone();
 		menu = new JMenuBar();
 		herramientas = new JMenu("Herramientas");
 		ayuda = new JMenu("Ayuda");
@@ -155,7 +155,7 @@ public class GUIABMMuestra extends JFrame {
      *@return data  
      * */
 	public static String[] getColumName(){
-		String[] columnName = {"ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
+		String[] columnName = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
 		return columnName;
 	}
 
