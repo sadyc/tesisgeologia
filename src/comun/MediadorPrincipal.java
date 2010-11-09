@@ -58,7 +58,7 @@ public class MediadorPrincipal implements ActionListener{
 		if (this.GUIPrincipal.getJButtonAnalisis() == source){
 			try {
 				MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra();
-				MediadorGestionarAnalisis gestionarAnalisis = new MediadorGestionarAnalisis();
+				MediadorGestionarAnalisis gestionarAnalisis = new MediadorGestionarAnalisis("Gestionar Analisis");
 				
 				
 			} catch (Exception e) {
@@ -76,7 +76,7 @@ public class MediadorPrincipal implements ActionListener{
 			}
 		    System.out.println("GestionarMediador.actionPerformed() jButtonCalcularClasificacion");
 		}
-		if (this.GUIPrincipal.getJButtonCerrar() == source){
+		if (this.GUIPrincipal.getJButtonSalir() == source){
 			GUIPrincipal.dispose();
 		}
 	}

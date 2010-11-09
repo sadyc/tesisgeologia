@@ -1,4 +1,7 @@
-package comun;
+/**
+ * 
+ */
+package cuGestionarMuestra;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -13,8 +16,14 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
+import comun.TablePanel;
 
-public class GUISeleccionarMuestra extends JDialog	{
+/**
+ * @author NAVE
+ *
+ */
+
+public class GUISeleccionarUbicacion extends JDialog	{
 
 	/**
 	 * @param title
@@ -23,8 +32,8 @@ public class GUISeleccionarMuestra extends JDialog	{
 	private JMenuBar menu = null;
 	private JMenu herramientas;
 	private JMenu ayuda;
-	private JButton jButtonBuscarMuestra;
-	private JButton jButtonSeleccionarMuestra;
+	private JButton jButtonBuscarUbicacion;
+	private JButton jButtonSeleccionarUbicacion;
 	private JButton jButtonSalir;
 	private JMenuItem seleccionarMenu;
 	private JMenuItem buscarMenu;
@@ -37,13 +46,12 @@ public class GUISeleccionarMuestra extends JDialog	{
 	
 	private static final String systemDefault = javax.swing.UIManager.getSystemLookAndFeelClassName();	
 	
-	public GUISeleccionarMuestra(Object [][] datos) {
+	public GUISeleccionarUbicacion(Object [][] datos) {
 		super();
 		
 		data = datos;
 		if (this.menu==null) {
 			tablePanel = getTablePanel();
-			
 			menu = new JMenuBar();
 			herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
@@ -58,8 +66,8 @@ public class GUISeleccionarMuestra extends JDialog	{
 			herramientas.add(salirMenu);
 			versionMenu = new JMenuItem("Version");
 			ayuda.add(versionMenu);
-			jButtonBuscarMuestra = new JButton("BUSCAR");
-			jButtonSeleccionarMuestra  = new JButton("SELECCIONAR");
+			jButtonBuscarUbicacion = new JButton("BUSCAR");
+			jButtonSeleccionarUbicacion  = new JButton("SELECCIONAR");
 			jButtonSalir  = new JButton("SALIR");
 		}
 		initialize();
@@ -83,7 +91,7 @@ public class GUISeleccionarMuestra extends JDialog	{
 	 * @return javax.swing.JButton	
 	 */
 	public JButton getJButtonSeleccionar() {
-		return jButtonSeleccionarMuestra;
+		return jButtonSeleccionarUbicacion;
 	}
 
 	/**
@@ -92,7 +100,7 @@ public class GUISeleccionarMuestra extends JDialog	{
 	 * @return javax.swing.JButton	
 	 */
 	public JButton getJButtonBuscar() {
-		return jButtonBuscarMuestra;
+		return jButtonBuscarUbicacion;
 	}
 
 	/**
@@ -110,8 +118,8 @@ public class GUISeleccionarMuestra extends JDialog	{
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
-		this.jButtonSeleccionarMuestra.addActionListener(lis);
-		this.jButtonBuscarMuestra.addActionListener(lis);
+		this.jButtonSeleccionarUbicacion.addActionListener(lis);
+		this.jButtonBuscarUbicacion.addActionListener(lis);
 		this.jButtonSalir.addActionListener(lis);
 	
 	}
@@ -129,7 +137,7 @@ public class GUISeleccionarMuestra extends JDialog	{
      *@return data  
      * */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre","Peso","Profundidad Inicial","Profundidad Final","Latitud","Longitud","Clasificacion","Usuario","Operador ID"};
+		String[] columnName = {"Nombre","Latitud","Longitud","Provincia"};
 		return columnName;
 	}
 

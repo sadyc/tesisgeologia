@@ -15,9 +15,9 @@ public class GUIPrincipal extends JFrame {
 	private JPanel panelSur=null;
 	private static final String systemDefault = javax.swing.UIManager.getSystemLookAndFeelClassName();	
 	private JMenuBar menu = null;
-	private JMenu archivo;
-	private JMenu editar;
+	private JMenu herramientas;
 	private JMenu ayuda;
+	private JButton jButtonListarMuestras;
 	private JButton jButtongestionarMuestra;
 	private JButton jButtonclasificacion;
 	private JButton jButtonanalisis;
@@ -31,27 +31,22 @@ public class GUIPrincipal extends JFrame {
 		super(title);
 		if (this.menu==null) {
 			menu = new JMenuBar();
-			archivo = new JMenu("Archivo");
-			editar = new JMenu("Editar");
+			herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
-			menu.add(archivo);
-			menu.add(editar);
+			menu.add(herramientas);
 			menu.add(ayuda);
-			JMenuItem copiar = new JMenuItem("Copiar");
-			JMenuItem cortar = new JMenuItem("Cortar");
-			JMenuItem pegar = new JMenuItem("Pegar");
-			editar.add(copiar);
-			editar.add(cortar);
-			editar.add(pegar);
-			JMenuItem buscar = new JMenuItem("Buscar");
-			JMenuItem agregar = new JMenuItem("Agregar Muestra");
-			JMenuItem modificar = new JMenuItem("Modificar Muestra");
+			JMenuItem listarMuestras = new JMenuItem("Listar Muestras Cargadas");
+			JMenuItem gestionarMuestraMenu = new JMenuItem("Gestionar Muestra");
+			JMenuItem gestionarAnalisisMenu = new JMenuItem("Gestionar Analisis");
+			JMenuItem calcularClasificacionMenu = new JMenuItem("Calcular Clasificacion");
 			JMenuItem salir = new JMenuItem("Salir");
-			archivo.add(agregar);
-			archivo.add(modificar);
-			archivo.add(buscar);
-			archivo.add(new JSeparator()); // Una rayita separadora.
-			archivo.add(salir);
+			herramientas.add(gestionarMuestraMenu);
+			herramientas.add(gestionarAnalisisMenu);
+			herramientas.add(calcularClasificacionMenu);
+			herramientas.add(new JSeparator()); // Una rayita separadora.
+			herramientas.add(listarMuestras);
+			herramientas.add(new JSeparator()); // Una rayita separadora.
+			herramientas.add(salir);
 			JMenuItem version = new JMenuItem("Version");
 			ayuda.add(version);
 		}
@@ -80,7 +75,8 @@ public class GUIPrincipal extends JFrame {
 			this.panelCentro.setLayout(new GridBagLayout());
 			this.panelCentro.add(getJButtonGestionarMuestra());
 			this.panelCentro.add(getJButtonAnalisis());
-			this.panelCentro.add(getJButtonClasificacion());;
+			this.panelCentro.add(getJButtonClasificacion());
+			this.panelCentro.add(getJButtonListarMuestras());
 		}
 		return this.panelCentro;
 	}
@@ -89,8 +85,8 @@ public class GUIPrincipal extends JFrame {
 	public JPanel getPanelSur() {
 		if (this.panelSur==null) {
 			this.panelSur = new JPanel();
-			this.panelSur.setLayout(new FlowLayout(FlowLayout.CENTER));
-			this.panelSur.add(getJButtonCerrar());
+			this.panelSur.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			this.panelSur.add(getJButtonSalir());
 		}
 		return this.panelSur;
 	}
@@ -155,16 +151,27 @@ public class GUIPrincipal extends JFrame {
 		}
 		return jButtonanalisis ;
 	}
-
+	
+	/**
+	 * @return the gestionarMuestra
+	 */
+	public JButton getJButtonListarMuestras() {
+		if (jButtonListarMuestras == null) {
+			jButtonListarMuestras = new JButton();
+			jButtonListarMuestras.setBounds(new java.awt.Rectangle(21,113,89,34));
+			jButtonListarMuestras.setText("LISTAR MUESTRAS");
+		}
+		return jButtonListarMuestras;
+	}
 
 	/**
 	 * @return the cerrar
 	 */
-	public JButton getJButtonCerrar() {
+	public JButton getJButtonSalir() {
 		if (jButtoncerrar == null) {
 			jButtoncerrar  = new JButton();
 			jButtoncerrar.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtoncerrar .setText("Cerrar");
+			jButtoncerrar .setText("SALIR");
 		}
 		return jButtoncerrar ;
 	}

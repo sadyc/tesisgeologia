@@ -65,7 +65,7 @@ public class MediadorAnalisis  implements ActionListener,MouseListener,ItemListe
 		//	analisis = new Analisis(data);    PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
 			guiAnalisis.dispose();
 		}
-		if (this.guiAnalisis.getJButtonCancelar() == source){
+		if (this.guiAnalisis.getJButtonSalir() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			guiAnalisis.dispose();
 		}

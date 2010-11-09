@@ -37,8 +37,6 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 		//cargarTablaDeMuestras();
 		this.GUIABMMuestra = new GUIABMMuestra(nombreVentana,data);
 		GUIABMMuestra.show();
-		// se configura como escuchador de los evenetos de la ventana 
-		// al el mismo (mediador)
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
 		
@@ -94,7 +92,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
  		Usuario usuario = new Usuario();
  		Clasificacion clasificacion = new Clasificacion();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
-	   	if (this.GUIABMMuestra.getJButtonAgregar() == source){
+		if (this.GUIABMMuestra.getJButtonAgregar() == source){
 	   		try {
 	   			System.out.println("Button Agregar Muestra");
 				MediadorAltaMuestra altaMuestra = new MediadorAltaMuestra("Ingresar Muestra");	

@@ -20,29 +20,28 @@ public class GUIMuestra extends JDialog {
 	 */
 	private JButton aceptar;
 	private JButton cancelar;
+	private JButton seleccionarUbicacion;
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
 	private JTextField muestra;
 	private JTextField profundidadInicial;
 	private JTextField profundidadFinal;
 	private JTextField peso;
-	private JComboBox ubicacion;
 	private JLabel usuario;
 
 	/**
 	 * This is the default constructor
 	 */
 	public GUIMuestra() {
-		
 		super();
 		muestra = new JTextField(15);
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
-		ubicacion = new JComboBox();
 		usuario = new JLabel ("Usuario tanto...");		
-		aceptar = new JButton("Agregar Muestra");
-		cancelar = new JButton("Cancelar");
+		aceptar = new JButton("AGREGAR");
+		cancelar = new JButton("CANCELAR");
+		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
 		initialize();
 	}
 	
@@ -57,14 +56,14 @@ public class GUIMuestra extends JDialog {
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
-		ubicacion = new JComboBox();
 		muestra.setText(data[0].toString());
 		peso.setText(data[1].toString());
 		profundidadInicial.setText(data[2].toString());
 		profundidadFinal.setText(data[3].toString());
 		usuario = new JLabel ("Usuario tanto...");		
-		aceptar = new JButton("Agregar Muestra");
-		cancelar = new JButton("Cancelar");
+		aceptar = new JButton("AGREGAR");
+		cancelar = new JButton("CANCELAR");
+		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
 		initialize();
 	}
 	
@@ -126,6 +125,21 @@ public class GUIMuestra extends JDialog {
 	}
 
 	/**
+	 * @return the selecionar ubicacion
+	 */
+	public JButton getJButtonSeleccionarUbicacion() {
+		return seleccionarUbicacion;
+	}
+
+	/**
+	 * @param cancelar the seleccionar ubicacion to set
+	 */
+	public void setJButtonSeleccionarUbicacion(JButton seleccionarUbicacion) {
+		this.seleccionarUbicacion = seleccionarUbicacion;
+	}
+
+	
+	/**
 	 * Metodo que inicializa la interfaz.
 	 *
 	 * @return void
@@ -165,7 +179,7 @@ public class GUIMuestra extends JDialog {
 			this.panelNorte.add(profundidadInicial);
 			this.panelNorte.add(new JLabel("Profundidad Final: "));
 			this.panelNorte.add(profundidadFinal);
-			this.panelNorte.add(ubicacion);
+			this.panelNorte.add(seleccionarUbicacion);
 			this.panelNorte.add(usuario);
 		}
 		return this.panelNorte;
@@ -179,10 +193,7 @@ public class GUIMuestra extends JDialog {
 	public JPanel getPanelSur() {
 		if (this.panelSur==null) {
 			this.panelSur = new JPanel();
-			// Se pone el FlowLayout en el Panel Sur
 			this.panelSur.setLayout(new FlowLayout());
-			// Se instancian los componentes para el Panel Sur
-			// Se aaden los componentes al panel Sur
 			this.panelSur.add(aceptar);
 			this.panelSur.add(cancelar);
 			}
@@ -197,28 +208,10 @@ public class GUIMuestra extends JDialog {
 	public void setListenerButtons(ActionListener lis){
 		this.aceptar.addActionListener(lis);
 		this.cancelar.addActionListener(lis);
-	}
-	
-	public void setListenerComboBox(ItemListener lis){
-		this.ubicacion.addItemListener(lis);
-       
+		this.seleccionarUbicacion.addActionListener(lis);
 	}
 	
 	
-	/**
-	 * This method initializes jComboBox	
-	 * 	
-	 * @return javax.swing.JComboBox	
-	 */
-	public JComboBox getJComboBox() {
-		if (ubicacion == null) {
-			ubicacion = new JComboBox();
-			ubicacion.setBounds(new java.awt.Rectangle(124,179,143,34));
-			ubicacion.setName("Ubicacion");
-		}
-		return ubicacion;
-	}
-
 	public String[] getData() {
 		String[] data = new String[4];
 		data[0]= muestra.getText();

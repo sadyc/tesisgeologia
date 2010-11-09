@@ -12,7 +12,7 @@ public class Main {
 		MediadorSeleccionarMuestra hola;
 		try {
 			Object [][] a = null;
-			MediadorPrincipal holaa = new MediadorPrincipal("asdk");
+			MediadorGestionarAnalisis holaa = new MediadorGestionarAnalisis("Gestionar Analisis");
 			
 		
 		} catch (Exception e) {

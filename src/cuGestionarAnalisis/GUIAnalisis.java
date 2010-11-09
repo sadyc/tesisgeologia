@@ -32,7 +32,7 @@ public class GUIAnalisis extends JDialog {
 	 * @throws java.awt.HeadlessException
 	 */
 	private JButton aceptar;
-	private JButton cancelar;
+	private JButton salir;
 	private JButton seleccionarTamiz;
 	private JPanel panelNorte;
 	private JPanel panelCentro;
@@ -48,9 +48,9 @@ public class GUIAnalisis extends JDialog {
 		super();
 		pesoRetenido = new JTextField(15);
 		muestra = new JLabel("muestra tanto...");
-		aceptar = new JButton("Agregar Analisis");
-		cancelar = new JButton("Cancelar");
-		seleccionarTamiz = new JButton("Seleccionar Tamiz");
+		aceptar = new JButton("AGREGAR ANALISIS");
+		salir = new JButton("SALILR");
+		seleccionarTamiz = new JButton("SELECCIONAR TAMIZ");
 		initialize();
 	}
 	
@@ -63,9 +63,9 @@ public class GUIAnalisis extends JDialog {
 		pesoRetenido = new JTextField(15);
 		this.muestra = new JLabel("muestra: "+muestra.getNombreMuestra());
 		this.pesoRetenido.setText(data);
-		this.aceptar = new JButton("Agregar muestra");
-		this.cancelar = new JButton("Cancelar");
-		this.seleccionarTamiz = new JButton("Seleccionar Tamiz");
+		aceptar = new JButton("AGREGAR ANALISIS");
+		salir = new JButton("SALILR");
+		seleccionarTamiz = new JButton("SELECCIONAR TAMIZ");
 		initialize();
 	}
 	
@@ -92,17 +92,17 @@ public class GUIAnalisis extends JDialog {
 	}
 	
 	/**
-	 * @return the cancelar
+	 * @return the salir
 	 */
-	public JButton getJButtonCancelar() {
-		return cancelar;
+	public JButton getJButtonSalir() {
+		return salir;
 	}
 
 	/**
-	 * @param cancelar the cancelar to set
+	 * @param salir the salir to set
 	 */
-	public void setJButtonCancelar(JButton cancelar) {
-		this.cancelar = cancelar;
+	public void setJButtonSalir(JButton salir) {
+		this.salir = salir;
 	}
 	
 	/**
@@ -127,15 +127,9 @@ public class GUIAnalisis extends JDialog {
 	 */
 	private  void initialize() {
 		this.setSize(500 , 200);
-	
-        // Seteamos el BorderLayout
 		this.getContentPane().setLayout(new BorderLayout()); 		
-	 	// Se aaden los componentes al Frame
-		// Agregamos el Panel Norte al Frame
 	 	this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
-		// Agregamos el Panel Centro al Frame
 	 	this.getContentPane().add(this.getPanelCentro(),BorderLayout.CENTER);
-	 	// Agregamos el Panel Sur al Frame
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	
 	}
@@ -186,25 +180,22 @@ public class GUIAnalisis extends JDialog {
 			this.panelSur = new JPanel();
 			this.panelSur.setLayout(new FlowLayout());
 			this.panelSur.add(aceptar);
-			this.panelSur.add(cancelar);
 			this.panelSur.add(seleccionarTamiz);
+			this.panelSur.add(salir);
 		}
 		return this.panelSur;
 	}
 	
 	/**
-	 * Metodo que permite escuchar los botoner aceptar y cancelar.
+	 * Metodo que permite escuchar los botoner aceptar y salir.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
 		this.aceptar.addActionListener(lis);
-		this.cancelar.addActionListener(lis);
+		this.salir.addActionListener(lis);
 		this.seleccionarTamiz.addActionListener(lis);
-	}
-	
-
-	
+	}	
 	
 }
 
