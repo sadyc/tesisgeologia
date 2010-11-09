@@ -43,6 +43,7 @@ public class Muestra {
 		usuario = new Usuario();
 		ubicacion = new Ubicacion();
 		clasificacion = new Clasificacion();
+		fecha = new Date(11,22,1980);
 	}
 	
 	/**
