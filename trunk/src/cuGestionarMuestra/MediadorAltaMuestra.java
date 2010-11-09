@@ -93,15 +93,16 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 				JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				data[0]= GUIMuestra.getMuestra().getText();
-				data[1]= GUIMuestra.getPeso().getText();
-				data[2]= GUIMuestra.getProfundidadInicial().getText();
-				data[3]= GUIMuestra.getProfundidadFinal().getText();
-				data[4]= "23º33'55\"";  // ubicacion.getLatitud
-                data[5]=  "23º33'55\""; // ubicacion.getLongitud
-                data[6]=  "111"; // muestra.getClasificacion
-                data[7]= "222"; // usuario.getNombre
-                data[8]=  "333"; // operador.getId
+				data[0]= "Ubicacion";
+				data[1]= GUIMuestra.getMuestra().getText();
+				data[2]= GUIMuestra.getPeso().getText();
+				data[3]= GUIMuestra.getProfundidadInicial().getText();
+				data[4]= GUIMuestra.getProfundidadFinal().getText();
+				//data[5]= "23º33'55\"";  // ubicacion.getLatitud
+                //data[5]=  "23º33'55\""; // ubicacion.getLongitud
+                //data[6]=  "111"; // muestra.getClasificacion
+                //data[7]= "222"; // usuario.getNombre
+                //data[8]=  "333"; // operador.getId
                 
 				//Muestra mu = new Muestra("s",1,2,3,op,usuario,ubicacion,clasificacion);
 				Muestra mu = new Muestra();
