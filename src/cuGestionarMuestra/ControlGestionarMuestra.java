@@ -25,10 +25,10 @@ public class ControlGestionarMuestra {
 	 */ 
 	public void insertarMuestra(Muestra mu) throws Exception{
 		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
 		try {
 			persistencia.insertarObjeto(mu);
-			persistencia.cierraTransaccion();
-			System.out.println("Muestra insertada con persistencia");
+			persistencia.cerrarTransaccion();
 		} catch (Exception e) {
 			persistencia.realizarRollback();
 		}
@@ -41,7 +41,8 @@ public class ControlGestionarMuestra {
 		Persistencia persistencia = new Persistencia();
 		try {
 			persistencia.eliminarObjeto(mu);
-			persistencia.cierraTransaccion();
+			System.out.println("Muestra eliminada con persistencia");
+			persistencia.cerrarTransaccion();
 			System.out.println("Muestra eliminada con persistencia");
 		} catch (Exception e) {
 			persistencia.realizarRollback();
@@ -54,10 +55,11 @@ public class ControlGestionarMuestra {
 	public Collection coleccionMuestras(Class clase) throws Exception {
 		Collection<Object> aux = null; 
 		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
 		try {
 			aux = (persistencia.buscarColeccion(clase));
-			persistencia.cierraTransaccion();
-			System.out.println("Muestra modificada con persistencia");
+			persistencia.cerrarTransaccion();
+			System.out.println("La coleccion ha sido cargada");
 		} catch (Exception e) {
 			persistencia.realizarRollback();
 		}
