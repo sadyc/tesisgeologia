@@ -48,15 +48,13 @@ public class Persistencia {
 	 */
 	public void insertarObjeto (Object elemento) throws Exception{
 		try{
-            System.out.println("Persisting products");
-            pmi.makePersistent(elemento);
+            pmi.makePersistent(elemento);            
         }
 		catch (Exception e){
+		    System.out.println("Exception insertar Objeto");
 		    realizarRollback();
 		}
-        finally{
-         pmi.close();
-        }
+        
     }
 	
 	
@@ -66,14 +64,14 @@ public class Persistencia {
 	 */
 	public void eliminarObjeto (Object elemento) throws Exception {
 		try{
+			System.out.println("Objeto eliminado con persistencia");
 			pmi.deletePersistent(elemento);
+			System.out.println("Objeto eliminado con persistencia");
+			
 		}	
 		catch (Exception e){
 		    realizarRollback();
 		}
-	    finally{
-	         pmi.close();
-	    }
 	}
 	
 	/**
@@ -98,6 +96,8 @@ public class Persistencia {
 			Extent e=pmi.getExtent(clase,true);
 			Query q = pmi.newQuery(e,"");
 			aux = (Collection) q.execute();
+			System.out.println("Coleccion cargada");
+			
 		} catch (Exception e) {
 			realizarRollback();
 		}
@@ -106,12 +106,13 @@ public class Persistencia {
 	
 	public void realizarRollback()throws Exception{
 		if (tx.isActive()){
+			System.out.println("Realizo rollback");
 	        tx.rollback();
 	    }
 	}
 
 	
-	public void cierraTransaccion()throws Exception{
+	public void cerrarTransaccion()throws Exception{
 		tx.commit();
 		pmi.close();
 	}

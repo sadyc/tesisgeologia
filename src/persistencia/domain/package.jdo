@@ -19,7 +19,7 @@
                  <column jdbc-type="integer"/>
         </field>
         <field name="fecha">
-                <column jdbc-type="date"/>
+                <column jdbc-type="DATE"/>
         </field>
         <field name="coeficienteUniformidad" persistence-modifier="persistent">
                 <column jdbc-type="FLOAT"/>
@@ -34,77 +34,5 @@
                 <column name="CLASIFICACION"/>
         </field>
       </class>
-
-<class name="Persona" identity-type="datastore">
-	<inheritance strategy="subclass-table"/>
-           <field name="nombre" persistence-modifier="persistent"> 
-                 <column length="30" jdbc-type="CHAR"/>
-           </field>
-           <field name="apellido" persistence-modifier="persistent">
-                  <column length="30" jdbc-type="CHAR"/>
-           </field>
-           <field name="dni" persistence-modifier="persistent">
-                  <column length="15" jdbc-type="CHAR"/>
-           </field>
-           <field name="tel" persistence-modifier="persistent">
-                  <column length="20" jdbc-type="CHAR"/>
-           </field>
-           <field name="email" persistence-modifier="persistent">
-                  <column length="60" jdbc-type="CHAR"/>
-           </field>
-
- </class>
-       
-
- <class name="OperadorDeLaboratorio" extends="Persona" identity-type="datastore">
-	<field name="muestras" persistence-modifier="persistent" mapped-by="operador">
-		<collection element_type="cuGestionar.Muestra"/>
-	</field>
- </class>
- 
- <class name="Usuario" extends="Persona" identity-type="datastore">
-	 <field name="nombreUsuario" persistence-modifier="persistent"> 
-                 <column length="30" jdbc-type="CHAR"/>
-           </field>
-           <field name="password" persistence-modifier="persistent">
-                  <column length="30" jdbc-type="CHAR"/>
-           </field>
- </class>
- 
- <class name="Tamiz" identity-type="datastore">
- 	<field name="numeroTamiz" persistence-modifier="persistent">
-           <column jdbc-type="integer"/>
-    </field>
- 	<field name="aberturaMalla" persistence-modifier="persistent">
-           <column jdbc-type="integer"/>
-    </field>
-	<field name="analisisTamiz" persistence-modifier="persistent" mapped-by="tamiz">
-		<collection element_type="cuAnalisis.Analisis"/>
-	</field>
- </class>
-
- <class name="Analisis" identity-type="datastore">
- 	<field name="porcentajePasante" persistence-modifier="persistent">
-           <column jdbc-type="integer"/>
-    </field>
- 	<field name="porcentajeRetenidoParcial" persistence-modifier="persistent">
-           <column jdbc-type="integer"/>
-    </field>
-	<field name="porcentajeRetenidoAcumulado" persistence-modifier="persistent">
-           <column jdbc-type="integer"/>
-    </field>
-    <field name="pesoRetenido" persistence-modifier="persistent">
-           <column jdbc-type="integer"/>
-    </field>
-    <field name="muestra">
-          <column name="NOMBRE_MUESTRA"/>
-    </field>
-    <field name="tamiz">
-          <column name="NUMERO_TAMIZ"/>
-    </field>
-    
- </class>
- 
- 
     </package>
 </jdo>
