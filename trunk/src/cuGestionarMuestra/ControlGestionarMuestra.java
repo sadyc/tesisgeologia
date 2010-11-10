@@ -4,6 +4,7 @@
 package cuGestionarMuestra;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import persistencia.Persistencia;
 import persistencia.domain.Muestra;
@@ -39,12 +40,23 @@ public class ControlGestionarMuestra {
 	 */
 	public void eliminarMuestra(Muestra mu) throws Exception {
 		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		
 		try {
-			persistencia.eliminarObjeto(mu);
-			System.out.println("Muestra eliminada con persistencia");
+			Muestra muestra = new Muestra();
+			Collection muestras = persistencia.buscarColeccion(mu);
+			Iterator<Muestra> it = muestras.iterator();
+			int i = 0;
+			while (it.hasNext()&& mu.getNombreMuestra()!= muestra.getNombreMuestra()){
+				muestra = it.next();
+			    i++;
+			}
+			persistencia.eliminarObjeto(muestra);
+			
 			persistencia.cerrarTransaccion();
 			System.out.println("Muestra eliminada con persistencia");
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			persistencia.realizarRollback();
 		}
 	}
