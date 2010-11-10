@@ -7,17 +7,17 @@ import javax.jdo.annotations.PersistenceCapable;
 @PersistenceCapable
 public class Ubicacion {
 
-	
-	private enum Provincia {BuenosAires,Catamarca,Chaco,Chubut,CiudadAutónomadeBuenosAires,
-	Córdoba,Corrientes,EntreRíos,Formosa,Jujuy,LaPampa,LaRioja,Mendoza,Misiones,Neuquén,RíoNegro,
-	Salta,SanJuan,SanLuis,SantaCruz,SantaFe,SantiagoDelEstero,TierraDelFuego,Tucumán};
+	private String nombreUbicacion;
+	public enum Provincia {BuenosAires,Catamarca,Chaco,Chubut,CiudadAutonomadeBuenosAires,
+	Cordoba,Corrientes,EntreRíos,Formosa,Jujuy,LaPampa,LaRioja,Mendoza,Misiones,Neuquen,RíoNegro,
+	Salta,SanJuan,SanLuis,SantaCruz,SantaFe,SantiagoDelEstero,TierraDelFuego,Tucuman};
 	private String latitud;
 	private String longitud;
 	private Provincia prov;
-	private String nombreUbicacion;
+	
 	
 	public Ubicacion(){
-		Provincia prov = null;
+		prov = null;
 		latitud = "";
 		longitud = "";		
 	}
@@ -62,14 +62,14 @@ public class Ubicacion {
 	/**
 	 * @return the prov
 	 */
-	public Provincia getProv() {
+	public Provincia getProvincia() {
 		return prov;
 	}
 
 	/**
 	 * @param prov the prov to set
 	 */
-	public void setProv(Provincia prov) {
+	public void setProvincia(Provincia prov) {
 		this.prov = prov;
 	}
 
