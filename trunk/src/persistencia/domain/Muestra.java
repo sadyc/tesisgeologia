@@ -54,7 +54,7 @@ public class Muestra {
 	 * @param profundidadFinal profundidad final de la muestra creada
 	 * @param peso peso de la muestra
 	 */
-	public Muestra(String nombreMuestra,Integer peso, float profundidadInicial,float profundidadFinal,  OperadorDeLaboratorio operador, Usuario usuario, Ubicacion ubicacion, Clasificacion clasificacion) {
+	public Muestra(String nombreMuestra,Integer peso, float profundidadInicial,float profundidadFinal,  OperadorDeLaboratorio operador, Usuario usuario, Ubicacion ubicacion, Clasificacion clasificacion, Date fecha) {
 		this.nombreMuestra = nombreMuestra;
 		this.profundidadInicial = profundidadInicial;
 		this.profundidadFinal = profundidadFinal;
@@ -63,6 +63,7 @@ public class Muestra {
 		this.usuario = usuario;
 		this.ubicacion = ubicacion;
 		this.clasificacion = clasificacion;
+		this.fecha = fecha;
 	}
 		
 	/**
