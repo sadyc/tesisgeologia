@@ -47,7 +47,7 @@ public class MediadorPrincipal implements ActionListener{
 	 */
 	public void actionPerformed(ActionEvent arg0){
 		Object source = arg0.getSource();
-		if (this.GUIPrincipal.getJButtonGestionarMuestra() == source){
+		if (this.GUIPrincipal.getJButtonGestionarMuestra() == source || this.GUIPrincipal.getGestionarMuestraMenu()== source){
 			try {
 				MediadorGestionarMuestra gestionarMuestra = new MediadorGestionarMuestra("Listado de Muestras");
 			} catch (Exception e) {
@@ -55,7 +55,7 @@ public class MediadorPrincipal implements ActionListener{
 			}
 		    System.out.println("GestionarMediador.actionPerformed() jButtonGestionarMuestra"); 
      	}
-		if (this.GUIPrincipal.getJButtonAnalisis() == source){
+		if (this.GUIPrincipal.getJButtonAnalisis() == source || this.GUIPrincipal.getCalcularClasificacionMenu()== source){
 			try {
 				MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra();
 				MediadorGestionarAnalisis gestionarAnalisis = new MediadorGestionarAnalisis("Gestionar Analisis");
@@ -66,7 +66,7 @@ public class MediadorPrincipal implements ActionListener{
 			}
 		    System.out.println("GestionarMediador.actionPerformed() jButtonGestionarAnalisis");
 		}
-		if (this.GUIPrincipal.getJButtonClasificacion() == source){
+		if (this.GUIPrincipal.getJButtonClasificacion() == source || this.GUIPrincipal.getCalcularClasificacionMenu()== source){
 			try {
 				MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
 				MediadorCalcularClasificacion gestionarClasificacion = new MediadorCalcularClasificacion();
@@ -76,7 +76,7 @@ public class MediadorPrincipal implements ActionListener{
 			}
 		    System.out.println("GestionarMediador.actionPerformed() jButtonCalcularClasificacion");
 		}
-		if (this.GUIPrincipal.getJButtonSalir() == source){
+		if (this.GUIPrincipal.getJButtonSalir() == source || this.GUIPrincipal.getSalirMenu()== source){
 			GUIPrincipal.dispose();
 		}
 	}

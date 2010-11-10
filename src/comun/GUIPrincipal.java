@@ -21,8 +21,13 @@ public class GUIPrincipal extends JFrame {
 	private JButton jButtongestionarMuestra;
 	private JButton jButtonclasificacion;
 	private JButton jButtonanalisis;
-	private JButton jButtoncerrar;
-	
+	private JButton jButtonSalir;
+	private JMenuItem listarMuestrasMenu;
+	private JMenuItem gestionarMuestraMenu;
+	private JMenuItem gestionarAnalisisMenu;
+	private JMenuItem calcularClasificacionMenu;
+	private JMenuItem salirMenu;
+	private JMenuItem versionMenu;
 	
 
 
@@ -31,24 +36,29 @@ public class GUIPrincipal extends JFrame {
 		super(title);
 		if (this.menu==null) {
 			menu = new JMenuBar();
+			jButtongestionarMuestra = new JButton("GESTIONAR MUESTRA");
+			jButtonclasificacion = new JButton("CALCULAR CLASIFICACION");
+			jButtonanalisis  = new JButton("GESTIONAR ANALISIS");
+			jButtonListarMuestras = new JButton("LISTAR MUESTRAS");
+			jButtonSalir  = new JButton("SALIR");
 			herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
 			menu.add(herramientas);
 			menu.add(ayuda);
-			JMenuItem listarMuestras = new JMenuItem("Listar Muestras Cargadas");
-			JMenuItem gestionarMuestraMenu = new JMenuItem("Gestionar Muestra");
-			JMenuItem gestionarAnalisisMenu = new JMenuItem("Gestionar Analisis");
-			JMenuItem calcularClasificacionMenu = new JMenuItem("Calcular Clasificacion");
-			JMenuItem salir = new JMenuItem("Salir");
+			listarMuestrasMenu = new JMenuItem("Listar Muestras Cargadas");
+			gestionarMuestraMenu = new JMenuItem("Gestionar Muestra");
+			gestionarAnalisisMenu = new JMenuItem("Gestionar Analisis");
+			calcularClasificacionMenu = new JMenuItem("Calcular Clasificacion");
+			salirMenu = new JMenuItem("Salir");
 			herramientas.add(gestionarMuestraMenu);
 			herramientas.add(gestionarAnalisisMenu);
 			herramientas.add(calcularClasificacionMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
-			herramientas.add(listarMuestras);
+			herramientas.add(listarMuestrasMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
-			herramientas.add(salir);
-			JMenuItem version = new JMenuItem("Version");
-			ayuda.add(version);
+			herramientas.add(salirMenu);
+			versionMenu = new JMenuItem("Version");
+			ayuda.add(versionMenu);
 		}
 		initialize();
 	}
@@ -113,42 +123,20 @@ public class GUIPrincipal extends JFrame {
 	 * @return the gestionarMuestra
 	 */
 	public JButton getJButtonGestionarMuestra() {
-		if (jButtongestionarMuestra == null) {
-			jButtongestionarMuestra = new JButton();
-			jButtongestionarMuestra.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtongestionarMuestra.setText("GESTIONAR MUESTRA");
-		}
 		return jButtongestionarMuestra;
 	}
-
-
-
 
 	/**
 	 * @return the clasificacion
 	 */
 	public JButton getJButtonClasificacion() {
-		if (jButtonclasificacion == null) {
-			jButtonclasificacion = new JButton();
-			jButtonclasificacion.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtonclasificacion.setText("CLASIFICACION");
-		}
 		return jButtonclasificacion;
 	}
-
-
-
-
 
 	/**
 	 * @return the analisis
 	 */
 	public JButton getJButtonAnalisis() {
-		if (jButtonanalisis == null) {
-			jButtonanalisis  = new JButton();
-			jButtonanalisis.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtonanalisis .setText("ANALISIS");
-		}
 		return jButtonanalisis ;
 	}
 	
@@ -156,11 +144,6 @@ public class GUIPrincipal extends JFrame {
 	 * @return the gestionarMuestra
 	 */
 	public JButton getJButtonListarMuestras() {
-		if (jButtonListarMuestras == null) {
-			jButtonListarMuestras = new JButton();
-			jButtonListarMuestras.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtonListarMuestras.setText("LISTAR MUESTRAS");
-		}
 		return jButtonListarMuestras;
 	}
 
@@ -168,18 +151,71 @@ public class GUIPrincipal extends JFrame {
 	 * @return the cerrar
 	 */
 	public JButton getJButtonSalir() {
-		if (jButtoncerrar == null) {
-			jButtoncerrar  = new JButton();
-			jButtoncerrar.setBounds(new java.awt.Rectangle(21,113,89,34));
-			jButtoncerrar .setText("SALIR");
-		}
-		return jButtoncerrar ;
+		return jButtonSalir ;
 	}
+	
+	
+	
+	
+	/**
+	 * @return the listarMuestrasMenu
+	 */
+	public JMenuItem getListarMuestrasMenu() {
+		return listarMuestrasMenu;
+	}
+
+
+	/**
+	 * @return the gestionarMuestraMenu
+	 */
+	public JMenuItem getGestionarMuestraMenu() {
+		return gestionarMuestraMenu;
+	}
+
+
+	/**
+	 * @return the gestionarAnalisisMenu
+	 */
+	public JMenuItem getGestionarAnalisisMenu() {
+		return gestionarAnalisisMenu;
+	}
+
+
+	/**
+	 * @return the calcularClasificacionMenu
+	 */
+	public JMenuItem getCalcularClasificacionMenu() {
+		return calcularClasificacionMenu;
+	}
+
+
+	/**
+	 * @return the salirMenu
+	 */
+	public JMenuItem getSalirMenu() {
+		return salirMenu;
+	}
+
+
+	/**
+	 * @return the versionMenu
+	 */
+	public JMenuItem getVersionMenu() {
+		return versionMenu;
+	}
+
+
 	public void setListenerButtons(ActionListener lis){
 		this.jButtongestionarMuestra.addActionListener(lis);
 		this.jButtonanalisis.addActionListener(lis);
 		this.jButtonclasificacion.addActionListener(lis);
-        this.jButtoncerrar.addActionListener(lis);
+        this.jButtonSalir.addActionListener(lis);
+        this.salirMenu.addActionListener(lis);
+        this.listarMuestrasMenu.addActionListener(lis);
+        this.gestionarMuestraMenu.addActionListener(lis);
+        this.gestionarAnalisisMenu.addActionListener(lis);
+        this.calcularClasificacionMenu.addActionListener(lis);
+        this.versionMenu.addActionListener(lis);
 	}
 
 }
