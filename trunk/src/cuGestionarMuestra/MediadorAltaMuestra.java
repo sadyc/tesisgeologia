@@ -86,6 +86,8 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
 			try {
 				MediadorSeleccionarUbicacion media = new MediadorSeleccionarUbicacion();
+				this.GUIMuestra.setUbicacion((String)media.getSeleccionado()[0]);
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -95,7 +97,7 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");
 			Muestra muestra= new Muestra();
 			OperadorDeLaboratorio op = new OperadorDeLaboratorio("nombre","apellido","dni","4665458","asd@gmail.com");
-     		Ubicacion ubicacion = new Ubicacion(Ubicacion.Provincia.Cordoba,"latitud","longitud"); 
+     		Ubicacion ubicacion = new Ubicacion("nombre Muestra",Ubicacion.Provincia.Cordoba,"latitud","longitud"); 
      		Usuario usuario = new Usuario();
      		Clasificacion clasificacion = new Clasificacion();
      		Date fecha = new Date(11,22,1980);
@@ -116,14 +118,14 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
                 data[8]=  "operador ID"; // operador.getId
                 
 				//Muestra mu = new Muestra("s",1,2,3,op,usuario,ubicacion,clasificacion);
-				//Muestra mu = new Muestra();
+				Muestra mu = new Muestra();
                 System.out.println(data[1]+data[2]+data[3]+data[4]+data[5]);
-				Muestra mu = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),op,usuario,ubicacion,clasificacion,fecha);
+			//	Muestra mu = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),op,usuario,ubicacion,clasificacion,fecha);
 
 				try {
 					control.insertarMuestra(mu);
 				} catch (Exception e) {
-					System.out.println("No inserta muestra");
+					System.out.println("No inserta muestra Mediador Alta Muestra");
 					e.printStackTrace();
 				}
 				GUIMuestra.dispose();

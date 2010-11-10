@@ -12,28 +12,19 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Clasificacion;
-import persistencia.domain.Muestra;
-import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
-import persistencia.domain.Usuario;
-
-import comun.GUISeleccionarMuestra;
-
-import cuGestionarAnalisis.MediadorBuscar;
 
 public class MediadorSeleccionarUbicacion implements ActionListener,MouseListener,ItemListener {
 
 	private GUISeleccionarUbicacion GUISeleccionarUbicacion = null;
-	private Object [][] data = new Object [4] [4];
+	private Object [][] data = new Object [100] [4];
 	private Object [] seleccionado = new Object [4];
 	private Component frame;
 	
 	
 	public MediadorSeleccionarUbicacion() throws Exception {
 		super();
-		//cargarTablaDeMuestras();
-		Object [][] data = new Object [4] [5];
+		cargarTablaDeMuestras();
 		this.GUISeleccionarUbicacion = new GUISeleccionarUbicacion(data);
 		GUISeleccionarUbicacion.setTitle("Seleccionar una muestra");
 		GUISeleccionarUbicacion.setModal(true);
@@ -77,8 +68,15 @@ public class MediadorSeleccionarUbicacion implements ActionListener,MouseListene
 		GUISeleccionarUbicacion = gUISeleccionarUbicacion;
 	}
 
-	
-	
+		
+	/**
+	 * @return the seleccionado
+	 */
+	public Object[] getSeleccionado() {
+		return seleccionado;
+	}
+
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
@@ -88,6 +86,7 @@ public class MediadorSeleccionarUbicacion implements ActionListener,MouseListene
 			}
 			else{
 				System.out.println("Button Seleccionar Ubicacion");
+				seleccionado = GUISeleccionarUbicacion.getTablePanel().getRow(GUISeleccionarUbicacion.getTablePanel().getSelectedRow());
 	   			GUISeleccionarUbicacion.dispose();	   		
 			}
 		}

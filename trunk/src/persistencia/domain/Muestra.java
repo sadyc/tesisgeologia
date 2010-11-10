@@ -3,13 +3,9 @@
  */
 package persistencia.domain;
 
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
 
-import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.PrimaryKey;
 
 /**
  * Implementacion de la clase que define la muestra

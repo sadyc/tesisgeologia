@@ -48,10 +48,10 @@ public class Persistencia {
 	 */
 	public void insertarObjeto (Object elemento) throws Exception{
 		try{
-            pmi.makePersistent(elemento);            
+            pmi.makePersistent(elemento);   
         }
 		catch (Exception e){
-		    System.out.println("Exception insertar Objeto");
+		    System.out.println("Exception insertar Objeto en Persistencia Generico");
 		    realizarRollback();
 		}
         
@@ -62,10 +62,10 @@ public class Persistencia {
 	 * Elimina un elemento generico.
 	 *
 	 */
-	public void eliminarObjeto (Object elemento) throws Exception {
+	public void eliminarObjeto (Object objeto) throws Exception {
 		try{
 			System.out.println("Objeto eliminado con persistencia");
-			pmi.deletePersistent(elemento);
+			pmi.deletePersistent(objeto);
 			System.out.println("Objeto eliminado con persistencia");
 			
 		}	

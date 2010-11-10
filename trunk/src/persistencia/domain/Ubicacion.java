@@ -17,12 +17,14 @@ public class Ubicacion {
 	
 	
 	public Ubicacion(){
+		nombreUbicacion= "";
 		prov = null;
 		latitud = "";
 		longitud = "";		
 	}
 	
-	public Ubicacion(Provincia prov,String latitud, String longitud){
+	public Ubicacion(String nombreUbicacion, Provincia prov,String latitud, String longitud){
+		this.nombreUbicacion= nombreUbicacion;
 		this.prov = prov;
 		this.latitud = latitud;
 		this.longitud = longitud;

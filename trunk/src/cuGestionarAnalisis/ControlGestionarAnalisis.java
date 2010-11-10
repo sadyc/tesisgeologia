@@ -38,7 +38,7 @@ public class ControlGestionarAnalisis {
 	public void eliminarAnalisis(Analisis analisis) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		try {
-			persistencia.eliminarObjeto(analisis);
+		//	persistencia.eliminarObjeto(analisis);
 			persistencia.cerrarTransaccion();
 			System.out.println("Analisis eliminado con persistencia");
 		} catch (Exception e) {
