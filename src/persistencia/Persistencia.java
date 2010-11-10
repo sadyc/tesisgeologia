@@ -44,7 +44,6 @@ public class Persistencia {
 	
 	/**
 	 * Inserta un elemento generico.
-	 *
 	 */
 	public void insertarObjeto (Object elemento) throws Exception{
 		try{
@@ -64,12 +63,12 @@ public class Persistencia {
 	 */
 	public void eliminarObjeto (Object objeto) throws Exception {
 		try{
-			System.out.println("Objeto eliminado con persistencia");
 			pmi.deletePersistent(objeto);
 			System.out.println("Objeto eliminado con persistencia");
 			
 		}	
 		catch (Exception e){
+			System.out.println("No se elimino con persistencia");
 		    realizarRollback();
 		}
 	}
@@ -114,6 +113,9 @@ public class Persistencia {
 	
 	public void cerrarTransaccion()throws Exception{
 		tx.commit();
+	}
+	
+	public void cerrarPersistencia() throws Exception{
 		pmi.close();
 	}
 	
