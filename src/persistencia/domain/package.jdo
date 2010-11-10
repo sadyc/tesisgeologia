@@ -34,5 +34,33 @@
                 <column name="CLASIFICACION"/>
         </field>
       </class>
-    </package>
+
+<class name="Persona" identity-type="datastore">
+	<inheritance strategy="subclass-table"/>
+           <field name="nombre" persistence-modifier="persistent"> 
+                 <column length="30" jdbc-type="CHAR"/>
+           </field>
+           <field name="apellido" persistence-modifier="persistent">
+                  <column length="30" jdbc-type="CHAR"/>
+           </field>
+           <field name="dni" persistence-modifier="persistent">
+                  <column length="15" jdbc-type="CHAR"/>
+           </field>
+           <field name="tel" persistence-modifier="persistent">
+                  <column length="20" jdbc-type="CHAR"/>
+           </field>
+           <field name="email" persistence-modifier="persistent">
+                  <column length="60" jdbc-type="CHAR"/>
+           </field>
+
+ </class>
+       
+
+ <class name="OperadorDeLaboratorio" extends="Persona" identity-type="datastore">
+	<field name="muestras" persistence-modifier="persistent" mapped-by="operador">
+		<collection element_type="persistencia.domain.Muestra"/>
+	</field>
+ </class>
+   </package>
+
 </jdo>
