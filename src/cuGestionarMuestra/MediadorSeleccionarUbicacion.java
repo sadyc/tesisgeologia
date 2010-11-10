@@ -7,6 +7,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Collection;
+import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
@@ -23,6 +25,7 @@ import cuGestionarAnalisis.MediadorBuscar;
 public class MediadorSeleccionarUbicacion implements ActionListener,MouseListener,ItemListener {
 
 	private GUISeleccionarUbicacion GUISeleccionarUbicacion = null;
+	private Object [][] data = new Object [4] [4];
 	private Object [] seleccionado = new Object [4];
 	private Component frame;
 	
@@ -37,11 +40,29 @@ public class MediadorSeleccionarUbicacion implements ActionListener,MouseListene
 		this.GUISeleccionarUbicacion.setListenerButtons(this);
 		this.GUISeleccionarUbicacion.setListenerTable(this);
 		GUISeleccionarUbicacion.show();
-		
-		
-		
 	}
 	
+	
+	/**
+	 * Levanta informacion almacenada en la 
+	 * base de datos al atributo data de la clase mediador.
+	 */
+	public void cargarTablaDeMuestras()throws Exception{
+		ControlGestionarMuestra control = new ControlGestionarMuestra();
+		Ubicacion ubicacion = new Ubicacion();
+		Class clase = ubicacion.getClass();
+		Collection ubicaciones = control.coleccionMuestras(clase);
+		Iterator<Ubicacion> it = ubicaciones.iterator();
+		int i = 0;
+		while (it.hasNext()){
+			ubicacion = it.next();
+			data [i][0]= ubicacion.getNombreUbicacion();
+			data [i][1]= ubicacion.getProvincia();
+		    data [i][2]= ubicacion.getLatitud();		        
+		    data [i][3]= ubicacion.getLongitud();
+		    i++;
+		}
+	}
 	/**
 	 * @return the gUISeleccionarUbicacion
 	 */
@@ -66,9 +87,6 @@ public class MediadorSeleccionarUbicacion implements ActionListener,MouseListene
 				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				//seleccionado = GUISeleccionarMuestra.getTablePanel().getRow(GUISeleccionarMuestra.getTablePanel().getSelectedRow());//
-				//Muestra mu = new Muestra((fila[0]),Integer.parseInt(fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),op,usuario,ubicacion,clasificacion);
-				//muestra = new Muestra (fila[0],Integer.parseInt()[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0]);
 				System.out.println("Button Seleccionar Ubicacion");
 	   			GUISeleccionarUbicacion.dispose();	   		
 			}
@@ -76,7 +94,7 @@ public class MediadorSeleccionarUbicacion implements ActionListener,MouseListene
 		if (this.GUISeleccionarUbicacion.getJButtonBuscar() == source){
 	   		try {
 	   			System.out.println("Button Buscar Muestra");
-				MediadorBuscar analisis = new MediadorBuscar();	
+				
 				
 	   		} catch (Exception e) {
 				e.printStackTrace();

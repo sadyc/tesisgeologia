@@ -10,6 +10,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -32,7 +33,7 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 	public MediadorAltaMuestra(String nombreVentana) throws Exception {
 		super();
 		this.GUIMuestra = new GUIMuestra();
-		GUIMuestra.setTitle(nombreVentana);
+		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
 		
 		// se configura como escuchador de los evenetos de la ventana 
@@ -82,31 +83,43 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
+		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
+			try {
+				MediadorSeleccionarUbicacion media = new MediadorSeleccionarUbicacion();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
 		if (this.GUIMuestra.getJButtonAceptar() == source) {
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");
 			Muestra muestra= new Muestra();
 			OperadorDeLaboratorio op = new OperadorDeLaboratorio("nombre","apellido","dni","4665458","asd@gmail.com");
-     		Ubicacion ubicacion = new Ubicacion();
+     		Ubicacion ubicacion = new Ubicacion(Ubicacion.Provincia.Cordoba,"latitud","longitud"); 
      		Usuario usuario = new Usuario();
      		Clasificacion clasificacion = new Clasificacion();
+     		Date fecha = new Date(11,22,1980);
      		if (GUIMuestra.getMuestra().getText().equals("") || GUIMuestra.getPeso().getText().equals("")  ){
 				JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				data[0]= "Ubicacion";
+
+				data[0]= GUIMuestra.getUbicacion().getText();
 				data[1]= GUIMuestra.getMuestra().getText();
 				data[2]= GUIMuestra.getPeso().getText();
 				data[3]= GUIMuestra.getProfundidadInicial().getText();
 				data[4]= GUIMuestra.getProfundidadFinal().getText();
-				//data[5]= "23º33'55\"";  // ubicacion.getLatitud
-                //data[5]=  "23º33'55\""; // ubicacion.getLongitud
-                //data[6]=  "111"; // muestra.getClasificacion
-                //data[7]= "222"; // usuario.getNombre
-                //data[8]=  "333"; // operador.getId
+				data[5]= ubicacion.getLatitud();
+                data[5]= ubicacion.getLongitud();
+                data[6]=  "clasificacion"; // muestra.getClasificacion
+                data[7]= "nombre usuario"; // usuario.getNombre
+                data[8]=  "operador ID"; // operador.getId
                 
 				//Muestra mu = new Muestra("s",1,2,3,op,usuario,ubicacion,clasificacion);
-				Muestra mu = new Muestra();
-				//Muestra mu = new Muestra((GUIMuestra.getData()[0]),Integer.parseInt(GUIMuestra.getData()[1]),Float.parseFloat(GUIMuestra.getData()[2]),Float.parseFloat(GUIMuestra.getData()[3]),op,usuario,ubicacion,clasificacion);
+				//Muestra mu = new Muestra();
+                System.out.println(data[1]+data[2]+data[3]+data[4]+data[5]);
+				Muestra mu = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),op,usuario,ubicacion,clasificacion,fecha);
+
 				try {
 					control.insertarMuestra(mu);
 				} catch (Exception e) {

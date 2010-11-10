@@ -27,6 +27,7 @@ public class GUIMuestra extends JDialog {
 	private JTextField profundidadInicial;
 	private JTextField profundidadFinal;
 	private JTextField peso;
+	private JLabel ubicacion;
 	private JLabel usuario;
 
 	/**
@@ -38,6 +39,7 @@ public class GUIMuestra extends JDialog {
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
+		ubicacion = new JLabel("ubicate!!");
 		usuario = new JLabel ("Usuario tanto...");		
 		aceptar = new JButton("AGREGAR");
 		cancelar = new JButton("CANCELAR");
@@ -60,6 +62,7 @@ public class GUIMuestra extends JDialog {
 		peso.setText(data[1].toString());
 		profundidadInicial.setText(data[2].toString());
 		profundidadFinal.setText(data[3].toString());
+		ubicacion = new JLabel("ubicate!!");
 		usuario = new JLabel ("Usuario tanto...");		
 		aceptar = new JButton("AGREGAR");
 		cancelar = new JButton("CANCELAR");
@@ -138,7 +141,21 @@ public class GUIMuestra extends JDialog {
 		this.seleccionarUbicacion = seleccionarUbicacion;
 	}
 
-	
+	/**
+	 * @return the ubicacion
+	 */
+	public JLabel getUbicacion() {
+		return ubicacion;
+	}
+
+	/**
+	 * @param ubicacion the ubicacion to set
+	 */
+	public void setUbicacion(JLabel ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+
+
 	/**
 	 * Metodo que inicializa la interfaz.
 	 *
@@ -180,6 +197,7 @@ public class GUIMuestra extends JDialog {
 			this.panelNorte.add(new JLabel("Profundidad Final: "));
 			this.panelNorte.add(profundidadFinal);
 			this.panelNorte.add(seleccionarUbicacion);
+			this.panelNorte.add(ubicacion);
 			this.panelNorte.add(usuario);
 		}
 		return this.panelNorte;
