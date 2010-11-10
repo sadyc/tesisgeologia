@@ -41,10 +41,11 @@ public class ControlGestionarMuestra {
 	public void eliminarMuestra(Muestra mu) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		
 		try {
+			System.out.println("Muestra eliminada con persistencia");
 			Muestra muestra = new Muestra();
-			Collection muestras = persistencia.buscarColeccion(mu);
+			Class clase = muestra.getClass();
+			Collection muestras = persistencia.buscarColeccion(clase);
 			Iterator<Muestra> it = muestras.iterator();
 			int i = 0;
 			while (it.hasNext()&& mu.getNombreMuestra()!= muestra.getNombreMuestra()){
@@ -53,8 +54,9 @@ public class ControlGestionarMuestra {
 			}
 			persistencia.eliminarObjeto(muestra);
 			
+
 			persistencia.cerrarTransaccion();
-			System.out.println("Muestra eliminada con persistencia");
+			
 		}
 		catch (Exception e) {
 			persistencia.realizarRollback();

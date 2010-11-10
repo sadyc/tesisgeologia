@@ -151,8 +151,8 @@ public class GUIMuestra extends JDialog {
 	/**
 	 * @param ubicacion the ubicacion to set
 	 */
-	public void setUbicacion(JLabel ubicacion) {
-		this.ubicacion = ubicacion;
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion.setText(ubicacion);
 	}
 
 

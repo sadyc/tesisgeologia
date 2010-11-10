@@ -16,6 +16,10 @@ public class Usuario extends Persona{
 	private String nombreUsuario;
 	private String password;
 	
+	public Usuario (){
+		super();
+		
+	}
 	/**
 	 * @return the nombreUsuario
 	 */

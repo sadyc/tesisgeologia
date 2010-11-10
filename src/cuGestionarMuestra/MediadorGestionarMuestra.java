@@ -87,11 +87,11 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		Muestra muestra= new Muestra();
-		OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","12","4665458","asd@gmail.com");
- 		Ubicacion ubicacion = new Ubicacion();
- 		Usuario usuario = new Usuario();
- 		Clasificacion clasificacion = new Clasificacion();
+	//	Muestra muestra= new Muestra();
+		//OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","12","4665458","asd@gmail.com");
+ 	//	Ubicacion ubicacion = new Ubicacion();
+ 	//	Usuario usuario = new Usuario();
+ 	//	Clasificacion clasificacion = new Clasificacion();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		if (this.GUIABMMuestra.getJButtonAgregar() == source){
 	   		try {
