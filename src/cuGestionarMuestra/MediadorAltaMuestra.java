@@ -27,7 +27,7 @@ import persistencia.domain.Usuario;
  */
 public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemListener{
 	private GUIMuestra GUIMuestra;
-	private String[] data = new String [9];
+	private String[] data = new String [10];
 	private Component frame;
 
 	public MediadorAltaMuestra(String nombreVentana) throws Exception {
@@ -35,7 +35,6 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 		this.GUIMuestra = new GUIMuestra();
 		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
-		
 		// se configura como escuchador de los evenetos de la ventana 
 		// al el mismo (mediador)
 		this.GUIMuestra.setListenerButtons(this);
@@ -101,26 +100,22 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
      		Usuario usuario = new Usuario();
      		Clasificacion clasificacion = new Clasificacion();
      		Date fecha = new Date(11,22,1980);
-     		if (GUIMuestra.getMuestra().getText().equals("") || GUIMuestra.getPeso().getText().equals("")  ){
+     		if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("")  ){
 				JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 
 				data[0]= GUIMuestra.getUbicacion().getText();
-				data[1]= GUIMuestra.getMuestra().getText();
+				data[1]= GUIMuestra.getNombre().getText();
 				data[2]= GUIMuestra.getPeso().getText();
 				data[3]= GUIMuestra.getProfundidadInicial().getText();
 				data[4]= GUIMuestra.getProfundidadFinal().getText();
 				data[5]= ubicacion.getLatitud();
-                data[5]= ubicacion.getLongitud();
-                data[6]=  "clasificacion"; // muestra.getClasificacion
-                data[7]= "nombre usuario"; // usuario.getNombre
-                data[8]=  "operador ID"; // operador.getId
-                
-				//Muestra mu = new Muestra("s",1,2,3,op,usuario,ubicacion,clasificacion);
-				//Muestra mu = new Muestra();
-              	Muestra mu = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),op,usuario,ubicacion,clasificacion,fecha);
-
+                data[6]= ubicacion.getLongitud();
+                data[7]=  "clasificacion"; // muestra.getClasificacion
+                data[8]= "nombre usuario"; // usuario.getNombre
+                data[9]=  "operador ID"; // operador.getId
+                Muestra mu = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),op,usuario,ubicacion,clasificacion,fecha);
 				try {
 					control.insertarMuestra(mu);
 				} catch (Exception e) {
@@ -128,7 +123,6 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 					e.printStackTrace();
 				}
 				GUIMuestra.dispose();
-				
 			}
      	}
 		if (this.GUIMuestra.getJButtonCancelar() == source){

@@ -23,7 +23,7 @@ public class GUIMuestra extends JDialog {
 	private JButton seleccionarUbicacion;
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
-	private JTextField muestra;
+	private JTextField nombre;
 	private JTextField profundidadInicial;
 	private JTextField profundidadFinal;
 	private JTextField peso;
@@ -35,7 +35,7 @@ public class GUIMuestra extends JDialog {
 	 */
 	public GUIMuestra() {
 		super();
-		muestra = new JTextField(15);
+		nombre = new JTextField(15);
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
@@ -54,14 +54,14 @@ public class GUIMuestra extends JDialog {
 	public GUIMuestra(Object[] data) {
 	
 		super();
-		muestra = new JTextField(15);
+		nombre = new JTextField(15);
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
-		muestra.setText(data[0].toString());
-		peso.setText(data[1].toString());
-		profundidadInicial.setText(data[2].toString());
-		profundidadFinal.setText(data[3].toString());
+		nombre.setText(data[1].toString());
+		peso.setText(data[2].toString());
+		profundidadInicial.setText(data[3].toString());
+		profundidadFinal.setText(data[4].toString());
 		ubicacion = new JLabel("ubicate!!");
 		usuario = new JLabel ("Usuario tanto...");		
 		aceptar = new JButton("AGREGAR");
@@ -71,10 +71,17 @@ public class GUIMuestra extends JDialog {
 	}
 	
 	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(JTextField nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
 	 * @return the muestra
 	 */
-	public JTextField getMuestra() {
-		return muestra;
+	public JTextField getNombre() {
+		return nombre;
 	}
 
 	/**
@@ -189,7 +196,7 @@ public class GUIMuestra extends JDialog {
 			peso.setAlignmentX(Component.CENTER_ALIGNMENT);
 			// Se aaden los componentes al panel Norte
 			this.panelNorte.add(new JLabel("Nombre (*): "));
-			this.panelNorte.add(muestra);
+			this.panelNorte.add(nombre);
 			this.panelNorte.add(new JLabel("Peso (*): "));
 			this.panelNorte.add(peso); 
 			this.panelNorte.add(new JLabel("Profundidad Inicial: "));
@@ -232,7 +239,7 @@ public class GUIMuestra extends JDialog {
 	
 	public String[] getData() {
 		String[] data = new String[4];
-		data[0]= muestra.getText();
+		data[0]= nombre.getText();
 		data[1]= peso.getText();
 		data[2]= profundidadInicial.getText();
 		data[3]= profundidadFinal.getText();

@@ -13,11 +13,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Clasificacion;
 import persistencia.domain.Muestra;
-import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.Ubicacion;
-import persistencia.domain.Usuario;
 
 /**
  * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana Modificar Muestra
@@ -26,19 +22,21 @@ import persistencia.domain.Usuario;
  */
 public class MediadorModificarMuestra implements ActionListener,MouseListener,ItemListener{
 	private GUIMuestra GUIMuestra;
-	private String[] data = new String [9];
+	private String[] data = new String [10];
 	private Component frame;
 	private Muestra muestra;
+	private String nombreMuestra;
 
 	public MediadorModificarMuestra(Object[] data) throws Exception {
 		super();
 		this.GUIMuestra = new GUIMuestra(data);
+		nombreMuestra = (String)data[1];
+		GUIMuestra.setTitle("Modificar Muestra");
+		GUIMuestra.setModal(true);
 		this.GUIMuestra.setListenerButtons(this);
-		GUIMuestra.show();
+		this.GUIMuestra.show();
 		// se configura como escuchador de los evenetos de la ventana 
 		// al el mismo (mediador)
-		
-		
 	}
 	
 
@@ -83,28 +81,34 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 		Object source = arg0.getSource();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		if (this.GUIMuestra.getJButtonAceptar() == source) {
-			System.out.println("Muestra.actionPerformed() jButtonAceptar");
+			System.out.println("Aceptar Modificar Muestra");
 			
-			if (GUIMuestra.getMuestra().getText().equals("") || GUIMuestra.getPeso().getText().equals("")  ){
+			if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("")  ){
 				JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				muestra.setNombreMuestra(GUIMuestra.getMuestra().getText());
-				muestra.setPeso(Integer.parseInt(GUIMuestra.getPeso().getText()));
-				muestra.setProfundidadInicial(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
-				muestra.setProfundidadFinal(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
-				
-				
-				//Muestra mu = new Muestra();
-				
 				try {
-					//control.insertarMuestra(mu);
-				} catch (Exception e) {
-					System.out.println("No inserta muestra");
-					e.printStackTrace();
+					muestra = new Muestra();
+					muestra.setNombreMuestra(GUIMuestra.getNombre().getText());
+					muestra.setPeso(Integer.parseInt(GUIMuestra.getPeso().getText()));
+					muestra.setProfundidadInicial(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
+					muestra.setProfundidadFinal(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
+					data[0]= GUIMuestra.getUbicacion().getText();
+					data[1]= GUIMuestra.getNombre().getText();
+					data[2]= GUIMuestra.getPeso().getText();
+					data[3]= GUIMuestra.getProfundidadInicial().getText();
+					data[4]= GUIMuestra.getProfundidadFinal().getText();
+					data[5]= "longitud";
+	                data[6]= "latitud";
+	                data[7]=  "clasificacion"; // muestra.getClasificacion
+	                data[8]= "nombre usuario"; // usuario.getNombre
+	                data[9]=  "operador ID"; // operador.getId
+					System.out.println("modifique campos456");
+					control.ModificarMuestra(nombreMuestra, muestra);
+				} catch (Exception e1) {
+					e1.printStackTrace();
 				}
 				GUIMuestra.dispose();
-				
 			}
      	}
 		if (this.GUIMuestra.getJButtonCancelar() == source){

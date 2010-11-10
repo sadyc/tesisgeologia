@@ -79,6 +79,34 @@ public class ControlGestionarMuestra {
 		}
 		return aux;
 	}
+
+	public void ModificarMuestra(String nombreMuestra, Muestra muestra) throws Exception {
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		Muestra aux = new Muestra();
+		try {
+			System.out.println("Buscar Objeto");
+			Class clase = muestra.getClass();
+			Collection muestras = persistencia.buscarColeccion(clase);
+			Iterator<Muestra> it = muestras.iterator();
+			int i = 0;
+			while (it.hasNext()&& nombreMuestra!= muestra.getNombreMuestra()){
+				aux = it.next();
+			    i++;
+			}
+		}
+		catch (Exception e) {
+			persistencia.realizarRollback();
+			persistencia.cerrarPersistencia();
+		}
+		aux.setNombreMuestra(muestra.getNombreMuestra());
+		aux.setPeso(muestra.getPeso());
+		aux.setProfundidadInicial(muestra.getProfundidadInicial());
+		aux.setProfundidadFinal(muestra.getProfundidadFinal());
+		persistencia.cerrarTransaccion();
+	}
+
+	
 	
 	
 }
