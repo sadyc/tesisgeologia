@@ -112,8 +112,11 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 			else{
 			    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	            if(quitOption==JOptionPane.YES_OPTION){
-	            	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+	            	System.out.println(GUIABMMuestra.getTablePanel().getSelectedRow());
+	            //	String [] fila =
+	            	System.out.println (GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow()));
 	            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+	            //	System.out.println(fila[0]+fila[1]+fila[2]+fila[3]); 
 	            	Muestra mu = new Muestra ();
 	            	try {
 						control.eliminarMuestra(mu);
