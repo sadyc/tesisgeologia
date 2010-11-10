@@ -29,10 +29,7 @@ public class TablePanel extends JPanel {
     
 	
 	public TablePanel(){
-		
-       //Seteamos el BoxLayout
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-		
 		this.scrollPane = new JScrollPane();
 		this.tableModel = new DefaultTableModel();
 		this.table = new JTable(this.tableModel);	
