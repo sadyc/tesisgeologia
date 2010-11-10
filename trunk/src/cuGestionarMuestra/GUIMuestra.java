@@ -21,12 +21,14 @@ public class GUIMuestra extends JDialog {
 	private JButton aceptar;
 	private JButton cancelar;
 	private JButton seleccionarUbicacion;
+	private JButton seleccionarOperador;
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
 	private JTextField nombre;
 	private JTextField profundidadInicial;
 	private JTextField profundidadFinal;
 	private JTextField peso;
+	private JLabel operador;
 	private JLabel ubicacion;
 	private JLabel usuario;
 
@@ -39,11 +41,13 @@ public class GUIMuestra extends JDialog {
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
-		ubicacion = new JLabel("ubicate!!");
-		usuario = new JLabel ("Usuario tanto...");		
+		ubicacion = new JLabel("Ubicacion : Salsipuedes");
+		usuario = new JLabel ("Usuario : Jose Alberto Snaider.");
+		operador = new JLabel ("Operador : Juan Gomez de la Quebrada");
 		aceptar = new JButton("AGREGAR");
 		cancelar = new JButton("CANCELAR");
 		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
+		seleccionarOperador = new JButton("SELECCIONAR OPERADOR");
 		initialize();
 	}
 	
@@ -62,11 +66,13 @@ public class GUIMuestra extends JDialog {
 		peso.setText(data[2].toString());
 		profundidadInicial.setText(data[3].toString());
 		profundidadFinal.setText(data[4].toString());
-		ubicacion = new JLabel("ubicate!!");
-		usuario = new JLabel ("Usuario tanto...");		
+		ubicacion = new JLabel("Ubicacion : Salsipuedes");
+		usuario = new JLabel ("Usuario : Jose Alberto Snaider.");
+		operador = new JLabel ("Operador : Juan Gomez de la Quebrada");
 		aceptar = new JButton("AGREGAR");
 		cancelar = new JButton("CANCELAR");
 		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
+		seleccionarOperador = new JButton("SELECCIONAR OPERADOR");
 		initialize();
 	}
 	
@@ -169,7 +175,7 @@ public class GUIMuestra extends JDialog {
 	 * @return void
 	 */
 	private  void initialize() {
-		this.setSize(300 , 300);
+		this.setSize(400 , 500);
         // Seteamos el BorderLayout
 		this.getContentPane().setLayout(new BorderLayout()); 		
 	 	// Se aaden los componentes al Frame
@@ -205,6 +211,8 @@ public class GUIMuestra extends JDialog {
 			this.panelNorte.add(profundidadFinal);
 			this.panelNorte.add(seleccionarUbicacion);
 			this.panelNorte.add(ubicacion);
+			this.panelNorte.add(seleccionarOperador);
+			this.panelNorte.add(operador);
 			this.panelNorte.add(usuario);
 		}
 		return this.panelNorte;
