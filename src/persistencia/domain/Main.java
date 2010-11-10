@@ -1,19 +1,12 @@
 package persistencia.domain;
 
 
-import cuGestionarMuestra.MediadorGestionarMuestra;
-import cuLogin.MediadorLogin;
-import java.util.Collection;
-import java.util.Iterator;
-
+import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.Extent;
-import javax.jdo.Query;
-import javax.jdo.JDOHelper;
 import javax.jdo.Transaction;
 
-import comun.MediadorPrincipal;
+import cuLogin.MediadorLogin;
 
 
  /**
@@ -50,10 +43,12 @@ public class Main {
         // Persistence of a Product and a Book.
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
-		//MediadorLogin login = new MediadorLogin("Login");
-		//login.show();
+       // InsertarUbicaciones insertUbicaciones = new InsertarUbicaciones();
+       // insertUbicaciones.cargarUbicaciones();
+		MediadorLogin login = new MediadorLogin("Login");
+		login.show();
         //MediadorPrincipal pantallaPrincipal = new MediadorPrincipal("Pantalla Principal");
-        MediadorGestionarMuestra gestionarMu = new MediadorGestionarMuestra("gestionar muestra");
+        //MediadorGestionarMuestra gestionarMu = new MediadorGestionarMuestra("gestionar muestra");
 	}
 }
 

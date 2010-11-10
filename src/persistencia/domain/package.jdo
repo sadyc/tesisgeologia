@@ -28,7 +28,7 @@
                 <column name="OPERADOR_ID"/>
         </field>
         <field name="ubicacion">
-                <column name="NOMBRE_UBICACION"/>
+                <column name="NOMBRE_UBICACION" mapped-by="persistencia.domain.Ubicacion"/>
         </field>
         <field name="clasificacion">
                 <column name="CLASIFICACION"/>
@@ -60,6 +60,22 @@
 	<field name="muestras" persistence-modifier="persistent" mapped-by="operador">
 		<collection element_type="persistencia.domain.Muestra"/>
 	</field>
+ </class>
+ 
+ <class name="persistencia.domain.Ubicacion" identity-type="application">
+              <inheritance strategy="new-table"/>
+         <field name="nombreUbicacion" primary-key="true" persistence-modifier="persistent">
+                  <column length="30" jdbc-type="CHAR"/>
+         </field>
+         <field name="prov" persistence-modifier="persistent" mapped-by="Provincia">
+         </field>
+        <field name="latitud" persistence-modifier="persistent">
+                 <column length="30" jdbc-type="CHAR"/>
+        </field>
+        <field name="longitud" persistence-modifier="persistent">
+                 <column length="30" jdbc-type="CHAR"/>
+        </field>
+
  </class>
    </package>
 
