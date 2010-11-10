@@ -48,7 +48,9 @@ public class ControlGestionarMuestra {
 			Collection muestras = persistencia.buscarColeccion(clase);
 			Iterator<Muestra> it = muestras.iterator();
 			int i = 0;
+			System.out.println(mu.getNombreMuestra()+"el q busco --->el q encunetro"+muestra.getNombreMuestra());
 			while (it.hasNext()&& mu.getNombreMuestra()!= muestra.getNombreMuestra()){
+				System.out.println(mu.getNombreMuestra()+"el q busco --->el q encunetro"+muestra.getNombreMuestra());
 				muestra = it.next();
 			    i++;
 			}
