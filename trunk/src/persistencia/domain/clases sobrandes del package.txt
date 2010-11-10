@@ -1,0 +1,43 @@
+ <class name="Usuario" extends="Persona" identity-type="datastore">
+
+	 <field name="nombreUsuario" persistence-modifier="persistent"> 
+                 <column length="30" jdbc-type="CHAR"/>
+           </field>
+           <field name="password" persistence-modifier="persistent">
+                  <column length="30" jdbc-type="CHAR"/>
+           </field>
+ </class>
+ 
+ <class name="Tamiz" identity-type="datastore">
+ 	<field name="numeroTamiz" persistence-modifier="persistent">
+           <column jdbc-type="integer"/>
+    </field>
+ 	<field name="aberturaMalla" persistence-modifier="persistent">
+           <column jdbc-type="integer"/>
+    </field>
+	<field name="analisisTamiz" persistence-modifier="persistent" mapped-by="tamiz">
+		<collection element_type="cuAnalisis.Analisis"/>
+	</field>
+ </class>
+
+ <class name="Analisis" identity-type="datastore">
+ 	<field name="porcentajePasante" persistence-modifier="persistent">
+           <column jdbc-type="integer"/>
+    </field>
+ 	<field name="porcentajeRetenidoParcial" persistence-modifier="persistent">
+           <column jdbc-type="integer"/>
+    </field>
+	<field name="porcentajeRetenidoAcumulado" persistence-modifier="persistent">
+           <column jdbc-type="integer"/>
+    </field>
+    <field name="pesoRetenido" persistence-modifier="persistent">
+           <column jdbc-type="integer"/>
+    </field>
+    <field name="muestra">
+          <column name="NOMBRE_MUESTRA"/>
+    </field>
+    <field name="tamiz">
+          <column name="NUMERO_TAMIZ"/>
+    </field>
+    
+ </class>

@@ -118,9 +118,8 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
                 data[8]=  "operador ID"; // operador.getId
                 
 				//Muestra mu = new Muestra("s",1,2,3,op,usuario,ubicacion,clasificacion);
-				Muestra mu = new Muestra();
-                System.out.println(data[1]+data[2]+data[3]+data[4]+data[5]);
-			//	Muestra mu = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),op,usuario,ubicacion,clasificacion,fecha);
+				//Muestra mu = new Muestra();
+              	Muestra mu = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),op,usuario,ubicacion,clasificacion,fecha);
 
 				try {
 					control.insertarMuestra(mu);
