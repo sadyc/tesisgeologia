@@ -8,6 +8,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 
 import javax.swing.JFrame;
@@ -87,11 +88,11 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-	//	Muestra muestra= new Muestra();
-		//OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","12","4665458","asd@gmail.com");
- 	//	Ubicacion ubicacion = new Ubicacion();
- 	//	Usuario usuario = new Usuario();
- 	//	Clasificacion clasificacion = new Clasificacion();
+		OperadorDeLaboratorio op = new OperadorDeLaboratorio();
+ 		Ubicacion ubicacion = new Ubicacion();
+ 		Usuario usuario = new Usuario();
+ 		Date fecha = new Date(12,12,1222);
+ 		Clasificacion clasificacion = new Clasificacion();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		if (this.GUIABMMuestra.getJButtonAgregar() == source){
 	   		try {
@@ -113,12 +114,11 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 			    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	            if(quitOption==JOptionPane.YES_OPTION){
 	            	System.out.println(GUIABMMuestra.getTablePanel().getSelectedRow());
-	            //	String [] fila =
-	            	System.out.println (GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow()));
+	            	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+	            	
 	            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-	            //	System.out.println(fila[0]+fila[1]+fila[2]+fila[3]); 
-	            	Muestra mu = new Muestra ();
-	            	try {
+	              	Muestra mu = new Muestra((fila[1]),Integer.parseInt(fila[2]),Float.parseFloat(fila[3]),Float.parseFloat(fila[4]),op,usuario,ubicacion,clasificacion,fecha);
+	               	try {
 						control.eliminarMuestra(mu);
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -132,23 +132,16 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 			}
 			else{
 				String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());//
-				//Muestra mu = new Muestra((fila[0]),Integer.parseInt(fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),op,usuario,ubicacion,clasificacion);
-				//muestra = new Muestra (fila[0],Integer.parseInt()[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0]);
+				GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 				
 				try {
 					MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(fila);
+					System.out.println("antees de meter en panel");
+					this.GUIABMMuestra.getTablePanel().addRow(modificarMuestra.getData());
+					System.out.println("dfespues de meter en panel");
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				//GUIMuestra guiMuestra = new GUIMuestra("nombre de ventana",muestra2);
-
-				
-				//if (guiMuestra.getData()[0] != null){  
-					
-					//ModificarMuestraBD(modificarMuestra);				
-
-				//}	
 			}
 		}
 		if (this.GUIABMMuestra.getJButtonSalir() == source){
