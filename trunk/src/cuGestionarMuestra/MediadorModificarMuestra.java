@@ -14,6 +14,10 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Muestra;
+import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.Ubicacion;
+
+import comun.MediadorSeleccionarOperador;
 
 /**
  * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana Modificar Muestra
@@ -24,11 +28,16 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 	private GUIMuestra GUIMuestra;
 	private String[] data = new String [10];
 	private Component frame;
+	private Ubicacion ubicacion;
+	private OperadorDeLaboratorio operador;
 	private Muestra muestra;
 	private String nombreMuestra;
 
 	public MediadorModificarMuestra(Object[] data) throws Exception {
 		super();
+		muestra = new Muestra();
+		this.ubicacion = new Ubicacion();
+		this.operador= new OperadorDeLaboratorio();
 		this.GUIMuestra = new GUIMuestra(data);
 		nombreMuestra = (String)data[1];
 		GUIMuestra.setTitle("Modificar Muestra");
@@ -80,6 +89,26 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
+		if (this.GUIMuestra.getJButtonSeleccionarOperador()== source) {
+			try {
+				MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
+				this.GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
+				this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
+			try {
+				MediadorSeleccionarUbicacion mediadorSelUbic = new MediadorSeleccionarUbicacion();
+				this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
+				this.ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
 		if (this.GUIMuestra.getJButtonAceptar() == source) {
 			System.out.println("Aceptar Modificar Muestra");
 			
@@ -104,7 +133,8 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 	                data[8]= "nombre usuario"; // usuario.getNombre
 	                data[9]=  "operador ID"; // operador.getId
 					System.out.println("modifique campos456");
-					control.ModificarMuestra(nombreMuestra, muestra);
+					
+					control.ModificarMuestra(nombreMuestra, muestra,ubicacion,operador);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

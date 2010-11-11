@@ -50,23 +50,18 @@ public class ControlGestionarMuestra {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
-			System.out.println("Muestra eliminada con persistencia");
 			Muestra muestra = new Muestra();
 			Class clase = muestra.getClass();
 			Collection muestras = persistencia.buscarColeccion(clase);
 			Iterator<Muestra> it = muestras.iterator();
 			int i = 0;
-			System.out.println(mu.getNombreMuestra()+"el q busco --->el q encunetro"+muestra.getNombreMuestra());
 			while (it.hasNext()&& mu.getNombreMuestra()!= muestra.getNombreMuestra()){
-				System.out.println(mu.getNombreMuestra()+"el q busco --->el q encunetro"+muestra.getNombreMuestra());
 				muestra = it.next();
 			    i++;
 			}
 			persistencia.eliminarObjeto(muestra);
-			
-
 			persistencia.cerrarTransaccion();
-			
+			System.out.println("Muestra eliminada con persistencia");
 		}
 		catch (Exception e) {
 			persistencia.realizarRollback();
@@ -90,30 +85,27 @@ public class ControlGestionarMuestra {
 		return aux;
 	}
 
-	public void ModificarMuestra(String nombreMuestra, Muestra muestra) throws Exception {
+	public void ModificarMuestra(String nombreMuestra,Muestra muestra, Ubicacion ubicacion, OperadorDeLaboratorio operador) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Muestra aux = new Muestra();
 		try {
-			System.out.println("Buscar Objeto");
-			Class clase = muestra.getClass();
-			Collection muestras = persistencia.buscarColeccion(clase);
-			Iterator<Muestra> it = muestras.iterator();
-			int i = 0;
-			while (it.hasNext()&& nombreMuestra!= muestra.getNombreMuestra()){
-				aux = it.next();
-			    i++;
-			}
+			Class claseMuestra = muestra.getClass();
+			aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=="+nombreMuestra);
+			Class claseUbicacion = ubicacion.getClass();
+			aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
+			Class claseOperador = operador.getClass();
+			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=="+operador.getDni()));
+			aux.setNombreMuestra(muestra.getNombreMuestra());
+			aux.setPeso(muestra.getPeso());
+			aux.setProfundidadInicial(muestra.getProfundidadInicial());
+			aux.setProfundidadFinal(muestra.getProfundidadFinal());
+			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
 			persistencia.realizarRollback();
 			persistencia.cerrarPersistencia();
-		}
-		aux.setNombreMuestra(muestra.getNombreMuestra());
-		aux.setPeso(muestra.getPeso());
-		aux.setProfundidadInicial(muestra.getProfundidadInicial());
-		aux.setProfundidadFinal(muestra.getProfundidadFinal());
-		persistencia.cerrarTransaccion();
+		}		
 	}
 
 	
