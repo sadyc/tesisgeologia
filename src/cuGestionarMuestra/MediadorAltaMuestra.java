@@ -88,8 +88,8 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 		if (this.GUIMuestra.getJButtonSeleccionarOperador()== source) {
 			try {
 				System.out.println("Boton Seleccionar Operador");
-				MediadorSeleccionarOperador media = new MediadorSeleccionarOperador();
-				//this.GUIMuestra.setUbicacion((String)media.getSeleccionado()[0]);
+				MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
+				this.GUIMuestra.setOperador((String)seleccionarOperador.getSeleccionado()[0]);
 				
 			} catch (Exception e) {
 				e.printStackTrace();

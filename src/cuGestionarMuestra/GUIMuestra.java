@@ -258,6 +258,21 @@ public class GUIMuestra extends JDialog {
 	public Object getJButtonSeleccionarOperador() {
 		return seleccionarOperador;
 	}
+	/**
+	 * @return the operador
+	 */
+	public JLabel getOperador() {
+		return operador;
+	}
+
+	/**
+	 * @param operador the operador to set
+	 */
+	public void setOperador(String operador) {
+		this.operador.setText(operador);
+	}
+
+	
 	
 }
 
