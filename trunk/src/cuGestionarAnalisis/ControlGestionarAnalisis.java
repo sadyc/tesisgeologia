@@ -49,11 +49,12 @@ public class ControlGestionarAnalisis {
 	/**
 	 * Retorna todos los elementos persistentes de la clase pasada como parametro.
 	 */
-	public Collection coleccionAnalisis(Class clase) throws Exception {
+	public Collection coleccionAnalisisDeMuestra(Class clase,String nombreMuestra) throws Exception {
 		Collection<Object> aux = null; 
 		Persistencia persistencia = new Persistencia();
 		try {
-			aux = (persistencia.buscarColeccion(clase));
+			String filtro = "nombreMuestra=="+nombreMuestra;
+			aux = (persistencia.buscarColeccionFiltro(clase, filtro));
 			persistencia.cerrarTransaccion();
 			System.out.println("analisis coleccionados");
 		} catch (Exception e) {
@@ -61,6 +62,8 @@ public class ControlGestionarAnalisis {
 		}
 		return aux;
 	}
+	
+	
 	
 	
 }

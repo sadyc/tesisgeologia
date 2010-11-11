@@ -33,10 +33,10 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	 * This is the default constructor
 	 * @throws Exception 
 	 */
-	public MediadorGestionarAnalisis(String titulo) throws Exception {
+	public MediadorGestionarAnalisis(String titulo,String nombreMuestra) throws Exception {
 		super();
-		cargarTablaDeAnalisis();
-		this.gestionarAnalisis = new GUIGestionarAnalisis();
+		cargarTablaDeAnalisis(nombreMuestra);
+		this.gestionarAnalisis = new GUIGestionarAnalisis(titulo,data);
 		gestionarAnalisis.setTitle(titulo);
 		//gestionarAnalisis.setModal(true);
 		this.gestionarAnalisis.setListenerButtons(this);
@@ -46,12 +46,13 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	/**
 	 * Levanta informacion almacenada en la 
 	 * base de datos al atributo data de la clase mediador.
+	 * @param nombreMuestra 
 	 */
-	public void cargarTablaDeAnalisis()throws Exception{
-		ControlGestionarMuestra control = new ControlGestionarMuestra();
+	public void cargarTablaDeAnalisis(String nombreMuestra)throws Exception{
+		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Muestra muestra = new Muestra();
 		Class clase = muestra.getClass();
-		Collection muestras = control.coleccionMuestras(clase);
+		Collection muestras = control.coleccionAnalisisDeMuestra(clase, nombreMuestra);
 		Iterator<Muestra> it = muestras.iterator();
 		int i = 0;
 		while (it.hasNext()){
