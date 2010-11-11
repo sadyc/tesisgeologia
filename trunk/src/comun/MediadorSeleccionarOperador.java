@@ -126,12 +126,13 @@ public class MediadorSeleccionarOperador implements ActionListener,MouseListener
 
 	public void mouseReleased(MouseEvent arg0) {
 	}
-	
 	/**
-	 * @returns data 
-	*/
-	
+	 * @return the seleccionado
+	 */
+	public Object[] getSeleccionado() {
+		return seleccionado;
+	}
 
-	public void itemStateChanged(ItemEvent e) {
+		public void itemStateChanged(ItemEvent e) {
 	}
 }
