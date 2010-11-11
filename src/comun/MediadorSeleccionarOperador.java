@@ -29,15 +29,14 @@ import cuGestionarMuestra.MediadorModificarMuestra;
 public class MediadorSeleccionarOperador implements ActionListener,MouseListener,ItemListener {
 
 	private GUISeleccionarOperador GUISeleccionarOperador = null;
-	private Object [] seleccionado = new Object [4];
-	private Object [][] data = new Object [20] [4];
+	private Object [] seleccionado = new Object [5];
+	private Object [][] data = new Object [20] [5];
 	private Component frame;
 	
 	
 	public MediadorSeleccionarOperador() throws Exception {
 		super();
 		cargarTablaDeOperador();
-		Object [][] data = new Object [4] [5];
 		this.GUISeleccionarOperador = new GUISeleccionarOperador(data);
 		GUISeleccionarOperador.setTitle("Seleccionar un Operador");
 		GUISeleccionarOperador.setModal(true);
@@ -84,8 +83,6 @@ public class MediadorSeleccionarOperador implements ActionListener,MouseListener
 			}
 			else{
 				seleccionado = GUISeleccionarOperador.getTablePanel().getRow(GUISeleccionarOperador.getTablePanel().getSelectedRow());//
-				//Muestra mu = new Muestra((fila[0]),Integer.parseInt(fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),op,usuario,ubicacion,clasificacion);
-				//muestra = new Muestra (fila[0],Integer.parseInt()[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0]);
 				System.out.println("Button Seleccionar Operador");
 	   			GUISeleccionarOperador.dispose();	   		
 			}
