@@ -4,7 +4,6 @@
 package persistencia;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
@@ -81,13 +80,12 @@ public class Persistencia {
 		Object aux = new Object();
 		try {
 			Extent e=pmi.getExtent(clase,true);
-			System.out.println("encontre objeto1  "+filtro);
 			Query q = pmi.newQuery(e,filtro);
-			System.out.println("encontre objeto2");
+			q.setUnique (true);
 			aux = q.execute();
-			System.out.println("encontre objeto3");
-			
+			System.out.println("Objeto encontrado");
 		} catch (Exception e) {
+			System.out.println("Error en buscar objeto");
 			e.printStackTrace();
 			realizarRollback();
 		}

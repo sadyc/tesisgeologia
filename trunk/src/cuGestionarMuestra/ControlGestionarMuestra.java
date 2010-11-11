@@ -31,19 +31,13 @@ public class ControlGestionarMuestra {
 		persistencia.abrirTransaccion();
 		try {
 			Class claseUbicacion = ubicacion.getClass();
-			System.out.println("Fatal error en ControlGestionarMuestra1 "+ubicacion.getNombreUbicacion());
-			Ubicacion ubicacion2 = new Ubicacion();
-			ubicacion2 = (Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'");
-			mu.setUbicacion(ubicacion2);
-			System.out.println("Fatal error en ControlGestionarMuestra2"+ operador.getDni());
+			mu.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
 			Class claseOperador = operador.getClass();
 			mu.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=="+operador.getDni()));
-			System.out.println("Fatal error en ControlGestionarMuestra3");
 			persistencia.insertarObjeto(mu);
-			System.out.println("Fatal error en ControlGestionarMuestra4");
 			persistencia.cerrarTransaccion();
 		} catch (Exception e) {
-			System.out.println("Fatal error en ControlGestionarMuestra5");
+			System.out.println("Fatal error en ControlGestionarMuestra insertar");
 			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
