@@ -25,8 +25,11 @@
                 <column jdbc-type="FLOAT"/>
         </field>
         <field name="operador" persistence-modifier="persistent">
-                <column name="OPERADOR_ID"/>
+                <column name= "DNI_OPERADOR"/>
         </field>
+         <field name="usuario" persistence-modifier="persistent">
+                <column name= "USUARIO"/>
+         </field>
         <field name="ubicacion" persistence-modifier="persistent">
                 <column name="NOMBRE_UBICACION"/>
         </field>
@@ -56,12 +59,21 @@
  </class>
        
 
- <class name="OperadorDeLaboratorio" extends="Persona" identity-type="application">
+ <class name="persistencia.domain.OperadorDeLaboratorio" extends="persistencia.domain.Persona" identity-type="application">
 	<field name="muestras" persistence-modifier="persistent" mapped-by="operador">
 		<collection element_type="persistencia.domain.Muestra"/>
 	</field>
  </class>
- 
+
+  <class name="persistencia.domain.Usuario" extends="persistencia.domain.Persona" identity-type="application">
+ 	 <field name="nombreUsuario" persistence-modifier="persistent">
+                 <column length="30" jdbc-type="CHAR"/>
+         </field>
+         <field name="password" persistence-modifier="persistent">
+                 <column length="30" jdbc-type="CHAR"/>
+         </field>
+ </class>
+
  <class name="persistencia.domain.Ubicacion" identity-type="application">
               <inheritance strategy="new-table"/>
          <field name="nombreUbicacion" primary-key="true" persistence-modifier="persistent">
