@@ -77,13 +77,18 @@ public class Persistencia {
 	 * Busca un elemento generico. Retorna lo encontrado.
 	 *
 	 */
-	public Object buscarObjeto (Class clase,int id) throws Exception{
+	public Object buscarObjeto (Class clase, String filtro) throws Exception{
 		Object aux = new Object();
 		try {
 			Extent e=pmi.getExtent(clase,true);
-			Query q = pmi.newQuery(e,"id=="+id);
+			System.out.println("encontre objeto1  "+filtro);
+			Query q = pmi.newQuery(e,filtro);
+			System.out.println("encontre objeto2");
 			aux = q.execute();
+			System.out.println("encontre objeto3");
+			
 		} catch (Exception e) {
+			e.printStackTrace();
 			realizarRollback();
 		}
 		return aux;

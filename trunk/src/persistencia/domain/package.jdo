@@ -24,13 +24,13 @@
         <field name="coeficienteUniformidad" persistence-modifier="persistent">
                 <column jdbc-type="FLOAT"/>
         </field>
-        <field name="operador">
+        <field name="operador" persistence-modifier="persistent">
                 <column name="OPERADOR_ID"/>
         </field>
-        <field name="ubicacion">
-                <column name="NOMBRE_UBICACION" mapped-by="persistencia.domain.Ubicacion"/>
+        <field name="ubicacion" persistence-modifier="persistent">
+                <column name="NOMBRE_UBICACION"/>
         </field>
-        <field name="clasificacion">
+        <field name="clasificacion" persistence-modifier="persistent">
                 <column name="CLASIFICACION"/>
         </field>
       </class>
