@@ -71,7 +71,7 @@ public class GUIPrincipal extends JFrame {
 	 */
 	private  void initialize() {
 		
-		this.setSize(500,500);
+		this.setSize(700,500);
 		this.getContentPane().setLayout(new BorderLayout());
 	 	this.setJMenuBar(this.getMenu());	
 	 	this.getContentPane().add(this.getPanelCentro(),BorderLayout.CENTER);
