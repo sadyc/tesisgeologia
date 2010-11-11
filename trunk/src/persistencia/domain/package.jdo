@@ -87,6 +87,10 @@
         <field name="longitud" persistence-modifier="persistent">
                  <column length="30" jdbc-type="CHAR"/>
         </field>
+	   <field name="muestras" persistence-modifier="persistent" mapped-by="operador">
+		<collection element_type="persistencia.domain.Muestra"/>
+	</field>
+
 
  </class>
  
@@ -96,21 +100,25 @@
             <field
                   name="porcentajePasante"
                   persistence-modifier="persistent"/>
+<column jdbc-type="integer"/>
             <field
                   name="porcentajeRetenidoParcial"
                   persistence-modifier="persistent"/>
+<column jdbc-type="integer"/>
             <field
                   name="porcentajeRetenidoAcumulado"
                   persistence-modifier="persistent"/>
+<column jdbc-type="integer"/>
             <field
                   name="pesoRetenido"
                   persistence-modifier="persistent"/>
+<column jdbc-type="integer"/>
             <field
-                  name="muestra"
-                  persistence-modifier="persistent"/>
+                  name="muestra" persistence-modifier="persistent">
+                <column name="MUESTRA"/>
             <field
-                  name="tamiz"
-                  persistence-modifier="persistent"/>
+                  name="tamiz" persistence-modifier="persistent">
+                <column name="TAMIZ"/>
         </class>
     </package>
   </jdo>
