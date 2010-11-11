@@ -241,6 +241,7 @@ public class GUIMuestra extends JDialog {
 	public void setListenerButtons(ActionListener lis){
 		this.aceptar.addActionListener(lis);
 		this.cancelar.addActionListener(lis);
+		this.seleccionarOperador.addActionListener(lis);
 		this.seleccionarUbicacion.addActionListener(lis);
 	}
 	
@@ -252,6 +253,10 @@ public class GUIMuestra extends JDialog {
 		data[2]= profundidadInicial.getText();
 		data[3]= profundidadFinal.getText();
 		return data;
+	}
+
+	public Object getJButtonSeleccionarOperador() {
+		return seleccionarOperador;
 	}
 	
 }
