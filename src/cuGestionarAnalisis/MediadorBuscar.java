@@ -18,7 +18,7 @@ import persistencia.domain.Analisis;
 public class MediadorBuscar  implements ActionListener,MouseListener,ItemListener  {
 	
 	private GUIBuscar guiBuscar;
-	private MediadorAnalisis mediadorAnalisis;
+	private MediadorAltaAnalisis mediadorAnalisis;
 	private String data;
 	
 	/**
@@ -66,7 +66,7 @@ public class MediadorBuscar  implements ActionListener,MouseListener,ItemListene
     	if (this.guiBuscar.getJButtonAceptar() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAceptar");
 			guiBuscar.dispose();
-			mediadorAnalisis = new MediadorAnalisis(); // ACA CREO LA VENTANA CON LOS DATOS CARGADOS PARA MODIFICAR
+			mediadorAnalisis = new MediadorAltaAnalisis(); // ACA CREO LA VENTANA CON LOS DATOS CARGADOS PARA MODIFICAR
 		}
     	
 		if (this.guiBuscar.getJButtonCancelar() == source){

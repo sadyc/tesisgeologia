@@ -14,6 +14,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
+import comun.TablePanel;
+
 /**
 * @author TesisGeología
 *
@@ -36,14 +38,42 @@ public class GUIGestionarAnalisis extends JFrame {
 	private JMenuItem buscarMenu;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
+	private TablePanel tablePanel;
+	private Object [][] data;
 	
 	
-	
-
-
-
 	public GUIGestionarAnalisis() throws Exception {
 		super();
+		if (this.menu==null) {
+			menu = new JMenuBar();
+			herramientas = new JMenu("Herramientas");
+			ayuda = new JMenu("Ayuda");
+			menu.add(herramientas);
+			menu.add(ayuda);
+			buscarMenu = new JMenuItem("Buscar");
+			agregarMenu = new JMenuItem("Agregar Analisis");
+			modificarMenu = new JMenuItem("Modificar Analisis");
+			eliminarMenu = new JMenuItem("Eliminar Analisis");
+			salirMenu = new JMenuItem("Salir");
+			herramientas.add(agregarMenu);
+			herramientas.add(modificarMenu);
+			herramientas.add(eliminarMenu);
+			herramientas.add(buscarMenu);
+			herramientas.add(new JSeparator()); // Una rayita separadora.
+			herramientas.add(salirMenu);
+			versionMenu = new JMenuItem("Version");
+			ayuda.add(versionMenu);
+			jButtonAgregarAnalisis = new JButton("AGREGAR ANALISIS");
+			jButtonEliminarAnalisis = new JButton("ELIMINAR ANALISIS");
+			jButtonModificarAnalisis  = new JButton("MODIFICAR ANALISIS");
+			jButtonSalir  = new JButton("SALIR");
+		}
+		initialize();
+	}
+	
+	public GUIGestionarAnalisis(String title, Object [][] datos) throws Exception {
+		super(title);
+		data = datos.clone();
 		if (this.menu==null) {
 			menu = new JMenuBar();
 			herramientas = new JMenu("Herramientas");
@@ -81,28 +111,19 @@ public class GUIGestionarAnalisis extends JFrame {
 		
 		this.setSize(500,400);
 		this.getContentPane().setLayout(new BorderLayout());
-	 	this.setJMenuBar(this.getMenu());	
-	 	this.getContentPane().add(this.getPanelCentro(),BorderLayout.CENTER);
+	 	this.setJMenuBar(this.getMenu());
+	 	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	}
 
 	
-	public JPanel getPanelCentro() {
-		if (this.panelCentro==null) {
-			this.panelCentro= new JPanel();
-			this.panelCentro.setLayout(new GridBagLayout());
-			this.panelCentro.add(getJButtonAgregarAnalisis());
-			this.panelCentro.add(getJButtonModificarAnalisis());
-			this.panelCentro.add(getJButtonEliminarAnalisis());;
-		}
-		return this.panelCentro;
-	}
-	
-
 	public JPanel getPanelSur() {
 		if (this.panelSur==null) {
 			this.panelSur = new JPanel();
-			this.panelSur.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			this.panelSur.setLayout(new FlowLayout());
+			this.panelSur.add(getJButtonAgregarAnalisis());
+			this.panelSur.add(getJButtonModificarAnalisis());
+			this.panelSur.add(getJButtonEliminarAnalisis());;
 			this.panelSur.add(getJButtonCerrar());
 		}
 		return this.panelSur;
@@ -159,6 +180,26 @@ public class GUIGestionarAnalisis extends JFrame {
 		this.jButtonModificarAnalisis.addActionListener(lis);
 		this.jButtonEliminarAnalisis.addActionListener(lis);
         this.jButtonSalir.addActionListener(lis);
+	}
+	/** 
+     *@return data  
+     * */
+	public static String[] getColumName(){
+		String[] columnName = {"Tamiz N°","Peso Retenido","Peso Acumulado","Porcentaje Pasante","Porcentaje Retenido","Porcentaje Acumulado"};
+		return columnName;
+	}
+	
+	/**
+	 * Metodo que retorna la tabla panel.
+	 *
+	 * @return TablePanel
+	 */
+	public TablePanel getTablePanel() {
+		if (this.tablePanel==null) {
+			this.tablePanel = new TablePanel();
+	 		this.tablePanel.setData(data, getColumName());			
+		}
+		return this.tablePanel;
 	}
 
 }

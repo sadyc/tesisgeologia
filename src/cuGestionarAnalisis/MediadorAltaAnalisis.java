@@ -17,7 +17,7 @@ import persistencia.domain.Analisis;
  * en este caso: ActionListener,MouseListener,ItemListener.
  */
 
-public class MediadorAnalisis  implements ActionListener,MouseListener,ItemListener  {
+public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemListener  {
 	
 	private GUIAnalisis guiAnalisis;
 	private String data;
@@ -26,7 +26,7 @@ public class MediadorAnalisis  implements ActionListener,MouseListener,ItemListe
 	/**
 	 * This is the default constructor
 	 */
-	public MediadorAnalisis() {
+	public MediadorAltaAnalisis() {
 		super();
 		this.guiAnalisis = new GUIAnalisis();
 		guiAnalisis.setTitle("Analisis por Tamiz de una Muestra");
