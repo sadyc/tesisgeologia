@@ -6,7 +6,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
-import cuLogin.MediadorLogin;
+import cuGestionarMuestra.MediadorGestionarMuestra;
 
 
  /**
@@ -44,11 +44,11 @@ public class Main {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
        // InsertarUbicaciones insertUbicaciones = new InsertarUbicaciones();
-       // insertUbicaciones.cargarUbicaciones();
-		MediadorLogin login = new MediadorLogin("Login");
-		login.show();
+        //insertUbicaciones.cargarUbicaciones();
+		//MediadorLogin login = new MediadorLogin("Login");
+		//login.show();
         //MediadorPrincipal pantallaPrincipal = new MediadorPrincipal("Pantalla Principal");
-        //MediadorGestionarMuestra gestionarMu = new MediadorGestionarMuestra("gestionar muestra");
+        MediadorGestionarMuestra gestionarMu = new MediadorGestionarMuestra("gestionar muestra");
 	}
 }
 

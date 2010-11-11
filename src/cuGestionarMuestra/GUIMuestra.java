@@ -45,7 +45,6 @@ public class GUIMuestra extends JDialog {
 		usuario = new JLabel ("Usuario : Jose Alberto Snaider.");
 		operador = new JLabel ("Operador : Juan Gomez de la Quebrada");
 		aceptar = new JButton("AGREGAR");
-		aceptar.disable();
 		cancelar = new JButton("CANCELAR");
 		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
 		seleccionarOperador = new JButton("SELECCIONAR OPERADOR");
@@ -71,7 +70,6 @@ public class GUIMuestra extends JDialog {
 		usuario = new JLabel ("Usuario : Jose Alberto Snaider.");
 		operador = new JLabel ("Operador : Juan Gomez de la Quebrada");
 		aceptar = new JButton("AGREGAR");
-		aceptar.disable();
 		cancelar = new JButton("CANCELAR");
 		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
 		seleccionarOperador = new JButton("SELECCIONAR OPERADOR");

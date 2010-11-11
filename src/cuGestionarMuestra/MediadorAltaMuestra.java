@@ -33,12 +33,14 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 	private String[] data = new String [10];
 	private Muestra muestra ;
 	private Ubicacion ubicacion;
+	private OperadorDeLaboratorio operador;
 	private Component frame;
 
 	public MediadorAltaMuestra(String nombreVentana) throws Exception {
 		super();
 		muestra = new Muestra();
 		this.ubicacion = new Ubicacion();
+		this.operador= new OperadorDeLaboratorio();
 		this.GUIMuestra = new GUIMuestra();
 		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
@@ -91,7 +93,7 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 			try {
 				MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
 				this.GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
-				
+				this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -101,8 +103,7 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 			try {
 				MediadorSeleccionarUbicacion mediadorSelUbic = new MediadorSeleccionarUbicacion();
 				this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
-				this.ubicacion = new Ubicacion((String)mediadorSelUbic.getSeleccionado()[0],Ubicacion.Provincia.valueOf((String)mediadorSelUbic.getSeleccionado()[1]),(String)mediadorSelUbic.getSeleccionado()[2],(String)mediadorSelUbic.getSeleccionado()[3]);
-				//muestra.setUbicacion(ubicacion);
+				this.ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -110,11 +111,11 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 		}
 		if (this.GUIMuestra.getJButtonAceptar() == source) {
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");
-			OperadorDeLaboratorio op = new OperadorDeLaboratorio("nombre","apellido","dni","4665458","asd@gmail.com");
+			//OperadorDeLaboratorio op = new OperadorDeLaboratorio("nombre","apellido","dni","4665458","asd@gmail.com");
        		Usuario usuario = new Usuario();
      		Clasificacion clasificacion = new Clasificacion();
      		Date fecha = new Date(11,22,1980);
-     		if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("")  ){
+     		if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("") ){
 				JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
@@ -129,10 +130,10 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
                 data[7]=  "clasificacion"; // muestra.getClasificacion
                 data[8]= "nombre usuario"; // usuario.getNombre
                 data[9]=  "operador ID"; // operador.getId
-                muestra = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),op,usuario,this.ubicacion,clasificacion,fecha);
+                muestra = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,this.ubicacion,clasificacion,fecha);
                 
 				try {
-					control.insertarMuestra(muestra);
+					control.insertarMuestra(muestra, ubicacion, operador);
 				} catch (Exception e) {
 					System.out.println("No inserta muestra Mediador Alta Muestra");
 					e.printStackTrace();
@@ -140,12 +141,7 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 				GUIMuestra.dispose();
 			}
      	}
-		if (!this.GUIMuestra.getUbicacion().equals("")){
-			System.out.println("habilito el boton aceptar");
-			JButton aceptar = (this.GUIMuestra.getJButtonAceptar());
-			aceptar.enable();
-			this.GUIMuestra.setJButtonAceptar(aceptar);
-		}
+			
 		if (this.GUIMuestra.getJButtonCancelar() == source){
 			GUIMuestra.dispose();
 		}

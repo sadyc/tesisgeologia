@@ -8,6 +8,8 @@ import java.util.Iterator;
 
 import persistencia.Persistencia;
 import persistencia.domain.Muestra;
+import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.Ubicacion;
 
 /**
  * @author tesisGeologia
@@ -24,14 +26,25 @@ public class ControlGestionarMuestra {
 	/**
 	 * Inserta una muestra con persistencia. 
 	 */ 
-	public void insertarMuestra(Muestra mu) throws Exception{
+	public void insertarMuestra(Muestra mu, Ubicacion ubicacion, OperadorDeLaboratorio operador) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
+			Class claseUbicacion = ubicacion.getClass();
+			System.out.println("Fatal error en ControlGestionarMuestra1 "+ubicacion.getNombreUbicacion());
+			Ubicacion ubicacion2 = new Ubicacion();
+			ubicacion2 = (Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'");
+			mu.setUbicacion(ubicacion2);
+			System.out.println("Fatal error en ControlGestionarMuestra2"+ operador.getDni());
+			Class claseOperador = operador.getClass();
+			mu.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=="+operador.getDni()));
+			System.out.println("Fatal error en ControlGestionarMuestra3");
 			persistencia.insertarObjeto(mu);
+			System.out.println("Fatal error en ControlGestionarMuestra4");
 			persistencia.cerrarTransaccion();
 		} catch (Exception e) {
-			System.out.println("Fatal error en ControlGestionarMuestra");
+			System.out.println("Fatal error en ControlGestionarMuestra5");
+			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
 	}
