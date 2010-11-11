@@ -35,16 +35,16 @@
         </field>
       </class>
 
-<class name="Persona" identity-type="datastore">
+<class name="Persona" identity-type="application">
 	<inheritance strategy="subclass-table"/>
+		   <field name="dni" primary-key="true" persistence-modifier="persistent">
+                  <column length="15" jdbc-type="CHAR"/>
+           </field>
            <field name="nombre" persistence-modifier="persistent"> 
                  <column length="30" jdbc-type="CHAR"/>
            </field>
            <field name="apellido" persistence-modifier="persistent">
                   <column length="30" jdbc-type="CHAR"/>
-           </field>
-           <field name="dni" persistence-modifier="persistent">
-                  <column length="15" jdbc-type="CHAR"/>
            </field>
            <field name="tel" persistence-modifier="persistent">
                   <column length="20" jdbc-type="CHAR"/>
@@ -56,7 +56,7 @@
  </class>
        
 
- <class name="OperadorDeLaboratorio" extends="Persona" identity-type="datastore">
+ <class name="OperadorDeLaboratorio" extends="Persona" identity-type="application">
 	<field name="muestras" persistence-modifier="persistent" mapped-by="operador">
 		<collection element_type="persistencia.domain.Muestra"/>
 	</field>
