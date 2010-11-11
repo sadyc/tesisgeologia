@@ -109,7 +109,7 @@ public class GUIGestionarAnalisis extends JFrame {
 	 */
 	private  void initialize() {
 		
-		this.setSize(500,400);
+		this.setSize(700,400);
 		this.getContentPane().setLayout(new BorderLayout());
 	 	this.setJMenuBar(this.getMenu());
 	 	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
@@ -185,7 +185,7 @@ public class GUIGestionarAnalisis extends JFrame {
      *@return data  
      * */
 	public static String[] getColumName(){
-		String[] columnName = {"Tamiz N°","Peso Retenido","Peso Acumulado","Porcentaje Pasante","Porcentaje Retenido","Porcentaje Acumulado"};
+		String[] columnName = {"Tamiz N°","Peso Retenido","Porcentaje Pasante","Porcentaje Retenido","Porcentaje Acumulado"};
 		return columnName;
 	}
 	

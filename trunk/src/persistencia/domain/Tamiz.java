@@ -20,6 +20,14 @@ public class Tamiz {
 	protected Collection<Analisis> analisisTamiz = new HashSet();
 	
 	/**
+	 * Constructor por defecto
+	 */
+	public Tamiz(){
+		numeroTamiz = null;
+		aberturaMalla = null;
+	}
+	
+	/**
 	 * Constructor con parametros
 	 */
 	public Tamiz(Integer numeroTamiz, Integer aberturaDeMalla, Collection<Analisis> analisisTamiz) {

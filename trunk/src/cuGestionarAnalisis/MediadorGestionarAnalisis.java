@@ -27,7 +27,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	private GUIGestionarAnalisis gestionarAnalisis;
 	private MediadorSeleccionarMuestra mediadorSeleccionar;
 	private MediadorBuscar mediadorBuscar;
-	private Object [][] data = new Object [4] [6];
+	private Object [][] data = new Object [20] [5];
 	
 	/**
 	 * This is the default constructor
@@ -35,7 +35,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	 */
 	public MediadorGestionarAnalisis(String titulo,String nombreMuestra) throws Exception {
 		super();
-		cargarTablaDeAnalisis(nombreMuestra);
+		//cargarTablaDeAnalisis(nombreMuestra);
 		this.gestionarAnalisis = new GUIGestionarAnalisis(titulo,data);
 		gestionarAnalisis.setTitle(titulo);
 		//gestionarAnalisis.setModal(true);
