@@ -31,6 +31,7 @@ public class ControlGestionarMuestra {
 			persistencia.insertarObjeto(mu);
 			persistencia.cerrarTransaccion();
 		} catch (Exception e) {
+			System.out.println("Fatal error en ControlGestionarMuestra");
 			persistencia.realizarRollback();
 		}
 	}

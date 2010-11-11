@@ -41,10 +41,11 @@ public class GUIMuestra extends JDialog {
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
-		ubicacion = new JLabel("Ubicacion : Salsipuedes");
+		ubicacion = new JLabel("");
 		usuario = new JLabel ("Usuario : Jose Alberto Snaider.");
 		operador = new JLabel ("Operador : Juan Gomez de la Quebrada");
 		aceptar = new JButton("AGREGAR");
+		aceptar.disable();
 		cancelar = new JButton("CANCELAR");
 		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
 		seleccionarOperador = new JButton("SELECCIONAR OPERADOR");
@@ -66,10 +67,11 @@ public class GUIMuestra extends JDialog {
 		peso.setText(data[2].toString());
 		profundidadInicial.setText(data[3].toString());
 		profundidadFinal.setText(data[4].toString());
-		ubicacion = new JLabel("Ubicacion : Salsipuedes");
+		ubicacion = new JLabel("");
 		usuario = new JLabel ("Usuario : Jose Alberto Snaider.");
 		operador = new JLabel ("Operador : Juan Gomez de la Quebrada");
 		aceptar = new JButton("AGREGAR");
+		aceptar.disable();
 		cancelar = new JButton("CANCELAR");
 		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
 		seleccionarOperador = new JButton("SELECCIONAR OPERADOR");

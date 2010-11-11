@@ -12,6 +12,8 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
+import comun.GUISeleccionarUbicacion;
+
 import persistencia.domain.Ubicacion;
 
 public class MediadorSeleccionarUbicacion implements ActionListener,MouseListener,ItemListener {

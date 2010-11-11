@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Date;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Clasificacion;
@@ -30,15 +31,17 @@ import comun.MediadorSeleccionarOperador;
 public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemListener{
 	private GUIMuestra GUIMuestra;
 	private String[] data = new String [10];
+	private Muestra muestra ;
+	private Ubicacion ubicacion;
 	private Component frame;
 
 	public MediadorAltaMuestra(String nombreVentana) throws Exception {
 		super();
+		muestra = new Muestra();
+		this.ubicacion = new Ubicacion();
 		this.GUIMuestra = new GUIMuestra();
 		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
-		// se configura como escuchador de los evenetos de la ventana 
-		// al el mismo (mediador)
 		this.GUIMuestra.setListenerButtons(this);
 		GUIMuestra.show();
 	}
@@ -98,9 +101,10 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 		}
 		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
 			try {
-				MediadorSeleccionarUbicacion media = new MediadorSeleccionarUbicacion();
-				this.GUIMuestra.setUbicacion((String)media.getSeleccionado()[0]);
-				
+				MediadorSeleccionarUbicacion mediadorSelUbic = new MediadorSeleccionarUbicacion();
+				this.GUIMuestra.setUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
+				this.ubicacion = new Ubicacion((String)mediadorSelUbic.getSeleccionado()[0],Ubicacion.Provincia.valueOf((String)mediadorSelUbic.getSeleccionado()[1]),(String)mediadorSelUbic.getSeleccionado()[2],(String)mediadorSelUbic.getSeleccionado()[3]);
+				//muestra.setUbicacion(ubicacion);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -108,10 +112,8 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 		}
 		if (this.GUIMuestra.getJButtonAceptar() == source) {
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");
-			Muestra muestra= new Muestra();
 			OperadorDeLaboratorio op = new OperadorDeLaboratorio("nombre","apellido","dni","4665458","asd@gmail.com");
-     		Ubicacion ubicacion = new Ubicacion("nombre Muestra",Ubicacion.Provincia.Cordoba,"latitud","longitud"); 
-     		Usuario usuario = new Usuario();
+       		Usuario usuario = new Usuario();
      		Clasificacion clasificacion = new Clasificacion();
      		Date fecha = new Date(11,22,1980);
      		if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("")  ){
@@ -124,14 +126,15 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 				data[2]= GUIMuestra.getPeso().getText();
 				data[3]= GUIMuestra.getProfundidadInicial().getText();
 				data[4]= GUIMuestra.getProfundidadFinal().getText();
-				data[5]= ubicacion.getLatitud();
-                data[6]= ubicacion.getLongitud();
+				data[5]= this.ubicacion.getLatitud();
+                data[6]= this.ubicacion.getLongitud();
                 data[7]=  "clasificacion"; // muestra.getClasificacion
                 data[8]= "nombre usuario"; // usuario.getNombre
                 data[9]=  "operador ID"; // operador.getId
-                Muestra mu = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),op,usuario,ubicacion,clasificacion,fecha);
+                muestra = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),op,usuario,this.ubicacion,clasificacion,fecha);
+                
 				try {
-					control.insertarMuestra(mu);
+					control.insertarMuestra(muestra);
 				} catch (Exception e) {
 					System.out.println("No inserta muestra Mediador Alta Muestra");
 					e.printStackTrace();
@@ -139,6 +142,12 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 				GUIMuestra.dispose();
 			}
      	}
+		if (!this.GUIMuestra.getUbicacion().equals("")){
+			System.out.println("habilito el boton aceptar");
+			JButton aceptar = (this.GUIMuestra.getJButtonAceptar());
+			aceptar.enable();
+			this.GUIMuestra.setJButtonAceptar(aceptar);
+		}
 		if (this.GUIMuestra.getJButtonCancelar() == source){
 			GUIMuestra.dispose();
 		}

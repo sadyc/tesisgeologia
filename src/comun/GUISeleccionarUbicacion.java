@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cuGestionarMuestra;
+package comun;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -16,7 +16,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
-import comun.TablePanel;
 
 /**
  * @author NAVE
@@ -137,7 +136,7 @@ public class GUISeleccionarUbicacion extends JDialog	{
      *@return data  
      * */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre","Latitud","Longitud","Provincia"};
+		String[] columnName = {"Nombre","Provincia","Latitud","Longitud"};
 		return columnName;
 	}
 

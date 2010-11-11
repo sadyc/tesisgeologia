@@ -7,11 +7,9 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -58,9 +56,7 @@ public class GUIClasificacion extends JDialog{
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
 	public GUIClasificacion(Muestra muestra) {
-	
 		super();
-		
 		this.muestra = new JTextField(15);
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
@@ -157,18 +153,15 @@ public class GUIClasificacion extends JDialog{
 	public JPanel getPanelNorte() {
 		if (this.panelNorte==null) {
 			this.panelNorte= new JPanel();
-			// Se pone el FlowLayout en el Panel Norte
 			this.panelNorte.setLayout(new BoxLayout(this.panelNorte,BoxLayout.Y_AXIS));
 			profundidadInicial.setAlignmentX(Component.CENTER_ALIGNMENT);
 			profundidadFinal.setAlignmentX(Component.CENTER_ALIGNMENT);
 			peso.setAlignmentX(Component.CENTER_ALIGNMENT);
-			// Se aaden los componentes al panel Norte
 			this.panelNorte.add(new JLabel("Ubicacion : Rio Cuarto"));
 			this.panelNorte.add(new JLabel("Peso : 3253 gr"));
 			this.panelNorte.add(new JLabel("Profundidad Inicial: 2 mts"));
 			this.panelNorte.add(new JLabel("Profundidad Final: 3 mts"));
 			this.panelNorte.add(new JLabel("Humedad: 40%"));
-			
 		}
 		return this.panelNorte;
 	}	
