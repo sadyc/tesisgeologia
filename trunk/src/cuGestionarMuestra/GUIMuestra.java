@@ -272,9 +272,6 @@ public class GUIMuestra extends JDialog {
 	 */
 	public void setOperador(String operador) {
 		this.operador.setText(operador);
-	}
-
-	
-	
+	}	
 }
 

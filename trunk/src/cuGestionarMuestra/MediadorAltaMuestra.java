@@ -87,12 +87,10 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
-		System.out.println("Boton Seleccionar Operador");
 		if (this.GUIMuestra.getJButtonSeleccionarOperador()== source) {
 			try {
-				System.out.println("Boton Seleccionar Operador");
 				MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
-				this.GUIMuestra.setOperador((String)seleccionarOperador.getSeleccionado()[0]);
+				this.GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -102,7 +100,7 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
 			try {
 				MediadorSeleccionarUbicacion mediadorSelUbic = new MediadorSeleccionarUbicacion();
-				this.GUIMuestra.setUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
+				this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
 				this.ubicacion = new Ubicacion((String)mediadorSelUbic.getSeleccionado()[0],Ubicacion.Provincia.valueOf((String)mediadorSelUbic.getSeleccionado()[1]),(String)mediadorSelUbic.getSeleccionado()[2],(String)mediadorSelUbic.getSeleccionado()[3]);
 				//muestra.setUbicacion(ubicacion);
 			} catch (Exception e) {
