@@ -18,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import comun.TablePanel;
+
 import persistencia.domain.Muestra;
 
 /**
@@ -39,6 +41,7 @@ public class GUIAnalisis extends JDialog {
 	private JPanel panelSur;
 	private JTextField pesoRetenido;
 	private JLabel muestra;
+	
 
 
 	/**
@@ -195,7 +198,8 @@ public class GUIAnalisis extends JDialog {
 		this.aceptar.addActionListener(lis);
 		this.salir.addActionListener(lis);
 		this.seleccionarTamiz.addActionListener(lis);
-	}	
+	}
+	
 	
 }
 

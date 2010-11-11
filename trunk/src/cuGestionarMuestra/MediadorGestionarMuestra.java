@@ -28,7 +28,7 @@ import persistencia.domain.Usuario;
  */
 public class MediadorGestionarMuestra implements ActionListener,MouseListener,ItemListener{
 
-	private GUIABMMuestra GUIABMMuestra = null;
+	private GUIABMMuestra GUIABMMuestra;
 	private Object [][] data = new Object [4] [6];
 	private Component frame;
 	
