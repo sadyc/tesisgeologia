@@ -92,6 +92,25 @@ public class Persistencia {
 		return aux;
 	}
 	
+	/**
+	 * Busca un elemento generico. Retorna lo encontrado.
+	 *
+	 */
+	public Collection buscarColeccionFiltro(Class clase, String filtro) throws Exception{
+		Collection<Object> aux = null;
+		try {
+			Extent e=pmi.getExtent(clase,true);
+			Query q = pmi.newQuery(e,filtro);
+			aux = (Collection)q.execute();
+			System.out.println("Coleccion encontrada y cargada");
+		} catch (Exception e) {
+			System.out.println("Error en buscar objeto");
+			e.printStackTrace();
+			realizarRollback();
+		}
+		return aux;
+	}
+	
 	public Collection buscarColeccion (Class clase)throws Exception{
 		Collection<Object> aux = null; 
 		try {
