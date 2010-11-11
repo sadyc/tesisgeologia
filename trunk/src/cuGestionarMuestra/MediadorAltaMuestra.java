@@ -20,6 +20,8 @@ import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
 
+import comun.MediadorSeleccionarOperador;
+
 /**
  * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana Muestra
  * @author TesisGeologia
@@ -82,6 +84,18 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
+		System.out.println("Boton Seleccionar Operador");
+		if (this.GUIMuestra.getJButtonSeleccionarOperador()== source) {
+			try {
+				System.out.println("Boton Seleccionar Operador");
+				MediadorSeleccionarOperador media = new MediadorSeleccionarOperador();
+				//this.GUIMuestra.setUbicacion((String)media.getSeleccionado()[0]);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
 		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
 			try {
 				MediadorSeleccionarUbicacion media = new MediadorSeleccionarUbicacion();
