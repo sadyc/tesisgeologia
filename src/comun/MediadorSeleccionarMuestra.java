@@ -67,20 +67,11 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		Muestra muestra= new Muestra();
-		OperadorDeLaboratorio op = new OperadorDeLaboratorio("asd","asd","12","4665458","asd@gmail.com");
- 		Ubicacion ubicacion = new Ubicacion();
- 		Usuario usuario = new Usuario();
- 		Clasificacion clasificacion = new Clasificacion();
-		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		if (this.GUISeleccionarMuestra.getJButtonSeleccionar() == source){
 			if (GUISeleccionarMuestra.getTablePanel().getSelectedRow() == -1){
 				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				//seleccionado = GUISeleccionarMuestra.getTablePanel().getRow(GUISeleccionarMuestra.getTablePanel().getSelectedRow());//
-				//Muestra mu = new Muestra((fila[0]),Integer.parseInt(fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),op,usuario,ubicacion,clasificacion);
-				//muestra = new Muestra (fila[0],Integer.parseInt()[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0],fila[0]);
 				System.out.println("Button Seleccionar Muestra");
 	   			GUISeleccionarMuestra.dispose();	   		
 			}
@@ -88,7 +79,7 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 		if (this.GUISeleccionarMuestra.getJButtonBuscar() == source){
 	   		try {
 	   			System.out.println("Button Buscar Muestra");
-				MediadorBuscar analisis = new MediadorBuscar();	
+				MediadorBuscar analisis = new MediadorBuscar();	// HACE LA BUSQUEDA!
 				
 	   		} catch (Exception e) {
 				e.printStackTrace();

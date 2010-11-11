@@ -9,10 +9,8 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,6 +19,7 @@ import javax.swing.JTextField;
 import comun.TablePanel;
 
 import persistencia.domain.Muestra;
+import persistencia.domain.Tamiz;
 
 /**
  * @author TesisGeologia
@@ -41,7 +40,8 @@ public class GUIAnalisis extends JDialog {
 	private JPanel panelSur;
 	private JTextField pesoRetenido;
 	private JLabel muestra;
-	
+	private JLabel tamiz;
+
 
 
 	/**
@@ -50,9 +50,10 @@ public class GUIAnalisis extends JDialog {
 	public GUIAnalisis() {
 		super();
 		pesoRetenido = new JTextField(15);
-		muestra = new JLabel("muestra tanto...");
+		muestra = new JLabel("Muestra: ");
+		tamiz = new JLabel("Tamiz: ");
 		aceptar = new JButton("AGREGAR ANALISIS");
-		salir = new JButton("SALILR");
+		salir = new JButton("SALIR");
 		seleccionarTamiz = new JButton("SELECCIONAR TAMIZ");
 		initialize();
 	}
@@ -61,13 +62,14 @@ public class GUIAnalisis extends JDialog {
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una pesoRetenido. 
 	 */
-	public GUIAnalisis(String data, Muestra muestra) {
+	public GUIAnalisis(String data, Muestra muestra, Tamiz tamiz) {
 		super();
 		pesoRetenido = new JTextField(15);
-		this.muestra = new JLabel("muestra: "+muestra.getNombreMuestra());
+		this.muestra = new JLabel("Muestra: "+muestra.getNombreMuestra());
+		this.tamiz = new JLabel("Tamiz: " + tamiz.getNumeroTamiz());
 		this.pesoRetenido.setText(data);
 		aceptar = new JButton("AGREGAR ANALISIS");
-		salir = new JButton("SALILR");
+		salir = new JButton("SALIR");
 		seleccionarTamiz = new JButton("SELECCIONAR TAMIZ");
 		initialize();
 	}
@@ -124,6 +126,20 @@ public class GUIAnalisis extends JDialog {
 
 
 	/**
+	 * @return the tamiz
+	 */
+	public JLabel getTamiz() {
+		return tamiz;
+	}
+
+	/**
+	 * @param tamiz the tamiz to set
+	 */
+	public void setTamiz(String tamiz) {
+		this.tamiz.setText(tamiz);
+	}
+
+	/**
 	 * Metodo que inicializa la interfaz.
 	 *
 	 * @return void
@@ -147,9 +163,9 @@ public class GUIAnalisis extends JDialog {
 	public JPanel getPanelNorte() {
 		if (this.panelNorte==null) {
 			this.panelNorte= new JPanel();
-			this.panelNorte.setLayout(new FlowLayout(FlowLayout.CENTER));
-			this.muestra.setAlignmentY(Component.CENTER_ALIGNMENT);
+			this.panelNorte.setLayout(new FlowLayout(FlowLayout.LEFT));
 			this.panelNorte.add(muestra);
+			this.panelNorte.add(tamiz);
 		}
 		return this.panelNorte;
 	}	

@@ -19,7 +19,7 @@ public class CargaDatos {
 	}
 	
 	/**
-	 * Inserta una muestra con persistencia. 
+	 * Inserta una ubicacion con persistencia. 
 	 */ 
 	public void insertarUbicacion(Ubicacion ubicacion) throws Exception{
 		Persistencia persistencia = new Persistencia();
@@ -33,7 +33,7 @@ public class CargaDatos {
 	}
 	
 	/**
-	 * Inserta una muestra con persistencia. 
+	 * Inserta un operador con persistencia. 
 	 */ 
 	public void insertarOperador(OperadorDeLaboratorio operador) throws Exception{
 		Persistencia persistencia = new Persistencia();
@@ -49,7 +49,7 @@ public class CargaDatos {
 	/**
 	 * Carga una serie de ubicaciones para facilitar el testing.
 	 */
-	public void cargarUbicaciones (){
+	public void cargar (){
 		Ubicacion ubicacion1 = new Ubicacion("El Impenetrable",Ubicacion.Provincia.Chaco,"11°11'11\"","11°11'11\"");
 		Ubicacion ubicacion2 = new Ubicacion("Rio Cuarto",Ubicacion.Provincia.Cordoba,"22°22'22\"","22°22'22\"");
 		Ubicacion ubicacion3 = new Ubicacion("Ushuaia",Ubicacion.Provincia.TierraDelFuego,"33°33'33\"","33°33'33\"");
@@ -60,9 +60,13 @@ public class CargaDatos {
 			insertarUbicacion(ubicacion1);
 			insertarUbicacion(ubicacion2);
 			insertarUbicacion(ubicacion3);
+			System.out.println("Carga operadores");
 			insertarOperador(operador1);
-			insertarOperador(operador2);
-			insertarOperador(operador3);
+			System.out.println("Inserto a Messi");
+			//insertarOperador(operador3);
+			//System.out.println("Inserto a Pastore");
+			//insertarOperador(operador2);
+			//System.out.println("Inserto a Mi");
 		} catch (Exception e) {
 			System.out.println("No se pudieron insertar las ubicaciones de muestra");
 			e.printStackTrace();

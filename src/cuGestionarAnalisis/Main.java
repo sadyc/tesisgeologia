@@ -1,7 +1,5 @@
 package cuGestionarAnalisis;
 
-import comun.MediadorPrincipal;
-import comun.MediadorSeleccionarMuestra;
 
 public class Main {
 
@@ -9,8 +7,9 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		MediadorSeleccionarMuestra hola;
+		
 		try {
+			MediadorGestionarAnalisis hola = new MediadorGestionarAnalisis("probandoo", "soplala");
 			Object [][] a = null;
 			//MediadorGestionarAnalisis holaa = new MediadorGestionarAnalisis("Gestionar Analisis");
 			

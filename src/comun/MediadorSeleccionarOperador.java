@@ -50,7 +50,7 @@ public class MediadorSeleccionarOperador implements ActionListener,MouseListener
 	 * base de datos al atributo data de la clase mediador.
 	 */
 	public void cargarTablaDeOperador()throws Exception{
-		ControlGestionarMuestra control = new ControlGestionarMuestra();
+		ControlGestionarMuestra control = new ControlGestionarMuestra();   ////////////   DICE MUESTERAAAAAAAAA!!!!!
 		OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
 		Class clase = operador.getClass();
 		Collection operadores = control.coleccionMuestras(clase);
