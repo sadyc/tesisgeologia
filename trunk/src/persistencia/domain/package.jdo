@@ -4,9 +4,9 @@
     "http://java.sun.com/dtd/jdo_2_0.dtd">
 <jdo>
     <package name="persistencia.domain">
-      <class name="persistencia.domain.Muestra" identity-type="datastore">
+      <class name="persistencia.domain.Muestra" identity-type="application">
               <inheritance strategy="new-table"/>
-		<field name="nombreMuestra" persistence-modifier="persistent">
+		<field name="nombreMuestra" primary-key="true" persistence-modifier="persistent">
                   <column length="30" jdbc-type="CHAR"/>
  		</field>
         <field name="profundidadInicial" persistence-modifier="persistent">
@@ -38,12 +38,12 @@
         </field>
       </class>
 
-<class name="Persona" identity-type="application">
+<class name="persistencia.domain.Persona" identity-type="application">
 	<inheritance strategy="subclass-table"/>
 		   <field name="dni" primary-key="true" persistence-modifier="persistent">
                   <column length="15" jdbc-type="CHAR"/>
            </field>
-           <field name="nombre" persistence-modifier="persistent"> 
+           <field name="nombre" persistence-modifier="persistent">
                  <column length="30" jdbc-type="CHAR"/>
            </field>
            <field name="apellido" persistence-modifier="persistent">
@@ -57,7 +57,7 @@
            </field>
 
  </class>
-       
+
 
  <class name="persistencia.domain.OperadorDeLaboratorio" extends="persistencia.domain.Persona" identity-type="application">
 	<field name="muestras" persistence-modifier="persistent" mapped-by="operador">
@@ -89,6 +89,28 @@
         </field>
 
  </class>
-   </package>
-
-</jdo>
+ 
+ <package name="persistencia.domain">
+        <class
+              name="Analisis">
+            <field
+                  name="porcentajePasante"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="porcentajeRetenidoParcial"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="porcentajeRetenidoAcumulado"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="pesoRetenido"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="muestra"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="tamiz"
+                  persistence-modifier="persistent"/>
+        </class>
+    </package>
+  </jdo>

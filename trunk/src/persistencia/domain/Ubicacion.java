@@ -2,6 +2,9 @@ package persistencia.domain;
 
 
 
+import java.util.Collection;
+import java.util.HashSet;
+
 import javax.jdo.annotations.PersistenceCapable;
 
 @PersistenceCapable
@@ -13,6 +16,8 @@ public class Ubicacion {
 	private String latitud;
 	private String longitud;
 	private Provincia prov;
+	
+	private Collection muestras = new HashSet();
 	
 	
 	public Ubicacion(){

@@ -3,7 +3,9 @@
  */
 package persistencia.domain;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 import javax.jdo.annotations.PersistenceCapable;
 
@@ -26,7 +28,8 @@ public class Muestra {
 	protected Usuario usuario;
 	protected Ubicacion ubicacion;
 	protected Clasificacion clasificacion;
-
+	
+	protected Collection analisis= new HashSet();
 	/**
 	 * Default contructors
 	 */
