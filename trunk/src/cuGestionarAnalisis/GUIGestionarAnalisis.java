@@ -39,7 +39,7 @@ public class GUIGestionarAnalisis extends JFrame {
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
 	private TablePanel tablePanel;
-	private Object [][] data;
+	private Object [][] data= new Object [10] [4];
 	
 	
 	public GUIGestionarAnalisis() throws Exception {

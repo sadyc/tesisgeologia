@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
+import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
 
 import comun.MediadorSeleccionarMuestra;
@@ -25,9 +26,10 @@ import cuGestionarMuestra.ControlGestionarMuestra;
 public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,ItemListener  {
 	
 	private GUIGestionarAnalisis gestionarAnalisis;
-	private MediadorSeleccionarMuestra mediadorSeleccionar;
+	private String nombreMuestra;
+	private MediadorSeleccionarMuestra mediadorMuestra;
 	private MediadorBuscar mediadorBuscar;
-	private Object [][] data = new Object [20] [5];
+	private Object [][] data = new Object [20] [4];
 	
 	/**
 	 * This is the default constructor
@@ -35,6 +37,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	 */
 	public MediadorGestionarAnalisis(String titulo,String nombreMuestra) throws Exception {
 		super();
+		this.nombreMuestra = nombreMuestra;
 		//cargarTablaDeAnalisis(nombreMuestra);
 		this.gestionarAnalisis = new GUIGestionarAnalisis(titulo,data);
 		gestionarAnalisis.setTitle(titulo);
@@ -50,19 +53,17 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	 */
 	public void cargarTablaDeAnalisis(String nombreMuestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
-		Muestra muestra = new Muestra();
-		Class clase = muestra.getClass();
+		Analisis analisis = new Analisis();
+		Class clase = analisis.getClass();
 		Collection muestras = control.coleccionAnalisisDeMuestra(clase, nombreMuestra);
-		Iterator<Muestra> it = muestras.iterator();
+		Iterator<Analisis> it = muestras.iterator();
 		int i = 0;
 		while (it.hasNext()){
-			muestra = it.next();
-			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
-			data [i][1]= muestra.getNombreMuestra();
-		    data [i][2]= muestra.getPeso();		        
-		    data [i][3]= muestra.getProfundidadInicial();
-		    data [i][4]= muestra.getProfundidadFinal();
-		    data [i][5]= muestra.getOperador().getDni();
+			analisis = it.next();
+			data [i][0]= analisis.getPesoRetenido();
+			data [i][1]= analisis.getPorcentajePasante();
+		    data [i][2]= analisis.getPorcentajeRetenidoAcumulado();		        
+		    data [i][3]= analisis.getPorcentajeRetenidoParcial();
 		    i++;
 		}
 	}
@@ -87,7 +88,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 		Object source = arg0.getSource();
      	if (this.gestionarAnalisis.getJButtonAgregarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
-			MediadorAltaAnalisis analisis = new MediadorAltaAnalisis();
+			MediadorAltaAnalisis analisis = new MediadorAltaAnalisis(nombreMuestra);
 		}
 		if (this.gestionarAnalisis.getJButtonModificarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");

@@ -21,20 +21,16 @@ import comun.TablePanel;
 import persistencia.domain.Muestra;
 import persistencia.domain.Tamiz;
 
+
 /**
  * @author TesisGeologia
  *
  * Clase que define la interfaz para manipular un Analisis
  */
-public class GUIAnalisis extends JDialog {
+public class GUIModificarAnalisis extends JDialog {
 
-	/**
-	 * @param title
-	 * @throws java.awt.HeadlessException
-	 */
 	private JButton aceptar;
 	private JButton salir;
-	private JButton seleccionarTamiz;
 	private JPanel panelNorte;
 	private JPanel panelCentro;
 	private JPanel panelSur;
@@ -46,15 +42,16 @@ public class GUIAnalisis extends JDialog {
 
 	/**
 	 * This is the default constructor
+	 * @param pesoRetenido 
 	 */
-	public GUIAnalisis() {
+	public GUIModificarAnalisis(Integer pesoRetenido) {
 		super();
-		pesoRetenido = new JTextField(15);
+		this.pesoRetenido = new JTextField(15);
+		this.pesoRetenido.setText(pesoRetenido.toString());
 		muestra = new JLabel("Muestra: ");
 		tamiz = new JLabel("Tamiz: ");
 		aceptar = new JButton("AGREGAR ANALISIS");
 		salir = new JButton("SALIR");
-		seleccionarTamiz = new JButton("SELECCIONAR TAMIZ");
 		initialize();
 	}
 	
@@ -62,15 +59,14 @@ public class GUIAnalisis extends JDialog {
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una pesoRetenido. 
 	 */
-	public GUIAnalisis(String data, Muestra muestra, Tamiz tamiz) {
+	public GUIModificarAnalisis(String pesoRetenido, Muestra muestra, Tamiz tamiz) {
 		super();
-		pesoRetenido = new JTextField(15);
+		this.pesoRetenido = new JTextField(15);
 		this.muestra = new JLabel("Muestra: "+muestra.getNombreMuestra());
 		this.tamiz = new JLabel("Tamiz: " + tamiz.getNumeroTamiz());
-		this.pesoRetenido.setText(data);
+		this.pesoRetenido.setText(pesoRetenido);
 		aceptar = new JButton("AGREGAR ANALISIS");
 		salir = new JButton("SALIR");
-		seleccionarTamiz = new JButton("SELECCIONAR TAMIZ");
 		initialize();
 	}
 	
@@ -110,21 +106,7 @@ public class GUIAnalisis extends JDialog {
 		this.salir = salir;
 	}
 	
-	/**
-	 * @return the seleccionarTamiz
-	 */
-	public JButton getJButtonSeleccionarTamiz() {
-		return seleccionarTamiz;
-	}
-
-	/**
-	 * @param seleccionarTamiz the seleccionarTamiz to set
-	 */
-	public void setSeleccionarTamiz(JButton seleccionarTamiz) {
-		this.seleccionarTamiz = seleccionarTamiz;
-	}
-
-
+	
 	/**
 	 * @return the tamiz
 	 */
@@ -199,7 +181,6 @@ public class GUIAnalisis extends JDialog {
 			this.panelSur = new JPanel();
 			this.panelSur.setLayout(new FlowLayout());
 			this.panelSur.add(aceptar);
-			this.panelSur.add(seleccionarTamiz);
 			this.panelSur.add(salir);
 		}
 		return this.panelSur;
@@ -213,9 +194,7 @@ public class GUIAnalisis extends JDialog {
 	public void setListenerButtons(ActionListener lis){
 		this.aceptar.addActionListener(lis);
 		this.salir.addActionListener(lis);
-		this.seleccionarTamiz.addActionListener(lis);
 	}
 	
 	
 }
-

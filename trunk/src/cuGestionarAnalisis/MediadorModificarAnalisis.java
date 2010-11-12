@@ -18,9 +18,9 @@ import comun.MediadorSeleccionarTamiz;
  * en este caso: ActionListener,MouseListener,ItemListener.
  */
 
-public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemListener  {
+public class MediadorModificarAnalisis  implements ActionListener,MouseListener,ItemListener  {
 	
-	private GUIAltaAnalisis GUIAnalisis;
+	private GUIModificarAnalisis GUIAnalisis;
 	private String pesoRetenido;
 	private Analisis analisis;
 	private String numeroTamiz;
@@ -29,12 +29,14 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 	/**
 	 * This is the default constructor
 	 */
-	public MediadorAltaAnalisis(String nombreMuestra) {
+	public MediadorModificarAnalisis(String nombreMuestra,Integer pesoRetenido) {
 		super();
+		
 		analisis = new Analisis();
+		
 		this.nombreMuestra = nombreMuestra;
-		this.GUIAnalisis = new GUIAltaAnalisis();
-		GUIAnalisis.setTitle("Analisis por Tamiz de una Muestra");
+		this.GUIAnalisis = new GUIModificarAnalisis(pesoRetenido);
+		GUIAnalisis.setTitle("Modificar el peso retenido del tamizado de una Muestra");
 		GUIAnalisis.setModal(true);
 		this.GUIAnalisis.setListenerButtons(this);
 		show();
@@ -55,7 +57,7 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 	/**
 	 * @return the altaMuestra
 	 */
-	public GUIAltaAnalisis getAnalisis() {
+	public GUIModificarAnalisis getAnalisis() {
 		return GUIAnalisis;
 	}	
 	
@@ -67,8 +69,8 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 		Object source = arg0.getSource();
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
      	if (this.GUIAnalisis.getJButtonAceptar() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
-			pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
+			//System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
+			//pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
 			//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
 			try {
 				control.insertarAnalisis(analisis, nombreMuestra, numeroTamiz);
@@ -80,16 +82,6 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 		if (this.GUIAnalisis.getJButtonSalir() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			GUIAnalisis.dispose();
-		}
-		if (this.GUIAnalisis.getJButtonSeleccionarTamiz() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonSeleccionarTamiz");
-			try {
-				MediadorSeleccionarTamiz seleccionarTamiz = new MediadorSeleccionarTamiz();
-				this.GUIAnalisis.setTamiz("Tamiz : "+seleccionarTamiz.getSeleccionado());
-				this.numeroTamiz = seleccionarTamiz.getSeleccionado();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}
 	}
 
