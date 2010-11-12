@@ -11,7 +11,7 @@ import javax.jdo.annotations.PersistenceCapable;
 
   
 /**
- * Implementacion de la clase que define un operador de laboratorio
+ * Implementacion de la clase que define un operadorLaboratorio de laboratorio
  * @author TesisGeologia
  * @version 1.0  24/09/2010
  */
@@ -29,25 +29,25 @@ public class OperadorDeLaboratorio extends Persona {
 	
 	/**
 	 * Constructor with parameters
-	 * @param nombre, nombre del operador de laboratorio creado.
-	 * @param apellido, apellido del operador de laboratorio creado.
-	 * @param dni, DNI del operador de laboratorio creado.
+	 * @param nombre, nombre del operadorLaboratorio de laboratorio creado.
+	 * @param apellido, apellido del operadorLaboratorio de laboratorio creado.
+	 * @param dni, DNI del operadorLaboratorio de laboratorio creado.
 	 */
 	public OperadorDeLaboratorio(String nombre, String apellido, String dni, String tel, String email) {
 		super(nombre, apellido, dni, tel, email);
 	}
 	
 	/**
-	 * Metodo que permite agregar una muestra al operador de laboratorio
-	 * @param muestra, muestra a ser agregada al operador de laboratorio.
+	 * Metodo que permite agregar una muestra al operadorLaboratorio de laboratorio
+	 * @param muestra, muestra a ser agregada al operadorLaboratorio de laboratorio.
 	 */
 	public void addMuestra (Muestra muestra){
 		this.muestras.add(muestra);
 	}
 	
 	/**
-	 * Metodo que permite quitar una muestra al operador de laboratorio
-	 * @param muestra, muestra a ser eliminada al operador de laboratorio.
+	 * Metodo que permite quitar una muestra al operadorLaboratorio de laboratorio
+	 * @param muestra, muestra a ser eliminada al operadorLaboratorio de laboratorio.
 	 */
 	public void removeMuesra (Muestra muestra){
 		muestras.remove(muestra);
@@ -55,16 +55,16 @@ public class OperadorDeLaboratorio extends Persona {
 	
 
 	/**
-	 * Metodo que me retorna las muestras tomadas por el operador de laboratorio.
-	 * @return muestras, coleccion de muestras tomadas por el operador de laboratorio.
+	 * Metodo que me retorna las muestras tomadas por el operadorLaboratorio de laboratorio.
+	 * @return muestras, coleccion de muestras tomadas por el operadorLaboratorio de laboratorio.
 	 */
 	public Collection<Muestra> getMuestras(){
 		return (muestras);
 	}
 
 	/**
-	 * Metodo que me retorna la cantidad de muestras tomadas por el operador de laboratorio.
-	 * @return la cantidad de muestras tomadas por el operador de laboratorio.
+	 * Metodo que me retorna la cantidad de muestras tomadas por el operadorLaboratorio de laboratorio.
+	 * @return la cantidad de muestras tomadas por el operadorLaboratorio de laboratorio.
 	 */
 	public int getCantidadMuestras(){
 		return (muestras.size());

@@ -24,6 +24,12 @@ public class Usuario extends Persona{
 		super();
 		
 	}
+	public Usuario (String nombre, String apellido, String dni, String tel, String email,String nombreUsuario, String password){
+		super(nombre, apellido,dni,tel, email);
+		this.nombreUsuario = nombreUsuario;
+		this.password = password;
+		
+	}
 	/**
 	 * @return the nombreUsuario
 	 */
