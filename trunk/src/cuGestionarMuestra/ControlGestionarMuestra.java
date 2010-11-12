@@ -37,7 +37,7 @@ public class ControlGestionarMuestra {
 			mu.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=="+operador.getDni()));
 			persistencia.insertarObjeto(mu);
 			System.out.println("Fatal error en ControlGestionarMuestra insertar");
-			//persistencia.cerrarTransaccion();
+			persistencia.cerrarTransaccion(); // ACA SOLIA TENER ERROR.. POSIBLEMENTE COMENTAR!!
 		} catch (Exception e) {
 			System.out.println("Fatal error en ControlGestionarMuestra insertar");
 			e.printStackTrace();

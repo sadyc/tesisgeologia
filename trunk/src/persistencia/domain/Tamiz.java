@@ -30,10 +30,9 @@ public class Tamiz {
 	/**
 	 * Constructor con parametros
 	 */
-	public Tamiz(Integer numeroTamiz, Integer aberturaDeMalla, Collection<Analisis> analisisTamiz) {
+	public Tamiz(Integer numeroTamiz, Integer aberturaDeMalla) {
 		this.numeroTamiz = numeroTamiz;
 		this.aberturaMalla = aberturaDeMalla;
-		this.analisisTamiz = analisisTamiz;
 	}
 	/**
 	 * @return the numeroTamiz
@@ -68,7 +67,7 @@ public class Tamiz {
 	/**
 	 * @param muestras the muestras to set
 	 */
-	public void setanalisisTamiz(Collection<Analisis> analisisTamiz) {
+	public void setAnalisisTamiz(Collection<Analisis> analisisTamiz) {
 		this.analisisTamiz = analisisTamiz;
 	}
 	
