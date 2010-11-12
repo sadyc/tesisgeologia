@@ -113,6 +113,7 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");
 			//OperadorDeLaboratorio op = new OperadorDeLaboratorio("nombre","apellido","dni","4665458","asd@gmail.com");
        		Usuario usuario = new Usuario();
+       		usuario.setDni("32323232");
      		Clasificacion clasificacion = new Clasificacion();
      		Date fecha = new Date(11,22,1980);
      		if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("") ){

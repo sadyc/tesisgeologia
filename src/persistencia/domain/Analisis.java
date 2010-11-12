@@ -12,12 +12,26 @@ import javax.jdo.annotations.PersistenceCapable;
  */
 @PersistenceCapable
 public class Analisis {
+	private Integer pesoRetenido;
 	private Integer porcentajePasante;
 	private Integer porcentajeRetenidoParcial;
 	private Integer porcentajeRetenidoAcumulado;   //  FALTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	private Integer pesoRetenido;
+	
 	protected Muestra muestra;
 	protected Tamiz tamiz;
+	
+	/**
+	 * Constructor por defecto
+	 */
+	public Analisis(){
+		pesoRetenido= null;
+		porcentajePasante= null;
+		porcentajeRetenidoParcial=null;
+		porcentajeRetenidoAcumulado=null;
+		muestra = new Muestra();
+		tamiz = new Tamiz();
+	}
+	
 	
 	/**
 	 * Constructor con parametros

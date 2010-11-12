@@ -6,7 +6,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
-import cuGestionarAnalisis.MediadorGestionarAnalisis;
+import comun.CargaDatos;
+import comun.MediadorPrincipal;
 
 
 
@@ -45,15 +46,13 @@ public class Main {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
 
-        //CargaDatos cargaDatos = new CargaDatos();
-        //cargaDatos.cargar();
-        //CargaDatos cargaDatos = new CargaDatos();
-        //cargaDatos.cargarUbicaciones();
-		//MediadorLogin login = new MediadorLogin("Login");
+        CargaDatos cargaDatos = new CargaDatos();
+        cargaDatos.cargar();
+        //MediadorLogin login = new MediadorLogin("Login");
 		//login.show();
         //MediadorPrincipal pantallaPrincipal = new MediadorPrincipal("Pantalla Principal");
         //MediadorGestionarMuestra gestionarMu = new MediadorGestionarMuestra("gestionar muestra");
-    	MediadorGestionarAnalisis hola = new MediadorGestionarAnalisis("probandoo", "soplala");
+    	//MediadorGestionarAnalisis hola = new MediadorGestionarAnalisis("probandoo", "soplala");
 
 	}
 }
