@@ -21,7 +21,8 @@ import cuGestionarMuestra.ControlGestionarMuestra;
 public class MediadorSeleccionarTamiz implements ActionListener,MouseListener,ItemListener {
 
 	private GUISeleccionarTamiz GUISeleccionarTamiz = null;
-	private Object [] seleccionado = new Object [5];
+	private String seleccionado = new String();
+	//private Object [] seleccionado = new Object [5];
 	private Object [][] data = new Object [20] [2];
 	private Component frame;
 	
@@ -71,7 +72,7 @@ public class MediadorSeleccionarTamiz implements ActionListener,MouseListener,It
 				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun Tamiz","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				seleccionado = GUISeleccionarTamiz.getTablePanel().getRow(GUISeleccionarTamiz.getTablePanel().getSelectedRow());//
+				seleccionado = (String)GUISeleccionarTamiz.getTablePanel().getRow(GUISeleccionarTamiz.getTablePanel().getSelectedRow())[0];//
 				System.out.println("Button Seleccionar Tamiz");
 	   			GUISeleccionarTamiz.dispose();	   		
 			}
@@ -109,7 +110,7 @@ public class MediadorSeleccionarTamiz implements ActionListener,MouseListener,It
 	/**
 	 * @return the seleccionado
 	 */
-	public Object[] getSeleccionado() {
+	public String getSeleccionado() {
 		return seleccionado;
 	}
 

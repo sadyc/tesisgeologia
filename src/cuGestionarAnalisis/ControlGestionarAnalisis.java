@@ -1,8 +1,13 @@
 package cuGestionarAnalisis;
 
 import java.util.Collection;
+
 import persistencia.Persistencia;
 import persistencia.domain.Analisis;
+import persistencia.domain.Muestra;
+import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.Tamiz;
+import persistencia.domain.Ubicacion;
 
 /**
  * @author tesisGeologia
@@ -19,10 +24,17 @@ public class ControlGestionarAnalisis {
 	/**
 	 * Inserta un analisis con persistencia. 
 	 */ 
-	public void insertarAnalisis(Analisis analisis) throws Exception{
+	public void insertarAnalisis(Analisis analisis,String nombreMuestra, String numeroTamiz) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
+		Tamiz tamiz= new Tamiz();
+		Muestra muestra = new Muestra();
 		try {
+			Class claseMuestra= muestra.getClass();
+			analisis.setMuestra((Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'"));
+			Class claseTamiz = tamiz.getClass();
+			analisis.setTamiz((Tamiz)persistencia.buscarObjeto(claseTamiz, "numeroTamiz=="+numeroTamiz));
+			//analisis.setPesoRetenido(pesoRetenido);
 			persistencia.insertarObjeto(analisis);
 			persistencia.cerrarTransaccion();
 			System.out.println("Analisis insertado con persistencia");

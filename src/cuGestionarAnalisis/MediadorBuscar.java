@@ -66,7 +66,7 @@ public class MediadorBuscar  implements ActionListener,MouseListener,ItemListene
     	if (this.guiBuscar.getJButtonAceptar() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAceptar");
 			guiBuscar.dispose();
-			mediadorAnalisis = new MediadorAltaAnalisis(); // ACA CREO LA VENTANA CON LOS DATOS CARGADOS PARA MODIFICAR
+			mediadorAnalisis = new MediadorAltaAnalisis("nombreMuestra"); // ACA CREO LA VENTANA CON LOS DATOS CARGADOS PARA MODIFICAR
 		}
     	
 		if (this.guiBuscar.getJButtonCancelar() == source){
