@@ -69,7 +69,7 @@ public class MediadorModificarAnalisis  implements ActionListener,MouseListener,
 		Object source = arg0.getSource();
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
      	if (this.GUIAnalisis.getJButtonAceptar() == source){
-			//System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
+			System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");
 			//pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
 			//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
 			try {
@@ -108,5 +108,10 @@ public class MediadorModificarAnalisis  implements ActionListener,MouseListener,
 
 
 	public void mouseReleased(MouseEvent arg0) {
+	}
+
+
+	public String[] getData() {
+		return null;
 	}
 }
