@@ -1,5 +1,6 @@
 package cuGestionarAnalisis;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -8,6 +9,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
+
+import javax.swing.JOptionPane;
 
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
@@ -30,6 +33,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	private MediadorSeleccionarMuestra mediadorMuestra;
 	private MediadorBuscar mediadorBuscar;
 	private Object [][] data = new Object [20] [4];
+	private Component frame;
 	
 	/**
 	 * This is the default constructor
@@ -88,12 +92,18 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 		Object source = arg0.getSource();
      	if (this.gestionarAnalisis.getJButtonAgregarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
-			MediadorAltaAnalisis analisis = new MediadorAltaAnalisis(nombreMuestra);
+			MediadorAltaAnalisis altaAnalisis = new MediadorAltaAnalisis(nombreMuestra);
 		}
 		if (this.gestionarAnalisis.getJButtonModificarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");
-			
-			
+			if (gestionarAnalisis.getTablePanel().getSelectedRow() == -1){
+				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+			else{
+				String [] fila = gestionarAnalisis.getTablePanel().getRow(gestionarAnalisis.getTablePanel().getSelectedRow());
+				MediadorModificarAnalisis modificarAnalisis = new MediadorModificarAnalisis(nombreMuestra,Integer.parseInt(fila[1]));
+				this.gestionarAnalisis.getTablePanel().addRow(fila);
+			}
 		}
 		if (this.gestionarAnalisis.getJButtonEliminarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonEliminar");

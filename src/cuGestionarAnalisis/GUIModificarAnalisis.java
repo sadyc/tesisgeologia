@@ -50,7 +50,7 @@ public class GUIModificarAnalisis extends JDialog {
 		this.pesoRetenido.setText(pesoRetenido.toString());
 		muestra = new JLabel("Muestra: ");
 		tamiz = new JLabel("Tamiz: ");
-		aceptar = new JButton("AGREGAR ANALISIS");
+		aceptar = new JButton("MODIFICAR ANALISIS");
 		salir = new JButton("SALIR");
 		initialize();
 	}
