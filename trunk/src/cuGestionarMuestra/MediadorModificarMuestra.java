@@ -131,7 +131,7 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 	                data[6]= "latitud";
 	                data[7]=  "clasificacion"; // muestra.getClasificacion
 	                data[8]= "nombre usuario"; // usuario.getNombre
-	                data[9]=  "operador ID"; // operador.getId
+	                data[9]=  "operadorLaboratorio ID"; // operadorLaboratorio.getId
 					System.out.println("modifique campos456");
 					
 					control.ModificarMuestra(nombreMuestra, muestra,ubicacion,operador);

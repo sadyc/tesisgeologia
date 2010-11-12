@@ -24,7 +24,7 @@ public class Muestra {
 	private Integer peso;
 	private Date fecha;
 	private float coeficienteUniformidad;
-	protected OperadorDeLaboratorio operador ;
+	protected OperadorDeLaboratorio operadorLaboratorio ;
 	protected Usuario usuario;
 	protected Ubicacion ubicacion;
 	protected Clasificacion clasificacion;
@@ -38,7 +38,7 @@ public class Muestra {
 		profundidadInicial= -1;
 		profundidadFinal= -1;
 		peso= -1;
-		operador = new OperadorDeLaboratorio();
+		operadorLaboratorio = new OperadorDeLaboratorio();
 		usuario = new Usuario();
 		ubicacion = new Ubicacion();
 		clasificacion = new Clasificacion();
@@ -58,7 +58,7 @@ public class Muestra {
 		this.profundidadInicial = profundidadInicial;
 		this.profundidadFinal = profundidadFinal;
 		this.peso = peso;
-		this.operador = operador;
+		this.operadorLaboratorio = operador;
 		this.usuario = usuario;
 		this.ubicacion = ubicacion;
 		this.clasificacion = clasificacion;
@@ -130,24 +130,24 @@ public class Muestra {
 	}
 	
 	/**
-	 * @return the operador
+	 * @return the operadorLaboratorio
 	 */
 	public OperadorDeLaboratorio getOperador() {
-		return operador;
+		return operadorLaboratorio;
 	}
 
 	/**
-	 * Metodo que elimina el operador cargado
+	 * Metodo que elimina el operadorLaboratorio cargado
 	 */
 	public void removeOperador() {
-		operador=null;
+		operadorLaboratorio=null;
 	}
 	
 	/**
-	 * @param operador the operador to set
+	 * @param operadorLaboratorio the operadorLaboratorio to set
 	 */
 	public void setOperador(OperadorDeLaboratorio operador) {
-		this.operador = operador;
+		this.operadorLaboratorio = operador;
 	}
 
 	/**

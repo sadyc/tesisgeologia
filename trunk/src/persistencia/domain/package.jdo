@@ -24,17 +24,17 @@
         <field name="coeficienteUniformidad" persistence-modifier="persistent">
                 <column jdbc-type="FLOAT"/>
         </field>
-        <field name="operador" persistence-modifier="persistent">
-                <column name= "DNI_OPERADOR"/>
-        </field>
-         <field name="usuario" persistence-modifier="persistent">
-                <column name= "USUARIO"/>
-         </field>
-        <field name="ubicacion" persistence-modifier="persistent">
-                <column name="NOMBRE_UBICACION"/>
-        </field>
         <field name="clasificacion" persistence-modifier="persistent">
                 <column name="CLASIFICACION"/>
+        </field>
+        <field name="operadorLaboratorio" persistence-modifier="persistent">
+                 <column name="OPERADOR_LABORATORIO" element-type="persistencia.domain.OperadorDeLaboratorio"/>
+        </field>
+        <field name="usuario" persistence-modifier="persistent">
+                 <column name="USUARIO" element-type="persistencia.domain.Usuario"/>
+        </field>
+         <field name="ubicacion" persistence-modifier="persistent">
+                 <column name="UBICACION" element-type="persistencia.domain.Ubicacion"/>
         </field>
         <field name="analisis" persistence-modifier="persistent" mapped-by="muestra">
 		<collection element_type="persistencia.domain.Analisis"/>
@@ -44,7 +44,7 @@
 <class name="persistencia.domain.Persona" identity-type="application">
 	<inheritance strategy="subclass-table"/>
 		   <field name="dni" primary-key="true" persistence-modifier="persistent">
-                  <column length="15" jdbc-type="CHAR"/>
+                  <column length="30" jdbc-type="CHAR"/>
            </field>
            <field name="nombre" persistence-modifier="persistent">
                  <column length="30" jdbc-type="CHAR"/>
@@ -63,7 +63,7 @@
 
 
  <class name="persistencia.domain.OperadorDeLaboratorio" extends="persistencia.domain.Persona" identity-type="application">
-	<field name="muestras" persistence-modifier="persistent" mapped-by="operador">
+	<field name="muestras" persistence-modifier="persistent" mapped-by="operadorLaboratorio">
 		<collection element_type="persistencia.domain.Muestra"/>
 	</field>
  </class>
@@ -109,17 +109,31 @@
         <field name="porcentajeRetenidoParcial" persistence-modifier="persistent">
                  <column jdbc-type="integer"/>
         </field>
+        <field name="tamiz" persistence-modifier="persistent">
+                 <column name="TAMIZ" element-type="persistencia.domain.Tamiz"/>
+        </field>
+          <field name="muestra" persistence-modifier="persistent">
+                 <column name="MUESTRA" element-type="persistencia.domain.Muestra"/>
+        </field>
         <field name="porcentajeRetenidoAcumulado" persistence-modifier="persistent">
                  <column jdbc-type="integer"/>
         </field>
-         <field name="muestra" persistence-modifier="persistent">
-                <column name= "MUESTRA"/>
-         </field>
-        <field name="tamiz" persistence-modifier="persistent">
-                <column name="TAMIZ"/>
-         </field>
-      </class>
+   </class>
 
+
+
+     <class name="persistencia.domain.Tamiz" identity-type="application">
+              <inheritance strategy="new-table"/>
+		<field name="numeroTamiz" primary-key="true" persistence-modifier="persistent">
+                  <column jdbc-type="integer"/>
+ 		</field>
+        <field name="aberturaMalla" persistence-modifier="persistent">
+                 <column jdbc-type="integer"/>
+        </field>
+        <field name="analisisTamiz" persistence-modifier="persistent" mapped-by="tamiz">
+		<collection element_type="persistencia.domain.Analisis"/>
+	</field>
+     </class>
 
     </package>
   </jdo>
