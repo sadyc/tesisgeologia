@@ -29,7 +29,7 @@ public class Muestra {
 	protected Ubicacion ubicacion;
 	protected Clasificacion clasificacion;
 	
-	protected Collection analisis= new HashSet();
+	protected Collection<Analisis> analisis= new HashSet();
 	/**
 	 * Default contructors
 	 */

@@ -36,6 +36,9 @@
         <field name="clasificacion" persistence-modifier="persistent">
                 <column name="CLASIFICACION"/>
         </field>
+        <field name="analisis" persistence-modifier="persistent" mapped-by="muestra">
+		<collection element_type="persistencia.domain.Analisis"/>
+	</field>
       </class>
 
 <class name="persistencia.domain.Persona" identity-type="application">
@@ -66,6 +69,9 @@
  </class>
 
   <class name="persistencia.domain.Usuario" extends="persistencia.domain.Persona" identity-type="application">
+         <field name="muestras" persistence-modifier="persistent" mapped-by="usuario">
+		<collection element_type="persistencia.domain.Muestra"/>
+	</field>
  	 <field name="nombreUsuario" persistence-modifier="persistent">
                  <column length="30" jdbc-type="CHAR"/>
          </field>
@@ -87,38 +93,33 @@
         <field name="longitud" persistence-modifier="persistent">
                  <column length="30" jdbc-type="CHAR"/>
         </field>
-	   <field name="muestras" persistence-modifier="persistent" mapped-by="operador">
+	   <field name="muestras" persistence-modifier="persistent" mapped-by="ubicacion">
 		<collection element_type="persistencia.domain.Muestra"/>
 	</field>
-
-
  </class>
- 
- <package name="persistencia.domain">
-        <class
-              name="Analisis">
-            <field
-                  name="porcentajePasante"
-                  persistence-modifier="persistent"/>
-<column jdbc-type="integer"/>
-            <field
-                  name="porcentajeRetenidoParcial"
-                  persistence-modifier="persistent"/>
-<column jdbc-type="integer"/>
-            <field
-                  name="porcentajeRetenidoAcumulado"
-                  persistence-modifier="persistent"/>
-<column jdbc-type="integer"/>
-            <field
-                  name="pesoRetenido"
-                  persistence-modifier="persistent"/>
-<column jdbc-type="integer"/>
-            <field
-                  name="muestra" persistence-modifier="persistent">
-                <column name="MUESTRA"/>
-            <field
-                  name="tamiz" persistence-modifier="persistent">
+
+ <class name="persistencia.domain.Analisis" identity-type="application">
+              <inheritance strategy="new-table"/>
+		<field name="pesoRetenido" primary-key="true" persistence-modifier="persistent">
+                  <column jdbc-type="integer"/>
+ 		</field>
+        <field name="porcentajePasante" persistence-modifier="persistent">
+                 <column jdbc-type="integer"/>
+        </field>
+        <field name="porcentajeRetenidoParcial" persistence-modifier="persistent">
+                 <column jdbc-type="integer"/>
+        </field>
+        <field name="porcentajeRetenidoAcumulado" persistence-modifier="persistent">
+                 <column jdbc-type="integer"/>
+        </field>
+         <field name="muestra" persistence-modifier="persistent">
+                <column name= "MUESTRA"/>
+         </field>
+        <field name="tamiz" persistence-modifier="persistent">
                 <column name="TAMIZ"/>
-        </class>
+         </field>
+      </class>
+
+
     </package>
   </jdo>

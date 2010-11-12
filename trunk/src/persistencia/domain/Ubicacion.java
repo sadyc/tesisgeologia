@@ -17,7 +17,7 @@ public class Ubicacion {
 	private String longitud;
 	private Provincia prov;
 	
-	private Collection muestras = new HashSet();
+	private Collection<Muestra> muestras = new HashSet();
 	
 	
 	public Ubicacion(){

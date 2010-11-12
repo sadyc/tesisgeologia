@@ -28,14 +28,16 @@ public class ControlGestionarMuestra {
 	 */ 
 	public void insertarMuestra(Muestra mu, Ubicacion ubicacion, OperadorDeLaboratorio operador) throws Exception{
 		Persistencia persistencia = new Persistencia();
-		persistencia.abrirTransaccion();
+		
 		try {
+			persistencia.abrirTransaccion();
 			Class claseUbicacion = ubicacion.getClass();
 			mu.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
 			Class claseOperador = operador.getClass();
 			mu.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=="+operador.getDni()));
 			persistencia.insertarObjeto(mu);
-			persistencia.cerrarTransaccion();
+			System.out.println("Fatal error en ControlGestionarMuestra insertar");
+			//persistencia.cerrarTransaccion();
 		} catch (Exception e) {
 			System.out.println("Fatal error en ControlGestionarMuestra insertar");
 			e.printStackTrace();
@@ -72,11 +74,12 @@ public class ControlGestionarMuestra {
 	 * Retorna todos los elementos de la clase pasada como persistente.
 	 */
 	public Collection coleccionMuestras(Class clase) throws Exception {
-		Collection<Object> aux = null; 
+		Collection<Muestra> aux = null; 
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
 			aux = (persistencia.buscarColeccion(clase));
+			System.out.println("La coleccion ha sido cargada");
 			persistencia.cerrarTransaccion();
 			System.out.println("La coleccion ha sido cargada");
 		} catch (Exception e) {
@@ -95,7 +98,7 @@ public class ControlGestionarMuestra {
 			Class claseUbicacion = ubicacion.getClass();
 			aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
 			Class claseOperador = operador.getClass();
-			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=="+operador.getDni()));
+			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "DNI=='"+operador.getDni()+"'"));
 			aux.setNombreMuestra(muestra.getNombreMuestra());
 			aux.setPeso(muestra.getPeso());
 			aux.setProfundidadInicial(muestra.getProfundidadInicial());

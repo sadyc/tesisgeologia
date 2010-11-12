@@ -50,6 +50,7 @@ public class Persistencia {
         }
 		catch (Exception e){
 		    System.out.println("Exception insertar Objeto en Persistencia Generico");
+		    e.printStackTrace();
 		    realizarRollback();
 		}
         
@@ -120,6 +121,7 @@ public class Persistencia {
 			System.out.println("Coleccion cargada");
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			realizarRollback();
 		}
 		return aux;
