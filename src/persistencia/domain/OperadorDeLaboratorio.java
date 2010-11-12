@@ -58,7 +58,7 @@ public class OperadorDeLaboratorio extends Persona {
 	 * Metodo que me retorna las muestras tomadas por el operador de laboratorio.
 	 * @return muestras, coleccion de muestras tomadas por el operador de laboratorio.
 	 */
-	public Collection getMuestras(){
+	public Collection<Muestra> getMuestras(){
 		return (muestras);
 	}
 
