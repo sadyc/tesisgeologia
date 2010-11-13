@@ -6,8 +6,10 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
 import persistencia.domain.Analisis;
 import persistencia.domain.Tamiz;
+
 import comun.MediadorSeleccionarTamiz;
 
 
@@ -69,7 +71,7 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
      	if (this.GUIAnalisis.getJButtonAceptar() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 			pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
-			//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
+			analisis.setPesoRetenido(Integer.parseInt(pesoRetenido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
 			try {
 				control.insertarAnalisis(analisis, nombreMuestra, numeroTamiz);
 			} catch (Exception e) {
