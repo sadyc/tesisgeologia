@@ -10,13 +10,14 @@ import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
+import persistencia.domain.Tamiz;
 
 import comun.MediadorSeleccionarMuestra;
-import cuGestionarMuestra.ControlGestionarMuestra;
 
 
 
@@ -32,6 +33,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	private String nombreMuestra;
 	private MediadorSeleccionarMuestra mediadorMuestra;
 	private MediadorBuscar mediadorBuscar;
+	private Analisis analisis;
 	private Object [][] data = new Object [20] [4];
 	private Component frame;
 	
@@ -90,7 +92,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-     	if (this.gestionarAnalisis.getJButtonAgregarAnalisis() == source){
+		if (this.gestionarAnalisis.getJButtonAgregarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 			MediadorAltaAnalisis altaAnalisis = new MediadorAltaAnalisis(nombreMuestra);
 		}
@@ -107,7 +109,28 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 		}
 		if (this.gestionarAnalisis.getJButtonEliminarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonEliminar");
-			
+			if (gestionarAnalisis.getTablePanel().getSelectedRow() == -1){
+				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+			else{
+			    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+	            if(quitOption==JOptionPane.YES_OPTION){
+	            	ControlGestionarAnalisis control = new ControlGestionarAnalisis();
+	            	System.out.println(gestionarAnalisis.getTablePanel().getSelectedRow());
+	            	String [] fila = gestionarAnalisis.getTablePanel().getRow(gestionarAnalisis.getTablePanel().getSelectedRow());
+	            	gestionarAnalisis.getTablePanel().removeRow(gestionarAnalisis.getTablePanel().getSelectedRow());
+	            	Muestra muestra = new Muestra();
+	            	muestra.setNombreMuestra(nombreMuestra);
+	            	Tamiz tamiz = new Tamiz();
+	            	tamiz.setNumeroTamiz(Integer.parseInt(fila[0]));
+	              	analisis = new Analisis(Integer.parseInt(fila[1]),muestra,tamiz);
+	               	try {
+						control.eliminarAnalisis(analisis);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+	            }
+			}
 		}
 		if (this.gestionarAnalisis.getJButtonCerrar() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");

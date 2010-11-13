@@ -7,7 +7,8 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
 import comun.CargaDatos;
-import comun.MediadorPrincipal;
+
+import cuGestionarAnalisis.MediadorGestionarAnalisis;
 
 
 
@@ -42,7 +43,6 @@ public class Main {
         System.out.println("DataNucleus AccessPlatform with JDO");
         System.out.println("===================================");
 
-        // Persistence of a Product and a Book.
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx=pm.currentTransaction();
 
@@ -53,6 +53,7 @@ public class Main {
         //MediadorPrincipal pantallaPrincipal = new MediadorPrincipal("Pantalla Principal");
         //MediadorGestionarMuestra gestionarMu = new MediadorGestionarMuestra("gestionar muestra");
     	//MediadorGestionarAnalisis hola = new MediadorGestionarAnalisis("probandoo", "soplala");
+        
 
 	}
 }
