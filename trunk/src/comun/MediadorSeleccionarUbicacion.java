@@ -1,4 +1,4 @@
-package cuGestionarMuestra;
+package comun;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-import comun.GUISeleccionarUbicacion;
+import cuGestionarMuestra.ControlGestionarMuestra;
 
 import persistencia.domain.Ubicacion;
 
