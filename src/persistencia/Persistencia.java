@@ -4,6 +4,7 @@
 package persistencia;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
@@ -94,7 +95,7 @@ public class Persistencia {
 	}
 	
 	/**
-	 * Busca un elemento generico. Retorna lo encontrado.
+	 * Busca un elemento generico. Retorna coleccion encontrada.
 	 *
 	 */
 	public Collection buscarColeccionFiltro(Class clase, String filtro) throws Exception{
@@ -102,7 +103,28 @@ public class Persistencia {
 		try {
 			Extent e=pmi.getExtent(clase,true);
 			Query q = pmi.newQuery(e,filtro);
+			q.setOrdering("param1 ascending");
 			aux = (Collection)q.execute();
+			System.out.println("Coleccion encontrada y cargada");
+		} catch (Exception e) {
+			System.out.println("Error en buscar objeto");
+			e.printStackTrace();
+			realizarRollback();
+		}
+		return aux;
+	}
+	
+	/**
+	 * Busca un elemento generico. Retorna coleccion encontrada.
+	 *
+	 */
+	public List buscarListaFiltro(Class clase, String filtro) throws Exception{
+		List aux = null;
+		try {
+			Extent e=pmi.getExtent(clase,true);
+			Query q = pmi.newQuery(e,filtro);
+			q.setOrdering("porcentajeAcumulado ascending");
+			aux = (List)q.execute();
 			System.out.println("Coleccion encontrada y cargada");
 		} catch (Exception e) {
 			System.out.println("Error en buscar objeto");
