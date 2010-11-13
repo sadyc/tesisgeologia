@@ -77,6 +77,9 @@ public class Analisis {
 	 */
 	public void setPesoRetenido(Integer pesoRetenido) {
 		this.pesoRetenido = pesoRetenido;
+		calcularPorcentajeRetenidoParcial();
+		calcularPorcentajePasante();
+		
 	}
 	/**
 	 * @return the muestra
@@ -113,7 +116,7 @@ public class Analisis {
 	 * Calcula el porcentaje pasante del analisis de una muestra.
 	 */
 	public void calcularPorcentajePasante(){
-		porcentajePasante=100-porcentajeRetenidoAcumulado;
+		porcentajePasante=100;//-porcentajeRetenidoAcumulado;
 	}
 	
 	/**

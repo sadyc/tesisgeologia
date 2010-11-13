@@ -1,6 +1,7 @@
 package cuGestionarAnalisis;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import persistencia.Persistencia;
 import persistencia.domain.Analisis;
@@ -45,15 +46,26 @@ public class ControlGestionarAnalisis {
 	}
 	
 	/**
-	 * Elimina un analisis persistente. 
+	 * Elimina una muestra con persistencia. 
 	 */
-	public void eliminarAnalisis(Analisis analisis) throws Exception {
+	public void eliminarAnalisis(Analisis analisisInsertado) throws Exception {
 		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
 		try {
-		//	persistencia.eliminarObjeto(analisis);
+			Analisis analisis = new Analisis();
+			Class clase = analisis.getClass();
+			Collection<Analisis> analisisColeccion = persistencia.buscarColeccion(clase);
+			Iterator<Analisis> it = analisisColeccion.iterator();
+			int i = 0;
+			while (it.hasNext()&& (analisisInsertado.getTamiz().getNumeroTamiz()!= analisis.getTamiz().getNumeroTamiz()||analisisInsertado.getMuestra().getNombreMuestra()!= analisis.getMuestra().getNombreMuestra())){
+				analisisColeccion = (Collection<Analisis>) it.next();
+			    i++;
+			}
+			persistencia.eliminarObjeto(analisis);
 			persistencia.cerrarTransaccion();
 			System.out.println("Analisis eliminado con persistencia");
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			persistencia.realizarRollback();
 		}
 	}

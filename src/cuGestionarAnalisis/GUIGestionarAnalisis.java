@@ -2,17 +2,17 @@ package cuGestionarAnalisis;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+
+import persistencia.domain.Analisis;
 
 import comun.TablePanel;
 
