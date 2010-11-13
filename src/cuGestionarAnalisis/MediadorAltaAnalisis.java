@@ -72,6 +72,7 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 			pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
 			analisis.setPesoRetenido(Integer.parseInt(pesoRetenido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
+			System.out.println(analisis.toString());
 			try {
 				control.insertarAnalisis(analisis, nombreMuestra, numeroTamiz);
 			} catch (Exception e) {

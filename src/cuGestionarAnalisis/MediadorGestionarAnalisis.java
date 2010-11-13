@@ -34,7 +34,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	private MediadorSeleccionarMuestra mediadorMuestra;
 	private MediadorBuscar mediadorBuscar;
 	private Analisis analisis;
-	private Object [][] data = new Object [20] [4];
+	private Object [][] data = new Object [10] [5];
 	private Component frame;
 	
 	/**
@@ -44,7 +44,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	public MediadorGestionarAnalisis(String titulo,String nombreMuestra) throws Exception {
 		super();
 		this.nombreMuestra = nombreMuestra;
-		//cargarTablaDeAnalisis(nombreMuestra);
+		cargarTablaDeAnalisis(nombreMuestra);
 		this.gestionarAnalisis = new GUIGestionarAnalisis(titulo,data);
 		gestionarAnalisis.setTitle(titulo);
 		//gestionarAnalisis.setModal(true);
@@ -60,16 +60,18 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	public void cargarTablaDeAnalisis(String nombreMuestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
+		
 		Class clase = analisis.getClass();
 		Collection muestras = control.coleccionAnalisisDeMuestra(clase, nombreMuestra);
 		Iterator<Analisis> it = muestras.iterator();
 		int i = 0;
 		while (it.hasNext()){
 			analisis = it.next();
-			data [i][0]= analisis.getPesoRetenido();
-			data [i][1]= analisis.getPorcentajePasante();
-		    data [i][2]= analisis.getPorcentajeRetenidoAcumulado();		        
-		    data [i][3]= analisis.getPorcentajeRetenidoParcial();
+			data [i][0]= analisis.getTamiz().getNumeroTamiz();
+			data [i][1]= analisis.getPesoRetenido();
+			data [i][2]= analisis.getPorcentajePasante();
+		    data [i][3]= analisis.getPorcentajeRetenidoAcumulado();		        
+		    data [i][4]= analisis.getPorcentajeRetenidoParcial();
 		    i++;
 		}
 	}

@@ -77,8 +77,8 @@ public class Analisis {
 	 */
 	public void setPesoRetenido(Integer pesoRetenido) {
 		this.pesoRetenido = pesoRetenido;
-		calcularPorcentajeRetenidoParcial();
-		calcularPorcentajePasante();
+		//calcularPorcentajeRetenidoParcial();
+		//calcularPorcentajePasante();
 		
 	}
 	/**
@@ -140,6 +140,18 @@ public class Analisis {
 	public void setPorcentajeRetenidoAcumulado(Integer porcentajeRetenidoAcumulado) {
 		this.porcentajeRetenidoAcumulado = porcentajeRetenidoAcumulado;
 	}
-
 	
+	/**
+	 * @param porcentajeRetenidoParcial the porcentajeRetenidoParcial to set
+	 */
+	public void setPorcentajeRetenidoParcial(Integer porcentajeRetenidoParcial) {
+		this.porcentajeRetenidoParcial = porcentajeRetenidoParcial;
+	}
+	
+	/**
+	 * @param porcentajePasante the porcentajePasante to set
+	 */
+	public void setPorcentajePasante(Integer porcentajePasante) {
+		this.porcentajePasante = porcentajePasante;
+	}
 }

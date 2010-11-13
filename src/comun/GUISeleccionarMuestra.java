@@ -129,7 +129,7 @@ public class GUISeleccionarMuestra extends JDialog	{
      *@return data  
      * */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre","Peso","Profundidad Inicial","Profundidad Final","Latitud","Longitud","Clasificacion","Usuario","Operador ID"};
+		String[] columnName = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
 		return columnName;
 	}
 

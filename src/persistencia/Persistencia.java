@@ -103,11 +103,14 @@ public class Persistencia {
 		try {
 			Extent e=pmi.getExtent(clase,true);
 			Query q = pmi.newQuery(e,filtro);
-			q.setOrdering("param1 ascending");
+			
+			System.out.println(filtro+"la nombre de la muestar");//q.setOrdering("param1 ascending");
 			aux = (Collection)q.execute();
-			System.out.println("Coleccion encontrada y cargada");
+			if (aux.isEmpty()){ 
+				System.out.println("Coleccion encontrada y cargadaaaaaaaaaaaaa");
+			}
 		} catch (Exception e) {
-			System.out.println("Error en buscar objeto");
+			System.out.println("Error al cargar la collection");
 			e.printStackTrace();
 			realizarRollback();
 		}
@@ -123,11 +126,11 @@ public class Persistencia {
 		try {
 			Extent e=pmi.getExtent(clase,true);
 			Query q = pmi.newQuery(e,filtro);
-			q.setOrdering("porcentajeAcumulado ascending");
+			//q.setOrdering("porcentajeAcumulado ascending");
 			aux = (List)q.execute();
 			System.out.println("Coleccion encontrada y cargada");
 		} catch (Exception e) {
-			System.out.println("Error en buscar objeto");
+			System.out.println("Error en cargar la lista");
 			e.printStackTrace();
 			realizarRollback();
 		}
