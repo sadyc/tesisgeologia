@@ -29,7 +29,7 @@ import persistencia.domain.Usuario;
 public class MediadorGestionarMuestra implements ActionListener,MouseListener,ItemListener{
 
 	private GUIABMMuestra GUIABMMuestra;
-	private Object [][] data = new Object [4] [6];
+	private Object [][] data = new Object [5] [6];
 	private Component frame;
 	
 	
@@ -113,10 +113,8 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	            		System.out.println(GUIABMMuestra.getTablePanel().getSelectedRow());
 	            	
 	            	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-	            	
 	            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-
-	              	Muestra mu = new Muestra((fila[1]),Integer.parseInt(fila[2]),Float.parseFloat(fila[3]),Float.parseFloat(fila[4]),op,usuario,ubicacion,clasificacion,fecha);
+	            	Muestra mu = new Muestra((fila[1]),Integer.parseInt(fila[2]),Float.parseFloat(fila[3]),Float.parseFloat(fila[4]),op,usuario,ubicacion,clasificacion,fecha);
 	               	try {
 	               		control.eliminarMuestra(mu);
 	               	} catch (Exception e) {
