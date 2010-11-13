@@ -41,9 +41,9 @@ public class GUIMuestra extends JDialog {
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
-		ubicacion = new JLabel("");
-		usuario = new JLabel ("Usuario : Jose Alberto Snaider.");
-		operador = new JLabel ("Operador : Juan Gomez de la Quebrada");
+		ubicacion = new JLabel("Ubicacion(*) : ");
+		usuario = new JLabel ("Usuario(*) : ");
+		operador = new JLabel ("Operador(*) :");
 		aceptar = new JButton("AGREGAR");
 		cancelar = new JButton("CANCELAR");
 		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
@@ -66,9 +66,9 @@ public class GUIMuestra extends JDialog {
 		peso.setText(data[2].toString());
 		profundidadInicial.setText(data[3].toString());
 		profundidadFinal.setText(data[4].toString());
-		ubicacion = new JLabel("");
-		usuario = new JLabel ("Usuario : Jose Alberto Snaider.");
-		operador = new JLabel ("Operador : Juan Gomez de la Quebrada");
+		ubicacion = new JLabel("Ubicacion(*) : ");
+		usuario = new JLabel ("Usuario(*) : ");
+		operador = new JLabel ("Operador(*) : ");
 		aceptar = new JButton("AGREGAR");
 		cancelar = new JButton("CANCELAR");
 		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
@@ -205,9 +205,9 @@ public class GUIMuestra extends JDialog {
 			this.panelNorte.add(nombre);
 			this.panelNorte.add(new JLabel("Peso (*): "));
 			this.panelNorte.add(peso); 
-			this.panelNorte.add(new JLabel("Profundidad Inicial: "));
+			this.panelNorte.add(new JLabel("Profundidad Inicial(*): "));
 			this.panelNorte.add(profundidadInicial);
-			this.panelNorte.add(new JLabel("Profundidad Final: "));
+			this.panelNorte.add(new JLabel("Profundidad Final(*): "));
 			this.panelNorte.add(profundidadFinal);
 			this.panelNorte.add(seleccionarUbicacion);
 			this.panelNorte.add(ubicacion);

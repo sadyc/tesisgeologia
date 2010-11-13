@@ -210,6 +210,7 @@ public class GUIPrincipal extends JFrame {
 		this.jButtonanalisis.addActionListener(lis);
 		this.jButtonclasificacion.addActionListener(lis);
         this.jButtonSalir.addActionListener(lis);
+        this.jButtonListarMuestras.addActionListener(lis);
         this.salirMenu.addActionListener(lis);
         this.listarMuestrasMenu.addActionListener(lis);
         this.gestionarMuestraMenu.addActionListener(lis);

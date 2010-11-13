@@ -7,22 +7,11 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Collection;
-import java.util.Iterator;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
-import persistencia.domain.Clasificacion;
-import persistencia.domain.Muestra;
-import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.Ubicacion;
-import persistencia.domain.Usuario;
+import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuGestionarAnalisis.MediadorBuscar;
-import cuGestionarMuestra.ControlGestionarMuestra;
-import cuGestionarMuestra.MediadorAltaMuestra;
-import cuGestionarMuestra.MediadorModificarMuestra;
 
 
 
@@ -73,6 +62,11 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 			}
 			else{
 				System.out.println("Button Seleccionar Muestra");
+				try {
+					MediadorCalcularClasificacion gestionarClasificacion = new MediadorCalcularClasificacion();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 	   			GUISeleccionarMuestra.dispose();	   		
 			}
 		}
