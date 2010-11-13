@@ -59,16 +59,12 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 			muestra = it.next();
 			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
 			data [i][1]= muestra.getNombreMuestra();
-		    data [i][2]= muestra.getPeso();		        
+			data [i][2]= muestra.getPeso();
 		    data [i][3]= muestra.getProfundidadInicial();
 		    data [i][4]= muestra.getProfundidadFinal();
-		    data [i][5]= muestra.getOperador().getDni();
 		    i++;
 		}
 	}
-	
-	
-	
 			
 	public void show()	{
 		 GUIABMMuestra.show();

@@ -40,7 +40,6 @@
 		<collection element_type="persistencia.domain.Analisis"/>
 	</field>
       </class>
-
 <class name="persistencia.domain.Persona" identity-type="application">
 	<inheritance strategy="subclass-table"/>
 		   <field name="dni" primary-key="true" persistence-modifier="persistent">
@@ -119,7 +118,6 @@
                  <column jdbc-type="integer"/>
         </field>
    </class>
-
 
 
      <class name="persistencia.domain.Tamiz" identity-type="application">

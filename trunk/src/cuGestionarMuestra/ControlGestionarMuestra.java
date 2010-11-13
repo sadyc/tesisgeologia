@@ -10,6 +10,7 @@ import persistencia.Persistencia;
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
+import persistencia.domain.Usuario;
 
 /**
  * @author tesisGeologia
@@ -31,15 +32,15 @@ public class ControlGestionarMuestra {
 		
 		try {
 			persistencia.abrirTransaccion();
+			Usuario usuario = new Usuario();
 			Class claseUbicacion = ubicacion.getClass();
 			mu.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
 			Class claseOperador = operador.getClass();
 			mu.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=="+operador.getDni()));
+			Class claseUsuario = usuario.getClass();
+			mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni==123"));
 			persistencia.insertarObjeto(mu);
 			persistencia.cerrarTransaccion();
-			System.out.println("Fatal error en ControlGestionarMuestra insertar");
-
-			persistencia.cerrarTransaccion(); // ACA SOLIA TENER ERROR.. POSIBLEMENTE COMENTAR!!
 		} catch (Exception e) {
 			System.out.println("Fatal error en ControlGestionarMuestra insertar");
 			e.printStackTrace();
@@ -81,7 +82,6 @@ public class ControlGestionarMuestra {
 		persistencia.abrirTransaccion();
 		try {
 			aux = (persistencia.buscarColeccion(clase));
-			System.out.println("La coleccion ha sido cargada");
 			persistencia.cerrarTransaccion();
 			System.out.println("La coleccion ha sido cargada");
 		} catch (Exception e) {
@@ -96,11 +96,11 @@ public class ControlGestionarMuestra {
 		Muestra aux = new Muestra();
 		try {
 			Class claseMuestra = muestra.getClass();
-			aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=="+nombreMuestra);
+			aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
 			Class claseUbicacion = ubicacion.getClass();
 			aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
 			Class claseOperador = operador.getClass();
-			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "DNI=='"+operador.getDni()+"'"));
+			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=="+operador.getDni()));
 			aux.setNombreMuestra(muestra.getNombreMuestra());
 			aux.setPeso(muestra.getPeso());
 			aux.setProfundidadInicial(muestra.getProfundidadInicial());
