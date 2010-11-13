@@ -1,11 +1,7 @@
 package persistencia.domain;
 
 
-import javax.jdo.JDOHelper;
-import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.Transaction;
-
+import comun.MediadorPrincipal;
 import comun.MediadorPrincipal;
 
 
@@ -36,16 +32,14 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		
 		// Create a PersistenceManagerFactory for this datastore
-        PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-
-        System.out.println("DataNucleus AccessPlatform with JDO");
-        System.out.println("===================================");
-
-        PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx=pm.currentTransaction();
 
         //CargaDatos cargaDatos = new CargaDatos();
         //cargaDatos.cargar();
+
+
+        //CargaDatos cargaDatos = new CargaDatos();
+        //cargaDatos.cargar();
+
         //MediadorLogin login = new MediadorLogin("Login");
 		//login.show();
         MediadorPrincipal pantallaPrincipal = new MediadorPrincipal("Pantalla Principal");
