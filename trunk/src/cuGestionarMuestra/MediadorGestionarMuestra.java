@@ -133,7 +133,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 			}
 			else{
 				try{
-					String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());//
+					String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 					GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 					try {
 						MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(fila);
