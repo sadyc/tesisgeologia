@@ -1,6 +1,7 @@
 package cuGestionarAnalisis;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import persistencia.Persistencia;
@@ -68,15 +69,26 @@ public class ControlGestionarAnalisis {
          * Elimina un analisis persistente. 
          */
         public void eliminarAnalisis(Analisis analisis) throws Exception {
-                Persistencia persistencia = new Persistencia();
-                try {
-                //      persistencia.eliminarObjeto(analisis);
-                        persistencia.cerrarTransaccion();
-                        System.out.println("Analisis eliminado con persistencia");
-                } catch (Exception e) {
-                        persistencia.realizarRollback();
-                }
-        }
+        	Persistencia persistencia = new Persistencia();
+    		persistencia.abrirTransaccion();
+    		try {
+    			Analisis auxAnalisis = new Analisis();
+    			Class clase = auxAnalisis.getClass();
+    			Collection coleccionAnalisis = persistencia.buscarColeccion(clase);
+    			Iterator<Analisis> it = coleccionAnalisis.iterator();
+    			int i = 0;
+    			while (it.hasNext()&& analisis.getMuestra().getNombreMuestra()!= auxAnalisis.getMuestra().getNombreMuestra()){
+    				auxAnalisis = it.next();
+    			    i++;
+    			}
+    			persistencia.eliminarObjeto(auxAnalisis);
+    			persistencia.cerrarTransaccion();
+    			System.out.println("Muestra eliminada con persistencia");
+    		}
+    		catch (Exception e) {
+    			persistencia.realizarRollback();
+    		}
+    	}
                         
         /**
          * Retorna todos los elementos persistentes de la clase pasada como parametro.
@@ -86,7 +98,7 @@ public class ControlGestionarAnalisis {
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 try {
-                		String filtro = "Muestra=='"+nombreMuestra+"'";//"pesoRetenido==8";
+                		String filtro = "";//"Muestra=='"+nombreMuestra+"'";//"pesoRetenido==8";
                 		System.out.println(filtro+"la nombre de la muestar");
                         aux = (persistencia.buscarColeccionFiltro(clase, filtro));
                         persistencia.cerrarTransaccion();

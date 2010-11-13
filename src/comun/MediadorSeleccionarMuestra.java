@@ -26,6 +26,7 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 	private GUISeleccionarMuestra GUISeleccionarMuestra = null;
 	private Object [] seleccionado = new Object [4];
 	private Object [][] data = new Object [20] [5];
+	private boolean seleccionoMuestra = false;
 	private Component frame;
 	
 	
@@ -88,7 +89,8 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 			else{
 				System.out.println("Button Seleccionar Muestra");
 				try {
-					//MediadorCalcularClasificacion gestionarClasificacion = new MediadorCalcularClasificacion();
+					seleccionado = GUISeleccionarMuestra.getTablePanel().getRow(GUISeleccionarMuestra.getTablePanel().getSelectedRow());//MediadorCalcularClasificacion gestionarClasificacion = new MediadorCalcularClasificacion();
+					seleccionoMuestra = true;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -109,6 +111,20 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 		}
 	}
 	
+	/**
+	 * @return the seleccionado
+	 */
+	public Object[] getSeleccionado() {
+		return seleccionado;
+	}
+	
+	/**
+	 * @return the seleccionoMuestra
+	 */
+	public boolean seSeleccionoMuestra() {
+		return seleccionoMuestra;
+	}
+
 	public void show(){
 		GUISeleccionarMuestra.show();
 	}

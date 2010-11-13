@@ -34,7 +34,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	private MediadorSeleccionarMuestra mediadorMuestra;
 	private MediadorBuscar mediadorBuscar;
 	private Analisis analisis;
-	private Object [][] data = new Object [10] [5];
+	private Object [][] data = new Object [20] [5];
 	private Component frame;
 	
 	/**
@@ -60,7 +60,6 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	public void cargarTablaDeAnalisis(String nombreMuestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
-		
 		Class clase = analisis.getClass();
 		Collection muestras = control.coleccionAnalisisDeMuestra(clase, nombreMuestra);
 		Iterator<Analisis> it = muestras.iterator();
@@ -121,7 +120,6 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	            	ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 	            	System.out.println(gestionarAnalisis.getTablePanel().getSelectedRow());
 	            	String [] fila = gestionarAnalisis.getTablePanel().getRow(gestionarAnalisis.getTablePanel().getSelectedRow());
-	            	gestionarAnalisis.getTablePanel().removeRow(gestionarAnalisis.getTablePanel().getSelectedRow());
 	            	Muestra muestra = new Muestra();
 	            	muestra.setNombreMuestra(nombreMuestra);
 	            	Tamiz tamiz = new Tamiz();
