@@ -7,11 +7,17 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Collection;
+import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
+import persistencia.domain.Muestra;
+import persistencia.domain.Ubicacion;
+
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuGestionarAnalisis.MediadorBuscar;
+import cuGestionarMuestra.ControlGestionarMuestra;
 
 
 
@@ -19,22 +25,41 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 
 	private GUISeleccionarMuestra GUISeleccionarMuestra = null;
 	private Object [] seleccionado = new Object [4];
+	private Object [][] data = new Object [20] [5];
 	private Component frame;
 	
 	
 	public MediadorSeleccionarMuestra() throws Exception {
 		super();
-		//cargarTablaDeMuestras();
-		Object [][] data = new Object [4] [5];
+		cargarTablaDeMuestras();
 		this.GUISeleccionarMuestra = new GUISeleccionarMuestra(data);
 		GUISeleccionarMuestra.setTitle("Seleccionar una muestra");
 		GUISeleccionarMuestra.setModal(true);
 		this.GUISeleccionarMuestra.setListenerButtons(this);
 		this.GUISeleccionarMuestra.setListenerTable(this);
 		GUISeleccionarMuestra.show();
-		
-		
-		
+	}
+	
+	/**
+	 * Levanta informacion almacenada en la 
+	 * base de datos al atributo data de la clase mediador.
+	 */
+	public void cargarTablaDeMuestras()throws Exception{
+		ControlGestionarMuestra control = new ControlGestionarMuestra();
+		Muestra muestra = new Muestra();
+		Class clase = muestra.getClass();
+		Collection muestras = control.coleccionMuestras(clase);
+		Iterator<Muestra> it = muestras.iterator();
+		int i = 0;
+		while (it.hasNext()){
+			muestra = it.next();
+			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
+			data [i][1]= muestra.getNombreMuestra();
+			data [i][2]= muestra.getPeso();
+		    data [i][3]= muestra.getProfundidadInicial();
+		    data [i][4]= muestra.getProfundidadFinal();
+		    i++;
+		}
 	}
 	
 	/**
@@ -63,7 +88,7 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 			else{
 				System.out.println("Button Seleccionar Muestra");
 				try {
-					MediadorCalcularClasificacion gestionarClasificacion = new MediadorCalcularClasificacion();
+					//MediadorCalcularClasificacion gestionarClasificacion = new MediadorCalcularClasificacion();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

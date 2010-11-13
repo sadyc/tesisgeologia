@@ -29,7 +29,7 @@ public class MediadorSeleccionarTamiz implements ActionListener,MouseListener,It
 	
 	public MediadorSeleccionarTamiz() throws Exception {
 		super();
-		//cargarTablaDeTamiz();
+		cargarTablaDeTamiz();
 		this.GUISeleccionarTamiz = new GUISeleccionarTamiz(data);
 		GUISeleccionarTamiz.setTitle("Seleccionar un Tamiz");
 		GUISeleccionarTamiz.setModal(true);

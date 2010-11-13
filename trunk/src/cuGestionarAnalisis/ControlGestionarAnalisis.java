@@ -31,11 +31,18 @@ public class ControlGestionarAnalisis {
                 List listaAnalisis = null;
                 try {
                         Class claseMuestra= muestra.getClass();
-                        analisis.setMuestra((Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'"));
+                        muestra = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
+                        System.out.println("peso de la muestra"+muestra.getPeso()+"peso retenidodel analisis"+analisis.getPesoRetenido());
+                        System.out.println((analisis.getPesoRetenido()*100)/muestra.getPeso());
+                        analisis.setPorcentajeRetenidoAcumulado((analisis.getPesoRetenido()*100)/muestra.getPeso());
+                        analisis.setMuestra(muestra);
+                        analisis.setPorcentajeRetenidoParcial((analisis.getPesoRetenido()*100)/muestra.getPeso());
+                        analisis.setPorcentajePasante(100-analisis.getPorcentajeRetenidoParcial());
                         Class claseTamiz = tamiz.getClass();
                         analisis.setTamiz((Tamiz)persistencia.buscarObjeto(claseTamiz, "numeroTamiz=="+numeroTamiz));
                         //analisis.setPesoRetenido(pesoRetenido);
-                        listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "nombreMuestra=='"+nombreMuestra+"'");
+                        persistencia.insertarObjeto(analisis);
+                        listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "Muestra=='"+nombreMuestra+"'");
                         Integer porcentajeRetenidoAcumulado= 0;
                         if (listaAnalisis.isEmpty()){
                         	analisis.setPorcentajeRetenidoAcumulado(analisis.getPorcentajeRetenidoParcial());
@@ -49,13 +56,12 @@ public class ControlGestionarAnalisis {
                         	}                        	
                         }
                         
-                        persistencia.insertarObjeto(analisis);
+                        //persistencia.insertarObjeto(analisis);
                         persistencia.cerrarTransaccion();
                         System.out.println("Analisis insertado con persistencia");
                 } catch (Exception e) {
                         persistencia.realizarRollback();
                 }
-                persistencia.cerrarTransaccion();
         }
         
         /**
@@ -78,8 +84,10 @@ public class ControlGestionarAnalisis {
         public Collection coleccionAnalisisDeMuestra(Class clase,String nombreMuestra) throws Exception {
                 Collection<Object> aux = null; 
                 Persistencia persistencia = new Persistencia();
+                persistencia.abrirTransaccion();
                 try {
-                        String filtro = "nombreMuestra=="+nombreMuestra;
+                		String filtro = "Muestra=='"+nombreMuestra+"'";//"pesoRetenido==8";
+                		System.out.println(filtro+"la nombre de la muestar");
                         aux = (persistencia.buscarColeccionFiltro(clase, filtro));
                         persistencia.cerrarTransaccion();
                         System.out.println("analisis coleccionados");
