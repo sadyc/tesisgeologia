@@ -75,6 +75,22 @@ public class ControlGestionarAnalisis {
 		return aux;
 	}
 	
+	public void ModificarAnalisis(Integer pesoRetenido,String nombreMuestra, String numeroTamiz) throws Exception {
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		Analisis analisis = new Analisis();
+		try {
+			Class claseAnalisis = analisis.getClass();
+			analisis =(Analisis)persistencia.buscarObjeto(claseAnalisis, "nombreMuestra=="+nombreMuestra+" and "+"numeroTamiz=="+numeroTamiz);
+			analisis.setPesoRetenido(pesoRetenido);
+			persistencia.cerrarTransaccion();
+		}
+		catch (Exception e) {
+			persistencia.realizarRollback();
+			persistencia.cerrarPersistencia();
+		}		
+	}
+	
 	
 	
 	
