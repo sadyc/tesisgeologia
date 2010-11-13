@@ -105,6 +105,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 				String [] fila = gestionarAnalisis.getTablePanel().getRow(gestionarAnalisis.getTablePanel().getSelectedRow());
 				MediadorModificarAnalisis modificarAnalisis = new MediadorModificarAnalisis(nombreMuestra,Integer.parseInt(fila[1]));
 				//this.gestionarAnalisis.getTablePanel().addRow(fila);
+				
 			}
 		}
 		if (this.gestionarAnalisis.getJButtonEliminarAnalisis() == source){
