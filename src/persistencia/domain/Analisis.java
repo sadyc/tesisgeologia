@@ -16,9 +16,9 @@ public class Analisis {
 	private Integer porcentajePasante;
 	private Integer porcentajeRetenidoParcial;
 	private Integer porcentajeRetenidoAcumulado;   //  FALTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	
 	protected Muestra muestra;
 	protected Tamiz tamiz;
+	
 	
 	/**
 	 * Constructor por defecto
@@ -132,4 +132,14 @@ public class Analisis {
 	public String toString(){
 		return ("%Pasante: "+porcentajePasante+", %Retenido Parcial: "+porcentajeRetenidoParcial+", %Retenido Acumulado: "+porcentajeRetenidoAcumulado+", Peso Retenido: "+pesoRetenido);
 	}
+	
+
+	/**
+	 * @param porcentajeRetenidoAcumulado the porcentajeRetenidoAcumulado to set
+	 */
+	public void setPorcentajeRetenidoAcumulado(Integer porcentajeRetenidoAcumulado) {
+		this.porcentajeRetenidoAcumulado = porcentajeRetenidoAcumulado;
+	}
+
+	
 }
