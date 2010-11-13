@@ -58,11 +58,6 @@ public class MediadorPrincipal implements ActionListener{
 		if (this.GUIPrincipal.getJButtonAnalisis() == source || this.GUIPrincipal.getCalcularClasificacionMenu()== source){
 			try {
 				MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra();
-				MediadorGestionarAnalisis gestionarAnalisis = new MediadorGestionarAnalisis("Gestionar Analisis","no se que es esto!");
-
-				
-				
-				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -71,13 +66,20 @@ public class MediadorPrincipal implements ActionListener{
 		if (this.GUIPrincipal.getJButtonClasificacion() == source || this.GUIPrincipal.getCalcularClasificacionMenu()== source){
 			try {
 				MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
-				MediadorCalcularClasificacion gestionarClasificacion = new MediadorCalcularClasificacion();
-				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		    System.out.println("GestionarMediador.actionPerformed() jButtonCalcularClasificacion");
 		}
+		if (this.GUIPrincipal.getJButtonListarMuestras() == source || this.GUIPrincipal.getListarMuestrasMenu()== source){
+			try {
+				MediadorListarMuestras listarMuestras = new MediadorListarMuestras("***Listado de Muestras***");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		    System.out.println("GestionarMediador.actionPerformed() jButtonListarMuestra"); 
+     	}
 		if (this.GUIPrincipal.getJButtonSalir() == source || this.GUIPrincipal.getSalirMenu()== source){
 			GUIPrincipal.dispose();
 		}

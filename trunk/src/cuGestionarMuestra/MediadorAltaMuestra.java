@@ -93,8 +93,11 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 		if (this.GUIMuestra.getJButtonSeleccionarOperador()== source) {
 			try {
 				MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
-				this.GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
-				this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
+				if ((String)seleccionarOperador.getSeleccionado()[0]!=null) {
+					this.GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
+					this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
+				}
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -103,12 +106,13 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
 			try {
 				MediadorSeleccionarUbicacion mediadorSelUbic = new MediadorSeleccionarUbicacion();
-				this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
-				this.ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
+				if((String)mediadorSelUbic.getSeleccionado()[0]!= null){
+					this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
+					this.ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 		}
 		if (this.GUIMuestra.getJButtonAceptar() == source) {
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");

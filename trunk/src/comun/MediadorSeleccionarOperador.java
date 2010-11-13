@@ -82,9 +82,14 @@ public class MediadorSeleccionarOperador implements ActionListener,MouseListener
 				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun Operador","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				seleccionado = GUISeleccionarOperador.getTablePanel().getRow(GUISeleccionarOperador.getTablePanel().getSelectedRow());//
-				System.out.println("Button Seleccionar Operador");
-	   			GUISeleccionarOperador.dispose();	   		
+				try{
+					seleccionado = GUISeleccionarOperador.getTablePanel().getRow(GUISeleccionarOperador.getTablePanel().getSelectedRow());//
+					System.out.println("Button Seleccionar Operador");
+					GUISeleccionarOperador.dispose();
+				}
+				catch (Exception e) {
+					JOptionPane.showMessageDialog(frame,"Se ha seleccionado un Operador invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		}
 		if (this.GUISeleccionarOperador.getJButtonBuscar() == source){

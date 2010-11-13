@@ -84,12 +84,17 @@ public class MediadorSeleccionarUbicacion implements ActionListener,MouseListene
 		Object source = arg0.getSource();
 		if (this.GUISeleccionarUbicacion.getJButtonSeleccionar() == source){
 			if (GUISeleccionarUbicacion.getTablePanel().getSelectedRow() == -1){
-				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicacion","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
+				try{
 				System.out.println("Button Seleccionar Ubicacion");
 				seleccionado = GUISeleccionarUbicacion.getTablePanel().getRow(GUISeleccionarUbicacion.getTablePanel().getSelectedRow());
-	   			GUISeleccionarUbicacion.dispose();	   		
+	   			GUISeleccionarUbicacion.dispose();
+				}
+				catch (Exception e) {
+					JOptionPane.showMessageDialog(frame,"Se ha seleccionado una ubicacion invalida","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		}
 		if (this.GUISeleccionarUbicacion.getJButtonBuscar() == source){
