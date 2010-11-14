@@ -29,16 +29,12 @@ import cuGestionarMuestra.GUIMuestra;
 public class MediadorCalcularClasificacion implements ActionListener,MouseListener,ItemListener{
 	private GUIClasificacion GUIClasificacion;
 	private String[] data = new String [9];
-	private Component frame;
-
+	
 	public MediadorCalcularClasificacion() throws Exception {
 		super();
 		this.GUIClasificacion = new GUIClasificacion();
 		GUIClasificacion.setTitle("Clasificacion de la Muestra");
 		GUIClasificacion.setModal(true);
-		
-		// se configura como escuchador de los evenetos de la ventana 
-		// al el mismo (mediador)
 		this.GUIClasificacion.setListenerButtons(this);
 		GUIClasificacion.show();
 	}
@@ -84,11 +80,11 @@ public class MediadorCalcularClasificacion implements ActionListener,MouseListen
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		//ControlGestionarMuestra control = new ControlGestionarMuestra();
-		if (this.GUIClasificacion.getJButtonAceptar() == source) {
+		if (this.GUIClasificacion.getJButtonImprimir() == source) {
 			GUIClasificacion.dispose();
 				
 			}
-		if (this.GUIClasificacion.getJButtonCancelar() == source){
+		if (this.GUIClasificacion.getJButtonSalir() == source){
 			GUIClasificacion.dispose();
 		}
 	}
