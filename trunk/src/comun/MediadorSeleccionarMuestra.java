@@ -29,7 +29,6 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 	private boolean seleccionoMuestra = false;
 	private Component frame;
 	
-	
 	public MediadorSeleccionarMuestra() throws Exception {
 		super();
 		cargarTablaDeMuestras();

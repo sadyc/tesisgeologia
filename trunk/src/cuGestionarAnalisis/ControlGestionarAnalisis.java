@@ -56,13 +56,13 @@ public class ControlGestionarAnalisis {
                         		i++;
                         	}                        	
                         }
-                        
-                        //persistencia.insertarObjeto(analisis);
+                                               
                         persistencia.cerrarTransaccion();
                         System.out.println("Analisis insertado con persistencia");
                 } catch (Exception e) {
                         persistencia.realizarRollback();
                 }
+                //return analisis;
         }
         
         /**
@@ -77,7 +77,7 @@ public class ControlGestionarAnalisis {
     			Collection coleccionAnalisis = persistencia.buscarColeccion(clase);
     			Iterator<Analisis> it = coleccionAnalisis.iterator();
     			int i = 0;
-    			while (it.hasNext()&& analisis.getMuestra().getNombreMuestra()!= auxAnalisis.getMuestra().getNombreMuestra()){
+    			while (it.hasNext()&& analisis.getMuestra().getNombreMuestra()!= auxAnalisis.getMuestra().getNombreMuestra() && analisis.getTamiz().getNumeroTamiz()!=auxAnalisis.getTamiz().getNumeroTamiz()){
     				auxAnalisis = it.next();
     			    i++;
     			}
@@ -115,12 +115,17 @@ public class ControlGestionarAnalisis {
                 Analisis analisis = new Analisis();
                 try {
                         Class claseAnalisis = analisis.getClass();
-                        analisis =(Analisis)persistencia.buscarObjeto(claseAnalisis, "nombreMuestra=="+nombreMuestra+" and "+"numeroTamiz=="+numeroTamiz);
-                        analisis.setPesoRetenido(pesoRetenido);
+                        System.out.println("nombre Muestra"+nombreMuestra+"");
+                        analisis =(Analisis)persistencia.buscarObjeto(claseAnalisis, "Tamiz=="+numeroTamiz);//"Muestra=='"+nombreMuestra+"' && "+
+                        System.out.println("el peso retenido modificado "+analisis.toString());
+                        
+                        analisis.setPorcentajePasante(pesoRetenido);
+                        System.out.println("el peso retenido modificado "+pesoRetenido);
                         persistencia.cerrarTransaccion();
                 }
                 catch (Exception e) {
-                        persistencia.realizarRollback();
+                        e.printStackTrace();
+                		persistencia.realizarRollback();
                         persistencia.cerrarPersistencia();
                 }               
         }

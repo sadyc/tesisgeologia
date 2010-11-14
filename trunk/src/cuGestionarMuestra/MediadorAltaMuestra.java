@@ -36,7 +36,9 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 	private Ubicacion ubicacion;
 	private OperadorDeLaboratorio operador;
 	private Component frame;
+	private boolean altaMuestra= false;
 
+	
 	public MediadorAltaMuestra(String nombreVentana) throws Exception {
 		super();
 		muestra = new Muestra();
@@ -49,6 +51,13 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 		GUIMuestra.show();
 	}
 	
+
+	/**
+	 * @return the altaMuestra
+	 */
+	public boolean esAltaMuestra() {
+		return altaMuestra;
+	}
 
 	@Override
 	public void itemStateChanged(ItemEvent arg0) {
@@ -135,6 +144,7 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
                 
 				try {
 					control.insertarMuestra(muestra, ubicacion, operador);
+					altaMuestra = true;
 				} catch (Exception e) {
 					System.out.println("No inserta muestra Mediador Alta Muestra");
 					e.printStackTrace();

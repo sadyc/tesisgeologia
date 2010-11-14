@@ -58,6 +58,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	 * @param nombreMuestra 
 	 */
 	public void cargarTablaDeAnalisis(String nombreMuestra)throws Exception{
+		data = new Object [20] [5];
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
 		Class clase = analisis.getClass();
@@ -96,6 +97,9 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 		if (this.gestionarAnalisis.getJButtonAgregarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 			MediadorAltaAnalisis altaAnalisis = new MediadorAltaAnalisis(nombreMuestra);
+			if (altaAnalisis.isAltaAnalisis()){
+				//hacer q cargue en table de la ventana
+			}
 		}
 		if (this.gestionarAnalisis.getJButtonModificarAnalisis() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");
@@ -104,7 +108,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 			}
 			else{
 				String [] fila = gestionarAnalisis.getTablePanel().getRow(gestionarAnalisis.getTablePanel().getSelectedRow());
-				MediadorModificarAnalisis modificarAnalisis = new MediadorModificarAnalisis(nombreMuestra,Integer.parseInt(fila[1]));
+				MediadorModificarAnalisis modificarAnalisis = new MediadorModificarAnalisis(nombreMuestra,Integer.parseInt(fila[1]),(String)fila[0]);
 				//this.gestionarAnalisis.getTablePanel().addRow(fila);
 				
 			}
@@ -125,6 +129,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 	            	Tamiz tamiz = new Tamiz();
 	            	tamiz.setNumeroTamiz(Integer.parseInt(fila[0]));
 	              	analisis = new Analisis(Integer.parseInt(fila[1]),muestra,tamiz);
+	              	gestionarAnalisis.getTablePanel().removeRow(gestionarAnalisis.getTablePanel().getSelectedRow());
 	               	try {
 						control.eliminarAnalisis(analisis);
 					} catch (Exception e) {
