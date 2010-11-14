@@ -35,27 +35,34 @@ public class GUIClasificacion extends JDialog{
 	 * @throws java.awt.HeadlessException
 	 */
 	private JMenuBar menu ;
-	private JMenu archivo;
 	private JMenu herramientas;
 	private JMenu ayuda;
-	private JMenuItem agregarMenu;
-	private JMenuItem modificarMenu;
-	private JMenuItem eliminarMenu;
-	private JMenuItem buscarMenu;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
 	private JMenuItem imprimirMenu;
-	private JMenuItem guardarMenu;
 	private JButton imprimir;
-	private JButton cancelar;
+	private JButton salir;
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
 	private JPanel panelCenter=null;
 	private JPanel panelSW=null;
-	private JTextField muestra;
-	private JTextField profundidadInicial;
-	private JTextField profundidadFinal;
-	private JTextField peso;
+	
+	private JLabel muestra;
+	private JLabel peso;
+	private JLabel profundidadInicial;
+	private JLabel profundidadFinal;
+	private JLabel ubicacion;
+	private JLabel clasificacion;
+	private JLabel descripcion;
+	private JLabel limiteLiquido;
+	private JLabel limitePlastico;
+	private JLabel indicePlasticidad;
+	private JLabel D60;
+	private JLabel D30;
+	private JLabel D10;
+	private JLabel coeficienteUniformidad;
+	private JLabel gradoCurvatura;
+		
 	private TablePanel tablePanel;
 	private Object [][] data = new Object [3][5];
 
@@ -67,38 +74,39 @@ public class GUIClasificacion extends JDialog{
 	public GUIClasificacion() {
 		super();
 		menu = new JMenuBar();
-		archivo = new JMenu ("Archivo");
+		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
 		ayuda = new JMenu("Ayuda");
-		menu.add(archivo);
+		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(ayuda);
-		buscarMenu = new JMenuItem("Buscar");
-		agregarMenu = new JMenuItem("Agregar Muestra");
-		modificarMenu = new JMenuItem("Modificar Muestra");
-		eliminarMenu = new JMenuItem("Eliminar Muestra");
 		salirMenu = new JMenuItem("Salir");
-		herramientas.add(agregarMenu);
-		herramientas.add(modificarMenu);
-		herramientas.add(eliminarMenu);
 		herramientas.add(new JSeparator());
-		herramientas.add(buscarMenu);
-		herramientas.add(new JSeparator()); // Una rayita separadora.
 		herramientas.add(salirMenu);
 		versionMenu = new JMenuItem("Version");
 		ayuda.add(versionMenu);	
 		imprimirMenu = new JMenuItem("Imprimir");
-		guardarMenu = new JMenuItem("Guardar");
-		archivo.add(imprimirMenu);
-		archivo.add(guardarMenu);
-		archivo.add(new JSeparator());
-		archivo.add(salirMenu);
-		muestra = new JTextField(15);
-		profundidadInicial = new JTextField(15);
-		profundidadFinal = new JTextField(15);
-		peso = new JTextField(15);
+		herramientas.add(imprimirMenu);
+		herramientas.add(new JSeparator());
+		herramientas.add(salirMenu);
+		muestra = new JLabel("Muestra: ");
+		peso = new JLabel("Peso: ");
+		profundidadInicial = new JLabel("Profundidad Inicial: ");
+		profundidadFinal = new JLabel("Profundidad Final: ");
+		ubicacion = new JLabel ("Ubicación: ");
+		clasificacion = new JLabel ("Clasificación: ");
+		descripcion = new JLabel ("Descripción: ");
+		limiteLiquido = new JLabel ("Límite Líquido (LL): ");
+		limitePlastico = new JLabel ("Límite Plástico (LP): ");
+		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): ");
+		D60 = new JLabel("D60(mm): ");
+		D30 = new JLabel("D30(mm): ");
+		D10 = new JLabel("D10(mm): ");
+		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): ");
+		gradoCurvatura = new JLabel ("Grado de Corvatura (Cc): ");
+		
 		imprimir = new JButton("Imprimir");
-		cancelar = new JButton("Cancelar");
+		salir = new JButton("Salir");
 		initialize();
 	}
 	
@@ -108,101 +116,97 @@ public class GUIClasificacion extends JDialog{
 	 */
 	public GUIClasificacion(Muestra muestra) {
 		super();
+		//data =     LE TENGO QUE CARGAR LA COLECCION DE ANALISIS QUE TIENE LA MUESTRA 
 		menu = new JMenuBar();
-		archivo = new JMenu ("Archivo");
+		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
 		ayuda = new JMenu("Ayuda");
-		menu.add(archivo);
+		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(ayuda);
-		buscarMenu = new JMenuItem("Buscar");
-		agregarMenu = new JMenuItem("Agregar Muestra");
-		modificarMenu = new JMenuItem("Modificar Muestra");
-		eliminarMenu = new JMenuItem("Eliminar Muestra");
 		salirMenu = new JMenuItem("Salir");
-		herramientas.add(agregarMenu);
-		herramientas.add(modificarMenu);
-		herramientas.add(eliminarMenu);
-		herramientas.add(new JSeparator());
-		herramientas.add(buscarMenu);
-		herramientas.add(new JSeparator()); // Una rayita separadora.
-		herramientas.add(salirMenu);
 		versionMenu = new JMenuItem("Version");
 		ayuda.add(versionMenu);	
 		imprimirMenu = new JMenuItem("Imprimir");
-		guardarMenu = new JMenuItem("Guardar");
-		archivo.add(imprimirMenu);
-		archivo.add(guardarMenu);
-		archivo.add(new JSeparator());
-		archivo.add(salirMenu);
-		this.muestra = new JTextField(15);
-		profundidadInicial = new JTextField(15);
-		profundidadFinal = new JTextField(15);
-		peso = new JTextField(15);
+		herramientas.add(imprimirMenu);
+		herramientas.add(new JSeparator());
+		herramientas.add(salirMenu);
 		this.muestra.setText(muestra.getNombreMuestra());
-		peso.setText(muestra.getPeso().toString());
-		profundidadInicial.setText("");
-		profundidadFinal.setText("");
+		this.peso.setText("Peso: "+muestra.getPeso().toString()+"grs");
+		profundidadInicial.setText("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
+		profundidadFinal.setText("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
+		ubicacion = new JLabel ("Ubicacion: "+muestra.getUbicacion().getNombreUbicacion());
+		clasificacion = new JLabel ("Clasificacion: "+muestra.getClasificacion());
+		descripcion = new JLabel ("Descripcion: "+muestra.getClasificacion().getDescripcion());
+		limiteLiquido = new JLabel ("Límite Líquido (LL): ");    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
+		clasificacion = new JLabel ("Límite Plástico (LP): ");	//***************************************
+		descripcion = new JLabel ("Íncide de Plasticidad (IP): ");
+		D60 = new JLabel("D60(mm): ");
+		D30 = new JLabel("D30(mm): "); // INFORMACION QUE SACA DEL ANALISIS PERTENECIENTE A LA MUESTRA PASADA
+		D10 = new JLabel("D10(mm): "); // COMO PARAMETRO.. NO SE BIEN COMO LOS SACA A ESTOS DATOS.
+		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): ");
+		gradoCurvatura = new JLabel ("Grado de Corvatura (Cc): ");
+		
 		imprimir = new JButton("Imprimir");
-		cancelar = new JButton("Cancelar");
+		salir = new JButton("Cancelar");
 		initialize();
 	}
 	
 	/**
 	 * @return the muestra
 	 */
-	public JTextField getMuestra() {
+	public JLabel getMuestra() {
 		return muestra;
 	}
 
 	/**
 	 * @return the profundidadInicial
 	 */
-	public JTextField getProfundidadInicial() {
+	public JLabel getProfundidadInicial() {
 		return profundidadInicial;
 	}
 
 	/**
 	 * @return the profundidadFinal
 	 */
-	public JTextField getProfundidadFinal() {
+	public JLabel getProfundidadFinal() {
 		return profundidadFinal;
 	}
 	
 	/**
 	 * @return the peso
 	 */
-	public JTextField getPeso() {
+	public JLabel getPeso() {
 		return peso;
 	}
 	
 	/**
-	 * @return the aceptar
+	 * @return the imprimir
 	 */
-	public JButton getJButtonAceptar() {
+	public JButton getJButtonImprimir() {
 		return imprimir;
 	}
 
 
 	/**
-	 * @param aceptar the aceptar to set
+	 * @param imprimir the imprimir to set
 	 */
 	public void setJButtonImprimir(JButton imprimir) {
 		this.imprimir = imprimir;
 	}
 	
 	/**
-	 * @return the cancelar
+	 * @return the salir
 	 */
-	public JButton getJButtonCancelar() {
-		return cancelar;
+	public JButton getJButtonSalir() {
+		return salir;
 	}
 
 	/**
-	 * @param cancelar the cancelar to set
+	 * @param salir the salir to set
 	 */
-	public void setJButtonCancelar(JButton cancelar) {
-		this.cancelar = cancelar;
+	public void setJButtonSalir(JButton salir) {
+		this.salir = salir;
 	}
 
 	/**
@@ -212,14 +216,10 @@ public class GUIClasificacion extends JDialog{
 	 */
 	private  void initialize() {
 		this.setSize(800 , 400);
-		// Seteamos el BorderLayout
 		this.getContentPane().setLayout(new BorderLayout()); 		
-	 	// Se aaden los componentes al Frame
-		// Agregamos el Panel Norte al Frame
 	 	this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
 		this.setJMenuBar(this.getMenu());
-	 	// Agregamos el Panel Sur al Frame
-	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
+	  	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	 	this.getContentPane().add(this.getPanelSW(),BorderLayout.WEST);
 	 	this.getContentPane().add(this.getPanelCenter(),BorderLayout.EAST);
 	 	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
@@ -236,15 +236,11 @@ public class GUIClasificacion extends JDialog{
 		if (this.panelNorte==null) {
 			this.panelNorte= new JPanel();
 			this.panelNorte.setLayout(new BoxLayout(this.panelNorte,BoxLayout.Y_AXIS));
-			profundidadInicial.setAlignmentX(Component.CENTER_ALIGNMENT);
-			profundidadFinal.setAlignmentX(Component.CENTER_ALIGNMENT);
-			peso.setAlignmentX(Component.CENTER_ALIGNMENT);
 			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA: "));
-			this.panelNorte.add(new JLabel("Ubicacion : Rio Cuarto"));
-			this.panelNorte.add(new JLabel("Peso : 3253 gr"));
-			this.panelNorte.add(new JLabel("Profundidad Inicial: 2 mts"));
-			this.panelNorte.add(new JLabel("Profundidad Final: 3 mts"));
-			this.panelNorte.add(new JLabel("Humedad: 40%"));
+			this.panelNorte.add(ubicacion);
+			this.panelNorte.add(peso);
+			this.panelNorte.add(profundidadInicial);
+			this.panelNorte.add(profundidadFinal);
 			this.panelNorte.add(new JLabel("------------------------------------"));
 		}
 		return this.panelNorte;
@@ -260,8 +256,8 @@ public class GUIClasificacion extends JDialog{
 			this.panelCenter = new JPanel();
 			this.panelCenter.setLayout(new BoxLayout(this.panelCenter,BoxLayout.Y_AXIS));
 			this.panelCenter.add(new JLabel("DATOS DE LA CLASIFICACION: "));
-			this.panelCenter.add(new JLabel("Clasificación: SUCS"));
-			this.panelCenter.add(new JLabel("Descripción: Arena gravosa mal graduada"));
+			this.panelCenter.add(clasificacion);
+			this.panelCenter.add(descripcion);
 			}
 			return this.panelCenter;
 	}
@@ -273,12 +269,9 @@ public class GUIClasificacion extends JDialog{
 	public JPanel getPanelSur() {
 		if (this.panelSur==null) {
 			this.panelSur = new JPanel();
-			// Se pone el FlowLayout en el Panel Sur
 			this.panelSur.setLayout(new FlowLayout());
-			// Se instancian los componentes para el Panel Sur
-			// Se aaden los componentes al panel Sur
 			this.panelSur.add(imprimir);
-			this.panelSur.add(cancelar);
+			this.panelSur.add(salir);
 			}
 			return this.panelSur;
 	}
@@ -293,20 +286,19 @@ public class GUIClasificacion extends JDialog{
 			this.panelSW = new JPanel();
 			this.panelSW.setLayout(new BoxLayout(this.panelSW,BoxLayout.Y_AXIS));
 			this.panelSW.add(new JLabel("PLASTICIDAD: "));
-			this.panelSW.add(new JLabel("Límite Líquido (LL): "));
-			this.panelSW.add(new JLabel("Límite Plástico (LP): "));
-			this.panelSW.add(new JLabel("Indice de Plasticidad (IP): "));
+			this.panelSW.add(limiteLiquido);
+			this.panelSW.add(limitePlastico);
+			this.panelSW.add(indicePlasticidad);
 			this.panelSW.add(new JLabel("------------------------------------"));
-			this.panelSW.add(new JLabel("D30(mm): 0,28"));
-			this.panelSW.add(new JLabel("D10(mm): 0,10"));
-			this.panelSW.add(new JLabel("D10(mm): 0,10"));
-			this.panelSW.add(new JLabel("Coef. Uniformidad (Cu): 16,2"));
-			this.panelSW.add(new JLabel("Grado de Corvatura (Cc): 0,5"));
-			
-			
+			this.panelSW.add(D60);
+			this.panelSW.add(D30);
+			this.panelSW.add(D10);
+			this.panelSW.add(coeficienteUniformidad);
+			this.panelSW.add(gradoCurvatura);
 			}
 			return this.panelSW;
 	}
+	
 	/**
 	 * Metodo que permite escuchar los botoner aceptar y cancelar.
 	 *
@@ -314,18 +306,7 @@ public class GUIClasificacion extends JDialog{
 	 */
 	public void setListenerButtons(ActionListener lis){
 		this.imprimir.addActionListener(lis);
-		this.cancelar.addActionListener(lis);
-	}
-	
-	
-
-	public String[] getData() {
-		String[] data = new String[4];
-		data[0]= muestra.getText();
-		data[1]= peso.getText();
-		data[2]= profundidadInicial.getText();
-		data[3]= profundidadFinal.getText();
-		return data;
+		this.salir.addActionListener(lis);
 	}
 	
 	/**
@@ -354,14 +335,5 @@ public class GUIClasificacion extends JDialog{
 	 */
 	public JMenuBar getMenu() {
 		return menu;
-	}
-	
-	/**
-	 * Metodo que permite escuchar la tabla panel.
-	 *
-	 *@param lis actionEvent asignado a los botones.
-	 */
-	public void setListenerTable(MouseListener lis){
-		this.tablePanel.addMouseListener(lis);
 	}
 }
