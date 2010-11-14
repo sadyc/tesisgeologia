@@ -92,7 +92,7 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 					seleccionado = GUISeleccionarMuestra.getTablePanel().getRow(GUISeleccionarMuestra.getTablePanel().getSelectedRow());//MediadorCalcularClasificacion gestionarClasificacion = new MediadorCalcularClasificacion();
 					seleccionoMuestra = true;
 				} catch (Exception e) {
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 				}
 	   			GUISeleccionarMuestra.dispose();	   		
 			}
