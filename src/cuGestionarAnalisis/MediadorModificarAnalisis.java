@@ -29,9 +29,9 @@ public class MediadorModificarAnalisis  implements ActionListener,MouseListener,
 	/**
 	 * This is the default constructor
 	 */
-	public MediadorModificarAnalisis(String nombreMuestra,Integer pesoRetenido) {
+	public MediadorModificarAnalisis(String nombreMuestra,Integer pesoRetenido,String numeroTamiz) {
 		super();
-		
+		this.numeroTamiz = numeroTamiz;
 		analisis = new Analisis();
 		
 		this.nombreMuestra = nombreMuestra;

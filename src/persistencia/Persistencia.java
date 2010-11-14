@@ -84,7 +84,7 @@ public class Persistencia {
 			Extent e=pmi.getExtent(clase,true);
 			Query q = pmi.newQuery(e,filtro);
 			q.setUnique (true);
-			aux = q.execute();
+			aux = (Object)q.execute();
 			System.out.println("Objeto encontrado");
 		} catch (Exception e) {
 			System.out.println("Error en buscar objeto");
@@ -107,7 +107,7 @@ public class Persistencia {
 			System.out.println(filtro+"la nombre de la muestar");//q.setOrdering("param1 ascending");
 			aux = (Collection)q.execute();
 			if (aux.isEmpty()){ 
-				System.out.println("Coleccion encontrada y cargadaaaaaaaaaaaaa");
+				System.out.println("Coleccion Vacia y cargadaaaaaaaaaaaaa");
 			}
 		} catch (Exception e) {
 			System.out.println("Error al cargar la collection");

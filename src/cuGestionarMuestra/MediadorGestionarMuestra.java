@@ -94,7 +94,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	   		try {
 	   			System.out.println("Button Agregar Muestra");
 				MediadorAltaMuestra altaMuestra = new MediadorAltaMuestra("Ingresar Muestra");	
-				if (altaMuestra.getData()[0] != null){  
+				if (altaMuestra.esAltaMuestra()){  
 					this.GUIABMMuestra.getTablePanel().addRow(altaMuestra.getData());
 	     		}
 	   		} catch (Exception e) {

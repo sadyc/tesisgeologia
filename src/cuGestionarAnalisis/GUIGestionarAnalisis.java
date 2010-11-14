@@ -201,5 +201,17 @@ public class GUIGestionarAnalisis extends JFrame {
 		}
 		return this.tablePanel;
 	}
+	/**
+	 * Metodo que retorna la tabla panel.
+	 *
+	 * @return TablePanel
+	 */
+	public void setTablePanel(Object [][] datos) {
+		data = datos.clone();
+		if (this.tablePanel==null) {
+			this.tablePanel = new TablePanel();
+	 		this.tablePanel.setData(data, getColumName());			
+		}
+	}
 
 }

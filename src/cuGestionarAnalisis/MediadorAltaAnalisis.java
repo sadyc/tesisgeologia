@@ -27,6 +27,7 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 	private Analisis analisis;
 	private String numeroTamiz;
 	private String nombreMuestra;
+	private boolean altaAnalisis = false;
 	
 	/**
 	 * This is the default constructor
@@ -59,7 +60,14 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 	 */
 	public GUIAltaAnalisis getAnalisis() {
 		return GUIAnalisis;
-	}	
+	}
+
+	/**
+	 * @return the altaAnalisis
+	 */
+	public boolean isAltaAnalisis() {
+		return altaAnalisis;
+	}
 	
 	/**
 	 * Metodo que necesita definir al implementar la interface ActionListener 
@@ -75,6 +83,7 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 			System.out.println(analisis.toString());
 			try {
 				control.insertarAnalisis(analisis, nombreMuestra, numeroTamiz);
+				altaAnalisis= true;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
