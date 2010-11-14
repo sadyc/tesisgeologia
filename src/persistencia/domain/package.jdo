@@ -4,9 +4,9 @@
     "http://java.sun.com/dtd/jdo_2_0.dtd">
 <jdo>
     <package name="persistencia.domain">
-      <class name="persistencia.domain.Muestra" identity-type="application">
+      <class name="persistencia.domain.Muestra" identity-type="datastore">
               <inheritance strategy="new-table"/>
-		<field name="nombreMuestra" primary-key="true" persistence-modifier="persistent">
+		<field name="nombreMuestra" persistence-modifier="persistent">
                   <column length="30" jdbc-type="CHAR"/>
  		</field>
         <field name="profundidadInicial" persistence-modifier="persistent">
@@ -25,24 +25,24 @@
                 <column jdbc-type="FLOAT"/>
         </field>
         <field name="clasificacion" persistence-modifier="persistent">
-                <column name="CLASIFICACION"/>
+                <column name="CLASIFICACION_ID"/>
         </field>
-        <field name="operadorLaboratorio" persistence-modifier="persistent">
-                 <column name="OPERADOR_LABORATORIO" element-type="persistencia.domain.OperadorDeLaboratorio"/>
-        </field>
+        <field name="operadorLaboratorio">
+               <column name="OPERADORDELABORATORIO_ID"/>
+             </field>
         <field name="usuario" persistence-modifier="persistent">
-                 <column name="USUARIO" element-type="persistencia.domain.Usuario"/>
+                 <column name="USUARIO_ID"/>
         </field>
          <field name="ubicacion" persistence-modifier="persistent">
-                 <column name="UBICACION" element-type="persistencia.domain.Ubicacion"/>
+                 <column name="UBICACION_ID"/>
         </field>
-        <field name="analisis" persistence-modifier="persistent" mapped-by="muestra">
-		<collection element_type="persistencia.domain.Analisis"/>
-	</field>
+         <field name="analisis" persistence-modifier="persistent" mapped-by="muestra">
+                <collection element-type="persistencia.domain.Analisis"/>
+           </field>
       </class>
-<class name="persistencia.domain.Persona" identity-type="application">
-	<inheritance strategy="subclass-table"/>
-		   <field name="dni" primary-key="true" persistence-modifier="persistent">
+<class name="persistencia.domain.Persona" identity-type="datastore">
+	<inheritance strategy="new-table"/>
+		   <field name="dni" persistence-modifier="persistent">
                   <column length="30" jdbc-type="CHAR"/>
            </field>
            <field name="nombre" persistence-modifier="persistent">
@@ -61,16 +61,16 @@
  </class>
 
 
- <class name="persistencia.domain.OperadorDeLaboratorio" extends="persistencia.domain.Persona" identity-type="application">
+ <class name="persistencia.domain.OperadorDeLaboratorio" identity-type="datastore">
 	<field name="muestras" persistence-modifier="persistent" mapped-by="operadorLaboratorio">
-		<collection element_type="persistencia.domain.Muestra"/>
-	</field>
+                <collection element-type="persistencia.domain.Muestra"/>
+            </field>
  </class>
 
-  <class name="persistencia.domain.Usuario" extends="persistencia.domain.Persona" identity-type="application">
-         <field name="muestras" persistence-modifier="persistent" mapped-by="usuario">
-		<collection element_type="persistencia.domain.Muestra"/>
-	</field>
+  <class name="persistencia.domain.Usuario" identity-type="datastore">
+         <field name="muestras" persistence-modifier="persistent" mapped-by="operadorLaboratorio">
+                <collection element-type="persistencia.domain.Muestra"/>
+            </field>
  	 <field name="nombreUsuario" persistence-modifier="persistent">
                  <column length="30" jdbc-type="CHAR"/>
          </field>
@@ -79,9 +79,9 @@
          </field>
  </class>
 
- <class name="persistencia.domain.Ubicacion" identity-type="application">
+ <class name="persistencia.domain.Ubicacion" identity-type="datastore">
               <inheritance strategy="new-table"/>
-         <field name="nombreUbicacion" primary-key="true" persistence-modifier="persistent">
+         <field name="nombreUbicacion" persistence-modifier="persistent">
                   <column length="30" jdbc-type="CHAR"/>
          </field>
          <field name="prov" persistence-modifier="persistent" mapped-by="Provincia">
@@ -92,14 +92,14 @@
         <field name="longitud" persistence-modifier="persistent">
                  <column length="30" jdbc-type="CHAR"/>
         </field>
-	   <field name="muestras" persistence-modifier="persistent" mapped-by="ubicacion">
-		<collection element_type="persistencia.domain.Muestra"/>
-	</field>
+	    <field name="muestras" persistence-modifier="persistent" mapped-by="ubicacion">
+                <collection element-type="persistencia.domain.Muestra"/>
+        </field>
  </class>
 
- <class name="persistencia.domain.Analisis" identity-type="application">
+ <class name="persistencia.domain.Analisis" identity-type="datastore">
               <inheritance strategy="new-table"/>
-		<field name="pesoRetenido" primary-key="true" persistence-modifier="persistent">
+		<field name="pesoRetenido" persistence-modifier="persistent">
                   <column jdbc-type="integer"/>
  		</field>
         <field name="porcentajePasante" persistence-modifier="persistent">
@@ -109,10 +109,10 @@
                  <column jdbc-type="integer"/>
         </field>
         <field name="tamiz" persistence-modifier="persistent">
-                 <column name="TAMIZ" element-type="persistencia.domain.Tamiz"/>
+                 <column name="TAMIZ_ID"/>
         </field>
           <field name="muestra" persistence-modifier="persistent">
-                 <column name="MUESTRA" element-type="persistencia.domain.Muestra"/>
+                 <column name="MUESTRA_ID"/>
         </field>
         <field name="porcentajeRetenidoAcumulado" persistence-modifier="persistent">
                  <column jdbc-type="integer"/>
@@ -120,17 +120,26 @@
    </class>
 
 
-     <class name="persistencia.domain.Tamiz" identity-type="application">
+     <class name="persistencia.domain.Tamiz" identity-type="datastore">
               <inheritance strategy="new-table"/>
-		<field name="numeroTamiz" primary-key="true" persistence-modifier="persistent">
+		<field name="numeroTamiz" persistence-modifier="persistent">
                   <column jdbc-type="integer"/>
  		</field>
         <field name="aberturaMalla" persistence-modifier="persistent">
                  <column jdbc-type="integer"/>
         </field>
-        <field name="analisisTamiz" persistence-modifier="persistent" mapped-by="tamiz">
-		<collection element_type="persistencia.domain.Analisis"/>
-	</field>
+         <field name="analisis" persistence-modifier="persistent" mapped-by="tamiz">
+                <collection element-type="persistencia.domain.Analisis"/>
+            </field>
+     </class>
+     
+     <class name="persistencia.domain.Clasificacion" identity-type="datastore">
+         <field name="muestras" persistence-modifier="persistent" mapped-by="clasificacion">
+                <collection element-type="persistencia.domain.Muestra"/>
+            </field>
+ 	 <field name="descripcion" persistence-modifier="persistent">
+                 <column length="30" jdbc-type="CHAR"/>
+         </field>
      </class>
 
     </package>
