@@ -1,7 +1,7 @@
 package persistencia.domain;
 
 
-import comun.MediadorPrincipal;
+import comun.CargaDatos;
 import comun.MediadorPrincipal;
 
 

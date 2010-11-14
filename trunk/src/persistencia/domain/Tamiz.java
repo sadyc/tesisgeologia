@@ -17,7 +17,7 @@ import javax.jdo.annotations.PersistenceCapable;
 public class Tamiz {
 	private Integer numeroTamiz;
 	private Integer aberturaMalla;
-	protected Collection<Analisis> analisisTamiz = new HashSet();
+	protected Collection<Analisis> analisis = new HashSet();
 	
 	/**
 	 * Constructor por defecto
@@ -62,13 +62,13 @@ public class Tamiz {
 	 * @return the muestras
 	 */
 	public Collection<Analisis> getMuestras() {
-		return analisisTamiz;
+		return analisis;
 	}
 	/**
 	 * @param muestras the muestras to set
 	 */
 	public void setAnalisisTamiz(Collection<Analisis> analisisTamiz) {
-		this.analisisTamiz = analisisTamiz;
+		this.analisis = analisisTamiz;
 	}
 	
 	/** 

@@ -36,7 +36,7 @@ public class ControlGestionarMuestra {
 			Class claseUbicacion = ubicacion.getClass();
 			mu.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
 			Class claseOperador = operador.getClass();
-			mu.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=="+operador.getDni()));
+			mu.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
 			Class claseUsuario = usuario.getClass();
 			mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni==123"));
 			persistencia.insertarObjeto(mu);

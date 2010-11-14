@@ -99,7 +99,7 @@ public class CargaDatos {
 		Ubicacion ubicacion1 = new Ubicacion("El Impenetrable",Ubicacion.Provincia.Chaco,"11°11'11\"","11°11'11\"");
 		Ubicacion ubicacion2 = new Ubicacion("Rio Cuarto",Ubicacion.Provincia.Cordoba,"22°22'22\"","22°22'22\"");
 		Ubicacion ubicacion3 = new Ubicacion("Ushuaia",Ubicacion.Provincia.TierraDelFuego,"33°33'33\"","33°33'33\"");
-		OperadorDeLaboratorio operador1 = new OperadorDeLaboratorio("Lionel", "Messi", "cacho", "4665458", "lionel@messi.com");
+		OperadorDeLaboratorio operador1 = new OperadorDeLaboratorio("Lionel", "Messi", "10.054.605", "4665458", "lionel@messi.com");
 		Muestra muestra = new Muestra();
 		muestra.setNombreMuestra("nombreMuestra");
 		muestra.setPeso(50);
@@ -107,8 +107,8 @@ public class CargaDatos {
 		OperadorDeLaboratorio operador2 = new OperadorDeLaboratorio("Javier", "Pastore", "34.101.099", "4917015", "javier@pastore.com");
 		OperadorDeLaboratorio operador3 = new OperadorDeLaboratorio("Manuel", "Varela", "34.254.973", "3584192871", "manuvarel@gmail.com");
 		Tamiz tamiz1 = new Tamiz(1,1);
-		//Collection<Analisis> analisisTamiz = new HashSet();
-		//tamiz1.setAnalisisTamiz(analisisTamiz);
+		//Collection<Analisis> analisis = new HashSet();
+		//tamiz1.setAnalisisTamiz(analisis);
 		Tamiz tamiz2 = new Tamiz(2,2);
 		Tamiz tamiz3 = new Tamiz(3,3);
 		Usuario usuario1 = new Usuario("Juan", "Perez", "34.101.099", "4917015", "juan@perez.com","juanPerez","pepe");
@@ -116,27 +116,21 @@ public class CargaDatos {
 		Analisis analisis1 = new Analisis(10,muestra, tamiz1);
 		
 		try {
-			System.out.println("Comienza carga de ubicaciones");
 			insertarUbicacion(ubicacion1);
-			System.out.println("se cargo ubicacion1");
-			//insertarUbicacion(ubicacion2);
-			System.out.println("se cargo ubicacion2");
-			//insertarUbicacion(ubicacion3);
-			System.out.println("se cargo ubicacion3");
+			insertarUbicacion(ubicacion2);
+			insertarUbicacion(ubicacion3);
 			System.out.println("Comienza carga operadores");
 			insertarOperador(operador1);
 			//System.out.println("quiza Inserto a Messi");
-			//insertarOperador(operador3);
-			//System.out.println("Inserto a Pastore");
+			insertarOperador(operador3);
 			//insertarOperador(operador2);
-			//System.out.println("Inserto a Mi");
 			insertarTamiz(tamiz1);
-		//	insertarTamiz(tamiz2);
-		//	insertarTamiz(tamiz3);
+			insertarTamiz(tamiz2);
+			insertarTamiz(tamiz3);
 			System.out.println("Comienza carga usuarios");
-		//	insertarUsuario(usuario1);    //  ver  "value-strategy"
+			insertarUsuario(usuario1);    //  ver  "value-strategy"
 			insertarUsuario(usuario2);
-			insertarAnalisis(analisis1);
+			//insertarAnalisis(analisis1);
 		} catch (Exception e) {
 			System.out.println("No se pudieron insertar");
 			e.printStackTrace();
