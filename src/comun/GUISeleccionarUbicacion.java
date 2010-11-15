@@ -18,16 +18,11 @@ import javax.swing.JSeparator;
 
 
 /**
- * @author NAVE
- *
- */
-
+* @author TesisGeología
+* Esta clase implementa la ventana que me permite seleccionar una ubicacion de las almacenados.
+*/
 public class GUISeleccionarUbicacion extends JDialog	{
 
-	/**
-	 * @param title
-	 * @throws java.awt.HeadlessException
-	 */
 	private JMenuBar menu = null;
 	private JMenu herramientas;
 	private JMenu ayuda;
@@ -42,9 +37,10 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	private TablePanel tablePanel;
 	private Object [][] data;
 	
-	
-	private static final String systemDefault = javax.swing.UIManager.getSystemLookAndFeelClassName();	
-	
+	/**
+	 * Constructor de la clase.
+	 * @param datos, contiene la informacion de las ubicaciones almacenadas.
+	 */
 	public GUISeleccionarUbicacion(Object [][] datos) {
 		super();
 		
@@ -112,7 +108,7 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	}
 	
 	/**
-	 * Metodo que permite escuchar los botones Seleccionar y Buscar.
+	 * Metodo que permite escuchar los botones Seleccionar, Buscar y Salir.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -134,7 +130,7 @@ public class GUISeleccionarUbicacion extends JDialog	{
 
 	/** 
      *@return data  
-     * */
+    */
 	public static String[] getColumName(){
 		String[] columnName = {"Nombre","Provincia","Latitud","Longitud"};
 		return columnName;

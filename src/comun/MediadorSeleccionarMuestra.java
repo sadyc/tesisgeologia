@@ -19,7 +19,10 @@ import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuGestionarAnalisis.MediadorBuscar;
 import cuGestionarMuestra.ControlGestionarMuestra;
 
-
+/**
+* @author TesisGeología
+* 
+*/
 
 public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,ItemListener {
 
@@ -29,6 +32,10 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 	private boolean seleccionoMuestra = false;
 	private Component frame;
 	
+	/**
+	 * Constructor por defecto de la clase.
+	 * @throws Exception
+	 */
 	public MediadorSeleccionarMuestra() throws Exception {
 		super();
 		cargarTablaDeMuestras();
@@ -150,11 +157,6 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 
 	public void mouseReleased(MouseEvent arg0) {
 	}
-	
-	/**
-	 * @returns data 
-	*/
-	
 
 	public void itemStateChanged(ItemEvent e) {
 	}

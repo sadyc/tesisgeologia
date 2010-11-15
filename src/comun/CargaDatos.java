@@ -13,7 +13,8 @@ import persistencia.domain.Usuario;
 
 /**
  * @author TesisGeologia
- *
+ * Clase que permite la carga de ciertos datos para poder utilizar el 
+ * Sistema Clasificador de Suelos 
  */
 public class CargaDatos {
 
@@ -79,20 +80,6 @@ public class CargaDatos {
 	}
 	
 	/**
-	 * Inserta un usuario con persistencia. 
-	 */ 
-	public void insertarAnalisis(Analisis analisis) throws Exception{
-		Persistencia persistencia = new Persistencia();
-		persistencia.abrirTransaccion();
-		try {
-			persistencia.insertarObjeto(analisis);
-			persistencia.cerrarTransaccion();
-		} catch (Exception e) {
-			persistencia.realizarRollback();
-		}
-	}
-	
-	/**
 	 * Carga una serie de ubicaciones para facilitar el testing.
 	 */
 	public void cargar (){
@@ -103,34 +90,81 @@ public class CargaDatos {
 		Muestra muestra = new Muestra();
 		muestra.setNombreMuestra("nombreMuestra");
 		muestra.setPeso(50);
-		//operador1.addMuestra(muestra);
 		OperadorDeLaboratorio operador2 = new OperadorDeLaboratorio("Javier", "Pastore", "34.101.099", "4917015", "javier@pastore.com");
 		OperadorDeLaboratorio operador3 = new OperadorDeLaboratorio("Manuel", "Varela", "34.254.973", "3584192871", "manuvarel@gmail.com");
-		Tamiz tamiz1 = new Tamiz(1,1);
-		//Collection<Analisis> analisis = new HashSet();
-		//tamiz1.setAnalisisTamiz(analisis);
-		Tamiz tamiz2 = new Tamiz(2,2);
-		Tamiz tamiz3 = new Tamiz(3,3);
+		Tamiz tamiz1 = new Tamiz(4,4.75);
+		Tamiz tamiz2 = new Tamiz(5,4.0);
+		Tamiz tamiz3 = new Tamiz(6,3.35);
+		Tamiz tamiz4 = new Tamiz(7,2.8);
+		Tamiz tamiz5 = new Tamiz(8,2.36);
+		Tamiz tamiz6 = new Tamiz(10,2.0);
+		Tamiz tamiz7 = new Tamiz(12,1.7);
+		Tamiz tamiz8 = new Tamiz(14,1.4);
+		Tamiz tamiz9 = new Tamiz(16,1.18);
+		Tamiz tamiz11 = new Tamiz(18,1.0);
+		Tamiz tamiz12 = new Tamiz(20,0.85);
+		Tamiz tamiz13 = new Tamiz(25,0.71);
+		Tamiz tamiz14= new Tamiz(30,0.6);
+		Tamiz tamiz15= new Tamiz(35,0.5);
+		Tamiz tamiz16 = new Tamiz(40,0.425);
+		Tamiz tamiz10 = new Tamiz(45,0.355);
+		Tamiz tamiz17 = new Tamiz(50,0.3);
+		Tamiz tamiz18 = new Tamiz(60,0.25);
+		Tamiz tamiz19 = new Tamiz(70,0.212);
+		Tamiz tamiz20 = new Tamiz(80,0.18);
+		Tamiz tamiz21= new Tamiz(100,0.15);
+		Tamiz tamiz22= new Tamiz(120,0.125);
+		Tamiz tamiz23 = new Tamiz(140,0.106);
+		Tamiz tamiz24 = new Tamiz(170,0.09);
+		Tamiz tamiz25 = new Tamiz(200,0.075);
+		Tamiz tamiz26= new Tamiz(230,0.063);
+		Tamiz tamiz27= new Tamiz(270,0.053);
+		Tamiz tamiz28 = new Tamiz(325,0.045);
+		Tamiz tamiz29 = new Tamiz(400,0.038);
 		Usuario usuario1 = new Usuario("Juan", "Perez", "34.101.099", "4917015", "juan@perez.com","juanPerez","pepe");
 		Usuario usuario2 = new Usuario("Susana", "Gomez", "34.101.098", "4917015", "Sus@gomez.com","susy","ana");
-		Analisis analisis1 = new Analisis(10,muestra, tamiz1);
-		
+			
 		try {
 			insertarUbicacion(ubicacion1);
 			insertarUbicacion(ubicacion2);
 			insertarUbicacion(ubicacion3);
 			System.out.println("Comienza carga operadores");
 			insertarOperador(operador1);
-			//System.out.println("quiza Inserto a Messi");
 			insertarOperador(operador3);
-			//insertarOperador(operador2);
+			insertarOperador(operador2);
+			System.out.println("Comienza carga tamices");
 			insertarTamiz(tamiz1);
 			insertarTamiz(tamiz2);
 			insertarTamiz(tamiz3);
+			insertarTamiz(tamiz4);
+			insertarTamiz(tamiz5);
+			insertarTamiz(tamiz6);
+			insertarTamiz(tamiz7);
+			insertarTamiz(tamiz8);
+			insertarTamiz(tamiz9);
+			insertarTamiz(tamiz11);
+			insertarTamiz(tamiz12);
+			insertarTamiz(tamiz13);
+			insertarTamiz(tamiz14);
+			insertarTamiz(tamiz15);
+			insertarTamiz(tamiz16);
+			insertarTamiz(tamiz10);
+			insertarTamiz(tamiz17);
+			insertarTamiz(tamiz18);
+			insertarTamiz(tamiz19);
+			insertarTamiz(tamiz20);
+			insertarTamiz(tamiz21);
+			insertarTamiz(tamiz22);
+			insertarTamiz(tamiz23);
+			insertarTamiz(tamiz24);
+			insertarTamiz(tamiz25);
+			insertarTamiz(tamiz26);
+			insertarTamiz(tamiz27);
+			insertarTamiz(tamiz28);
+			insertarTamiz(tamiz29);
 			System.out.println("Comienza carga usuarios");
-			insertarUsuario(usuario1);    //  ver  "value-strategy"
+			insertarUsuario(usuario1); 
 			insertarUsuario(usuario2);
-			//insertarAnalisis(analisis1);
 		} catch (Exception e) {
 			System.out.println("No se pudieron insertar");
 			e.printStackTrace();
