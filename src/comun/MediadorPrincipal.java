@@ -69,6 +69,9 @@ public class MediadorPrincipal implements ActionListener{
 		if (this.GUIPrincipal.getJButtonClasificacion() == source || this.GUIPrincipal.getCalcularClasificacionMenu()== source){
 			try {
 				MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
+				if (seleccionarMuestra.seSeleccionoMuestra()){
+					MediadorCalcularClasificacion clasificacion = new MediadorCalcularClasificacion("Clasificacion",(String)seleccionarMuestra.getSeleccionado()[1]);
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

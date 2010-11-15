@@ -103,7 +103,7 @@ public class GUIClasificacion extends JDialog{
 		D30 = new JLabel("D30(mm): ");
 		D10 = new JLabel("D10(mm): ");
 		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): ");
-		gradoCurvatura = new JLabel ("Grado de Corvatura (Cc): ");
+		gradoCurvatura = new JLabel ("Grado de Curvatura (Cc): ");
 		
 		imprimir = new JButton("Imprimir");
 		salir = new JButton("Salir");
@@ -114,9 +114,10 @@ public class GUIClasificacion extends JDialog{
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
-	public GUIClasificacion(Muestra muestra) {
+	public GUIClasificacion(Muestra muestra, Object [] [] data) {
 		super();
-		//data =     LE TENGO QUE CARGAR LA COLECCION DE ANALISIS QUE TIENE LA MUESTRA 
+		System.out.println(muestra.getNombreMuestra()+"No se pudo cargar la muestra a clasificar!!");
+		this.data = data; 
 		menu = new JMenuBar();
 		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
@@ -131,21 +132,21 @@ public class GUIClasificacion extends JDialog{
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
-		this.muestra.setText(muestra.getNombreMuestra());
-		this.peso.setText("Peso: "+muestra.getPeso().toString()+"grs");
-		profundidadInicial.setText("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
-		profundidadFinal.setText("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
+		this.muestra = new JLabel(muestra.getNombreMuestra());
+		this.peso = new JLabel("Peso: "+muestra.getPeso().toString()+"grs");
+		this.profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
+		this.profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
 		ubicacion = new JLabel ("Ubicacion: "+muestra.getUbicacion().getNombreUbicacion());
 		clasificacion = new JLabel ("Clasificacion: "+muestra.getClasificacion());
 		descripcion = new JLabel ("Descripcion: "+muestra.getClasificacion().getDescripcion());
 		limiteLiquido = new JLabel ("Límite Líquido (LL): ");    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
-		clasificacion = new JLabel ("Límite Plástico (LP): ");	//***************************************
-		descripcion = new JLabel ("Íncide de Plasticidad (IP): ");
+		limitePlastico = new JLabel ("Límite Plástico (LP): ");	//***************************************
+		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): ");
 		D60 = new JLabel("D60(mm): ");
 		D30 = new JLabel("D30(mm): "); // INFORMACION QUE SACA DEL ANALISIS PERTENECIENTE A LA MUESTRA PASADA
 		D10 = new JLabel("D10(mm): "); // COMO PARAMETRO.. NO SE BIEN COMO LOS SACA A ESTOS DATOS.
 		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): ");
-		gradoCurvatura = new JLabel ("Grado de Corvatura (Cc): ");
+		gradoCurvatura = new JLabel ("Grado de Curvatura (Cc): ");
 		
 		imprimir = new JButton("Imprimir");
 		salir = new JButton("Cancelar");
@@ -336,4 +337,76 @@ public class GUIClasificacion extends JDialog{
 	public JMenuBar getMenu() {
 		return menu;
 	}
+
+	/**
+	 * @param clasificacion the clasificacion to set
+	 */
+	public void setClasificacion(String clasificacion) {
+		this.clasificacion.setText(clasificacion);
+	}
+
+	/**
+	 * @param descripcion the descripcion to set
+	 */
+	public void setDescripcion(String descripcion) {
+		this.descripcion.setText(descripcion);
+	}
+
+	/**
+	 * @param limiteLiquido the limiteLiquido to set
+	 */
+	public void setLimiteLiquido(String limiteLiquido) {
+		this.limiteLiquido.setText(limiteLiquido);
+	}
+
+	/**
+	 * @param limitePlastico the limitePlastico to set
+	 */
+	public void setLimitePlastico(String limitePlastico) {
+		this.limitePlastico.setText(limitePlastico);
+	}
+
+	/**
+	 * @param indicePlasticidad the indicePlasticidad to set
+	 */
+	public void setIndicePlasticidad(String indicePlasticidad) {
+		this.indicePlasticidad.setText(indicePlasticidad);
+	}
+
+	/**
+	 * @param d60 the d60 to set
+	 */
+	public void setD60(String d60) {
+		D60.setText(d60);
+	}
+
+	/**
+	 * @param d30 the d30 to set
+	 */
+	public void setD30(String d30) {
+		D30.setText(d30);
+	}
+
+	/**
+	 * @param d10 the d10 to set
+	 */
+	public void setD10(String d10) {
+		D10.setText(d10);
+	}
+
+	/**
+	 * @param coeficienteUniformidad the coeficienteUniformidad to set
+	 */
+	public void setCoeficienteUniformidad(String coeficienteUniformidad) {
+		this.coeficienteUniformidad.setText(coeficienteUniformidad);
+	}
+
+	/**
+	 * @param gradoCurvatura the gradoCurvatura to set
+	 */
+	public void setGradoCurvatura(String gradoCurvatura) {
+		this.gradoCurvatura.setText(gradoCurvatura);
+	}
+	
+	
 }

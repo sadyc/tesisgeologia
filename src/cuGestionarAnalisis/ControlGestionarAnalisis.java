@@ -171,6 +171,25 @@ public class ControlGestionarAnalisis {
         }
         
         
+        /**
+    	 * Retorna la muestra persistente que cumpla con el nombre pasado como parametro.
+    	 * @param nombreMuestra
+    	 * @return
+    	 */
+    	public Muestra obtenerMuestra (Class clase, String nombreMuestra) throws Exception{
+    		Persistencia persistencia = new Persistencia();
+    		persistencia.abrirTransaccion();
+    		Muestra aux = new Muestra();
+    		try {
+    			aux =(Muestra)persistencia.buscarObjeto(clase, "nombreMuestra=='"+nombreMuestra+"'");
+    		}
+    		catch (Exception e) {
+    			persistencia.realizarRollback();
+    			persistencia.cerrarPersistencia();
+    		}
+    		return aux;
+    	}
+        
         
         
 }
