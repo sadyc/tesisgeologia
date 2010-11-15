@@ -115,7 +115,13 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 			else{
 				String [] fila = gestionarAnalisis.getTablePanel().getRow(gestionarAnalisis.getTablePanel().getSelectedRow());
 				MediadorModificarAnalisis modificarAnalisis = new MediadorModificarAnalisis(nombreMuestra,Integer.parseInt(fila[1]),(String)fila[0]);
-				//this.gestionarAnalisis.getTablePanel().addRow(fila);
+				gestionarAnalisis.dispose();
+				try {
+					MediadorGestionarAnalisis media = new MediadorGestionarAnalisis("Analisis de la muestra "+nombreMuestra, nombreMuestra);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 				
 			}
 		}
@@ -128,7 +134,6 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 			    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	            if(quitOption==JOptionPane.YES_OPTION){
 	            	ControlGestionarAnalisis control = new ControlGestionarAnalisis();
-	            	//System.out.println(gestionarAnalisis.getTablePanel().getSelectedRow());
 	            	String [] fila = gestionarAnalisis.getTablePanel().getRow(gestionarAnalisis.getTablePanel().getSelectedRow());
 	            	Muestra muestra = new Muestra();
 	            	muestra.setNombreMuestra(nombreMuestra);
@@ -140,17 +145,11 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 						control.recalcularAnalisis(analisis);
 						gestionarAnalisis.dispose();
 						MediadorGestionarAnalisis media = new MediadorGestionarAnalisis("Analisis de la muestra "+nombreMuestra, nombreMuestra);
-						
-						
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
-	              	//gestionarAnalisis.getTablePanel().removeRow(gestionarAnalisis.getTablePanel().getSelectedRow());
-	               	try {
-						control.eliminarAnalisis(analisis);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+	              	
+	               	
 	            }
 			}
 		}

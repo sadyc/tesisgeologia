@@ -23,8 +23,8 @@ public class Tamiz {
 	 * Constructor por defecto
 	 */
 	public Tamiz(){
-		numeroTamiz = null;
-		aberturaMalla = null;
+		numeroTamiz = 0;
+		aberturaMalla = 0.0;
 	}
 	
 	/**
