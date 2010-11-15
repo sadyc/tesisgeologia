@@ -30,7 +30,7 @@ public class Main {
 		// Create a PersistenceManagerFactory for this datastore
 
         CargaDatos cargaDatos = new CargaDatos();
-        //cargaDatos.cargar();
+        cargaDatos.cargar();
         //MediadorLogin login = new MediadorLogin("Login");
 		//login.show();
         MediadorPrincipal pantallaPrincipal = new MediadorPrincipal("Pantalla Principal");

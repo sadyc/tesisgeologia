@@ -6,9 +6,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
 import persistencia.domain.Analisis;
-import persistencia.domain.Tamiz;
-import comun.MediadorSeleccionarTamiz;
+import persistencia.domain.Muestra;
 
 
 
@@ -71,9 +71,12 @@ public class MediadorModificarAnalisis  implements ActionListener,MouseListener,
      	if (this.GUIAnalisis.getJButtonAceptar() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");
 			pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
+			Muestra muestra = new Muestra ();
+			muestra.setNombreMuestra(nombreMuestra);
+			analisis.setMuestra(muestra);
 			try {
 				control.ModificarAnalisis(Integer.parseInt(pesoRetenido), nombreMuestra, numeroTamiz);
-				//REcalcular Todo por aca o por otro lado
+				control.recalcularAnalisis(analisis);//REcalcular Todo por aca o por otro lado
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
