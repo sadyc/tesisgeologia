@@ -3,8 +3,15 @@
  */
 package cuCalcularClasificacion;
 
+
+
+import java.util.List;
+
 import persistencia.Persistencia;
+import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
+import cuCalcularClasificacion.Clasificaciones.GranoFino;
+import cuCalcularClasificacion.Clasificaciones.GranoGrueso;
 
 /**
  * @author TesisGeologia
@@ -35,16 +42,36 @@ public class ControlClasificacion {
 		}
 		return aux;
 	}
-	/**
-	 * Metodo que segun el analisis con los tamices calcula la clasificacion de la muestra.
-	 */
-	public void calcularClasificacion() {
-	}
 	
 	/**
-	 * Elimina la clasificacion que almacena una muestra.
+	 * Realiza los calculos correspondientes para determinar la clasificacion de una muestra.
+	 * @param muestra 
 	 */
-	public void eliminarClasificacion(){
+	public void calcularClasificacionSUCS(Muestra muestra) throws Exception{
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		try{
+			Analisis analisis = new Analisis();
+			ControlClasificacion control = new ControlClasificacion();
+			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"'"; 
+			List listaAnalisis = (List)persistencia.buscarListaFiltro(analisis.getClass(), filtro);
+			int i = listaAnalisis.size()/2;
+			analisis = (Analisis)listaAnalisis.get(i);
+			if (analisis.getPorcentajePasante()>50) {
+				GranoFino fino = new GranoFino();	
+			}
+			else{
+				GranoGrueso grueso = new GranoGrueso();
+			}
+			
+		}
+		catch (Exception e){
+			persistencia.realizarRollback();
+			persistencia.cerrarPersistencia();
+		}
+		 
+		
+		
 	}
 	
 	/**
