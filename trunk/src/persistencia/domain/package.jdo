@@ -127,7 +127,7 @@
                   <column jdbc-type="integer"/>
  		</field>
         <field name="aberturaMalla" persistence-modifier="persistent">
-                 <column jdbc-type="integer"/>
+                 <column jdbc-type="double"/>
         </field>
          <field name="analisis" persistence-modifier="persistent" mapped-by="tamiz">
                 <collection element-type="persistencia.domain.Analisis"/>

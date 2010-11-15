@@ -13,7 +13,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		Collection<Analisis> analisisTamiz = new HashSet();;
-		Tamiz tam1 = new Tamiz (99,11);
+		Tamiz tam1 = new Tamiz (99,11.0);
 		MediadorTamiz tamiz = new MediadorTamiz(tam1);
 		
 	}

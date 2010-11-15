@@ -12,13 +12,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
-
+/**
+* @author TesisGeología
+* Esta clase implementa una ventana la cual lista todas las muestras almacenadas.
+*/
 public class GUIListarMuestras extends JDialog	{
 
-	/**
-	 * @param title
-	 * @throws java.awt.HeadlessException
-	 */
 	private JMenuBar menu = null;
 	private JMenu herramientas;
 	private JMenu ayuda;
@@ -28,10 +27,13 @@ public class GUIListarMuestras extends JDialog	{
 	private JPanel panelSur;
 	private TablePanel tablePanel;
 	private Object [][] data;
+		
 	
 	
-	private static final String systemDefault = javax.swing.UIManager.getSystemLookAndFeelClassName();	
-	
+	/**
+	 * Constructor con parametros de la clase.
+	 * @param datos, contiene una tabla con la informacion de las muestras almacenadas de manera persistente.
+	 */
 	public GUIListarMuestras(Object [][] datos) {
 		super();
 		data = datos;
@@ -74,7 +76,7 @@ public class GUIListarMuestras extends JDialog	{
 	}
 	
 	/**
-	 * Metodo que permite escuchar los botones Seleccionar y Buscar.
+	 * Metodo que permite escuchar los botones Salir y salirMenu.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -85,10 +87,11 @@ public class GUIListarMuestras extends JDialog	{
 	}
 	
 	/** 
-     *@return data  
-     * */
+	 * Determina el nombre de cada columna de la tabla de la ventana.
+     *@return columName, son los datos mas importantes de una muestra.  
+     */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre","Peso","Profundidad Inicial","Profundidad Final","Latitud","Longitud","Clasificacion","Usuario","Operador ID"};
+		String[] columnName = {"Nombre Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador","Latitud","Longitud"};
 		return columnName;
 	}
 
@@ -126,12 +129,5 @@ public class GUIListarMuestras extends JDialog	{
 		return menu;
 	}
 
-	/**
-	 * @param menu the menu to set
-	 */
-	public void setMenu(JMenuBar menu) {
-		this.menu = menu;
-	}
-	
 }
 

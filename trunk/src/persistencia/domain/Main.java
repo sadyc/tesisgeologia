@@ -9,10 +9,6 @@ import comun.MediadorPrincipal;
  /**
  * @author TesisGeologia
  *
- * Este ejemplo contiene un Frame que permite realizar la gestion sin persistencia
- * de los datos de una muestra con Border Layout y en cada uno de sus paneles
- * ajustamos el layout conveniente para cada caso.
- * 
  */
  
 
@@ -33,13 +29,8 @@ public class Main {
 		
 		// Create a PersistenceManagerFactory for this datastore
 
-        //CargaDatos cargaDatos = new CargaDatos();
+        CargaDatos cargaDatos = new CargaDatos();
         //cargaDatos.cargar();
-
-
-        //CargaDatos cargaDatos = new CargaDatos();
-        //cargaDatos.cargar();
-
         //MediadorLogin login = new MediadorLogin("Login");
 		//login.show();
         MediadorPrincipal pantallaPrincipal = new MediadorPrincipal("Pantalla Principal");

@@ -7,13 +7,12 @@ import javax.swing.*;
 
 /**
 * @author TesisGeología
-*
+* Esta clase implementa la ventana principal del programa, con los botones de sus principales funcionalidades.
 */
 public class GUIPrincipal extends JFrame {
 
 	private JPanel panelCentro=null;
 	private JPanel panelSur=null;
-	private static final String systemDefault = javax.swing.UIManager.getSystemLookAndFeelClassName();	
 	private JMenuBar menu = null;
 	private JMenu herramientas;
 	private JMenu ayuda;
@@ -31,7 +30,11 @@ public class GUIPrincipal extends JFrame {
 	
 
 
-
+	/**
+	 * Constructor de la clase.
+	 * @param title, es el titulo que va a tener la ventana.
+	 * @throws Exception
+	 */
 	public GUIPrincipal(String title) throws Exception {
 		super(title);
 		if (this.menu==null) {
@@ -65,7 +68,7 @@ public class GUIPrincipal extends JFrame {
 
 
 	/**
-	 * This method initializes this
+	 * Metodo que inicializa la interfaz.
 	 *
 	 * @return void
 	 */
@@ -78,7 +81,11 @@ public class GUIPrincipal extends JFrame {
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	}
 
-	
+	/**
+	 * Metodo que retorna el panelCentro.
+	 *
+	 * @return Jpanel
+	 */
 	public JPanel getPanelCentro() {
 		if (this.panelCentro==null) {
 			this.panelCentro= new JPanel();
@@ -91,7 +98,11 @@ public class GUIPrincipal extends JFrame {
 		return this.panelCentro;
 	}
 	
-
+	/**
+	 * Metodo que retorna el panelSur.
+	 *
+	 * @return Jpanel
+	 */
 	public JPanel getPanelSur() {
 		if (this.panelSur==null) {
 			this.panelSur = new JPanel();
@@ -101,8 +112,6 @@ public class GUIPrincipal extends JFrame {
 		return this.panelSur;
 	}
 
-
-
 	
 	/**
 	 * @return the menuBar
@@ -111,13 +120,6 @@ public class GUIPrincipal extends JFrame {
 		return menu;
 	}
 
-
-	/**
-	 * @param menuBar the menuBar to set
-	 */
-	public void setMenuBar(JMenuBar menu) {
-		this.menu = menu;
-	}
 
 	/**
 	 * @return the gestionarMuestra
@@ -153,9 +155,6 @@ public class GUIPrincipal extends JFrame {
 	public JButton getJButtonSalir() {
 		return jButtonSalir ;
 	}
-	
-	
-	
 	
 	/**
 	 * @return the listarMuestrasMenu

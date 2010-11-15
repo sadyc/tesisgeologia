@@ -13,12 +13,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
+/**
+* @author TesisGeología
+* Esta clase implementa la ventana que me permite seleccionar un tamiz de los almacenados.
+*/
 public class GUISeleccionarTamiz extends JDialog	{
 
-	/**
-	 * @param title
-	 * @throws java.awt.HeadlessException
-	 */
 	private JMenuBar menu = null;
 	private JMenu herramientas;
 	private JMenu ayuda;
@@ -30,15 +30,16 @@ public class GUISeleccionarTamiz extends JDialog	{
 	private JPanel panelSur;
 	private TablePanel tablePanel;
 	private Object [][] data;
-	private static final String systemDefault = javax.swing.UIManager.getSystemLookAndFeelClassName();	
 	
+	/**
+	 * Constructor de la clase.
+	 * @param datos, contiene la informacion de los tamices almacenados.
+	 */
 	public GUISeleccionarTamiz(Object [][] datos) {
 		super();
-		
 		data = datos;
 		if (this.menu==null) {
 			tablePanel = getTablePanel();
-			
 			menu = new JMenuBar();
 			herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
@@ -108,7 +109,7 @@ public class GUISeleccionarTamiz extends JDialog	{
 
 	/** 
      *@return data  
-     * */
+     */
 	public static String[] getColumName(){
 		String[] columnName = {"Numero Tamiz","Abertura de Malla"};
 		return columnName;

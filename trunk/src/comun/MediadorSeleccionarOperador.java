@@ -25,7 +25,9 @@ import cuGestionarMuestra.MediadorAltaMuestra;
 import cuGestionarMuestra.MediadorModificarMuestra;
 
 
-
+/**
+* @author TesisGeología
+*/
 public class MediadorSeleccionarOperador implements ActionListener,MouseListener,ItemListener {
 
 	private GUISeleccionarOperador GUISeleccionarOperador = null;
@@ -33,7 +35,10 @@ public class MediadorSeleccionarOperador implements ActionListener,MouseListener
 	private Object [][] data = new Object [20] [5];
 	private Component frame;
 	
-	
+	/**
+	 * Constructor por defecto de la clase.
+	 * @throws Exception
+	 */
 	public MediadorSeleccionarOperador() throws Exception {
 		super();
 		cargarTablaDeOperador();

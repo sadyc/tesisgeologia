@@ -13,13 +13,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
-
+/**
+* @author TesisGeología
+* Esta clase implementa la ventana que me permite seleccionar una de las muestras almacenadas.
+*/
 public class GUISeleccionarMuestra extends JDialog	{
 
-	/**
-	 * @param title
-	 * @throws java.awt.HeadlessException
-	 */
 	private JMenuBar menu = null;
 	private JMenu herramientas;
 	private JMenu ayuda;
@@ -34,16 +33,16 @@ public class GUISeleccionarMuestra extends JDialog	{
 	private TablePanel tablePanel;
 	private Object [][] data;
 	
-	
-	private static final String systemDefault = javax.swing.UIManager.getSystemLookAndFeelClassName();	
-	
+	/**
+	 * Constructor de la clase.
+	 * @param datos, contiene la informacion de las muestras almacenadas en el sistema.
+	 */
 	public GUISeleccionarMuestra(Object [][] datos) {
 		super();
 		
 		data = datos;
 		if (this.menu==null) {
 			tablePanel = getTablePanel();
-			
 			menu = new JMenuBar();
 			herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");

@@ -79,7 +79,7 @@ public class MediadorPrincipal implements ActionListener{
 		}
 		if (this.GUIPrincipal.getJButtonListarMuestras() == source || this.GUIPrincipal.getListarMuestrasMenu()== source){
 			try {
-				MediadorListarMuestras listarMuestras = new MediadorListarMuestras("***Listado de Muestras***");
+				MediadorListarMuestras listarMuestras = new MediadorListarMuestras();
 				
 			} catch (Exception e) {
 				e.printStackTrace();
