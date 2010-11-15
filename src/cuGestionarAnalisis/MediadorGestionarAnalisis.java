@@ -46,8 +46,6 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 		this.nombreMuestra = nombreMuestra;
 		cargarTablaDeAnalisis(nombreMuestra);
 		this.gestionarAnalisis = new GUIGestionarAnalisis(titulo,data);
-		gestionarAnalisis.setTitle(titulo);
-		//gestionarAnalisis.setModal(true);
 		this.gestionarAnalisis.setListenerButtons(this);
 		show();
 	}
