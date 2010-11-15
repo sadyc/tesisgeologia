@@ -3,26 +3,24 @@
  */
 package cuCalcularClasificacion.Clasificaciones;
 
-import persistencia.domain.Clasificacion;
-
 /**
  * @author TesisGeologia.
  * @version 1.0.
  */
-public class AASHTO extends Clasificacion{
+public class GravasConFinos extends Gravas {
 
 	/**
-	 * @brief Constructor por defecto.
+	 * Constructor por defecto.
 	 */
-	public AASHTO() {
-		descripcion = "arena de metales";
+	public GravasConFinos() {
+		this.descripcion="(apreciable cantidad de finos)";
 	}
-	
+
 	/**
 	 * Constructor con parametros de la clase.
 	 * @param descripcion, es la descripcion de la clasificacion a crear.
 	 */
-	public AASHTO(String descripcion) {
+	public GravasConFinos(String descripcion) {
 		super(descripcion);
 	}
 

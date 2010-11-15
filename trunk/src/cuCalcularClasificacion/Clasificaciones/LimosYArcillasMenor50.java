@@ -3,26 +3,24 @@
  */
 package cuCalcularClasificacion.Clasificaciones;
 
-import persistencia.domain.Clasificacion;
-
 /**
  * @author TesisGeologia.
  * @version 1.0.
  */
-public class AASHTO extends Clasificacion{
+public class LimosYArcillasMenor50 extends GranoFino {
 
 	/**
-	 * @brief Constructor por defecto.
+	 * Constructor por defecto
 	 */
-	public AASHTO() {
-		descripcion = "arena de metales";
+	public LimosYArcillasMenor50() {
+		this.descripcion = "Límite líquido menor de 50";
 	}
-	
+
 	/**
 	 * Constructor con parametros de la clase.
 	 * @param descripcion, es la descripcion de la clasificacion a crear.
 	 */
-	public AASHTO(String descripcion) {
+	public LimosYArcillasMenor50(String descripcion) {
 		super(descripcion);
 	}
 

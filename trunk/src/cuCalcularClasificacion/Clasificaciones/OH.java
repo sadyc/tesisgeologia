@@ -1,28 +1,22 @@
-/**
- * 
- */
 package cuCalcularClasificacion.Clasificaciones;
-
-import persistencia.domain.Clasificacion;
-
 /**
  * @author TesisGeologia.
  * @version 1.0.
  */
-public class AASHTO extends Clasificacion{
+public class OH extends LimosYArcillasMayor50 {
 
 	/**
-	 * @brief Constructor por defecto.
+	 * Constructor por defecto.
 	 */
-	public AASHTO() {
-		descripcion = "arena de metales";
+	public OH() {
+		this.descripcion="Arcillas orgánicas de plasticidad media a elevada; limos orgánicos.";
 	}
-	
+
 	/**
 	 * Constructor con parametros de la clase.
 	 * @param descripcion, es la descripcion de la clasificacion a crear.
 	 */
-	public AASHTO(String descripcion) {
+	public OH(String descripcion) {
 		super(descripcion);
 	}
 

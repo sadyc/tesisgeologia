@@ -3,26 +3,24 @@
  */
 package cuCalcularClasificacion.Clasificaciones;
 
-import persistencia.domain.Clasificacion;
-
 /**
  * @author TesisGeologia.
  * @version 1.0.
  */
-public class AASHTO extends Clasificacion{
+public class GranoFino extends SUCS {
 
 	/**
-	 * @brief Constructor por defecto.
+	 * Constructor por defecto
 	 */
-	public AASHTO() {
-		descripcion = "arena de metales";
+	public GranoFino() {
+		this.descripcion = "Más de la mitad del material pasa por el tamiz número 200";
 	}
-	
+
 	/**
 	 * Constructor con parametros de la clase.
 	 * @param descripcion, es la descripcion de la clasificacion a crear.
 	 */
-	public AASHTO(String descripcion) {
+	public GranoFino(String descripcion) {
 		super(descripcion);
 	}
 
