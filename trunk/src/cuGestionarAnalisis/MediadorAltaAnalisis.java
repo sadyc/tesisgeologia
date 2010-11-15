@@ -58,8 +58,8 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 	/**
 	 * @return the altaMuestra
 	 */
-	public GUIAltaAnalisis getAnalisis() {
-		return GUIAnalisis;
+	public Analisis getAnalisis() {
+		return analisis;
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 			analisis.setPesoRetenido(Integer.parseInt(pesoRetenido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
 			System.out.println(analisis.toString());
 			try {
-				control.insertarAnalisis(analisis, nombreMuestra, numeroTamiz);
+				analisis = control.insertarAnalisis(analisis, nombreMuestra, numeroTamiz);
 				altaAnalisis= true;
 			} catch (Exception e) {
 				e.printStackTrace();

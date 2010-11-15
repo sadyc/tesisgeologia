@@ -2,6 +2,7 @@ package cuGestionarAnalisis;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import persistencia.Persistencia;
@@ -24,7 +25,7 @@ public class ControlGestionarAnalisis {
         /**
          * Inserta un analisis con persistencia. 
          */ 
-        public void insertarAnalisis(Analisis analisis,String nombreMuestra, String numeroTamiz) throws Exception{
+        public Analisis insertarAnalisis(Analisis analisis,String nombreMuestra, String numeroTamiz) throws Exception{
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 Tamiz tamiz= new Tamiz();
@@ -35,34 +36,34 @@ public class ControlGestionarAnalisis {
                         muestra = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
                         System.out.println("peso de la muestra"+muestra.getPeso()+"peso retenidodel analisis"+analisis.getPesoRetenido());
                         System.out.println((analisis.getPesoRetenido()*100)/muestra.getPeso());
-                        analisis.setPorcentajeRetenidoAcumulado((analisis.getPesoRetenido()*100)/muestra.getPeso());
+                        
                         analisis.setMuestra(muestra);
-                        analisis.setPorcentajeRetenidoParcial((analisis.getPesoRetenido()*100)/muestra.getPeso());
-                        analisis.setPorcentajePasante(100-analisis.getPorcentajeRetenidoParcial());
+                               
                         Class claseTamiz = tamiz.getClass();
                         analisis.setTamiz((Tamiz)persistencia.buscarObjeto(claseTamiz, "numeroTamiz=="+numeroTamiz));
                         //analisis.setPesoRetenido(pesoRetenido);
-                        persistencia.insertarObjeto(analisis);
-                        listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "Muestra=='"+nombreMuestra+"'");
+                       
+                        analisis.setPorcentajeRetenidoParcial((analisis.getPesoRetenido()*100)/muestra.getPeso());
+                        listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+nombreMuestra+"'");
                         Integer porcentajeRetenidoAcumulado= 0;
                         if (listaAnalisis.isEmpty()){
-                        	analisis.setPorcentajeRetenidoAcumulado(analisis.getPorcentajeRetenidoParcial());
+                        	analisis.setPorcentajeRetenidoAcumulado((analisis.getPesoRetenido()*100)/muestra.getPeso());
+                        	analisis.setPorcentajePasante(100-analisis.getPorcentajeRetenidoParcial());
                         }else{
-                        	int i = 1;
-                        	while (listaAnalisis.size()>i){
-                        		analisis = (Analisis)listaAnalisis.get(i);
-                        		porcentajeRetenidoAcumulado = porcentajeRetenidoAcumulado+analisis.getPorcentajeRetenidoParcial();
-                        		analisis.setPorcentajeRetenidoAcumulado(porcentajeRetenidoAcumulado);
-                        		i++;
-                        	}                        	
-                        }
-                                               
+                        	int i = listaAnalisis.size();
+                        	Analisis auxAnalisis = new Analisis();
+                        	auxAnalisis = (Analisis)listaAnalisis.get(i-1);
+                        	analisis.setPorcentajePasante(auxAnalisis.getPorcentajePasante()- analisis.getPorcentajeRetenidoParcial());
+                        	analisis.setPorcentajeRetenidoAcumulado(auxAnalisis.getPorcentajeRetenidoAcumulado()+ analisis.getPorcentajeRetenidoParcial());
+                        }                        	
+                        persistencia.insertarObjeto(analisis);                                      
                         persistencia.cerrarTransaccion();
                         System.out.println("Analisis insertado con persistencia");
                 } catch (Exception e) {
+                		e.printStackTrace();
                         persistencia.realizarRollback();
                 }
-                //return analisis;
+                return analisis;
         }
         
         /**
@@ -88,6 +89,44 @@ public class ControlGestionarAnalisis {
     		catch (Exception e) {
     			persistencia.realizarRollback();
     		}
+    		
+    	}
+        /**
+         * Recalcula el analisis despues de eliminar. 
+         */
+        public void recalcularAnalisis(Analisis analisis) throws Exception {
+        	Persistencia persistencia = new Persistencia();
+    		persistencia.abrirTransaccion();
+    		try {
+    			Class clase = analisis.getClass();
+    			String nombreMuestra = analisis.getMuestra().getNombreMuestra();
+    			Collection coleccionAnalisis = persistencia.buscarColeccion(clase);
+    			LinkedList<Analisis> lista = new LinkedList();
+    			
+    			Iterator<Analisis> it = coleccionAnalisis.iterator();
+    			while (it.hasNext()){
+    				analisis = it.next();
+    				lista.add(analisis);
+    				persistencia.eliminarObjeto(analisis);
+    			}
+    			int i = 0;
+    			Iterator<Analisis> ite = coleccionAnalisis.iterator();
+    			while (!lista.isEmpty()){
+    				System.out.println("Cuantos elimine"+ i);
+    				Analisis auxAnalisis = new Analisis();
+    				auxAnalisis.setPesoRetenido(lista.getFirst().getPesoRetenido());
+    				insertarAnalisis(analisis, nombreMuestra, lista.getFirst().getTamiz().getNumeroTamiz().toString());
+    				lista.removeFirst();
+    				System.out.println("Cuantos elimine"+ i);
+    			}
+    			persistencia.cerrarTransaccion();
+    			System.out.println("Muestra eliminada con persistencia");
+    		}
+    		catch (Exception e) {
+    			e.printStackTrace();
+    			persistencia.realizarRollback();
+    		}
+    		
     	}
                         
         /**
@@ -97,8 +136,9 @@ public class ControlGestionarAnalisis {
                 Collection<Object> aux = null; 
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
+                
                 try {
-                		String filtro = "";//"Muestra=='"+nombreMuestra+"'";//"pesoRetenido==8";
+                		String filtro = "muestra.nombreMuestra=='"+nombreMuestra+"'";
                 		System.out.println(filtro+"la nombre de la muestar");
                         aux = (persistencia.buscarColeccionFiltro(clase, filtro));
                         persistencia.cerrarTransaccion();

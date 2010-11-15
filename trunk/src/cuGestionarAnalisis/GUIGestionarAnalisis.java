@@ -185,7 +185,7 @@ public class GUIGestionarAnalisis extends JFrame {
      *@return data  
      * */
 	public static String[] getColumName(){
-		String[] columnName = {"Tamiz N°","Peso Retenido","Porcentaje Pasante","Porcentaje Retenido","Porcentaje Acumulado"};
+		String[] columnName = {"Tamiz N°","Peso Retenido(gr)","% Porcentaje Pasante","% Porcentaje Acumulado","% Porcentaje Retenido"};
 		return columnName;
 	}
 	
