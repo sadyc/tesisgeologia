@@ -59,7 +59,7 @@ public class MediadorPrincipal implements ActionListener{
 			try {
 				MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra();
 				if (seleccion.seSeleccionoMuestra()){
-					MediadorGestionarAnalisis Analisis = new MediadorGestionarAnalisis("Gestionar Analisis", (String)seleccion.getSeleccionado()[1]);
+					MediadorGestionarAnalisis Analisis = new MediadorGestionarAnalisis("Analisis de la muestra "+(String)seleccion.getSeleccionado()[1], (String)seleccion.getSeleccionado()[1]);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -65,7 +65,7 @@ public class GUIAltaAnalisis extends JDialog {
 	public GUIAltaAnalisis(String data, Muestra muestra, Tamiz tamiz) {
 		super();
 		pesoRetenido = new JTextField(15);
-		this.muestra = new JLabel("Muestra: "+muestra.getNombreMuestra());
+		this.muestra = new JLabel("Muestra: "+muestra.getNombreMuestra()+"Peso: "+muestra.getPeso());
 		this.tamiz = new JLabel("Tamiz: " + tamiz.getNumeroTamiz());
 		this.pesoRetenido.setText(data);
 		aceptar = new JButton("AGREGAR ANALISIS");
