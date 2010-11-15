@@ -47,10 +47,10 @@ public class GUIAltaAnalisis extends JDialog {
 	/**
 	 * This is the default constructor
 	 */
-	public GUIAltaAnalisis() {
+	public GUIAltaAnalisis( Muestra muestra) {
 		super();
 		pesoRetenido = new JTextField(15);
-		muestra = new JLabel("Muestra: ");
+		this.muestra = new JLabel("Muestra: "+muestra.getNombreMuestra());
 		tamiz = new JLabel("Tamiz: ");
 		aceptar = new JButton("AGREGAR ANALISIS");
 		salir = new JButton("SALIR");

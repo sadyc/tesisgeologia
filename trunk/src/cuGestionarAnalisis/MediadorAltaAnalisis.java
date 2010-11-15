@@ -8,9 +8,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import persistencia.domain.Analisis;
-import persistencia.domain.Tamiz;
+import persistencia.domain.Muestra;
 
 import comun.MediadorSeleccionarTamiz;
+
+import cuCalcularClasificacion.ControlClasificacion;
 
 
 
@@ -24,6 +26,7 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 	
 	private GUIAltaAnalisis GUIAnalisis;
 	private String pesoRetenido;
+	private Muestra muestra = new Muestra();
 	private Analisis analisis;
 	private String numeroTamiz;
 	private String nombreMuestra;
@@ -36,7 +39,8 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 		super();
 		analisis = new Analisis();
 		this.nombreMuestra = nombreMuestra;
-		this.GUIAnalisis = new GUIAltaAnalisis();
+		obtenerMuestra();
+		this.GUIAnalisis = new GUIAltaAnalisis(muestra);
 		GUIAnalisis.setTitle("Analisis por Tamiz de una Muestra");
 		GUIAnalisis.setModal(true);
 		this.GUIAnalisis.setListenerButtons(this);
@@ -105,7 +109,17 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 		}
 	}
 
-
+	/**
+	 * Permite recuperar una muestra de la base de datos. 
+	 */
+	public void obtenerMuestra(){
+		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
+		try {
+			this.muestra = control.obtenerMuestra(muestra.getClass(), nombreMuestra);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void itemStateChanged(ItemEvent arg0) {
 	}
