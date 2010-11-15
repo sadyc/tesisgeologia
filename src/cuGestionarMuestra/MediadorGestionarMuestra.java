@@ -29,7 +29,7 @@ import persistencia.domain.Usuario;
 public class MediadorGestionarMuestra implements ActionListener,MouseListener,ItemListener{
 
 	private GUIABMMuestra GUIABMMuestra;
-	private Object [][] data = new Object [5] [6];
+	private Object [][] data ;
 	private Component frame;
 	
 	
@@ -54,6 +54,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 		Class clase = muestra.getClass();
 		Collection muestras = control.coleccionMuestras(clase);
 		Iterator<Muestra> it = muestras.iterator();
+		data = new Object [muestras.size()] [6];
 		int i = 0;
 		while (it.hasNext()){
 			muestra = it.next();

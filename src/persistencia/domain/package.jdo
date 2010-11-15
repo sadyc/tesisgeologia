@@ -27,19 +27,20 @@
         <field name="clasificacion" persistence-modifier="persistent">
                 <column name="CLASIFICACION_ID"/>
         </field>
-        <field name="operadorLaboratorio">
-               <column name="OPERADORDELABORATORIO_ID"/>
+        <field name="operadorLaboratorio" >
+               <column name="dni_operador"/>
              </field>
         <field name="usuario" persistence-modifier="persistent">
-                 <column name="USUARIO_ID"/>
+                 <column name="dni_usuario"/>
         </field>
          <field name="ubicacion" persistence-modifier="persistent">
-                 <column name="UBICACION_ID"/>
+                 <column name="ubicacion"/>
         </field>
          <field name="analisis" persistence-modifier="persistent" mapped-by="muestra">
                 <collection element-type="persistencia.domain.Analisis"/>
            </field>
       </class>
+
 <class name="persistencia.domain.Persona" identity-type="datastore">
 	<inheritance strategy="new-table"/>
 		   <field name="dni" persistence-modifier="persistent">
@@ -109,10 +110,10 @@
                  <column jdbc-type="integer"/>
         </field>
         <field name="tamiz" persistence-modifier="persistent">
-                 <column name="TAMIZ_ID"/>
+                 <column name="aberturaMalla"/>
         </field>
           <field name="muestra" persistence-modifier="persistent">
-                 <column name="MUESTRA_ID"/>
+                 <column name="nombreMuestra"/>
         </field>
         <field name="porcentajeRetenidoAcumulado" persistence-modifier="persistent">
                  <column jdbc-type="integer"/>

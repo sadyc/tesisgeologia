@@ -126,7 +126,7 @@ public class Persistencia {
 		try {
 			Extent e=pmi.getExtent(clase,true);
 			Query q = pmi.newQuery(e,filtro);
-			//q.setOrdering("porcentajeAcumulado ascending");
+			q.setOrdering("porcentajeRetenidoAcumulado ascending");
 			aux = (List)q.execute();
 			System.out.println("Coleccion encontrada y cargada");
 		} catch (Exception e) {
