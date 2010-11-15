@@ -23,7 +23,7 @@ public class MediadorSeleccionarTamiz implements ActionListener,MouseListener,It
 	private GUISeleccionarTamiz GUISeleccionarTamiz = null;
 	private String seleccionado = new String();
 	//private Object [] seleccionado = new Object [5];
-	private Object [][] data = new Object [20] [2];
+	private Object [][] data ;
 	private Component frame;
 	
 	
@@ -48,6 +48,7 @@ public class MediadorSeleccionarTamiz implements ActionListener,MouseListener,It
 		Class clase = tamiz.getClass();
 		Collection tamices = control.coleccionMuestras(clase);
 		Iterator<Tamiz> it = tamices.iterator();
+		data =  new Object [tamices.size()] [2];
 		int i = 0;
 		while (it.hasNext()){
 			tamiz = it.next();

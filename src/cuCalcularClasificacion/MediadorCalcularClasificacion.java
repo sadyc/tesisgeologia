@@ -45,7 +45,8 @@ public class MediadorCalcularClasificacion implements ActionListener,MouseListen
 		GUIClasificacion.setTitle(titulo);
 		GUIClasificacion.setModal(true);
 		this.GUIClasificacion.setListenerButtons(this);
-		calcularClasificacion();
+		ControlClasificacion control = new ControlClasificacion();
+		control.calcularClasificacionSUCS(muestra);
 		GUIClasificacion.show();
 	}
 	
@@ -60,13 +61,6 @@ public class MediadorCalcularClasificacion implements ActionListener,MouseListen
 			System.out.println("No se pudo cargar la muestra a clasificar!!");
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * Realiza los calculos correspondientes para determinar la clasificacion de una muestra.
-	 */
-	public void calcularClasificacion(){
-		
 	}
 	
 	/**

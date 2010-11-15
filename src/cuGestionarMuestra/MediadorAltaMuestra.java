@@ -125,12 +125,11 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 		}
 		if (this.GUIMuestra.getJButtonAceptar() == source) {
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");
-			//OperadorDeLaboratorio op = new OperadorDeLaboratorio("nombre","apellido","dni","4665458","asd@gmail.com");
-       		Usuario usuario = new Usuario();
-       		usuario.setDni("32323232");
-     		Clasificacion clasificacion = new Clasificacion();
+			Usuario usuario = new Usuario();
+       		Clasificacion clasificacion = new Clasificacion();
      		Date fecha = new Date(11,22,1980);
-     		if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("") ){
+     		if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("Ubicacion(*) : ") || GUIMuestra.getOperador().getText().equals("Operador(*) :") ){
+     			System.out.println(GUIMuestra.getUbicacion().getText()+"jelow");
 				JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
