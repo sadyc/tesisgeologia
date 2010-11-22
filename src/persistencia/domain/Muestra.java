@@ -19,11 +19,11 @@ import javax.jdo.annotations.PersistenceCapable;
 public class Muestra {
  
 	private String nombreMuestra;
-	private float profundidadInicial;
-	private float profundidadFinal;
+	private Float profundidadInicial;
+	private Float profundidadFinal;
 	private Integer peso;
 	private Date fecha;
-	private float coeficienteUniformidad;
+	private Float coeficienteUniformidad;
 	protected OperadorDeLaboratorio operadorLaboratorio ;
 	protected Usuario usuario;
 	protected Ubicacion ubicacion;
@@ -35,8 +35,8 @@ public class Muestra {
 	 */
 	public Muestra() {
 		nombreMuestra = "";
-		profundidadInicial= -1;
-		profundidadFinal= -1;
+		profundidadInicial= new Float(0);
+		profundidadFinal= new Float(0);
 		peso= -1;
 		operadorLaboratorio = new OperadorDeLaboratorio();
 		usuario = new Usuario();
@@ -85,7 +85,7 @@ public class Muestra {
 	 * Metodo que permite obtener la profundidadInicial
 	 * @return the profundidadInicial
 	 */
-	public float getProfundidadInicial() {
+	public Float getProfundidadInicial() {
 		return profundidadInicial;
 	}
 	
@@ -93,7 +93,7 @@ public class Muestra {
 	 * Metodo que permite setear profundidadInicial de la Muestra
 	 * @param profundidadInicial the profundidadInicial to set
 	 */
-	public void setProfundidadInicial(float profundidadInicial) {
+	public void setProfundidadInicial(Float profundidadInicial) {
 		this.profundidadInicial = profundidadInicial;
 	}
 	
@@ -101,7 +101,7 @@ public class Muestra {
 	 * Metodo que permite obtener la profundidadFinal
 	 * @return the profundidadFinal
 	 */
-	public float getProfundidadFinal() {
+	public Float getProfundidadFinal() {
 		return profundidadFinal;
 	}
 	
@@ -109,7 +109,7 @@ public class Muestra {
 	 * Metodo que permite setear profundidadFinal de la Muestra
 	 * @param profundidadFinal the profundidadFinal to set
 	 */
-	public void setProfundidadFinal(float profundidadFinal) {
+	public void setProfundidadFinal(Float profundidadFinal) {
 		this.profundidadFinal = profundidadFinal;
 	}
 	
@@ -209,14 +209,14 @@ public class Muestra {
 	/**
 	 * @return the coeficienteUniformidad
 	 */
-	public float getCoeficienteUniformidad() {
+	public Float getCoeficienteUniformidad() {
 		return coeficienteUniformidad;
 	}
 
 	/**
 	 * @param coeficienteUniformidad the coeficienteUniformidad to set
 	 */
-	public void setCoeficienteUniformidad(float coeficienteUniformidad) {
+	public void setCoeficienteUniformidad(Float coeficienteUniformidad) {
 		this.coeficienteUniformidad = coeficienteUniformidad;
 	}
 

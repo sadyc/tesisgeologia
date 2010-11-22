@@ -133,11 +133,11 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				try{
-					String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-					GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+				String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 					try {
-						MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(fila);
+						
+						MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(control.obtenerMuestra(fila[1],fila[0]));
+						GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 						System.out.println("antees de meter en panel");
 						this.GUIABMMuestra.getTablePanel().addRow(modificarMuestra.getData());
 						System.out.println("dfespues de meter en panel");
@@ -145,16 +145,12 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 					catch (Exception e) {
 						e.printStackTrace();
 					}
-					}
-					catch (Exception e) {
-						JOptionPane.showMessageDialog(frame,"Se ha seleccionado una muestra invalida","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-					}
-					}
-				}
-			if (this.GUIABMMuestra.getJButtonSalir() == source){
-				System.out.println("presionado boton salir");
-				GUIABMMuestra.dispose();
 			}
+		}
+		if (this.GUIABMMuestra.getJButtonSalir() == source){
+			System.out.println("presionado boton salir");
+			GUIABMMuestra.dispose();
+		}
 	}
 	
 	/**

@@ -27,21 +27,19 @@ import comun.MediadorSeleccionarUbicacion;
  */
 public class MediadorModificarMuestra implements ActionListener,MouseListener,ItemListener{
 	private GUIMuestra GUIMuestra;
-	private String[] data = new String [10];
+	private String[] data = new String [5];
 	private Component frame;
 	private Ubicacion ubicacion;
 	private OperadorDeLaboratorio operador;
 	private Muestra muestra;
-	private String nombreMuestra;
+	
 
-	public MediadorModificarMuestra(Object[] data) throws Exception {
+	public MediadorModificarMuestra(Muestra muestra) throws Exception {
 		super();
-		muestra = new Muestra();
-		this.ubicacion = new Ubicacion();
-		this.operador= new OperadorDeLaboratorio();
-		this.GUIMuestra = new GUIMuestra(data);
-		
-		nombreMuestra = (String)data[1];
+		this.muestra = muestra;
+		operador = muestra.getOperador();
+		ubicacion = muestra.getUbicacion();
+		this.GUIMuestra = new GUIMuestra(muestra);
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
 		this.GUIMuestra.setListenerButtons(this);
@@ -119,7 +117,8 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 			}
 			else {
 				try {
-					muestra = new Muestra();
+					String nombreMuestraModificar = muestra.getNombreMuestra();
+					//muestra = new Muestra();
 					muestra.setNombreMuestra(GUIMuestra.getNombre().getText());
 					muestra.setPeso(Integer.parseInt(GUIMuestra.getPeso().getText()));
 					muestra.setProfundidadInicial(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
@@ -129,14 +128,9 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 					data[2]= GUIMuestra.getPeso().getText();
 					data[3]= GUIMuestra.getProfundidadInicial().getText();
 					data[4]= GUIMuestra.getProfundidadFinal().getText();
-					data[5]= "longitud";
-	                data[6]= "latitud";
-	                data[7]=  "clasificacion"; // muestra.getClasificacion
-	                data[8]= "nombre usuario"; // usuario.getNombre
-	                data[9]=  "operadorLaboratorio ID"; // operadorLaboratorio.getId
 					System.out.println("modifique campos456");
 					
-					control.ModificarMuestra(nombreMuestra, muestra,ubicacion,operador);
+					control.ModificarMuestra(nombreMuestraModificar, muestra,ubicacion,operador);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
