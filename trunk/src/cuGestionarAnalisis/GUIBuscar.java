@@ -110,7 +110,7 @@ public class GUIBuscar extends JDialog {
 		this.getContentPane().setLayout(new BorderLayout()); 		
 		this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
-	
+	 	this.setLocationRelativeTo(null);
 	}
    
 	

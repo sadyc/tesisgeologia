@@ -74,11 +74,12 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	 * @return void
 	 */
 	private  void initialize() {
-		this.setSize(803, 200);
+		this.setSize(1003, 700);
       	this.getContentPane().setLayout(new BorderLayout());
 		this.setJMenuBar(this.getMenu());
 	  	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
+	 	this.setLocationRelativeTo(null);
 	}
 	/**
 	 * This method retorna botonAgregar	

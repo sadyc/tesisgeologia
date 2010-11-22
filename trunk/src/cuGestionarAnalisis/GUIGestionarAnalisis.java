@@ -109,11 +109,12 @@ public class GUIGestionarAnalisis extends JFrame {
 	 */
 	private  void initialize() {
 		
-		this.setSize(700,400);
+		this.setSize(1000,700);
 		this.getContentPane().setLayout(new BorderLayout());
 	 	this.setJMenuBar(this.getMenu());
 	 	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
+	 	this.setLocationRelativeTo(null);
 	}
 
 	

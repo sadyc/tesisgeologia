@@ -175,7 +175,7 @@ public class GUIMuestra extends JDialog {
 	 * @return void
 	 */
 	private  void initialize() {
-		this.setSize(400 , 500);
+		this.setSize(600 , 700);
         // Seteamos el BorderLayout
 		this.getContentPane().setLayout(new BorderLayout()); 		
 	 	// Se aaden los componentes al Frame
@@ -183,6 +183,7 @@ public class GUIMuestra extends JDialog {
 	 	this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
 	 	// Agregamos el Panel Sur al Frame
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
+	 	this.setLocationRelativeTo(null);
 	}
    
 	

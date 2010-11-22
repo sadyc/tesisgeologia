@@ -20,7 +20,7 @@ import comun.TablePanel;
  * 
  * Clase que define la interfaz para dar de alta una muestra   
  */
-public class GUIABMMuestra extends JFrame {
+public class GUIABMMuestra extends JDialog{
 
 
 	/**
@@ -52,7 +52,8 @@ public class GUIABMMuestra extends JFrame {
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
 	public GUIABMMuestra(String title, Object [][] datos) {
-		super(title);
+		super();
+		this.setTitle(title);
 		data = datos.clone();
 		menu = new JMenuBar();
 		herramientas = new JMenu("Herramientas");
@@ -86,11 +87,12 @@ public class GUIABMMuestra extends JFrame {
 	 * @return void
 	 */
 	private  void initialize() {
-		this.setSize(803, 200);
+		this.setSize(1003, 700);
 		this.getContentPane().setLayout(new BorderLayout());
 		this.setJMenuBar(this.getMenu());
 	 	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
+	 	this.setLocationRelativeTo(null);
 	}
 	
 	/**

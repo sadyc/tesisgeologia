@@ -214,7 +214,7 @@ public class GUIClasificacion extends JDialog{
 	 * @return void
 	 */
 	private  void initialize() {
-		this.setSize(800 , 400);
+		this.setSize(1000 , 700);
 		this.getContentPane().setLayout(new BorderLayout()); 		
 	 	this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
 		this.setJMenuBar(this.getMenu());
@@ -222,6 +222,7 @@ public class GUIClasificacion extends JDialog{
 	 	this.getContentPane().add(this.getPanelSW(),BorderLayout.WEST);
 	 	this.getContentPane().add(this.getPanelCenter(),BorderLayout.EAST);
 	 	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
+	 	this.setLocationRelativeTo(null);
 	}
    
 	

@@ -150,7 +150,7 @@ public class GUIAltaAnalisis extends JDialog {
 	 	this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
 	 	this.getContentPane().add(this.getPanelCentro(),BorderLayout.CENTER);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
-	
+	 	this.setLocationRelativeTo(null);
 	}
    
 	
