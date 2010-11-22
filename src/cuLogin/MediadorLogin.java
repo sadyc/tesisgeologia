@@ -30,6 +30,7 @@ public class MediadorLogin implements ActionListener{
 		super();
 		this.login = new GUILogin(nombreVentana);
 		this.login.setListenerButtons(this);
+		show();
 	}
 
 	

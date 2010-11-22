@@ -40,6 +40,7 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 		this.ubicacion = new Ubicacion();
 		this.operador= new OperadorDeLaboratorio();
 		this.GUIMuestra = new GUIMuestra(data);
+		
 		nombreMuestra = (String)data[1];
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);

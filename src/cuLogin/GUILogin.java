@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -26,7 +27,7 @@ public class GUILogin extends JFrame{
 	private JPanel panelNorte;
 	private JPanel panelSur;
 	private JTextField nombre;
-	private JTextField password;
+	private JPasswordField password;
 	private JLabel nombreLabel;
 	private JLabel passwordLabel;
 	
@@ -49,7 +50,7 @@ public class GUILogin extends JFrame{
 		panelNorte = null;
 		panelSur = null;
 		nombre = new JTextField(15);
-		password = new JTextField(15);
+		password = new JPasswordField(15);
 		nombreLabel = new JLabel ("Nombre Usuario: ");
 		passwordLabel = new JLabel ("Password: ");
 		initialize();
@@ -131,7 +132,7 @@ public class GUILogin extends JFrame{
 	/**
 	 * @param password the password to set
 	 */
-	public void setPassword(JTextField password) {
+	public void setPassword(JPasswordField password) {
 		this.password = password;
 	}
 	
@@ -163,6 +164,7 @@ public class GUILogin extends JFrame{
 	 	this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
 	 	// Agregamos el Panel Sur al Frame
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
+	 	this.setLocationRelativeTo(null);
 	}
 	
 	/**

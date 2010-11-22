@@ -44,6 +44,8 @@ public class GUIPrincipal extends JFrame {
 			jButtonanalisis  = new JButton("GESTIONAR ANALISIS");
 			jButtonListarMuestras = new JButton("LISTAR MUESTRAS");
 			jButtonSalir  = new JButton("SALIR");
+			jButtonSalir.setBackground( SystemColor.red );
+			jButtonSalir.setBounds(new Rectangle(500,50,1000,75));
 			herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
 			menu.add(herramientas);
@@ -74,11 +76,12 @@ public class GUIPrincipal extends JFrame {
 	 */
 	private  void initialize() {
 		
-		this.setSize(700,500);
+		this.setSize(800,700);
 		this.getContentPane().setLayout(new BorderLayout());
 	 	this.setJMenuBar(this.getMenu());	
 	 	this.getContentPane().add(this.getPanelCentro(),BorderLayout.CENTER);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
+	 	this.setLocationRelativeTo(null);
 	}
 
 	/**
@@ -89,11 +92,19 @@ public class GUIPrincipal extends JFrame {
 	public JPanel getPanelCentro() {
 		if (this.panelCentro==null) {
 			this.panelCentro= new JPanel();
-			this.panelCentro.setLayout(new GridBagLayout());
-			this.panelCentro.add(getJButtonGestionarMuestra());
-			this.panelCentro.add(getJButtonAnalisis());
-			this.panelCentro.add(getJButtonClasificacion());
-			this.panelCentro.add(getJButtonListarMuestras());
+			GridBagLayout gridbag = new GridBagLayout();
+			GridBagConstraints gbc = new GridBagConstraints();
+			gbc.weightx = 1;
+			gbc.gridx = 0;
+			gbc.gridy = 0;
+			this.panelCentro.setLayout(gridbag);
+			this.panelCentro.add(getJButtonGestionarMuestra(),gbc);
+			gbc.gridx = 1;
+			this.panelCentro.add(getJButtonAnalisis(),gbc);
+			gbc.gridx = 2;
+			this.panelCentro.add(getJButtonClasificacion(),gbc);
+			gbc.gridx = 3;
+			this.panelCentro.add(getJButtonListarMuestras(),gbc);
 		}
 		return this.panelCentro;
 	}
