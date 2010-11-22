@@ -1,10 +1,16 @@
 package cuGestionarMuestra;
 
-import java.awt.*;
-import java.awt.event.*;
-//import java.awt.HeadlessException;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import persistencia.domain.Muestra;
 /**
@@ -55,20 +61,20 @@ public class GUIMuestra extends JDialog {
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
-	public GUIMuestra(Object[] data) {
+	public GUIMuestra(Muestra muestra) {
 	
 		super();
 		nombre = new JTextField(15);
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
-		nombre.setText(data[1].toString());
-		peso.setText(data[2].toString());
-		profundidadInicial.setText(data[3].toString());
-		profundidadFinal.setText(data[4].toString());
-		ubicacion = new JLabel("Ubicacion(*) : ");
+		nombre.setText(muestra.getNombreMuestra());
+		peso.setText(muestra.getPeso().toString());
+		profundidadInicial.setText(muestra.getProfundidadInicial().toString());
+		profundidadFinal.setText(muestra.getProfundidadFinal().toString());
+		ubicacion = new JLabel("Ubicacion(*) : "+ muestra.getUbicacion().getNombreUbicacion());
 		usuario = new JLabel ("Usuario(*) : ");
-		operador = new JLabel ("Operador(*) : ");
+		operador = new JLabel ("Operador(*) : "+ muestra.getOperador().getNombre()+" "+muestra.getOperador().getApellido());
 		aceptar = new JButton("AGREGAR");
 		cancelar = new JButton("CANCELAR");
 		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");

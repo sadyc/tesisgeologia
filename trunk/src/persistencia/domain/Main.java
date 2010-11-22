@@ -33,8 +33,8 @@ public class Main {
 
         //CargaDatos cargaDatos = new CargaDatos();
         //cargaDatos.cargar();
-        MediadorLogin login = new MediadorLogin("Login");
-		//MediadorPrincipal pantallaPrincipal = new MediadorPrincipal("Pantalla Principal");
+        //MediadorLogin login = new MediadorLogin("Login");
+		MediadorPrincipal pantallaPrincipal = new MediadorPrincipal("Pantalla Principal");
         //MediadorGestionarMuestra gestionarMu = new MediadorGestionarMuestra("gestionar muestra");
     	//MediadorGestionarAnalisis hola = new MediadorGestionarAnalisis("probandoo", "soplala");
         

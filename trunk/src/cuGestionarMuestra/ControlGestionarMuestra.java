@@ -95,22 +95,50 @@ public class ControlGestionarMuestra {
 		persistencia.abrirTransaccion();
 		Muestra aux = new Muestra();
 		try {
-			Class claseMuestra = muestra.getClass();
+			Class claseMuestra = aux.getClass();
 			aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
 			Class claseUbicacion = ubicacion.getClass();
+			System.out.println(ubicacion.getNombreUbicacion());
 			aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
 			Class claseOperador = operador.getClass();
-			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=="+operador.getDni()));
+			System.out.println("la concha del peso2");
+			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
+			System.out.println("la concha del peso3");
 			aux.setNombreMuestra(muestra.getNombreMuestra());
 			aux.setPeso(muestra.getPeso());
+			
 			aux.setProfundidadInicial(muestra.getProfundidadInicial());
 			aux.setProfundidadFinal(muestra.getProfundidadFinal());
+			
+			persistencia.cerrarTransaccion();
+			System.out.println("la concha del peso3");
+		}
+		catch (Exception e) {
+			System.out.println("Me sali antes de modificar");
+			e.printStackTrace();
+			persistencia.realizarRollback();
+			persistencia.cerrarPersistencia();
+		}		
+	}
+	
+	/**
+	 * Retorna la muestra persistente que cumpla con el nombre y ubicacion pasado como parametro.
+	 * @param nombreMuestra
+	 * @return
+	 */
+	public Muestra obtenerMuestra (String nombreMuestra,String ubicacion) throws Exception{
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		Muestra aux = new Muestra();
+		try {
+			aux =(Muestra)persistencia.buscarObjeto(aux.getClass(), "nombreMuestra=='"+nombreMuestra+"'");//+"' && Ubicacion=='"+ubicacion+"'");
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
 			persistencia.realizarRollback();
 			persistencia.cerrarPersistencia();
-		}		
+		}
+		return aux;
 	}
 
 	
