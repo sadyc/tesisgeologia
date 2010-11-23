@@ -95,11 +95,14 @@ public class ControlGestionarMuestra {
 		persistencia.abrirTransaccion();
 		Muestra aux = new Muestra();
 		try {
+			
 			Class claseMuestra = aux.getClass();
 			aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
 			Class claseUbicacion = ubicacion.getClass();
 			System.out.println(ubicacion.getNombreUbicacion());
-			aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
+			Ubicacion ubic = (Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'");
+			System.out.println(ubicacion.getNombreUbicacion()+"aaaaaaaaaaaaaaaaaaaa");
+			aux.setUbicacion(ubic);
 			Class claseOperador = operador.getClass();
 			System.out.println("la concha del peso2");
 			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
