@@ -121,7 +121,7 @@ public class CargaDatos {
 		Tamiz tamiz27= new Tamiz(270,0.053);
 		Tamiz tamiz28 = new Tamiz(325,0.045);
 		Tamiz tamiz29 = new Tamiz(400,0.038);
-		Usuario usuario1 = new Usuario("Juan", "Perez", "34.101.099", "4917015", "juan@perez.com","juanPerez","pepe");
+		Usuario usuario1 = new Usuario("Juan", "Perez", "34.771.488", "4917015", "juan@perez.com","juanPerez","pepe");
 		Usuario usuario2 = new Usuario("Susana", "Gomez", "34.101.098", "4917015", "Sus@gomez.com","susy","ana");
 			
 		try {

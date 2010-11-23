@@ -28,7 +28,7 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 
 	private GUISeleccionarMuestra GUISeleccionarMuestra = null;
 	private Object [] seleccionado = new Object [4];
-	private Object [][] data = new Object [20] [5];
+	private Object [][] data;
 	private boolean seleccionoMuestra = false;
 	private Component frame;
 	
@@ -57,6 +57,7 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 		Class clase = muestra.getClass();
 		Collection muestras = control.coleccionMuestras(clase);
 		Iterator<Muestra> it = muestras.iterator();
+		data = new Object [muestras.size()] [5];
 		int i = 0;
 		while (it.hasNext()){
 			muestra = it.next();
