@@ -18,7 +18,7 @@
         <field name="peso" persistence-modifier="persistent">
                  <column jdbc-type="integer"/>
         </field>
-        <field name="fecha">
+        <field name="fecha" persistence-modifier="persistent">
                 <column jdbc-type="DATE"/>
         </field>
         <field name="coeficienteUniformidad" persistence-modifier="persistent">
@@ -27,7 +27,7 @@
         <field name="clasificacion" persistence-modifier="persistent">
                 <column name="CLASIFICACION_ID"/>
         </field>
-        <field name="operadorLaboratorio" >
+        <field name="operadorLaboratorio" persistence-modifier="persistent">
                <column name="dni_operador"/>
              </field>
         <field name="usuario" persistence-modifier="persistent">
@@ -69,7 +69,7 @@
  </class>
 
   <class name="persistencia.domain.Usuario" identity-type="datastore">
-         <field name="muestras" persistence-modifier="persistent" mapped-by="operadorLaboratorio">
+         <field name="muestras" persistence-modifier="persistent" mapped-by="usuario">
                 <collection element-type="persistencia.domain.Muestra"/>
             </field>
  	 <field name="nombreUsuario" persistence-modifier="persistent">

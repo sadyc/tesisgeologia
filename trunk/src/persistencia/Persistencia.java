@@ -85,7 +85,11 @@ public class Persistencia {
 			Query q = pmi.newQuery(e,filtro);
 			q.setUnique (true);
 			aux = (Object)q.execute();
-			System.out.println("Objeto encontrado");
+			if (aux != null)
+				System.out.println("Objeto encontrado en buscar objeto");
+			else
+				System.out.println("Objeto NO encontrado en buscar objeto");
+			System.out.println(filtro+" <-----Filtro");
 		} catch (Exception e) {
 			System.out.println("Error en buscar objeto");
 			e.printStackTrace();

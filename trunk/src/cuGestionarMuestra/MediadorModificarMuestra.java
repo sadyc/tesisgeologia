@@ -38,14 +38,13 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 		super();
 		this.muestra = muestra;
 		operador = muestra.getOperador();
+		//System.out.println("DNIO: "+operador.getDni().toString()+" nombre: "+operador.getNombre().toString());
 		ubicacion = muestra.getUbicacion();
 		this.GUIMuestra = new GUIMuestra(muestra);
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
 		this.GUIMuestra.setListenerButtons(this);
 		this.GUIMuestra.show();
-		// se configura como escuchador de los evenetos de la ventana 
-		// al el mismo (mediador)
 	}
 	
 
@@ -123,7 +122,7 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 					muestra.setPeso(Integer.parseInt(GUIMuestra.getPeso().getText()));
 					muestra.setProfundidadInicial(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
 					muestra.setProfundidadFinal(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
-					data[0]= GUIMuestra.getUbicacion().getText();
+					data[0]= GUIMuestra.getUbicacion().getText().substring(15);
 					data[1]= GUIMuestra.getNombre().getText();
 					data[2]= GUIMuestra.getPeso().getText();
 					data[3]= GUIMuestra.getProfundidadInicial().getText();
