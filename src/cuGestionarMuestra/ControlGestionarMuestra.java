@@ -98,20 +98,27 @@ public class ControlGestionarMuestra {
 			
 			Class claseMuestra = aux.getClass();
 			aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
+			System.out.println(nombreMuestra+"<---peso");
+			aux.setPeso(muestra.getPeso());
+			
+			
+			aux.setNombreMuestra(muestra.getNombreMuestra());
+			
+			
+			aux.setProfundidadInicial(muestra.getProfundidadInicial());
+			aux.setProfundidadFinal(muestra.getProfundidadFinal());
+			
+			Class claseOperador = operador.getClass();
+			System.out.println("la concha del peso2");
+			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
+			System.out.println("la concha del peso3");
+			
 			Class claseUbicacion = ubicacion.getClass();
 			System.out.println(ubicacion.getNombreUbicacion());
 			Ubicacion ubic = (Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'");
 			System.out.println(ubicacion.getNombreUbicacion()+"aaaaaaaaaaaaaaaaaaaa");
 			aux.setUbicacion(ubic);
-			Class claseOperador = operador.getClass();
-			System.out.println("la concha del peso2");
-			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
-			System.out.println("la concha del peso3");
-			aux.setNombreMuestra(muestra.getNombreMuestra());
-			aux.setPeso(muestra.getPeso());
-			
-			aux.setProfundidadInicial(muestra.getProfundidadInicial());
-			aux.setProfundidadFinal(muestra.getProfundidadFinal());
+			System.out.println("la concha del peso1");
 			
 			persistencia.cerrarTransaccion();
 			System.out.println("la concha del peso3");
@@ -136,6 +143,7 @@ public class ControlGestionarMuestra {
 		try {
 			aux =(Muestra)persistencia.buscarObjeto(aux.getClass(), "nombreMuestra=='"+nombreMuestra+"'");//+"' && Ubicacion=='"+ubicacion+"'");
 			persistencia.cerrarTransaccion();
+			persistencia.cerrarPersistencia();
 		}
 		catch (Exception e) {
 			persistencia.realizarRollback();
