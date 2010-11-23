@@ -19,7 +19,7 @@ import persistencia.domain.Ubicacion;
 public class MediadorSeleccionarUbicacion implements ActionListener,MouseListener,ItemListener {
 
 	private GUISeleccionarUbicacion GUISeleccionarUbicacion = null;
-	private Object [][] data = new Object [100] [4];
+	private Object [][] data;
 	private Object [] seleccionado = new Object [4];
 	private Component frame;
 	
@@ -46,6 +46,7 @@ public class MediadorSeleccionarUbicacion implements ActionListener,MouseListene
 		Class clase = ubicacion.getClass();
 		Collection ubicaciones = control.coleccionMuestras(clase);
 		Iterator<Ubicacion> it = ubicaciones.iterator();
+		data = new Object [ubicaciones.size()] [4];
 		int i = 0;
 		while (it.hasNext()){
 			ubicacion = it.next();

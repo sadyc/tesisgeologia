@@ -32,7 +32,7 @@ public class MediadorSeleccionarOperador implements ActionListener,MouseListener
 
 	private GUISeleccionarOperador GUISeleccionarOperador = null;
 	private Object [] seleccionado = new Object [5];
-	private Object [][] data = new Object [20] [5];
+	private Object [][] data;
 	private Component frame;
 	
 	/**
@@ -60,6 +60,7 @@ public class MediadorSeleccionarOperador implements ActionListener,MouseListener
 		Class clase = operador.getClass();
 		Collection operadores = control.coleccionMuestras(clase);
 		Iterator<OperadorDeLaboratorio> it = operadores.iterator();
+		data = new Object [operadores.size()] [5];
 		int i = 0;
 		while (it.hasNext()){
 			operador = it.next();
