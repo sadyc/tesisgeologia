@@ -20,11 +20,13 @@ public class GUIPrincipal extends JFrame {
 	private JButton jButtongestionarMuestra;
 	private JButton jButtonclasificacion;
 	private JButton jButtonanalisis;
+	private JButton jButtonCompararMuestras;
 	private JButton jButtonSalir;
 	private JMenuItem listarMuestrasMenu;
 	private JMenuItem gestionarMuestraMenu;
 	private JMenuItem gestionarAnalisisMenu;
 	private JMenuItem calcularClasificacionMenu;
+	private JMenuItem compararMuestrasMenu;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
 	
@@ -43,9 +45,10 @@ public class GUIPrincipal extends JFrame {
 			jButtonclasificacion = new JButton("CALCULAR CLASIFICACION");
 			jButtonanalisis  = new JButton("GESTIONAR ANALISIS");
 			jButtonListarMuestras = new JButton("LISTAR MUESTRAS");
+			jButtonCompararMuestras = new JButton("COMPARAR MUESTRAS");
 			jButtonSalir  = new JButton("SALIR");
 			jButtonSalir.setBackground( SystemColor.red );
-			jButtonSalir.setBounds(new Rectangle(500,50,1000,75));
+			//jButtonSalir.setBounds(new Rectangle(500,50,1000,75));
 			herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
 			menu.add(herramientas);
@@ -54,10 +57,12 @@ public class GUIPrincipal extends JFrame {
 			gestionarMuestraMenu = new JMenuItem("Gestionar Muestra");
 			gestionarAnalisisMenu = new JMenuItem("Gestionar Analisis");
 			calcularClasificacionMenu = new JMenuItem("Calcular Clasificacion");
+			compararMuestrasMenu = new JMenuItem("Comparar Muestras");
 			salirMenu = new JMenuItem("Salir");
 			herramientas.add(gestionarMuestraMenu);
 			herramientas.add(gestionarAnalisisMenu);
 			herramientas.add(calcularClasificacionMenu);
+			herramientas.add(compararMuestrasMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
 			herramientas.add(listarMuestrasMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
@@ -76,7 +81,7 @@ public class GUIPrincipal extends JFrame {
 	 */
 	private  void initialize() {
 		
-		this.setSize(800,700);
+		this.setSize(1000,700);
 		this.getContentPane().setLayout(new BorderLayout());
 	 	this.setJMenuBar(this.getMenu());	
 	 	this.getContentPane().add(this.getPanelCentro(),BorderLayout.CENTER);
@@ -94,17 +99,25 @@ public class GUIPrincipal extends JFrame {
 			this.panelCentro= new JPanel();
 			GridBagLayout gridbag = new GridBagLayout();
 			GridBagConstraints gbc = new GridBagConstraints();
-			gbc.weightx = 1;
+			gbc.gridwidth = 1;
+			gbc.gridheight = 1;
+			gbc.weightx = 1.0;
+			gbc.weighty = 0.1;
+			gbc.ipady = 40;
 			gbc.gridx = 0;
 			gbc.gridy = 0;
+			gbc.fill=GridBagConstraints.HORIZONTAL;
 			this.panelCentro.setLayout(gridbag);
 			this.panelCentro.add(getJButtonGestionarMuestra(),gbc);
-			gbc.gridx = 1;
-			this.panelCentro.add(getJButtonAnalisis(),gbc);
 			gbc.gridx = 2;
+			this.panelCentro.add(getJButtonAnalisis(),gbc);
+			gbc.gridx = 4;
 			this.panelCentro.add(getJButtonClasificacion(),gbc);
-			gbc.gridx = 3;
+			gbc.gridy = 3;
+			gbc.gridx = 1;
 			this.panelCentro.add(getJButtonListarMuestras(),gbc);
+			gbc.gridx = 3;
+			this.panelCentro.add(getJButtonCompararMuestras(),gbc);
 		}
 		return this.panelCentro;
 	}
@@ -154,14 +167,21 @@ public class GUIPrincipal extends JFrame {
 	}
 	
 	/**
-	 * @return the gestionarMuestra
+	 * @return the listarMuestras
 	 */
 	public JButton getJButtonListarMuestras() {
 		return jButtonListarMuestras;
 	}
 
 	/**
-	 * @return the cerrar
+	 * @return the listarMuestras
+	 */
+	public JButton getJButtonCompararMuestras() {
+		return jButtonCompararMuestras;
+	}
+	
+	/**
+	 * @return the salir
 	 */
 	public JButton getJButtonSalir() {
 		return jButtonSalir ;
@@ -198,6 +218,12 @@ public class GUIPrincipal extends JFrame {
 		return calcularClasificacionMenu;
 	}
 
+	/**
+	 * @return the compararMenu
+	 */
+	public JMenuItem getCompararMuestrasMenu() {
+		return compararMuestrasMenu;
+	}
 
 	/**
 	 * @return the salirMenu
@@ -221,12 +247,15 @@ public class GUIPrincipal extends JFrame {
 		this.jButtonclasificacion.addActionListener(lis);
         this.jButtonSalir.addActionListener(lis);
         this.jButtonListarMuestras.addActionListener(lis);
+        this.jButtonCompararMuestras.addActionListener(lis);
         this.salirMenu.addActionListener(lis);
         this.listarMuestrasMenu.addActionListener(lis);
         this.gestionarMuestraMenu.addActionListener(lis);
         this.gestionarAnalisisMenu.addActionListener(lis);
         this.calcularClasificacionMenu.addActionListener(lis);
         this.versionMenu.addActionListener(lis);
+        this.compararMuestrasMenu.addActionListener(lis);
+        
 	}
 
 }

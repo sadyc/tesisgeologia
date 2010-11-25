@@ -36,6 +36,24 @@ public class MediadorCalcularClasificacion implements ActionListener,MouseListen
 	private Muestra muestra = new Muestra();
 	private Object [] [] data;
 	
+	/**
+	 * Default Constructor
+	 */
+	public MediadorCalcularClasificacion(String titulo){
+		super();
+		this.GUIClasificacion = new GUIClasificacion();
+		GUIClasificacion.setTitle(titulo);
+		GUIClasificacion.setModal(true);
+		this.GUIClasificacion.setListenerButtons(this);
+		GUIClasificacion.show();
+	}
+	
+	/**
+	 * 
+	 * @param titulo
+	 * @param nombreMuestra
+	 * @throws Exception
+	 */
 	public MediadorCalcularClasificacion(String titulo, String nombreMuestra) throws Exception {
 		super();
 		this.nombreMuestra=nombreMuestra;
