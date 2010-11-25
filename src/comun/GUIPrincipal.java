@@ -18,6 +18,7 @@ public class GUIPrincipal extends JFrame {
 	private JMenu ayuda;
 	private JButton jButtonListarMuestras;
 	private JButton jButtongestionarMuestra;
+	private JButton jButtonGestionarLimiteConsistencia;
 	private JButton jButtonclasificacion;
 	private JButton jButtonanalisis;
 	private JButton jButtonCompararMuestras;
@@ -25,6 +26,7 @@ public class GUIPrincipal extends JFrame {
 	private JMenuItem listarMuestrasMenu;
 	private JMenuItem gestionarMuestraMenu;
 	private JMenuItem gestionarAnalisisMenu;
+	private JMenuItem gestionarLimiteConsistenciaMenu;
 	private JMenuItem calcularClasificacionMenu;
 	private JMenuItem compararMuestrasMenu;
 	private JMenuItem salirMenu;
@@ -46,9 +48,9 @@ public class GUIPrincipal extends JFrame {
 			jButtonanalisis  = new JButton("GESTIONAR ANALISIS");
 			jButtonListarMuestras = new JButton("LISTAR MUESTRAS");
 			jButtonCompararMuestras = new JButton("COMPARAR MUESTRAS");
+			jButtonGestionarLimiteConsistencia = new JButton("GESTIONAR LIMITE CONSISTENCIA");
 			jButtonSalir  = new JButton("SALIR");
 			jButtonSalir.setBackground( SystemColor.red );
-			//jButtonSalir.setBounds(new Rectangle(500,50,1000,75));
 			herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
 			menu.add(herramientas);
@@ -56,11 +58,13 @@ public class GUIPrincipal extends JFrame {
 			listarMuestrasMenu = new JMenuItem("Listar Muestras Cargadas");
 			gestionarMuestraMenu = new JMenuItem("Gestionar Muestra");
 			gestionarAnalisisMenu = new JMenuItem("Gestionar Analisis");
+			gestionarLimiteConsistenciaMenu = new JMenuItem("Gestionar Limite Consistencia");
 			calcularClasificacionMenu = new JMenuItem("Calcular Clasificacion");
 			compararMuestrasMenu = new JMenuItem("Comparar Muestras");
 			salirMenu = new JMenuItem("Salir");
 			herramientas.add(gestionarMuestraMenu);
 			herramientas.add(gestionarAnalisisMenu);
+			herramientas.add(gestionarLimiteConsistenciaMenu);
 			herramientas.add(calcularClasificacionMenu);
 			herramientas.add(compararMuestrasMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
@@ -99,25 +103,25 @@ public class GUIPrincipal extends JFrame {
 			this.panelCentro= new JPanel();
 			GridBagLayout gridbag = new GridBagLayout();
 			GridBagConstraints gbc = new GridBagConstraints();
-			gbc.gridwidth = 1;
-			gbc.gridheight = 1;
 			gbc.weightx = 1.0;
 			gbc.weighty = 0.1;
 			gbc.ipady = 40;
+			gbc.ipadx = 90;
 			gbc.gridx = 0;
 			gbc.gridy = 0;
-			gbc.fill=GridBagConstraints.HORIZONTAL;
 			this.panelCentro.setLayout(gridbag);
 			this.panelCentro.add(getJButtonGestionarMuestra(),gbc);
 			gbc.gridx = 2;
 			this.panelCentro.add(getJButtonAnalisis(),gbc);
 			gbc.gridx = 4;
-			this.panelCentro.add(getJButtonClasificacion(),gbc);
+			this.panelCentro.add(getJButtonGestionarLimiteConsistencia(),gbc);
 			gbc.gridy = 3;
-			gbc.gridx = 1;
+			gbc.gridx = 0;
 			this.panelCentro.add(getJButtonListarMuestras(),gbc);
-			gbc.gridx = 3;
+			gbc.gridx = 2;
 			this.panelCentro.add(getJButtonCompararMuestras(),gbc);
+			gbc.gridx = 4;
+			this.panelCentro.add(getJButtonClasificacion(),gbc);
 		}
 		return this.panelCentro;
 	}
@@ -152,6 +156,13 @@ public class GUIPrincipal extends JFrame {
 		return jButtongestionarMuestra;
 	}
 
+	/**
+	 * @return the GestionarLimiteConsistencia
+	 */
+	public JButton getJButtonGestionarLimiteConsistencia() {
+		return jButtonGestionarLimiteConsistencia;
+	}
+	
 	/**
 	 * @return the clasificacion
 	 */
@@ -210,7 +221,13 @@ public class GUIPrincipal extends JFrame {
 		return gestionarAnalisisMenu;
 	}
 
-
+	/**
+	 * @return the gestionarLimiteConsistenciaMenu
+	 */
+	public JMenuItem getGestionarLimiteConsistenciaMenu() {
+		return gestionarLimiteConsistenciaMenu;
+	}
+	
 	/**
 	 * @return the calcularClasificacionMenu
 	 */
@@ -248,6 +265,7 @@ public class GUIPrincipal extends JFrame {
         this.jButtonSalir.addActionListener(lis);
         this.jButtonListarMuestras.addActionListener(lis);
         this.jButtonCompararMuestras.addActionListener(lis);
+        this.jButtonGestionarLimiteConsistencia.addActionListener(lis);
         this.salirMenu.addActionListener(lis);
         this.listarMuestrasMenu.addActionListener(lis);
         this.gestionarMuestraMenu.addActionListener(lis);
@@ -255,6 +273,7 @@ public class GUIPrincipal extends JFrame {
         this.calcularClasificacionMenu.addActionListener(lis);
         this.versionMenu.addActionListener(lis);
         this.compararMuestrasMenu.addActionListener(lis);
+        this.gestionarLimiteConsistenciaMenu.addActionListener(lis);
         
 	}
 

@@ -16,7 +16,7 @@ import cuGestionarMuestra.ControlGestionarMuestra;
 public class MediadorListarMuestras implements ActionListener {
 	
 	private GUIListarMuestras GUIListarMuestras = null;
-	private Object [][] data = new Object [20] [8];
+	private Object [][] data;
 	private Component frame;
 	
 	/**
@@ -43,6 +43,7 @@ public class MediadorListarMuestras implements ActionListener {
 		Class clase = muestra.getClass();
 		Collection muestras = control.coleccionMuestras(clase);
 		Iterator<Muestra> it = muestras.iterator();
+		data = new Object [muestras.size()] [8];
 		int i = 0;
 		while (it.hasNext()){
 			muestra = it.next();
