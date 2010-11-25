@@ -28,7 +28,7 @@ public class Main {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		//CargaDatos cargaDatos = new CargaDatos();
+		//CargaDatosMain cargaDatos = new CargaDatosMain();
         //cargaDatos.cargar();
         MediadorLogin login = new MediadorLogin("Login");
 		

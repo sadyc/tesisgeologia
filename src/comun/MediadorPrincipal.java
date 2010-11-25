@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
+import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
 import cuGestionarMuestra.MediadorGestionarMuestra;
 
@@ -59,7 +60,7 @@ public class MediadorPrincipal implements ActionListener{
 			try {
 				MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra();
 				if (seleccion.seSeleccionoMuestra()){
-					MediadorGestionarAnalisis Analisis = new MediadorGestionarAnalisis("Analisis de la muestra "+(String)seleccion.getSeleccionado()[1], (String)seleccion.getSeleccionado()[1]);
+					new MediadorGestionarAnalisis("Analisis de la muestra "+(String)seleccion.getSeleccionado()[1], (String)seleccion.getSeleccionado()[1]);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -94,8 +95,7 @@ public class MediadorPrincipal implements ActionListener{
 					seleccionarMuestra = new MediadorSeleccionarMuestra();
 					if (seleccionarMuestra.seSeleccionoMuestra()){
 						String muestra2 = (String)seleccionarMuestra.getSeleccionado()[1];
-						new MediadorCalcularClasificacion("Muestra 1",muestra1);
-						new MediadorCalcularClasificacion("Muestra 2",muestra2);
+						new MediadorCompararMuestra("Comparacion de Muestras",muestra1,muestra2);
 					}
 				}
 				

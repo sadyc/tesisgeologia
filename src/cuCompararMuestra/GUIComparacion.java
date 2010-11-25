@@ -1,6 +1,7 @@
 package cuCompararMuestra;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -171,9 +172,9 @@ public class GUIComparacion extends JDialog{
 		limiteLiquido1 = new JLabel ("Límite Líquido (LL): ");    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
 		limitePlastico1 = new JLabel ("Límite Plástico (LP): ");	//***************************************
 		indicePlasticidad1 = new JLabel ("Íncide de Plasticidad (IP): ");
-		D60_1 = new JLabel("D60_1(mm): ");
-		D30_1 = new JLabel("D30_1(mm): "); // INFORMACION QUE SACA DEL ANALISIS PERTENECIENTE A LA MUESTRA PASADA
-		D10_1 = new JLabel("D10_1(mm): "); // COMO PARAMETRO.. NO SE BIEN COMO LOS SACA A ESTOS DATOS.
+		D60_1 = new JLabel("D60(mm): ");
+		D30_1 = new JLabel("D30(mm): "); // INFORMACION QUE SACA DEL ANALISIS PERTENECIENTE A LA MUESTRA PASADA
+		D10_1 = new JLabel("D10(mm): "); // COMO PARAMETRO.. NO SE BIEN COMO LOS SACA A ESTOS DATOS.
 		coeficienteUniformidad1 = new JLabel("Coef. Uniformidad (Cu): ");
 		gradoCurvatura1 = new JLabel ("Grado de Curvatura (Cc): ");
 		
@@ -318,7 +319,7 @@ public class GUIComparacion extends JDialog{
 			gbc.fill=GridBagConstraints.HORIZONTAL;
 			this.panelNorte.setLayout(gridbag);
 			gbc.ipady = 15;
-			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA: "),gbc);
+			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA 1: "),gbc);
 			gbc.ipady = 0;
 			gbc.gridy = 1;
 			this.panelNorte.add(ubicacion1,gbc);
@@ -351,6 +352,43 @@ public class GUIComparacion extends JDialog{
 			gbc.gridy = 6;
 			gbc.ipady = 10;
 			this.panelNorte.add(gradoCurvatura1,gbc);
+			
+			gbc.gridx = 3;
+			gbc.gridy = 0;
+			gbc.ipady = 15;
+			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA 2: "),gbc);
+			gbc.ipady = 0;
+			gbc.gridy = 1;
+			this.panelNorte.add(ubicacion2,gbc);
+			gbc.gridy = 2;
+			this.panelNorte.add(peso2,gbc);
+			gbc.gridy = 3;
+			this.panelNorte.add(profundidadInicial2,gbc);
+			gbc.gridy = 4;
+			this.panelNorte.add(profundidadFinal2,gbc);
+			gbc.gridx = 4;
+			gbc.gridy = 0;
+			this.panelNorte.add(new JLabel("PLASTICIDAD: "),gbc);
+			gbc.gridy = 1;
+			this.panelNorte.add(limiteLiquido2,gbc);
+			gbc.gridy = 2;
+			this.panelNorte.add(limitePlastico2,gbc);
+			gbc.gridy = 3;
+			this.panelNorte.add(indicePlasticidad2,gbc);
+			gbc.gridx = 5;
+			gbc.gridy = 1;
+			this.panelNorte.add(D60_2,gbc);
+			gbc.gridy = 2;
+			this.panelNorte.add(D30_2,gbc);
+			gbc.gridy = 3;
+			this.panelNorte.add(D10_2,gbc);
+			gbc.gridy = 4;
+			this.panelNorte.add(new JLabel("----------------------------------"),gbc);
+			gbc.gridy = 5;
+			this.panelNorte.add(coeficienteUniformidad2,gbc);
+			gbc.gridy = 6;
+			gbc.ipady = 10;
+			this.panelNorte.add(gradoCurvatura2,gbc);
 		}
 		return this.panelNorte;
 	}	
@@ -363,12 +401,24 @@ public class GUIComparacion extends JDialog{
 	public JPanel getPanelCenter() {
 		if (this.panelCenter==null) {
 			this.panelCenter = new JPanel();
-			this.panelCenter.setLayout(new BoxLayout(this.panelCenter,BoxLayout.Y_AXIS));
-			this.panelCenter.add(this.getTablePanel());
-			this.panelCenter.add(new JLabel("DATOS DE LA CLASIFICACION: "));
-			this.panelCenter.add(clasificacion1);
-			this.panelCenter.add(descripcion1);
-			}
+			this.panelCenter.setLayout(new BoxLayout(this.panelCenter,BoxLayout.X_AXIS));
+			JPanel muestra1 = new JPanel();
+			muestra1.setLayout(new BoxLayout(muestra1,BoxLayout.Y_AXIS));
+			muestra1.add(this.getTablePanel1());
+			muestra1.add(new JLabel("DATOS DE LA CLASIFICACION MUESTRA 1: "));
+			muestra1.add(clasificacion1);
+			muestra1.add(descripcion1);
+			
+			JPanel muestra2 = new JPanel();
+			muestra2.setLayout(new BoxLayout(muestra2,BoxLayout.Y_AXIS));
+			muestra2.add(this.getTablePanel2());
+			muestra2.add(new JLabel("DATOS DE LA CLASIFICACION MUESTRA 2: "));
+			muestra2.add(clasificacion2);
+			muestra2.add(descripcion2);
+			
+			this.panelCenter.add(muestra1);
+			this.panelCenter.add(muestra2);
+		}
 			return this.panelCenter;
 	}
 	/**
@@ -397,11 +447,11 @@ public class GUIComparacion extends JDialog{
 	}
 	
 	/**
-	 * Metodo que retorna la tabla panel.
+	 * Metodo que retorna la tabla panel de la muestra 1.
 	 *
 	 * @return TablePanel
 	 */
-	public TablePanel getTablePanel() {
+	public TablePanel getTablePanel1() {
 		if (this.tablePanel1==null) {
 			this.tablePanel1 = new TablePanel();
 	 		this.tablePanel1.setData(data1, getColumName());			
@@ -409,8 +459,21 @@ public class GUIComparacion extends JDialog{
 		return this.tablePanel1;
 	}
 
+	/**
+	 * Metodo que retorna la tabla panel de la muestra 2.
+	 *
+	 * @return TablePanel
+	 */
+	public TablePanel getTablePanel2() {
+		if (this.tablePanel2==null) {
+			this.tablePanel2 = new TablePanel();
+	 		this.tablePanel2.setData(data2, getColumName());			
+		}
+		return this.tablePanel2;
+	}
+	
 	/** 
-     *@return data1  
+     *@return columName  
      * */
 	public static String[] getColumName(){
 		String[] columnName = {"Nro Tamiz","Abertura (mm)","% Pasante","% Retenido Acumulado","% Retenido Parcial"};
@@ -427,72 +490,140 @@ public class GUIComparacion extends JDialog{
 	/**
 	 * @param clasificacion1 the clasificacion1 to set
 	 */
-	public void setClasificacion(String clasificacion) {
+	public void setClasificacion1(String clasificacion) {
 		this.clasificacion1.setText(clasificacion);
 	}
 
 	/**
 	 * @param descripcion1 the descripcion1 to set
 	 */
-	public void setDescripcion(String descripcion) {
+	public void setDescripcion1(String descripcion) {
 		this.descripcion1.setText(descripcion);
 	}
 
 	/**
 	 * @param limiteLiquido1 the limiteLiquido1 to set
 	 */
-	public void setLimiteLiquido(String limiteLiquido) {
+	public void setLimiteLiquido1(String limiteLiquido) {
 		this.limiteLiquido1.setText(limiteLiquido);
 	}
 
 	/**
 	 * @param limitePlastico1 the limitePlastico1 to set
 	 */
-	public void setLimitePlastico(String limitePlastico) {
+	public void setLimitePlastico1(String limitePlastico) {
 		this.limitePlastico1.setText(limitePlastico);
 	}
 
 	/**
 	 * @param indicePlasticidad1 the indicePlasticidad1 to set
 	 */
-	public void setIndicePlasticidad(String indicePlasticidad) {
+	public void setIndicePlasticidad1(String indicePlasticidad) {
 		this.indicePlasticidad1.setText(indicePlasticidad);
 	}
 
 	/**
 	 * @param d60 the d60 to set
 	 */
-	public void setD60(String d60) {
+	public void setD60_1(String d60) {
 		D60_1.setText(d60);
 	}
 
 	/**
 	 * @param d30 the d30 to set
 	 */
-	public void setD30(String d30) {
+	public void setD30_1(String d30) {
 		D30_1.setText(d30);
 	}
 
 	/**
 	 * @param d10 the d10 to set
 	 */
-	public void setD10(String d10) {
+	public void setD10_1(String d10) {
 		D10_1.setText(d10);
 	}
 
 	/**
 	 * @param coeficienteUniformidad1 the coeficienteUniformidad1 to set
 	 */
-	public void setCoeficienteUniformidad(String coeficienteUniformidad) {
+	public void setCoeficienteUniformidad1(String coeficienteUniformidad) {
 		this.coeficienteUniformidad1.setText(coeficienteUniformidad);
 	}
 
 	/**
 	 * @param gradoCurvatura1 the gradoCurvatura1 to set
 	 */
-	public void setGradoCurvatura(String gradoCurvatura) {
+	public void setGradoCurvatura1(String gradoCurvatura) {
 		this.gradoCurvatura1.setText(gradoCurvatura);
 	}
 	
-	
+	/**
+	 * @param clasificacion2 the clasificacion2 to set
+	 */
+	public void setClasificacion2(String clasificacion) {
+		this.clasificacion2.setText(clasificacion);
+	}
+
+	/**
+	 * @param descripcion2 the descripcion2 to set
+	 */
+	public void setDescripcion2(String descripcion) {
+		this.descripcion2.setText(descripcion);
+	}
+
+	/**
+	 * @param limiteLiquido2 the limiteLiquido2 to set
+	 */
+	public void setLimiteLiquido2(String limiteLiquido) {
+		this.limiteLiquido2.setText(limiteLiquido);
+	}
+
+	/**
+	 * @param limitePlastico2 the limitePlastico2 to set
+	 */
+	public void setLimitePlastico2(String limitePlastico) {
+		this.limitePlastico2.setText(limitePlastico);
+	}
+
+	/**
+	 * @param indicePlasticidad2 the indicePlasticidad2 to set
+	 */
+	public void setIndicePlasticidad2(String indicePlasticidad) {
+		this.indicePlasticidad2.setText(indicePlasticidad);
+	}
+
+	/**
+	 * @param d60 the d60 to set
+	 */
+	public void setD60_2(String d60) {
+		D60_2.setText(d60);
+	}
+
+	/**
+	 * @param d30 the d30 to set
+	 */
+	public void setD30_2(String d30) {
+		D30_2.setText(d30);
+	}
+
+	/**
+	 * @param d10 the d10 to set
+	 */
+	public void setD10_2(String d10) {
+		D10_2.setText(d10);
+	}
+
+	/**
+	 * @param coeficienteUniformidad2 the coeficienteUniformidad2 to set
+	 */
+	public void setCoeficienteUniformidad2(String coeficienteUniformidad) {
+		this.coeficienteUniformidad2.setText(coeficienteUniformidad);
+	}
+
+	/**
+	 * @param gradoCurvatura2 the gradoCurvatura2 to set
+	 */
+	public void setGradoCurvatura2(String gradoCurvatura) {
+		this.gradoCurvatura2.setText(gradoCurvatura);
+	}
 }
