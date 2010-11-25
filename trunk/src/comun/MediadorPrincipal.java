@@ -1,7 +1,10 @@
 package comun;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JOptionPane;
 
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuCompararMuestra.MediadorCompararMuestra;
@@ -11,6 +14,7 @@ import cuGestionarMuestra.MediadorGestionarMuestra;
 public class MediadorPrincipal implements ActionListener{
 
 	private GUIPrincipal GUIPrincipal = null;
+	private Component frame;
 	
 	
 	public MediadorPrincipal(String nombreVentana) throws Exception {
@@ -104,6 +108,9 @@ public class MediadorPrincipal implements ActionListener{
 			}
 		    System.out.println("GestionarMediador.actionPerformed() jButtonListarMuestra"); 
      	}
+		if (this.GUIPrincipal.getJButtonGestionarLimiteConsistencia() == source || this.GUIPrincipal.getGestionarLimiteConsistenciaMenu()== source){
+			JOptionPane.showMessageDialog(frame,"Funcionalidad Temporalmente Inhabilitada","Error :(", JOptionPane.INFORMATION_MESSAGE);
+		}
 		if (this.GUIPrincipal.getJButtonSalir() == source || this.GUIPrincipal.getSalirMenu()== source){
 			GUIPrincipal.dispose();
 		}
