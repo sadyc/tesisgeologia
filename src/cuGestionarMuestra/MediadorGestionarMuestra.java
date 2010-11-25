@@ -138,7 +138,6 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 						
 						MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(control.obtenerMuestra(fila[1],fila[0]));
 						GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-						System.out.println("antees de meter en panel");
 						this.GUIABMMuestra.getTablePanel().addRow(modificarMuestra.getData());
 						System.out.println("dfespues de meter en panel");
 					}

@@ -164,9 +164,10 @@ public class Persistencia {
 		tx.commit();
 	}
 	
-	public void cerrarPersistencia() throws Exception{
+	public void cerrarPersistencia()throws Exception{
+		if (!pmi.isClosed())
 		pmi.close();
 	}
-	
+		
 	//metodos particulares de busqueda.
 }
