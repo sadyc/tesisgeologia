@@ -54,7 +54,7 @@ public class ControlClasificacion {
 			ControlClasificacion control = new ControlClasificacion();
 			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"'"; 
 			List listaAnalisis = (List)persistencia.buscarListaFiltro(analisis.getClass(), filtro);
-			int i = listaAnalisis.size()/2;
+			int i = listaAnalisis.size()/2;// VEEEEEEEEEEEEEEEEERRRRRRRRRRRRRR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			analisis = (Analisis)listaAnalisis.get(i);
 			if (analisis.getPorcentajePasante()>50) {
 				GranoFino fino = new GranoFino();	

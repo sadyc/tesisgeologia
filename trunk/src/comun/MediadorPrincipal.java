@@ -70,7 +70,7 @@ public class MediadorPrincipal implements ActionListener{
 			try {
 				MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
 				if (seleccionarMuestra.seSeleccionoMuestra()){
-					MediadorCalcularClasificacion clasificacion = new MediadorCalcularClasificacion("Clasificacion",(String)seleccionarMuestra.getSeleccionado()[1]);
+					new MediadorCalcularClasificacion("Clasificacion",(String)seleccionarMuestra.getSeleccionado()[1]);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -79,7 +79,25 @@ public class MediadorPrincipal implements ActionListener{
 		}
 		if (this.GUIPrincipal.getJButtonListarMuestras() == source || this.GUIPrincipal.getListarMuestrasMenu()== source){
 			try {
-				MediadorListarMuestras listarMuestras = new MediadorListarMuestras();
+				new MediadorListarMuestras();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		    System.out.println("GestionarMediador.actionPerformed() jButtonListarMuestra"); 
+     	}
+		if (this.GUIPrincipal.getJButtonCompararMuestras() == source || this.GUIPrincipal.getCompararMuestrasMenu()== source){
+			try {
+				MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
+				if (seleccionarMuestra.seSeleccionoMuestra()){
+					String muestra1 = (String)seleccionarMuestra.getSeleccionado()[1];
+					seleccionarMuestra = new MediadorSeleccionarMuestra();
+					if (seleccionarMuestra.seSeleccionoMuestra()){
+						String muestra2 = (String)seleccionarMuestra.getSeleccionado()[1];
+						new MediadorCalcularClasificacion("Muestra 1",muestra1);
+						new MediadorCalcularClasificacion("Muestra 2",muestra2);
+					}
+				}
 				
 			} catch (Exception e) {
 				e.printStackTrace();

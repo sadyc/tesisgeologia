@@ -4,10 +4,10 @@
 package cuCalcularClasificacion;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -18,11 +18,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
-import javax.swing.JTextField;
-
-import comun.TablePanel;
 
 import persistencia.domain.Muestra;
+
+import comun.TablePanel;
 
 /**
  * @author tesisGeologia.
@@ -45,8 +44,6 @@ public class GUIClasificacion extends JDialog{
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
 	private JPanel panelCenter=null;
-	private JPanel panelSW=null;
-	
 	private JLabel muestra;
 	private JLabel peso;
 	private JLabel profundidadInicial;
@@ -114,7 +111,6 @@ public class GUIClasificacion extends JDialog{
 	 */
 	public GUIClasificacion(Muestra muestra, Object [] [] data) {
 		super();
-		System.out.println(muestra.getNombreMuestra()+"No se pudo cargar la muestra a clasificar!!");
 		this.data = data; 
 		menu = new JMenuBar();
 		herramientas = new JMenu ("Archivo");
@@ -216,12 +212,10 @@ public class GUIClasificacion extends JDialog{
 	private  void initialize() {
 		this.setSize(1000 , 700);
 		this.getContentPane().setLayout(new BorderLayout()); 		
-	 	this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
+		this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
 		this.setJMenuBar(this.getMenu());
 	  	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
-	 	this.getContentPane().add(this.getPanelSW(),BorderLayout.WEST);
-	 	this.getContentPane().add(this.getPanelCenter(),BorderLayout.EAST);
-	 	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
+	  	this.getContentPane().add(this.getPanelCenter(),BorderLayout.CENTER);
 	 	this.setLocationRelativeTo(null);
 	}
    
@@ -235,13 +229,50 @@ public class GUIClasificacion extends JDialog{
 	public JPanel getPanelNorte() {
 		if (this.panelNorte==null) {
 			this.panelNorte= new JPanel();
-			this.panelNorte.setLayout(new BoxLayout(this.panelNorte,BoxLayout.Y_AXIS));
-			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA: "));
-			this.panelNorte.add(ubicacion);
-			this.panelNorte.add(peso);
-			this.panelNorte.add(profundidadInicial);
-			this.panelNorte.add(profundidadFinal);
-			this.panelNorte.add(new JLabel("------------------------------------"));
+			GridBagLayout gridbag = new GridBagLayout();
+			GridBagConstraints gbc = new GridBagConstraints();
+			gbc.gridwidth = 1;
+			gbc.gridheight = 1;
+			gbc.weightx = 1.0;
+			gbc.weighty = 0.50;
+			gbc.gridx = 0;
+			gbc.gridy = 0;
+			gbc.fill=GridBagConstraints.HORIZONTAL;
+			this.panelNorte.setLayout(gridbag);
+			gbc.ipady = 15;
+			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA: "),gbc);
+			gbc.ipady = 0;
+			gbc.gridy = 1;
+			this.panelNorte.add(ubicacion,gbc);
+			gbc.gridy = 2;
+			this.panelNorte.add(peso,gbc);
+			gbc.gridy = 3;
+			this.panelNorte.add(profundidadInicial,gbc);
+			gbc.gridy = 4;
+			this.panelNorte.add(profundidadFinal,gbc);
+			gbc.gridx = 1;
+			gbc.gridy = 0;
+			this.panelNorte.add(new JLabel("PLASTICIDAD: "),gbc);
+			gbc.gridy = 1;
+			this.panelNorte.add(limiteLiquido,gbc);
+			gbc.gridy = 2;
+			this.panelNorte.add(limitePlastico,gbc);
+			gbc.gridy = 3;
+			this.panelNorte.add(indicePlasticidad,gbc);
+			gbc.gridx = 2;
+			gbc.gridy = 1;
+			this.panelNorte.add(D60,gbc);
+			gbc.gridy = 2;
+			this.panelNorte.add(D30,gbc);
+			gbc.gridy = 3;
+			this.panelNorte.add(D10,gbc);
+			gbc.gridy = 4;
+			this.panelNorte.add(new JLabel("----------------------------------"),gbc);
+			gbc.gridy = 5;
+			this.panelNorte.add(coeficienteUniformidad,gbc);
+			gbc.gridy = 6;
+			gbc.ipady = 10;
+			this.panelNorte.add(gradoCurvatura,gbc);
 		}
 		return this.panelNorte;
 	}	
@@ -255,6 +286,7 @@ public class GUIClasificacion extends JDialog{
 		if (this.panelCenter==null) {
 			this.panelCenter = new JPanel();
 			this.panelCenter.setLayout(new BoxLayout(this.panelCenter,BoxLayout.Y_AXIS));
+			this.panelCenter.add(this.getTablePanel());
 			this.panelCenter.add(new JLabel("DATOS DE LA CLASIFICACION: "));
 			this.panelCenter.add(clasificacion);
 			this.panelCenter.add(descripcion);
@@ -277,30 +309,7 @@ public class GUIClasificacion extends JDialog{
 	}
 	
 	/**
-	 * Metodo que retorna el panelSW.
-	 *
-	 * @return Jpanel
-	 */
-	public JPanel getPanelSW() {
-		if (this.panelSW==null) {
-			this.panelSW = new JPanel();
-			this.panelSW.setLayout(new BoxLayout(this.panelSW,BoxLayout.Y_AXIS));
-			this.panelSW.add(new JLabel("PLASTICIDAD: "));
-			this.panelSW.add(limiteLiquido);
-			this.panelSW.add(limitePlastico);
-			this.panelSW.add(indicePlasticidad);
-			this.panelSW.add(new JLabel("------------------------------------"));
-			this.panelSW.add(D60);
-			this.panelSW.add(D30);
-			this.panelSW.add(D10);
-			this.panelSW.add(coeficienteUniformidad);
-			this.panelSW.add(gradoCurvatura);
-			}
-			return this.panelSW;
-	}
-	
-	/**
-	 * Metodo que permite escuchar los botoner aceptar y cancelar.
+	 * Metodo que permite escuchar los botoner imprimir y cancelar.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
