@@ -29,18 +29,19 @@ public class ControlGestionarMuestra {
 	 */ 
 	public void insertarMuestra(Muestra mu, Ubicacion ubicacion, OperadorDeLaboratorio operador) throws Exception{
 		Persistencia persistencia = new Persistencia();
-		
+		persistencia.abrirTransaccion();
 		try {
-			persistencia.abrirTransaccion();
+			
 			Usuario usuario = new Usuario();
 			Class claseUbicacion = ubicacion.getClass();
 			mu.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
 			Class claseOperador = operador.getClass();
 			mu.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
 			Class claseUsuario = usuario.getClass();
-			mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni==123"));
+			mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni==123"));//Todavia no esta implementado el caso de uso Usuario
 			persistencia.insertarObjeto(mu);
 			persistencia.cerrarTransaccion();
+			persistencia.cerrarPersistencia();
 		} catch (Exception e) {
 			System.out.println("Fatal error en ControlGestionarMuestra insertar");
 			e.printStackTrace();
@@ -121,13 +122,12 @@ public class ControlGestionarMuestra {
 			System.out.println("la concha del peso1");
 			
 			persistencia.cerrarTransaccion();
-			System.out.println("la concha del peso3");
+			
 		}
 		catch (Exception e) {
 			System.out.println("Me sali antes de modificar");
 			e.printStackTrace();
 			persistencia.realizarRollback();
-			persistencia.cerrarPersistencia();
 		}		
 	}
 	
@@ -147,14 +147,9 @@ public class ControlGestionarMuestra {
 		}
 		catch (Exception e) {
 			persistencia.realizarRollback();
-			persistencia.cerrarPersistencia();
 		}
 		return aux;
 	}
-
-	
-	
-	
 }
 	
 	

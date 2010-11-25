@@ -176,7 +176,6 @@ public class ControlGestionarAnalisis {
                 catch (Exception e) {
                         e.printStackTrace();
                 		persistencia.realizarRollback();
-                        persistencia.cerrarPersistencia();
                 }               
         }
         
@@ -195,12 +194,9 @@ public class ControlGestionarAnalisis {
     		}
     		catch (Exception e) {
     			persistencia.realizarRollback();
-    			persistencia.cerrarPersistencia();
     		}
     		return aux;
     	}
-        
-        
-        
+               
 }
 

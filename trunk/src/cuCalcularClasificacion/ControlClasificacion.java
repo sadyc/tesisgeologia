@@ -38,7 +38,6 @@ public class ControlClasificacion {
 		}
 		catch (Exception e) {
 			persistencia.realizarRollback();
-			persistencia.cerrarPersistencia();
 		}
 		return aux;
 	}
@@ -67,11 +66,8 @@ public class ControlClasificacion {
 		}
 		catch (Exception e){
 			persistencia.realizarRollback();
-			persistencia.cerrarPersistencia();
 		}
-		 
-		
-		
+				
 	}
 	
 	/**

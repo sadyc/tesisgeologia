@@ -127,8 +127,7 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 					data[2]= GUIMuestra.getPeso().getText();
 					data[3]= GUIMuestra.getProfundidadInicial().getText();
 					data[4]= GUIMuestra.getProfundidadFinal().getText();
-					System.out.println("modifique campos456");
-					
+										
 					control.ModificarMuestra(nombreMuestraModificar, muestra,ubicacion,operador);
 				} catch (Exception e1) {
 					e1.printStackTrace();
