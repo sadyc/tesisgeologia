@@ -290,6 +290,8 @@ public class GUIClasificacion extends JDialog{
 			this.panelCenter.add(new JLabel("DATOS DE LA CLASIFICACION: "));
 			this.panelCenter.add(clasificacion);
 			this.panelCenter.add(descripcion);
+			ControlClasificacion control = new ControlClasificacion();
+			this.panelCenter.add(control.emitirGrafico());
 			}
 			return this.panelCenter;
 	}
