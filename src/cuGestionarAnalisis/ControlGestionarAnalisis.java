@@ -77,7 +77,7 @@ public class ControlGestionarAnalisis {
     			Class clase = auxAnalisis.getClass();
     			Collection coleccionAnalisis = persistencia.buscarColeccion(clase);
     			Iterator<Analisis> it = coleccionAnalisis.iterator();
-    			int i = 0;
+    			int i = 0;//arreglar esto con el buscarObjeto.
     			while (it.hasNext()&& analisis.getMuestra().getNombreMuestra()!= auxAnalisis.getMuestra().getNombreMuestra() && analisis.getTamiz().getNumeroTamiz()!=auxAnalisis.getTamiz().getNumeroTamiz()){
     				auxAnalisis = it.next();
     			    i++;

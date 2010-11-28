@@ -1,9 +1,6 @@
 package persistencia.domain;
 
 
-import comun.CargaDatos;
-import comun.MediadorPrincipal;
-
 import cuLogin.MediadorLogin;
 
 
@@ -31,6 +28,7 @@ public class Main {
 		//CargaDatosMain cargaDatos = new CargaDatosMain();
         //cargaDatos.cargar();
         MediadorLogin login = new MediadorLogin("Login");
+		//MediadorGestionarMuestra med = new MediadorGestionarMuestra("");
 		
        
 	}
