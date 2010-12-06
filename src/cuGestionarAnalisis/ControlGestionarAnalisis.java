@@ -63,6 +63,9 @@ public class ControlGestionarAnalisis {
                 		e.printStackTrace();
                         persistencia.realizarRollback();
                 }
+                finally{
+        			persistencia.cerrarPersistencia();
+        		}
                 return analisis;
         }
         
