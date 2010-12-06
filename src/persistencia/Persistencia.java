@@ -21,7 +21,7 @@ import javax.jdo.Transaction;
  */
 public class Persistencia {
 
-	private static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+	private static PersistenceManagerFactory pmf = null;
 	private static PersistenceManager pmi = null;
 	private Transaction tx = null;
 	
@@ -31,15 +31,11 @@ public class Persistencia {
 	public Persistencia (){}
 	
 	public void abrirTransaccion()throws Exception{
-		pmi = Singleton.getInstance();
+		pmf = Singleton.getInstance();
 		tx = pmi.currentTransaction();
-		
-		try{
-			tx.begin();
-		}
-		catch (Exception e) {
-			realizarRollback();
-		}
+		pmi = pmf.getPersistenceManager();
+		tx = pmi.currentTransaction();
+		tx.begin();
 	}
 	
 	/**
