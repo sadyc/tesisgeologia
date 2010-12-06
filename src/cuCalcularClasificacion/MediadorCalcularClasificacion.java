@@ -57,9 +57,7 @@ public class MediadorCalcularClasificacion implements ActionListener,MouseListen
 	public MediadorCalcularClasificacion(String titulo, String nombreMuestra) throws Exception {
 		super();
 		this.nombreMuestra=nombreMuestra;
-		System.out.println("no puedo hacer lo q sigeue1");
 		obtenerMuestra();
-		System.out.println("no puedo hacer lo q sigeueeeeeeeeeee");
 		cargarTablaDeAnalisis(nombreMuestra);
 		this.GUIClasificacion = new GUIClasificacion(this.muestra,data);
 		GUIClasificacion.setTitle(titulo);
@@ -74,7 +72,6 @@ public class MediadorCalcularClasificacion implements ActionListener,MouseListen
 	 * Permite recuperar una muestra de la base de datos. 
 	 */
 	public void obtenerMuestra(){
-		System.out.println("no puedo hacer lo q sigeue");
 		ControlClasificacion control = new ControlClasificacion();
 		try {
 			this.muestra = control.obtenerMuestra(muestra.getClass(), nombreMuestra);
