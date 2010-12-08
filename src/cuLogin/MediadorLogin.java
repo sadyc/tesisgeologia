@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import comun.GUIPrincipal;
 import comun.MediadorPrincipal;
 
 /**
