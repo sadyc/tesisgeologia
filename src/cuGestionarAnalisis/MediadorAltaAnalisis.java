@@ -30,6 +30,7 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 	private Analisis analisis;
 	private String numeroTamiz;
 	private String nombreMuestra;
+	private ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 	private boolean altaAnalisis = false;
 	
 	/**
@@ -79,36 +80,49 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
-     	if (this.GUIAnalisis.getJButtonAceptar() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
-			pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
-			analisis.setPesoRetenido(Integer.parseInt(pesoRetenido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
-			System.out.println(analisis.toString());
-			try {
-				analisis = control.insertarAnalisis(analisis, nombreMuestra, numeroTamiz);
-				altaAnalisis= true;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			GUIAnalisis.dispose();
+	   	if (this.GUIAnalisis.getJButtonAceptar() == source){
+			agregarAnalisis();
+		}
+	   	if (this.GUIAnalisis.getJButtonSeleccionarTamiz() == source){
+			seleccionarTamiz();
 		}
 		if (this.GUIAnalisis.getJButtonSalir() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			GUIAnalisis.dispose();
 		}
-		if (this.GUIAnalisis.getJButtonSeleccionarTamiz() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonSeleccionarTamiz");
-			try {
-				MediadorSeleccionarTamiz seleccionarTamiz = new MediadorSeleccionarTamiz();
-				this.GUIAnalisis.setTamiz("Tamiz : "+seleccionarTamiz.getSeleccionado());
-				this.numeroTamiz = seleccionarTamiz.getSeleccionado();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Tamiz"
+	 */
+	private void seleccionarTamiz() {
+		System.out.println("GestionarAnalisis.actionPerformed() jButtonSeleccionarTamiz");
+		try {
+			MediadorSeleccionarTamiz seleccionarTamiz = new MediadorSeleccionarTamiz();
+			this.GUIAnalisis.setTamiz("Tamiz : "+seleccionarTamiz.getSeleccionado());
+			this.numeroTamiz = seleccionarTamiz.getSeleccionado();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Analisis"
+	 */
+	public void agregarAnalisis(){
+		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
+		pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
+		analisis.setPesoRetenido(Integer.parseInt(pesoRetenido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
+		System.out.println(analisis.toString());
+		try {
+			analisis = control.insertarAnalisis(analisis, nombreMuestra, numeroTamiz);
+			altaAnalisis= true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		GUIAnalisis.dispose();
+	}
+	
 	/**
 	 * Permite recuperar una muestra de la base de datos. 
 	 */

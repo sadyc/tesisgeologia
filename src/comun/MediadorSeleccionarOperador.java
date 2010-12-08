@@ -74,9 +74,9 @@ public class MediadorSeleccionarOperador implements ActionListener,MouseListener
 	}
 	
 	/**
-	 * @return the gUISeleccionarMuestra
+	 * @return the gUISeleccionarOperador
 	 */
-	public GUISeleccionarOperador getGUISeleccionarMuestra() {
+	public GUISeleccionarOperador getGUISeleccionarOperador() {
 		return GUISeleccionarOperador;
 	}
 	
@@ -84,31 +84,44 @@ public class MediadorSeleccionarOperador implements ActionListener,MouseListener
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUISeleccionarOperador.getJButtonSeleccionar() == source){
-			if (GUISeleccionarOperador.getTablePanel().getSelectedRow() == -1){
-				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun Operador","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-			}
-			else{
-				try{
-					seleccionado = GUISeleccionarOperador.getTablePanel().getRow(GUISeleccionarOperador.getTablePanel().getSelectedRow());//
-					System.out.println("Button Seleccionar Operador");
-					GUISeleccionarOperador.dispose();
-				}
-				catch (Exception e) {
-					JOptionPane.showMessageDialog(frame,"Se ha seleccionado un Operador invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-				}
-			}
+			seleccionarOperador();
 		}
 		if (this.GUISeleccionarOperador.getJButtonBuscar() == source){
-	   		try {
-	   			System.out.println("Button Buscar Operador");
-				MediadorBuscar analisis = new MediadorBuscar();	
-				
-	   		} catch (Exception e) {
-				e.printStackTrace();
-			}
+	   		buscarOperador();
 		}
 		if (this.GUISeleccionarOperador.getJButtonSalir() == source){
 			GUISeleccionarOperador.dispose();
+		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Operador"
+	 */
+	public void seleccionarOperador(){
+		if (GUISeleccionarOperador.getTablePanel().getSelectedRow() == -1){
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun Operador","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		}
+		else{
+			try{
+				seleccionado = GUISeleccionarOperador.getTablePanel().getRow(GUISeleccionarOperador.getTablePanel().getSelectedRow());//
+				System.out.println("Button Seleccionar Operador");
+				GUISeleccionarOperador.dispose();
+			}
+			catch (Exception e) {
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un Operador invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Operador"
+	 */
+	public void buscarOperador(){
+		try {
+   			System.out.println("Button Buscar Operador");
+   			new MediadorBuscar();	
+   		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
