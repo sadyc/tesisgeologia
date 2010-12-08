@@ -84,31 +84,43 @@ public class MediadorSeleccionarUbicacion implements ActionListener,MouseListene
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUISeleccionarUbicacion.getJButtonSeleccionar() == source){
-			if (GUISeleccionarUbicacion.getTablePanel().getSelectedRow() == -1){
-				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicacion","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-			}
-			else{
-				try{
-				System.out.println("Button Seleccionar Ubicacion");
-				seleccionado = GUISeleccionarUbicacion.getTablePanel().getRow(GUISeleccionarUbicacion.getTablePanel().getSelectedRow());
-	   			GUISeleccionarUbicacion.dispose();
-				}
-				catch (Exception e) {
-					JOptionPane.showMessageDialog(frame,"Se ha seleccionado una ubicacion invalida","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-				}
-			}
+			seleccionarUbicacion();
 		}
 		if (this.GUISeleccionarUbicacion.getJButtonBuscar() == source){
-	   		try {
-	   			System.out.println("Button Buscar Muestra");
-				
-				
-	   		} catch (Exception e) {
-				e.printStackTrace();
-			}
+	   		buscarUbicacion();
 		}
 		if (this.GUISeleccionarUbicacion.getJButtonSalir() == source){
 			GUISeleccionarUbicacion.dispose();
+		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Ubicacion"
+	 */
+	public void seleccionarUbicacion(){
+		if (GUISeleccionarUbicacion.getTablePanel().getSelectedRow() == -1){
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicacion","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		}
+		else{
+			try{
+			System.out.println("Button Seleccionar Ubicacion");
+			seleccionado = GUISeleccionarUbicacion.getTablePanel().getRow(GUISeleccionarUbicacion.getTablePanel().getSelectedRow());
+   			GUISeleccionarUbicacion.dispose();
+			}
+			catch (Exception e) {
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado una ubicacion invalida","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Ubicacion"
+	 */
+	public void buscarUbicacion(){
+		try {
+   			System.out.println("Button Buscar Muestra"); // TODAVIA NO HACE NADAAA!!!!!
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	

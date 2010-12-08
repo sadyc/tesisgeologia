@@ -22,7 +22,6 @@ public class MediadorSeleccionarTamiz implements ActionListener,MouseListener,It
 
 	private GUISeleccionarTamiz GUISeleccionarTamiz = null;
 	private String seleccionado = new String();
-	//private Object [] seleccionado = new Object [5];
 	private Object [][] data ;
 	private Component frame;
 	
@@ -69,17 +68,24 @@ public class MediadorSeleccionarTamiz implements ActionListener,MouseListener,It
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUISeleccionarTamiz.getJButtonSeleccionar() == source){
-			if (GUISeleccionarTamiz.getTablePanel().getSelectedRow() == -1){
-				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun Tamiz","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-			}
-			else{
-				seleccionado = (String)GUISeleccionarTamiz.getTablePanel().getRow(GUISeleccionarTamiz.getTablePanel().getSelectedRow())[0];//
-				System.out.println("Button Seleccionar Tamiz");
-	   			GUISeleccionarTamiz.dispose();	   		
-			}
+			seleccionarTamiz();
 		}
 		if (this.GUISeleccionarTamiz.getJButtonSalir() == source){
 			GUISeleccionarTamiz.dispose();
+		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Tamiz"
+	 */
+	public void seleccionarTamiz(){
+		if (GUISeleccionarTamiz.getTablePanel().getSelectedRow() == -1){
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun Tamiz","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		}
+		else{
+			seleccionado = (String)GUISeleccionarTamiz.getTablePanel().getRow(GUISeleccionarTamiz.getTablePanel().getSelectedRow())[0];//
+			System.out.println("Button Seleccionar Tamiz");
+   			GUISeleccionarTamiz.dispose();	   		
 		}
 	}
 	

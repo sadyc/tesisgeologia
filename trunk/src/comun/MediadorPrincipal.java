@@ -52,77 +52,115 @@ public class MediadorPrincipal implements ActionListener{
 	public void actionPerformed(ActionEvent arg0){
 		Object source = arg0.getSource();
 		if (this.GUIPrincipal.getJButtonGestionarMuestra() == source || this.GUIPrincipal.getGestionarMuestraMenu()== source){
-			try {
-				MediadorGestionarMuestra gestionarMuestra = new MediadorGestionarMuestra("Listado de Muestras");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		    System.out.println("GestionarMediador.actionPerformed() jButtonGestionarMuestra"); 
+			gestionarMuestra();
      	}
-		if (this.GUIPrincipal.getJButtonAnalisis() == source || this.GUIPrincipal.getCalcularClasificacionMenu()== source){
-			try {
-				MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra();
-				if (seleccion.seSeleccionoMuestra()){
-					new MediadorGestionarAnalisis("Analisis de la muestra "+(String)seleccion.getSeleccionado()[1], (String)seleccion.getSeleccionado()[1]);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+		if (this.GUIPrincipal.getJButtonAnalisis() == source || this.GUIPrincipal.getGestionarAnalisisMenu()== source){
+			gestionarAnalisis();
 			}
-		    System.out.println("GestionarMediador.actionPerformed() jButtonGestionarAnalisis");
-		}
 		if (this.GUIPrincipal.getJButtonClasificacion() == source || this.GUIPrincipal.getCalcularClasificacionMenu()== source){
-			try {
-				MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
-				if (seleccionarMuestra.seSeleccionoMuestra()){
-					new MediadorCalcularClasificacion("Clasificacion",(String)seleccionarMuestra.getSeleccionado()[1]);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		    System.out.println("GestionarMediador.actionPerformed() jButtonCalcularClasificacion");
+			calcularClasificacion();
 		}
 		if (this.GUIPrincipal.getJButtonListarMuestras() == source || this.GUIPrincipal.getListarMuestrasMenu()== source){
-			try {
-				new MediadorListarMuestras();
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		    System.out.println("GestionarMediador.actionPerformed() jButtonListarMuestra"); 
+			listarMuestras();
      	}
 		if (this.GUIPrincipal.getJButtonCompararMuestras() == source || this.GUIPrincipal.getCompararMuestrasMenu()== source){
-			try {
-				MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
-				if (seleccionarMuestra.seSeleccionoMuestra()){
-					String muestra1 = (String)seleccionarMuestra.getSeleccionado()[1];
-					seleccionarMuestra = new MediadorSeleccionarMuestra();
-					if (seleccionarMuestra.seSeleccionoMuestra()){
-						String muestra2 = (String)seleccionarMuestra.getSeleccionado()[1];
-						new MediadorCompararMuestra("Comparacion de Muestras",muestra1,muestra2);
-					}
-				}
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		    System.out.println("GestionarMediador.actionPerformed() jButtonListarMuestra"); 
+			compararMuestras();
      	}
 		if (this.GUIPrincipal.getJButtonGestionarLimiteConsistencia() == source || this.GUIPrincipal.getGestionarLimiteConsistenciaMenu()== source){
-			//JOptionPane.showMessageDialog(frame,"Funcionalidad Temporalmente Inhabilitada","Error :(", JOptionPane.INFORMATION_MESSAGE);
-			try {
-				MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
-				if (seleccionarMuestra.seSeleccionoMuestra()){
-					new MediadorAltaLimiteConsistencia((String)seleccionarMuestra.getSeleccionado()[1]);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		    System.out.println("GestionarMediador.actionPerformed() jButtonCalcularClasificacion");
-	
+			gestionarLimiteConsistencia();
 		}
 		if (this.GUIPrincipal.getJButtonSalir() == source || this.GUIPrincipal.getSalirMenu()== source){
 			GUIPrincipal.dispose();
 		}
 	}
 	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Gestionar Muestra"
+	 */
+	public void gestionarMuestra(){
+		try {
+			MediadorGestionarMuestra gestionarMuestra = new MediadorGestionarMuestra("Listado de Muestras");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    System.out.println("GestionarMediador.actionPerformed() jButtonGestionarMuestra"); 
+	}
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Gestionar Analisis"
+	 */
+	public void gestionarAnalisis(){
+		try {
+			MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra();
+			if (seleccion.seSeleccionoMuestra()){
+				new MediadorGestionarAnalisis("Analisis de la muestra "+(String)seleccion.getSeleccionado()[1], (String)seleccion.getSeleccionado()[1]);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    System.out.println("GestionarMediador.actionPerformed() jButtonGestionarAnalisis");
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Calcular Clasificacion"
+	 */
+	public void calcularClasificacion(){
+		try {
+			MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
+			if (seleccionarMuestra.seSeleccionoMuestra()){
+				new MediadorCalcularClasificacion("Clasificacion",(String)seleccionarMuestra.getSeleccionado()[1]);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    System.out.println("GestionarMediador.actionPerformed() jButtonCalcularClasificacion");
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Listar Muestras"
+	 */
+	private void listarMuestras() {
+		try {
+			new MediadorListarMuestras();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    System.out.println("GestionarMediador.actionPerformed() jButtonListarMuestra"); 
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Comparar Muestras"
+	 */
+	public void compararMuestras(){
+		try {
+			MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
+			if (seleccionarMuestra.seSeleccionoMuestra()){
+				String muestra1 = (String)seleccionarMuestra.getSeleccionado()[1];
+				seleccionarMuestra = new MediadorSeleccionarMuestra();
+				if (seleccionarMuestra.seSeleccionoMuestra()){
+					String muestra2 = (String)seleccionarMuestra.getSeleccionado()[1];
+					new MediadorCompararMuestra("Comparacion de Muestras",muestra1,muestra2);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    System.out.println("GestionarMediador.actionPerformed() jButtonListarMuestra"); 
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Gestionar Limites Consistencia"
+	 */
+	public void gestionarLimiteConsistencia(){
+		try {
+			MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
+			if (seleccionarMuestra.seSeleccionoMuestra()){
+				new MediadorAltaLimiteConsistencia((String)seleccionarMuestra.getSeleccionado()[1]);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    System.out.println("GestionarMediador.actionPerformed() jButtonCalcularClasificacion");
+
+
+	}
 }
