@@ -4,12 +4,11 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
 import cuGestionarMuestra.MediadorGestionarMuestra;
+import cuLimiteConsistencia.MediadorAltaLimiteConsistencia;
 
 public class MediadorPrincipal implements ActionListener{
 
@@ -109,7 +108,17 @@ public class MediadorPrincipal implements ActionListener{
 		    System.out.println("GestionarMediador.actionPerformed() jButtonListarMuestra"); 
      	}
 		if (this.GUIPrincipal.getJButtonGestionarLimiteConsistencia() == source || this.GUIPrincipal.getGestionarLimiteConsistenciaMenu()== source){
-			JOptionPane.showMessageDialog(frame,"Funcionalidad Temporalmente Inhabilitada","Error :(", JOptionPane.INFORMATION_MESSAGE);
+			//JOptionPane.showMessageDialog(frame,"Funcionalidad Temporalmente Inhabilitada","Error :(", JOptionPane.INFORMATION_MESSAGE);
+			try {
+				MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
+				if (seleccionarMuestra.seSeleccionoMuestra()){
+					new MediadorAltaLimiteConsistencia((String)seleccionarMuestra.getSeleccionado()[1]);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		    System.out.println("GestionarMediador.actionPerformed() jButtonCalcularClasificacion");
+	
 		}
 		if (this.GUIPrincipal.getJButtonSalir() == source || this.GUIPrincipal.getSalirMenu()== source){
 			GUIPrincipal.dispose();
