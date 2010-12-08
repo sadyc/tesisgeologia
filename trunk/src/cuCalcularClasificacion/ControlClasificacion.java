@@ -6,6 +6,8 @@ package cuCalcularClasificacion;
 
 
 import java.awt.Color;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.jfree.chart.ChartPanel;
@@ -21,8 +23,10 @@ import org.jfree.data.xy.XYSeriesCollection;
 import persistencia.Persistencia;
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
+import persistencia.domain.Tamiz;
 import cuCalcularClasificacion.Clasificaciones.GranoFino;
 import cuCalcularClasificacion.Clasificaciones.GranoGrueso;
+import cuGestionarAnalisis.ControlGestionarAnalisis;
 
 /**
  * @author TesisGeologia
@@ -83,16 +87,21 @@ public class ControlClasificacion {
 	
 	/**
 	 * Emite grafico de la clasificacion
+	 * @throws Exception 
 	 */
-	public ChartPanel emitirGrafico(){
+	public ChartPanel emitirGrafico(Muestra muestra) throws Exception{
+			
+		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
+		Analisis analisis = new Analisis();
+		Tamiz tamiz = new Tamiz();
+		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(muestra.getClass(), muestra.getNombreMuestra());
 		// Create a simple XY chartXYSeries series
-		System.out.println("no puedo hacer lo q sigeue");
-		XYSeries series = new XYSeries("Nombre Muestra");
-		series.add(100, 1);
-		series.add(80,0.5);
-		series.add(40,0.1);
-		series.add(20,0.02);
-		//series.add(3, 9);
+		Iterator<Analisis> it = coleccionAnalisis.iterator();
+		XYSeries series = new XYSeries("Nombre Muestra");		
+		while (it.hasNext()){
+			analisis = it.next();
+			series.add(analisis.getPorcentajePasante(),analisis.getTamiz().getAberturaMalla());
+		}
 		
 		// Add the series to your data set
 		XYSeriesCollection dataset = new XYSeriesCollection();

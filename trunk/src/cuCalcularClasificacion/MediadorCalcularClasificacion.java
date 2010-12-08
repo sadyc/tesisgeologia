@@ -3,7 +3,6 @@
  */
 package cuCalcularClasificacion;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -13,17 +12,9 @@ import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
-import javax.swing.JOptionPane;
-
 import persistencia.domain.Analisis;
-import persistencia.domain.Clasificacion;
 import persistencia.domain.Muestra;
-import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.Ubicacion;
-import persistencia.domain.Usuario;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
-import cuGestionarMuestra.ControlGestionarMuestra;
-import cuGestionarMuestra.GUIMuestra;
 
 /**
  * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana de clasificacion
