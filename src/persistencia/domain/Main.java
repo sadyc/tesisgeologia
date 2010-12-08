@@ -25,9 +25,9 @@ public class Main {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		//CargaDatosMain cargaDatos = new CargaDatosMain();
-        //cargaDatos.cargar();
-        MediadorLogin login = new MediadorLogin("Login");
+		//Muestra mu = new Muestra();
+		//MediadorAltaLimiteConsistencia hola = new MediadorAltaLimiteConsistencia("Limite Consistencia");
+		MediadorLogin login = new MediadorLogin("Login");
 		//MediadorGestionarMuestra med = new MediadorGestionarMuestra("");
 		
        

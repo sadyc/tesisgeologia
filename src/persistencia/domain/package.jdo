@@ -36,6 +36,9 @@
          <field name="ubicacion" persistence-modifier="persistent">
                  <column name="ubicacion"/>
         </field>
+        <field name="consistencia" persistence-modifier="persistent">
+                 <column name="consistencia"/>
+        </field>
          <field name="analisis" persistence-modifier="persistent" mapped-by="muestra">
                 <collection element-type="persistencia.domain.Analisis"/>
            </field>
@@ -133,7 +136,7 @@
                 <collection element-type="persistencia.domain.Analisis"/>
             </field>
      </class>
-     
+
      <class name="persistencia.domain.Clasificacion" identity-type="datastore">
          <field name="muestras" persistence-modifier="persistent" mapped-by="clasificacion">
                 <collection element-type="persistencia.domain.Muestra"/>
@@ -142,6 +145,22 @@
                  <column length="30" jdbc-type="CHAR"/>
          </field>
      </class>
+     
+      <class name="persistencia.domain.Consistencia" identity-type="datastore">
+              <inheritance strategy="new-table"/>
+         <field name="limitePlastico" persistence-modifier="persistent">
+                  <column jdbc-type="FLOAT"/>
+         </field>
+         <field name="limiteLiquido" persistence-modifier="persistent">
+                  <column jdbc-type="FLOAT"/>
+         </field>
+        <field name="indicePlasticidad" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
+	    <field name="muestra" persistence-modifier="persistent" mapped-by="consistencia">
+                <column element-type="persistencia.domain.Muestra"/>
+        </field>
+ </class>
 
     </package>
   </jdo>

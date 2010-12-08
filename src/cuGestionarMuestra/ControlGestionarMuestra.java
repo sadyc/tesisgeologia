@@ -67,7 +67,7 @@ public class ControlGestionarMuestra {
 			}
 			persistencia.eliminarObjeto(muestra);
 			persistencia.cerrarTransaccion();
-			System.out.println("Muestra eliminada con persistencia");
+			System.out.println("Analisis eliminado con persistencia");
 		}
 		catch (Exception e) {
 			persistencia.realizarRollback();

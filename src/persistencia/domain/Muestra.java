@@ -28,6 +28,7 @@ public class Muestra {
 	protected Usuario usuario;
 	protected Ubicacion ubicacion;
 	protected Clasificacion clasificacion;
+	protected Consistencia consistencia;
 	
 	protected Collection<Analisis> analisis= new HashSet();
 	/**
@@ -42,6 +43,7 @@ public class Muestra {
 		usuario = new Usuario();
 		ubicacion = new Ubicacion();
 		clasificacion = new Clasificacion();
+		consistencia = new Consistencia();
 		fecha = new Date(11,22,1980);
 	}
 	
@@ -225,6 +227,48 @@ public class Muestra {
 	 */
 	public void setNombreMuestra(String nombreMuestra) {
 		this.nombreMuestra = nombreMuestra;
+	}
+
+	/**
+	 * @return the operadorLaboratorio
+	 */
+	public OperadorDeLaboratorio getOperadorLaboratorio() {
+		return operadorLaboratorio;
+	}
+
+	/**
+	 * @param operadorLaboratorio the operadorLaboratorio to set
+	 */
+	public void setOperadorLaboratorio(OperadorDeLaboratorio operadorLaboratorio) {
+		this.operadorLaboratorio = operadorLaboratorio;
+	}
+
+	/**
+	 * @return the consistencia
+	 */
+	public Consistencia getConsistencia() {
+		return consistencia;
+	}
+
+	/**
+	 * @param consistencia the consistencia to set
+	 */
+	public void setConsistencia(Consistencia consistencia) {
+		this.consistencia = consistencia;
+	}
+
+	/**
+	 * @return the analisis
+	 */
+	public Collection<Analisis> getAnalisis() {
+		return analisis;
+	}
+
+	/**
+	 * @param analisis the analisis to set
+	 */
+	public void setAnalisis(Collection<Analisis> analisis) {
+		this.analisis = analisis;
 	}
 
 }
