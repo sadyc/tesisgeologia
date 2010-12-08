@@ -19,6 +19,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
+import org.jfree.chart.ChartPanel;
+
 import persistencia.domain.Muestra;
 
 import comun.TablePanel;
@@ -59,6 +61,7 @@ public class GUIClasificacion extends JDialog{
 	private JLabel D10;
 	private JLabel coeficienteUniformidad;
 	private JLabel gradoCurvatura;
+	private ChartPanel grafico;
 		
 	private TablePanel tablePanel;
 	private Object [][] data = new Object [3][5];
@@ -108,9 +111,12 @@ public class GUIClasificacion extends JDialog{
 	/**
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
+	 * @throws Exception 
 	 */
-	public GUIClasificacion(Muestra muestra, Object [] [] data) {
+	public GUIClasificacion(Muestra muestra, Object [] [] data) throws Exception {
 		super();
+		ControlClasificacion control = new ControlClasificacion();
+		grafico = control.emitirGrafico(muestra);
 		this.data = data; 
 		menu = new JMenuBar();
 		herramientas = new JMenu ("Archivo");
@@ -290,8 +296,7 @@ public class GUIClasificacion extends JDialog{
 			this.panelCenter.add(new JLabel("DATOS DE LA CLASIFICACION: "));
 			this.panelCenter.add(clasificacion);
 			this.panelCenter.add(descripcion);
-			ControlClasificacion control = new ControlClasificacion();
-			this.panelCenter.add(control.emitirGrafico());
+			this.panelCenter.add(grafico);
 			}
 			return this.panelCenter;
 	}
