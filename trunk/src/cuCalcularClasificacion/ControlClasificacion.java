@@ -50,6 +50,7 @@ public class ControlClasificacion {
 		Muestra aux = new Muestra();
 		try {
 			aux =(Muestra)persistencia.buscarObjeto(clase, "nombreMuestra=='"+nombreMuestra+"'");
+			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
 			persistencia.realizarRollback();
@@ -90,12 +91,10 @@ public class ControlClasificacion {
 	 * @throws Exception 
 	 */
 	public ChartPanel emitirGrafico(Muestra muestra) throws Exception{
-			
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
-		Tamiz tamiz = new Tamiz();
-		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(muestra.getClass(), muestra.getNombreMuestra());
-		// Create a simple XY chartXYSeries series
+		Class clase = analisis.getClass();
+		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(clase, muestra.getNombreMuestra());
 		Iterator<Analisis> it = coleccionAnalisis.iterator();
 		XYSeries series = new XYSeries("Nombre Muestra");		
 		while (it.hasNext()){
@@ -114,7 +113,6 @@ public class ControlClasificacion {
         final NumberAxis domainAxis = new NumberAxis("Tamaño de Particulas en Dcm");
         domainAxis.setInverted(true);
         domainAxis.setRange(0.00001, 1);
-        System.out.println("no puedo hacer lo q sigeue");
         final XYItemRenderer renderer = new StandardXYItemRenderer();
         
 
