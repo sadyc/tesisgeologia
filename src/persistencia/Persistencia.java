@@ -29,7 +29,10 @@ public class Persistencia {
 	 * Default constructor.
 	 * @throws Exception 
 	 */
-	public Persistencia () throws Exception{
+	public Persistencia () {
+	}
+	
+	public void abrirTransaccion() throws Exception{
 		pmi = (PersistenceManager) Singleton.getInstance();
         tx = pmi.currentTransaction();
 
