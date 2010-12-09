@@ -33,15 +33,10 @@ public class Persistencia {
 	}
 	
 	public void abrirTransaccion() throws Exception{
-		pmi = (PersistenceManager) Singleton.getInstance();
+		pmf = Singleton.getInstance();
+		pmi = pmf.getPersistenceManager();
         tx = pmi.currentTransaction();
-
-        try{
-                tx.begin();
-        }
-        catch (Exception e) {
-                realizarRollback();
-        }
+        tx.begin();
 	}
 	
 	/**
