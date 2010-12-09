@@ -15,7 +15,7 @@ import javax.jdo.annotations.PersistenceCapable;
  */
 @PersistenceCapable
 public class Tamiz {
-	private Integer numeroTamiz;
+	private String numeroTamiz;
 	private Double aberturaMalla;
 	protected Collection<Analisis> analisis = new HashSet();
 	
@@ -23,27 +23,27 @@ public class Tamiz {
 	 * Constructor por defecto
 	 */
 	public Tamiz(){
-		numeroTamiz = 0;
+		numeroTamiz = new String();
 		aberturaMalla = 0.0;
 	}
 	
 	/**
 	 * Constructor con parametros
 	 */
-	public Tamiz(Integer numeroTamiz, Double aberturaMalla) {
+	public Tamiz(String numeroTamiz, Double aberturaMalla) {
 		this.numeroTamiz = numeroTamiz;
 		this.aberturaMalla = aberturaMalla;
 	}
 	/**
 	 * @return the numeroTamiz
 	 */
-	public Integer getNumeroTamiz() {
+	public String getNumeroTamiz() {
 		return numeroTamiz;
 	}
 	/**
 	 * @param numeroTamiz the numeroTamiz to set
 	 */
-	public void setNumeroTamiz(Integer numeroTamiz) {
+	public void setNumeroTamiz(String numeroTamiz) {
 		this.numeroTamiz = numeroTamiz;
 	}
 	/**
