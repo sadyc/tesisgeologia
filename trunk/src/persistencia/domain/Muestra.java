@@ -21,7 +21,7 @@ public class Muestra {
 	private String nombreMuestra;
 	private Float profundidadInicial;
 	private Float profundidadFinal;
-	private Integer peso;
+	private Float peso;
 	private Date fecha;
 	private Float coeficienteUniformidad;
 	protected OperadorDeLaboratorio operadorLaboratorio ;
@@ -38,7 +38,7 @@ public class Muestra {
 		nombreMuestra = "";
 		profundidadInicial= new Float(0);
 		profundidadFinal= new Float(0);
-		peso= -1;
+		peso= new Float(0);
 		operadorLaboratorio = new OperadorDeLaboratorio();
 		usuario = new Usuario();
 		ubicacion = new Ubicacion();
@@ -55,7 +55,7 @@ public class Muestra {
 	 * @param profundidadFinal profundidad final de la muestra creada
 	 * @param peso peso de la muestra
 	 */
-	public Muestra(String nombreMuestra,Integer peso, float profundidadInicial,float profundidadFinal,  OperadorDeLaboratorio operador, Usuario usuario, Ubicacion ubicacion, Clasificacion clasificacion, Date fecha) {
+	public Muestra(String nombreMuestra,Float peso, Float profundidadInicial,Float profundidadFinal, OperadorDeLaboratorio operador, Usuario usuario, Ubicacion ubicacion, Clasificacion clasificacion, Date fecha) {
 		this.nombreMuestra = nombreMuestra;
 		this.profundidadInicial = profundidadInicial;
 		this.profundidadFinal = profundidadFinal;
@@ -119,7 +119,7 @@ public class Muestra {
 	 * Metodo que permite obtener el peso
 	 * @return the peso
 	 */
-	public Integer getPeso() {
+	public Float getPeso() {
 		return peso;
 	}
 	
@@ -127,7 +127,7 @@ public class Muestra {
 	 * Metodo que permite setear peso de la Muestra
 	 * @param peso the peso to set
 	 */
-	public void setPeso(Integer peso) {
+	public void setPeso(Float peso) {
 		this.peso = peso;
 	}
 	

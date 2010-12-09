@@ -42,12 +42,12 @@ public class GUIModificarAnalisis extends JDialog {
 
 	/**
 	 * This is the default constructor
-	 * @param pesoRetenido 
+	 * @param f 
 	 */
-	public GUIModificarAnalisis(Integer pesoRetenido) {
+	public GUIModificarAnalisis(Float f) {
 		super();
 		this.pesoRetenido = new JTextField(15);
-		this.pesoRetenido.setText(pesoRetenido.toString());
+		this.pesoRetenido.setText(f.toString());
 		muestra = new JLabel("Muestra: ");
 		tamiz = new JLabel("Tamiz: ");
 		aceptar = new JButton("MODIFICAR ANALISIS");

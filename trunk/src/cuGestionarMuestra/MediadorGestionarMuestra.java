@@ -143,7 +143,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
             	
             	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
             	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-            	Muestra mu = new Muestra((fila[1]),Integer.parseInt(fila[2]),Float.parseFloat(fila[3]),Float.parseFloat(fila[4]),op,usuario,ubicacion,clasificacion,fecha);
+            	Muestra mu = new Muestra((fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),Float.parseFloat(fila[4]),op,usuario,ubicacion,clasificacion,fecha);
                	try {
                		control.eliminarMuestra(mu);
                	} catch (Exception e) {

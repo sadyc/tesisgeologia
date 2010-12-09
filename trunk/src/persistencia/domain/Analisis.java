@@ -12,10 +12,10 @@ import javax.jdo.annotations.PersistenceCapable;
  */
 @PersistenceCapable
 public class Analisis {
-	private Integer pesoRetenido;
-	private Integer porcentajePasante;
-	private Integer porcentajeRetenidoParcial;
-	private Integer porcentajeRetenidoAcumulado;   //  FALTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	private Float pesoRetenido;
+	private Float porcentajePasante;
+	private Float porcentajeRetenidoParcial;
+	private Float porcentajeRetenidoAcumulado;   //  FALTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	protected Muestra muestra;
 	protected Tamiz tamiz;
 	
@@ -36,47 +36,44 @@ public class Analisis {
 	/**
 	 * Constructor con parametros
 	 */
-	public Analisis(Integer pesoRetenido, Muestra muestra, Tamiz tamiz){
+	public Analisis(Float pesoRetenido, Muestra muestra, Tamiz tamiz){
 		this.pesoRetenido = pesoRetenido;
 		this.muestra = muestra;
 		this.tamiz=tamiz;
-		calcularPorcentajeRetenidoParcial();
-		calcularPorcentajePasante();
-		
 	}
 	
 	/**
 	 * @return the porcentajePasante
 	 */
-	public Integer getPorcentajePasante() {
+	public Float getPorcentajePasante() {
 		return porcentajePasante;
 	}
 	
 	/**
 	 * @return the porcentajeRetenidoParcial
 	 */
-	public Integer getPorcentajeRetenidoParcial() {
+	public Float getPorcentajeRetenidoParcial() {
 		return porcentajeRetenidoParcial;
 	}
 	
 	/**
 	 * @return the porcentajeRetenidoAcumulado
 	 */
-	public Integer getPorcentajeRetenidoAcumulado() {
+	public Float getPorcentajeRetenidoAcumulado() {
 		return porcentajeRetenidoAcumulado;
 	}
 	
 	/**
 	 * @return the pesoRetenido
 	 */
-	public Integer getPesoRetenido() {
+	public Float getPesoRetenido() {
 		return pesoRetenido;
 	}
 	/**
-	 * @param pesoRetenido the pesoRetenido to set
+	 * @param f the pesoRetenido to set
 	 */
-	public void setPesoRetenido(Integer pesoRetenido) {
-		this.pesoRetenido = pesoRetenido;
+	public void setPesoRetenido(Float f) {
+		this.pesoRetenido = f;
 		//calcularPorcentajeRetenidoParcial();
 		//calcularPorcentajePasante();
 		
@@ -105,27 +102,7 @@ public class Analisis {
 	public void setTamiz(Tamiz tamiz) {
 		this.tamiz = tamiz;
 	}
-	/**
-	 * Calcula el porcentaje retenido parcial del analisis de una muestra.
-	 */
-	public void calcularPorcentajeRetenidoParcial(){
-		porcentajeRetenidoParcial=(pesoRetenido*100)/muestra.getPeso();
-	}
-	
-	/**
-	 * Calcula el porcentaje pasante del analisis de una muestra.
-	 */
-	public void calcularPorcentajePasante(){
-		porcentajePasante=100;//-porcentajeRetenidoAcumulado;
-	}
-	
-	/**
-	 * Calcula el porcentaje retenido acumulado del analisis de una muestra. 
-	 */
-	public void calcularPorcentajeRetenidoAcumulado(){
-		//muestra.getAnalisis();
-	}
-	
+		
 	/**
 	 * 
 	 */
@@ -133,25 +110,24 @@ public class Analisis {
 		return ("%Pasante: "+porcentajePasante+", %Retenido Parcial: "+porcentajeRetenidoParcial+", %Retenido Acumulado: "+porcentajeRetenidoAcumulado+", Peso Retenido: "+pesoRetenido);
 	}
 	
-
 	/**
 	 * @param porcentajeRetenidoAcumulado the porcentajeRetenidoAcumulado to set
 	 */
-	public void setPorcentajeRetenidoAcumulado(Integer porcentajeRetenidoAcumulado) {
+	public void setPorcentajeRetenidoAcumulado(Float porcentajeRetenidoAcumulado) {
 		this.porcentajeRetenidoAcumulado = porcentajeRetenidoAcumulado;
 	}
 	
 	/**
-	 * @param porcentajeRetenidoParcial the porcentajeRetenidoParcial to set
+	 * @param f the porcentajeRetenidoParcial to set
 	 */
-	public void setPorcentajeRetenidoParcial(Integer porcentajeRetenidoParcial) {
-		this.porcentajeRetenidoParcial = porcentajeRetenidoParcial;
+	public void setPorcentajeRetenidoParcial(Float f) {
+		this.porcentajeRetenidoParcial = f;
 	}
 	
 	/**
 	 * @param porcentajePasante the porcentajePasante to set
 	 */
-	public void setPorcentajePasante(Integer porcentajePasante) {
+	public void setPorcentajePasante(Float porcentajePasante) {
 		this.porcentajePasante = porcentajePasante;
 	}
 }

@@ -30,13 +30,13 @@ public class MediadorModificarAnalisis  implements ActionListener,MouseListener,
 	/**
 	 * This is the default constructor
 	 */
-	public MediadorModificarAnalisis(String nombreMuestra,Integer pesoRetenido,String numeroTamiz) {
+	public MediadorModificarAnalisis(String nombreMuestra,Float f,String numeroTamiz) {
 		super();
 		control = new ControlGestionarAnalisis();
 		this.numeroTamiz = numeroTamiz;
 		analisis = new Analisis();
 		this.nombreMuestra = nombreMuestra;
-		this.GUIAnalisis = new GUIModificarAnalisis(pesoRetenido);
+		this.GUIAnalisis = new GUIModificarAnalisis(f);
 		GUIAnalisis.setTitle("Modificar el peso retenido del tamizado de una Muestra");
 		GUIAnalisis.setModal(true);
 		this.GUIAnalisis.setListenerButtons(this);
@@ -88,7 +88,7 @@ public class MediadorModificarAnalisis  implements ActionListener,MouseListener,
 		muestra.setNombreMuestra(nombreMuestra);
 		analisis.setMuestra(muestra);
 		try {
-			control.ModificarAnalisis(Integer.parseInt(pesoRetenido), nombreMuestra, numeroTamiz);
+			control.ModificarAnalisis(Float.parseFloat(pesoRetenido), nombreMuestra, numeroTamiz);
 			control.recalcularAnalisis(analisis);//REcalcular Todo por aca o por otro lado
 		} catch (Exception e) {
 			e.printStackTrace();
