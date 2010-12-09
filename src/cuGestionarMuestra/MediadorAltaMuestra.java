@@ -132,7 +132,7 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 			data[2]= GUIMuestra.getPeso().getText();
 			data[3]= GUIMuestra.getProfundidadInicial().getText();
 			data[4]= GUIMuestra.getProfundidadFinal().getText();
-			muestra = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,this.ubicacion,clasificacion,fecha);
+			muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,this.ubicacion,clasificacion,fecha);
 			try {
 				control.insertarMuestra(muestra, ubicacion, operador);
 				altaMuestra = true;

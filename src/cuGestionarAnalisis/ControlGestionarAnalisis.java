@@ -22,39 +22,58 @@ public class ControlGestionarAnalisis {
         public ControlGestionarAnalisis(){}
         
         /**
+         * Trunca el numero a solo una decimal.
+         * @param num
+         * @return valor
+         * @throws Exception
+         */
+        public static Float truncaNum(Float num) throws Exception{
+	        float valor = 0;
+	        valor = num;
+	        valor = valor*10;
+	        valor = java.lang.Math.round(valor);
+	        valor = valor/10;
+	        System.out.println("estpyn en el truncado "+valor);
+	        return valor;
+        }
+        
+        /**
          * Inserta un analisis con persistencia. 
          */ 
-        public Analisis insertarAnalisis(Analisis analisis,String nombreMuestra, String numeroTamiz) throws Exception{
+        public String[] insertarAnalisis(Analisis analisis,String nombreMuestra, String numeroTamiz) throws Exception{
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 Tamiz tamiz= new Tamiz();
                 Muestra muestra = new Muestra();
+                String[] data = new String [5];
                 List listaAnalisis = null;
                 try {
                         Class claseMuestra= muestra.getClass();
                         muestra = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
-                        System.out.println("peso de la muestra"+muestra.getPeso()+"peso retenidodel analisis"+analisis.getPesoRetenido());
-                        System.out.println((analisis.getPesoRetenido()*100)/muestra.getPeso());
-                        
+                                              
                         analisis.setMuestra(muestra);
                                
                         Class claseTamiz = tamiz.getClass();
-                        analisis.setTamiz((Tamiz)persistencia.buscarObjeto(claseTamiz, "numeroTamiz=="+numeroTamiz));
-                        //analisis.setPesoRetenido(pesoRetenido);
-                       
-                        analisis.setPorcentajeRetenidoParcial((analisis.getPesoRetenido()*100)/muestra.getPeso());
+                        analisis.setTamiz((Tamiz)persistencia.buscarObjeto(claseTamiz, "numeroTamiz=='"+numeroTamiz+"'"));
+                                               
+                        analisis.setPorcentajeRetenidoParcial(truncaNum((analisis.getPesoRetenido()*100)/muestra.getPeso()));
                         listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+nombreMuestra+"'");
                         Integer porcentajeRetenidoAcumulado= 0;
                         if (listaAnalisis.isEmpty()){
-                        	analisis.setPorcentajeRetenidoAcumulado((analisis.getPesoRetenido()*100)/muestra.getPeso());
-                        	analisis.setPorcentajePasante(100-analisis.getPorcentajeRetenidoParcial());
+                        	analisis.setPorcentajeRetenidoAcumulado(truncaNum((analisis.getPesoRetenido()*100)/muestra.getPeso()));
+                        	analisis.setPorcentajePasante(truncaNum(100-analisis.getPorcentajeRetenidoParcial()));
                         }else{
                         	int i = listaAnalisis.size();
                         	Analisis auxAnalisis = new Analisis();
                         	auxAnalisis = (Analisis)listaAnalisis.get(i-1);
-                        	analisis.setPorcentajePasante(auxAnalisis.getPorcentajePasante()- analisis.getPorcentajeRetenidoParcial());
-                        	analisis.setPorcentajeRetenidoAcumulado(auxAnalisis.getPorcentajeRetenidoAcumulado()+ analisis.getPorcentajeRetenidoParcial());
-                        }                        	
+                        	analisis.setPorcentajePasante(truncaNum(auxAnalisis.getPorcentajePasante()- analisis.getPorcentajeRetenidoParcial()));
+                        	analisis.setPorcentajeRetenidoAcumulado(truncaNum(auxAnalisis.getPorcentajeRetenidoAcumulado()+ analisis.getPorcentajeRetenidoParcial()));
+                        }
+                        data[0]=analisis.getTamiz().getNumeroTamiz();
+                        data[1]=analisis.getPesoRetenido().toString();
+                        data[2] = analisis.getPorcentajePasante().toString();
+                        data[3] = analisis.getPorcentajeRetenidoAcumulado().toString();
+                        data[4] = analisis.getPorcentajeRetenidoParcial().toString();
                         persistencia.insertarObjeto(analisis);                                      
                         persistencia.cerrarTransaccion();
                         System.out.println("Analisis insertado con persistencia");
@@ -65,7 +84,7 @@ public class ControlGestionarAnalisis {
                 finally{
         			persistencia.cerrarPersistencia();
         		}
-                return analisis;
+                return data;
         }
         
         /**
@@ -154,7 +173,7 @@ public class ControlGestionarAnalisis {
                 return aux;
         }
         
-        public void ModificarAnalisis(Integer pesoRetenido,String nombreMuestra, String numeroTamiz) throws Exception {
+        public void ModificarAnalisis(Float pesoRetenido,String nombreMuestra, String numeroTamiz) throws Exception {
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 Analisis analisis = new Analisis();

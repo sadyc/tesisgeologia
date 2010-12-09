@@ -120,7 +120,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
             	muestra.setNombreMuestra(nombreMuestra);
             	Tamiz tamiz = new Tamiz();
             	tamiz.setNumeroTamiz(fila[0]);
-              	analisis = new Analisis(Integer.parseInt(fila[1]),muestra,tamiz);
+              	analisis = new Analisis(Float.parseFloat(fila[1]),muestra,tamiz);
               	try {
 					control.eliminarAnalisis(analisis);
 					control.recalcularAnalisis(analisis);
@@ -143,7 +143,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 		}
 		else{
 			String [] fila = gestionarAnalisis.getTablePanel().getRow(gestionarAnalisis.getTablePanel().getSelectedRow());
-			new MediadorModificarAnalisis(nombreMuestra,Integer.parseInt(fila[1]),(String)fila[0]);
+			new MediadorModificarAnalisis(nombreMuestra,Float.parseFloat(fila[1]),(String)fila[0]);
 			gestionarAnalisis.dispose();
 			try {
 				new MediadorGestionarAnalisis("Analisis de la muestra "+nombreMuestra, nombreMuestra);
@@ -160,14 +160,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 		MediadorAltaAnalisis altaAnalisis = new MediadorAltaAnalisis(nombreMuestra);
 		if (altaAnalisis.isAltaAnalisis()){
-			analisis = altaAnalisis.getAnalisis();
-			String [] fila = new String[5];
-			fila[0] = analisis.getTamiz().getNumeroTamiz().toString();
-			fila[1] = analisis.getPesoRetenido().toString();
-			fila[2] = analisis.getPorcentajePasante().toString();
-			fila[3] = analisis.getPorcentajeRetenidoAcumulado().toString();
-			fila[4] = analisis.getPorcentajeRetenidoParcial().toString();
-			this.gestionarAnalisis.getTablePanel().addRow(fila);
+			this.gestionarAnalisis.getTablePanel().addRow(altaAnalisis.getData());
 		}
 	}
 

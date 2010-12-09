@@ -113,7 +113,7 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 			try {
 				String nombreMuestraModificar = muestra.getNombreMuestra();
 				muestra.setNombreMuestra(GUIMuestra.getNombre().getText());
-				muestra.setPeso(Integer.parseInt(GUIMuestra.getPeso().getText()));
+				muestra.setPeso(Float.parseFloat(GUIMuestra.getPeso().getText()));
 				muestra.setProfundidadInicial(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
 				muestra.setProfundidadFinal(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
 				data[0]= GUIMuestra.getUbicacion().getText().substring(15);

@@ -28,6 +28,7 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 	private String pesoRetenido;
 	private Muestra muestra = new Muestra();
 	private Analisis analisis;
+	private String[] data= new String[5];
 	private String numeroTamiz;
 	private String nombreMuestra;
 	private ControlGestionarAnalisis control = new ControlGestionarAnalisis();
@@ -66,6 +67,13 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 	public Analisis getAnalisis() {
 		return analisis;
 	}
+	/**
+	 * @return data
+	 */
+	public String[] getData() {
+		return data;
+	}
+
 
 	/**
 	 * @return the altaAnalisis
@@ -112,10 +120,10 @@ public class MediadorAltaAnalisis  implements ActionListener,MouseListener,ItemL
 	public void agregarAnalisis(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 		pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
-		analisis.setPesoRetenido(Integer.parseInt(pesoRetenido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
-		System.out.println(analisis.toString());
+		analisis.setPesoRetenido(Float.parseFloat(pesoRetenido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
 		try {
-			analisis = control.insertarAnalisis(analisis, nombreMuestra, numeroTamiz);
+			data = control.insertarAnalisis(analisis, nombreMuestra, numeroTamiz);
+			System.out.println(analisis.toString()+"Mediador");
 			altaAnalisis= true;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -16,7 +16,7 @@
                  <column jdbc-type="FLOAT"/>
         </field>
         <field name="peso" persistence-modifier="persistent">
-                 <column jdbc-type="integer"/>
+                 <column jdbc-type="FLOAT"/>
         </field>
         <field name="fecha" persistence-modifier="persistent">
                 <column jdbc-type="DATE"/>
@@ -104,13 +104,13 @@
  <class name="persistencia.domain.Analisis" identity-type="datastore">
               <inheritance strategy="new-table"/>
 		<field name="pesoRetenido" persistence-modifier="persistent">
-                  <column jdbc-type="integer"/>
+                  <column jdbc-type="FLOAT"/>
  		</field>
         <field name="porcentajePasante" persistence-modifier="persistent">
-                 <column jdbc-type="integer"/>
+                 <column jdbc-type="FLOAT"/>
         </field>
         <field name="porcentajeRetenidoParcial" persistence-modifier="persistent">
-                 <column jdbc-type="integer"/>
+                 <column jdbc-type="FLOAT"/>
         </field>
         <field name="tamiz" persistence-modifier="persistent">
                  <column name="tamiz"/>
@@ -119,7 +119,7 @@
                  <column name="nombreMuestra"/>
         </field>
         <field name="porcentajeRetenidoAcumulado" persistence-modifier="persistent">
-                 <column jdbc-type="integer"/>
+                 <column jdbc-type="FLOAT"/>
         </field>
    </class>
 
