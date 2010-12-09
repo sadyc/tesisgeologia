@@ -78,12 +78,12 @@ public class MediadorCalcularClasificacion implements ActionListener,MouseListen
 	 * @param nombreMuestra 
 	 */
 	public void cargarTablaDeAnalisis(String nombreMuestra)throws Exception{
-		data = new Object [20] [5];
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
 		Class clase = analisis.getClass();
 		Collection muestras = control.coleccionAnalisisDeMuestra(clase, nombreMuestra);
 		Iterator<Analisis> it = muestras.iterator();
+		data = new Object [muestras.size()] [5];
 		int i = 0;
 		while (it.hasNext()){
 			analisis = it.next();

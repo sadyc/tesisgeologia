@@ -50,9 +50,7 @@ public class ControlGestionarAnalisis {
                 try {
                         Class claseMuestra= muestra.getClass();
                         muestra = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
-                                              
                         analisis.setMuestra(muestra);
-                               
                         Class claseTamiz = tamiz.getClass();
                         analisis.setTamiz((Tamiz)persistencia.buscarObjeto(claseTamiz, "numeroTamiz=='"+numeroTamiz+"'"));
                                                
