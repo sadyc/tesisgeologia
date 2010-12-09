@@ -1,4 +1,4 @@
-package comun;
+package cuGestionarMuestra;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -12,12 +12,13 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
+
 import persistencia.domain.Muestra;
 import persistencia.domain.Ubicacion;
 
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
+import cuCompararMuestra.GUISeleccionarMuestra;
 import cuGestionarAnalisis.MediadorBuscar;
-import cuGestionarMuestra.ControlGestionarMuestra;
 
 /**
 * @author TesisGeología

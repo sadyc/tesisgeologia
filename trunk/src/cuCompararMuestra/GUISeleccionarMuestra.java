@@ -1,7 +1,4 @@
-/**
- * 
- */
-package comun;
+package cuCompararMuestra;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -16,18 +13,19 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
+import comun.TablePanel;
 
 /**
 * @author TesisGeología
-* Esta clase implementa la ventana que me permite seleccionar una ubicacion de las almacenados.
+* Esta clase implementa la ventana que me permite seleccionar una de las muestras almacenadas.
 */
-public class GUISeleccionarUbicacion extends JDialog	{
+public class GUISeleccionarMuestra extends JDialog	{
 
 	private JMenuBar menu = null;
 	private JMenu herramientas;
 	private JMenu ayuda;
-	private JButton jButtonBuscarUbicacion;
-	private JButton jButtonSeleccionarUbicacion;
+	private JButton jButtonBuscarMuestra;
+	private JButton jButtonSeleccionarMuestra;
 	private JButton jButtonSalir;
 	private JMenuItem seleccionarMenu;
 	private JMenuItem buscarMenu;
@@ -39,9 +37,9 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	
 	/**
 	 * Constructor de la clase.
-	 * @param datos, contiene la informacion de las ubicaciones almacenadas.
+	 * @param datos, contiene la informacion de las muestras almacenadas en el sistema.
 	 */
-	public GUISeleccionarUbicacion(Object [][] datos) {
+	public GUISeleccionarMuestra(Object [][] datos) {
 		super();
 		
 		data = datos;
@@ -61,8 +59,8 @@ public class GUISeleccionarUbicacion extends JDialog	{
 			herramientas.add(salirMenu);
 			versionMenu = new JMenuItem("Version");
 			ayuda.add(versionMenu);
-			jButtonBuscarUbicacion = new JButton("BUSCAR");
-			jButtonSeleccionarUbicacion  = new JButton("SELECCIONAR");
+			jButtonBuscarMuestra = new JButton("BUSCAR");
+			jButtonSeleccionarMuestra  = new JButton("SELECCIONAR");
 			jButtonSalir  = new JButton("SALIR");
 		}
 		initialize();
@@ -87,7 +85,7 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	 * @return javax.swing.JButton	
 	 */
 	public JButton getJButtonSeleccionar() {
-		return jButtonSeleccionarUbicacion;
+		return jButtonSeleccionarMuestra;
 	}
 
 	/**
@@ -96,7 +94,7 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	 * @return javax.swing.JButton	
 	 */
 	public JButton getJButtonBuscar() {
-		return jButtonBuscarUbicacion;
+		return jButtonBuscarMuestra;
 	}
 
 	/**
@@ -109,13 +107,13 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	}
 	
 	/**
-	 * Metodo que permite escuchar los botones Seleccionar, Buscar y Salir.
+	 * Metodo que permite escuchar los botones Seleccionar y Buscar.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
-		this.jButtonSeleccionarUbicacion.addActionListener(lis);
-		this.jButtonBuscarUbicacion.addActionListener(lis);
+		this.jButtonSeleccionarMuestra.addActionListener(lis);
+		this.jButtonBuscarMuestra.addActionListener(lis);
 		this.jButtonSalir.addActionListener(lis);
 	
 	}
@@ -131,9 +129,9 @@ public class GUISeleccionarUbicacion extends JDialog	{
 
 	/** 
      *@return data  
-    */
+     * */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre","Provincia","Latitud","Longitud"};
+		String[] columnName = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
 		return columnName;
 	}
 

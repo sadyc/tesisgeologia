@@ -8,6 +8,8 @@ import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
 import cuGestionarMuestra.MediadorGestionarMuestra;
+import cuGestionarMuestra.MediadorListarMuestras;
+import cuGestionarMuestra.MediadorSeleccionarMuestra;
 import cuLimiteConsistencia.MediadorAltaLimiteConsistencia;
 
 public class MediadorPrincipal implements ActionListener{

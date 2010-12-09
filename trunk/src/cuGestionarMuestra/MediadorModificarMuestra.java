@@ -17,8 +17,8 @@ import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
 
-import comun.MediadorSeleccionarOperador;
-import comun.MediadorSeleccionarUbicacion;
+import cuGestionarOperador.MediadorSeleccionarOperador;
+import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
 
 /**
  * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana Modificar Muestra

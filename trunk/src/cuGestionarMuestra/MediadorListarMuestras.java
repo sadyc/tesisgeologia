@@ -1,4 +1,4 @@
-package comun;
+package cuGestionarMuestra;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import persistencia.domain.Muestra;
-import cuGestionarMuestra.ControlGestionarMuestra;
 
 /**
 * @author TesisGeología

@@ -1,4 +1,4 @@
-package comun;
+package cuGestionarTamiz;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
+
 
 import persistencia.domain.Tamiz;
 import cuGestionarAnalisis.MediadorBuscar;

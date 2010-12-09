@@ -1,4 +1,7 @@
-package comun;
+/**
+ * 
+ */
+package cuGestionarUbiacion;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -13,18 +16,23 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
+import comun.TablePanel;
+
+
 /**
 * @author TesisGeología
-* Esta clase implementa la ventana que me permite seleccionar un tamiz de los almacenados.
+* Esta clase implementa la ventana que me permite seleccionar una ubicacion de las almacenados.
 */
-public class GUISeleccionarTamiz extends JDialog	{
+public class GUISeleccionarUbicacion extends JDialog	{
 
 	private JMenuBar menu = null;
 	private JMenu herramientas;
 	private JMenu ayuda;
-	private JButton jButtonSeleccionarTamiz;
+	private JButton jButtonBuscarUbicacion;
+	private JButton jButtonSeleccionarUbicacion;
 	private JButton jButtonSalir;
 	private JMenuItem seleccionarMenu;
+	private JMenuItem buscarMenu;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
 	private JPanel panelSur;
@@ -33,10 +41,11 @@ public class GUISeleccionarTamiz extends JDialog	{
 	
 	/**
 	 * Constructor de la clase.
-	 * @param datos, contiene la informacion de los tamices almacenados.
+	 * @param datos, contiene la informacion de las ubicaciones almacenadas.
 	 */
-	public GUISeleccionarTamiz(Object [][] datos) {
+	public GUISeleccionarUbicacion(Object [][] datos) {
 		super();
+		
 		data = datos;
 		if (this.menu==null) {
 			tablePanel = getTablePanel();
@@ -45,25 +54,29 @@ public class GUISeleccionarTamiz extends JDialog	{
 			ayuda = new JMenu("Ayuda");
 			menu.add(herramientas);
 			menu.add(ayuda);
+			buscarMenu = new JMenuItem("Buscar");
 			seleccionarMenu = new JMenuItem("Seleccionar");
 			salirMenu = new JMenuItem("Salir");
 			herramientas.add(seleccionarMenu);
+			herramientas.add(buscarMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
 			herramientas.add(salirMenu);
 			versionMenu = new JMenuItem("Version");
 			ayuda.add(versionMenu);
-			jButtonSeleccionarTamiz  = new JButton("SELECCIONAR");
+			jButtonBuscarUbicacion = new JButton("BUSCAR");
+			jButtonSeleccionarUbicacion  = new JButton("SELECCIONAR");
 			jButtonSalir  = new JButton("SALIR");
 		}
 		initialize();
 	}
+	
 	/**
 	 * Metodo que inicializa la interfaz.
 	 *
 	 * @return void
 	 */
 	private  void initialize() {
-		this.setSize(353, 700);
+		this.setSize(1003, 700);
       	this.getContentPane().setLayout(new BorderLayout());
 		this.setJMenuBar(this.getMenu());
 	  	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
@@ -76,7 +89,16 @@ public class GUISeleccionarTamiz extends JDialog	{
 	 * @return javax.swing.JButton	
 	 */
 	public JButton getJButtonSeleccionar() {
-		return jButtonSeleccionarTamiz;
+		return jButtonSeleccionarUbicacion;
+	}
+
+	/**
+	 * This method retorna boton buscar
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+	public JButton getJButtonBuscar() {
+		return jButtonBuscarUbicacion;
 	}
 
 	/**
@@ -89,12 +111,13 @@ public class GUISeleccionarTamiz extends JDialog	{
 	}
 	
 	/**
-	 * Metodo que permite escuchar los botones Seleccionar y Buscar.
+	 * Metodo que permite escuchar los botones Seleccionar, Buscar y Salir.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
-		this.jButtonSeleccionarTamiz.addActionListener(lis);
+		this.jButtonSeleccionarUbicacion.addActionListener(lis);
+		this.jButtonBuscarUbicacion.addActionListener(lis);
 		this.jButtonSalir.addActionListener(lis);
 	
 	}
@@ -110,9 +133,9 @@ public class GUISeleccionarTamiz extends JDialog	{
 
 	/** 
      *@return data  
-     */
+    */
 	public static String[] getColumName(){
-		String[] columnName = {"Numero Tamiz","Abertura de Malla"};
+		String[] columnName = {"Nombre","Provincia","Latitud","Longitud"};
 		return columnName;
 	}
 
@@ -126,6 +149,7 @@ public class GUISeleccionarTamiz extends JDialog	{
 		this.panelSur = new JPanel();
 		this.panelSur.setLayout(new FlowLayout());
 		this.panelSur.add(getJButtonSeleccionar());
+		this.panelSur.add(getJButtonBuscar());
 		this.panelSur.add(getJButtonSalir());
 		}
 		return this.panelSur;
@@ -158,11 +182,5 @@ public class GUISeleccionarTamiz extends JDialog	{
 		this.menu = menu;
 	}
 	
-
-	/**
-	 * @return the jButtonSeleccionarTamiz
-	 */
-	public JButton getjButtonSeleccionarOperador() {
-		return jButtonSeleccionarTamiz;
-	}
 }
+
