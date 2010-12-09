@@ -18,7 +18,6 @@ import persistencia.domain.Analisis;
 public class MediadorBuscar  implements ActionListener,MouseListener,ItemListener  {
 	
 	private GUIBuscar guiBuscar;
-	private MediadorAltaAnalisis mediadorAnalisis;
 	private String data;
 	
 	/**
@@ -58,24 +57,42 @@ public class MediadorBuscar  implements ActionListener,MouseListener,ItemListene
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
     	if (this.guiBuscar.getJButtonBuscar() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonBuscar");
-			data = guiBuscar.getClaveBusqueda().getText();
-			
-			guiBuscar.dispose();
+			buscar();
 		}
     	if (this.guiBuscar.getJButtonAceptar() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonAceptar");
-			guiBuscar.dispose();
-			mediadorAnalisis = new MediadorAltaAnalisis("nombreMuestra"); // ACA CREO LA VENTANA CON LOS DATOS CARGADOS PARA MODIFICAR
+			aceptar();
 		}
     	
 		if (this.guiBuscar.getJButtonCancelar() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
-			guiBuscar.dispose();
+			cancelar();
 		}
 	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Cancelar"
+	 */
+	public void cancelar(){
+		System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
+		guiBuscar.dispose();
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Aceptar"
+	 */
+	public void aceptar(){
+		System.out.println("GestionarAnalisis.actionPerformed() jButtonAceptar");
+		guiBuscar.dispose();
+		new MediadorAltaAnalisis("nombreMuestra"); // ACA CREO LA VENTANA CON LOS DATOS CARGADOS PARA MODIFICAR
+	}
 
-
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Buscar"
+	 */
+	public void buscar(){
+		System.out.println("GestionarAnalisis.actionPerformed() jButtonBuscar");
+		data = guiBuscar.getClaveBusqueda().getText();
+		guiBuscar.dispose();
+	}
 
 	public void itemStateChanged(ItemEvent arg0) {
 	}

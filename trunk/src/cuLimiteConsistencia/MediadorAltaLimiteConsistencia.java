@@ -27,6 +27,7 @@ public class MediadorAltaLimiteConsistencia  implements ActionListener,MouseList
 	private GUILimiteConsistencia GUILimiteConsistencia;
 	private Muestra muestra = new Muestra();
 	private Consistencia consistencia = new Consistencia();
+	private ControlLimiteConsistencia control = new ControlLimiteConsistencia();
 	private String nombreMuestra;
 	private String limiteLiquido;
 	private String limitePlastico;
@@ -70,25 +71,31 @@ public class MediadorAltaLimiteConsistencia  implements ActionListener,MouseList
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		ControlLimiteConsistencia control = new ControlLimiteConsistencia();
-     	if (this.GUILimiteConsistencia.getJButtonAceptar() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
-			limiteLiquido = GUILimiteConsistencia.getLimiteLiquido().getText();
-			limitePlastico = GUILimiteConsistencia.getLimitePlastico().getText();
-			consistencia.setLimiteLiquido(Float.parseFloat(limiteLiquido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
-			consistencia.setLimitePlastico(Float.parseFloat(limitePlastico));
-			try {
-				consistencia = control.insertarConsistencia(consistencia, nombreMuestra);
-				altaConsistencia= true;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			GUILimiteConsistencia.dispose();
+		if (this.GUILimiteConsistencia.getJButtonAceptar() == source){
+     		aceptar();
 		}
 		if (this.GUILimiteConsistencia.getJButtonSalir() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			GUILimiteConsistencia.dispose();
 		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Consistencia"
+	 */
+	public void aceptar(){
+		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
+		limiteLiquido = GUILimiteConsistencia.getLimiteLiquido().getText();
+		limitePlastico = GUILimiteConsistencia.getLimitePlastico().getText();
+		consistencia.setLimiteLiquido(Float.parseFloat(limiteLiquido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
+		consistencia.setLimitePlastico(Float.parseFloat(limitePlastico));
+		try {
+			consistencia = control.insertarConsistencia(consistencia, nombreMuestra);
+			altaConsistencia= true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		GUILimiteConsistencia.dispose();
 	}
 
 	/**
