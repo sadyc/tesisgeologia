@@ -119,7 +119,7 @@ public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,
             	Muestra muestra = new Muestra();
             	muestra.setNombreMuestra(nombreMuestra);
             	Tamiz tamiz = new Tamiz();
-            	tamiz.setNumeroTamiz(Integer.parseInt(fila[0]));
+            	tamiz.setNumeroTamiz(fila[0]);
               	analisis = new Analisis(Integer.parseInt(fila[1]),muestra,tamiz);
               	try {
 					control.eliminarAnalisis(analisis);
