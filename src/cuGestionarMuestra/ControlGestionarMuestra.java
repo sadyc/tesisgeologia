@@ -99,33 +99,20 @@ public class ControlGestionarMuestra {
 			
 			Class claseMuestra = aux.getClass();
 			aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
-			System.out.println(nombreMuestra+"<---peso");
 			aux.setPeso(muestra.getPeso());
-			
-			
 			aux.setNombreMuestra(muestra.getNombreMuestra());
-			
-			
 			aux.setProfundidadInicial(muestra.getProfundidadInicial());
 			aux.setProfundidadFinal(muestra.getProfundidadFinal());
-			
 			Class claseOperador = operador.getClass();
-			System.out.println("la concha del peso2");
 			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
-			System.out.println("la concha del peso3");
-			
 			Class claseUbicacion = ubicacion.getClass();
-			System.out.println(ubicacion.getNombreUbicacion());
 			Ubicacion ubic = (Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'");
-			System.out.println(ubicacion.getNombreUbicacion()+"aaaaaaaaaaaaaaaaaaaa");
 			aux.setUbicacion(ubic);
-			System.out.println("la concha del peso1");
-			
 			persistencia.cerrarTransaccion();
 			
 		}
 		catch (Exception e) {
-			System.out.println("Me sali antes de modificar");
+			System.out.println("Error al modificar");
 			e.printStackTrace();
 			persistencia.realizarRollback();
 		}		

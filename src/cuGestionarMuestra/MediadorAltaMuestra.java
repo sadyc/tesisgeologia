@@ -123,8 +123,7 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
    		Clasificacion clasificacion = new Clasificacion();
  		Date fecha = new Date(11,22,1980);
  		if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("Ubicacion(*) : ") || GUIMuestra.getOperador().getText().equals("Operador(*) :") ){
- 			System.out.println(GUIMuestra.getUbicacion().getText()+"jelow");
-			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+ 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else {
 			data[0]= this.ubicacion.getNombreUbicacion();
