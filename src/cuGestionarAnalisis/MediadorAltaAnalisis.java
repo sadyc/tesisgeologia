@@ -10,9 +10,9 @@ import java.awt.event.MouseListener;
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
 
-import comun.MediadorSeleccionarTamiz;
 
 import cuCalcularClasificacion.ControlClasificacion;
+import cuGestionarTamiz.MediadorSeleccionarTamiz;
 
 
 

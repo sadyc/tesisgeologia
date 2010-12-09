@@ -11,9 +11,9 @@ import persistencia.domain.Analisis;
 import persistencia.domain.Consistencia;
 import persistencia.domain.Muestra;
 
-import comun.MediadorSeleccionarTamiz;
 
 import cuGestionarAnalisis.ControlGestionarAnalisis;
+import cuGestionarTamiz.MediadorSeleccionarTamiz;
 
 
 /**

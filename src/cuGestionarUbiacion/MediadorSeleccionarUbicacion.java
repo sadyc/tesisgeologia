@@ -1,4 +1,4 @@
-package comun;
+package cuGestionarUbiacion;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;

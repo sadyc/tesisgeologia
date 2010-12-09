@@ -1,4 +1,4 @@
-package comun;
+package cuGestionarMuestra;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -12,6 +12,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+
+import comun.TablePanel;
 /**
 * @author TesisGeología
 * Esta clase implementa una ventana la cual lista todas las muestras almacenadas.

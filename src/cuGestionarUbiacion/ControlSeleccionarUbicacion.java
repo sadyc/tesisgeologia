@@ -1,4 +1,4 @@
-package comun;
+package cuGestionarUbiacion;
 
 import java.util.Collection;
 

@@ -1,4 +1,4 @@
-package comun;
+package cuGestionarOperador;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
