@@ -4,7 +4,6 @@
 package persistencia;
 
 import javax.jdo.JDOHelper;
-import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 
 
@@ -16,8 +15,6 @@ import javax.jdo.PersistenceManagerFactory;
  */
 public final class Singleton {
         private static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-        
-
         /**
          * Default constructor.
          */
@@ -32,7 +29,5 @@ public final class Singleton {
         public static PersistenceManagerFactory getInstance(){
                 return pmf;
         }
+}
 
-
-  }
-	

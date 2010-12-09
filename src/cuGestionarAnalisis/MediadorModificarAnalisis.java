@@ -25,15 +25,16 @@ public class MediadorModificarAnalisis  implements ActionListener,MouseListener,
 	private Analisis analisis;
 	private String numeroTamiz;
 	private String nombreMuestra;
+	private ControlGestionarAnalisis control ; 
 	
 	/**
 	 * This is the default constructor
 	 */
 	public MediadorModificarAnalisis(String nombreMuestra,Integer pesoRetenido,String numeroTamiz) {
 		super();
+		control = new ControlGestionarAnalisis();
 		this.numeroTamiz = numeroTamiz;
 		analisis = new Analisis();
-		
 		this.nombreMuestra = nombreMuestra;
 		this.GUIAnalisis = new GUIModificarAnalisis(pesoRetenido);
 		GUIAnalisis.setTitle("Modificar el peso retenido del tamizado de una Muestra");
@@ -67,20 +68,9 @@ public class MediadorModificarAnalisis  implements ActionListener,MouseListener,
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
+		
      	if (this.GUIAnalisis.getJButtonAceptar() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");
-			pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
-			Muestra muestra = new Muestra ();
-			muestra.setNombreMuestra(nombreMuestra);
-			analisis.setMuestra(muestra);
-			try {
-				control.ModificarAnalisis(Integer.parseInt(pesoRetenido), nombreMuestra, numeroTamiz);
-				control.recalcularAnalisis(analisis);//REcalcular Todo por aca o por otro lado
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			GUIAnalisis.dispose();
+			aceptar();
 		}
 		if (this.GUIAnalisis.getJButtonSalir() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
@@ -88,7 +78,23 @@ public class MediadorModificarAnalisis  implements ActionListener,MouseListener,
 		}
 	}
 
-
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Aceptar"
+	 */
+	public void aceptar(){
+		System.out.println("GestionarAnalisis.actionPerformed() jButtonAceptar");
+		pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
+		Muestra muestra = new Muestra ();
+		muestra.setNombreMuestra(nombreMuestra);
+		analisis.setMuestra(muestra);
+		try {
+			control.ModificarAnalisis(Integer.parseInt(pesoRetenido), nombreMuestra, numeroTamiz);
+			control.recalcularAnalisis(analisis);//REcalcular Todo por aca o por otro lado
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		GUIAnalisis.dispose();
+	}
 
 	public void itemStateChanged(ItemEvent arg0) {
 	}

@@ -31,7 +31,13 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	private GUIABMMuestra GUIABMMuestra;
 	private Object [][] data ;
 	private Component frame;
-	
+	private OperadorDeLaboratorio op = new OperadorDeLaboratorio();
+	private Ubicacion ubicacion = new Ubicacion();
+	private Usuario usuario = new Usuario();
+	private Date fecha = new Date(12,12,1222);
+	private Clasificacion clasificacion = new Clasificacion();
+	private ControlGestionarMuestra control = new ControlGestionarMuestra();
+		
 	
 	public MediadorGestionarMuestra(String nombreVentana) throws Exception {
 		super();
@@ -85,71 +91,86 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		OperadorDeLaboratorio op = new OperadorDeLaboratorio();
- 		Ubicacion ubicacion = new Ubicacion();
- 		Usuario usuario = new Usuario();
- 		Date fecha = new Date(12,12,1222);
- 		Clasificacion clasificacion = new Clasificacion();
-		ControlGestionarMuestra control = new ControlGestionarMuestra();
+
 		if (this.GUIABMMuestra.getJButtonAgregar() == source){
-	   		try {
-	   			System.out.println("Button Agregar Muestra");
-				MediadorAltaMuestra altaMuestra = new MediadorAltaMuestra("Ingresar Muestra");	
-				if (altaMuestra.esAltaMuestra()){  
-					this.GUIABMMuestra.getTablePanel().addRow(altaMuestra.getData());
-	     		}
-	   		} catch (Exception e) {
-				e.printStackTrace();
-			}
-	   		
+			agregarMuestra();
 	   	}
 		if (this.GUIABMMuestra.getJButtonEliminar() == source){
-			if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-			}
-			else{
-			    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-	            if(quitOption==JOptionPane.YES_OPTION){
-	            	try{
-	            		System.out.println(GUIABMMuestra.getTablePanel().getSelectedRow());
-	            	
-	            	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-	            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-	            	Muestra mu = new Muestra((fila[1]),Integer.parseInt(fila[2]),Float.parseFloat(fila[3]),Float.parseFloat(fila[4]),op,usuario,ubicacion,clasificacion,fecha);
-	               	try {
-	               		control.eliminarMuestra(mu);
-	               	} catch (Exception e) {
-						e.printStackTrace();
-	               	}
-	            	}
-	            	catch (Exception e) {
-	            		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-	            	}
-	            }
-			}
+			eliminarMuestra();
 		}
 		if (this.GUIABMMuestra.getJButtonModificar() == source){
-			if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-			}
-			else{
-				String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-					try {
-						
-						MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(control.obtenerMuestra(fila[1],fila[0]));
-						GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-						this.GUIABMMuestra.getTablePanel().addRow(modificarMuestra.getData());
-						System.out.println("dfespues de meter en panel");
-					}
-					catch (Exception e) {
-						e.printStackTrace();
-					}
-			}
+			modificarMuestra();
 		}
 		if (this.GUIABMMuestra.getJButtonSalir() == source){
 			System.out.println("presionado boton salir");
 			GUIABMMuestra.dispose();
 		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Modificar Muestra"
+	 */
+	public void modificarMuestra(){
+		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		}
+		else{
+			String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+			try {
+				MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(control.obtenerMuestra(fila[1],fila[0]));
+				GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+				this.GUIABMMuestra.getTablePanel().addRow(modificarMuestra.getData());
+				System.out.println("dfespues de meter en panel");
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Eliminar Muestra"
+	 */
+	public void eliminarMuestra(){
+		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		}
+		else{
+		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+            if(quitOption==JOptionPane.YES_OPTION){
+            	try{
+            		System.out.println(GUIABMMuestra.getTablePanel().getSelectedRow());
+            	
+            	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+            	Muestra mu = new Muestra((fila[1]),Integer.parseInt(fila[2]),Float.parseFloat(fila[3]),Float.parseFloat(fila[4]),op,usuario,ubicacion,clasificacion,fecha);
+               	try {
+               		control.eliminarMuestra(mu);
+               	} catch (Exception e) {
+					e.printStackTrace();
+               	}
+            	}
+            	catch (Exception e) {
+            		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+            	}
+            }
+		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Muestra"
+	 */
+	public void agregarMuestra(){
+		try {
+   			System.out.println("Button Agregar Muestra");
+			MediadorAltaMuestra altaMuestra = new MediadorAltaMuestra("Ingresar Muestra");	
+			if (altaMuestra.esAltaMuestra()){  
+				this.GUIABMMuestra.getTablePanel().addRow(altaMuestra.getData());
+     		}
+   		} catch (Exception e) {
+			e.printStackTrace();
+		}
+   		
 	}
 	
 	/**

@@ -36,12 +36,14 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 	private Ubicacion ubicacion;
 	private OperadorDeLaboratorio operador;
 	private Component frame;
+	private ControlGestionarMuestra control; 
 	private boolean altaMuestra= false;
 
 	
 	public MediadorAltaMuestra(String nombreVentana) throws Exception {
 		super();
 		muestra = new Muestra();
+		control = new ControlGestionarMuestra();
 		this.ubicacion = new Ubicacion();
 		this.operador= new OperadorDeLaboratorio();
 		this.GUIMuestra = new GUIMuestra();
@@ -98,64 +100,82 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		if (this.GUIMuestra.getJButtonSeleccionarOperador()== source) {
-			try {
-				MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
-				if ((String)seleccionarOperador.getSeleccionado()[0]!=null) {
-					this.GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
-					this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
-				}
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
+			seleccionarOperador();
 		}
 		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
-			try {
-				MediadorSeleccionarUbicacion mediadorSelUbic = new MediadorSeleccionarUbicacion();
-				if((String)mediadorSelUbic.getSeleccionado()[0]!= null){
-					this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
-					this.ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+			seleccionarUbicacion();
 		}
 		if (this.GUIMuestra.getJButtonAceptar() == source) {
-			System.out.println("Muestra.actionPerformed() jButtonAceptar");
-			Usuario usuario = new Usuario();
-       		Clasificacion clasificacion = new Clasificacion();
-     		Date fecha = new Date(11,22,1980);
-     		if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("Ubicacion(*) : ") || GUIMuestra.getOperador().getText().equals("Operador(*) :") ){
-     			System.out.println(GUIMuestra.getUbicacion().getText()+"jelow");
-				JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-			}
-			else {
-
-				data[0]= this.ubicacion.getNombreUbicacion();
-				data[1]= GUIMuestra.getNombre().getText();
-				data[2]= GUIMuestra.getPeso().getText();
-				data[3]= GUIMuestra.getProfundidadInicial().getText();
-				data[4]= GUIMuestra.getProfundidadFinal().getText();
-				muestra = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,this.ubicacion,clasificacion,fecha);
-                
-				try {
-					control.insertarMuestra(muestra, ubicacion, operador);
-					altaMuestra = true;
-				} catch (Exception e) {
-					System.out.println("No inserta muestra Mediador Alta Muestra");
-					e.printStackTrace();
-				}
-				GUIMuestra.dispose();
-			}
-     	}
-			
+			aceptar();
+		}
 		if (this.GUIMuestra.getJButtonCancelar() == source){
 			GUIMuestra.dispose();
 		}
 	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Aceptar"
+	 */
+	public void aceptar(){
+		System.out.println("Muestra.actionPerformed() jButtonAceptar");
+		Usuario usuario = new Usuario();
+   		Clasificacion clasificacion = new Clasificacion();
+ 		Date fecha = new Date(11,22,1980);
+ 		if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("Ubicacion(*) : ") || GUIMuestra.getOperador().getText().equals("Operador(*) :") ){
+ 			System.out.println(GUIMuestra.getUbicacion().getText()+"jelow");
+			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		}
+		else {
+			data[0]= this.ubicacion.getNombreUbicacion();
+			data[1]= GUIMuestra.getNombre().getText();
+			data[2]= GUIMuestra.getPeso().getText();
+			data[3]= GUIMuestra.getProfundidadInicial().getText();
+			data[4]= GUIMuestra.getProfundidadFinal().getText();
+			muestra = new Muestra(data[1],Integer.parseInt(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,this.ubicacion,clasificacion,fecha);
+			try {
+				control.insertarMuestra(muestra, ubicacion, operador);
+				altaMuestra = true;
+			} catch (Exception e) {
+				System.out.println("No inserta muestra Mediador Alta Muestra");
+				e.printStackTrace();
+			}
+			GUIMuestra.dispose();
+		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Ubicacion"
+	 */
+	public void seleccionarUbicacion(){
+		try {
+			MediadorSeleccionarUbicacion mediadorSelUbic = new MediadorSeleccionarUbicacion();
+			if((String)mediadorSelUbic.getSeleccionado()[0]!= null){
+				this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
+				this.ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Operador"
+	 */
+	public void seleccionarOperador(){
+		try {
+			MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
+			if ((String)seleccionarOperador.getSeleccionado()[0]!=null) {
+				this.GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
+				this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public String[] getData() {
 		return data;
 	}

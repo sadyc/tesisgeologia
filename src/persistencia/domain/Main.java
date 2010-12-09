@@ -27,7 +27,7 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		//Muestra mu = new Muestra();
 		//MediadorAltaLimiteConsistencia hola = new MediadorAltaLimiteConsistencia("Limite Consistencia");
-		MediadorLogin login = new MediadorLogin("Login");
+		new MediadorLogin("Login");
 		//MediadorGestionarMuestra med = new MediadorGestionarMuestra("");
 		
        

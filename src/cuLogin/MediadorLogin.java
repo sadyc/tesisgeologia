@@ -45,28 +45,34 @@ public class MediadorLogin implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.login.getJButtonAceptar() == source){
-	   		System.out.println("GestionarMediador.actionPerformed() jButtonAgregar");
-	   		if (login.getNombre().getText().equals("") ){
-				JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Nombre Usuario'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-			}
-			else {
-				if (login.getPassword().getText().equals("")) {
-					JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Password'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-				}
-				else{
-					try {
-						MediadorPrincipal guiPrincipal = new MediadorPrincipal("SISTEMA DE CLASIFICACION DE SUELOS");
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					login.dispose();
-				}
-			}
+	   		aceptar();
 		}
 		if (this.login.getJButtonCancelar() == source){
 	   		System.out.println("GestionarMediador.actionPerformed() jButtonCancelar");
 	   		login.dispose();	
 	   	}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Aceptar"
+	 */
+	public void aceptar(){
+		System.out.println("GestionarMediador.actionPerformed() jButtonAceptar");
+   		if (login.getNombre().getText().equals("") ){
+			JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Nombre Usuario'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		}
+		else {
+			if (login.getPassword().getText().equals("")) {
+				JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Password'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+			else{
+				try {
+					new MediadorPrincipal("SISTEMA DE CLASIFICACION DE SUELOS");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				login.dispose();
+			}
+		}
 	}
 }
