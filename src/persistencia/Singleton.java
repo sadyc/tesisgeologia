@@ -4,6 +4,7 @@
 package persistencia;
 
 import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 
 
@@ -13,29 +14,28 @@ import javax.jdo.PersistenceManagerFactory;
  * @author TesisGeologia
  *
  */
-/**
- * @author Administrador
- *
- */
 public final class Singleton {
-	private static PersistenceManagerFactory pmf;
-	/**
-	 * Default constructor.
-	 */
-	public Singleton() {} 
-	
-	/**
-	* Retorna la conexion a la base de datos obtenida
-	* por la PersistenceManagerFactory.
-	* 
-	* @return static PersistenceManager
-	*/
-	public static PersistenceManagerFactory getInstance(){
-		if(pmf==null){
-			  pmf = JDOHelper.getPersistenceManagerFactory("database.properties");
-			}
-			return pmf;
-	}
-	
-	
+        private static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+        private static PersistenceManager pmi = null;
+
+        /**
+         * Default constructor.
+         */
+        public Singleton() {}
+
+        /**
+        * Retorna la conexion a la base de datos obtenida
+        * por la PersistenceManagerFactory.
+        *
+        * @return static PersistenceManager
+        */
+        public static PersistenceManager getInstance(){
+                if(pmi==null || pmi.isClosed()){
+                  pmi = pmf.getPersistenceManager();
+                }
+                return pmi;
+        }
+
+
   }
+	

@@ -3,8 +3,8 @@
  */
 package persistencia.domain;
 
-import java.util.HashSet;
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.jdo.annotations.PersistenceCapable;
 

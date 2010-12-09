@@ -21,21 +21,24 @@ import javax.jdo.Transaction;
  */
 public class Persistencia {
 
-	private static PersistenceManagerFactory pmf = null;
+	private static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	private static PersistenceManager pmi = null;
 	private Transaction tx = null;
 	
 	/**
 	 * Default constructor.
+	 * @throws Exception 
 	 */
-	public Persistencia (){}
-	
-	public void abrirTransaccion()throws Exception{
-		pmf = Singleton.getInstance();
-		tx = pmi.currentTransaction();
-		pmi = pmf.getPersistenceManager();
-		tx = pmi.currentTransaction();
-		tx.begin();
+	public Persistencia () throws Exception{
+		pmi = (PersistenceManager) Singleton.getInstance();
+        tx = pmi.currentTransaction();
+
+        try{
+                tx.begin();
+        }
+        catch (Exception e) {
+                realizarRollback();
+        }
 	}
 	
 	/**
@@ -85,7 +88,6 @@ public class Persistencia {
 				System.out.println("Objeto encontrado en buscar objeto");
 			else
 				System.out.println("Objeto NO encontrado en buscar objeto");
-			System.out.println(filtro+" <-----Filtro");
 		} catch (Exception e) {
 			System.out.println("Error en buscar objeto");
 			e.printStackTrace();

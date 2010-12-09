@@ -4,7 +4,6 @@
 package persistencia.domain;
 
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.PrimaryKey;
 
 /**
  * Implementacion de la clase que define una Persona. 
