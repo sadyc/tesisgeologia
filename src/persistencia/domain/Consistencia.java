@@ -14,7 +14,7 @@ public class Consistencia {
 	private Float limitePlastico;
 	private Float limiteLiquido;
 	private Float indicePlasticidad;
-	private Muestra muestra;
+
 	
 		
 	/**
@@ -32,11 +32,11 @@ public class Consistencia {
 	 * @param limiteLiquido, es el valor de limite líquido correspondiente al analisis de consistencia.
 	 * @param muestra, es la muestra a la cual corresponde el analisis de consistencia.
 	 */
-	public Consistencia(Float limitePlastico, Float limiteLiquido, Muestra muestra) {
+	public Consistencia(Float limitePlastico, Float limiteLiquido) {
 		this.limitePlastico = limitePlastico;
 		this.limiteLiquido = limiteLiquido;
 		calcularIndicePlasticidad();
-		this.muestra = muestra;
+	
 	}
 	
 	
@@ -76,20 +76,7 @@ public class Consistencia {
 	public void setIndicePlasticidad(Float indicePlasticidad) {
 		this.indicePlasticidad= indicePlasticidad;
 	}
-	
-	/**
-	 * @return the muestra
-	 */
-	public Muestra getMuestra() {
-		return muestra;
-	}
-	/**
-	 * @param muestra the muestra to set
-	 */
-	public void setMuestra(Muestra muestra) {
-		this.muestra = muestra;
-	}
-	
+		
 	/**
 	 * Metodo que calcula el Indice de Plasticidad.
 	 */
