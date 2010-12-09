@@ -30,8 +30,6 @@ public class ControlLimiteConsistencia {
                         Class claseMuestra= muestra.getClass();
                         muestra = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
                         System.out.println("peso de la muestra"+muestra.getPeso()+"limite liquido"+consistencia.getLimiteLiquido()+" limite plastico"+consistencia.getLimitePlastico());
-                        consistencia.setMuestra(muestra);
-                                     
                         consistencia.calcularIndicePlasticidad();
                         persistencia.insertarObjeto(consistencia);                                      
                         persistencia.cerrarTransaccion();
@@ -43,32 +41,7 @@ public class ControlLimiteConsistencia {
                 return consistencia;
         }
         
-        /**
-         * Elimina un analisis de consistencia persistente. 
-         */
-        public void eliminarConsistencia(Consistencia consistencia) throws Exception {
-        	Persistencia persistencia = new Persistencia();
-    		persistencia.abrirTransaccion();
-    		try {
-    			Consistencia auxConsistencia = new Consistencia();
-    			Class clase = auxConsistencia.getClass();
-    			Collection coleccionConsistencia = persistencia.buscarColeccion(clase);
-    			Iterator<Consistencia> it = coleccionConsistencia.iterator();
-    			int i = 0;//arreglar esto con el buscarObjeto.
-    			while (it.hasNext()&& consistencia.getMuestra().getNombreMuestra()!= auxConsistencia.getMuestra().getNombreMuestra()){ 
-    				auxConsistencia = it.next();
-    			    i++;
-    			}
-    			persistencia.eliminarObjeto(auxConsistencia);
-    			persistencia.cerrarTransaccion();
-    			System.out.println("Consistencia eliminada con persistencia");
-    		}
-    		catch (Exception e) {
-    			persistencia.realizarRollback();
-    		}
-    		
-    	}
-       
+               
        /**
         * Permite modificar un analisis de consistencia persistente.                 
         * @param limitePlastico
