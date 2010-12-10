@@ -2,21 +2,15 @@ package cuGestionarMuestra;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-
+import comun.*;
 import persistencia.domain.Muestra;
-import persistencia.domain.Ubicacion;
-
-import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuCompararMuestra.GUISeleccionarMuestra;
 import cuGestionarAnalisis.MediadorBuscar;
 
@@ -25,7 +19,7 @@ import cuGestionarAnalisis.MediadorBuscar;
 * 
 */
 
-public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,ItemListener {
+public class MediadorSeleccionarMuestra extends Mediador{
 
 	private GUISeleccionarMuestra GUISeleccionarMuestra = null;
 	private Object [] seleccionado = new Object [4];

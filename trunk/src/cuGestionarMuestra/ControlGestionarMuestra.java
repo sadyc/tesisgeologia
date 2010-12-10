@@ -52,20 +52,13 @@ public class ControlGestionarMuestra {
 	/**
 	 * Elimina una muestra con persistencia. 
 	 */
-	public void eliminarMuestra(Muestra mu) throws Exception {
+	public void eliminarMuestra(String nombreMuestra, String ubicacion) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
 			Muestra muestra = new Muestra();
-			Class clase = muestra.getClass();
-			Collection muestras = persistencia.buscarColeccion(clase);
-			Iterator<Muestra> it = muestras.iterator();
-			int i = 0;
-			while (it.hasNext()&& mu.getNombreMuestra()!= muestra.getNombreMuestra()){
-				muestra = it.next();
-			    i++;
-			}
-			persistencia.eliminarObjeto(muestra);
+			Muestra auxMuestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+ubicacion+"'");
+			persistencia.eliminarObjeto(auxMuestra);
 			persistencia.cerrarTransaccion();
 			System.out.println("Analisis eliminado con persistencia");
 		}

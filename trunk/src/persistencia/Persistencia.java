@@ -63,7 +63,6 @@ public class Persistencia {
 		try{
 			pmi.deletePersistent(objeto);
 			System.out.println("Objeto eliminado con persistencia");
-			
 		}	
 		catch (Exception e){
 			System.out.println("No se elimino con persistencia");
