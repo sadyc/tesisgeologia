@@ -12,7 +12,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Date;
 
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Clasificacion;
@@ -20,7 +19,6 @@ import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
-
 import cuGestionarOperador.MediadorSeleccionarOperador;
 import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
 
@@ -36,7 +34,9 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 	private Ubicacion ubicacion;
 	private OperadorDeLaboratorio operador;
 	private Component frame;
-	private ControlGestionarMuestra control; 
+	private ControlGestionarMuestra control;
+	private Usuario usuario ;
+	private Date fecha ;
 	private boolean altaMuestra= false;
 
 	
@@ -44,6 +44,8 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 		super();
 		muestra = new Muestra();
 		control = new ControlGestionarMuestra();
+		fecha = new Date(11,22,1980);
+		usuario = new Usuario();
 		this.ubicacion = new Ubicacion();
 		this.operador= new OperadorDeLaboratorio();
 		this.GUIMuestra = new GUIMuestra();
@@ -119,28 +121,53 @@ public class MediadorAltaMuestra implements ActionListener,MouseListener,ItemLis
 	 */
 	public void aceptar(){
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
-		Usuario usuario = new Usuario();
-   		Clasificacion clasificacion = new Clasificacion();
- 		Date fecha = new Date(11,22,1980);
- 		if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("Ubicacion(*) : ") || GUIMuestra.getOperador().getText().equals("Operador(*) :") ){
- 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-		}
-		else {
-			data[0]= this.ubicacion.getNombreUbicacion();
-			data[1]= GUIMuestra.getNombre().getText();
-			data[2]= GUIMuestra.getPeso().getText();
-			data[3]= GUIMuestra.getProfundidadInicial().getText();
-			data[4]= GUIMuestra.getProfundidadFinal().getText();
-			muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,this.ubicacion,clasificacion,fecha);
-			try {
-				control.insertarMuestra(muestra, ubicacion, operador);
-				altaMuestra = true;
-			} catch (Exception e) {
-				System.out.println("No inserta muestra Mediador Alta Muestra");
-				e.printStackTrace();
+		try{
+		 	if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("Ubicacion(*) : ") || GUIMuestra.getOperador().getText().equals("Operador(*) :") ){
+	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
-			GUIMuestra.dispose();
+			else {
+				if (Integer.parseInt(GUIMuestra.getPeso().getText()) <= 0 || Integer.parseInt(GUIMuestra.getPeso().getText()) > 5000) {
+					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					if (!GUIMuestra.getProfundidadInicial().getText().equals("") && !GUIMuestra.getProfundidadFinal().getText().equals("")){
+						if (Integer.parseInt(GUIMuestra.getProfundidadFinal().getText()) < Integer.parseInt(GUIMuestra.getProfundidadInicial().getText())){
+							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+						}
+						else{
+							insertarMuestra();
+						}
+					}
+					else{
+						insertarMuestra();
+					}
+				}
+			}
 		}
+		catch (NumberFormatException e){
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo numeros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	/**
+	 * Una vez verificados que los datos ingresados son correctos se procede a la carga de los mismos al sistema.
+	 */
+	public void insertarMuestra(){
+		data[0]= this.ubicacion.getNombreUbicacion();
+		data[1]= GUIMuestra.getNombre().getText();
+		data[2]= GUIMuestra.getPeso().getText();
+		data[3]= GUIMuestra.getProfundidadInicial().getText();
+		data[4]= GUIMuestra.getProfundidadFinal().getText();
+		muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,this.ubicacion,fecha);
+		try {
+			control.insertarMuestra(muestra, ubicacion, operador);
+			altaMuestra = true;
+		} catch (Exception e) {
+			System.out.println("No inserta muestra Mediador Alta Muestra");
+			e.printStackTrace();
+		}
+		GUIMuestra.dispose();
+
 	}
 	
 	/**

@@ -14,6 +14,7 @@ import java.util.Iterator;
 
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
+import cuCalcularClasificacion.Clasificaciones.AASHTO;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 
 /**
@@ -50,6 +51,7 @@ public class MediadorCalcularClasificacion implements ActionListener,MouseListen
 		this.nombreMuestra=nombreMuestra;
 		obtenerMuestra();
 		cargarTablaDeAnalisis(nombreMuestra);
+		this.muestra.setClasificacion(new AASHTO("PT"));
 		this.GUIClasificacion = new GUIClasificacion(this.muestra,data);
 		GUIClasificacion.setTitle(titulo);
 		GUIClasificacion.setModal(true);

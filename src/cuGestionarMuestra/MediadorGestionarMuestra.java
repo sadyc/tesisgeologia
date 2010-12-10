@@ -35,7 +35,6 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 	private Ubicacion ubicacion = new Ubicacion();
 	private Usuario usuario = new Usuario();
 	private Date fecha = new Date(12,12,1222);
-	private Clasificacion clasificacion = new Clasificacion();
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
 		
 	
@@ -58,7 +57,7 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		Muestra muestra = new Muestra();
 		Class clase = muestra.getClass();
-		Collection muestras = control.coleccionMuestras(clase);
+		Collection<Muestra> muestras = control.coleccionMuestras(clase);
 		Iterator<Muestra> it = muestras.iterator();
 		data = new Object [muestras.size()] [6];
 		int i = 0;
@@ -139,15 +138,14 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
             if(quitOption==JOptionPane.YES_OPTION){
             	try{
             		System.out.println(GUIABMMuestra.getTablePanel().getSelectedRow());
-            	
-            	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-            	Muestra mu = new Muestra((fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),Float.parseFloat(fila[4]),op,usuario,ubicacion,clasificacion,fecha);
-               	try {
-               		control.eliminarMuestra(mu);
-               	} catch (Exception e) {
-					e.printStackTrace();
-               	}
+            	   	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+	            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+	            	Muestra mu = new Muestra((fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),Float.parseFloat(fila[4]),op,usuario,ubicacion,fecha);
+	               	try {
+	               		control.eliminarMuestra(mu);
+	               	} catch (Exception e) {
+						e.printStackTrace();
+	               	}
             	}
             	catch (Exception e) {
             		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
