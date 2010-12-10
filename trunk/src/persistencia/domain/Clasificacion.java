@@ -15,6 +15,7 @@ import javax.jdo.annotations.PersistenceCapable;
 @PersistenceCapable
 public class Clasificacion {
 	
+	protected String nombre;
 	protected String descripcion;
 	protected Collection<Muestra> muestras = new HashSet();
 
@@ -25,14 +26,6 @@ public class Clasificacion {
 		this.descripcion = new String();
 	}
 	
-	
-	/**
-	 * @param descripcion
-	 * @param muestras
-	 */
-	public Clasificacion(String descripcion) {
-		this.descripcion = descripcion;
-	}
 	
 	/**
 	 * @return the descripcion
@@ -48,6 +41,22 @@ public class Clasificacion {
 		this.descripcion = descripcion;
 	}
 	
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
 	/**
 	 * Metodo que permite agregar una muestra a la clasificacion.
 	 * @param muestra, muestra a ser agregada a la clasificacion.

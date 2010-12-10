@@ -83,9 +83,9 @@ public class CargaDatos {
 	 * Carga una serie de ubicaciones para facilitar el testing.
 	 */
 	public void cargar (){
-		Ubicacion ubicacion1 = new Ubicacion("El Impenetrable",Ubicacion.Provincia.Chaco,"11°11'11\"","11°11'11\"");
-		Ubicacion ubicacion2 = new Ubicacion("Rio Cuarto",Ubicacion.Provincia.Cordoba,"22°22'22\"","22°22'22\"");
-		Ubicacion ubicacion3 = new Ubicacion("Ushuaia",Ubicacion.Provincia.TierraDelFuego,"33°33'33\"","33°33'33\"");
+		Ubicacion ubicacion1 = new Ubicacion("El Impenetrable",Ubicacion.Provincia.Chaco,"SUR 11°11'11\"","OESTE 11°11'11\"");
+		Ubicacion ubicacion2 = new Ubicacion("Rio Cuarto",Ubicacion.Provincia.Cordoba,"SUR 22°22'22\""," OESTE 22°22'22\"");
+		Ubicacion ubicacion3 = new Ubicacion("Ushuaia",Ubicacion.Provincia.TierraDelFuego,"NORTE 33°33'33\"","ESTE 33°33'33\"");
 		OperadorDeLaboratorio operador1 = new OperadorDeLaboratorio("Lionel", "Messi", "10.054.605", "4665458", "lionel@messi.com");
 		Muestra muestra = new Muestra();
 		muestra.setNombreMuestra("nombreMuestra");

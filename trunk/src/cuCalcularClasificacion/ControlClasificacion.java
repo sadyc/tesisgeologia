@@ -23,9 +23,6 @@ import org.jfree.data.xy.XYSeriesCollection;
 import persistencia.Persistencia;
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
-import persistencia.domain.Tamiz;
-import cuCalcularClasificacion.Clasificaciones.GranoFino;
-import cuCalcularClasificacion.Clasificaciones.GranoGrueso;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 
 /**
@@ -72,12 +69,7 @@ public class ControlClasificacion {
 			List listaAnalisis = (List)persistencia.buscarListaFiltro(analisis.getClass(), filtro);
 			int i = listaAnalisis.size()/2;// VEEEEEEEEEEEEEEEEERRRRRRRRRRRRRR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			analisis = (Analisis)listaAnalisis.get(i);
-			if (analisis.getPorcentajePasante()>50) {
-				GranoFino fino = new GranoFino();	
-			}
-			else{
-				GranoGrueso grueso = new GranoGrueso();
-			}
+			
 			
 		}
 		catch (Exception e){

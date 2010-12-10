@@ -137,7 +137,7 @@ public class GUIClasificacion extends JDialog{
 		this.profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
 		this.profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
 		ubicacion = new JLabel ("Ubicacion: "+muestra.getUbicacion().getNombreUbicacion());
-		clasificacion = new JLabel ("Clasificacion: ");
+		clasificacion = new JLabel ("Clasificacion: "+muestra.getClasificacion().getNombre());
 		descripcion = new JLabel ("Descripcion: "+muestra.getClasificacion().getDescripcion());
 		limiteLiquido = new JLabel ("Límite Líquido (LL): ");    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
 		limitePlastico = new JLabel ("Límite Plástico (LP): ");	//***************************************

@@ -105,29 +105,56 @@ public class MediadorModificarMuestra implements ActionListener,MouseListener,It
 	 * Acciones a realizar cuando se selecciona la opcion de "Aceptar"
 	 */
 	public void aceptar(){
-		System.out.println("Aceptar Modificar Muestra");
-		if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("")  ){
-			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-		}
-		else {
-			try {
-				String nombreMuestraModificar = muestra.getNombreMuestra();
-				muestra.setNombreMuestra(GUIMuestra.getNombre().getText());
-				muestra.setPeso(Float.parseFloat(GUIMuestra.getPeso().getText()));
-				muestra.setProfundidadInicial(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
-				muestra.setProfundidadFinal(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
-				data[0]= GUIMuestra.getUbicacion().getText().substring(15);
-				data[1]= GUIMuestra.getNombre().getText();
-				data[2]= GUIMuestra.getPeso().getText();
-				data[3]= GUIMuestra.getProfundidadInicial().getText();
-				data[4]= GUIMuestra.getProfundidadFinal().getText();
-				control.ModificarMuestra(nombreMuestraModificar, muestra,ubicacion,operador);
-			} catch (Exception e1) {
-				e1.printStackTrace();
+		System.out.println("Muestra.actionPerformed() jButtonAceptar");
+		try{
+		 	if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("Ubicacion(*) : ") || GUIMuestra.getOperador().getText().equals("Operador(*) :") ){
+	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
-			GUIMuestra.dispose();
+			else {
+				if (Integer.parseInt(GUIMuestra.getPeso().getText()) <= 0 || Integer.parseInt(GUIMuestra.getPeso().getText()) > 5000) {
+					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					if (!GUIMuestra.getProfundidadInicial().getText().equals("") && !GUIMuestra.getProfundidadFinal().getText().equals("")){
+						if (Integer.parseInt(GUIMuestra.getProfundidadFinal().getText()) < Integer.parseInt(GUIMuestra.getProfundidadInicial().getText())){
+							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+						}
+						else{
+							modificarMuestra();
+						}
+					}
+					else{
+						modificarMuestra();
+					}
+				}
+			}
+		}
+		catch (NumberFormatException e){
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo numeros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 
+	}
+	
+	/**
+	 * Una vez verificados que los datos modificados son correctos se procede a la carga de los mismos al sistema.
+	 */
+	public void modificarMuestra(){
+		try {
+			String nombreMuestraModificar = muestra.getNombreMuestra();
+			muestra.setNombreMuestra(GUIMuestra.getNombre().getText());
+			muestra.setPeso(Float.parseFloat(GUIMuestra.getPeso().getText()));
+			muestra.setProfundidadInicial(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
+			muestra.setProfundidadFinal(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
+			data[0]= GUIMuestra.getUbicacion().getText().substring(15);
+			data[1]= GUIMuestra.getNombre().getText();
+			data[2]= GUIMuestra.getPeso().getText();
+			data[3]= GUIMuestra.getProfundidadInicial().getText();
+			data[4]= GUIMuestra.getProfundidadFinal().getText();
+			control.ModificarMuestra(nombreMuestraModificar, muestra,ubicacion,operador);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		GUIMuestra.dispose();
 	}
 	
 	/**
