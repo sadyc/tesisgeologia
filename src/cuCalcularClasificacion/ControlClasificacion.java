@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import org.datanucleus.query.expression.CaseExpression;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
@@ -66,9 +67,33 @@ public class ControlClasificacion {
 			Analisis analisis = new Analisis();
 			ControlClasificacion control = new ControlClasificacion();
 			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"'"; 
-			List listaAnalisis = (List)persistencia.buscarListaFiltro(analisis.getClass(), filtro);
-			int i = listaAnalisis.size()/2;// VEEEEEEEEEEEEEEEEERRRRRRRRRRRRRR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			analisis = (Analisis)listaAnalisis.get(i);
+			analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+"' && tamiz.numeroTamiz=='200'");
+			if (analisis.getPorcentajePasante()<=50){
+				//suelo de particulas gruesas
+				analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+"' && tamiz.numeroTamiz=='4'");
+				if (analisis.getPorcentajePasante()>=50){
+					//arenas
+					analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+"' && tamiz.numeroTamiz=='200'");
+					if (analisis.getPorcentajePasante()<5){
+						//GravasLimpias
+						
+					}
+					if (analisis.getPorcentajePasante()>12){
+						//Gravas con finos
+					}
+					else{
+						//Gravas Limpias y con finos.
+					}
+				}
+				else{
+					//Gravas
+				}
+			}
+			else {
+				//suelo de particulas finas
+			}
+			//int i = listaAnalisis.size()/2;// VEEEEEEEEEEEEEEEEERRRRRRRRRRRRRR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			//analisis = (Analisis)listaAnalisis.get(i);
 			
 			
 		}
@@ -91,7 +116,6 @@ public class ControlClasificacion {
 		XYSeries series = new XYSeries("Nombre Muestra");
 		while (it.hasNext()){
 			analisis = it.next();
-			System.out.println(analisis.getPorcentajePasante()+",,,,"+analisis.getTamiz().getAberturaMalla());
 			series.add(analisis.getPorcentajePasante(),analisis.getTamiz().getAberturaMalla());
 		}
 		// Add the series to your data set

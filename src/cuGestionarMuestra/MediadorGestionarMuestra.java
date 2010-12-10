@@ -23,8 +23,8 @@ import persistencia.domain.Usuario;
 
 
 /**
+ * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana de GestionarMuestra
  * @author TesisGeologia
- *
  */
 public class MediadorGestionarMuestra implements ActionListener,MouseListener,ItemListener{
 
@@ -140,9 +140,11 @@ public class MediadorGestionarMuestra implements ActionListener,MouseListener,It
             		System.out.println(GUIABMMuestra.getTablePanel().getSelectedRow());
             	   	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 	            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-	            	Muestra mu = new Muestra((fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),Float.parseFloat(fila[4]),op,usuario,ubicacion,fecha);
+	            	String ubicacion = fila[0];
+	            	String nombreMuestra = fila[1];
+	            	//Muestra mu = new Muestra((fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),Float.parseFloat(fila[4]),op,usuario,ubicacion,fecha);
 	               	try {
-	               		control.eliminarMuestra(mu);
+	               		control.eliminarMuestra(nombreMuestra,ubicacion);
 	               	} catch (Exception e) {
 						e.printStackTrace();
 	               	}

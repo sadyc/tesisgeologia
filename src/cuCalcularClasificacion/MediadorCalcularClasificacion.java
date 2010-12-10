@@ -50,14 +50,15 @@ public class MediadorCalcularClasificacion implements ActionListener,MouseListen
 		super();
 		this.nombreMuestra=nombreMuestra;
 		obtenerMuestra();
+		ControlClasificacion control = new ControlClasificacion();
+		control.calcularClasificacionSUCS(muestra);
 		cargarTablaDeAnalisis(nombreMuestra);
-		this.muestra.setClasificacion(new AASHTO("PT"));
-		this.GUIClasificacion = new GUIClasificacion(this.muestra,data);
+		muestra.setClasificacion(new AASHTO("PT"));
+		GUIClasificacion = new GUIClasificacion(muestra,data);
 		GUIClasificacion.setTitle(titulo);
 		GUIClasificacion.setModal(true);
-		this.GUIClasificacion.setListenerButtons(this);
-		//ControlClasificacion control = new ControlClasificacion();
-		//control.calcularClasificacionSUCS(muestra);
+		GUIClasificacion.setListenerButtons(this);
+		
 		GUIClasificacion.show();
 	}
 	
