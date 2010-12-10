@@ -15,8 +15,10 @@ public class Consistencia {
 	private Float limiteLiquido;
 	private Float indicePlasticidad;
 
+	private Muestra muestra;
+
 	
-		
+
 	/**
 	 * Default constructor
 	 */
@@ -82,5 +84,19 @@ public class Consistencia {
 	 */
 	public void calcularIndicePlasticidad(){
 		indicePlasticidad = limitePlastico - limiteLiquido;
+	}
+	
+	/**
+	 * @return the muestra
+	 */
+	public Muestra getMuestra() {
+		return muestra;
+	}
+
+	/**
+	 * @param muestra the muestra to set
+	 */
+	public void setMuestra(Muestra muestra) {
+		this.muestra = muestra;
 	}
 }

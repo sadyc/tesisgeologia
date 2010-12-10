@@ -36,10 +36,7 @@
          <field name="ubicacion" persistence-modifier="persistent">
                  <column name="ubicacion"/>
         </field>
-        <field name="consistencia" persistence-modifier="persistent">
-                 <column name="consistencia_ID"/>
-        </field>
-         <field name="analisis" persistence-modifier="persistent" mapped-by="muestra">
+        <field name="analisis" persistence-modifier="persistent" mapped-by="muestra">
                 <collection element-type="persistencia.domain.Analisis"/>
            </field>
       </class>
@@ -156,6 +153,9 @@
          </field>
         <field name="indicePlasticidad" persistence-modifier="persistent">
                  <column jdbc-type="FLOAT"/>
+        </field>
+		<field name="muestra" persistence-modifier="persistent">
+                 <column name="muestra"/>
         </field>
 	   
  </class>

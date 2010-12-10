@@ -29,9 +29,9 @@ public class ControlLimiteConsistencia {
                 try {
                         Class claseMuestra= muestra.getClass();
                         muestra = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
-                        System.out.println("peso de la muestra"+muestra.getPeso()+"limite liquido"+consistencia.getLimiteLiquido()+" limite plastico"+consistencia.getLimitePlastico());
+                        consistencia.setMuestra(muestra);
                         consistencia.calcularIndicePlasticidad();
-                        persistencia.insertarObjeto(consistencia);                                      
+                        persistencia.insertarObjeto(consistencia);
                         persistencia.cerrarTransaccion();
                         System.out.println("Consistencia insertado con persistencia");
                 } catch (Exception e) {

@@ -96,12 +96,12 @@ public class ControlClasificacion {
 		Class clase = analisis.getClass();
 		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(clase, muestra.getNombreMuestra());
 		Iterator<Analisis> it = coleccionAnalisis.iterator();
-		XYSeries series = new XYSeries("Nombre Muestra");		
+		XYSeries series = new XYSeries("Nombre Muestra");
 		while (it.hasNext()){
 			analisis = it.next();
+			System.out.println(analisis.getPorcentajePasante()+",,,,"+analisis.getTamiz().getAberturaMalla());
 			series.add(analisis.getPorcentajePasante(),analisis.getTamiz().getAberturaMalla());
 		}
-		
 		// Add the series to your data set
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
@@ -110,9 +110,9 @@ public class ControlClasificacion {
 		final NumberAxis rangeAxis = new NumberAxis("% Pasante");
         rangeAxis.setRange(0.0,100);
         
-        final NumberAxis domainAxis = new NumberAxis("Tamaño de Particulas en Dcm");
+        final NumberAxis domainAxis = new NumberAxis("Tamaño de Particulas en mm");
         domainAxis.setInverted(true);
-        domainAxis.setRange(0.00001, 1);
+        //domainAxis.setRange(0.00001, 1);
         final XYItemRenderer renderer = new StandardXYItemRenderer();
         
 
@@ -138,7 +138,7 @@ public class ControlClasificacion {
         plot1.setRangeGridlinePaint(Color.black);
         
         final ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new java.awt.Dimension(400, 350));
+        chartPanel.setPreferredSize(new java.awt.Dimension(200, 350));
         return chartPanel;
            
 		
