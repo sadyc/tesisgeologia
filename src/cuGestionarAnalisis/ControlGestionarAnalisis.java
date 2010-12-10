@@ -92,16 +92,8 @@ public class ControlGestionarAnalisis {
         	Persistencia persistencia = new Persistencia();
     		persistencia.abrirTransaccion();
     		try {
-    			Analisis auxAnalisis = new Analisis();
-    			Class clase = auxAnalisis.getClass();
-    			Collection coleccionAnalisis = persistencia.buscarColeccion(clase);
-    			Iterator<Analisis> it = coleccionAnalisis.iterator();
-    			int i = 0;//arreglar esto con el buscarObjeto.
-    			while (it.hasNext()&& analisis.getMuestra().getNombreMuestra()!= auxAnalisis.getMuestra().getNombreMuestra() && analisis.getTamiz().getNumeroTamiz()!=auxAnalisis.getTamiz().getNumeroTamiz()){
-    				auxAnalisis = it.next();
-    			    i++;
-    			}
-    			persistencia.eliminarObjeto(auxAnalisis);
+    			Analisis aux = (Analisis) persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+analisis.getMuestra().getNombreMuestra()+"' && tamiz.numeroTamiz=='"+analisis.getTamiz().getNumeroTamiz()+"'");
+    			persistencia.eliminarObjeto(aux);
     			persistencia.cerrarTransaccion();
     			System.out.println("Muestra eliminada con persistencia");
     		}
