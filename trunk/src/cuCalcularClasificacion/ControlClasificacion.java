@@ -23,6 +23,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import persistencia.Persistencia;
 import persistencia.domain.Analisis;
+import persistencia.domain.Clasificacion;
 import persistencia.domain.Muestra;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 
@@ -62,6 +63,10 @@ public class ControlClasificacion {
 	 */
 	public void calcularClasificacionSUCS(Muestra muestra) throws Exception{
 		Persistencia persistencia = new Persistencia();
+		Float IndicePlasticidad = new Float(2);//estos datos ver de donde los obtengo
+		Float limiteLiquido = new Float(2);
+		Clasificacion clasificacion = new Clasificacion();
+		
 		persistencia.abrirTransaccion();
 		try{
 			Analisis analisis = new Analisis();
@@ -71,31 +76,93 @@ public class ControlClasificacion {
 			if (analisis.getPorcentajePasante()<=50){
 				//suelo de particulas gruesas
 				analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+"' && tamiz.numeroTamiz=='4'");
-				if (analisis.getPorcentajePasante()>=50){
-					//arenas
+				if (analisis.getPorcentajePasante()<=50){
+					//Gravas
 					analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+"' && tamiz.numeroTamiz=='200'");
 					if (analisis.getPorcentajePasante()<5){
 						//GravasLimpias
-						
-					}
-					if (analisis.getPorcentajePasante()>12){
+						if((muestra.getCoeficienteUniformidad()>=4) && (1<=clasificacion.getGradoCurvatura()) && (clasificacion.getGradoCurvatura()<=3)){
+							//GW
+						}else {
+							//GP
+						}
+					}else if (analisis.getPorcentajePasante()>12){
 						//Gravas con finos
-					}
-					else{
+						if (IndicePlasticidad<4){
+							//GM
+						}
+						else if (IndicePlasticidad>7){
+							//GC
+						}
+					}else{
 						//Gravas Limpias y con finos.
+						if ((muestra.getCoeficienteUniformidad()>=4) && (1<=clasificacion.getGradoCurvatura()) && (clasificacion.getGradoCurvatura()<=3) && (IndicePlasticidad<4)){
+							//GW-GM
+						}else if(IndicePlasticidad<4 && IndicePlasticidad>7){
+							//GW-GC
+						}else if((IndicePlasticidad<4) && !((muestra.getCoeficienteUniformidad()>=4) && (1<=clasificacion.getGradoCurvatura()) && (clasificacion.getGradoCurvatura()<=3))){
+							//GP-GM
+						}else{
+							//GP-GC
+						}
 					}
 				}
 				else{
-					//Gravas
+					//Arenas
+					analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+"' && tamiz.numeroTamiz=='200'");
+					if (analisis.getPorcentajePasante()<=5){
+						//Arenas Limpias
+						if ((muestra.getCoeficienteUniformidad()>=6) && (1<=clasificacion.getGradoCurvatura()) && (clasificacion.getGradoCurvatura()<=3) ){
+							//SW
+						}else {
+							//SP
+						}
+					}else if (analisis.getPorcentajePasante()>12){
+						//Arenas con finos
+						if (IndicePlasticidad<4){
+							//SM
+						}else{
+							//SC
+						}
+					}else{
+						//arenas limpias y con finos.
+						if ((muestra.getCoeficienteUniformidad()>=6) && (1<=clasificacion.getGradoCurvatura()) && (clasificacion.getGradoCurvatura()<=3) && (IndicePlasticidad<4)){
+							//SW-SM
+						}else if ((muestra.getCoeficienteUniformidad()>=6) && (1<=clasificacion.getGradoCurvatura()) && (clasificacion.getGradoCurvatura()<=3) && (IndicePlasticidad>7)){
+							//SW-SC
+						}else if (!((muestra.getCoeficienteUniformidad()>=6) && (1<=clasificacion.getGradoCurvatura())) && (clasificacion.getGradoCurvatura()<=3) && (IndicePlasticidad>7)){
+							//SP-SM
+						}else{
+							//SP-SC
+						}
+						
+					}
+					
 				}
 			}
 			else {
 				//suelo de particulas finas
+				if (limiteLiquido<=50){
+					//Limos y arcillas
+					if ((IndicePlasticidad>7)){
+						//CL
+					}else if (IndicePlasticidad<4){
+						//ML
+					}else if (limiteLiquido<0.75){
+						//OL
+					}
+				}else {
+					//limos y arcilla > 50
+					if ((IndicePlasticidad>7)){
+						//CH
+					}else if (IndicePlasticidad<4){
+						//MH
+					}else if (limiteLiquido<0.75){
+						//OH
+					}
+				}
 			}
-			//int i = listaAnalisis.size()/2;// VEEEEEEEEEEEEEEEEERRRRRRRRRRRRRR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			//analisis = (Analisis)listaAnalisis.get(i);
-			
-			
+						
 		}
 		catch (Exception e){
 			persistencia.realizarRollback();
