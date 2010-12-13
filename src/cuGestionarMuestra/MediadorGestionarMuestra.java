@@ -2,11 +2,8 @@ package cuGestionarMuestra;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
@@ -14,11 +11,12 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Clasificacion;
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
+
+import comun.Mediador;
 
 
 
@@ -26,7 +24,7 @@ import persistencia.domain.Usuario;
  * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana de GestionarMuestra
  * @author TesisGeologia
  */
-public class MediadorGestionarMuestra implements ActionListener,MouseListener,ItemListener{
+public class MediadorGestionarMuestra extends Mediador{
 
 	private GUIABMMuestra GUIABMMuestra;
 	private Object [][] data ;

@@ -2,33 +2,25 @@ package cuGestionarOperador;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
-import persistencia.domain.Clasificacion;
-import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.Ubicacion;
-import persistencia.domain.Usuario;
+
+import comun.Mediador;
+
 import cuGestionarAnalisis.MediadorBuscar;
 import cuGestionarMuestra.ControlGestionarMuestra;
-import cuGestionarMuestra.MediadorAltaMuestra;
-import cuGestionarMuestra.MediadorModificarMuestra;
 
 
 /**
 * @author TesisGeología
 */
-public class MediadorSeleccionarOperador implements ActionListener,MouseListener,ItemListener {
+public class MediadorSeleccionarOperador extends Mediador{
 
 	private GUISeleccionarOperador GUISeleccionarOperador = null;
 	private Object [] seleccionado = new Object [5];

@@ -4,17 +4,18 @@
 package cuCalcularClasificacion;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
+
+import comun.Mediador;
+
 import cuCalcularClasificacion.Clasificaciones.AASHTO;
+import cuCalcularClasificacion.Clasificaciones.SUCS;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 
 /**
@@ -22,21 +23,21 @@ import cuGestionarAnalisis.ControlGestionarAnalisis;
  * @author TesisGeologia
  *
  */
-public class MediadorCalcularClasificacion implements ActionListener,MouseListener,ItemListener{
+public class MediadorCalcularClasificacion extends Mediador{
 	private GUIClasificacion GUIClasificacion;
 	private String nombreMuestra;
 	private Muestra muestra = new Muestra();
-	private Object [] [] data;
+	private Object [][] data;
 	
 	/**
 	 * Default Constructor
 	 */
 	public MediadorCalcularClasificacion(String titulo){
 		super();
-		this.GUIClasificacion = new GUIClasificacion();
+		GUIClasificacion = new GUIClasificacion();
 		GUIClasificacion.setTitle(titulo);
 		GUIClasificacion.setModal(true);
-		this.GUIClasificacion.setListenerButtons(this);
+		GUIClasificacion.setListenerButtons(this);
 		GUIClasificacion.show();
 	}
 	
@@ -50,11 +51,12 @@ public class MediadorCalcularClasificacion implements ActionListener,MouseListen
 		super();
 		this.nombreMuestra=nombreMuestra;
 		obtenerMuestra();
-		ControlClasificacion control = new ControlClasificacion();
-		control.calcularClasificacionSUCS(muestra);
 		cargarTablaDeAnalisis(nombreMuestra);
-		muestra.setClasificacion(new AASHTO("PT"));
-		GUIClasificacion = new GUIClasificacion(muestra,data);
+		ControlClasificacion control = new ControlClasificacion();
+		SUCS clasificacion = new SUCS();
+		control.calcularClasificacionSUCS(muestra,clasificacion);
+		muestra.setClasificacion(clasificacion);
+		GUIClasificacion = new GUIClasificacion(clasificacion,muestra,data);
 		GUIClasificacion.setTitle(titulo);
 		GUIClasificacion.setModal(true);
 		GUIClasificacion.setListenerButtons(this);

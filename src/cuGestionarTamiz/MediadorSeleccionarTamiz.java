@@ -2,24 +2,22 @@ package cuGestionarTamiz;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-
 import persistencia.domain.Tamiz;
-import cuGestionarAnalisis.MediadorBuscar;
+
+import comun.Mediador;
+
 import cuGestionarMuestra.ControlGestionarMuestra;
 
 
 
-public class MediadorSeleccionarTamiz implements ActionListener,MouseListener,ItemListener {
+public class MediadorSeleccionarTamiz extends Mediador{
 
 	private GUISeleccionarTamiz GUISeleccionarTamiz = null;
 	private String seleccionado = new String();
@@ -33,8 +31,8 @@ public class MediadorSeleccionarTamiz implements ActionListener,MouseListener,It
 		this.GUISeleccionarTamiz = new GUISeleccionarTamiz(data);
 		GUISeleccionarTamiz.setTitle("Seleccionar un Tamiz");
 		GUISeleccionarTamiz.setModal(true);
-		this.GUISeleccionarTamiz.setListenerButtons(this);
-		this.GUISeleccionarTamiz.setListenerTable(this);
+		GUISeleccionarTamiz.setListenerButtons(this);
+		GUISeleccionarTamiz.setListenerTable(this);
 		GUISeleccionarTamiz.show();
 	}
 	

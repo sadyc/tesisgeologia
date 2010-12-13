@@ -1,10 +1,6 @@
 package cuLimiteConsistencia;
 
-import java.util.Collection;
-import java.util.Iterator;
-
 import persistencia.Persistencia;
-import persistencia.domain.Consistencia;
 import persistencia.domain.Muestra;
 
 /**
@@ -22,25 +18,23 @@ public class ControlLimiteConsistencia {
         /**
          * Inserta un analisis de consistencia con persistencia. 
          */ 
-        public Consistencia insertarConsistencia(Consistencia consistencia,String nombreMuestra) throws Exception{
+        public void insertarConsistencia(Float limiteLiquido ,Float limitePlastico,String nombreMuestra) throws Exception{
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 Muestra muestra = new Muestra();
-                try {
-                        Class claseMuestra= muestra.getClass();
-                        muestra = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
-                        consistencia.setMuestra(muestra);
-                        consistencia.calcularIndicePlasticidad();
-                        persistencia.insertarObjeto(consistencia);
+	            try {
+                        muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"'");
+                        muestra.setLimiteLiquido(limiteLiquido);
+                        muestra.setLimitePlastico(limitePlastico);
+                        muestra.calcularIndicePlasticidad();
                         persistencia.cerrarTransaccion();
                         System.out.println("Consistencia insertado con persistencia");
                 } catch (Exception e) {
                 		e.printStackTrace();
                         persistencia.realizarRollback();
                 }
-                return consistencia;
-        }
-        
+	        }
+	        
                
        /**
         * Permite modificar un analisis de consistencia persistente.                 
@@ -54,14 +48,11 @@ public class ControlLimiteConsistencia {
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 try {
-                	Consistencia auxConsistencia = new Consistencia();
-        			Class clase = auxConsistencia.getClass();
-        			auxConsistencia = (Consistencia)persistencia.buscarObjeto(clase, "muestra.nombreMuestra=='"+nombreMuestra+"'");
-        			Muestra muestra = new Muestra();
+                	Muestra muestra = new Muestra();
         			muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"'");
-        			auxConsistencia.setLimitePlastico(limitePlastico);
-        			auxConsistencia.setLimiteLiquido(limiteLiquido);
-        			auxConsistencia.calcularIndicePlasticidad();
+        			muestra.setLimitePlastico(limitePlastico);
+        			muestra.setLimiteLiquido(limiteLiquido);
+        			muestra.calcularIndicePlasticidad();
         			persistencia.cerrarTransaccion();
         			System.out.println("Consistencia modificada con persistencia");
                 }

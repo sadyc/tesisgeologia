@@ -113,7 +113,7 @@ public class Persistencia {
 	}
 	
 	/**
-	 * Busca un elemento generico. Retorna coleccion encontrada.
+	 * Retorna la lista de analisis ordenadas por porcentaje retenido acumulado.
 	 *
 	 */
 	public List buscarListaFiltro(Class clase, String filtro) throws Exception{

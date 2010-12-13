@@ -21,6 +21,7 @@ import javax.swing.JSeparator;
 
 import org.jfree.chart.ChartPanel;
 
+import persistencia.domain.Clasificacion;
 import persistencia.domain.Muestra;
 
 import comun.TablePanel;
@@ -113,7 +114,7 @@ public class GUIClasificacion extends JDialog{
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 * @throws Exception 
 	 */
-	public GUIClasificacion(Muestra muestra, Object [] [] data) throws Exception {
+	public GUIClasificacion(Clasificacion clasificacion,Muestra muestra, Object [] [] data) throws Exception {
 		super();
 		ControlClasificacion control = new ControlClasificacion();
 		grafico = control.emitirGrafico(muestra);
@@ -137,16 +138,16 @@ public class GUIClasificacion extends JDialog{
 		this.profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
 		this.profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
 		ubicacion = new JLabel ("Ubicacion: "+muestra.getUbicacion().getNombreUbicacion());
-		clasificacion = new JLabel ("Clasificacion: "+muestra.getClasificacion().getNombre());
-		descripcion = new JLabel ("Descripcion: "+muestra.getClasificacion().getDescripcion());
-		limiteLiquido = new JLabel ("Límite Líquido (LL): ");    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
-		limitePlastico = new JLabel ("Límite Plástico (LP): ");	//***************************************
-		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): ");
-		D60 = new JLabel("D60(mm): ");
-		D30 = new JLabel("D30(mm): "); // INFORMACION QUE SACA DEL ANALISIS PERTENECIENTE A LA MUESTRA PASADA
-		D10 = new JLabel("D10(mm): "); // COMO PARAMETRO.. NO SE BIEN COMO LOS SACA A ESTOS DATOS.
-		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): ");
-		gradoCurvatura = new JLabel ("Grado de Curvatura (Cc): ");
+		this.clasificacion = new JLabel ("Clasificacion: "+clasificacion.getNombre());
+		descripcion = new JLabel ("Descripcion: "+clasificacion.getDescripcion());
+		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
+		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	//***************************************
+		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): "+muestra.getIndicePlasticidad());
+		D60 = new JLabel("D60(mm): "+clasificacion.getD60());
+		D30 = new JLabel("D30(mm): "+clasificacion.getD30()); // INFORMACION QUE SACA DEL ANALISIS PERTENECIENTE A LA MUESTRA PASADA
+		D10 = new JLabel("D10(mm): "+clasificacion.getD10()); // COMO PARAMETRO.. NO SE BIEN COMO LOS SACA A ESTOS DATOS.
+		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): "+clasificacion.getCoeficienteUniformidad());
+		gradoCurvatura = new JLabel ("Grado de Curvatura (Cc): "+clasificacion.getGradoCurvatura());
 		
 		imprimir = new JButton("Imprimir");
 		salir = new JButton("Cancelar");
@@ -296,7 +297,7 @@ public class GUIClasificacion extends JDialog{
 			this.panelCenter.add(new JLabel("DATOS DE LA CLASIFICACION: "));
 			this.panelCenter.add(clasificacion);
 			this.panelCenter.add(descripcion);
-			//this.panelCenter.add(grafico);
+			this.panelCenter.add(grafico);
 			}
 			return this.panelCenter;
 	}

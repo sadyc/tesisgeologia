@@ -2,21 +2,20 @@ package cuGestionarUbiacion;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-import cuGestionarMuestra.ControlGestionarMuestra;
-
 import persistencia.domain.Ubicacion;
 
-public class MediadorSeleccionarUbicacion implements ActionListener,MouseListener,ItemListener {
+import comun.Mediador;
+
+import cuGestionarMuestra.ControlGestionarMuestra;
+
+public class MediadorSeleccionarUbicacion extends Mediador{
 
 	private GUISeleccionarUbicacion GUISeleccionarUbicacion = null;
 	private Object [][] data;
@@ -30,8 +29,8 @@ public class MediadorSeleccionarUbicacion implements ActionListener,MouseListene
 		this.GUISeleccionarUbicacion = new GUISeleccionarUbicacion(data);
 		GUISeleccionarUbicacion.setTitle("Seleccionar una muestra");
 		GUISeleccionarUbicacion.setModal(true);
-		this.GUISeleccionarUbicacion.setListenerButtons(this);
-		this.GUISeleccionarUbicacion.setListenerTable(this);
+		GUISeleccionarUbicacion.setListenerButtons(this);
+		GUISeleccionarUbicacion.setListenerTable(this);
 		GUISeleccionarUbicacion.show();
 	}
 	

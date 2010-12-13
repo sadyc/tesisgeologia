@@ -2,11 +2,8 @@ package cuGestionarAnalisis;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -17,6 +14,8 @@ import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
 import persistencia.domain.Tamiz;
 
+import comun.Mediador;
+
 
 
 /**
@@ -25,7 +24,7 @@ import persistencia.domain.Tamiz;
  * en este caso: ActionListener,MouseListener,ItemListener.
  */
 
-public class MediadorGestionarAnalisis  implements ActionListener,MouseListener,ItemListener  {
+public class MediadorGestionarAnalisis  extends Mediador{
 	
 	private GUIGestionarAnalisis gestionarAnalisis;
 	private String nombreMuestra;
