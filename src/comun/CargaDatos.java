@@ -80,9 +80,24 @@ public class CargaDatos {
 	}
 	
 	/**
+	 * Inserta un usuario con persistencia. 
+	 */ 
+	public void insertarMuestra(Muestra muestra) throws Exception{
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		try {
+			persistencia.insertarObjeto(muestra);
+			persistencia.cerrarTransaccion();
+		} catch (Exception e) {
+			persistencia.realizarRollback();
+		}
+	}
+	
+	/**
 	 * Carga una serie de ubicaciones para facilitar el testing.
 	 */
 	public void cargar (){
+		
 		Ubicacion ubicacion1 = new Ubicacion("El Impenetrable",Ubicacion.Provincia.Chaco,"SUR 11°11'11\"","OESTE 11°11'11\"");
 		Ubicacion ubicacion2 = new Ubicacion("Rio Cuarto",Ubicacion.Provincia.Cordoba,"SUR 22°22'22\""," OESTE 22°22'22\"");
 		Ubicacion ubicacion3 = new Ubicacion("Ushuaia",Ubicacion.Provincia.TierraDelFuego,"NORTE 33°33'33\"","ESTE 33°33'33\"");
@@ -137,15 +152,18 @@ public class CargaDatos {
 		Tamiz tamiz43 = new Tamiz("7/8",22.40);
 		Usuario usuario1 = new Usuario("Juan", "Perez", "34.771.488", "4917015", "juan@perez.com","juanPerez","pepe");
 		Usuario usuario2 = new Usuario("Susana", "Gomez", "34.101.098", "4917015", "Sus@gomez.com","susy","ana");
-			
+		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),operador1,null,ubicacion1,null);	
+		Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),operador2,null,ubicacion2,null);	
 		try {
-			insertarUbicacion(ubicacion1);
-			insertarUbicacion(ubicacion2);
+			insertarMuestra(muestra2);
+			insertarMuestra(muestra3);
+			//insertarUbicacion(ubicacion1);
+			//insertarUbicacion(ubicacion2);
 			insertarUbicacion(ubicacion3);
 			System.out.println("Comienza carga operadores");
-			insertarOperador(operador1);
-			insertarOperador(operador3);
-			insertarOperador(operador2);
+			//insertarOperador(operador1);
+		    insertarOperador(operador3);
+			//insertarOperador(operador2);
 			System.out.println("Comienza carga tamices");
 			
 			insertarTamiz(tamiz1);
