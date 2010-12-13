@@ -23,7 +23,10 @@ public class Muestra {
 	private Float profundidadFinal;
 	private Float peso;
 	private Date fecha;
-	private Float coeficienteUniformidad;
+	private Float limitePlastico;
+	private Float limiteLiquido;
+	private Float indicePlasticidad;
+	
 	protected OperadorDeLaboratorio operadorLaboratorio ;
 	protected Usuario usuario;
 	protected Ubicacion ubicacion;
@@ -208,20 +211,6 @@ public class Muestra {
 	}
 
 	/**
-	 * @return the coeficienteUniformidad
-	 */
-	public Float getCoeficienteUniformidad() {
-		return coeficienteUniformidad;
-	}
-
-	/**
-	 * @param coeficienteUniformidad the coeficienteUniformidad to set
-	 */
-	public void setCoeficienteUniformidad(Float coeficienteUniformidad) {
-		this.coeficienteUniformidad = coeficienteUniformidad;
-	}
-
-	/**
 	 * @param nombreMuestra the nombreMuestra to set
 	 */
 	public void setNombreMuestra(String nombreMuestra) {
@@ -255,5 +244,54 @@ public class Muestra {
 	public void setAnalisis(Collection<Analisis> analisis) {
 		this.analisis = analisis;
 	}
+	
+	/**
+	 * Metodo que calcula el Indice de Plasticidad.
+	 */
+	public void calcularIndicePlasticidad(){
+		indicePlasticidad = limiteLiquido - limitePlastico;
+	}
 
+	/**
+	 * @return the limitePlastico
+	 */
+	public Float getLimitePlastico() {
+		return limitePlastico;
+	}
+
+	/**
+	 * @param limitePlastico the limitePlastico to set
+	 */
+	public void setLimitePlastico(Float limitePlastico) {
+		this.limitePlastico = limitePlastico;
+	}
+
+	/**
+	 * @return the limiteLiquido
+	 */
+	public Float getLimiteLiquido() {
+		return limiteLiquido;
+	}
+
+	/**
+	 * @param limiteLiquido the limiteLiquido to set
+	 */
+	public void setLimiteLiquido(Float limiteLiquido) {
+		this.limiteLiquido = limiteLiquido;
+	}
+
+	/**
+	 * @return the indicePlasticidad
+	 */
+	public Float getIndicePlasticidad() {
+		return indicePlasticidad;
+	}
+
+	/**
+	 * @param indicePlasticidad the indicePlasticidad to set
+	 */
+	public void setIndicePlasticidad(Float indicePlasticidad) {
+		this.indicePlasticidad = indicePlasticidad;
+	}
+	
 }

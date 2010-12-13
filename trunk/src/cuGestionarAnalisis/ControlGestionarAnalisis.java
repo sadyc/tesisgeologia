@@ -21,21 +21,6 @@ public class ControlGestionarAnalisis {
          */
         public ControlGestionarAnalisis(){}
         
-        /**
-         * Trunca el numero a solo una decimal.
-         * @param num
-         * @return valor
-         * @throws Exception
-         */
-        public static Float truncaNum(Float num) throws Exception{
-	        float valor = 0;
-	        valor = num;
-	        valor = valor*10;
-	        valor = java.lang.Math.round(valor);
-	        valor = valor/10;
-	        System.out.println("estpyn en el truncado "+valor);
-	        return valor;
-        }
         
         /**
          * Inserta un analisis con persistencia. 
@@ -208,6 +193,21 @@ public class ControlGestionarAnalisis {
     		}
     		return aux;
     	}
-               
+        
+    	/**
+         * Trunca el numero a solo una decimal.
+         * @param num
+         * @return valor
+         * @throws Exception
+         */
+        public static Float truncaNum(Float num) throws Exception{
+	        float valor = 0;
+	        valor = num;
+	        valor = valor*10;
+	        valor = java.lang.Math.round(valor);
+	        valor = valor/10;
+	        System.out.println("estpyn en el truncado "+valor);
+	        return valor;
+        }
 }
 

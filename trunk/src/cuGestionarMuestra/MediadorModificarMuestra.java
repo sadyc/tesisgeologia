@@ -5,17 +5,16 @@ package cuGestionarMuestra;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
+
+import comun.Mediador;
 
 import cuGestionarOperador.MediadorSeleccionarOperador;
 import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
@@ -25,7 +24,7 @@ import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
  * @author TesisGeologia
  *
  */
-public class MediadorModificarMuestra implements ActionListener,MouseListener,ItemListener{
+public class MediadorModificarMuestra extends Mediador{
 	private GUIMuestra GUIMuestra;
 	private String[] data = new String [5];
 	private Component frame;

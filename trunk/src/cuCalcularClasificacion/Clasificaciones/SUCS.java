@@ -10,17 +10,27 @@ import javax.swing.JOptionPane;
 import persistencia.domain.Clasificacion;
 
 /**
+ * Clase que se utiliza para la clasificacion de la muestra de la 
+ * forma SUCS.
  * @author TesisGeologia
  * @version 1.0
  */
 public class SUCS extends Clasificacion {
 	
 	Frame frame;
+	
 	/**
 	 * @brief Constructor por defecto.
+	 */
+	public SUCS(){
+		super();
+	}
+	
+	/**
+	 * Asigna la descripcion correspondiente de la clasificacion.
 	 * @param nombre, nombre de la clasificacion.
 	 */
-	public SUCS(String nombre) {
+	public void setClasificacionSUCS(String nombre) {
 		if (nombre.equals("ML") || nombre.equals("CL") || nombre.equals("OL") || nombre.equals("MH") || nombre.equals("CH")||nombre.equals("OH")||nombre.equals("PT")||nombre.equals("SW")||nombre.equals("SP")||nombre.equals("SC")||nombre.equals("SM")||nombre.equals("GW")||nombre.equals("GP")||nombre.equals("GM")||nombre.equals("GC")){
 			if (nombre.equals("ML")) {
 				this.nombre = "Grano Fino - Limos y Arcillas con limite liquido menor a 50 - ML";

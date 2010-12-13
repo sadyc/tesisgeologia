@@ -1,19 +1,12 @@
 package cuLimiteConsistencia;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import persistencia.domain.Analisis;
-import persistencia.domain.Consistencia;
 import persistencia.domain.Muestra;
 
-
-import cuGestionarAnalisis.ControlGestionarAnalisis;
-import cuGestionarTamiz.MediadorSeleccionarTamiz;
+import comun.Mediador;
 
 
 /**
@@ -22,11 +15,10 @@ import cuGestionarTamiz.MediadorSeleccionarTamiz;
  * en este caso: ActionListener,MouseListener,ItemListener.
  */
 
-public class MediadorAltaLimiteConsistencia  implements ActionListener,MouseListener,ItemListener  {
+public class MediadorAltaLimiteConsistencia extends Mediador{
 	
 	private GUILimiteConsistencia GUILimiteConsistencia;
 	private Muestra muestra = new Muestra();
-	private Consistencia consistencia = new Consistencia();
 	private ControlLimiteConsistencia control = new ControlLimiteConsistencia();
 	private String nombreMuestra;
 	private String limiteLiquido;
@@ -51,13 +43,6 @@ public class MediadorAltaLimiteConsistencia  implements ActionListener,MouseList
 		GUILimiteConsistencia.show();
 	}
 	
-	/**
-	 * @return the consistencia
-	 */
-	public Consistencia getConsistencia() {
-		return consistencia;
-	}
-
 	/**
 	 * @return the altaConsistencia
 	 */
@@ -87,10 +72,8 @@ public class MediadorAltaLimiteConsistencia  implements ActionListener,MouseList
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 		limiteLiquido = GUILimiteConsistencia.getLimiteLiquido().getText();
 		limitePlastico = GUILimiteConsistencia.getLimitePlastico().getText();
-		consistencia.setLimiteLiquido(Float.parseFloat(limiteLiquido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
-		consistencia.setLimitePlastico(Float.parseFloat(limitePlastico));
 		try {
-			consistencia = control.insertarConsistencia(consistencia, nombreMuestra);
+			control.insertarConsistencia(Float.parseFloat(limiteLiquido),Float.parseFloat(limitePlastico), nombreMuestra);
 			altaConsistencia= true;
 		} catch (Exception e) {
 			e.printStackTrace();

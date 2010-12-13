@@ -2,13 +2,12 @@ package cuGestionarTamiz;
 
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import persistencia.domain.Tamiz;
+
+import comun.Mediador;
 
 
 
@@ -18,7 +17,7 @@ import persistencia.domain.Tamiz;
  * en este caso: ActionListener,MouseListener,ItemListener.
  */
 
-public class MediadorTamiz  implements ActionListener,MouseListener,ItemListener  {
+public class MediadorTamiz  extends Mediador{
 	
 	private GUITamiz tamiz;
 	

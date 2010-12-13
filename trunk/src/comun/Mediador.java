@@ -39,8 +39,5 @@ public abstract class Mediador implements ActionListener,MouseListener,ItemListe
 	public void mouseReleased(MouseEvent arg0) {
 
 	}
-
-	public String[] getData(){
-		return null;
-	}
+	
 }
