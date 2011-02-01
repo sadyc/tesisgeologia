@@ -84,25 +84,24 @@ public class ControlGestionarMuestra {
 		return aux;
 	}
 
-	public void ModificarMuestra(String nombreMuestra,Muestra muestra, Ubicacion ubicacion, OperadorDeLaboratorio operador) throws Exception {
+	public void ModificarMuestra(String nombreMuestraModificar,String ubicacionModificar,String[] data) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Muestra aux = new Muestra();
 		try {
-			
 			Class claseMuestra = aux.getClass();
-			aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
-			aux.setPeso(muestra.getPeso());
-			aux.setNombreMuestra(muestra.getNombreMuestra());
-			aux.setProfundidadInicial(muestra.getProfundidadInicial());
-			aux.setProfundidadFinal(muestra.getProfundidadFinal());
+			aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestraModificar+"' && ubicacion.nombreUbicacion=='"+ubicacionModificar+"'");
+			aux.setPeso(Float.parseFloat(data[2]));
+			aux.setNombreMuestra(data[1]);
+			aux.setProfundidadInicial(Float.parseFloat(data[3]));
+			aux.setProfundidadFinal(Float.parseFloat(data[4]));
+			OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
 			Class claseOperador = operador.getClass();
-			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
+			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+data[5]+"'"));
+			Ubicacion ubicacion = new Ubicacion();
 			Class claseUbicacion = ubicacion.getClass();
-			Ubicacion ubic = (Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'");
-			aux.setUbicacion(ubic);
+			aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+data[0]+"'"));
 			persistencia.cerrarTransaccion();
-			
 		}
 		catch (Exception e) {
 			System.out.println("Error al modificar");
@@ -121,14 +120,16 @@ public class ControlGestionarMuestra {
 		persistencia.abrirTransaccion();
 		Muestra aux = new Muestra();
 		try {
-			aux =(Muestra)persistencia.buscarObjeto(aux.getClass(), "nombreMuestra=='"+nombreMuestra+"'");//+"' && Ubicacion=='"+ubicacion+"'");
+			aux =(Muestra)persistencia.buscarObjeto(aux.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+ubicacion+"'");
 			persistencia.cerrarTransaccion();
-			persistencia.cerrarPersistencia();
 		}
 		catch (Exception e) {
 			persistencia.realizarRollback();
 		}
+		System.out.println(aux.getNombreMuestra());
 		return aux;
+		
+		
 	}
 }
 	

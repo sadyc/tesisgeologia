@@ -36,7 +36,7 @@ public class GUIMuestra extends JDialog {
 	private JTextField peso;
 	private JLabel operador;
 	private JLabel ubicacion;
-	private JLabel usuario;
+	
 
 	/**
 	 * This is the default constructor
@@ -48,7 +48,6 @@ public class GUIMuestra extends JDialog {
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
 		ubicacion = new JLabel("Ubicacion(*) : ");
-		usuario = new JLabel ("Usuario(*) : ");
 		operador = new JLabel ("Operador(*) :");
 		aceptar = new JButton("AGREGAR");
 		cancelar = new JButton("CANCELAR");
@@ -61,20 +60,19 @@ public class GUIMuestra extends JDialog {
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
-	public GUIMuestra(Muestra muestra) {
+	public GUIMuestra(String[] fila, String nombreOperador) {
 	
 		super();
 		nombre = new JTextField(15);
 		profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
-		nombre.setText(muestra.getNombreMuestra());
-		peso.setText(muestra.getPeso().toString());
-		profundidadInicial.setText(muestra.getProfundidadInicial().toString());
-		profundidadFinal.setText(muestra.getProfundidadFinal().toString());
-		ubicacion = new JLabel("Ubicacion(*) : "+ muestra.getUbicacion().getNombreUbicacion());
-		usuario = new JLabel ("Usuario(*) : ");
-		operador = new JLabel ("Operador(*) : "+ muestra.getOperador().getNombre()+" "+muestra.getOperador().getApellido());
+		nombre.setText(fila[1]);
+		peso.setText(fila[2]);
+		profundidadInicial.setText(fila[3]);
+		profundidadFinal.setText(fila[4]);
+		ubicacion = new JLabel("Ubicacion(*) : "+ fila[0]);
+		operador = new JLabel ("Operador(*) : "+ nombreOperador);
 		aceptar = new JButton("AGREGAR");
 		cancelar = new JButton("CANCELAR");
 		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
@@ -207,7 +205,7 @@ public class GUIMuestra extends JDialog {
 			profundidadInicial.setAlignmentX(Component.CENTER_ALIGNMENT);
 			profundidadFinal.setAlignmentX(Component.CENTER_ALIGNMENT);
 			peso.setAlignmentX(Component.CENTER_ALIGNMENT);
-			// Se aaden los componentes al panel Norte
+			// Se anaden los componentes al panel Norte
 			this.panelNorte.add(new JLabel("Nombre (*): "));
 			this.panelNorte.add(nombre);
 			this.panelNorte.add(new JLabel("Peso (*): "));
@@ -220,7 +218,6 @@ public class GUIMuestra extends JDialog {
 			this.panelNorte.add(ubicacion);
 			this.panelNorte.add(seleccionarOperador);
 			this.panelNorte.add(operador);
-			this.panelNorte.add(usuario);
 		}
 		return this.panelNorte;
 	}	

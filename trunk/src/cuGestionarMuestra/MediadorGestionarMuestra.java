@@ -114,9 +114,11 @@ public class MediadorGestionarMuestra extends Mediador{
 		else{
 			String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 			try {
-				MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(control.obtenerMuestra(fila[1],fila[0]));
-				GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-				this.GUIABMMuestra.getTablePanel().addRow(modificarMuestra.getData());
+				MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(fila);
+				if (modificarMuestra.seModificoMuestra()) {
+					GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+					this.GUIABMMuestra.getTablePanel().addRow(modificarMuestra.getData());
+				}
 			}
 			catch (Exception e) {
 				e.printStackTrace();
