@@ -26,24 +26,28 @@ import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
  */
 public class MediadorModificarMuestra extends Mediador{
 	private GUIMuestra GUIMuestra;
-	private String[] data = new String [5];
+	private boolean modificoMuestra;
+	private String[] data = new String [6];
 	private Component frame;
-	private Ubicacion ubicacion;
+	private String nombreMuestraModificar;
+	private String ubicacionModificar;
+	private String dniOperadorModificar;
 	private OperadorDeLaboratorio operador;
 	private Muestra muestra;
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
 	
 
-	public MediadorModificarMuestra(Muestra muestra) throws Exception {
+	public MediadorModificarMuestra(String[] fila) throws Exception {
 		super();
-		this.muestra = muestra;
-		operador = muestra.getOperador();
-		ubicacion = muestra.getUbicacion();
-		this.GUIMuestra = new GUIMuestra(muestra);
+		ubicacionModificar = fila[0];
+		nombreMuestraModificar = fila[1];
+		dniOperadorModificar = (control.obtenerMuestra(fila[1], fila[0])).getOperador().getDni();
+		String nombreOperador = (control.obtenerMuestra(fila[1], fila[0])).getOperador().getNombre();
+		GUIMuestra = new GUIMuestra(fila, nombreOperador);
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
-		this.GUIMuestra.setListenerButtons(this);
-		this.GUIMuestra.show();
+		GUIMuestra.setListenerButtons(this);
+		GUIMuestra.show();
 	}
 	
 
@@ -110,26 +114,29 @@ public class MediadorModificarMuestra extends Mediador{
 	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				if (Integer.parseInt(GUIMuestra.getPeso().getText()) <= 0 || Integer.parseInt(GUIMuestra.getPeso().getText()) > 5000) {
+				if (Float.parseFloat(GUIMuestra.getPeso().getText()) <= 0 || Float.parseFloat(GUIMuestra.getPeso().getText()) > 5000) {
 					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
 					if (!GUIMuestra.getProfundidadInicial().getText().equals("") && !GUIMuestra.getProfundidadFinal().getText().equals("")){
-						if (Integer.parseInt(GUIMuestra.getProfundidadFinal().getText()) < Integer.parseInt(GUIMuestra.getProfundidadInicial().getText())){
+						if (Float.parseFloat(GUIMuestra.getProfundidadFinal().getText()) < Float.parseFloat(GUIMuestra.getProfundidadInicial().getText())){
 							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 						}
 						else{
 							modificarMuestra();
+							modificoMuestra = true;
 						}
 					}
 					else{
 						modificarMuestra();
+						modificoMuestra = true;
 					}
 				}
 			}
 		}
-		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo numeros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		catch (Exception e){
+			e.printStackTrace();
+			//JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo numeros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -139,17 +146,13 @@ public class MediadorModificarMuestra extends Mediador{
 	 */
 	public void modificarMuestra(){
 		try {
-			String nombreMuestraModificar = muestra.getNombreMuestra();
-			muestra.setNombreMuestra(GUIMuestra.getNombre().getText());
-			muestra.setPeso(Float.parseFloat(GUIMuestra.getPeso().getText()));
-			muestra.setProfundidadInicial(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
-			muestra.setProfundidadFinal(Float.parseFloat(GUIMuestra.getProfundidadInicial().getText()));
 			data[0]= GUIMuestra.getUbicacion().getText().substring(15);
 			data[1]= GUIMuestra.getNombre().getText();
 			data[2]= GUIMuestra.getPeso().getText();
 			data[3]= GUIMuestra.getProfundidadInicial().getText();
 			data[4]= GUIMuestra.getProfundidadFinal().getText();
-			control.ModificarMuestra(nombreMuestraModificar, muestra,ubicacion,operador);
+			data[5]= dniOperadorModificar;
+			control.ModificarMuestra(nombreMuestraModificar,ubicacionModificar,data);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -163,7 +166,6 @@ public class MediadorModificarMuestra extends Mediador{
 		try {
 			MediadorSeleccionarUbicacion mediadorSelUbic = new MediadorSeleccionarUbicacion();
 			this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
-			this.ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -175,8 +177,8 @@ public class MediadorModificarMuestra extends Mediador{
 	public void seleccionarOperador(){
 		try {
 			MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
-			this.GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
-			this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
+			GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
+			dniOperadorModificar =((String)seleccionarOperador.getSeleccionado()[2]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -185,4 +187,14 @@ public class MediadorModificarMuestra extends Mediador{
 	public String[] getData() {
 		return data;
 	}
+	
+	/**
+	 * retorna true si se modifico la muestra.
+	 * @return modificoMuestra.
+	 */
+	public boolean seModificoMuestra() {
+		return modificoMuestra;
+	}
+
+	
 }
