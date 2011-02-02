@@ -143,9 +143,9 @@ public class GUIClasificacion extends JDialog{
 		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
 		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	//***************************************
 		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): "+muestra.getIndicePlasticidad());
-		D60 = new JLabel("D60(mm): "+clasificacion.getD60());
-		D30 = new JLabel("D30(mm): "+clasificacion.getD30()); // INFORMACION QUE SACA DEL ANALISIS PERTENECIENTE A LA MUESTRA PASADA
-		D10 = new JLabel("D10(mm): "+clasificacion.getD10()); // COMO PARAMETRO.. NO SE BIEN COMO LOS SACA A ESTOS DATOS.
+		D60 = new JLabel("D60: "+clasificacion.getD60()+" mm");
+		D30 = new JLabel("D30: "+clasificacion.getD30()+" mm"); // INFORMACION QUE SACA DEL ANALISIS PERTENECIENTE A LA MUESTRA PASADA
+		D10 = new JLabel("D10: "+clasificacion.getD10()+" mm"); // COMO PARAMETRO.. NO SE BIEN COMO LOS SACA A ESTOS DATOS.
 		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): "+clasificacion.getCoeficienteUniformidad());
 		gradoCurvatura = new JLabel ("Grado de Curvatura (Cc): "+clasificacion.getGradoCurvatura());
 		

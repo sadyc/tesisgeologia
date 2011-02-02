@@ -70,20 +70,21 @@ public class ControlClasificacion {
 		Float gradoCurvatura = ((clasificacion.getD30()*clasificacion.getD30()) /(clasificacion.getD10()*clasificacion.getD60()));//grado de curvatura.
 		clasificacion.setGradoCurvatura(gradoCurvatura);
 		
+		
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try{
 			Analisis analisis = new Analisis();
 			ControlClasificacion control = new ControlClasificacion();
 			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"'"; 
-			analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && tamiz.numeroTamiz=='200'");
+			analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='200'");
 			System.out.println(muestra.getNombreMuestra());
 			if (analisis.getPorcentajePasante()<=50){
 				//suelo de particulas gruesas
-				analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && tamiz.numeroTamiz=='4'");
+				analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='4'");
 				if (analisis.getPorcentajePasante()<=50){
 					//Gravas
-					analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && tamiz.numeroTamiz=='200'");
+					analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='200'");
 					if (analisis.getPorcentajePasante()<5){
 						//GravasLimpias
 						if((clasificacion.getCoeficienteUniformidad()>=4) && (1<=clasificacion.getGradoCurvatura()) && (clasificacion.getGradoCurvatura()<=3)){
@@ -182,6 +183,9 @@ public class ControlClasificacion {
 					}
 				}
 			}
+			//muestra = (Muestra) persistencia.buscarObjeto(muestra.getClass(),filtro);
+			persistencia.insertarObjeto(clasificacion);
+			muestra.setClasificacion(clasificacion);
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
