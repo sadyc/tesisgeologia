@@ -27,7 +27,7 @@ import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
  *
  */
 public class MediadorAltaMuestra extends Mediador{
-	private GUIMuestra GUIMuestra;
+	private GUIMuestraNetBeans GUIMuestra;
 	private String[] data = new String [10];
 	private Muestra muestra ;
 	private Ubicacion ubicacion;
@@ -47,7 +47,7 @@ public class MediadorAltaMuestra extends Mediador{
 		usuario = new Usuario();
 		this.ubicacion = new Ubicacion();
 		this.operador= new OperadorDeLaboratorio();
-		this.GUIMuestra = new GUIMuestra();
+		this.GUIMuestra = new GUIMuestraNetBeans(new javax.swing.JFrame(), true);
 		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
 		this.GUIMuestra.setListenerButtons(this);
@@ -107,7 +107,7 @@ public class MediadorAltaMuestra extends Mediador{
 		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
 			seleccionarUbicacion();
 		}
-		if (this.GUIMuestra.getJButtonAceptar() == source) {
+		if (this.GUIMuestra.getJButtonAceptar() == source || this.GUIMuestra.getjMenuAceptar()== source) {
 			aceptar();
 		}
 		if (this.GUIMuestra.getJButtonCancelar() == source){

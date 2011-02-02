@@ -22,7 +22,7 @@ public class TablePanel extends JPanel {
 	/** table */
 	private JTable table = null; 
 	
-	private DefaultTableModel tableModel = null;
+	private Table tableModel = null;
 
     private JScrollPane scrollPane = null;  
 	
@@ -31,7 +31,7 @@ public class TablePanel extends JPanel {
 	public TablePanel(){
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		this.scrollPane = new JScrollPane();
-		this.tableModel = new DefaultTableModel();
+		this.tableModel = new Table();
 		this.table = new JTable(this.tableModel);	
 		this.scrollPane.getViewport().add(this.table, null);
 		this.add(this.scrollPane, null);	
