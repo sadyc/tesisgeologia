@@ -55,9 +55,10 @@ import javax.swing.JTextField;
 
 	    
 	    /** Creates new form GUIMuestra */
-	    public GUIMuestraNetBeans(java.awt.Frame parent, boolean modal) {
-	        super(parent, modal);
+	    public GUIMuestraNetBeans(boolean modal) {
+	        super();
 	        initComponents();
+	        setModal(true);
 	        this.setLocationRelativeTo(null);
 	    }
 

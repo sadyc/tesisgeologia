@@ -42,7 +42,6 @@ public class TablePanel extends JPanel {
 		this.add(this.scrollPane, null);	
 	}
 	
-	
 	public void setBoundsTable(int x, int y, int w, int h){
 	    this.setBounds(x, y, w, h);
 	    this.scrollPane.setBounds( x, y, w-10, h-10);
