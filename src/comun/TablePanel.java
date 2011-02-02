@@ -8,8 +8,12 @@ package comun;
  * Window - Preferences - Java - Code Style - Code Templates
  */
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 
 /**
  * @author Daniel
@@ -33,6 +37,7 @@ public class TablePanel extends JPanel {
 		this.scrollPane = new JScrollPane();
 		this.tableModel = new Table();
 		this.table = new JTable(this.tableModel);	
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.scrollPane.getViewport().add(this.table, null);
 		this.add(this.scrollPane, null);	
 	}

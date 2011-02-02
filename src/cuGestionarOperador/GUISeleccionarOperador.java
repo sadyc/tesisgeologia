@@ -73,7 +73,10 @@ public class GUISeleccionarOperador extends JDialog	{
 		this.setSize(1003, 700);
       	this.getContentPane().setLayout(new BorderLayout());
 		this.setJMenuBar(this.getMenu());
-	  	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
+		this.getContentPane().add(new JPanel(), BorderLayout.NORTH);
+		this.getContentPane().add(new JPanel(), BorderLayout.EAST);
+		this.getContentPane().add(new JPanel(), BorderLayout.WEST);
+	   	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	 	this.setLocationRelativeTo(null);
 	}

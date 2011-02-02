@@ -274,11 +274,6 @@ public class GUIMuestra extends JDialog {
 	public void setOperador(String operador) {
 		this.operador.setText(operador);
 	}	
-
-	public static void main (String [] args){
-		GUIMuestra ventana = new GUIMuestra();
-		ventana.show();
-	}
 	
 }
 

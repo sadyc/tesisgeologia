@@ -132,9 +132,13 @@ public class MediadorSeleccionarUbicacion extends Mediador{
 	 */
 	public void mouseClicked(MouseEvent arg0) {
 		Object source = arg0.getSource();
+		System.out.println(" mouse eventtt" );
 		if (this.GUISeleccionarUbicacion.getTablePanel() == source)
 			System.out.println("GestionarMediador.actionPerformed() jJTableTabla");
-		
+		if (arg0.getClickCount() == 2){
+			seleccionarUbicacion();
+        System.out.println(" double click" );
+		}
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {

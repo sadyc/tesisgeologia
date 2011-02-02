@@ -400,10 +400,7 @@ import javax.swing.JTextField;
 			data[3]= profundidadFinal.getText();
 			return data;
 		}
-		public static void main (String [] args){
-			GUIMuestraNetBeans ventana = new GUIMuestraNetBeans(new java.awt.Frame(), true);
-			ventana.show();
-		}
+	
 	}
 
 

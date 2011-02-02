@@ -67,8 +67,11 @@ public class GUISeleccionarTamiz extends JDialog	{
 	private  void initialize() {
 		this.setSize(353, 700);
       	this.getContentPane().setLayout(new BorderLayout());
-		this.setJMenuBar(this.getMenu());
-	  	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
+    	this.getContentPane().add(new JPanel(), BorderLayout.NORTH);
+		this.getContentPane().add(new JPanel(), BorderLayout.EAST);
+		this.getContentPane().add(new JPanel(), BorderLayout.WEST);
+	 	this.setJMenuBar(this.getMenu());
+	 	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	 	this.setLocationRelativeTo(null);
 	}

@@ -40,9 +40,10 @@ public class MediadorGestionarMuestra extends Mediador{
 		super();
 		cargarTablaDeMuestras();
 		this.GUIABMMuestra = new GUIABMMuestra(nombreVentana,data);
-		GUIABMMuestra.show();
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
+		GUIABMMuestra.setModal(true);
+		GUIABMMuestra.show();
 		
 	}
 	
@@ -142,7 +143,6 @@ public class MediadorGestionarMuestra extends Mediador{
 	            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 	            	String ubicacion = fila[0];
 	            	String nombreMuestra = fila[1];
-	            	//Muestra mu = new Muestra((fila[1]),Float.parseFloat(fila[2]),Float.parseFloat(fila[3]),Float.parseFloat(fila[4]),op,usuario,ubicacion,fecha);
 	               	try {
 	               		control.eliminarMuestra(nombreMuestra,ubicacion);
 	               	} catch (Exception e) {
@@ -178,9 +178,9 @@ public class MediadorGestionarMuestra extends Mediador{
 	 */
 	public void mouseClicked(MouseEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIABMMuestra.getTablePanel() == source)
+		if (this.GUIABMMuestra.getTablePanel() == source){
 			System.out.println("GestionarMediador.actionPerformed() jJTableTabla");
-		
+		}
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {
