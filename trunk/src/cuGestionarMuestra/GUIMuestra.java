@@ -180,8 +180,7 @@ public class GUIMuestra extends JDialog {
 	 */
 	private  void initialize() {
 		this.setSize(600 , 700);
-        // Seteamos el BorderLayout
-		this.getContentPane().setLayout(new BorderLayout()); 		
+      	this.getContentPane().setLayout(new BorderLayout()); 		
 	 	// Se aaden los componentes al Frame
 		// Agregamos el Panel Norte al Frame
 	 	this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
@@ -276,5 +275,10 @@ public class GUIMuestra extends JDialog {
 		this.operador.setText(operador);
 	}	
 
+	public static void main (String [] args){
+		GUIMuestra ventana = new GUIMuestra();
+		ventana.show();
+	}
+	
 }
 
