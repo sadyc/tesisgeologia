@@ -53,7 +53,8 @@ public class GUIABMMuestra extends JDialog{
 	 */
 	public GUIABMMuestra(String title, Object [][] datos) {
 		super();
-		this.setTitle(title);
+		
+		setTitle(title);
 		data = datos.clone();
 		menu = new JMenuBar();
 		herramientas = new JMenu("Herramientas");
@@ -90,6 +91,9 @@ public class GUIABMMuestra extends JDialog{
 		this.setSize(1003, 700);
 		this.getContentPane().setLayout(new BorderLayout());
 		this.setJMenuBar(this.getMenu());
+		this.getContentPane().add(new JPanel(), BorderLayout.NORTH);
+		this.getContentPane().add(new JPanel(), BorderLayout.EAST);
+		this.getContentPane().add(new JPanel(), BorderLayout.WEST);
 	 	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	 	this.setLocationRelativeTo(null);
@@ -204,5 +208,5 @@ public class GUIABMMuestra extends JDialog{
 	public void setMenu(JMenuBar menu) {
 		this.menu = menu;
 	}
-	
+
 }
