@@ -22,7 +22,8 @@ import cuGestionarOperador.MediadorSeleccionarOperador;
 import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
 
 /**
- * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana Muestra
+ * @brief Clase que se utiliza para realizar los sucesos en la ventana Muestra.
+ * 
  * @author TesisGeologia
  *
  */
@@ -39,22 +40,25 @@ public class MediadorAltaMuestra extends Mediador{
 	private boolean altaMuestra= false;
 
 	
-	public MediadorAltaMuestra(String nombreVentana) throws Exception {
+	/**
+	 * @param nombreVentana
+	 * Constructor con pasaje de parametros.
+	 */
+	public MediadorAltaMuestra(String nombreVentana) {
 		super();
 		muestra = new Muestra();
 		control = new ControlGestionarMuestra();
 		fecha = new Date(11,22,1980);
 		usuario = new Usuario();
-		this.ubicacion = new Ubicacion();
-		this.operador= new OperadorDeLaboratorio();
-		this.GUIMuestra = new GUIMuestraNetBeans(new javax.swing.JFrame(), true);
+		ubicacion = new Ubicacion();
+		operador= new OperadorDeLaboratorio();
+		GUIMuestra = new GUIMuestraNetBeans(true);
 		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
-		this.GUIMuestra.setListenerButtons(this);
+		GUIMuestra.setListenerButtons(this);
 		GUIMuestra.show();
 	}
 	
-
 	/**
 	 * @return the altaMuestra
 	 */
@@ -152,7 +156,7 @@ public class MediadorAltaMuestra extends Mediador{
 	 * Una vez verificados que los datos ingresados son correctos se procede a la carga de los mismos al sistema.
 	 */
 	public void insertarMuestra(){
-		data[0]= this.ubicacion.getNombreUbicacion();
+		data[0]= ubicacion.getNombreUbicacion();
 		data[1]= GUIMuestra.getNombre().getText();
 		data[2]= GUIMuestra.getPeso().getText();
 		data[3]= GUIMuestra.getProfundidadInicial().getText();

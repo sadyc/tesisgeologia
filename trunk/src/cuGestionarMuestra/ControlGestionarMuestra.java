@@ -13,6 +13,9 @@ import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
 
 /**
+ * Clase que se utiliza para gestionar los datos con persistencia en la base
+ * de datos del sistema.
+ * 
  * @author tesisGeologia
  * @version 1.0
  */
@@ -128,8 +131,6 @@ public class ControlGestionarMuestra {
 		}
 		System.out.println(aux.getNombreMuestra());
 		return aux;
-		
-		
 	}
 }
 	

@@ -18,7 +18,7 @@ import comun.TablePanel;
 /**
  * @author TesisGeologia
  * 
- * Clase que define la interfaz para dar de alta una muestra   
+ * Clase que define la interfaz para dar de alta una muestra.   
  */
 public class GUIABMMuestra extends JDialog{
 
