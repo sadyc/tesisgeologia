@@ -21,10 +21,9 @@ public class MediadorPrincipal implements ActionListener{
 	public MediadorPrincipal(String nombreVentana) throws Exception {
 		super();
 		this.GUIPrincipal = new GUIPrincipal(nombreVentana);
-		GUIPrincipal.show();
-		// se configura como escuchador de los evenetos de la ventana 
-		// al el mismo (mediador)
 		this.GUIPrincipal.setListenerButtons(this);
+		GUIPrincipal.show();
+		
 	}
 	
 	public void show(){

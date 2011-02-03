@@ -2,32 +2,36 @@ package cuGestionarMuestra;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Muestra;
-
-import comun.Mediador;
-
 import cuBuscar.MediadorBuscar;
 import cuCompararMuestra.GUISeleccionarMuestra;
+
 
 /**
 * @author TesisGeología
 * 
 */
 
-public class MediadorSeleccionarMuestra extends Mediador{
+public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, MouseListener {
 
+	private GUIABMMuestra GUIABMMuestra = null;
 	private GUISeleccionarMuestra GUISeleccionarMuestra = null;
 	private Object [] seleccionado = new Object [4];
 	private Object [][] data;
 	private boolean seleccionoMuestra = false;
 	private Component frame;
+	
 	
 	/**
 	 * Constructor por defecto de la clase.
@@ -36,12 +40,20 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	public MediadorSeleccionarMuestra() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		this.GUISeleccionarMuestra = new GUISeleccionarMuestra(data);
-		GUISeleccionarMuestra.setTitle("Seleccionar una muestra");
-		GUISeleccionarMuestra.setModal(true);
-		this.GUISeleccionarMuestra.setListenerButtons(this);
-		this.GUISeleccionarMuestra.setListenerTable(this);
-		GUISeleccionarMuestra.show();
+		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data);
+		this.GUIABMMuestra.setListenerButtons(this);
+		this.GUIABMMuestra.setListenerTable(this);
+		this.GUIABMMuestra.setMouseListener(this);
+		this.GUIABMMuestra.setKeyListener(this);     
+		this.GUIABMMuestra.addActionListener(this);
+		GUIABMMuestra.getJButtonAgregar().setEnabled(false);
+		GUIABMMuestra.getAgregarMenu().setEnabled(false);
+		GUIABMMuestra.getJButtonEliminar().setEnabled(false);
+		GUIABMMuestra.getEliminarMenu().setEnabled(false);
+		GUIABMMuestra.getJButtonModificar().setEnabled(false);
+		GUIABMMuestra.getModificarMenu().setEnabled(false);
+		GUIABMMuestra.setModal(true);
+		GUIABMMuestra.show();
 	}
 	
 	/**
@@ -63,7 +75,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 		    data [i][4]= muestra.getProfundidadFinal();
 		    i++;
 		}
-		this.GUISeleccionarMuestra = new GUISeleccionarMuestra(data);
+		this.GUISeleccionarMuestra  = new GUISeleccionarMuestra(data);
 		GUISeleccionarMuestra.setTitle("Seleccionar una muestra");
 		GUISeleccionarMuestra.setModal(true);
 		this.GUISeleccionarMuestra.setListenerButtons(this);
@@ -97,15 +109,15 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	/**
 	 * @return the gUISeleccionarMuestra
 	 */
-	public GUISeleccionarMuestra getGUISeleccionarMuestra() {
-		return GUISeleccionarMuestra;
+	public GUIABMMuestra getGUISeleccionarMuestra() {
+		return GUIABMMuestra;
 	}
 
 	/**
 	 * @param gUISeleccionarMuestra the gUISeleccionarMuestra to set
 	 */
-	public void setGUISeleccionarMuestra(GUISeleccionarMuestra gUISeleccionarMuestra) {
-		GUISeleccionarMuestra = gUISeleccionarMuestra;
+	public void setGUISeleccionarMuestra(GUIABMMuestra gUISeleccionarMuestra) {
+		GUIABMMuestra = gUISeleccionarMuestra;
 	}
 
 	
@@ -113,14 +125,14 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUISeleccionarMuestra.getJButtonSeleccionar() == source){
+		if (this.GUIABMMuestra.getJButtonSeleccionar() == source){
 			seleccionarMuestra();
 		}
-		if (this.GUISeleccionarMuestra.getJButtonBuscar() == source){
+		if (this.GUIABMMuestra.getBuscarMenu() == source){
 	   		buscarMuestra();
 		}
-		if (this.GUISeleccionarMuestra.getJButtonSalir() == source){
-			GUISeleccionarMuestra.dispose();
+		if (this.GUIABMMuestra.getJButtonSalir() == source){
+			GUIABMMuestra.dispose();
 		}
 	}
 	
@@ -128,15 +140,15 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Muestra"
 	 */
 	public void seleccionarMuestra(){
-		if (GUISeleccionarMuestra.getTablePanel().getSelectedRow() == -1){
+		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
 			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			System.out.println("Button Seleccionar Muestra");
 			try {
-				seleccionado = GUISeleccionarMuestra.getTablePanel().getRow(GUISeleccionarMuestra.getTablePanel().getSelectedRow());
+				seleccionado = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 				seleccionoMuestra = true;
-				GUISeleccionarMuestra.dispose();
+				GUIABMMuestra.dispose();
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
@@ -150,7 +162,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	public void buscarMuestra(){
 		try {
    			System.out.println("Button Buscar Muestra");
-   			new MediadorBuscar();	// HACE LA BUSQUEDA!
+   			new MediadorBuscar();	
 			
    		} catch (Exception e) {
 			e.printStackTrace();
@@ -172,17 +184,22 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	}
 
 	public void show(){
-		GUISeleccionarMuestra.show();
+		GUIABMMuestra.show();
 	}
 	/**
 	 * Metodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
 	 */
-	public void mouseClicked(MouseEvent arg0) {
-		Object source = arg0.getSource();
-		if (this.GUISeleccionarMuestra.getTablePanel() == source)
-			System.out.println("GestionarMediador.actionPerformed() jJTableTabla");
 		
+	public void mouseClicked(MouseEvent e){
+		if (e.getClickCount() == 2)
+			seleccionarMuestra();
+	}
+	
+	public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == e.VK_ENTER)
+        	seleccionarMuestra();
+			System.out.println("ando el enter");
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {
@@ -198,5 +215,17 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	}
 
 	public void itemStateChanged(ItemEvent e) {
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
