@@ -125,24 +125,26 @@ public class MediadorAltaMuestra extends Mediador{
 	public void aceptar(){
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
 		try{
-		 	if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("Ubicacion(*) : ") || GUIMuestra.getOperador().getText().equals("Operador(*) :") ){
+		 	if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("(*) Ubicacion:") || GUIMuestra.getOperador().getText().equals("(*) Operador:") ){
 	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				if (Integer.parseInt(GUIMuestra.getPeso().getText()) <= 0 || Integer.parseInt(GUIMuestra.getPeso().getText()) > 5000) {
+				if (Float.parseFloat(GUIMuestra.getPeso().getText()) <= 0 || Float.parseFloat(GUIMuestra.getPeso().getText()) > 5000) {
 					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
 					if (!GUIMuestra.getProfundidadInicial().getText().equals("") && !GUIMuestra.getProfundidadFinal().getText().equals("")){
-						if (Integer.parseInt(GUIMuestra.getProfundidadFinal().getText()) < Integer.parseInt(GUIMuestra.getProfundidadInicial().getText())){
+						if (Float.parseFloat(GUIMuestra.getProfundidadFinal().getText()) < Float.parseFloat(GUIMuestra.getProfundidadInicial().getText())){
 							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 						}
 						else{
 							insertarMuestra();
+							altaMuestra = true;
 						}
 					}
 					else{
 						insertarMuestra();
+						altaMuestra = true;
 					}
 				}
 			}
@@ -180,7 +182,7 @@ public class MediadorAltaMuestra extends Mediador{
 		try {
 			MediadorSeleccionarUbicacion mediadorSelUbic = new MediadorSeleccionarUbicacion();
 			if((String)mediadorSelUbic.getSeleccionado()[0]!= null){
-				this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
+				this.GUIMuestra.setUbicacion("(*) Ubicacion:"+(String)mediadorSelUbic.getSeleccionado()[0]);
 				this.ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
 				}
 			} catch (Exception e) {
@@ -195,7 +197,7 @@ public class MediadorAltaMuestra extends Mediador{
 		try {
 			MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
 			if ((String)seleccionarOperador.getSeleccionado()[0]!=null) {
-				this.GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
+				this.GUIMuestra.setOperador("(*) Operador:"+(String)seleccionarOperador.getSeleccionado()[0]+" "+(String)seleccionarOperador.getSeleccionado()[1]);
 				this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
 			}
 			

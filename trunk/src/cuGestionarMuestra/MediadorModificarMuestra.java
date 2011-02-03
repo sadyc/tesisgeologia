@@ -25,7 +25,7 @@ import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
  *
  */
 public class MediadorModificarMuestra extends Mediador{
-	private GUIMuestra GUIMuestra;
+	private GUIMuestraNetBeans GUIMuestra;
 	private boolean modificoMuestra;
 	private String[] data = new String [6];
 	private Component frame;
@@ -43,7 +43,7 @@ public class MediadorModificarMuestra extends Mediador{
 		nombreMuestraModificar = fila[1];
 		dniOperadorModificar = (control.obtenerMuestra(fila[1], fila[0])).getOperador().getDni();
 		String nombreOperador = (control.obtenerMuestra(fila[1], fila[0])).getOperador().getNombre();
-		GUIMuestra = new GUIMuestra(fila, nombreOperador);
+		GUIMuestra = new GUIMuestraNetBeans(fila, nombreOperador);
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);

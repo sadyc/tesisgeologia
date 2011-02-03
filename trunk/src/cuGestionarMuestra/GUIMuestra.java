@@ -60,7 +60,7 @@ public class GUIMuestra extends JDialog {
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
-	public GUIMuestra(String[] fila, String nombreOperador) {
+	public GUIMuestra(String[] fila,String nombreOperador) {
 	
 		super();
 		nombre = new JTextField(15);
@@ -180,7 +180,8 @@ public class GUIMuestra extends JDialog {
 	 */
 	private  void initialize() {
 		this.setSize(600 , 700);
-      	this.getContentPane().setLayout(new BorderLayout()); 		
+        // Seteamos el BorderLayout
+		this.getContentPane().setLayout(new BorderLayout()); 		
 	 	// Se aaden los componentes al Frame
 		// Agregamos el Panel Norte al Frame
 	 	this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
@@ -274,6 +275,6 @@ public class GUIMuestra extends JDialog {
 	public void setOperador(String operador) {
 		this.operador.setText(operador);
 	}	
-	
+
 }
 

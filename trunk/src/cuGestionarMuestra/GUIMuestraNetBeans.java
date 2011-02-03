@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 
 	/**
 	 *
-	 * @author Leon
+	 * @author TesisGeologia.
 	 */
 	public class GUIMuestraNetBeans extends javax.swing.JDialog {
 
@@ -61,6 +61,31 @@ import javax.swing.JTextField;
 	        setModal(true);
 	        this.setLocationRelativeTo(null);
 	    }
+	    
+	    /**
+		 * This is the parametrized constructor used in modification
+		 * @param data  arreglo que almacena los datos de una muestra. 
+		 */
+		public GUIMuestraNetBeans(String[] fila,String nombreOperador) {
+		
+			super();
+			nombre = new JTextField(15);
+			profundidadInicial = new JTextField(15);
+			profundidadFinal = new JTextField(15);
+			peso = new JTextField(15);
+			nombre.setText(fila[1]);
+			peso.setText(fila[2]);
+			profundidadInicial.setText(fila[3]);
+			profundidadFinal.setText(fila[4]);
+			ubicacion = new JLabel("Ubicacion(*) : "+ fila[0]);
+			operador = new JLabel ("Operador(*) : "+ nombreOperador);
+			aceptar = new JButton("AGREGAR");
+			cancelar = new JButton("CANCELAR");
+			seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
+			seleccionarOperador = new JButton("SELECCIONAR OPERADOR");
+			
+			initComponents();
+		}
 
 	    /** This method is called from within the constructor to
 	     * initialize the form.
@@ -137,11 +162,11 @@ import javax.swing.JTextField;
 
 	        jLabel1.setText("(*) Nombre: ");
 
-	        jLabel2.setText("(*) Peso:");
+	        jLabel2.setText("(*) Peso: gr");
 
-	        jLabel3.setText("(*) Profundidad Inicial :");
+	        jLabel3.setText("(*) Profundidad Inicial : mts");
 
-	        jLabel4.setText("(*) Profundidad Final :");
+	        jLabel4.setText("(*) Profundidad Final : mts");
 
 	        ubicacion.setText("(*) Ubicacion:");
 
