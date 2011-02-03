@@ -41,7 +41,7 @@ public class ControlGestionarMuestra {
 			Class claseOperador = operador.getClass();
 			mu.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
 			Class claseUsuario = usuario.getClass();
-			mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni==123"));//Todavia no esta implementado el caso de uso Usuario
+			//mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni==123"));//Todavia no esta implementado el caso de uso Usuario
 			persistencia.insertarObjeto(mu);
 			persistencia.cerrarTransaccion();
 			persistencia.cerrarPersistencia();
@@ -63,7 +63,6 @@ public class ControlGestionarMuestra {
 			Muestra auxMuestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+ubicacion+"'");
 			persistencia.eliminarObjeto(auxMuestra);
 			persistencia.cerrarTransaccion();
-			System.out.println("Analisis eliminado con persistencia");
 		}
 		catch (Exception e) {
 			persistencia.realizarRollback();
@@ -129,7 +128,6 @@ public class ControlGestionarMuestra {
 		catch (Exception e) {
 			persistencia.realizarRollback();
 		}
-		System.out.println(aux.getNombreMuestra());
 		return aux;
 	}
 }
