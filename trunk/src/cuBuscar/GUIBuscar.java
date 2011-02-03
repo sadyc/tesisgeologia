@@ -37,8 +37,10 @@ public class GUIBuscar extends javax.swing.JDialog {
     /** Creates new form GUIBuscar */
     public GUIBuscar() {
     	super();
+    	System.out.println("antes de abrir ventana de buscar");
     	setModal(true);
         setResizable(false);
+        setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -66,11 +68,9 @@ public class GUIBuscar extends javax.swing.JDialog {
 
         jLabel1.setText("Buscar:");
 
-        buscar.setText("jTextField1");
-
         jLabel2.setText("Por :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Muestra", "Ubicacion", "Mas recientes", "Operador Lab" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Muestra", "Ubicación", "Operador Lab" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -153,6 +153,8 @@ public class GUIBuscar extends javax.swing.JDialog {
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
+		jMenuItem1.addActionListener(lis);
+		jMenuItem2.addActionListener(lis);
 		jButtonBuscar.addActionListener(lis);
 		jButtonCancelar.addActionListener(lis);
 		jComboBox1.addActionListener(lis);

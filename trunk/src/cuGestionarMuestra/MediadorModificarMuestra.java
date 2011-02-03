@@ -25,7 +25,7 @@ import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
  *
  */
 public class MediadorModificarMuestra extends Mediador{
-	private GUIMuestraNetBeans GUIMuestra;
+	private GUIMuestra GUIMuestra;
 	private boolean modificoMuestra;
 	private String[] data = new String [6];
 	private Component frame;
@@ -42,8 +42,8 @@ public class MediadorModificarMuestra extends Mediador{
 		ubicacionModificar = fila[0];
 		nombreMuestraModificar = fila[1];
 		dniOperadorModificar = (control.obtenerMuestra(fila[1], fila[0])).getOperador().getDni();
-		String nombreOperador = (control.obtenerMuestra(fila[1], fila[0])).getOperador().getNombre();
-		GUIMuestra = new GUIMuestraNetBeans(fila, nombreOperador);
+		String nombreOperador = (control.obtenerMuestra(fila[1], fila[0])).getOperador().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0]).getOperador().getApellido();
+		GUIMuestra = new GUIMuestra(fila, nombreOperador);
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
@@ -135,8 +135,7 @@ public class MediadorModificarMuestra extends Mediador{
 			}
 		}
 		catch (Exception e){
-			e.printStackTrace();
-			//JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo numeros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo numeros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}

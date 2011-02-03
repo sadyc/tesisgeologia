@@ -13,7 +13,7 @@ import persistencia.domain.OperadorDeLaboratorio;
 
 import comun.Mediador;
 
-import cuGestionarAnalisis.MediadorBuscar;
+import cuBuscar.MediadorBuscar;
 import cuGestionarMuestra.ControlGestionarMuestra;
 
 

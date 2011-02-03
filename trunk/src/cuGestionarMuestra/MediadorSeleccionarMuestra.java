@@ -9,10 +9,12 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-import comun.*;
 import persistencia.domain.Muestra;
+
+import comun.Mediador;
+
+import cuBuscar.MediadorBuscar;
 import cuCompararMuestra.GUISeleccionarMuestra;
-import cuGestionarAnalisis.MediadorBuscar;
 
 /**
 * @author TesisGeología
@@ -42,6 +44,33 @@ public class MediadorSeleccionarMuestra extends Mediador{
 		GUISeleccionarMuestra.show();
 	}
 	
+	/**
+	 * Metodo que contruye la ventana seleccionar Muestra con las muestras
+	 * ya cargadas en una coleccion.
+	 * @param coleccion
+	 */
+	public MediadorSeleccionarMuestra(Collection coleccion) {
+		super();
+		Iterator<Muestra> it = coleccion.iterator();
+		data = new Object [coleccion.size()] [5];
+		int i = 0;
+		while (it.hasNext()){
+			Muestra muestra = it.next();
+			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
+			data [i][1]= muestra.getNombreMuestra();
+			data [i][2]= muestra.getPeso();
+		    data [i][3]= muestra.getProfundidadInicial();
+		    data [i][4]= muestra.getProfundidadFinal();
+		    i++;
+		}
+		this.GUISeleccionarMuestra = new GUISeleccionarMuestra(data);
+		GUISeleccionarMuestra.setTitle("Seleccionar una muestra");
+		GUISeleccionarMuestra.setModal(true);
+		this.GUISeleccionarMuestra.setListenerButtons(this);
+		this.GUISeleccionarMuestra.setListenerTable(this);
+		GUISeleccionarMuestra.show();
+	}
+
 	/**
 	 * Levanta informacion almacenada en la 
 	 * base de datos al atributo data de la clase mediador.
