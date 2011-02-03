@@ -8,12 +8,14 @@ package comun;
  * Window - Preferences - Java - Code Style - Code Templates
  */
 
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
+
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
 
 /**
  * @author Daniel
@@ -38,6 +40,7 @@ public class TablePanel extends JPanel {
 		this.tableModel = new Table();
 		this.table = new JTable(this.tableModel);	
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.addMouseListener(null);
 		this.scrollPane.getViewport().add(this.table, null);
 		this.add(this.scrollPane, null);	
 	}
@@ -93,4 +96,11 @@ public class TablePanel extends JPanel {
 		this.tableModel.removeRow(nro);		
 	}
     	
+	public void addTableMouseListener (MouseListener lis){
+		   this.table.addMouseListener(lis);
+		 }
+		
+	public void addTableKeyListener (KeyListener lis){
+		this.table.addKeyListener(lis);
+	}
 }

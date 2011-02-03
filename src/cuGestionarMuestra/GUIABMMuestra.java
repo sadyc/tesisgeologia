@@ -2,15 +2,19 @@ package cuGestionarMuestra;
 
 
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
-//import java.awt.HeadlessException;
 
-
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
 
 import comun.TablePanel;
 
@@ -35,10 +39,12 @@ public class GUIABMMuestra extends JDialog{
 	private JButton jButtonAgregar;
 	private JButton jButtonEliminar;
 	private JButton jButtonModificar;
+	private JButton jButtonSeleccionar;
 	private JButton jButtonSalir;
 	private JMenuItem agregarMenu;
 	private JMenuItem modificarMenu;
 	private JMenuItem eliminarMenu;
+	private JMenuItem seleccionarMenu;
 	private JMenuItem buscarMenu;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
@@ -65,19 +71,22 @@ public class GUIABMMuestra extends JDialog{
 		agregarMenu = new JMenuItem("Agregar Muestra");
 		modificarMenu = new JMenuItem("Modificar Muestra");
 		eliminarMenu = new JMenuItem("Eliminar Muestra");
+		seleccionarMenu = new JMenuItem("Seleccionar Muestra");
 		salirMenu = new JMenuItem("Salir");
 		herramientas.add(agregarMenu);
 		herramientas.add(modificarMenu);
 		herramientas.add(eliminarMenu);
 		herramientas.add(new JSeparator());
+		herramientas.add(seleccionarMenu);
 		herramientas.add(buscarMenu);
-		herramientas.add(new JSeparator()); // Una rayita separadora.
+		herramientas.add(new JSeparator()); 
 		herramientas.add(salirMenu);
 		versionMenu = new JMenuItem("Version");
 		ayuda.add(versionMenu);		
 		jButtonAgregar = new JButton("AGREGAR");
 		jButtonModificar = new JButton("MODIFICAR");
 		jButtonEliminar = new JButton("ELIMINAR");
+		jButtonSeleccionar = new JButton("SELECCIONAR");
 		jButtonSalir = new JButton("SALIR");
 		initialize();
 	}
@@ -118,6 +127,15 @@ public class GUIABMMuestra extends JDialog{
 	}
 
 	/**
+	 * This method retorna boton eliminar	
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+	public JButton getJButtonSeleccionar() {
+		return jButtonSeleccionar;
+	}
+	
+	/**
 	 * This method retorna botonModificar	
 	 * 	
 	 * @return javax.swing.JButton	
@@ -136,6 +154,55 @@ public class GUIABMMuestra extends JDialog{
 	}
 	
 	/**
+	 * @return the ayuda
+	 */
+	public JMenu getAyuda() {
+		return ayuda;
+	}
+
+	/**
+	 * @return the agregarMenu
+	 */
+	public JMenuItem getAgregarMenu() {
+		return agregarMenu;
+	}
+
+	/**
+	 * @return the modificarMenu
+	 */
+	public JMenuItem getModificarMenu() {
+		return modificarMenu;
+	}
+
+	/**
+	 * @return the eliminarMenu
+	 */
+	public JMenuItem getEliminarMenu() {
+		return eliminarMenu;
+	}
+
+	/**
+	 * @return the seleccionarMenu
+	 */
+	public JMenuItem getSeleccionarMenu() {
+		return seleccionarMenu;
+	}
+
+	/**
+	 * @return the buscarMenu
+	 */
+	public JMenuItem getBuscarMenu() {
+		return buscarMenu;
+	}
+
+	/**
+	 * @return the salirMenu
+	 */
+	public JMenuItem getSalirMenu() {
+		return salirMenu;
+	}
+
+	/**
 	 * Metodo que permite escuchar los botoner Agregar, Eliminar, Modificar.
 	 *
 	 *@param lis actionEvent asignado a los botones.
@@ -144,6 +211,7 @@ public class GUIABMMuestra extends JDialog{
 		this.jButtonAgregar.addActionListener(lis);
 		this.jButtonEliminar.addActionListener(lis);
 		this.jButtonModificar.addActionListener(lis);
+		this.jButtonSeleccionar.addActionListener(lis);
 		this.jButtonSalir.addActionListener(lis);
         
 	}
@@ -177,6 +245,7 @@ public class GUIABMMuestra extends JDialog{
 		this.panelSur.add(getJButtonAgregar());
 		this.panelSur.add(getJButtonModificar());
 		this.panelSur.add(getJButtonEliminar());
+		this.panelSur.add(getJButtonSeleccionar());
 		this.panelSur.add(getJButtonSalir());
 		}
 		return this.panelSur;
@@ -208,5 +277,20 @@ public class GUIABMMuestra extends JDialog{
 	public void setMenu(JMenuBar menu) {
 		this.menu = menu;
 	}
-
+	
+	public void setMouseListener(MouseListener lis){
+        tablePanel.addTableMouseListener(lis);
+    }
+	
+	public void setKeyListener(KeyListener lis){
+        tablePanel.addTableKeyListener(lis);
+	}
+	
+	public void addActionListener(ActionListener lis){
+        jButtonAgregar.addActionListener(lis);
+        jButtonEliminar.addActionListener(lis);
+        jButtonModificar.addActionListener(lis);
+        jButtonSalir.addActionListener(lis);
+        jButtonSeleccionar.addActionListener(lis);
+  }
 }

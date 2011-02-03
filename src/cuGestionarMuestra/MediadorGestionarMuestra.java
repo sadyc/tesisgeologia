@@ -42,6 +42,8 @@ public class MediadorGestionarMuestra extends Mediador{
 		this.GUIABMMuestra = new GUIABMMuestra(nombreVentana,data);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
+		GUIABMMuestra.getJButtonSeleccionar().setEnabled(false);
+		GUIABMMuestra.getSeleccionarMenu().setEnabled(false);
 		GUIABMMuestra.setModal(true);
 		GUIABMMuestra.show();
 		
@@ -89,7 +91,6 @@ public class MediadorGestionarMuestra extends Mediador{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-
 		if (this.GUIABMMuestra.getJButtonAgregar() == source){
 			agregarMuestra();
 	   	}
