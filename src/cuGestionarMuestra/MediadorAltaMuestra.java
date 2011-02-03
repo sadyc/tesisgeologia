@@ -28,7 +28,7 @@ import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
  *
  */
 public class MediadorAltaMuestra extends Mediador{
-	private GUIMuestraNetBeans GUIMuestra;
+	private GUIMuestra GUIMuestra;
 	private String[] data = new String [10];
 	private Muestra muestra ;
 	private Ubicacion ubicacion;
@@ -52,7 +52,7 @@ public class MediadorAltaMuestra extends Mediador{
 		usuario = new Usuario();
 		ubicacion = new Ubicacion();
 		operador= new OperadorDeLaboratorio();
-		GUIMuestra = new GUIMuestraNetBeans(true);
+		GUIMuestra = new GUIMuestra(true);
 		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
