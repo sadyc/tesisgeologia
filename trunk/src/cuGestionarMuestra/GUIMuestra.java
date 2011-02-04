@@ -1,280 +1,419 @@
 package cuGestionarMuestra;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.FlowLayout;
+
+	import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import persistencia.domain.Muestra;
-/**
- * @author TesisGeologia
- *
- * Clase que define la interfaz para dar de alta una muestra   
- */
-public class GUIMuestra extends JDialog {
+	/*
+	 * To change this template, choose Tools | Templates
+	 * and open the template in the editor.
+	 */
 
-	/**
-	 * @param title
-	 * @throws java.awt.HeadlessException
-	 */
-	private JButton aceptar;
-	private JButton cancelar;
-	private JButton seleccionarUbicacion;
-	private JButton seleccionarOperador;
-	private JPanel panelNorte=null;
-	private JPanel panelSur=null;
-	private JTextField nombre;
-	private JTextField profundidadInicial;
-	private JTextField profundidadFinal;
-	private JTextField peso;
-	private JLabel operador;
-	private JLabel ubicacion;
-	
-
-	/**
-	 * This is the default constructor
-	 */
-	public GUIMuestra() {
-		super();
-		nombre = new JTextField(15);
-		profundidadInicial = new JTextField(15);
-		profundidadFinal = new JTextField(15);
-		peso = new JTextField(15);
-		ubicacion = new JLabel("Ubicacion(*) : ");
-		operador = new JLabel ("Operador(*) :");
-		aceptar = new JButton("AGREGAR");
-		cancelar = new JButton("CANCELAR");
-		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
-		seleccionarOperador = new JButton("SELECCIONAR OPERADOR");
-		initialize();
-	}
-	
-	/**
-	 * This is the parametrized constructor used in modification
-	 * @param data  arreglo que almacena los datos de una muestra. 
-	 */
-	public GUIMuestra(String[] fila,String nombreOperador) {
-	
-		super();
-		nombre = new JTextField(15);
-		profundidadInicial = new JTextField(15);
-		profundidadFinal = new JTextField(15);
-		peso = new JTextField(15);
-		nombre.setText(fila[1]);
-		peso.setText(fila[2]);
-		profundidadInicial.setText(fila[3]);
-		profundidadFinal.setText(fila[4]);
-		ubicacion = new JLabel("Ubicacion(*) : "+ fila[0]);
-		operador = new JLabel ("Operador(*) : "+ nombreOperador);
-		aceptar = new JButton("AGREGAR");
-		cancelar = new JButton("CANCELAR");
-		seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
-		seleccionarOperador = new JButton("SELECCIONAR OPERADOR");
-		initialize();
-	}
-	
-	/**
-	 * @param nombre the nombre to set
-	 */
-	public void setNombre(JTextField nombre) {
-		this.nombre = nombre;
-	}
-
-	/**
-	 * @return the muestra
-	 */
-	public JTextField getNombre() {
-		return nombre;
-	}
-
-	/**
-	 * @return the profundidadInicial
-	 */
-	public JTextField getProfundidadInicial() {
-		return profundidadInicial;
-	}
-
-	/**
-	 * @return the profundidadFinal
-	 */
-	public JTextField getProfundidadFinal() {
-		return profundidadFinal;
-	}
-	
-	/**
-	 * @return the peso
-	 */
-	public JTextField getPeso() {
-		return peso;
-	}
-	
-	/**
-	 * @return the aceptar
-	 */
-	public JButton getJButtonAceptar() {
-		return aceptar;
-	}
-
-
-	/**
-	 * @param aceptar the aceptar to set
-	 */
-	public void setJButtonAceptar(JButton aceptar) {
-		this.aceptar = aceptar;
-	}
-	
-	/**
-	 * @return the cancelar
-	 */
-	public JButton getJButtonCancelar() {
-		return cancelar;
-	}
-
-	/**
-	 * @param cancelar the cancelar to set
-	 */
-	public void setJButtonCancelar(JButton cancelar) {
-		this.cancelar = cancelar;
-	}
-
-	/**
-	 * @return the selecionar ubicacion
-	 */
-	public JButton getJButtonSeleccionarUbicacion() {
-		return seleccionarUbicacion;
-	}
-
-	/**
-	 * @param cancelar the seleccionar ubicacion to set
-	 */
-	public void setJButtonSeleccionarUbicacion(JButton seleccionarUbicacion) {
-		this.seleccionarUbicacion = seleccionarUbicacion;
-	}
-
-	/**
-	 * @return the ubicacion
-	 */
-	public JLabel getUbicacion() {
-		return ubicacion;
-	}
-
-	/**
-	 * @param ubicacion the ubicacion to set
-	 */
-	public void setUbicacion(String ubicacion) {
-		this.ubicacion.setText(ubicacion);
-	}
-
-
-	/**
-	 * Metodo que inicializa la interfaz.
+	/*
+	 * GUIMuestra.java
 	 *
-	 * @return void
+	 * Created on 10/12/2010, 02:28:18
 	 */
-	private  void initialize() {
-		this.setSize(600 , 700);
-        // Seteamos el BorderLayout
-		this.getContentPane().setLayout(new BorderLayout()); 		
-	 	// Se aaden los componentes al Frame
-		// Agregamos el Panel Norte al Frame
-	 	this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
-	 	// Agregamos el Panel Sur al Frame
-	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
-	 	this.setLocationRelativeTo(null);
-	}
-   
-	
+
 	/**
-	 * Metodo que retorna el panelNorte.
 	 *
-	 * @return Jpanel
+	 * @author TesisGeologia.
 	 */
+	public class GUIMuestra extends javax.swing.JDialog {
+
+	    // Variables declaration - do not modify
+	    private javax.swing.JButton aceptar;
+	    private javax.swing.JButton cancelar;
+	    private javax.swing.JButton seleccionarUbicacion;
+	    private javax.swing.JButton seleccionarOperador;
+	    private javax.swing.JLabel jLabel1;
+	    private javax.swing.JLabel jLabel2;
+	    private javax.swing.JLabel jLabel3;
+	    private javax.swing.JLabel jLabel4;
+	    private javax.swing.JLabel ubicacion;
+	    private javax.swing.JLabel operador;
+	    private javax.swing.JLabel usuario;
+	    private javax.swing.JMenu jMenu1;
+	    private javax.swing.JMenu jMenu2;
+	    private javax.swing.JMenuBar jMenuBar1;
+	    private javax.swing.JMenuItem aceptarMenu;
+	    private javax.swing.JMenuItem cancelarMenu;
+	    private javax.swing.JMenuItem versionMenu;
+	    private javax.swing.JTextField nombre;
+	    private javax.swing.JTextField peso;
+	    private javax.swing.JTextField profundidadInicial;
+	    private javax.swing.JTextField profundidadFinal;
+	    // End of variables declaration
+
+	    
+	    /** Creates new form GUIMuestra */
+	    public GUIMuestra(boolean modal) {
+	        super();
+	        initComponents();
+	        setModal(true);
+	        this.setLocationRelativeTo(null);
+	    }
+	    
+	    /**
+		 * This is the parametrized constructor used in modification
+		 * @param data  arreglo que almacena los datos de una muestra. 
+		 */
+		public GUIMuestra(String[] fila,String nombreOperador) {
 		
-	public JPanel getPanelNorte() {
-		if (this.panelNorte==null) {
-			this.panelNorte= new JPanel();
-			// Se pone el FlowLayout en el Panel Norte
-			this.panelNorte.setLayout(new BoxLayout(this.panelNorte,BoxLayout.Y_AXIS));
-			profundidadInicial.setAlignmentX(Component.CENTER_ALIGNMENT);
-			profundidadFinal.setAlignmentX(Component.CENTER_ALIGNMENT);
-			peso.setAlignmentX(Component.CENTER_ALIGNMENT);
-			// Se anaden los componentes al panel Norte
-			this.panelNorte.add(new JLabel("Nombre (*): "));
-			this.panelNorte.add(nombre);
-			this.panelNorte.add(new JLabel("Peso (*): "));
-			this.panelNorte.add(peso); 
-			this.panelNorte.add(new JLabel("Profundidad Inicial(*): "));
-			this.panelNorte.add(profundidadInicial);
-			this.panelNorte.add(new JLabel("Profundidad Final(*): "));
-			this.panelNorte.add(profundidadFinal);
-			this.panelNorte.add(seleccionarUbicacion);
-			this.panelNorte.add(ubicacion);
-			this.panelNorte.add(seleccionarOperador);
-			this.panelNorte.add(operador);
+			super();
+			nombre = new JTextField(15);
+			profundidadInicial = new JTextField(15);
+			profundidadFinal = new JTextField(15);
+			peso = new JTextField(15);
+			nombre.setText(fila[1]);
+			peso.setText(fila[2]);
+			profundidadInicial.setText(fila[3]);
+			profundidadFinal.setText(fila[4]);
+			ubicacion = new JLabel("(*) Ubicacion: "+ fila[0]);
+			operador = new JLabel ("(*) Operador: "+ nombreOperador);
+			aceptar = new JButton("AGREGAR");
+			cancelar = new JButton("CANCELAR");
+			seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
+			seleccionarOperador = new JButton("SELECCIONAR OPERADOR");
+			
+			initComponents();
 		}
-		return this.panelNorte;
-	}	
 
-	/**
-	 * Metodo que retorna el panelSur.
-	 *
-	 * @return Jpanel
-	 */
-	public JPanel getPanelSur() {
-		if (this.panelSur==null) {
-			this.panelSur = new JPanel();
-			this.panelSur.setLayout(new FlowLayout());
-			this.panelSur.add(aceptar);
-			this.panelSur.add(cancelar);
-			}
-			return this.panelSur;
-	}
+	    /** This method is called from within the constructor to
+	     * initialize the form.
+	     * WARNING: Do NOT modify this code. The content of this method is
+	     * always regenerated by the Form Editor.
+	     */
+	    @SuppressWarnings("unchecked")
+	    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+	    private void initComponents() {
+
+	        
+	        jLabel1 = new javax.swing.JLabel();
+	        jLabel2 = new javax.swing.JLabel();
+	        jLabel3 = new javax.swing.JLabel();
+	        jLabel4 = new javax.swing.JLabel();
+	        seleccionarUbicacion = new javax.swing.JButton();
+	        seleccionarOperador = new javax.swing.JButton();
+	        usuario = new javax.swing.JLabel();
+	        jMenuBar1 = new javax.swing.JMenuBar();
+	        jMenu1 = new javax.swing.JMenu();
+	        aceptarMenu = new javax.swing.JMenuItem();
+	        cancelarMenu = new javax.swing.JMenuItem();
+	        jMenu2 = new javax.swing.JMenu();
+	        versionMenu = new javax.swing.JMenuItem();
+
+	        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+	        setTitle("Cargar Muestra\n");
+	        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+	        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+	        setModal(true);
+	        addMouseListener(new java.awt.event.MouseAdapter() {
+	            public void mouseClicked(java.awt.event.MouseEvent evt) {
+	                formMouseClicked(evt);
+	            }
+	        });
+
+	        aceptar.setText("Agregar");
+	        aceptar.setAutoscrolls(true);
+
+	        cancelar.setText("Cancelar");
+	        cancelar.setAutoscrolls(true);
+	        cancelar.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                jButton2ActionPerformed(evt);
+	            }
+	        });
+
+	        nombre.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                jTextField1ActionPerformed(evt);
+	            }
+	        });
+
+	        peso.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+	        profundidadInicial.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                jTextField3ActionPerformed(evt);
+	            }
+	        });
+
+	        profundidadFinal.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                jTextField4ActionPerformed(evt);
+	            }
+	        });
+
+	        jLabel1.setText("(*) Nombre: ");
+
+	        jLabel2.setText("(*) Peso: gr");
+
+	        jLabel3.setText("(*) Profundidad Inicial : mts");
+
+	        jLabel4.setText("(*) Profundidad Final : mts");
+
+	        seleccionarUbicacion.setText("Seleccionar Ubicación");
+
+	        seleccionarOperador.setText("Seleccionar Operador");
+
+	        usuario.setText("Usuario:");
+
+	        jMenu1.setText("Herramientas");
+
+	        aceptarMenu.setText("Agregar");
+	        jMenu1.add(aceptarMenu);
+
+	        cancelarMenu.setText("Cancelar");
+	        jMenu1.add(cancelarMenu);
+
+	        jMenuBar1.add(jMenu1);
+
+	        jMenu2.setText("Ayuda");
+
+	        versionMenu.setText("Versión");
+	        jMenu2.add(versionMenu);
+
+	        jMenuBar1.add(jMenu2);
+
+	        setJMenuBar(jMenuBar1);
+	        
+	        JPanel jPanel1 = new JPanel();
+            jPanel1.setLayout(new BorderLayout());
+            jPanel1.add(new JPanel(),BorderLayout.WEST);
+            jPanel1.add(new JPanel(),BorderLayout.SOUTH);
+	        
+	        
+	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+	        getContentPane().setLayout(layout);
+	        layout.setHorizontalGroup(
+	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            .addGroup(layout.createSequentialGroup()
+	                .addContainerGap()
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                    .addGroup(layout.createSequentialGroup()
+	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                            .addComponent(jLabel1)
+	                            .addComponent(jLabel4)
+	                            .addComponent(jLabel3)
+	                            .addComponent(jLabel2))
+	                        .addGap(18, 18, 18)
+	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+	                            .addComponent(profundidadFinal)
+	                            .addComponent(profundidadInicial)
+	                            .addComponent(peso)
+	                            .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+	                        .addGap(272, 272, 272))
+	                    .addGroup(layout.createSequentialGroup()
+	                        .addComponent(usuario)
+	                        .addContainerGap(484, Short.MAX_VALUE))
+	                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+	                        .addComponent(aceptar)
+	                        .addGap(58, 58, 58)
+	                        .addComponent(cancelar)
+	                        .addGap(160, 160, 160))
+	                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                            .addComponent(ubicacion)
+	                            .addComponent(operador))
+	                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 292, Short.MAX_VALUE)
+	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+	                            .addGroup(layout.createSequentialGroup()
+	                                .addComponent(seleccionarOperador)
+	                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+	                                .addComponent( seleccionarUbicacion)
+	                                .addGap(30, 30, 30))))))
+	        );
+	        layout.setVerticalGroup(
+	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	            .addGroup(layout.createSequentialGroup()
+	                .addContainerGap()
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(jLabel1))
+	                .addGap(18, 18, 18)
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(peso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(jLabel2))
+	                .addGap(18, 18, 18)
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(profundidadInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(jLabel3))
+	                .addGap(18, 18, 18)
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(profundidadFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+	                    .addComponent(jLabel4))
+	                .addGap(18, 18, 18)
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                    .addComponent(seleccionarUbicacion)
+	                    .addComponent(ubicacion))
+	                .addGap(18, 18, 18)
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+	                    .addGroup(layout.createSequentialGroup()
+	                        .addComponent(operador)
+	                        .addGap(37, 37, 37)
+	                        .addComponent(usuario))
+	                    .addComponent(seleccionarOperador))
+	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+	                    .addComponent(cancelar)
+	                    .addComponent(aceptar))
+	                .addContainerGap())
+	        );
+	        setResizable(false);
+	        pack();
+	    }// </editor-fold>
+
+	    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+	        // TODO add your handling code here:
+	    }                                        
+
+	    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
+	        // TODO add your handling code here:
+	    }
+
+	    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {
+	        // TODO add your handling code here:
+	    }
+
+	    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {
+	        // TODO add your handling code here:
+	    }
+
+	    private void formMouseClicked(java.awt.event.MouseEvent evt) {
+	        // TODO add your handling code here:
+	    }
+
+	    public JButton getJButtonAceptar() {
+	        return aceptar;
+	    }
+
+	    public JButton getJButtonCancelar() {
+	        return cancelar;
+	    }
+
+	    public JButton getJButtonSeleccionarUbicacion() {
+	        return seleccionarUbicacion;
+	    }
+
+	    public JButton getJButtonSeleccionarOperador() {
+	        return seleccionarOperador;
+	    }
+
+	    public JLabel getjLabel1() {
+	        return jLabel1;
+	    }
+
+	    public JLabel getjLabel2() {
+	        return jLabel2;
+	    }
+
+	    public JLabel getjLabel3() {
+	        return jLabel3;
+	    }
+
+	    public JLabel getjLabel4() {
+	        return jLabel4;
+	    }
+
+	    public JLabel getUbicacion() {
+	        return ubicacion;
+	    }
+
+	    public JLabel getOperador() {
+	        return operador;
+	    }
+
+	    public JLabel getjLabelUsuario() {
+	        return usuario;
+	    }
+
+	    public JMenu getjMenu1() {
+	        return jMenu1;
+	    }
+
+	    public JMenu getjMenu2() {
+	        return jMenu2;
+	    }
+
+	    public JMenuBar getjMenuBar1() {
+	        return jMenuBar1;
+	    }
+
+	    public JMenuItem getjMenuAceptar() {
+	        return aceptarMenu;
+	    }
+
+	    public JMenuItem getjMenuItem2() {
+	        return cancelarMenu;
+	    }
+
+	    public JMenuItem getjMenuItem3() {
+	        return versionMenu;
+	    }
+
+	    public JTextField getNombre() {
+	        return nombre;
+	    }
+
+	    public JTextField getPeso() {
+	        return peso;
+	    }
+
+	    public JTextField getProfundidadInicial() {
+	        return profundidadInicial;
+	    }
+
+	    public JTextField getProfundidadFinal() {
+	        return profundidadFinal;
+	    }
+	    
+	    /**
+		 * @param ubicacion the ubicacion to set
+		 */
+		public void setUbicacion(String ubicacion) {
+			this.ubicacion.setText(ubicacion);
+		}
+		
+		/**
+		 * @param ubicacion the operador to set
+		 */
+		public void setOperador(String operador) {
+			this.operador.setText(operador);
+		}
+		
+		/**
+		 * Metodo que permite escuchar los botoner aceptar y cancelar.
+		 *
+		 *@param lis actionEvent asignado a los botones.
+		 */
+		public void setListenerButtons(ActionListener lis){
+			this.aceptar.addActionListener(lis);
+			this.cancelar.addActionListener(lis);
+			this.seleccionarOperador.addActionListener(lis);
+			this.seleccionarUbicacion.addActionListener(lis);
+			this.aceptarMenu.addActionListener(lis);
+			this.cancelarMenu.addActionListener(lis);
+			this.versionMenu.addActionListener(lis);
+		}
+		
+		
+		public String[] getData() {
+			String[] data = new String[4];
+			data[0]= nombre.getText();
+			data[1]= peso.getText();
+			data[2]= profundidadInicial.getText();
+			data[3]= profundidadFinal.getText();
+			return data;
+		}
 	
-	/**
-	 * Metodo que permite escuchar los botoner aceptar y cancelar.
-	 *
-	 *@param lis actionEvent asignado a los botones.
-	 */
-	public void setListenerButtons(ActionListener lis){
-		this.aceptar.addActionListener(lis);
-		this.cancelar.addActionListener(lis);
-		this.seleccionarOperador.addActionListener(lis);
-		this.seleccionarUbicacion.addActionListener(lis);
 	}
-	
-	
-	public String[] getData() {
-		String[] data = new String[4];
-		data[0]= nombre.getText();
-		data[1]= peso.getText();
-		data[2]= profundidadInicial.getText();
-		data[3]= profundidadFinal.getText();
-		return data;
-	}
-
-	public Object getJButtonSeleccionarOperador() {
-		return seleccionarOperador;
-	}
-	/**
-	 * @return the operadorLaboratorio
-	 */
-	public JLabel getOperador() {
-		return operador;
-	}
-
-	/**
-	 * @param operadorLaboratorio the operadorLaboratorio to set
-	 */
-	public void setOperador(String operador) {
-		this.operador.setText(operador);
-	}	
-
-}
-
