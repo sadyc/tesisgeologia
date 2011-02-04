@@ -21,10 +21,9 @@ import cuGestionarAnalisis.ControlGestionarAnalisis;
  */
 public class MediadorCompararMuestra extends Mediador{
 	private GUIComparacion GUIComparacion;
-	private String nombreMuestra1;
 	private Muestra muestra1 = new Muestra();
 	private Object [] [] data1;
-	private String nombreMuestra2;
+	
 	private Muestra muestra2 = new Muestra();
 	private Object [] [] data2;
 	
@@ -43,39 +42,20 @@ public class MediadorCompararMuestra extends Mediador{
 	/**
 	 * 
 	 * @param titulo
-	 * @param nombreMuestra1
+	 * @param muestra1
 	 * @throws Exception
 	 */
-	public MediadorCompararMuestra(String titulo, String nombreMuestra1, String nombreMuestra2) throws Exception {
+	public MediadorCompararMuestra(String titulo, Muestra muestra1, Muestra muestra2) throws Exception {
 		super();
-		this.nombreMuestra1=nombreMuestra1;
-		this.nombreMuestra2=nombreMuestra2;
-		muestra1 = obtenerMuestra(nombreMuestra1);
-		muestra2 = obtenerMuestra(nombreMuestra2);
-		data1 = cargarTablaDeAnalisis(nombreMuestra1);
-		data2 = cargarTablaDeAnalisis(nombreMuestra2);
-		this.GUIComparacion = new GUIComparacion(muestra1,data1,muestra2,data2);
+		this.muestra1=muestra1;
+		this.muestra2=muestra2;
+		data1 = cargarTablaDeAnalisis(muestra1);
+		data2 = cargarTablaDeAnalisis(muestra2);
+		GUIComparacion = new GUIComparacion(muestra1,data1,muestra2,data2);
 		GUIComparacion.setTitle(titulo);
 		GUIComparacion.setModal(true);
-		this.GUIComparacion.setListenerButtons(this);
+		GUIComparacion.setListenerButtons(this);
 		GUIComparacion.show();
-	}
-	
-	/**
-	 * Permite recuperar una muestra1 de la base de datos. 
-	 * @param nombreMuestra, es el nombre de la muestra a buscar en la base de datos.
-	 * @return muestra, es la muestra con el nombre pasado como parametro.
-	 */
-	public Muestra obtenerMuestra(String nombreMuestra){
-		ControlClasificacion control = new ControlClasificacion();
-		Muestra muestra = new Muestra();
-		try {
-			muestra = control.obtenerMuestra(muestra.getClass(), nombreMuestra);
-		} catch (Exception e) {
-			System.out.println("No se pudo cargar la muestra1 a clasificar!!");
-			e.printStackTrace();
-		}
-		return muestra;
 	}
 	
 	/**
@@ -84,14 +64,14 @@ public class MediadorCompararMuestra extends Mediador{
 	 * @param nombreMuestra, es el nombre de la muestra de la cual se desean obtener los analisis.
 	 * @return data, es la tabla con los datos de los analisis correspondientes a la muestra.
 	 */
-	public Object [] [] cargarTablaDeAnalisis(String nombreMuestra)throws Exception{
-		Object [] [] data = new Object [20] [5];
+	public Object [] [] cargarTablaDeAnalisis(Muestra muestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
 		Class clase = analisis.getClass();
-		Collection muestras = control.coleccionAnalisisDeMuestra(clase, nombreMuestra);
+		Collection muestras = control.coleccionAnalisisDeMuestra(clase, muestra);
 		Iterator<Analisis> it = muestras.iterator();
 		int i = 0;
+		Object [] [] data = new Object [muestras.size()] [5];
 		while (it.hasNext()){
 			analisis = it.next();
 			data [i][0]= analisis.getTamiz().getNumeroTamiz();
