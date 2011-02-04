@@ -276,7 +276,7 @@ public class ControlClasificacion {
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
 		Class clase = analisis.getClass();
-		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(clase, muestra.getNombreMuestra());
+		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(clase, muestra);
 		Iterator<Analisis> it = coleccionAnalisis.iterator();
 		XYSeries series = new XYSeries("Nombre Muestra");
 		while (it.hasNext()){

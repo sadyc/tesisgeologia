@@ -25,22 +25,22 @@ public class ControlGestionarAnalisis {
         /**
          * Inserta un analisis con persistencia. 
          */ 
-        public String[] insertarAnalisis(Analisis analisis,String nombreMuestra, String numeroTamiz) throws Exception{
+        public String[] insertarAnalisis(Analisis analisis,Muestra muestra, String numeroTamiz) throws Exception{
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 Tamiz tamiz= new Tamiz();
-                Muestra muestra = new Muestra();
+                //Muestra muestra = new Muestra();
                 String[] data = new String [5];
                 List listaAnalisis = null;
                 try {
-                        Class claseMuestra= muestra.getClass();
-                        muestra = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
+                        //Class claseMuestra= muestra.getClass();
+                        //muestra = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
                         analisis.setMuestra(muestra);
                         Class claseTamiz = tamiz.getClass();
                         analisis.setTamiz((Tamiz)persistencia.buscarObjeto(claseTamiz, "numeroTamiz=='"+numeroTamiz+"'"));
                                                
                         analisis.setPorcentajeRetenidoParcial(truncaNum((analisis.getPesoRetenido()*100)/muestra.getPeso()));
-                        listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+nombreMuestra+"'");
+                        listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"'");
                         Integer porcentajeRetenidoAcumulado= 0;
                         if (listaAnalisis.isEmpty()){
                         	analisis.setPorcentajeRetenidoAcumulado(truncaNum((analisis.getPesoRetenido()*100)/muestra.getPeso()));
@@ -131,15 +131,13 @@ public class ControlGestionarAnalisis {
         /**
          * Retorna todos los elementos persistentes de la clase pasada como parametro.
          */
-        public Collection coleccionAnalisisDeMuestra(Class clase,String nombreMuestra) throws Exception {
+        public Collection coleccionAnalisisDeMuestra(Class clase,Muestra muestra) throws Exception {
                 Collection<Object> aux = null; 
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
-                
                 try {
-                		String filtro = "muestra.nombreMuestra=='"+nombreMuestra+"'";
-                		System.out.println(filtro+"la nombre de la muestar");
-                        aux = (persistencia.buscarColeccionFiltro(clase, filtro));
+                		String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'";
+                		aux = (persistencia.buscarColeccionFiltro(clase, filtro));
                         persistencia.cerrarTransaccion();
                         System.out.println("analisis coleccionados");
                 } catch (Exception e) {
@@ -174,26 +172,7 @@ public class ControlGestionarAnalisis {
                 		persistencia.realizarRollback();
                 }               
         }
-        
-        
-        /**
-    	 * Retorna la muestra persistente que cumpla con el nombre pasado como parametro.
-    	 * @param nombreMuestra
-    	 * @return
-    	 */
-    	public Muestra obtenerMuestra (Class clase, String nombreMuestra) throws Exception{
-    		Persistencia persistencia = new Persistencia();
-    		persistencia.abrirTransaccion();
-    		Muestra aux = new Muestra();
-    		try {
-    			aux =(Muestra)persistencia.buscarObjeto(clase, "nombreMuestra=='"+nombreMuestra+"'");
-    		}
-    		catch (Exception e) {
-    			persistencia.realizarRollback();
-    		}
-    		return aux;
-    	}
-        
+                      
     	/**
          * Trunca el numero a solo una decimal.
          * @param num
@@ -206,8 +185,20 @@ public class ControlGestionarAnalisis {
 	        valor = valor*10;
 	        valor = java.lang.Math.round(valor);
 	        valor = valor/10;
-	        System.out.println("estpyn en el truncado "+valor);
 	        return valor;
+        }
+        
+        public Analisis ultimoPesoRetenido(Muestra muestra) throws Exception{
+        	Persistencia persistencia = new Persistencia();
+    		persistencia.abrirTransaccion();
+    		Analisis aux = new Analisis();
+    		try {
+    			aux =(Analisis)persistencia.buscarObjeto(aux.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"'");
+    		}
+    		catch (Exception e) {
+    			persistencia.realizarRollback();
+    		}
+    		return aux;
         }
 }
 
