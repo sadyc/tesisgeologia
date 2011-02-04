@@ -107,7 +107,14 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 				GUIMuestraDetallada.setTitle("Detalles de la Muestra");
 				GUIMuestraDetallada.setListenerButtons(this);
 				GUIMuestraDetallada.setModal(true);
+				GUIMuestraDetallada.getjButtonAgregarAnalisis().setEnabled(false);
+				GUIMuestraDetallada.getjButtonEliminarAnalisis().setEnabled(false);
+				GUIMuestraDetallada.getjButtonModificarAnalisis().setEnabled(false);
+				GUIMuestraDetallada.getAgregarMenu().setEnabled(false);
+				GUIMuestraDetallada.getModificarMenu().setEnabled(false);
+				GUIMuestraDetallada.getEliminarMenu().setEnabled(false);
 				GUIMuestraDetallada.show();
+				
 			}			
 		}
 		catch (Exception e) {
