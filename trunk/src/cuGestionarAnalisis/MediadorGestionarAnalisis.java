@@ -39,7 +39,7 @@ public class MediadorGestionarAnalisis  extends Mediador{
 	public MediadorGestionarAnalisis(String titulo,Muestra muestra) throws Exception {
 		super();
 		this.muestra = muestra;
-		cargarTablaDeAnalisis(muestra.getNombreMuestra());
+		cargarTablaDeAnalisis();
 		gestionarAnalisis = new GUIGestionarAnalisis(titulo,data);
 		gestionarAnalisis.setListenerButtons(this);
 		show();
@@ -50,11 +50,11 @@ public class MediadorGestionarAnalisis  extends Mediador{
 	 * base de datos al atributo data de la clase mediador.
 	 * @param nombreMuestra 
 	 */
-	public void cargarTablaDeAnalisis(String nombreMuestra)throws Exception{
+	public void cargarTablaDeAnalisis()throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
 		Class clase = analisis.getClass();
-		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(clase, nombreMuestra);
+		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(clase,muestra);
 		Iterator<Analisis> it = coleccionAnalisis.iterator();
 		data = new Object [coleccionAnalisis.size()] [5];
 		int i = 0;

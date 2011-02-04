@@ -76,11 +76,11 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 		    data [i][4]= muestra.getProfundidadFinal();
 		    i++;
 		}
-		this.GUISeleccionarMuestra  = new GUISeleccionarMuestra(data);
+		GUISeleccionarMuestra  = new GUISeleccionarMuestra(data);
 		GUISeleccionarMuestra.setTitle("Seleccionar una muestra");
 		GUISeleccionarMuestra.setModal(true);
-		this.GUISeleccionarMuestra.setListenerButtons(this);
-		this.GUISeleccionarMuestra.setListenerTable(this);
+		GUISeleccionarMuestra.setListenerButtons(this);
+		GUISeleccionarMuestra.setListenerTable(this);
 		GUISeleccionarMuestra.show();
 	}
 
@@ -188,9 +188,6 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 		return seleccionoMuestra;
 	}
 
-	public void show(){
-		GUIABMMuestra.show();
-	}
 	/**
 	 * Metodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 

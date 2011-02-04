@@ -25,7 +25,7 @@ import cuGestionarAnalisis.ControlGestionarAnalisis;
  */
 public class MediadorCalcularClasificacion extends Mediador{
 	private GUIClasificacion GUIClasificacion;
-	private String nombreMuestra;
+	
 	private Muestra muestra = new Muestra();
 	private Object [][] data;
 	
@@ -49,7 +49,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	 */
 	public MediadorCalcularClasificacion(String titulo, Muestra muestra) throws Exception {
 		super();
-		cargarTablaDeAnalisis(muestra.getNombreMuestra());
+		cargarTablaDeAnalisis(muestra);
 		ControlClasificacion control = new ControlClasificacion();
 		SUCS clasificacion = new SUCS();
 		control.calcularClasificacionSUCS(muestra,clasificacion);
@@ -63,28 +63,15 @@ public class MediadorCalcularClasificacion extends Mediador{
 	}
 	
 	/**
-	 * Permite recuperar una muestra de la base de datos. 
-	 */
-	public void obtenerMuestra(){
-		ControlClasificacion control = new ControlClasificacion();
-		try {
-			this.muestra = control.obtenerMuestra(muestra.getClass(), nombreMuestra);
-		} catch (Exception e) {
-			System.out.println("No se pudo cargar la muestra a clasificar!!");
-			e.printStackTrace();
-		}
-	}
-	
-	/**
 	 * Levanta informacion almacenada en la 
 	 * base de datos al atributo data de la clase mediador.
 	 * @param nombreMuestra 
 	 */
-	public void cargarTablaDeAnalisis(String nombreMuestra)throws Exception{
+	public void cargarTablaDeAnalisis(Muestra muestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
 		Class clase = analisis.getClass();
-		Collection muestras = control.coleccionAnalisisDeMuestra(clase, nombreMuestra);
+		Collection muestras = control.coleccionAnalisisDeMuestra(clase, muestra);
 		Iterator<Analisis> it = muestras.iterator();
 		data = new Object [muestras.size()] [5];
 		int i = 0;

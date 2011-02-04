@@ -74,10 +74,6 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        jLabelMuestra = new javax.swing.JLabel();
-        jLabelPeso = new javax.swing.JLabel();
-        jLabelUbicacion = new javax.swing.JLabel();
-        pesoRetenido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabelTamiz = new javax.swing.JLabel();
         jButtonSeleccionarTamiz = new javax.swing.JButton();
@@ -93,15 +89,8 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabelMuestra.setText("Muestra: ");
-
-        jLabelPeso.setText("Peso: ");
-
-        jLabelUbicacion.setText("Ubicacion: ");
-
-        jLabel4.setText("Peso retenido por el tamiz: ");
-
-        jLabelTamiz.setText("Tamiz:");
+        jLabel4.setText("Peso retenido por el Tamiz: ");
+        jLabelTamiz.setText("Tamiz: ");
 
         jButtonSeleccionarTamiz.setText("Seleccionar Tamiz");
         jButtonSeleccionarTamiz.addActionListener(new java.awt.event.ActionListener() {

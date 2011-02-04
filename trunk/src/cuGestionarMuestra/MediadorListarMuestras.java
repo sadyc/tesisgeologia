@@ -40,12 +40,12 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 	public MediadorListarMuestras() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		this.GUIABMMuestra = new GUIABMMuestra("Lista de Muestras",data);
-		this.GUIABMMuestra.setListenerButtons(this);
-		this.GUIABMMuestra.setListenerTable(this);
-		this.GUIABMMuestra.setMouseListener(this);
-		this.GUIABMMuestra.setKeyListener(this);
-		this.GUIABMMuestra.addActionListener(this);
+		GUIABMMuestra = new GUIABMMuestra("Lista de Muestras",data);
+		GUIABMMuestra.setListenerButtons(this);
+		GUIABMMuestra.setListenerTable(this);
+		GUIABMMuestra.setMouseListener(this);
+		GUIABMMuestra.setKeyListener(this);
+		GUIABMMuestra.addActionListener(this);
 		GUIABMMuestra.getJButtonAgregar().setEnabled(false);
 		GUIABMMuestra.getAgregarMenu().setEnabled(false);
 		GUIABMMuestra.getJButtonEliminar().setEnabled(false);
@@ -101,27 +101,22 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 	public void detallarMuestra(){
 		try {
 			if (seSeleccionoMuestra()){
-				this.nombreMuestra1 = (String)getSeleccionado()[1];
-				muestra1 = obtenerMuestra(nombreMuestra1);
-				dataAnalisis = cargarTablaDeAnalisis(nombreMuestra1);
-				this.GUIMuestraDetallada= new GUIMuestraDetallada(muestra1,dataAnalisis);
+				muestra1 = getSeleccionado();
+				dataAnalisis = cargarTablaDeAnalisis(muestra1);
+				GUIMuestraDetallada= new GUIMuestraDetallada(muestra1,dataAnalisis);
 				GUIMuestraDetallada.setTitle("Detalles de la Muestra");
-				this.GUIMuestraDetallada.setListenerButtons(this);
+				GUIMuestraDetallada.setListenerButtons(this);
 				GUIMuestraDetallada.setModal(true);
 				GUIMuestraDetallada.show();
 			}			
-			}
+		}
 		catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("No se puede detallar la muestra por alguna razon rara"); 
 		}
 	  
 	}
-	
-	public void show(){
-		GUIABMMuestra.show();
-	}
-	
+		
 	/**
 	 * Permite recuperar una muestra de la base de datos. 
 	 * @param nombreMuestra, es el nombre de la muestra a buscar en la base de datos.
@@ -145,14 +140,15 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 	 * @param nombreMuestra, es el nombre de la muestra de la cual se desean obtener los analisis.
 	 * @return data, es la tabla con los datos de los analisis correspondientes a la muestra.
 	 */
-	public Object [] [] cargarTablaDeAnalisis(String nombreMuestra)throws Exception{
-		Object [] [] data = new Object [20] [5];
+	public Object [] [] cargarTablaDeAnalisis(Muestra muestra)throws Exception{
+		
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
 		Class clase = analisis.getClass();
-		Collection muestras = control.coleccionAnalisisDeMuestra(clase, nombreMuestra);
+		Collection muestras = control.coleccionAnalisisDeMuestra(clase, muestra);
 		Iterator<Analisis> it = muestras.iterator();
 		int i = 0;
+		Object [] [] data = new Object [muestras.size()] [5];
 		while (it.hasNext()){
 			analisis = it.next();
 			data [i][0]= analisis.getTamiz().getNumeroTamiz();
@@ -184,8 +180,10 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 	/**
 	 * @return the seleccionado
 	 */
-	public Object[] getSeleccionado() {
-		return seleccionado;
+	public Muestra getSeleccionado() throws Exception {
+		ControlGestionarMuestra control = new ControlGestionarMuestra();
+		Muestra muestra = (control.obtenerMuestra((String)seleccionado[1],(String)seleccionado[0]));
+		return muestra;
 	}
 	
 	/**
