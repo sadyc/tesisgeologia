@@ -32,7 +32,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	private OperadorDeLaboratorio op = new OperadorDeLaboratorio();
 	private Ubicacion ubicacion = new Ubicacion();
 	private Usuario usuario = new Usuario();
-	private Date fecha = new Date(12,12,1222);
+	private java.sql.Date fecha;
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
 		
 	

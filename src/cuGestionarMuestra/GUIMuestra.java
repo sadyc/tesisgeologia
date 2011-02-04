@@ -10,6 +10,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+
 import javax.swing.JTextField;
 
 	/*
@@ -53,10 +54,17 @@ import javax.swing.JTextField;
 	    private javax.swing.JTextField profundidadFinal;
 	    // End of variables declaration
 
+
 	    
 	    /** Creates new form GUIMuestra */
 	    public GUIMuestra(boolean modal) {
 	        super();
+	        nombre = new JTextField(15);
+			profundidadInicial = new JTextField(15);
+			profundidadFinal = new JTextField(15);
+			peso = new JTextField(15);
+			ubicacion = new JLabel("(*) Ubicacion: ");
+			operador = new JLabel ("(*) Operador: ");
 	        initComponents();
 	        setModal(true);
 	        this.setLocationRelativeTo(null);
@@ -79,13 +87,15 @@ import javax.swing.JTextField;
 			profundidadFinal.setText(fila[4]);
 			ubicacion = new JLabel("(*) Ubicacion: "+ fila[0]);
 			operador = new JLabel ("(*) Operador: "+ nombreOperador);
-			aceptar = new JButton("AGREGAR");
-			cancelar = new JButton("CANCELAR");
+			
 			seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
 			seleccionarOperador = new JButton("SELECCIONAR OPERADOR");
 			
 			initComponents();
 		}
+
+	    
+	    
 
 	    /** This method is called from within the constructor to
 	     * initialize the form.
@@ -95,6 +105,7 @@ import javax.swing.JTextField;
 	    @SuppressWarnings("unchecked")
 	    // <editor-fold defaultstate="collapsed" desc="Generated Code">
 	    private void initComponents() {
+
 
 	        
 	        jLabel1 = new javax.swing.JLabel();
@@ -110,6 +121,26 @@ import javax.swing.JTextField;
 	        cancelarMenu = new javax.swing.JMenuItem();
 	        jMenu2 = new javax.swing.JMenu();
 	        versionMenu = new javax.swing.JMenuItem();
+	        aceptar = new JButton("AGREGAR");
+			cancelar = new JButton("CANCELAR");
+	        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+	        setTitle("Cargar Muestra\n");
+	        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+	        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+	        setModal(true);
+	        addMouseListener(new java.awt.event.MouseAdapter() {
+	            public void mouseClicked(java.awt.event.MouseEvent evt) {
+	                formMouseClicked(evt);
+	            }
+	        });
+
+	        
+	        
+
+
+
+	        
+	        aceptar.setAutoscrolls(true);
 
 	        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 	        setTitle("Cargar Muestra\n");
@@ -122,8 +153,7 @@ import javax.swing.JTextField;
 	            }
 	        });
 
-	        aceptar.setText("Agregar");
-	        aceptar.setAutoscrolls(true);
+
 
 	        cancelar.setText("Cancelar");
 	        cancelar.setAutoscrolls(true);
@@ -133,13 +163,34 @@ import javax.swing.JTextField;
 	            }
 	        });
 
+
+
 	        nombre.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
 	                jTextField1ActionPerformed(evt);
 	            }
 	        });
 
+	        
+	        cancelar.setAutoscrolls(true);
+	        cancelar.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                jButton2ActionPerformed(evt);
+	            }
+	        });
+
+
+	        nombre.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                jTextField1ActionPerformed(evt);
+	            }
+	        });
+
+
+
 	        peso.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+
 
 	        profundidadInicial.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,21 +198,30 @@ import javax.swing.JTextField;
 	            }
 	        });
 
+
 	        profundidadFinal.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
 	                jTextField4ActionPerformed(evt);
 	            }
 	        });
 
+
 	        jLabel1.setText("(*) Nombre: ");
 
-	        jLabel2.setText("(*) Peso: gr");
+
 
 	        jLabel3.setText("(*) Profundidad Inicial : mts");
 
+	        jLabel2.setText("(*) Peso: gr");
+
+
 	        jLabel4.setText("(*) Profundidad Final : mts");
 
+	        jLabel3.setText("(*) Profundidad Inicial : mts");
+
 	        seleccionarUbicacion.setText("Seleccionar Ubicación");
+
+	        jLabel4.setText("(*) Profundidad Final : mts");
 
 	        seleccionarOperador.setText("Seleccionar Operador");
 
