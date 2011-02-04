@@ -132,23 +132,6 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 	}
 		
 	/**
-	 * Permite recuperar una muestra de la base de datos. 
-	 * @param nombreMuestra, es el nombre de la muestra a buscar en la base de datos.
-	 * @return muestra, es la muestra con el nombre pasado como parametro.
-	 */
-	public Muestra obtenerMuestra(String nombreMuestra){
-		ControlClasificacion control = new ControlClasificacion();
-		Muestra muestra = new Muestra();
-		try {
-			muestra = control.obtenerMuestra(muestra.getClass(), nombreMuestra);
-		} catch (Exception e) {
-			System.out.println("No se pudo cargar la muestra a clasificar!!");
-			e.printStackTrace();
-		}
-		return muestra;
-	}
-	
-	/**
 	 * Levanta informacion almacenada en la 
 	 * base de datos al atributo dataAnalisis de la clase mediador.
 	 * @param nombreMuestra, es el nombre de la muestra de la cual se desean obtener los analisis.

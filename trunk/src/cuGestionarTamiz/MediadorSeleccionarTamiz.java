@@ -25,9 +25,9 @@ public class MediadorSeleccionarTamiz extends Mediador{
 	private Component frame;
 	
 	
-	public MediadorSeleccionarTamiz() throws Exception {
+	public MediadorSeleccionarTamiz(Double abertura) throws Exception {
 		super();
-		cargarTablaDeTamiz();
+		cargarTablaDeTamiz(abertura);
 		this.GUISeleccionarTamiz = new GUISeleccionarTamiz(data);
 		GUISeleccionarTamiz.setTitle("Seleccionar un Tamiz");
 		GUISeleccionarTamiz.setModal(true);
@@ -39,12 +39,13 @@ public class MediadorSeleccionarTamiz extends Mediador{
 	/**
 	 * Levanta informacion almacenada en la 
 	 * base de datos al atributo data de la clase mediador.
+	 * @param abertura 
 	 */
-	public void cargarTablaDeTamiz()throws Exception{
-		ControlGestionarMuestra control = new ControlGestionarMuestra();
+	public void cargarTablaDeTamiz(Double abertura)throws Exception{
+		ControlTamiz control = new ControlTamiz();
 		Tamiz tamiz = new Tamiz();
 		Class clase = tamiz.getClass();
-		Collection tamices = control.coleccionMuestras(clase);
+		Collection tamices = control.coleccionTamicesFiltro(abertura);
 		Iterator<Tamiz> it = tamices.iterator();
 		data =  new Object [tamices.size()] [2];
 		int i = 0;

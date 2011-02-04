@@ -62,6 +62,20 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 		jLabelMuestra = new JLabel("Muestra: "+muestra.getNombreMuestra());
 		jLabelUbicacion = new JLabel("Ubicacion: "+muestra.getUbicacion().getNombreUbicacion());
 		jLabelPeso = new JLabel("Peso: "+muestra.getPeso());
+		jLabelTamiz = new javax.swing.JLabel();
+		jLabelTamiz.setText("Tamiz: ");
+		initComponents();
+	}
+    
+    public GUIAltaAnalisis(Muestra muestra,Float peso, String numeroTamiz) {
+		super();
+		pesoRetenido = new JTextField(15);
+		pesoRetenido.setText(peso.toString());
+		jLabelMuestra = new JLabel("Muestra: "+muestra.getNombreMuestra());
+		jLabelUbicacion = new JLabel("Ubicacion: "+muestra.getUbicacion().getNombreUbicacion());
+		jLabelPeso = new JLabel("Peso: "+muestra.getPeso());
+		jLabelTamiz = new javax.swing.JLabel();
+		jLabelTamiz.setText("Tamiz: "+numeroTamiz);
 		initComponents();
 	}
 
@@ -75,7 +89,6 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
-        jLabelTamiz = new javax.swing.JLabel();
         jButtonSeleccionarTamiz = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
@@ -90,14 +103,13 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel4.setText("Peso retenido por el Tamiz: ");
-        jLabelTamiz.setText("Tamiz: ");
-
+        
         jButtonSeleccionarTamiz.setText("Seleccionar Tamiz");
         jButtonSeleccionarTamiz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSeleccionarTamizActionPerformed(evt);
             }
-        });
+        });        
 
         aceptar.setText("Agregar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {

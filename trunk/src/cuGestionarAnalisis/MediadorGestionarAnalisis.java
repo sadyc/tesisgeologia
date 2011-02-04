@@ -146,7 +146,7 @@ public class MediadorGestionarAnalisis  implements ActionListener, KeyListener, 
 		}
 		else{
 			String [] fila = muestraDetallada.getTablePanel1().getRow(muestraDetallada.getTablePanel1().getSelectedRow());
-			new MediadorModificarAnalisis(muestra.getNombreMuestra(),Float.parseFloat(fila[1]),(String)fila[0]);
+			new MediadorModificarAnalisis(muestra,Float.parseFloat(fila[1]),(String)fila[0]);
 			muestraDetallada.dispose();
 			try {
 				new MediadorGestionarAnalisis("Analisis de la muestra "+muestra.getNombreMuestra(), muestra);

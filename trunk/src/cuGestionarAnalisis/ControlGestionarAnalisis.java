@@ -103,16 +103,16 @@ public class ControlGestionarAnalisis {
     				if (i==0){
     					System.out.println("i = 0");
     					analisis = (Analisis)listaAnalisis.get(i);
-    					analisis.setPorcentajeRetenidoAcumulado((analisis.getPesoRetenido()*100)/muestra.getPeso());
-                    	analisis.setPorcentajePasante(100-analisis.getPorcentajeRetenidoParcial());
+    					analisis.setPorcentajeRetenidoAcumulado(truncaNum(analisis.getPesoRetenido()*100)/muestra.getPeso());
+                    	analisis.setPorcentajePasante(truncaNum(100-analisis.getPorcentajeRetenidoParcial()));
                     	persistencia.insertarObjeto(analisis);
     				}else{
     					System.out.println("i > 0");
     					Analisis auxAnalisis = new Analisis();
     					auxAnalisis = (Analisis)listaAnalisis.get(i-1);
     					analisis = (Analisis)listaAnalisis.get(i);
-    					analisis.setPorcentajePasante(auxAnalisis.getPorcentajePasante()- analisis.getPorcentajeRetenidoParcial());
-    					analisis.setPorcentajeRetenidoAcumulado(auxAnalisis.getPorcentajeRetenidoAcumulado()+ analisis.getPorcentajeRetenidoParcial());
+    					analisis.setPorcentajePasante(truncaNum(auxAnalisis.getPorcentajePasante()- analisis.getPorcentajeRetenidoParcial()));
+    					analisis.setPorcentajeRetenidoAcumulado(truncaNum(auxAnalisis.getPorcentajeRetenidoAcumulado()+ analisis.getPorcentajeRetenidoParcial()));
     					persistencia.insertarObjeto(analisis);
     				}
     				i++;
@@ -145,26 +145,17 @@ public class ControlGestionarAnalisis {
                 return aux;
         }
         
-        public void ModificarAnalisis(Float pesoRetenido,String nombreMuestra, String numeroTamiz) throws Exception {
+        public void ModificarAnalisis(Float pesoRetenido,Muestra muestra, String numeroTamiz) throws Exception {
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 Analisis analisis = new Analisis();
                 try {
-                	Analisis auxAnalisis = new Analisis();
-        			Class clase = auxAnalisis.getClass();
-        			Collection coleccionAnalisis = persistencia.buscarColeccionFiltro(clase, "muestra.nombreMuestra=='"+nombreMuestra+"'");
-        			Iterator<Analisis> it = coleccionAnalisis.iterator();
-        			int i = 0;
-        			while (it.hasNext()&& numeroTamiz!=auxAnalisis.getTamiz().getNumeroTamiz().toString()){
-        				auxAnalisis = it.next();
-        			    i++;
-        			}
-        			Muestra muestra = new Muestra();
-        			muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"'");
-        			auxAnalisis.setPesoRetenido(pesoRetenido);
-        			auxAnalisis.setPorcentajeRetenidoParcial((auxAnalisis.getPesoRetenido()*100)/muestra.getPeso());
+                	System.out.println(numeroTamiz);
+                	analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && tamiz.numeroTamiz=='"+numeroTamiz+"'");
+        			analisis.setPesoRetenido(pesoRetenido);
+        			analisis.setPorcentajeRetenidoParcial(truncaNum(analisis.getPesoRetenido()*100)/muestra.getPeso());
         			persistencia.cerrarTransaccion();
-        			System.out.println("Muestra eliminada con persistencia");
+        			System.out.println("Muestra modificada con persistencia");
                 }
                 catch (Exception e) {
                         e.printStackTrace();
@@ -221,13 +212,15 @@ public class ControlGestionarAnalisis {
     		try {
     			listaAnalisis =persistencia.buscarListaFiltro(aux.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
     			int i = 0;
-    			while(i<listaAnalisis.size()){
-    				aux = (Analisis)listaAnalisis.get(i);
-    				resultado = resultado + aux.getPesoRetenido();
-    				i++;
+    			if (!listaAnalisis.isEmpty()){
+    	    			while(i<listaAnalisis.size()){
+    	    				aux = (Analisis)listaAnalisis.get(i);
+    	    				resultado = resultado + aux.getPesoRetenido();
+    	    				i++;
+    	    			}
     			}
     			persistencia.cerrarTransaccion();
-    		}
+    			}
     		catch (Exception e) {
     			e.printStackTrace();
     			persistencia.realizarRollback();

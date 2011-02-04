@@ -1,8 +1,11 @@
 package cuGestionarAnalisis;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JOptionPane;
 
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
@@ -18,27 +21,29 @@ import comun.Mediador;
  */
 
 public class MediadorModificarAnalisis  extends Mediador{
-	
-	private GUIModificarAnalisis GUIAnalisis;
+	private Muestra muestra;
+	private GUIAltaAnalisis GUIAnalisis;
 	private String pesoRetenido;
 	private Analisis analisis;
 	private String numeroTamiz;
-	private String nombreMuestra;
-	private ControlGestionarAnalisis control ; 
+	private boolean modifico = false;
+	private ControlGestionarAnalisis control ;
+	private Component frame;
 	
 	/**
 	 * This is the default constructor
 	 */
-	public MediadorModificarAnalisis(String nombreMuestra,Float f,String numeroTamiz) {
+	public MediadorModificarAnalisis(Muestra muestra,Float pesoRetenido,String numeroTamiz) {
 		super();
+		this.muestra = muestra;
 		control = new ControlGestionarAnalisis();
 		this.numeroTamiz = numeroTamiz;
 		analisis = new Analisis();
-		this.nombreMuestra = nombreMuestra;
-		this.GUIAnalisis = new GUIModificarAnalisis(f);
-		GUIAnalisis.setTitle("Modificar el peso retenido del tamizado de una Muestra");
+		GUIAnalisis = new GUIAltaAnalisis(muestra,pesoRetenido,numeroTamiz);
+		GUIAnalisis.setTitle("Modificar el peso retenido del tamizado de la muestra: "+muestra.getNombreMuestra());
 		GUIAnalisis.setModal(true);
-		this.GUIAnalisis.setListenerButtons(this);
+		GUIAnalisis.getJButtonSeleccionarTamiz().setEnabled(false);
+		GUIAnalisis.setListenerButtons(this);
 		show();
 	}
 	
@@ -57,7 +62,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 	/**
 	 * @return the altaMuestra
 	 */
-	public GUIModificarAnalisis getAnalisis() {
+	public GUIAltaAnalisis getAnalisis() {
 		return GUIAnalisis;
 	}	
 	
@@ -67,11 +72,10 @@ public class MediadorModificarAnalisis  extends Mediador{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		
-     	if (this.GUIAnalisis.getJButtonAceptar() == source){
+		if (this.GUIAnalisis.getJButtonAceptar() == source){
 			aceptar();
 		}
-		if (this.GUIAnalisis.getJButtonSalir() == source){
+		if (this.GUIAnalisis.getJButtonCancelar() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			GUIAnalisis.dispose();
 		}
@@ -83,16 +87,24 @@ public class MediadorModificarAnalisis  extends Mediador{
 	public void aceptar(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAceptar");
 		pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
-		Muestra muestra = new Muestra ();
-		muestra.setNombreMuestra(nombreMuestra);
 		analisis.setMuestra(muestra);
-		try {
-			control.ModificarAnalisis(Float.parseFloat(pesoRetenido), nombreMuestra, numeroTamiz);
-			control.recalcularAnalisis(analisis);//REcalcular Todo por aca o por otro lado
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (pesoRetenido.equals("")){
+			JOptionPane.showMessageDialog(frame,"No ingreso un peso retenido","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
-		GUIAnalisis.dispose();
+		else{
+			if (Float.parseFloat(pesoRetenido)> muestra.getPeso()){
+				JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso de la muestra que es: "+muestra.getPeso(),"ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+			else{
+				try {
+					control.ModificarAnalisis(Float.parseFloat(pesoRetenido), muestra, numeroTamiz);
+					control.recalcularAnalisis(analisis);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				GUIAnalisis.dispose();
+			}
+		}
 	}
 
 	public void itemStateChanged(ItemEvent arg0) {
