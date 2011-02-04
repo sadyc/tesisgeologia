@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import persistencia.domain.Muestra;
 import cuBuscar.MediadorBuscar;
 import cuCompararMuestra.GUISeleccionarMuestra;
+import cuGestionarAnalisis.ControlGestionarAnalisis;
 
 
 /**
@@ -129,7 +130,8 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 			seleccionarMuestra();
 		}
 		if (this.GUIABMMuestra.getBuscarMenu() == source){
-	   		buscarMuestra();
+			GUISeleccionarMuestra.dispose();
+			buscarMuestra();
 		}
 		if (this.GUIABMMuestra.getJButtonSalir() == source){
 			GUIABMMuestra.dispose();
@@ -163,17 +165,20 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 		try {
    			System.out.println("Button Buscar Muestra");
    			new MediadorBuscar();	
-			
-   		} catch (Exception e) {
+		} catch (Exception e) {
+
 			e.printStackTrace();
 		}
 	}
 	
 	/**
 	 * @return the seleccionado
+	 * @throws Exception 
 	 */
-	public Object[] getSeleccionado() {
-		return seleccionado;
+	public Muestra getSeleccionado() throws Exception {
+		ControlGestionarMuestra control = new ControlGestionarMuestra();
+		Muestra muestra = (control.obtenerMuestra((String)seleccionado[1],(String)seleccionado[0]));
+		return muestra;
 	}
 	
 	/**

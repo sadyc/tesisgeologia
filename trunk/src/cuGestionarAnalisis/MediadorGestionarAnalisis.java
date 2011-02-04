@@ -27,7 +27,7 @@ import comun.Mediador;
 public class MediadorGestionarAnalisis  extends Mediador{
 	
 	private GUIGestionarAnalisis gestionarAnalisis;
-	private String nombreMuestra;
+	private Muestra muestra;
 	private Analisis analisis;
 	private Object [][] data;
 	private Component frame;
@@ -36,12 +36,12 @@ public class MediadorGestionarAnalisis  extends Mediador{
 	 * This is the default constructor
 	 * @throws Exception 
 	 */
-	public MediadorGestionarAnalisis(String titulo,String nombreMuestra) throws Exception {
+	public MediadorGestionarAnalisis(String titulo,Muestra muestra) throws Exception {
 		super();
-		this.nombreMuestra = nombreMuestra;
-		cargarTablaDeAnalisis(nombreMuestra);
-		this.gestionarAnalisis = new GUIGestionarAnalisis(titulo,data);
-		this.gestionarAnalisis.setListenerButtons(this);
+		this.muestra = muestra;
+		cargarTablaDeAnalisis(muestra.getNombreMuestra());
+		gestionarAnalisis = new GUIGestionarAnalisis(titulo,data);
+		gestionarAnalisis.setListenerButtons(this);
 		show();
 	}
 	
@@ -115,8 +115,6 @@ public class MediadorGestionarAnalisis  extends Mediador{
             if(quitOption==JOptionPane.YES_OPTION){
             	ControlGestionarAnalisis control = new ControlGestionarAnalisis();
             	String [] fila = gestionarAnalisis.getTablePanel().getRow(gestionarAnalisis.getTablePanel().getSelectedRow());
-            	Muestra muestra = new Muestra();
-            	muestra.setNombreMuestra(nombreMuestra);
             	Tamiz tamiz = new Tamiz();
             	tamiz.setNumeroTamiz(fila[0]);
               	analisis = new Analisis(Float.parseFloat(fila[1]),muestra,tamiz);
@@ -124,7 +122,7 @@ public class MediadorGestionarAnalisis  extends Mediador{
 					control.eliminarAnalisis(analisis);
 					control.recalcularAnalisis(analisis);
 					gestionarAnalisis.dispose();
-					new MediadorGestionarAnalisis("Analisis de la muestra "+nombreMuestra, nombreMuestra);
+					new MediadorGestionarAnalisis("Analisis de la muestra "+ muestra.getNombreMuestra(), muestra);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}              	    	
@@ -142,10 +140,10 @@ public class MediadorGestionarAnalisis  extends Mediador{
 		}
 		else{
 			String [] fila = gestionarAnalisis.getTablePanel().getRow(gestionarAnalisis.getTablePanel().getSelectedRow());
-			new MediadorModificarAnalisis(nombreMuestra,Float.parseFloat(fila[1]),(String)fila[0]);
+			new MediadorModificarAnalisis(muestra.getNombreMuestra(),Float.parseFloat(fila[1]),(String)fila[0]);
 			gestionarAnalisis.dispose();
 			try {
-				new MediadorGestionarAnalisis("Analisis de la muestra "+nombreMuestra, nombreMuestra);
+				new MediadorGestionarAnalisis("Analisis de la muestra "+muestra.getNombreMuestra(), muestra);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
@@ -157,7 +155,7 @@ public class MediadorGestionarAnalisis  extends Mediador{
 	 */
 	public void agregarAnalisis(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
-		MediadorAltaAnalisis altaAnalisis = new MediadorAltaAnalisis(nombreMuestra);
+		MediadorAltaAnalisis altaAnalisis = new MediadorAltaAnalisis(muestra);
 		if (altaAnalisis.isAltaAnalisis()){
 			this.gestionarAnalisis.getTablePanel().addRow(altaAnalisis.getData());
 		}

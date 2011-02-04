@@ -44,14 +44,12 @@ public class MediadorCalcularClasificacion extends Mediador{
 	/**
 	 * 
 	 * @param titulo
-	 * @param nombreMuestra
+	 * @param muestra
 	 * @throws Exception
 	 */
-	public MediadorCalcularClasificacion(String titulo, String nombreMuestra) throws Exception {
+	public MediadorCalcularClasificacion(String titulo, Muestra muestra) throws Exception {
 		super();
-		this.nombreMuestra=nombreMuestra;
-		obtenerMuestra();
-		cargarTablaDeAnalisis(nombreMuestra);
+		cargarTablaDeAnalisis(muestra.getNombreMuestra());
 		ControlClasificacion control = new ControlClasificacion();
 		SUCS clasificacion = new SUCS();
 		control.calcularClasificacionSUCS(muestra,clasificacion);
