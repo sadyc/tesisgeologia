@@ -34,15 +34,13 @@ public class MediadorAltaAnalisis  extends Mediador{
 	/**
 	 * This is the default constructor
 	 */
-	public MediadorAltaAnalisis(String nombreMuestra) {
+	public MediadorAltaAnalisis(Muestra muestra) {
 		super();
 		analisis = new Analisis();
-		this.nombreMuestra = nombreMuestra;
-		obtenerMuestra();
-		this.GUIAnalisis = new GUIAltaAnalisis(muestra);
+		GUIAnalisis = new GUIAltaAnalisis(muestra);
 		GUIAnalisis.setTitle("Analisis por Tamiz de una Muestra");
 		GUIAnalisis.setModal(true);
-		this.GUIAnalisis.setListenerButtons(this);
+		GUIAnalisis.setListenerButtons(this);
 		show();
 	}
 	
@@ -91,7 +89,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 	   	if (this.GUIAnalisis.getJButtonSeleccionarTamiz() == source){
 			seleccionarTamiz();
 		}
-		if (this.GUIAnalisis.getJButtonSalir() == source){
+		if (this.GUIAnalisis.getJButtonCancelar() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			GUIAnalisis.dispose();
 		}

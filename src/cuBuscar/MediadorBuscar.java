@@ -36,7 +36,7 @@ public class MediadorBuscar extends Mediador{
 		super();
 		encuentra = false;
 		GUIBuscar = new GUIBuscar();
-		GUIBuscar.setTitle("Buscar");
+		GUIBuscar.setTitle("Buscar Muestra");
 		GUIBuscar.setListenerButtons(this);
 		GUIBuscar.show();
 	}
@@ -70,7 +70,8 @@ public class MediadorBuscar extends Mediador{
 			JOptionPane.showMessageDialog(frame,"No se encontro ninguna muestra con ese Operador de laboratorio","ATENCION", JOptionPane.WARNING_MESSAGE);
 		}
 		else{
-			MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra(coleccion); 
+			GUIBuscar.dispose();
+			MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra(coleccion);
 		}
 	}
 
@@ -80,7 +81,8 @@ public class MediadorBuscar extends Mediador{
 			JOptionPane.showMessageDialog(frame,"No se encontro ninguna muestra con esa ubicacion","ATENCION", JOptionPane.WARNING_MESSAGE);
 		}
 		else{
-			MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra(coleccion); 
+			GUIBuscar.dispose();
+			MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra(coleccion);
 		}
 		
 	}
@@ -91,18 +93,24 @@ public class MediadorBuscar extends Mediador{
 			JOptionPane.showMessageDialog(frame,"No se encontro ninguna muestra con ese nombre","ATENCION", JOptionPane.WARNING_MESSAGE);
 		}
 		else{
-			MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra(coleccion); 
+			GUIBuscar.dispose();
+			MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra(coleccion);
 		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIBuscar.getJButtonBuscar() == source) {
+		if (this.GUIBuscar.getJButtonBuscar() == source || this.GUIBuscar.getjMenuItem1() == source) {
 			buscar();
 		}
-		if (this.GUIBuscar.getJButtonCancelar() == source){
+		if (this.GUIBuscar.getJButtonCancelar() == source || this.GUIBuscar.getjMenuItem2() == source){
 			GUIBuscar.dispose();
+			try {
+				MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

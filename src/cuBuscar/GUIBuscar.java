@@ -37,7 +37,6 @@ public class GUIBuscar extends javax.swing.JDialog {
     /** Creates new form GUIBuscar */
     public GUIBuscar() {
     	super();
-    	System.out.println("antes de abrir ventana de buscar");
     	setModal(true);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -185,24 +184,20 @@ public class GUIBuscar extends javax.swing.JDialog {
 		return jComboBox1;
 	}
 	
-
     /**
-    * @param args the command line arguments
-    
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                GUIBuscar dialog = new GUIBuscar(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }*/
+	 * @return the jMenuItem1
+	 */
+	public JMenuItem getjMenuItem1() {
+		return jMenuItem1;
+	}
 
-   
+	/**
+	 * @return the jMenuItem2
+	 */
+	public JMenuItem getjMenuItem2() {
+		return jMenuItem2;
+	}
+
+	
 
 }

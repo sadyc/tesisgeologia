@@ -93,7 +93,7 @@ public class MediadorPrincipal implements ActionListener{
 		try {
 			MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra();
 			if (seleccion.seSeleccionoMuestra()){
-				new MediadorGestionarAnalisis("Analisis de la muestra "+(String)seleccion.getSeleccionado()[1], (String)seleccion.getSeleccionado()[1]);
+				new MediadorGestionarAnalisis("Analisis de la muestra "+seleccion.getSeleccionado().getNombreMuestra(), seleccion.getSeleccionado());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -108,7 +108,7 @@ public class MediadorPrincipal implements ActionListener{
 		try {
 			MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
 			if (seleccionarMuestra.seSeleccionoMuestra()){
-				new MediadorCalcularClasificacion("Clasificacion",(String)seleccionarMuestra.getSeleccionado()[1]);
+				new MediadorCalcularClasificacion("Clasificacion",seleccionarMuestra.getSeleccionado());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -135,10 +135,10 @@ public class MediadorPrincipal implements ActionListener{
 		try {
 			MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
 			if (seleccionarMuestra.seSeleccionoMuestra()){
-				String muestra1 = (String)seleccionarMuestra.getSeleccionado()[1];
+				String muestra1 = seleccionarMuestra.getSeleccionado().getNombreMuestra();
 				seleccionarMuestra = new MediadorSeleccionarMuestra();
 				if (seleccionarMuestra.seSeleccionoMuestra()){
-					String muestra2 = (String)seleccionarMuestra.getSeleccionado()[1];
+					String muestra2 = seleccionarMuestra.getSeleccionado().getNombreMuestra();
 					new MediadorCompararMuestra("Comparacion de Muestras",muestra1,muestra2);
 				}
 			}
@@ -155,7 +155,7 @@ public class MediadorPrincipal implements ActionListener{
 		try {
 			MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
 			if (seleccionarMuestra.seSeleccionoMuestra()){
-				new MediadorAltaLimiteConsistencia((String)seleccionarMuestra.getSeleccionado()[1]);
+				new MediadorAltaLimiteConsistencia(seleccionarMuestra.getSeleccionado().getNombreMuestra());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
