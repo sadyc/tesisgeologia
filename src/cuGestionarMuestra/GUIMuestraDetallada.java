@@ -36,10 +36,15 @@ public class GUIMuestraDetallada extends JDialog{
 	private JMenuBar menu ;
 	private JMenu herramientas;
 	private JMenu ayuda;
+	private JMenuItem agregarMenu;
+	private JMenuItem modificarMenu;
+	private JMenuItem eliminarMenu;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
 	private JMenuItem imprimirMenu;
 	private JButton imprimir;
+	
+
 	private JButton salir;
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
@@ -63,6 +68,9 @@ public class GUIMuestraDetallada extends JDialog{
 	private JLabel gradoCurvatura1;
 	private TablePanel tablePanel1;
 	private Object [][] data1 = new Object [3][5];
+	private JButton jButtonAgregarAnalisis;
+	private JButton jButtonEliminarAnalisis;
+	private JButton jButtonModificarAnalisis;
 	
 	/**
 	 * This is the default constructor
@@ -81,6 +89,15 @@ public class GUIMuestraDetallada extends JDialog{
 		herramientas.add(salirMenu);
 		versionMenu = new JMenuItem("Version");
 		ayuda.add(versionMenu);	
+		
+		agregarMenu = new JMenuItem("Agregar Análisis");
+		herramientas.add(agregarMenu);
+		modificarMenu = new JMenuItem("Modificar Análisis");
+		herramientas.add(modificarMenu);
+		eliminarMenu = new JMenuItem("Eliminar Análisis");
+		herramientas.add(eliminarMenu);
+		herramientas.add(new JSeparator());
+		
 		imprimirMenu = new JMenuItem("Imprimir");
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
@@ -100,9 +117,11 @@ public class GUIMuestraDetallada extends JDialog{
 		D10_1 = new JLabel("D10(mm): ");
 		coeficienteUniformidad1 = new JLabel("Coef. Uniformidad (Cu): ");
 		gradoCurvatura1 = new JLabel ("Grado de Curvatura (Cc): ");
-		
-		imprimir = new JButton("Imprimir");
-		salir = new JButton("Salir");
+		jButtonAgregarAnalisis = new JButton("AGREGAR ANALISIS");
+		jButtonEliminarAnalisis = new JButton("ELIMINAR ANALISIS");
+		jButtonModificarAnalisis  = new JButton("MODIFICAR ANALISIS");
+		imprimir = new JButton("IMPRIMIR");
+		salir = new JButton("CANCELAR");
 		initialize();
 	}
 	
@@ -123,6 +142,13 @@ public class GUIMuestraDetallada extends JDialog{
 		salirMenu = new JMenuItem("Salir");
 		versionMenu = new JMenuItem("Version");
 		ayuda.add(versionMenu);	
+		agregarMenu = new JMenuItem("Agregar Análisis");
+		herramientas.add(agregarMenu);
+		modificarMenu = new JMenuItem("Modificar Análisis");
+		herramientas.add(modificarMenu);
+		eliminarMenu = new JMenuItem("Eliminar Análisis");
+		herramientas.add(eliminarMenu);
+		herramientas.add(new JSeparator());
 		imprimirMenu = new JMenuItem("Imprimir");
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
@@ -142,9 +168,11 @@ public class GUIMuestraDetallada extends JDialog{
 		D10_1 = new JLabel("D10(mm): "); // COMO PARAMETRO.. NO SE BIEN COMO LOS SACA A ESTOS DATOS.
 		coeficienteUniformidad1 = new JLabel("Coef. Uniformidad (Cu): ");
 		gradoCurvatura1 = new JLabel ("Grado de Curvatura (Cc): ");
-		
-		imprimir = new JButton("Imprimir");
-		salir = new JButton("Cancelar");
+		jButtonAgregarAnalisis = new JButton("AGREGAR ANALISIS");
+		jButtonEliminarAnalisis = new JButton("ELIMINAR ANALISIS");
+		jButtonModificarAnalisis  = new JButton("MODIFICAR ANALISIS");
+		imprimir = new JButton("IMPRIMIR");
+		salir = new JButton("CANCELAR");
 		initialize();
 	}
 	
@@ -314,8 +342,12 @@ public class GUIMuestraDetallada extends JDialog{
 		if (this.panelSur==null) {
 			this.panelSur = new JPanel();
 			this.panelSur.setLayout(new FlowLayout());
+			this.panelSur.add(getjButtonAgregarAnalisis());
+			this.panelSur.add(getjButtonModificarAnalisis());
+			this.panelSur.add(getjButtonEliminarAnalisis());
 			this.panelSur.add(imprimir);
 			this.panelSur.add(salir);
+			
 			}
 			return this.panelSur;
 	}
@@ -328,6 +360,9 @@ public class GUIMuestraDetallada extends JDialog{
 	public void setListenerButtons(ActionListener lis){
 		this.imprimir.addActionListener(lis);
 		this.salir.addActionListener(lis);
+		this.jButtonAgregarAnalisis.addActionListener(lis);
+		this.jButtonModificarAnalisis.addActionListener(lis);
+		this.jButtonEliminarAnalisis.addActionListener(lis);
 	}
 	
 	/**
@@ -427,6 +462,123 @@ public class GUIMuestraDetallada extends JDialog{
 	public void setGradoCurvatura1(String gradoCurvatura) {
 		this.gradoCurvatura1.setText(gradoCurvatura);
 	}
-	
+
+	/**
+	 * @return the jButtonAgregarAnalisis
+	 */
+	public JButton getjButtonAgregarAnalisis() {
+		return jButtonAgregarAnalisis;
+	}
+
+	/**
+	 * @param jButtonAgregarAnalisis the jButtonAgregarAnalisis to set
+	 */
+	public void setjButtonAgregarAnalisis(JButton jButtonAgregarAnalisis) {
+		this.jButtonAgregarAnalisis = jButtonAgregarAnalisis;
+	}
+
+	/**
+	 * @return the jButtonEliminarAnalisis
+	 */
+	public JButton getjButtonEliminarAnalisis() {
+		return jButtonEliminarAnalisis;
+	}
+
+	/**
+	 * @param jButtonEliminarAnalisis the jButtonEliminarAnalisis to set
+	 */
+	public void setjButtonEliminarAnalisis(JButton jButtonEliminarAnalisis) {
+		this.jButtonEliminarAnalisis = jButtonEliminarAnalisis;
+	}
+
+	/**
+	 * @return the jButtonModificarAnalisis
+	 */
+	public JButton getjButtonModificarAnalisis() {
+		return jButtonModificarAnalisis;
+	}
+
+	/**
+	 * @param jButtonModificarAnalisis the jButtonModificarAnalisis to set
+	 */
+	public void setjButtonModificarAnalisis(JButton jButtonModificarAnalisis) {
+		this.jButtonModificarAnalisis = jButtonModificarAnalisis;
+	}
+
+	/**
+	 * @return the imprimir
+	 */
+	public JButton getImprimir() {
+		return imprimir;
+	}
+
+	/**
+	 * @param imprimir the imprimir to set
+	 */
+	public void setImprimir(JButton imprimir) {
+		this.imprimir = imprimir;
+	}
+
+	/**
+	 * @return the salir
+	 */
+	public JButton getSalir() {
+		return salir;
+	}
+
+	/**
+	 * @param salir the salir to set
+	 */
+	public void setSalir(JButton salir) {
+		this.salir = salir;
+	}
+	/**
+	 * @return the imprimirMenu
+	 */
+	public JMenuItem getImprimirMenu() {
+		return imprimirMenu;
+	}
+
+	/**
+	 * @return the agregarMenu
+	 */
+	public JMenuItem getAgregarMenu() {
+		return agregarMenu;
+	}
+
+	/**
+	 * @param agregarMenu the agregarMenu to set
+	 */
+	public void setAgregarMenu(JMenuItem agregarMenu) {
+		this.agregarMenu = agregarMenu;
+	}
+
+	/**
+	 * @return the modificarMenu
+	 */
+	public JMenuItem getModificarMenu() {
+		return modificarMenu;
+	}
+
+	/**
+	 * @param modificarMenu the modificarMenu to set
+	 */
+	public void setModificarMenu(JMenuItem modificarMenu) {
+		this.modificarMenu = modificarMenu;
+	}
+
+	/**
+	 * @return the eliminarMenu
+	 */
+	public JMenuItem getEliminarMenu() {
+		return eliminarMenu;
+	}
+
+	/**
+	 * @param eliminarMenu the eliminarMenu to set
+	 */
+	public void setEliminarMenu(JMenuItem eliminarMenu) {
+		this.eliminarMenu = eliminarMenu;
+	}
 	
 }
