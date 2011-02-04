@@ -29,18 +29,17 @@ public class ControlGestionarAnalisis {
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 Tamiz tamiz= new Tamiz();
-                //Muestra muestra = new Muestra();
                 String[] data = new String [5];
                 List listaAnalisis = null;
                 try {
-                        //Class claseMuestra= muestra.getClass();
-                        //muestra = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestra+"'");
-                        analisis.setMuestra(muestra);
+                        Class claseMuestra= muestra.getClass();
+                        Muestra muestraAux = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+                        analisis.setMuestra(muestraAux);
                         Class claseTamiz = tamiz.getClass();
                         analisis.setTamiz((Tamiz)persistencia.buscarObjeto(claseTamiz, "numeroTamiz=='"+numeroTamiz+"'"));
                                                
                         analisis.setPorcentajeRetenidoParcial(truncaNum((analisis.getPesoRetenido()*100)/muestra.getPeso()));
-                        listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"'");
+                        listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
                         Integer porcentajeRetenidoAcumulado= 0;
                         if (listaAnalisis.isEmpty()){
                         	analisis.setPorcentajeRetenidoAcumulado(truncaNum((analisis.getPesoRetenido()*100)/muestra.getPeso()));
@@ -188,17 +187,52 @@ public class ControlGestionarAnalisis {
 	        return valor;
         }
         
-        public Analisis ultimoPesoRetenido(Muestra muestra) throws Exception{
+        /**
+         * Retorna el ultimo analisis cargado para la muestra
+         * pasada como paramentro.
+         * @param muestra
+         * @return
+         * @throws Exception
+         */
+        public Analisis ultimoAnalisis(Muestra muestra) throws Exception{
         	Persistencia persistencia = new Persistencia();
     		persistencia.abrirTransaccion();
     		Analisis aux = new Analisis();
+    		List listaAnalisis = null;
     		try {
-    			aux =(Analisis)persistencia.buscarObjeto(aux.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"'");
+    			listaAnalisis =persistencia.buscarListaFiltro(aux.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+    			int i = listaAnalisis.size();
+    			aux = (Analisis)listaAnalisis.get(i-1);
+    			persistencia.cerrarTransaccion();
     		}
     		catch (Exception e) {
+    			e.printStackTrace();
     			persistencia.realizarRollback();
     		}
     		return aux;
+        }
+        
+        public Float pesoPasante(Muestra muestra) throws Exception{
+        	Persistencia persistencia = new Persistencia();
+    		persistencia.abrirTransaccion();
+    		Analisis aux = new Analisis();
+    		List listaAnalisis = null;
+    		Float resultado = new Float(0);
+    		try {
+    			listaAnalisis =persistencia.buscarListaFiltro(aux.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+    			int i = 0;
+    			while(i<listaAnalisis.size()){
+    				aux = (Analisis)listaAnalisis.get(i);
+    				resultado = resultado + aux.getPesoRetenido();
+    				i++;
+    			}
+    			persistencia.cerrarTransaccion();
+    		}
+    		catch (Exception e) {
+    			e.printStackTrace();
+    			persistencia.realizarRollback();
+    		}
+    		return resultado;
         }
 }
 

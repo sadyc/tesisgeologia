@@ -40,6 +40,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 	 */
 	public MediadorAltaAnalisis(Muestra muestra) {
 		super();
+		this.muestra = muestra;
 		analisis = new Analisis();
 		GUIAnalisis = new GUIAltaAnalisis(muestra);
 		GUIAnalisis.setTitle("Analisis por Tamiz de una Muestra");
@@ -88,7 +89,11 @@ public class MediadorAltaAnalisis  extends Mediador{
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 	   	if (this.GUIAnalisis.getJButtonAceptar() == source){
-			agregarAnalisis();
+			try {
+				agregarAnalisis();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	   	if (this.GUIAnalisis.getJButtonSeleccionarTamiz() == source){
 			seleccionarTamiz();
@@ -115,8 +120,9 @@ public class MediadorAltaAnalisis  extends Mediador{
 
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Analisis"
+	 * @throws Exception 
 	 */
-	public void agregarAnalisis(){
+	public void agregarAnalisis() throws Exception{
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 		pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
 		if (numeroTamiz==null){
@@ -126,24 +132,31 @@ public class MediadorAltaAnalisis  extends Mediador{
 			if (pesoRetenido.equals("")){
 				JOptionPane.showMessageDialog(frame,"No ingreso un peso retenido","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
-			if (Float.parseFloat(pesoRetenido)> muestra.getPeso()){
-				JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar "+muestra.getPeso(),"ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
-			}
-			if (Float.parseFloat(pesoRetenido)>muestra.getPeso()){
-				
-			}
 			else{
-				
-				analisis.setPesoRetenido(Float.parseFloat(pesoRetenido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
-				try {
-					data = control.insertarAnalisis(analisis, muestra, numeroTamiz);
-					System.out.println(analisis.toString()+"Mediador");
-					altaAnalisis= true;
-				} catch (Exception e) {
-					e.printStackTrace();
+				if (Float.parseFloat(pesoRetenido)> muestra.getPeso()){
+					JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso de la muestra que es: "+muestra.getPeso(),"ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
 				}
-				GUIAnalisis.dispose();
-			}
+				else{
+					Float pesoPasante = control.pesoPasante(muestra);
+					if (Float.parseFloat(pesoRetenido)>(muestra.getPeso()-pesoPasante)){
+						JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso pasante por el ultimo tamiz que es: "+(muestra.getPeso()-pesoPasante),"ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+					}
+					else{
+						analisis = new Analisis();
+						analisis.setPesoRetenido(Float.parseFloat(pesoRetenido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
+						try {
+							
+							data = control.insertarAnalisis(analisis, muestra, numeroTamiz);
+							System.out.println(analisis.toString()+"Mediador");
+							altaAnalisis= true;
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						GUIAnalisis.dispose();
+					}
+				}
+				
+			}	
 		}
 	}
 	
