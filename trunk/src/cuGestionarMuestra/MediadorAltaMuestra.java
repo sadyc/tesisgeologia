@@ -36,7 +36,7 @@ public class MediadorAltaMuestra extends Mediador{
 	private Component frame;
 	private ControlGestionarMuestra control;
 	private Usuario usuario ;
-	private Date fecha ;
+	private java.sql.Date sqlDate;
 	private boolean altaMuestra= false;
 
 	
@@ -48,7 +48,10 @@ public class MediadorAltaMuestra extends Mediador{
 		super();
 		muestra = new Muestra();
 		control = new ControlGestionarMuestra();
-		fecha = new Date(11,22,1980);
+		java.util.Date utilDate = new java.util.Date();
+	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+	    System.out.println("utilDate:" + utilDate);
+	    System.out.println("sqlDate:" + sqlDate);
 		usuario = new Usuario();
 		ubicacion = new Ubicacion();
 		operador= new OperadorDeLaboratorio();
@@ -159,11 +162,15 @@ public class MediadorAltaMuestra extends Mediador{
 	 */
 	public void insertarMuestra(){
 		data[0]= ubicacion.getNombreUbicacion();
-		data[1]= GUIMuestra.getNombre().getText();
+		data[1]= GUIMuestra.getNombre().getText().toUpperCase();
 		data[2]= GUIMuestra.getPeso().getText();
 		data[3]= GUIMuestra.getProfundidadInicial().getText();
 		data[4]= GUIMuestra.getProfundidadFinal().getText();
-		muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,this.ubicacion,fecha);
+		java.util.Date utilDate = new java.util.Date();
+	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+	    System.out.println("utilDate:" + utilDate);
+	    System.out.println("sqlDate:" + sqlDate);
+	    muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,this.ubicacion,sqlDate);
 		try {
 			control.insertarMuestra(muestra, ubicacion, operador);
 			altaMuestra = true;
