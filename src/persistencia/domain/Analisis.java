@@ -15,7 +15,7 @@ public class Analisis {
 	private Float pesoRetenido;
 	private Float porcentajePasante;
 	private Float porcentajeRetenidoParcial;
-	private Float porcentajeRetenidoAcumulado;   //  FALTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	private Float porcentajeRetenidoAcumulado;  
 	protected Muestra muestra;
 	protected Tamiz tamiz;
 	
@@ -74,9 +74,6 @@ public class Analisis {
 	 */
 	public void setPesoRetenido(Float f) {
 		this.pesoRetenido = f;
-		//calcularPorcentajeRetenidoParcial();
-		//calcularPorcentajePasante();
-		
 	}
 	/**
 	 * @return the muestra
