@@ -42,15 +42,11 @@ public class GUIMuestraDetallada extends JDialog{
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
 	private JMenuItem imprimirMenu;
-	private JButton imprimir;
 	
-
-	private JButton salir;
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
 	private JPanel panelCenter=null;
 	
-
 	private JLabel muestra1;
 	private JLabel peso1;
 	private JLabel profundidadInicial1;
@@ -71,6 +67,8 @@ public class GUIMuestraDetallada extends JDialog{
 	private JButton jButtonAgregarAnalisis;
 	private JButton jButtonEliminarAnalisis;
 	private JButton jButtonModificarAnalisis;
+	private JButton imprimir;
+	private JButton salir;
 	
 	/**
 	 * This is the default constructor
@@ -121,7 +119,7 @@ public class GUIMuestraDetallada extends JDialog{
 		jButtonEliminarAnalisis = new JButton("ELIMINAR ANALISIS");
 		jButtonModificarAnalisis  = new JButton("MODIFICAR ANALISIS");
 		imprimir = new JButton("IMPRIMIR");
-		salir = new JButton("CANCELAR");
+		salir = new JButton("SALIR");
 		initialize();
 	}
 	
@@ -172,7 +170,7 @@ public class GUIMuestraDetallada extends JDialog{
 		jButtonEliminarAnalisis = new JButton("ELIMINAR ANALISIS");
 		jButtonModificarAnalisis  = new JButton("MODIFICAR ANALISIS");
 		imprimir = new JButton("IMPRIMIR");
-		salir = new JButton("CANCELAR");
+		salir = new JButton("SALIR");
 		initialize();
 	}
 	
@@ -270,7 +268,7 @@ public class GUIMuestraDetallada extends JDialog{
 			gbc.fill=GridBagConstraints.HORIZONTAL;
 			this.panelNorte.setLayout(gridbag);
 			gbc.ipady = 15;
-			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA 1: "),gbc);
+			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA: "),gbc);
 			gbc.ipady = 0;
 			gbc.gridy = 1;
 			this.panelNorte.add(ubicacion1,gbc);
@@ -358,11 +356,16 @@ public class GUIMuestraDetallada extends JDialog{
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
-		this.imprimir.addActionListener(lis);
-		this.salir.addActionListener(lis);
-		this.jButtonAgregarAnalisis.addActionListener(lis);
-		this.jButtonModificarAnalisis.addActionListener(lis);
-		this.jButtonEliminarAnalisis.addActionListener(lis);
+		imprimir.addActionListener(lis);
+		salir.addActionListener(lis);
+		jButtonAgregarAnalisis.addActionListener(lis);
+		jButtonModificarAnalisis.addActionListener(lis);
+		jButtonEliminarAnalisis.addActionListener(lis);
+		imprimirMenu.addActionListener(lis);
+		salirMenu.addActionListener(lis);
+		agregarMenu.addActionListener(lis);
+		modificarMenu.addActionListener(lis);
+		eliminarMenu.addActionListener(lis);
 	}
 	
 	/**
@@ -580,5 +583,41 @@ public class GUIMuestraDetallada extends JDialog{
 	public void setEliminarMenu(JMenuItem eliminarMenu) {
 		this.eliminarMenu = eliminarMenu;
 	}
+
+	/**
+	 * @return the salirMenu
+	 */
+	public JMenuItem getSalirMenu() {
+		return salirMenu;
+	}
+
+	/**
+	 * @param salirMenu the salirMenu to set
+	 */
+	public void setSalirMenu(JMenuItem salirMenu) {
+		this.salirMenu = salirMenu;
+	}
+
+	/**
+	 * @return the versionMenu
+	 */
+	public JMenuItem getVersionMenu() {
+		return versionMenu;
+	}
+
+	/**
+	 * @param versionMenu the versionMenu to set
+	 */
+	public void setVersionMenu(JMenuItem versionMenu) {
+		this.versionMenu = versionMenu;
+	}
+
+	/**
+	 * @param imprimirMenu the imprimirMenu to set
+	 */
+	public void setImprimirMenu(JMenuItem imprimirMenu) {
+		this.imprimirMenu = imprimirMenu;
+	}
 	
+	 
 }

@@ -25,7 +25,6 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 	
 	private GUIABMMuestra GUIABMMuestra = null;
 	private GUIMuestraDetallada GUIMuestraDetallada = null;
-	private String nombreMuestra1;
 	private Muestra muestra1 = new Muestra();
 	private Object [] seleccionado = new Object [4];
 	private boolean seleccionoMuestra = false;
@@ -89,9 +88,17 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 		if (this.GUIABMMuestra.getJButtonSalir() == source || this.GUIABMMuestra.getSalirMenu()== source){
 			GUIABMMuestra.dispose();
 		}
+		if (this.GUIMuestraDetallada.getJButtonSalir() == source || this.GUIMuestraDetallada.getSalirMenu()== source){
+			GUIMuestraDetallada.dispose();
+		}
 		if (this.GUIABMMuestra.getJButtonSeleccionar()==source || this.GUIABMMuestra.getSeleccionarMenu()==source){
 			seleccionarMuestra();
 			detallarMuestra();
+		}
+		
+		if (this.GUIMuestraDetallada.getJButtonImprimir() == source || this.GUIMuestraDetallada.getImprimirMenu()== source){
+			System.out.println("Imprimiendo:");
+			System.out.println("wait...........");
 		}
 	}
 	
@@ -106,20 +113,20 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 				GUIMuestraDetallada= new GUIMuestraDetallada(muestra1,dataAnalisis);
 				GUIMuestraDetallada.setTitle("Detalles de la Muestra");
 				GUIMuestraDetallada.setListenerButtons(this);
-				GUIMuestraDetallada.setModal(true);
 				GUIMuestraDetallada.getjButtonAgregarAnalisis().setEnabled(false);
 				GUIMuestraDetallada.getjButtonEliminarAnalisis().setEnabled(false);
 				GUIMuestraDetallada.getjButtonModificarAnalisis().setEnabled(false);
 				GUIMuestraDetallada.getAgregarMenu().setEnabled(false);
 				GUIMuestraDetallada.getModificarMenu().setEnabled(false);
 				GUIMuestraDetallada.getEliminarMenu().setEnabled(false);
+				GUIMuestraDetallada.setModal(true);
 				GUIMuestraDetallada.show();
 				
 			}			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("No se puede detallar la muestra por alguna razon rara"); 
+			System.out.println("No se puede detallar la muestra. ERROR!!"); 
 		}
 	  
 	}

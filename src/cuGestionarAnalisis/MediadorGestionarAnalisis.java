@@ -94,17 +94,16 @@ public class MediadorGestionarAnalisis  implements ActionListener, KeyListener, 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.muestraDetallada.getjButtonAgregarAnalisis() == source){
+		if (this.muestraDetallada.getjButtonAgregarAnalisis() == source || muestraDetallada.getAgregarMenu()==source){
 			agregarAnalisis();
 		}
-		if (this.muestraDetallada.getjButtonModificarAnalisis() == source){
+		if (this.muestraDetallada.getjButtonModificarAnalisis() == source || muestraDetallada.getModificarMenu()==source){
 			modificarAnalisis();
 		}
-		if (this.muestraDetallada.getjButtonEliminarAnalisis() == source){
+		if (this.muestraDetallada.getjButtonEliminarAnalisis() == source || muestraDetallada.getEliminarMenu()==source){
 			eliminarAnalisis();
 		}
-		if (this.muestraDetallada.getJButtonSalir() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
+		if (this.muestraDetallada.getJButtonSalir() == source || muestraDetallada.getSalirMenu()==source){
 			muestraDetallada.dispose();
 		}
 	}
