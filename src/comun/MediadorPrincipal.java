@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import persistencia.domain.Muestra;
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
@@ -135,10 +136,10 @@ public class MediadorPrincipal implements ActionListener{
 		try {
 			MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
 			if (seleccionarMuestra.seSeleccionoMuestra()){
-				String muestra1 = seleccionarMuestra.getSeleccionado().getNombreMuestra();
+				Muestra muestra1 = seleccionarMuestra.getSeleccionado();
 				seleccionarMuestra = new MediadorSeleccionarMuestra();
 				if (seleccionarMuestra.seSeleccionoMuestra()){
-					String muestra2 = seleccionarMuestra.getSeleccionado().getNombreMuestra();
+					Muestra muestra2 = seleccionarMuestra.getSeleccionado();
 					new MediadorCompararMuestra("Comparacion de Muestras",muestra1,muestra2);
 				}
 			}
