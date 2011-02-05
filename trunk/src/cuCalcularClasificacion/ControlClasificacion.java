@@ -4,7 +4,6 @@
 package cuCalcularClasificacion;
 
 
-import java.lang.Math;
 import java.awt.Color;
 import java.util.Collection;
 import java.util.Iterator;
@@ -12,6 +11,7 @@ import java.util.List;
 
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.LogarithmicAxis;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
@@ -24,7 +24,7 @@ import persistencia.Persistencia;
 import persistencia.domain.Analisis;
 import persistencia.domain.Clasificacion;
 import persistencia.domain.Muestra;
-import cuCalcularClasificacion.Clasificaciones.SUCS;
+import persistencia.domain.SUCS;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 
 /**
@@ -43,12 +43,12 @@ public class ControlClasificacion {
 	 * @param nombreMuestra
 	 * @return
 	 */
-	public Muestra obtenerMuestra (Class clase, String nombreMuestra) throws Exception{
+	public Muestra obtenerMuestra (Class clase,Muestra muestra) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Muestra aux = new Muestra();
 		try {
-			aux =(Muestra)persistencia.buscarObjeto(clase, "nombreMuestra=='"+nombreMuestra+"'");
+			aux =(Muestra)persistencia.buscarObjeto(clase, "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
@@ -278,7 +278,7 @@ public class ControlClasificacion {
 		Class clase = analisis.getClass();
 		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(clase, muestra);
 		Iterator<Analisis> it = coleccionAnalisis.iterator();
-		XYSeries series = new XYSeries("Nombre Muestra");
+		XYSeries series = new XYSeries("Nombre: "+muestra.getNombreMuestra());
 		while (it.hasNext()){
 			analisis = it.next();
 			series.add(analisis.getPorcentajePasante(),analisis.getTamiz().getAberturaMalla());
@@ -289,11 +289,11 @@ public class ControlClasificacion {
 			
 		// Generate the graph
 		final NumberAxis rangeAxis = new NumberAxis("% Pasante");
-        rangeAxis.setRange(0.0,100);
+        rangeAxis.setRange(0.0,120);
         
-        final NumberAxis domainAxis = new NumberAxis("Tamaño de Particulas en mm");
+        final NumberAxis domainAxis = new LogarithmicAxis("Tamaño de Particulas en mm");
         domainAxis.setInverted(true);
-        //domainAxis.setRange(0.00001, 1);
+        domainAxis.setRange(0.01, 100);
         final XYItemRenderer renderer = new StandardXYItemRenderer();
         
         final XYPlot plot1 = new XYPlot(dataset, rangeAxis,domainAxis,renderer);

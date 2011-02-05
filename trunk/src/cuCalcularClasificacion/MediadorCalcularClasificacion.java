@@ -9,13 +9,13 @@ import java.awt.event.MouseEvent;
 import java.util.Collection;
 import java.util.Iterator;
 
+import persistencia.domain.AASHTO;
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
+import persistencia.domain.SUCS;
 
 import comun.Mediador;
 
-import cuCalcularClasificacion.Clasificaciones.AASHTO;
-import cuCalcularClasificacion.Clasificaciones.SUCS;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 
 /**
@@ -53,7 +53,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 		ControlClasificacion control = new ControlClasificacion();
 		SUCS clasificacion = new SUCS();
 		control.calcularClasificacionSUCS(muestra,clasificacion);
-		muestra.setClasificacion(clasificacion);
+		//muestra.setClasificacion(clasificacion);
 		GUIClasificacion = new GUIClasificacion(clasificacion,muestra,data);
 		GUIClasificacion.setTitle(titulo);
 		GUIClasificacion.setModal(true);
