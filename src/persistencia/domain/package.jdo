@@ -144,10 +144,44 @@
          <field name="muestras" persistence-modifier="persistent" mapped-by="clasificacion">
                 <collection element-type="persistencia.domain.Muestra"/>
             </field>
+			<field name="coeficienteUniformidad" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
+			<field name="coeficienteUniformidad" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
+			<field name="gradoCurvatura" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
+		<field name="D10" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
+		<field name="D30" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
+		<field name="D60" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
  	 <field name="descripcion" persistence-modifier="persistent">
                  <column length="30" jdbc-type="CHAR"/>
          </field>
+		 <field name="nombre" persistence-modifier="persistent">
+                 <column length="30" jdbc-type="CHAR"/>
+         </field>
+		 
      </class>
+	 
+ <class name="persistencia.domain.Clasificacion.SUCS" identity-type="datastore">
+             <inheritance strategy="new-table"/>
+			  <field name="frame" persistence-modifier="persistent"/>
+         
+ 
+ </class>
+ <class name="persistencia.domain.Clasificacion.AASTHO" identity-type="datastore">
+		<inheritance strategy="new-table"/>
+            <field name="frame" persistence-modifier="persistent"/>
+        </class>
+ 
      
      </package>
   </jdo>
