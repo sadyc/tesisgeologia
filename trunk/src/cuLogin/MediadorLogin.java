@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import persistencia.Persistencia;
+import persistencia.domain.Muestra;
+
 import comun.MediadorPrincipal;
 
 /**
@@ -19,6 +22,7 @@ public class MediadorLogin implements ActionListener{
 	
 	private GUILogin login = null;
 	private Component frame;
+	private ControlLogin control;
 	
 	/**
 	 * Constructor con parametros
@@ -58,7 +62,16 @@ public class MediadorLogin implements ActionListener{
 	 */
 	public void aceptar(){
 		System.out.println("GestionarMediador.actionPerformed() jButtonAceptar");
-   		if (login.getNombre().getText().equals("") ){
+		String nombre = login.getNombre().getText();
+		System.out.println(login.getNombre().getText());
+		try {
+			control.obtenerUsuario(login.getNombre().getText(), login.getPassword().getText());
+		    
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+   		if (login.getNombre().getText().equals("")) {
 			JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Nombre Usuario'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else {

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="233"/>
+	<property name="ireport.y" value="0"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="ubicacion" class="java.lang.String"/>
+	<field name="peso" class="java.lang.String"/>
+	<field name="profundidadInicial" class="java.lang.String"/>
+	<field name="profundidadFinal" class="java.lang.String"/>
+	<field name="limiteLiquido" class="java.lang.String"/>
+	<field name="limitePlastico" class="java.lang.String"/>
+	<field name="indicePlasticidad" class="java.lang.String"/>
+	<field name="D60" class="java.lang.String"/>
+	<field name="D30" class="java.lang.String"/>
+	<field name="D10" class="java.lang.String"/>
+	<field name="coefUniformidad" class="java.lang.String"/>
+	<field name="gradoCurvatura" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="334" height="44"/>
+				<textElement>
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Sistema Clasificador de Suelos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="132" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="147" height="20"/>
+				<textElement/>
+				<text><![CDATA[DATOS DE LA MUESTRA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="20" width="169" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Nombre: "+$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="40" width="169" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ubicacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="60" width="169" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{peso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="75" width="169" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{profundidadInicial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="90" width="169" height="16"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{profundidadFinal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="334" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[PLASTICIDAD]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="334" y="30" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{limiteLiquido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="60" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{limitePlastico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="90" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{indicePlasticidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="595" y="20" width="164" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{D60}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="595" y="40" width="164" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{D30}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="595" y="60" width="164" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{D10}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="595" y="80" width="164" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="595" y="86" width="164" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{coefUniformidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="595" y="106" width="164" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{gradoCurvatura}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

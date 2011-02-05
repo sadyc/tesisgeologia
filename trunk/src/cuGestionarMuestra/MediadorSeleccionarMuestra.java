@@ -41,7 +41,8 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 	public MediadorSeleccionarMuestra() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data);
+		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
+		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
 		this.GUIABMMuestra.setMouseListener(this);
@@ -76,12 +77,7 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 		    data [i][4]= muestra.getProfundidadFinal();
 		    i++;
 		}
-		GUISeleccionarMuestra  = new GUISeleccionarMuestra(data);
-		GUISeleccionarMuestra.setTitle("Seleccionar una muestra");
-		GUISeleccionarMuestra.setModal(true);
-		GUISeleccionarMuestra.setListenerButtons(this);
-		GUISeleccionarMuestra.setListenerTable(this);
-		GUISeleccionarMuestra.show();
+
 	}
 
 	/**

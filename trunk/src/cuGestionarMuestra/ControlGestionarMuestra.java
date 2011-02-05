@@ -103,6 +103,9 @@ public class ControlGestionarMuestra {
 			Ubicacion ubicacion = new Ubicacion();
 			Class claseUbicacion = ubicacion.getClass();
 			aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+data[0]+"'"));
+			java.util.Date utilDate = new java.util.Date();
+		    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+		    aux.setFecha(sqlDate);
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {

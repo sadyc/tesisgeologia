@@ -38,8 +38,10 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 	 */
 	public MediadorListarMuestras() throws Exception {
 		super();
+		
 		cargarTablaDeMuestras();
-		GUIABMMuestra = new GUIABMMuestra("Lista de Muestras",data);
+		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
+		GUIABMMuestra = new GUIABMMuestra("Lista de Muestras",data,columAux);
 		GUIABMMuestra.setListenerButtons(this);
 		GUIABMMuestra.setListenerTable(this);
 		GUIABMMuestra.setMouseListener(this);

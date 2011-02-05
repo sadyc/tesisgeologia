@@ -12,6 +12,7 @@ import cuGestionarMuestra.MediadorGestionarMuestra;
 import cuGestionarMuestra.MediadorListarMuestras;
 import cuGestionarMuestra.MediadorSeleccionarMuestra;
 import cuLimiteConsistencia.MediadorAltaLimiteConsistencia;
+import cuLimiteConsistencia.MediadorConsistencia;
 
 public class MediadorPrincipal implements ActionListener{
 
@@ -154,9 +155,9 @@ public class MediadorPrincipal implements ActionListener{
 	 */
 	public void gestionarLimiteConsistencia(){
 		try {
-			MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
-			if (seleccionarMuestra.seSeleccionoMuestra()){
-				new MediadorAltaLimiteConsistencia(seleccionarMuestra.getSeleccionado().getNombreMuestra());
+			MediadorConsistencia consistencia = new MediadorConsistencia();
+			if (consistencia.seSeleccionoMuestra()){
+				new MediadorAltaLimiteConsistencia(consistencia.getSeleccionado().getNombreMuestra());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

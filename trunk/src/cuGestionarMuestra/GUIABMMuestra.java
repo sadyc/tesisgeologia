@@ -48,6 +48,7 @@ public class GUIABMMuestra extends JDialog{
 	private JMenuItem buscarMenu;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
+	private String [] columName;
 	private Object [][] data;
 	
 	
@@ -57,9 +58,9 @@ public class GUIABMMuestra extends JDialog{
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
-	public GUIABMMuestra(String title, Object [][] datos) {
+	public GUIABMMuestra(String title, Object [][] datos, String [] colum) {
 		super();
-		
+		columName = colum;
 		setTitle(title);
 		data = datos.clone();
 		menu = new JMenuBar();
@@ -228,11 +229,15 @@ public class GUIABMMuestra extends JDialog{
 	/** 
      *@return data  
      * */
-	public static String[] getColumName(){
-		String[] columnName = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
-		return columnName;
+	public String[] getColumName(){
+		
+		return columName;
 	}
 
+	public void setColumName(String [] columName){
+		this.columName = columName.clone();
+	}
+	
 	/**
 	 * Metodo que retorna el panelSur.
 	 *
@@ -259,7 +264,7 @@ public class GUIABMMuestra extends JDialog{
 	public TablePanel getTablePanel() {
 		if (this.tablePanel==null) {
 			this.tablePanel = new TablePanel();
-	 		this.tablePanel.setData(data, getColumName());			
+	 		this.tablePanel.setData(data, columName);			
 		}
 		return this.tablePanel;
 	}
@@ -293,4 +298,6 @@ public class GUIABMMuestra extends JDialog{
         jButtonSalir.addActionListener(lis);
         jButtonSeleccionar.addActionListener(lis);
   }
+	
+
 }

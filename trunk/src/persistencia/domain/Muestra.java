@@ -22,7 +22,7 @@ public class Muestra {
 	private Float profundidadInicial;
 	private Float profundidadFinal;
 	private Float peso;
-	private Date fecha;
+	private java.sql.Date fecha;
 	private Float limitePlastico;
 	private Float limiteLiquido;
 	private Float indicePlasticidad;
@@ -46,7 +46,8 @@ public class Muestra {
 		usuario = new Usuario();
 		ubicacion = new Ubicacion();
 		clasificacion = new Clasificacion();
-		fecha = new Date(11,22,1980);
+		java.util.Date f = new java.util.Date();
+		fecha = new java.sql.Date(f.getTime());
 	}
 	
 	/**
@@ -57,7 +58,7 @@ public class Muestra {
 	 * @param profundidadFinal profundidad final de la muestra creada
 	 * @param peso peso de la muestra
 	 */
-	public Muestra(String nombreMuestra,Float peso, Float profundidadInicial,Float profundidadFinal, OperadorDeLaboratorio operador, Usuario usuario, Ubicacion ubicacion, Date fecha) {
+	public Muestra(String nombreMuestra,Float peso, Float profundidadInicial,Float profundidadFinal, OperadorDeLaboratorio operador, Usuario usuario, Ubicacion ubicacion, java.sql.Date fecha) {
 		this.nombreMuestra = nombreMuestra;
 		this.profundidadInicial = profundidadInicial;
 		this.profundidadFinal = profundidadFinal;
@@ -199,14 +200,14 @@ public class Muestra {
 	/**
 	 * @return the fecha
 	 */
-	public Date getFecha() {
+	public java.sql.Date getFecha() {
 		return fecha;
 	}
 
 	/**
 	 * @param fecha the fecha to set
 	 */
-	public void setFecha(Date fecha) {
+	public void setFecha(java.sql.Date fecha) {
 		this.fecha = fecha;
 	}
 
