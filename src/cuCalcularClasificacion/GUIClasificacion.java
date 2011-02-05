@@ -423,6 +423,153 @@ public class GUIClasificacion extends JDialog{
 	public void setGradoCurvatura(String gradoCurvatura) {
 		this.gradoCurvatura.setText(gradoCurvatura);
 	}
+
+	/**
+	 * @return the ubicacion
+	 */
+	public JLabel getUbicacion() {
+		return ubicacion;
+	}
+
+	/**
+	 * @param ubicacion the ubicacion to set
+	 */
+	public void setUbicacion(JLabel ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+
+	/**
+	 * @param peso the peso to set
+	 */
+	public void setPeso(JLabel peso) {
+		this.peso = peso;
+	}
+
+	/**
+	 * @return the limiteLiquido
+	 */
+	public JLabel getLimiteLiquido() {
+		return limiteLiquido;
+	}
+
+	/**
+	 * @param limiteLiquido the limiteLiquido to set
+	 */
+	public void setLimiteLiquido(JLabel limiteLiquido) {
+		this.limiteLiquido = limiteLiquido;
+	}
+
+	/**
+	 * @return the limitePlastico
+	 */
+	public JLabel getLimitePlastico() {
+		return limitePlastico;
+	}
+
+	/**
+	 * @param limitePlastico the limitePlastico to set
+	 */
+	public void setLimitePlastico(JLabel limitePlastico) {
+		this.limitePlastico = limitePlastico;
+	}
+
+	/**
+	 * @return the d60
+	 */
+	public JLabel getD60() {
+		return D60;
+	}
+
+	/**
+	 * @param d60 the d60 to set
+	 */
+	public void setD60(JLabel d60) {
+		D60 = d60;
+	}
+
+	/**
+	 * @return the d30
+	 */
+	public JLabel getD30() {
+		return D30;
+	}
+
+	/**
+	 * @param d30 the d30 to set
+	 */
+	public void setD30(JLabel d30) {
+		D30 = d30;
+	}
+
+	/**
+	 * @return the d10
+	 */
+	public JLabel getD10() {
+		return D10;
+	}
+
+	/**
+	 * @param d10 the d10 to set
+	 */
+	public void setD10(JLabel d10) {
+		D10 = d10;
+	}
+
+	/**
+	 * @return the coeficienteUniformidad
+	 */
+	public JLabel getCoeficienteUniformidad() {
+		return coeficienteUniformidad;
+	}
+
+	/**
+	 * @param coeficienteUniformidad the coeficienteUniformidad to set
+	 */
+	public void setCoeficienteUniformidad(JLabel coeficienteUniformidad) {
+		this.coeficienteUniformidad = coeficienteUniformidad;
+	}
+
+	/**
+	 * @return the gradoCurvatura
+	 */
+	public JLabel getGradoCurvatura() {
+		return gradoCurvatura;
+	}
+
+	/**
+	 * @param gradoCurvatura the gradoCurvatura to set
+	 */
+	public void setGradoCurvatura(JLabel gradoCurvatura) {
+		this.gradoCurvatura = gradoCurvatura;
+	}
+
+	/**
+	 * @param profundidadInicial the profundidadInicial to set
+	 */
+	public void setProfundidadInicial(JLabel profundidadInicial) {
+		this.profundidadInicial = profundidadInicial;
+	}
+
+	/**
+	 * @param profundidadFinal the profundidadFinal to set
+	 */
+	public void setProfundidadFinal(JLabel profundidadFinal) {
+		this.profundidadFinal = profundidadFinal;
+	}
+
+	/**
+	 * @return the indicePlasticidad
+	 */
+	public JLabel getIndicePlasticidad() {
+		return indicePlasticidad;
+	}
+
+	/**
+	 * @param indicePlasticidad the indicePlasticidad to set
+	 */
+	public void setIndicePlasticidad(JLabel indicePlasticidad) {
+		this.indicePlasticidad = indicePlasticidad;
+	}
 	
 	
 }

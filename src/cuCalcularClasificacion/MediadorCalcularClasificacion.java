@@ -17,6 +17,8 @@ import persistencia.domain.SUCS;
 import comun.Mediador;
 
 import cuGestionarAnalisis.ControlGestionarAnalisis;
+import cuReporte.report.MakeReport;
+import cuReporte.report.ViewReport;
 
 /**
  * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana de clasificacion
@@ -126,6 +128,24 @@ public class MediadorCalcularClasificacion extends Mediador{
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUIClasificacion.getJButtonImprimir() == source) {
+			String [][]data1 = new String [13] [13];
+			data1 [0][0] = GUIClasificacion.getUbicacion().getText();
+			data1 [0][1] = GUIClasificacion.getUbicacion().getText();
+			data1 [0][2] = GUIClasificacion.getPeso().getText();
+			data1 [0][3] = GUIClasificacion.getProfundidadInicial().getText();
+			data1 [0][4] = GUIClasificacion.getProfundidadFinal().getText();
+			data1 [0][5] = GUIClasificacion.getLimiteLiquido().getText();
+			data1 [0][6] = GUIClasificacion.getLimitePlastico().getText();
+			data1 [0][7] = GUIClasificacion.getIndicePlasticidad().getText();
+			data1 [0][8] = GUIClasificacion.getD60().getText();
+			data1 [0][9] = GUIClasificacion.getD30().getText();
+			data1 [0][10] = GUIClasificacion.getD10().getText();
+			data1 [0][11] = GUIClasificacion.getCoeficienteUniformidad().getText();
+			data1 [0][12] = GUIClasificacion.getGradoCurvatura().getText();
+			MakeReport makeReporte = new MakeReport();
+			makeReporte.make("report1");
+			ViewReport view = new ViewReport(data1);
+			view.viewPersons();
 			GUIClasificacion.dispose();
 				
 			}

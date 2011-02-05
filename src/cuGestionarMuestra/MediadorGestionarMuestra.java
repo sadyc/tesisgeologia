@@ -39,7 +39,8 @@ public class MediadorGestionarMuestra extends Mediador{
 	public MediadorGestionarMuestra(String nombreVentana) throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		this.GUIABMMuestra = new GUIABMMuestra(nombreVentana,data);
+		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
+		this.GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
 		GUIABMMuestra.getJButtonSeleccionar().setEnabled(false);
