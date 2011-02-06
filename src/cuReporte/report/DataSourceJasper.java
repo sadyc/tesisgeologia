@@ -47,15 +47,11 @@ import java.util.Hashtable;
 		 * 
 		 * @see dori.jasper.engine.JRDataSource#getFieldValue(dori.jasper.engine.JRField)
 		 */
-		public String getFieldValue(JRField field) throws JRException {
+		public Object getFieldValue(JRField field) throws JRException {
 	 		//String value = null;
 			String fieldName = field.getName();
-			System.out.println(fieldName+" <---- field name");
-			System.out.println(data[index].toString()+" <---- [data index]");
-			System.out.println(((Integer) tabla.get(fieldName)).intValue() + "<------ LA PUTA Q T PARIO             " + index);
-			System.out.println("sos null??:  " +data[index][((Integer) tabla.get(fieldName)).intValue()]);
-			System.out.println("sos null?? PUTASO==:  " +data[0][12]);
-			return data[index][((Integer) tabla.get(fieldName)).intValue()];
+			Object res = data[index][((Integer) tabla.get(fieldName)).intValue()];
+			return res;
 		}
 
 }
