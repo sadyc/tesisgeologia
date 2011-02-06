@@ -33,6 +33,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 		this.nombreMuestra = nombreMuestra;
 		obtenerMuestra();
 		this.GUILimiteConsistencia = new GUILimiteConsistencia("Limite Consistencia",muestra);
+		GUILimiteConsistencia.setLocationRelativeTo(null);
 		GUILimiteConsistencia.setModal(true);
 		this.GUILimiteConsistencia.setListenerButtons(this);
 		show();
@@ -56,11 +57,20 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUILimiteConsistencia.getJButtonAceptar() == source){
+		if (this.GUILimiteConsistencia.getjButtonAgregar() == source){
+			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
      		aceptar();
 		}
-		if (this.GUILimiteConsistencia.getJButtonSalir() == source){
+		if (this.GUILimiteConsistencia.getjButtonCancelar() == source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
+			GUILimiteConsistencia.dispose();
+		}
+		if (this.GUILimiteConsistencia.getAgregar() == source){
+			System.out.println("GestionarAnalisis.actionPerformed() jMenuAgregar");
+			aceptar();
+		}
+		if (this.GUILimiteConsistencia.getCancelar() == source){
+			System.out.println("GestionarAnalisis.actionPerformed() jMenuCancelar");
 			GUILimiteConsistencia.dispose();
 		}
 	}
@@ -70,8 +80,8 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	 */
 	public void aceptar(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
-		limiteLiquido = GUILimiteConsistencia.getLimiteLiquido().getText();
-		limitePlastico = GUILimiteConsistencia.getLimitePlastico().getText();
+		limiteLiquido = GUILimiteConsistencia.getjTextFieldLL().getText();
+		limitePlastico = GUILimiteConsistencia.getjTextFieldLP().getText();
 		try {
 			control.insertarConsistencia(Float.parseFloat(limiteLiquido),Float.parseFloat(limitePlastico), nombreMuestra);
 			altaConsistencia= true;
