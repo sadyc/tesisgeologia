@@ -13,5 +13,40 @@
 	<classpathentry kind="lib" path="lib/postgresql-8.4-701.jdbc3.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="lib/jcommon-1.0.16.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart-1.0.13.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/ant-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/antlr-2.7.5.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/bsh-2.0b4.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/commons-beanutils-1.7.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/commons-collections-2.1.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/commons-dbcp-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/commons-digester-1.7.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/commons-javaflow-20060411.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/commons-logging-1.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/commons-logging-api-1.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/groovy-all-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/hibernate3.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/hsqldb-1.7.1.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/itext-1.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/jakarta-bcel-20050813.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/JasperBabylon-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/jasperreports-2.0.1-applet.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/jasperreports-2.0.1-javaflow.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/jasperreports-2.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/jaxen-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/jcommon-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/jdt-compiler-3.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/jfreechart-1.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/jpa.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/jxl-2.6.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/mondrian-2.3.2.8944.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/png-encoder-1.5.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/poi-3.0.1-FINAL-20070705.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/saaj-api-1.3.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/servlet.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/xalan.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="lib/jasper/xml-apis.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>
