@@ -147,9 +147,6 @@
 			<field name="coeficienteUniformidad" persistence-modifier="persistent">
                  <column jdbc-type="FLOAT"/>
         </field>
-			<field name="coeficienteUniformidad" persistence-modifier="persistent">
-                 <column jdbc-type="FLOAT"/>
-        </field>
 			<field name="gradoCurvatura" persistence-modifier="persistent">
                  <column jdbc-type="FLOAT"/>
         </field>
@@ -163,21 +160,21 @@
                  <column jdbc-type="FLOAT"/>
         </field>
  	 <field name="descripcion" persistence-modifier="persistent">
-                 <column length="30" jdbc-type="CHAR"/>
+                 <column length="225" jdbc-type="VARCHAR"/>
          </field>
 		 <field name="nombre" persistence-modifier="persistent">
-                 <column length="30" jdbc-type="CHAR"/>
+                 <column length="225" jdbc-type="VARCHAR"/>
          </field>
 		 
      </class>
 	 
- <class name="persistencia.domain.Clasificacion.SUCS" identity-type="datastore">
+ <class name="persistencia.domain.SUCS" identity-type="datastore">
              <inheritance strategy="new-table"/>
 			  <field name="frame" persistence-modifier="persistent"/>
          
  
  </class>
- <class name="persistencia.domain.Clasificacion.AASTHO" identity-type="datastore">
+ <class name="persistencia.domain.AASHTO" identity-type="datastore">
 		<inheritance strategy="new-table"/>
             <field name="frame" persistence-modifier="persistent"/>
         </class>
