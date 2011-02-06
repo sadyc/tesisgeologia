@@ -54,6 +54,7 @@ import java.util.Hashtable;
 			System.out.println(data[index].toString()+" <---- [data index]");
 			System.out.println(((Integer) tabla.get(fieldName)).intValue() + "<------ LA PUTA Q T PARIO             " + index);
 			System.out.println("sos null??:  " +data[index][((Integer) tabla.get(fieldName)).intValue()]);
+			System.out.println("sos null?? PUTASO==:  " +data[0][12]);
 			return data[index][((Integer) tabla.get(fieldName)).intValue()];
 		}
 
