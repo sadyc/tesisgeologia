@@ -60,7 +60,7 @@ public class ViewReport {
 		//parameters
 		//Object[][] parameters = { { "reportTitle", "Listado de Personas." },{ "datePrint", "11-11-05" } };
 		Object[][] parameters = { { "datePrint", "11-11-07" },{ "reportTitle", "Listado de Personas." } };
-     	String[] filedXml = { "nombre", "ubicacion", "peso", "profindidadInicial", "profundidadFinal", "limiteLiquido", "limitePlastico", "indicePlasticidad", "D60", "D30" , "D10", "coefUniformidad", "gradoCurvatura"};   //Son los campos a llenar en el XML. Deben tener el mismo nombre.
+     	String[] filedXml = { "nombre", "ubicacion", "peso", "profundidadInicial", "profundidadFinal", "limiteLiquido", "limitePlastico", "indicePlasticidad", "D60", "D30" , "D10", "coefUniformidad", "gradoCurvatura"};   //Son los campos a llenar en el XML. Deben tener el mismo nombre.
  
 		String nameReport = "report1";
 
