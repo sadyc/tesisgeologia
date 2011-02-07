@@ -168,8 +168,7 @@ public class MediadorAltaMuestra extends Mediador{
 		data[4]= GUIMuestra.getProfundidadFinal().getText();
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-	    System.out.println("utilDate:" + utilDate);
-	    System.out.println("sqlDate:" + sqlDate);
+	    Float aux = new Float(0);
 	    muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,this.ubicacion,sqlDate);
 		try {
 			control.insertarMuestra(muestra, ubicacion, operador);

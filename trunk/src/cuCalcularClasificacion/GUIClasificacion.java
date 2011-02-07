@@ -147,11 +147,11 @@ public class GUIClasificacion extends JDialog{
 		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    
 		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	
 		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): "+muestra.getIndicePlasticidad());
-		D60 = new JLabel("D60: "+clasificacion.getD60()+" mm");
-		D30 = new JLabel("D30: "+clasificacion.getD30()+" mm"); 
-		D10 = new JLabel("D10: "+clasificacion.getD10()+" mm"); 
-		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): "+clasificacion.getCoeficienteUniformidad());
-		gradoCurvatura = new JLabel ("Grado de Curvatura (Cc): "+clasificacion.getGradoCurvatura());
+		D60 = new JLabel("D60: "+muestra.getD60()+" mm");
+		D30 = new JLabel("D30: "+muestra.getD30()+" mm"); 
+		D10 = new JLabel("D10: "+muestra.getD10()+" mm"); 
+		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): "+muestra.getCoeficienteUniformidad());
+		gradoCurvatura = new JLabel ("Grado de Curvatura (Cc): "+muestra.getGradoCurvatura());
 		
 		imprimir = new JButton("Imprimir");
 		salir = new JButton("Cancelar");

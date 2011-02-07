@@ -50,11 +50,11 @@ public class ControlClasificacion {
 	public void calcularClasificacionSUCS(Muestra muestra,SUCS clasificacionSUCS) throws Exception{
 		Float IndicePlasticidad = muestra.getIndicePlasticidad();
 		Float limiteLiquido = muestra.getLimiteLiquido();
-		calcularDiametro(muestra.getNombreMuestra(),clasificacionSUCS);
+		calcularDiametro(muestra);
 		
-		clasificacionSUCS.setCoeficienteUniformidad(clasificacionSUCS.getD60()/clasificacionSUCS.getD10());//Coeficiente de uniformidad
-		Float gradoCurvatura = ((clasificacionSUCS.getD30()*clasificacionSUCS.getD30()) /(clasificacionSUCS.getD10()*clasificacionSUCS.getD60()));//grado de curvatura.
-		clasificacionSUCS.setGradoCurvatura(gradoCurvatura);
+		muestra.setCoeficienteUniformidad(muestra.getD60()/muestra.getD10());//Coeficiente de uniformidad
+		Float gradoCurvatura = ((muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60()));//grado de curvatura.
+		muestra.setGradoCurvatura(gradoCurvatura);
 		
 		
 		Persistencia persistencia = new Persistencia();
@@ -72,7 +72,7 @@ public class ControlClasificacion {
 					analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='200'");
 					if (analisis.getPorcentajePasante()<5){
 						//GravasLimpias
-						if((clasificacionSUCS.getCoeficienteUniformidad()>=4) && (1<=clasificacionSUCS.getGradoCurvatura()) && (clasificacionSUCS.getGradoCurvatura()<=3)){
+						if((muestra.getCoeficienteUniformidad()>=4) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3)){
 							//GW
 							clasificacionSUCS.setClasificacionSUCS("GW");
 						}else {
@@ -91,11 +91,11 @@ public class ControlClasificacion {
 						}
 					}else{
 						//Gravas Limpias y con finos.
-						if ((clasificacionSUCS.getCoeficienteUniformidad()>=4) && (1<=clasificacionSUCS.getGradoCurvatura()) && (clasificacionSUCS.getGradoCurvatura()<=3) && (IndicePlasticidad<4)){
+						if ((muestra.getCoeficienteUniformidad()>=4) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3) && (IndicePlasticidad<4)){
 							//GW-GM
 						}else if(IndicePlasticidad<4 && IndicePlasticidad>7){
 							//GW-GC
-						}else if((IndicePlasticidad<4) && !((clasificacionSUCS.getCoeficienteUniformidad()>=4) && (1<=clasificacionSUCS.getGradoCurvatura()) && (clasificacionSUCS.getGradoCurvatura()<=3))){
+						}else if((IndicePlasticidad<4) && !((muestra.getCoeficienteUniformidad()>=4) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3))){
 							//GP-GM
 						}else{
 							//GP-GC
@@ -107,7 +107,7 @@ public class ControlClasificacion {
 					analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && tamiz.numeroTamiz=='200'");
 					if (analisis.getPorcentajePasante()<=5){
 						//Arenas Limpias
-						if ((clasificacionSUCS.getCoeficienteUniformidad()>=6) && (1<=clasificacionSUCS.getGradoCurvatura()) && (clasificacionSUCS.getGradoCurvatura()<=3) ){
+						if ((muestra.getCoeficienteUniformidad()>=6) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3) ){
 							//SW
 							clasificacionSUCS.setClasificacionSUCS("SW");
 						}else {
@@ -125,11 +125,11 @@ public class ControlClasificacion {
 						}
 					}else{
 						//arenas limpias y con finos.
-						if ((clasificacionSUCS.getCoeficienteUniformidad()>=6) && (1<=clasificacionSUCS.getGradoCurvatura()) && (clasificacionSUCS.getGradoCurvatura()<=3) && (IndicePlasticidad<4)){
+						if ((muestra.getCoeficienteUniformidad()>=6) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3) && (IndicePlasticidad<4)){
 							//SW-SM
-						}else if ((clasificacionSUCS.getCoeficienteUniformidad()>=6) && (1<=clasificacionSUCS.getGradoCurvatura()) && (clasificacionSUCS.getGradoCurvatura()<=3) && (IndicePlasticidad>7)){
+						}else if ((muestra.getCoeficienteUniformidad()>=6) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3) && (IndicePlasticidad>7)){
 							//SW-SC
-						}else if (!((clasificacionSUCS.getCoeficienteUniformidad()>=6) && (1<=clasificacionSUCS.getGradoCurvatura())) && (clasificacionSUCS.getGradoCurvatura()<=3) && (IndicePlasticidad>7)){
+						}else if (!((muestra.getCoeficienteUniformidad()>=6) && (1<=muestra.getGradoCurvatura())) && (muestra.getGradoCurvatura()<=3) && (IndicePlasticidad>7)){
 							//SP-SM
 						}else{
 							//SP-SC
@@ -186,14 +186,12 @@ public class ControlClasificacion {
 		
 		Float IndicePlasticidad = muestra.getIndicePlasticidad();
 		Float limiteLiquido = muestra.getLimiteLiquido();
-		calcularDiametro(muestra.getNombreMuestra(),clasificacion);
+		calcularDiametro(muestra);
 		
-		clasificacion.setCoeficienteUniformidad(clasificacion.getD60()/clasificacion.getD10());//Coeficiente de uniformidad
-		Float gradoCurvatura = ((clasificacion.getD30()*clasificacion.getD30()) /(clasificacion.getD10()*clasificacion.getD60()));//grado de curvatura.
-		clasificacion.setGradoCurvatura(gradoCurvatura);
-		
-		
-		
+		muestra.setCoeficienteUniformidad(muestra.getD60()/muestra.getD10());//Coeficiente de uniformidad
+		Float gradoCurvatura = ((muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60()));//grado de curvatura.
+		muestra.setGradoCurvatura(gradoCurvatura);
+				
 		try{
 			Analisis analisis = new Analisis();
 			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'";
@@ -283,11 +281,11 @@ public class ControlClasificacion {
 	 * @param nombreMuestra
 	 * @throws Exception
 	 */
-	private void calcularDiametro(String nombreMuestra,Clasificacion clasificacion) throws Exception {
+	private void calcularDiametro(Muestra muestra) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Analisis analisis = new Analisis();
-		List listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+nombreMuestra+"'");
+		List listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
 		persistencia.cerrarTransaccion();
 		int i = 0;
 		boolean d60 = false;//estas variables se ultilizan para no calcular dos veces
@@ -305,7 +303,7 @@ public class ControlClasificacion {
 				double exponente = (Math.log10(abertura1)-
 						((pasante1-60)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 				Float calculo = new Float(Math.pow(10,exponente));
-				clasificacion.setD60(calculo);
+				muestra.setD60(calculo);
 				d60 = true;
 			}
 			if (analisis.getPorcentajePasante()<30 && !d30){
@@ -318,7 +316,7 @@ public class ControlClasificacion {
 					double exponente = (Math.log10(abertura1)-
 							((pasante1-30)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 					Float calculo = new Float(Math.pow(10,exponente));
-					clasificacion.setD30(calculo);
+					muestra.setD30(calculo);
 					d30 = true;
 					analisis= (Analisis)listaAnalisis.get(i);
 				}
@@ -332,20 +330,20 @@ public class ControlClasificacion {
 						double exponente = (Math.log10(abertura1)-
 								((pasante1-10)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 						Float calculo = new Float(Math.pow(10,exponente));
-						clasificacion.setD10(calculo);
+						muestra.setD10(calculo);
 						d10 = true;
 					}
 				i++;	
 		}
 		if (!d60) {
 			Float aberturaMalla = new Float(analisis.getTamiz().getAberturaMalla());
-			clasificacion.setD60(aberturaMalla);
+			muestra.setD60(aberturaMalla);
 		}
 		if (!d30){
-			clasificacion.setD30(clasificacion.getD60());
+			muestra.setD30(muestra.getD60());
 		}
 		if (!d10){
-			clasificacion.setD10(clasificacion.getD30());
+			muestra.setD10(muestra.getD30());
 		}
 	}
 

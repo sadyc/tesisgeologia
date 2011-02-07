@@ -29,7 +29,22 @@
          </field>
         <field name="indicePlasticidad" persistence-modifier="persistent">
                  <column jdbc-type="FLOAT"/>
-		</field>		 
+		</field>
+		<field name="coeficienteUniformidad" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
+			<field name="gradoCurvatura" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
+		<field name="D10" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
+		<field name="D30" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>
+		<field name="D60" persistence-modifier="persistent">
+                 <column jdbc-type="FLOAT"/>
+        </field>		
         <field name="aashto" persistence-modifier="persistent">
                 <column name="CLASIFICACION_AASHTO"/>
         </field>
@@ -144,21 +159,7 @@
      </class>
 
      <class name="persistencia.domain.Clasificacion" identity-type="datastore">
-         <field name="coeficienteUniformidad" persistence-modifier="persistent">
-                 <column jdbc-type="FLOAT"/>
-        </field>
-			<field name="gradoCurvatura" persistence-modifier="persistent">
-                 <column jdbc-type="FLOAT"/>
-        </field>
-		<field name="D10" persistence-modifier="persistent">
-                 <column jdbc-type="FLOAT"/>
-        </field>
-		<field name="D30" persistence-modifier="persistent">
-                 <column jdbc-type="FLOAT"/>
-        </field>
-		<field name="D60" persistence-modifier="persistent">
-                 <column jdbc-type="FLOAT"/>
-        </field>
+         
  	 <field name="descripcion" persistence-modifier="persistent">
                  <column length="225" jdbc-type="VARCHAR"/>
          </field>
