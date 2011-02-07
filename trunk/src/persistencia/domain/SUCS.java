@@ -4,6 +4,8 @@
 package persistencia.domain;
 
 import java.awt.Frame;
+import java.util.Collection;
+import java.util.HashSet;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.swing.JOptionPane;
@@ -19,6 +21,7 @@ import javax.swing.JOptionPane;
 public class SUCS extends Clasificacion {
 	
 	Frame frame;
+	protected Collection<Muestra> muestras = new HashSet();
 	
 	/**
 	 * @brief Constructor por defecto.
