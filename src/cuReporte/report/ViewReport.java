@@ -7,14 +7,14 @@ import net.sf.jasperreports.view.*;
 
 public class ViewReport {
 	
-	private static String[][] valores;
+	private static Object[][] valores;
     
-    public ViewReport(String[][] valores){
+    public ViewReport(Object[][] valores){
             this.valores = valores.clone();
             
     }
 	public void viewReport(Object[][] param, String[] fieldXml,
-			String nameReport, String[][] values) {
+			String nameReport, Object[][] values) {
 		// Reporte
 		try {
 			// parametros
@@ -42,7 +42,7 @@ public class ViewReport {
 	}
 	public void viewPersons() {
 
-		String[][] values = valores ; //INFO A LLENAR EN EL REPORTE.
+		Object[][] values = valores ; //INFO A LLENAR EN EL REPORTE. la cantidad de filas son la cantidad de hojas :-/
 		
 		
 		
