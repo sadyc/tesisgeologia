@@ -29,17 +29,17 @@ public class GUIComparacion extends JDialog{
 
 	/**
 	 * @param title
-	 * @throws java.awt.HeadlessException
+	 * @throws java.awt.HeadlessException 
 	 */
 	
 	private JMenuBar menu ;
 	private JMenu herramientas;
 	private JMenu ayuda;
-	private JMenuItem salirMenu;
+	private JMenuItem cancelarMenu;
 	private JMenuItem versionMenu;
 	private JMenuItem imprimirMenu;
 	private JButton imprimir;
-	private JButton salir;
+	private JButton cancelar;
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
 	private JPanel panelCenter=null;
@@ -94,15 +94,15 @@ public class GUIComparacion extends JDialog{
 		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(ayuda);
-		salirMenu = new JMenuItem("Salir");
+		cancelarMenu = new JMenuItem("Cancelar");
 		herramientas.add(new JSeparator());
-		herramientas.add(salirMenu);
+		herramientas.add(cancelarMenu);
 		versionMenu = new JMenuItem("Version");
 		ayuda.add(versionMenu);	
 		imprimirMenu = new JMenuItem("Imprimir");
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
-		herramientas.add(salirMenu);
+		herramientas.add(cancelarMenu);
 		muestra1 = new JLabel("Muestra: ");
 		peso1 = new JLabel("Peso: ");
 		profundidadInicial1 = new JLabel("Profundidad Inicial: ");
@@ -135,8 +135,8 @@ public class GUIComparacion extends JDialog{
 		coeficienteUniformidad2 = new JLabel("Coef. Uniformidad (Cu): ");
 		gradoCurvatura2 = new JLabel ("Grado de Curvatura (Cc): ");
 		
-		imprimir = new JButton("Imprimir");
-		salir = new JButton("Salir");
+		imprimir = new JButton("IMPRIMIR");
+		cancelar = new JButton("CANCELAR");
 		initialize();
 	}
 	
@@ -155,13 +155,13 @@ public class GUIComparacion extends JDialog{
 		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(ayuda);
-		salirMenu = new JMenuItem("Salir");
+		cancelarMenu = new JMenuItem("Cancelar");
 		versionMenu = new JMenuItem("Version");
 		ayuda.add(versionMenu);	
 		imprimirMenu = new JMenuItem("Imprimir");
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
-		herramientas.add(salirMenu);
+		herramientas.add(cancelarMenu);
 		this.muestra1 = new JLabel(muestra1.getNombreMuestra());
 		this.peso1 = new JLabel("Peso: "+muestra1.getPeso().toString()+"grs");
 		this.profundidadInicial1= new JLabel("Profundidad Inicial: "+muestra1.getProfundidadInicial()+"mts");
@@ -194,8 +194,8 @@ public class GUIComparacion extends JDialog{
 		coeficienteUniformidad2 = new JLabel("Coef. Uniformidad (Cu): ");
 		gradoCurvatura2 = new JLabel ("Grado de Curvatura (Cc): ");
 		
-		imprimir = new JButton("Imprimir");
-		salir = new JButton("Cancelar");
+		imprimir = new JButton("IMPRIMIR");
+		cancelar = new JButton("CANCELAR");
 		initialize();
 	}
 	
@@ -270,17 +270,38 @@ public class GUIComparacion extends JDialog{
 	}
 	
 	/**
-	 * @return the salir
+	 * @return the cancelar
 	 */
-	public JButton getJButtonSalir() {
-		return salir;
+	public JButton getJButtonCancelar() {
+		return cancelar;
 	}
 
 	/**
-	 * @param salir the salir to set
+	 * @param cancelar the cancelar to set
 	 */
-	public void setJButtonSalir(JButton salir) {
-		this.salir = salir;
+	public void setJButtonCancelar(JButton cancelar) {
+		this.cancelar = cancelar;
+	}
+
+	/**
+	 * @return the cancelarMenu
+	 */
+	public JMenuItem getCancelarMenu() {
+		return cancelarMenu;
+	}
+
+	/**
+	 * @return the versionMenu
+	 */
+	public JMenuItem getVersionMenu() {
+		return versionMenu;
+	}
+
+	/**
+	 * @return the imprimirMenu
+	 */
+	public JMenuItem getImprimirMenu() {
+		return imprimirMenu;
 	}
 
 	/**
@@ -431,7 +452,7 @@ public class GUIComparacion extends JDialog{
 			this.panelSur = new JPanel();
 			this.panelSur.setLayout(new FlowLayout());
 			this.panelSur.add(imprimir);
-			this.panelSur.add(salir);
+			this.panelSur.add(cancelar);
 			}
 			return this.panelSur;
 	}
@@ -443,7 +464,11 @@ public class GUIComparacion extends JDialog{
 	 */
 	public void setListenerButtons(ActionListener lis){
 		this.imprimir.addActionListener(lis);
-		this.salir.addActionListener(lis);
+		this.cancelar.addActionListener(lis);
+		imprimirMenu.addActionListener(lis);
+		cancelarMenu.addActionListener(lis);
+		versionMenu.addActionListener(lis);
+		
 	}
 	
 	/**

@@ -40,7 +40,7 @@ public class ControlClasificacion {
 	public ControlClasificacion(){}
 	
 		
-	/**
+	/** 
 	 * Realiza los calculos correspondientes para determinar la clasificacion de una muestra.
 	 * @param muestra 
 	 */

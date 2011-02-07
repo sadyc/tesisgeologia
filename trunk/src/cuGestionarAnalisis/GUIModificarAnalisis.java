@@ -30,7 +30,7 @@ import persistencia.domain.Tamiz;
 public class GUIModificarAnalisis extends JDialog {
 
 	private JButton aceptar;
-	private JButton salir;
+	private JButton cancelar;
 	private JPanel panelNorte;
 	private JPanel panelCentro;
 	private JPanel panelSur;
@@ -51,7 +51,7 @@ public class GUIModificarAnalisis extends JDialog {
 		muestra = new JLabel("Muestra: ");
 		tamiz = new JLabel("Tamiz: ");
 		aceptar = new JButton("MODIFICAR ANALISIS");
-		salir = new JButton("SALIR");
+		cancelar = new JButton("SALIR");
 		initialize();
 	}
 	
@@ -66,7 +66,7 @@ public class GUIModificarAnalisis extends JDialog {
 		this.tamiz = new JLabel("Tamiz: " + tamiz.getNumeroTamiz());
 		this.pesoRetenido.setText(pesoRetenido);
 		aceptar = new JButton("AGREGAR ANALISIS");
-		salir = new JButton("SALIR");
+		cancelar = new JButton("SALIR");
 		initialize();
 	}
 	
@@ -93,17 +93,17 @@ public class GUIModificarAnalisis extends JDialog {
 	}
 	
 	/**
-	 * @return the salir
+	 * @return the cancelar
 	 */
-	public JButton getJButtonSalir() {
-		return salir;
+	public JButton getJButtonCancelar() {
+		return cancelar;
 	}
 
 	/**
-	 * @param salir the salir to set
+	 * @param cancelar the cancelar to set
 	 */
-	public void setJButtonSalir(JButton salir) {
-		this.salir = salir;
+	public void setJButtonCancelar(JButton cancelar) {
+		this.cancelar = cancelar;
 	}
 	
 	
@@ -181,19 +181,20 @@ public class GUIModificarAnalisis extends JDialog {
 			this.panelSur = new JPanel();
 			this.panelSur.setLayout(new FlowLayout());
 			this.panelSur.add(aceptar);
-			this.panelSur.add(salir);
+			this.panelSur.add(cancelar);
 		}
 		return this.panelSur;
 	}
 	
 	/**
-	 * Metodo que permite escuchar los botoner aceptar y salir.
+	 * Metodo que permite escuchar los botoner aceptar y cancelar.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
 		this.aceptar.addActionListener(lis);
-		this.salir.addActionListener(lis);
+		this.cancelar.addActionListener(lis);
+		
 	}
 	
 	

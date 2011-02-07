@@ -19,15 +19,9 @@ import java.util.Hashtable;
 		private int index = -1;
 
 		public DataSourceJasper(String[][] newData, Hashtable newTabla) {
-			System.out.println("Data:  " +newData[0][3]);
-			System.out.println("Data:  " +newData[0][4]);
-			System.out.println("Data:  " +newData[0][5]);
 			data = newData;
 			tabla = newTabla;
 			
-			System.out.println("Data:  " +data[0][3]);
-			System.out.println("Data:  " +data[0][4]);
-			System.out.println("Data:  " +data[0][5]);
 			System.out.println("Datalenght:  " +data.length);
 		
 		}

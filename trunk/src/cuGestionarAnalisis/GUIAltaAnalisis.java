@@ -254,6 +254,27 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 		return pesoRetenido;
 	}
 
+	/**
+	 * @return the jMenuItemAgregar
+	 */
+	public javax.swing.JMenuItem getjMenuItemAgregar() {
+		return jMenuItemAgregar;
+	}
+
+	/**
+	 * @return the jMenuItemCancelar
+	 */
+	public javax.swing.JMenuItem getjMenuItemCancelar() {
+		return jMenuItemCancelar;
+	}
+
+	/**
+	 * @return the jMenuItemTamiz
+	 */
+	public javax.swing.JMenuItem getjMenuItemTamiz() {
+		return jMenuItemTamiz;
+	}
+
 	
 
 	

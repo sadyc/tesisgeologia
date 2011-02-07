@@ -57,20 +57,12 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUILimiteConsistencia.getjButtonAgregar() == source){
+		if (this.GUILimiteConsistencia.getjButtonAgregar() == source || GUILimiteConsistencia.getAgregar()==source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
      		aceptar();
 		}
-		if (this.GUILimiteConsistencia.getjButtonCancelar() == source){
+		if (this.GUILimiteConsistencia.getjButtonCancelar() == source || GUILimiteConsistencia.getCancelar()==source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
-			GUILimiteConsistencia.dispose();
-		}
-		if (this.GUILimiteConsistencia.getAgregar() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jMenuAgregar");
-			aceptar();
-		}
-		if (this.GUILimiteConsistencia.getCancelar() == source){
-			System.out.println("GestionarAnalisis.actionPerformed() jMenuCancelar");
 			GUILimiteConsistencia.dispose();
 		}
 	}

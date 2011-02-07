@@ -413,11 +413,11 @@ import javax.swing.JTextField;
 	        return aceptarMenu;
 	    }
 
-	    public JMenuItem getjMenuItem2() {
+	    public JMenuItem getjMenuCancelar() {
 	        return cancelarMenu;
 	    }
 
-	    public JMenuItem getjMenuItem3() {
+	    public JMenuItem getjMenuVersion() {
 	        return versionMenu;
 	    }
 

@@ -88,17 +88,17 @@ public class MediadorAltaAnalisis  extends Mediador{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-	   	if (this.GUIAnalisis.getJButtonAceptar() == source){
+	   	if (this.GUIAnalisis.getJButtonAceptar() == source || GUIAnalisis.getjMenuItemAgregar()==source){
 			try {
 				agregarAnalisis();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-	   	if (this.GUIAnalisis.getJButtonSeleccionarTamiz() == source){
+	   	if (this.GUIAnalisis.getJButtonSeleccionarTamiz() == source || GUIAnalisis.getjMenuItemTamiz()==source){
 			seleccionarTamiz();
 		}
-		if (this.GUIAnalisis.getJButtonCancelar() == source){
+		if (this.GUIAnalisis.getJButtonCancelar() == source || GUIAnalisis.getjMenuItemCancelar()==source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			GUIAnalisis.dispose();
 		}

@@ -117,7 +117,7 @@ public class MediadorAltaMuestra extends Mediador{
 		if (this.GUIMuestra.getJButtonAceptar() == source || this.GUIMuestra.getjMenuAceptar()== source) {
 			aceptar();
 		}
-		if (this.GUIMuestra.getJButtonCancelar() == source){
+		if (this.GUIMuestra.getJButtonCancelar() == source || GUIMuestra.getjMenuCancelar()==source){
 			GUIMuestra.dispose();
 		}
 	}

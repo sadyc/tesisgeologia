@@ -45,7 +45,7 @@ public class GUITamiz extends JDialog {
 		aberturaMalla = new JTextField(15);
 		numeroTamizLabel = new JLabel ("Numero de Tamiz: ");
 		aberturaMallaLabel = new JLabel ("Abertura de Malla: ");
-		aceptar = new JButton("Agregar Tamiz");
+		aceptar = new JButton("Agregar");
 		cancelar = new JButton("Cancelar");
 		initialize();
 	}

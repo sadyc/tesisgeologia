@@ -41,14 +41,14 @@ public class GUIABMMuestra extends JDialog{
 	private JButton jButtonEliminar;
 	private JButton jButtonModificar;
 	private JButton jButtonSeleccionar;
+	private JButton jButtonCancelar;
 	private JButton jButtonBuscar;
-	private JButton jButtonSalir;
 	private JMenuItem agregarMenu;
 	private JMenuItem modificarMenu;
 	private JMenuItem eliminarMenu;
 	private JMenuItem seleccionarMenu;
 	private JMenuItem buscarMenu;
-	private JMenuItem salirMenu;
+	private JMenuItem cancelarMenu;
 	private JMenuItem versionMenu;
 	private String [] columName;
 	private Object [][] data;
@@ -75,7 +75,7 @@ public class GUIABMMuestra extends JDialog{
 		modificarMenu = new JMenuItem("Modificar Muestra");
 		eliminarMenu = new JMenuItem("Eliminar Muestra");
 		seleccionarMenu = new JMenuItem("Seleccionar Muestra");
-		salirMenu = new JMenuItem("Salir");
+		cancelarMenu = new JMenuItem("Cancelar");
 		herramientas.add(agregarMenu);
 		herramientas.add(modificarMenu);
 		herramientas.add(eliminarMenu);
@@ -83,15 +83,17 @@ public class GUIABMMuestra extends JDialog{
 		herramientas.add(seleccionarMenu);
 		herramientas.add(buscarMenu);
 		herramientas.add(new JSeparator()); 
-		herramientas.add(salirMenu);
-		versionMenu = new JMenuItem("Version");
+		herramientas.add(cancelarMenu);
+		versionMenu = new JMenuItem("Versión");
 		ayuda.add(versionMenu);		
 		jButtonAgregar = new JButton("AGREGAR");
 		jButtonModificar = new JButton("MODIFICAR");
 		jButtonEliminar = new JButton("ELIMINAR");
 		jButtonSeleccionar = new JButton("SELECCIONAR");
+		jButtonCancelar = new JButton("CANCELAR");
 		jButtonBuscar = new JButton("BUSCAR");
-		jButtonSalir = new JButton("SALIR");
+	
+
 		initialize();
 	}
 
@@ -153,8 +155,8 @@ public class GUIABMMuestra extends JDialog{
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
-	public JButton getJButtonSalir() {
-		return jButtonSalir;
+	public JButton getJButtonCancelar() {
+		return jButtonCancelar;
 	}
 	
 	/**
@@ -200,10 +202,10 @@ public class GUIABMMuestra extends JDialog{
 	}
 
 	/**
-	 * @return the salirMenu
+	 * @return the cancelarMenu
 	 */
-	public JMenuItem getSalirMenu() {
-		return salirMenu;
+	public JMenuItem getCancelarMenu() {
+		return cancelarMenu;
 	}
 
 	/**
@@ -212,13 +214,20 @@ public class GUIABMMuestra extends JDialog{
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
-		this.jButtonAgregar.addActionListener(lis);
-		this.jButtonEliminar.addActionListener(lis);
-		this.jButtonModificar.addActionListener(lis);
-		this.jButtonSeleccionar.addActionListener(lis);
-		this.jButtonBuscar.addActionListener(lis);
-		this.jButtonSalir.addActionListener(lis);
-		this.buscarMenu.addActionListener(lis);
+		jButtonAgregar.addActionListener(lis);
+		jButtonEliminar.addActionListener(lis);
+		jButtonModificar.addActionListener(lis);
+		jButtonSeleccionar.addActionListener(lis);
+		jButtonCancelar.addActionListener(lis);
+		jButtonBuscar.addActionListener(lis);
+		buscarMenu.addActionListener(lis);
+		agregarMenu.addActionListener(lis);
+		eliminarMenu.addActionListener(lis);
+		modificarMenu.addActionListener(lis);
+		seleccionarMenu.addActionListener(lis);
+		cancelarMenu.addActionListener(lis);
+		versionMenu.addActionListener(lis);
+		
         
 	}
 	/**
@@ -256,8 +265,9 @@ public class GUIABMMuestra extends JDialog{
 		this.panelSur.add(getJButtonModificar());
 		this.panelSur.add(getJButtonEliminar());
 		this.panelSur.add(getJButtonSeleccionar());
+		this.panelSur.add(getJButtonCancelar());
 		this.panelSur.add(getJButtonBuscar());
-		this.panelSur.add(getJButtonSalir());
+		
 		}
 		return this.panelSur;
 	}
@@ -300,16 +310,6 @@ public class GUIABMMuestra extends JDialog{
 	public void setKeyListener(KeyListener lis){
         tablePanel.addTableKeyListener(lis);
 	}
-	
-	public void addActionListener(ActionListener lis){
-        jButtonAgregar.addActionListener(lis);
-        jButtonEliminar.addActionListener(lis);
-        jButtonModificar.addActionListener(lis);
-        jButtonSalir.addActionListener(lis);
-        jButtonBuscar.addActionListener(lis);
-        jButtonSeleccionar.addActionListener(lis);
-        buscarMenu.addActionListener(lis);
-  }
-	
+
 
 }

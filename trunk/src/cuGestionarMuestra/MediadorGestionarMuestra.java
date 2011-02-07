@@ -93,21 +93,23 @@ public class MediadorGestionarMuestra extends Mediador{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIABMMuestra.getJButtonAgregar() == source){
+		if (this.GUIABMMuestra.getJButtonAgregar() == source||GUIABMMuestra.getAgregarMenu()==source){
 			agregarMuestra();
 	   	}
-		if (this.GUIABMMuestra.getJButtonEliminar() == source){
+		if (this.GUIABMMuestra.getJButtonEliminar() == source||GUIABMMuestra.getEliminarMenu()==source){
 			eliminarMuestra();
 		}
-		if (this.GUIABMMuestra.getJButtonModificar() == source){
+		if (this.GUIABMMuestra.getJButtonModificar() == source||GUIABMMuestra.getModificarMenu()==source){
 			modificarMuestra();
 		}
+
 		if (this.GUIABMMuestra.getBuscarMenu() == source || this.GUIABMMuestra.getJButtonBuscar() == source){
 			GUIABMMuestra.dispose();
 			System.out.println("dentro del source");
 			buscarMuestra();
 		}
-		if (this.GUIABMMuestra.getJButtonSalir() == source){
+		if (this.GUIABMMuestra.getJButtonCancelar() == source || GUIABMMuestra.getCancelarMenu()==source){
+
 			System.out.println("presionado boton salir");
 			GUIABMMuestra.dispose();
 		}

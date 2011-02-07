@@ -123,12 +123,12 @@ public class MediadorCompararMuestra extends Mediador{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIComparacion.getJButtonImprimir() == source) {
+		if (this.GUIComparacion.getJButtonImprimir() == source || GUIComparacion.getImprimirMenu()==source) {
 			System.out.println("Se presiono imprimir!!");
 			GUIComparacion.dispose();
 				
 			}
-		if (this.GUIComparacion.getJButtonSalir() == source){
+		if (this.GUIComparacion.getJButtonCancelar() == source || GUIComparacion.getCancelarMenu()==source){
 			System.out.println("Se presiono salir!!");
 			GUIComparacion.dispose();
 		}

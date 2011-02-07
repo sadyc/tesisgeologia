@@ -2,8 +2,12 @@ package cuGestionarTamiz;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -17,7 +21,7 @@ import cuGestionarMuestra.ControlGestionarMuestra;
 
 
 
-public class MediadorSeleccionarTamiz extends Mediador{
+public class MediadorSeleccionarTamiz implements ActionListener, KeyListener, MouseListener {
 
 	private GUISeleccionarTamiz GUISeleccionarTamiz = null;
 	private String seleccionado = new String();
@@ -28,11 +32,13 @@ public class MediadorSeleccionarTamiz extends Mediador{
 	public MediadorSeleccionarTamiz(Double abertura) throws Exception {
 		super();
 		cargarTablaDeTamiz(abertura);
-		this.GUISeleccionarTamiz = new GUISeleccionarTamiz(data);
+		GUISeleccionarTamiz = new GUISeleccionarTamiz(data);
 		GUISeleccionarTamiz.setTitle("Seleccionar un Tamiz");
-		GUISeleccionarTamiz.setModal(true);
 		GUISeleccionarTamiz.setListenerButtons(this);
 		GUISeleccionarTamiz.setListenerTable(this);
+		GUISeleccionarTamiz.setMouseListener(this);
+		GUISeleccionarTamiz.setKeyListener(this);
+		GUISeleccionarTamiz.setModal(true);
 		GUISeleccionarTamiz.show();
 	}
 	
@@ -67,10 +73,10 @@ public class MediadorSeleccionarTamiz extends Mediador{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUISeleccionarTamiz.getJButtonSeleccionar() == source){
+		if (this.GUISeleccionarTamiz.getJButtonSeleccionar() == source || GUISeleccionarTamiz.getSeleccionarMenu()==source){
 			seleccionarTamiz();
 		}
-		if (this.GUISeleccionarTamiz.getJButtonSalir() == source){
+		if (this.GUISeleccionarTamiz.getJButtonCancelar() == source || GUISeleccionarTamiz.getCancelarMenu()==source){
 			GUISeleccionarTamiz.dispose();
 		}
 	}
@@ -80,7 +86,7 @@ public class MediadorSeleccionarTamiz extends Mediador{
 	 */
 	public void seleccionarTamiz(){
 		if (GUISeleccionarTamiz.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun Tamiz","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún Tamiz","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			seleccionado = (String)GUISeleccionarTamiz.getTablePanel().getRow(GUISeleccionarTamiz.getTablePanel().getSelectedRow())[0];//
@@ -96,11 +102,10 @@ public class MediadorSeleccionarTamiz extends Mediador{
 	 * Metodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
 	 */
-	public void mouseClicked(MouseEvent arg0) {
-		Object source = arg0.getSource();
-		if (this.GUISeleccionarTamiz.getTablePanel() == source)
-			System.out.println("GestionarMediador.actionPerformed() jJTableTabla");
-		
+	
+	public void mouseClicked(MouseEvent e){
+		if (e.getClickCount() == 2)
+			seleccionarTamiz();
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {
@@ -121,6 +126,22 @@ public class MediadorSeleccionarTamiz extends Mediador{
 		return seleccionado;
 	}
 
-		public void itemStateChanged(ItemEvent e) {
+	
+	
+	public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == e.VK_ENTER)
+        	seleccionarTamiz();
 	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}	
 }

@@ -26,10 +26,10 @@ public class GUISeleccionarMuestra extends JDialog	{
 	private JMenu ayuda;
 	private JButton jButtonBuscarMuestra;
 	private JButton jButtonSeleccionarMuestra;
-	private JButton jButtonSalir;
+	private JButton jButtonCancelar;
 	private JMenuItem seleccionarMenu;
 	private JMenuItem buscarMenu;
-	private JMenuItem salirMenu;
+	private JMenuItem cancelarMenu;
 	private JMenuItem versionMenu;
 	private JPanel panelSur;
 	private TablePanel tablePanel;
@@ -52,16 +52,16 @@ public class GUISeleccionarMuestra extends JDialog	{
 			menu.add(ayuda);
 			buscarMenu = new JMenuItem("Buscar");
 			seleccionarMenu = new JMenuItem("Seleccionar");
-			salirMenu = new JMenuItem("Salir");
+			cancelarMenu = new JMenuItem("Cancelar");
 			herramientas.add(seleccionarMenu);
 			herramientas.add(buscarMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
-			herramientas.add(salirMenu);
+			herramientas.add(cancelarMenu);
 			versionMenu = new JMenuItem("Version");
 			ayuda.add(versionMenu);
 			jButtonBuscarMuestra = new JButton("BUSCAR");
 			jButtonSeleccionarMuestra  = new JButton("SELECCIONAR");
-			jButtonSalir  = new JButton("SALIR");
+			jButtonCancelar  = new JButton("CANCELAR");
 		}
 		initialize();
 	}
@@ -106,7 +106,7 @@ public class GUISeleccionarMuestra extends JDialog	{
 	 * @return javax.swing.JButton	
 	 */
 	public JButton getJButtonSalir() {
-		return jButtonSalir;
+		return jButtonCancelar;
 	}
 	
 	/**
@@ -117,7 +117,10 @@ public class GUISeleccionarMuestra extends JDialog	{
 	public void setListenerButtons(ActionListener lis){
 		this.jButtonSeleccionarMuestra.addActionListener(lis);
 		this.jButtonBuscarMuestra.addActionListener(lis);
-		this.jButtonSalir.addActionListener(lis);
+		this.jButtonCancelar.addActionListener(lis);
+		seleccionarMenu.addActionListener(lis);
+		buscarMenu.addActionListener(lis);
+		versionMenu.addActionListener(lis);
 	
 	}
 	/**

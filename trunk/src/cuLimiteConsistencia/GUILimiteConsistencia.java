@@ -499,6 +499,7 @@ public GUILimiteConsistencia(String title,String limLiq, String limPlas, Muestra
 		this.jButtonCancelar.addActionListener(lis);
 		this.agregar.addActionListener(lis);
 		this.cancelar.addActionListener(lis);
+		version.addActionListener(lis);
 	}
 
     

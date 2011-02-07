@@ -96,10 +96,10 @@ public class MediadorModificarMuestra extends Mediador{
 		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
 			seleccionarUbicacion();
 		}
-		if (this.GUIMuestra.getJButtonAceptar() == source) {
+		if (this.GUIMuestra.getJButtonAceptar() == source|| GUIMuestra.getjMenuAceptar()==source) {
 			aceptar();
 		}
-		if (this.GUIMuestra.getJButtonCancelar() == source){
+		if (this.GUIMuestra.getJButtonCancelar() == source || GUIMuestra.getJButtonCancelar()==source){
 			GUIMuestra.dispose();
 		}
 	}

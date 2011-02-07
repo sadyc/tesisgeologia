@@ -2,8 +2,12 @@ package cuGestionarOperador;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -20,7 +24,7 @@ import cuGestionarMuestra.ControlGestionarMuestra;
 /**
 * @author TesisGeología
 */
-public class MediadorSeleccionarOperador extends Mediador{
+public class MediadorSeleccionarOperador implements ActionListener, KeyListener, MouseListener{
 
 	private GUISeleccionarOperador GUISeleccionarOperador = null;
 	private Object [] seleccionado = new Object [5];
@@ -34,11 +38,13 @@ public class MediadorSeleccionarOperador extends Mediador{
 	public MediadorSeleccionarOperador() throws Exception {
 		super();
 		cargarTablaDeOperador();
-		this.GUISeleccionarOperador = new GUISeleccionarOperador(data);
+		GUISeleccionarOperador = new GUISeleccionarOperador(data);
 		GUISeleccionarOperador.setTitle("Seleccionar un Operador");
+		GUISeleccionarOperador.setListenerButtons(this);
+		GUISeleccionarOperador.setListenerTable(this);
+		GUISeleccionarOperador.setMouseListener(this);
+		GUISeleccionarOperador.setKeyListener(this);
 		GUISeleccionarOperador.setModal(true);
-		this.GUISeleccionarOperador.setListenerButtons(this);
-		this.GUISeleccionarOperador.setListenerTable(this);
 		GUISeleccionarOperador.show();
 	}
 	
@@ -124,11 +130,14 @@ public class MediadorSeleccionarOperador extends Mediador{
 	 * Metodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
 	 */
-	public void mouseClicked(MouseEvent arg0) {
-		Object source = arg0.getSource();
-		if (this.GUISeleccionarOperador.getTablePanel() == source)
-			System.out.println("GestionarMediador.actionPerformed() jJTableTabla");
-		
+	public void mouseClicked(MouseEvent e){
+		if (e.getClickCount() == 2)
+			seleccionarOperador();
+	}
+	
+	public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == e.VK_ENTER)
+        	seleccionarOperador();
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {
@@ -150,5 +159,17 @@ public class MediadorSeleccionarOperador extends Mediador{
 	}
 
 		public void itemStateChanged(ItemEvent e) {
-	}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
 }

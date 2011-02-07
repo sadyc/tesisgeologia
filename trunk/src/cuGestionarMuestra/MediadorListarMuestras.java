@@ -49,7 +49,6 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 		GUIABMMuestra.setListenerTable(this);
 		GUIABMMuestra.setMouseListener(this);
 		GUIABMMuestra.setKeyListener(this);
-		GUIABMMuestra.addActionListener(this);
 		GUIABMMuestra.getJButtonAgregar().setEnabled(false);
 		GUIABMMuestra.getAgregarMenu().setEnabled(false);
 		GUIABMMuestra.getJButtonEliminar().setEnabled(false);
@@ -90,7 +89,7 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIABMMuestra.getJButtonSalir() == source || this.GUIABMMuestra.getSalirMenu()== source){
+		if (this.GUIABMMuestra.getJButtonCancelar() == source || this.GUIABMMuestra.getCancelarMenu()== source){
 			GUIABMMuestra.dispose();
 		}
 		if (this.GUIABMMuestra.getBuscarMenu() == source || this.GUIABMMuestra.getJButtonBuscar() == source){
