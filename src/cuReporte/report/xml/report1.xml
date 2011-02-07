@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="13"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<field name="nombre" class="java.lang.String"/>
 	<field name="ubicacion" class="java.lang.String"/>
@@ -38,6 +38,10 @@
 				</textElement>
 				<text><![CDATA[Sistema Clasificador de Suelos]]></text>
 			</staticText>
+			<image>
+				<reportElement x="466" y="-4" width="62" height="57"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\franco\\Desktop\\aaaa.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -126,15 +130,6 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band splitType="Stretch"/>
-	</detail>
-	<columnFooter>
-		<band splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band splitType="Stretch"/>
-	</pageFooter>
-	<summary>
 		<band height="577" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="1" width="100" height="20"/>
@@ -177,7 +172,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{%Pasante}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="297" y="41" width="169" height="20"/>
+				<reportElement x="334" y="21" width="88" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{%RetenidoAcumulado}]]></textFieldExpression>
 			</textField>
@@ -222,5 +217,11 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcionSucs}]]></textFieldExpression>
 			</textField>
 		</band>
-	</summary>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
 </jasperReport>
