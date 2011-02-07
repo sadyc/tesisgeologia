@@ -157,7 +157,7 @@ public class GUIMuestraDetallada extends JDialog{
 		this.profundidadFinal1 = new JLabel("Profundidad Final: "+muestra1.getProfundidadFinal()+"mts");
 		ubicacion1 = new JLabel ("Ubicacion: "+muestra1.getUbicacion().getNombreUbicacion());
 		clasificacion1 = new JLabel ("Clasificacion: ");
-		descripcion1 = new JLabel ("Descripcion: "+muestra1.getClasificacion().getDescripcion());
+		descripcion1 = new JLabel ("Descripcion: "+muestra1.getSucs().getDescripcion());
 		limiteLiquido1 = new JLabel ("Límite Líquido (LL): ");    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
 		limitePlastico1 = new JLabel ("Límite Plástico (LP): ");	//***************************************
 		indicePlasticidad1 = new JLabel ("Íncide de Plasticidad (IP): ");

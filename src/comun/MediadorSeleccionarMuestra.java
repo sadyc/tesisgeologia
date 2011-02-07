@@ -13,10 +13,7 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Muestra;
-import persistencia.domain.Ubicacion;
-
-import cuCalcularClasificacion.MediadorCalcularClasificacion;
-import cuGestionarAnalisis.MediadorBuscar;
+import cuBuscar.MediadorBuscar;
 import cuGestionarMuestra.ControlGestionarMuestra;
 
 /**

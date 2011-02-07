@@ -14,7 +14,10 @@ import javax.swing.JOptionPane;
 
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
-import cuCalcularClasificacion.ControlClasificacion;
+
+import comun.GUISeleccionarMuestra;
+
+import cuBuscar.MediadorBuscar;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 
 /**
@@ -90,17 +93,30 @@ public class MediadorListarMuestras implements ActionListener, KeyListener, Mous
 		if (this.GUIABMMuestra.getJButtonSalir() == source || this.GUIABMMuestra.getSalirMenu()== source){
 			GUIABMMuestra.dispose();
 		}
-		if (this.GUIMuestraDetallada.getJButtonSalir() == source || this.GUIMuestraDetallada.getSalirMenu()== source){
-			GUIMuestraDetallada.dispose();
+		if (this.GUIABMMuestra.getBuscarMenu() == source || this.GUIABMMuestra.getJButtonBuscar() == source){
+			GUIABMMuestra.dispose();
+			buscarMuestra();
 		}
 		if (this.GUIABMMuestra.getJButtonSeleccionar()==source || this.GUIABMMuestra.getSeleccionarMenu()==source){
 			seleccionarMuestra();
 			detallarMuestra();
 		}
-		
 		if (this.GUIMuestraDetallada.getJButtonImprimir() == source || this.GUIMuestraDetallada.getImprimirMenu()== source){
 			System.out.println("Imprimiendo:");
 			System.out.println("wait...........");
+		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Muestra"
+	 */
+	public void buscarMuestra(){
+		try {
+   			System.out.println("Button Buscar Muestra");
+   			new MediadorBuscar();	
+		} catch (Exception e) {
+
+			e.printStackTrace();
 		}
 	}
 	

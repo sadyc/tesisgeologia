@@ -17,6 +17,7 @@ import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
 
 import comun.Mediador;
+import cuBuscar.MediadorBuscar;
 
 
 
@@ -101,9 +102,27 @@ public class MediadorGestionarMuestra extends Mediador{
 		if (this.GUIABMMuestra.getJButtonModificar() == source){
 			modificarMuestra();
 		}
+		if (this.GUIABMMuestra.getBuscarMenu() == source || this.GUIABMMuestra.getJButtonBuscar() == source){
+			GUIABMMuestra.dispose();
+			System.out.println("dentro del source");
+			buscarMuestra();
+		}
 		if (this.GUIABMMuestra.getJButtonSalir() == source){
 			System.out.println("presionado boton salir");
 			GUIABMMuestra.dispose();
+		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Muestra"
+	 */
+	public void buscarMuestra(){
+		try {
+   			System.out.println("Button Buscar Muestra");
+   			new MediadorBuscar();	
+		} catch (Exception e) {
+
+			e.printStackTrace();
 		}
 	}
 	

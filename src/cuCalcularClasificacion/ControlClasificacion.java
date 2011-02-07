@@ -194,7 +194,6 @@ public class ControlClasificacion {
 		try{
 			Analisis analisis = new Analisis();
 			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'";
-			System.out.println("aaaaaaaaaaaaaa");
 			analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='10'");
 			System.out.println(muestra.getNombreMuestra());
 			if (analisis.getPorcentajePasante()<50){
@@ -379,7 +378,7 @@ public class ControlClasificacion {
         final XYPlot plot1 = new XYPlot(dataset, rangeAxis,domainAxis,renderer);
         plot1.setOrientation(PlotOrientation.HORIZONTAL);
                 
-        final JFreeChart chart = new JFreeChart("Curva Granulometrica", plot1);
+        final JFreeChart chart = new JFreeChart("Curva Granulométrica", plot1);
         chart.setBackgroundPaint(Color.white);   
               
         XYItemRenderer rend = chart.getXYPlot().getRenderer();
