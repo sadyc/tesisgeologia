@@ -5,11 +5,13 @@ package cuCalcularClasificacion;
 
 
 import java.awt.Color;
+import java.io.File;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.LogarithmicAxis;
 import org.jfree.chart.axis.NumberAxis;
@@ -33,7 +35,8 @@ import cuGestionarAnalisis.ControlGestionarAnalisis;
  * @version 1.0
  */
 public class ControlClasificacion {
-
+	 public static String BASE = (new java.io.File("")).getAbsolutePath(); 
+ 	 public static String PATH_SOURCE_REPORT = BASE + "/src/cuCalcularClasificacion/curvaGranulometrica.jpg";
 	/**
 	 * Constructor por defecto de la clase.
 	 */
@@ -396,6 +399,9 @@ public class ControlClasificacion {
         
         final ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new java.awt.Dimension(200, 350));
+       
+        ChartUtilities.saveChartAsJPEG(new File(PATH_SOURCE_REPORT), chart, 500, 300);
+   
         return chartPanel;
     }
 	
