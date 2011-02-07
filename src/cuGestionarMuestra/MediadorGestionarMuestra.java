@@ -104,13 +104,11 @@ public class MediadorGestionarMuestra extends Mediador{
 		}
 
 		if (this.GUIABMMuestra.getBuscarMenu() == source || this.GUIABMMuestra.getJButtonBuscar() == source){
-			GUIABMMuestra.dispose();
-			System.out.println("dentro del source");
 			buscarMuestra();
+			
 		}
 		if (this.GUIABMMuestra.getJButtonCancelar() == source || GUIABMMuestra.getCancelarMenu()==source){
 
-			System.out.println("presionado boton salir");
 			GUIABMMuestra.dispose();
 		}
 	}
@@ -121,13 +119,43 @@ public class MediadorGestionarMuestra extends Mediador{
 	public void buscarMuestra(){
 		try {
    			System.out.println("Button Buscar Muestra");
-   			new MediadorBuscar();	
+   			MediadorBuscar buscar = new MediadorBuscar();
+   			if (buscar.seEncontro()){
+   				GUIABMMuestra.dispose();
+   				cargarTablaDeMuestras(buscar.getResultado());
+   				String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
+   				GUIABMMuestra = new GUIABMMuestra("Gestionar Muestra", data, columAux);
+   				GUIABMMuestra.setListenerButtons(this);
+   				GUIABMMuestra.setListenerTable(this);
+   				GUIABMMuestra.getJButtonSeleccionar().setEnabled(false);
+   				GUIABMMuestra.getSeleccionarMenu().setEnabled(false);
+   				GUIABMMuestra.setModal(true);
+   				GUIABMMuestra.show();
+   			}
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
 	}
 	
+	private void cargarTablaDeMuestras(Collection resultado) {
+		data = new Object [resultado.size()] [6];
+		int i = 0;
+		Muestra muestra = new Muestra();
+		Iterator<Muestra> it = resultado.iterator();
+		while (it.hasNext()){
+			muestra = it.next();
+			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
+			data [i][1]= muestra.getNombreMuestra();
+			data [i][2]= muestra.getPeso();
+		    data [i][3]= muestra.getProfundidadInicial();
+		    data [i][4]= muestra.getProfundidadFinal();
+		    i++;
+		}
+		
+	}
+
+
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Modificar Muestra"
 	 */
