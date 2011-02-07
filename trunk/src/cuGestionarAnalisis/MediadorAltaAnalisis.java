@@ -110,6 +110,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 	private void seleccionarTamiz() {
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonSeleccionarTamiz");
 		try {
+			analisis = new Analisis();
 			analisis = control.ultimoAnalisis(muestra);
 			System.out.println(analisis.getTamiz().getAberturaMalla());
 			if (analisis.getTamiz().getAberturaMalla()==0){
