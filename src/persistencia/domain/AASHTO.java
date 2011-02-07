@@ -19,40 +19,44 @@ import javax.swing.JOptionPane;
 public class AASHTO extends Clasificacion{
 	
 	protected Collection<Muestra> muestras = new HashSet();
+	
 	/**
 	 * @brief Constructor por defecto.
-	 * @param nombre, nombre de la clasific
 	 */
 	public AASHTO() {
 		super();
 	}
 	
-	
-	public void setClasificacionAASHTO(String nombre) {
-		System.out.println(nombre);
+	/**
+	 * Constructor con pasaje de parametros.
+	 * @param clasificacion.
+	 */
+	public AASHTO(String clasificacion){
+		String nombreAux = new String();
+		String descripcionAux = new String();
 		Frame frame = new Frame();
-		if (nombre.equals("A1a")|| nombre.equals("A1b")|| nombre.equals("A3")|| nombre.equals("A24")|| nombre.equals("A25")|| nombre.equals("A26")|| nombre.equals("A27")|| nombre.equals("A4")|| nombre.equals("A5")|| nombre.equals("A6")|| nombre.equals("A7")|| nombre.equals("A75")|| nombre.equals("A76")){
-			if (nombre.equals("A1a")|| nombre.equals("A1b") ) {
-				this.nombre = "Granulares - A1 - "+nombre;
-				this.descripcion="Suelo con fragmentos de roca, grava y arena como componente principal y con caracteristicas como subgrado de excelente a bueno";
+		if (clasificacion.equals("A1a")|| clasificacion.equals("A1b")|| clasificacion.equals("A3")|| clasificacion.equals("A24")|| clasificacion.equals("A25")|| clasificacion.equals("A26")|| clasificacion.equals("A27")|| clasificacion.equals("A4")|| clasificacion.equals("A5")|| clasificacion.equals("A6")|| clasificacion.equals("A7")|| clasificacion.equals("A75")|| clasificacion.equals("A76")){
+			if (clasificacion.equals("A1a")|| clasificacion.equals("A1b") ) {
+				nombreAux = "Granulares - A1 - "+clasificacion;
+				descripcionAux="Suelo con fragmentos de roca, grava y arena como componente principal y con caracteristicas como subgrado de excelente a bueno";
 			}
 			else{
-				if (nombre.equals("A3")) {
-					this.nombre = "Granulares - "+nombre;
-					descripcion="Suelo con arena fina como componente principal y con caracteristicas como subgrado de excelente a bueno";
+				if (clasificacion.equals("A3")) {
+					nombreAux = "Granulares - "+clasificacion;
+					descripcionAux="Suelo con arena fina como componente principal y con caracteristicas como subgrado de excelente a bueno";
 				}
 				else {
-					if (nombre.equals("A24")||nombre.equals("A25")||nombre.equals("A26")||nombre.equals("A27")) {
-						this.nombre = "Granulares - A2 - "+nombre;
-						this.descripcion = "Suelo con grava y arena arcillosa o limosa como componente principal y con caracteristicas como subgrado de excelente a bueno";
+					if (clasificacion.equals("A24")||clasificacion.equals("A25")||clasificacion.equals("A26")||clasificacion.equals("A27")) {
+						nombreAux = "Granulares - A2 - "+clasificacion;
+						descripcionAux = "Suelo con grava y arena arcillosa o limosa como componente principal y con caracteristicas como subgrado de excelente a bueno";
 					} else {
-						if (nombre.equals("A4")||nombre.equals("A5")) {
-							this.nombre = "Limoso Arcilloso - "+nombre;
-							this.descripcion = "Suelo limoso con caracteristicas como subgrado de pobre a malo";
+						if (clasificacion.equals("A4")||clasificacion.equals("A5")) {
+							nombreAux = "Limoso Arcilloso - "+clasificacion;
+							descripcionAux = "Suelo limoso con caracteristicas como subgrado de pobre a malo";
 						}
 						else{
-							this.nombre = "Limoso Arcilloso - "+nombre;
-							this.descripcion = "Suelo arcilloso con caracteristicas como subgrado de pobre a malo";
+							nombreAux = "Limoso Arcilloso - "+clasificacion;
+							descripcionAux = "Suelo arcilloso con caracteristicas como subgrado de pobre a malo";
 						}
 					}
 				}
@@ -61,7 +65,10 @@ public class AASHTO extends Clasificacion{
 		else{
 			JOptionPane.showMessageDialog(frame,"Estan mal pasados los nombres de la clasificacion","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
+		this.clasificacion = clasificacion;
+		this.nombre =nombreAux;
+		this.descripcion= descripcionAux;
 		
 	}
-
+	
 }

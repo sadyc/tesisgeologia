@@ -12,6 +12,7 @@ import javax.jdo.annotations.PersistenceCapable;
   
 /**
  * Implementacion de la clase que define un operadorLaboratorio de laboratorio
+ * de manera persistente.
  * @author TesisGeologia
  * @version 1.0  24/09/2010
  */
@@ -28,7 +29,7 @@ public class OperadorDeLaboratorio extends Persona {
 	}
 	
 	/**
-	 * Constructor with parameters
+	 * Constructor con parametros.
 	 * @param nombre, nombre del operadorLaboratorio de laboratorio creado.
 	 * @param apellido, apellido del operadorLaboratorio de laboratorio creado.
 	 * @param dni, DNI del operadorLaboratorio de laboratorio creado.

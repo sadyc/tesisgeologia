@@ -10,7 +10,8 @@ import java.util.HashSet;
 import javax.jdo.annotations.PersistenceCapable;
 
 /**
- * Implementacion de la clase que define la muestra
+ * Implementacion de la clase que define la muestra de manera
+ * persistente.
  * @author TesisGeologia
  * @version 1.0 24/09/2010 
  *
@@ -26,6 +27,11 @@ public class Muestra {
 	private Float limitePlastico;
 	private Float limiteLiquido;
 	private Float indicePlasticidad;
+	private Float D60;
+	private Float D30;
+	private Float D10;
+	private Float gradoCurvatura;
+	private Float coeficienteUniformidad;
 	
 	protected OperadorDeLaboratorio operadorLaboratorio ;
 	protected Usuario usuario;
@@ -49,20 +55,36 @@ public class Muestra {
 		ubicacion = new Ubicacion();
 		aashto = new AASHTO();
 		sucs = new SUCS();
+		D60= new Float(0);
+		D30= new Float(0);
+		D10= new Float(0);
+		gradoCurvatura= new Float(0);
+		coeficienteUniformidad= new Float(0);
 		
 		java.util.Date f = new java.util.Date();
 		fecha = new java.sql.Date(f.getTime());
 	}
 	
+	
 	/**
-	 * Constructors whit parameters
-	 * @param idMuestra identificador de la muestra creada
-	 * @param tipo Indica el tipo de la muestra
-	 * @param profundidadInicial profundidad inicial de la muestra creada
-	 * @param profundidadFinal profundidad final de la muestra creada
-	 * @param peso peso de la muestra
+	 * Contructor con pasaje de parametros.
+	 * @param nombreMuestra
+	 * @param peso
+	 * @param profundidadInicial
+	 * @param profundidadFinal
+	 * @param operador
+	 * @param usuario
+	 * @param ubicacion
+	 * @param fecha
+	 * @param d60
+	 * @param d30
+	 * @param d10
+	 * @param gradoCurvatura
+	 * @param coeficienteUniformidad
 	 */
-	public Muestra(String nombreMuestra,Float peso, Float profundidadInicial,Float profundidadFinal, OperadorDeLaboratorio operador, Usuario usuario, Ubicacion ubicacion, java.sql.Date fecha) {
+	public Muestra(String nombreMuestra,Float peso, Float profundidadInicial,Float profundidadFinal, 
+			OperadorDeLaboratorio operador, Usuario usuario, Ubicacion ubicacion,
+			java.sql.Date fecha) {
 		this.nombreMuestra = nombreMuestra;
 		this.profundidadInicial = profundidadInicial;
 		this.profundidadFinal = profundidadFinal;
@@ -73,6 +95,14 @@ public class Muestra {
 		this.aashto = new AASHTO();
 		this.sucs = new SUCS();
 		this.fecha = fecha;
+		D10= new Float(0);
+		D30= new Float(0);
+		D60= new Float(0);
+		this.gradoCurvatura = new Float(0);
+		this.coeficienteUniformidad = new Float(0);
+		indicePlasticidad = new Float(0);
+		limitePlastico = new Float(0);
+		limiteLiquido = new Float(0);
 	}
 		
 	/**
@@ -312,6 +342,82 @@ public class Muestra {
 	 */
 	public void setSucs(SUCS sucs) {
 		this.sucs = sucs;
+	}
+	
+	/**
+	 * @return the d60
+	 */
+	public Float getD60() {
+		return D60;
+	}
+
+	/**
+	 * @param d60 the d60 to set
+	 */
+	public void setD60(Float d60) {
+		D60 = d60;
+	}
+
+
+	/**
+	 * @return the d30
+	 */
+	public Float getD30() {
+		return D30;
+	}
+
+
+	/**
+	 * @param d30 the d30 to set
+	 */
+	public void setD30(Float d30) {
+		D30 = d30;
+	}
+
+
+	/**
+	 * @return the d10
+	 */
+	public Float getD10() {
+		return D10;
+	}
+
+
+	/**
+	 * @param d10 the d10 to set
+	 */
+	public void setD10(Float d10) {
+		D10 = d10;
+	}
+
+
+	/**
+	 * @return the gradoCurvatura
+	 */
+	public Float getGradoCurvatura() {
+		return gradoCurvatura;
+	}
+
+
+	/**
+	 * @param gradoCurvatura the gradoCurvatura to set
+	 */
+	public void setGradoCurvatura(Float gradoCurvatura) {
+		this.gradoCurvatura = gradoCurvatura;
+	}
+	
+	/**
+	 * @return the coeficienteUniformidad
+	 */
+	public Float getCoeficienteUniformidad() {
+		return coeficienteUniformidad;
+	}
+
+	/**
+	 * @param coeficienteUniformidad the coeficienteUniformidad to set
+	 */
+	public void setCoeficienteUniformidad(Float coeficienteUniformidad) {
+		this.coeficienteUniformidad = coeficienteUniformidad;
 	}
 
 	

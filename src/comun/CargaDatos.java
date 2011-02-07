@@ -4,9 +4,10 @@
 package comun;
 
 import persistencia.Persistencia;
-import persistencia.domain.Analisis;
+import persistencia.domain.AASHTO;
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.SUCS;
 import persistencia.domain.Tamiz;
 import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
@@ -95,9 +96,38 @@ public class CargaDatos {
 	}
 	
 	/**
+	 * Inserta una SUCS con persistencia. 
+	 */ 
+	public void insertarSucs(SUCS sucs) throws Exception{
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		try {
+			persistencia.insertarObjeto(sucs);
+			persistencia.cerrarTransaccion();
+		} catch (Exception e) {
+			persistencia.realizarRollback();
+		}
+	}
+	
+	/**
+	 * Inserta una AASHTO con persistencia. 
+	 */ 
+	public void insertarAashto(AASHTO aashto) throws Exception{
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		try {
+			persistencia.insertarObjeto(aashto);
+			persistencia.cerrarTransaccion();
+		} catch (Exception e) {
+			persistencia.realizarRollback();
+		}
+	}
+	
+	/**
 	 * Carga una serie de ubicaciones para facilitar el testing.
+	 * @throws Exception 
 	 */
-	public void cargar (){
+	public void cargar () throws Exception{
 		
 		Ubicacion ubicacion1 = new Ubicacion("El Impenetrable",Ubicacion.Provincia.Chaco,"SUR 11°11'11\"","OESTE 11°11'11\"");
 		Ubicacion ubicacion2 = new Ubicacion("Rio Cuarto",Ubicacion.Provincia.Cordoba,"SUR 22°22'22\""," OESTE 22°22'22\"");
@@ -151,8 +181,69 @@ public class CargaDatos {
 		Tamiz tamiz41 = new Tamiz("5/8",16.0);
 		Tamiz tamiz42 = new Tamiz("7/16",11.20);
 		Tamiz tamiz43 = new Tamiz("7/8",22.40);
+		
+		
+		AASHTO aashto1 = new AASHTO("A1a");
+		AASHTO aashto2 = new AASHTO("A1b");
+		AASHTO aashto3 = new AASHTO("A3");
+		AASHTO aashto4 = new AASHTO("A24");
+		AASHTO aashto5 = new AASHTO("A25");
+		AASHTO aashto6 = new AASHTO("A26");
+		AASHTO aashto7 = new AASHTO("A27");
+		AASHTO aashto8 = new AASHTO("A4");
+		AASHTO aashto9 = new AASHTO("A5");
+		AASHTO aashto10 = new AASHTO("A6");
+		AASHTO aashto11 = new AASHTO("A7");
+		
+		insertarAashto(aashto1);
+		insertarAashto(aashto2);
+		insertarAashto(aashto3);
+		insertarAashto(aashto4);
+		insertarAashto(aashto5);
+		insertarAashto(aashto6);
+		insertarAashto(aashto7);
+		insertarAashto(aashto8);
+		insertarAashto(aashto9);
+		insertarAashto(aashto10);
+		insertarAashto(aashto11);
+		
+		
+		SUCS sucs = new SUCS("ML");
+		SUCS sucs1 = new SUCS("CL");
+		SUCS sucs2 = new SUCS("OL");
+		SUCS sucs3 = new SUCS("MH");
+		SUCS sucs4 = new SUCS("CH");
+		SUCS sucs5 = new SUCS("OH");
+		SUCS sucs6 = new SUCS("PT");
+		SUCS sucs7 = new SUCS("SW");
+		SUCS sucs8 = new SUCS("SP");
+		SUCS sucs9 = new SUCS("SC");
+		SUCS sucs10 = new SUCS("SM");
+		SUCS sucs11 = new SUCS("GW");
+		SUCS sucs12 = new SUCS("GP");
+		SUCS sucs13 = new SUCS("GM");
+		SUCS sucs14 = new SUCS("GC");
+		
+		insertarSucs(sucs);
+		insertarSucs(sucs1);
+		insertarSucs(sucs2);
+		insertarSucs(sucs3);
+		insertarSucs(sucs4);
+		insertarSucs(sucs5);
+		insertarSucs(sucs6);
+		insertarSucs(sucs7);
+		insertarSucs(sucs8);
+		insertarSucs(sucs9);
+		insertarSucs(sucs10);
+		insertarSucs(sucs11);
+		insertarSucs(sucs12);
+		insertarSucs(sucs13);
+		insertarSucs(sucs14);
+		
+		
 		Usuario usuario1 = new Usuario("Juan", "Perez", "34.771.488", "4917015", "juan@perez.com","juanPerez","pepe");
 		Usuario usuario2 = new Usuario("Susana", "Gomez", "34.101.098", "4917015", "Sus@gomez.com","susy","ana");
+		
 		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),operador1,null,ubicacion1,null);	
 		Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),operador2,null,ubicacion2,null);	
 		try {
