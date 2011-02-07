@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+
+
 /**
 * @author TesisGeología
 * Esta clase implementa la ventana principal del programa, con los botones de sus principales funcionalidades.
@@ -73,6 +75,7 @@ public class GUIPrincipal extends JFrame {
 			herramientas.add(salirMenu);
 			versionMenu = new JMenuItem("Version");
 			ayuda.add(versionMenu);
+		
 		}
 		initialize();
 	}
