@@ -19,7 +19,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
+import jxl.read.biff.File;
+
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
 
 import persistencia.domain.Clasificacion;
 import persistencia.domain.Muestra;
@@ -223,7 +227,7 @@ public class GUIClasificacion extends JDialog{
 		this.setJMenuBar(this.getMenu());
 	  	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	  	this.getContentPane().add(this.getPanelCenter(),BorderLayout.CENTER);
-	 	this.setLocationRelativeTo(null);
+    	this.setLocationRelativeTo(null);
 	}
    
 	
