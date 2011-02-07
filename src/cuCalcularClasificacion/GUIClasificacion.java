@@ -65,7 +65,7 @@ public class GUIClasificacion extends JDialog{
 	private ChartPanel grafico;
 		
 	private TablePanel tablePanel;
-	private Object [][] data = new Object [3][5];
+	private Object [][] data = null;
 
 	/**
 	 * This is the default constructor

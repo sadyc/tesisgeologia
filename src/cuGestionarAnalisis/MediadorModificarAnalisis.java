@@ -72,10 +72,10 @@ public class MediadorModificarAnalisis  extends Mediador{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIAnalisis.getJButtonAceptar() == source){
+		if (this.GUIAnalisis.getJButtonAceptar() == source || GUIAnalisis.getjMenuItemAgregar()==source){
 			aceptar();
 		}
-		if (this.GUIAnalisis.getJButtonCancelar() == source){
+		if (this.GUIAnalisis.getJButtonCancelar() == source || GUIAnalisis.getjMenuItemCancelar()==source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			GUIAnalisis.dispose();
 		}

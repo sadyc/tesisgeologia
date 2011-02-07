@@ -63,10 +63,10 @@ public class MediadorLogin implements ActionListener{
 	public void aceptar(){
 		System.out.println("GestionarMediador.actionPerformed() jButtonAceptar");
 		String nombre = login.getNombre().getText();
-		System.out.println(login.getNombre().getText());
+		
 		try {
-			control.obtenerUsuario(login.getNombre().getText(), login.getPassword().getText());
-		    
+			//control.obtenerUsuario(login.getNombre().getText(), login.getPassword().getText());
+			System.out.println("");
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

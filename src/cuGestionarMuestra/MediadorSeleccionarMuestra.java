@@ -47,7 +47,6 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 		this.GUIABMMuestra.setListenerTable(this);
 		this.GUIABMMuestra.setMouseListener(this);
 		this.GUIABMMuestra.setKeyListener(this);     
-		this.GUIABMMuestra.addActionListener(this);
 		GUIABMMuestra.getJButtonAgregar().setEnabled(false);
 		GUIABMMuestra.getAgregarMenu().setEnabled(false);
 		GUIABMMuestra.getJButtonEliminar().setEnabled(false);
@@ -123,7 +122,7 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIABMMuestra.getJButtonSeleccionar() == source){
+		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || GUIABMMuestra.getSeleccionarMenu()==source){
 			if (seleccionoMuestra){
 				seleccionarMuestra();
 			}
@@ -133,7 +132,7 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 			System.out.println("dentro del source");
 			buscarMuestra();
 		}
-		if (this.GUIABMMuestra.getJButtonSalir() == source){
+		if (this.GUIABMMuestra.getJButtonCancelar() == source || GUIABMMuestra.getCancelarMenu()==source){
 			GUIABMMuestra.dispose();
 		}
 	}
@@ -143,7 +142,7 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 	 */
 	public void seleccionarMuestra(){
 		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			System.out.println("Button Seleccionar Muestra");
@@ -152,7 +151,7 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 				seleccionoMuestra = true;
 				GUIABMMuestra.dispose();
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
    				   		
 		}
@@ -201,7 +200,6 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 	public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_ENTER)
         	seleccionarMuestra();
-			System.out.println("ando el enter");
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {

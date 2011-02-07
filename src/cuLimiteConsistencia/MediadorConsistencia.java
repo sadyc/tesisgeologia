@@ -49,7 +49,6 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 		this.GUIABMMuestra.setListenerTable(this);
 		this.GUIABMMuestra.setMouseListener(this);
 		this.GUIABMMuestra.setKeyListener(this);     
-		this.GUIABMMuestra.addActionListener(this);
 		GUIABMMuestra.getJButtonAgregar().setEnabled(false);
 		GUIABMMuestra.getAgregarMenu().setEnabled(false);
 		GUIABMMuestra.getJButtonEliminar().setEnabled(false);
@@ -138,14 +137,14 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIABMMuestra.getJButtonSeleccionar() == source){
+		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || GUIABMMuestra.getSeleccionarMenu()==source){
 			seleccionarMuestra();
 		}
-		if (this.GUIABMMuestra.getBuscarMenu() == source){
+		if (this.GUIABMMuestra.getBuscarMenu() == source || GUIABMMuestra.getBuscarMenu()==source){
 			GUISeleccionarMuestra.dispose();
 			buscarMuestra();
 		}
-		if (this.GUIABMMuestra.getJButtonSalir() == source){
+		if (this.GUIABMMuestra.getJButtonCancelar() == source || GUIABMMuestra.getCancelarMenu()==source){
 			GUIABMMuestra.dispose();
 		}
 	}

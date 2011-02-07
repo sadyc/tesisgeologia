@@ -31,11 +31,12 @@ public class ViewReport {
 			DataSourceJasper data = new DataSourceJasper(values, ht);
 			System.out.println("AAAAAAAAAAA      "+ht);
 			String fileNameReport = MakeReport.PATH_OUTPUT_REPORT + nameReport + ".jasper";
-			System.out.println("Reporte:" + fileNameReport);
-
+			System.out.println("Reporte:     " + fileNameReport);
+			System.out.println("values---- " + values [0] [15]);
 			JasperViewer.viewReport(JasperFillManager.fillReport(
 					fileNameReport, parameters, data));
 		} catch (JRException exc) {
+			System.out.println("Excepcion del reporte");
 			exc.printStackTrace(System.out);
 		}
 	}

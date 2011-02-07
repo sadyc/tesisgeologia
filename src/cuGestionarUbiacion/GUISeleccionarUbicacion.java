@@ -6,6 +6,7 @@ package cuGestionarUbiacion;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
@@ -30,10 +31,10 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	private JMenu ayuda;
 	private JButton jButtonBuscarUbicacion;
 	private JButton jButtonSeleccionarUbicacion;
-	private JButton jButtonSalir;
+	private JButton jButtonCancelar;
 	private JMenuItem seleccionarMenu;
 	private JMenuItem buscarMenu;
-	private JMenuItem salirMenu;
+	private JMenuItem cancelarMenu;
 	private JMenuItem versionMenu;
 	private JPanel panelSur;
 	private TablePanel tablePanel;
@@ -56,16 +57,16 @@ public class GUISeleccionarUbicacion extends JDialog	{
 			menu.add(ayuda);
 			buscarMenu = new JMenuItem("Buscar");
 			seleccionarMenu = new JMenuItem("Seleccionar");
-			salirMenu = new JMenuItem("Salir");
+			cancelarMenu = new JMenuItem("Salir");
 			herramientas.add(seleccionarMenu);
 			herramientas.add(buscarMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
-			herramientas.add(salirMenu);
+			herramientas.add(cancelarMenu);
 			versionMenu = new JMenuItem("Version");
 			ayuda.add(versionMenu);
 			jButtonBuscarUbicacion = new JButton("BUSCAR");
 			jButtonSeleccionarUbicacion  = new JButton("SELECCIONAR");
-			jButtonSalir  = new JButton("SALIR");
+			jButtonCancelar  = new JButton("SALIR");
 		}
 		initialize();
 	}
@@ -109,10 +110,38 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
-	public JButton getJButtonSalir() {
-		return jButtonSalir;
+	public JButton getJButtonCancelar() {
+		return jButtonCancelar;
 	}
 	
+	/**
+	 * @return the seleccionarMenu
+	 */
+	public JMenuItem getSeleccionarMenu() {
+		return seleccionarMenu;
+	}
+
+	/**
+	 * @return the buscarMenu
+	 */
+	public JMenuItem getBuscarMenu() {
+		return buscarMenu;
+	}
+
+	/**
+	 * @return the cancelarMenu
+	 */
+	public JMenuItem getCancelarMenu() {
+		return cancelarMenu;
+	}
+
+	/**
+	 * @return the versionMenu
+	 */
+	public JMenuItem getVersionMenu() {
+		return versionMenu;
+	}
+
 	/**
 	 * Metodo que permite escuchar los botones Seleccionar, Buscar y Salir.
 	 *
@@ -121,7 +150,11 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	public void setListenerButtons(ActionListener lis){
 		this.jButtonSeleccionarUbicacion.addActionListener(lis);
 		this.jButtonBuscarUbicacion.addActionListener(lis);
-		this.jButtonSalir.addActionListener(lis);
+		this.jButtonCancelar.addActionListener(lis);
+		seleccionarMenu.addActionListener(lis);
+		buscarMenu.addActionListener(lis);
+		cancelarMenu.addActionListener(lis);
+		versionMenu.addActionListener(lis);
 	
 	}
 	/**
@@ -153,7 +186,7 @@ public class GUISeleccionarUbicacion extends JDialog	{
 		this.panelSur.setLayout(new FlowLayout());
 		this.panelSur.add(getJButtonSeleccionar());
 		this.panelSur.add(getJButtonBuscar());
-		this.panelSur.add(getJButtonSalir());
+		this.panelSur.add(getJButtonCancelar());
 		}
 		return this.panelSur;
 	}
@@ -184,6 +217,15 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	public void setMenu(JMenuBar menu) {
 		this.menu = menu;
 	}
+	
+	public void setMouseListener(MouseListener lis){
+        tablePanel.addTableMouseListener(lis);
+    }
+	
+	public void setKeyListener(KeyListener lis){
+        tablePanel.addTableKeyListener(lis);
+	}
+	
 	
 }
 

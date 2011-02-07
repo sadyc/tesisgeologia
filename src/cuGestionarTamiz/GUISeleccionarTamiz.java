@@ -3,6 +3,7 @@ package cuGestionarTamiz;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
@@ -25,9 +26,9 @@ public class GUISeleccionarTamiz extends JDialog	{
 	private JMenu herramientas;
 	private JMenu ayuda;
 	private JButton jButtonSeleccionarTamiz;
-	private JButton jButtonSalir;
+	private JButton jButtonCancelar;
 	private JMenuItem seleccionarMenu;
-	private JMenuItem salirMenu;
+	private JMenuItem cancelarMenu;
 	private JMenuItem versionMenu;
 	private JPanel panelSur;
 	private TablePanel tablePanel;
@@ -48,14 +49,14 @@ public class GUISeleccionarTamiz extends JDialog	{
 			menu.add(herramientas);
 			menu.add(ayuda);
 			seleccionarMenu = new JMenuItem("Seleccionar");
-			salirMenu = new JMenuItem("Salir");
+			cancelarMenu = new JMenuItem("Cancelar");
 			herramientas.add(seleccionarMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
-			herramientas.add(salirMenu);
-			versionMenu = new JMenuItem("Version");
+			herramientas.add(cancelarMenu);
+			versionMenu = new JMenuItem("Versión");
 			ayuda.add(versionMenu);
 			jButtonSeleccionarTamiz  = new JButton("SELECCIONAR");
-			jButtonSalir  = new JButton("SALIR");
+			jButtonCancelar  = new JButton("CANCELAR");
 		}
 		initialize();
 	}
@@ -89,10 +90,29 @@ public class GUISeleccionarTamiz extends JDialog	{
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
-	public JButton getJButtonSalir() {
-		return jButtonSalir;
+	public JButton getJButtonCancelar() {
+		return jButtonCancelar;
 	}
 	
+	
+	/**
+	 * @return the seleccionarMenu
+	 */
+	public JMenuItem getSeleccionarMenu() {
+		return seleccionarMenu;
+	}
+	/**
+	 * @return the cancelarMenu
+	 */
+	public JMenuItem getCancelarMenu() {
+		return cancelarMenu;
+	}
+	/**
+	 * @return the versionMenu
+	 */
+	public JMenuItem getVersionMenu() {
+		return versionMenu;
+	}
 	/**
 	 * Metodo que permite escuchar los botones Seleccionar y Buscar.
 	 *
@@ -100,7 +120,10 @@ public class GUISeleccionarTamiz extends JDialog	{
 	 */
 	public void setListenerButtons(ActionListener lis){
 		this.jButtonSeleccionarTamiz.addActionListener(lis);
-		this.jButtonSalir.addActionListener(lis);
+		this.jButtonCancelar.addActionListener(lis);
+		seleccionarMenu.addActionListener(lis);
+		cancelarMenu.addActionListener(lis);
+		versionMenu.addActionListener(lis);
 	
 	}
 	/**
@@ -131,7 +154,7 @@ public class GUISeleccionarTamiz extends JDialog	{
 		this.panelSur = new JPanel();
 		this.panelSur.setLayout(new FlowLayout());
 		this.panelSur.add(getJButtonSeleccionar());
-		this.panelSur.add(getJButtonSalir());
+		this.panelSur.add(getJButtonCancelar());
 		}
 		return this.panelSur;
 	}
@@ -170,4 +193,14 @@ public class GUISeleccionarTamiz extends JDialog	{
 	public JButton getjButtonSeleccionarOperador() {
 		return jButtonSeleccionarTamiz;
 	}
+	
+	public void setMouseListener(MouseListener lis){
+        tablePanel.addTableMouseListener(lis);
+    }
+	
+	public void setKeyListener(KeyListener lis){
+        tablePanel.addTableKeyListener(lis);
+	}
+	
+	
 }

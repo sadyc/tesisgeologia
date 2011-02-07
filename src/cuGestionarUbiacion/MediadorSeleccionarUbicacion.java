@@ -2,8 +2,12 @@ package cuGestionarUbiacion;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -15,7 +19,7 @@ import comun.Mediador;
 
 import cuGestionarMuestra.ControlGestionarMuestra;
 
-public class MediadorSeleccionarUbicacion extends Mediador{
+public class MediadorSeleccionarUbicacion implements ActionListener, KeyListener, MouseListener{
 
 	private GUISeleccionarUbicacion GUISeleccionarUbicacion = null;
 	private Object [][] data;
@@ -31,6 +35,8 @@ public class MediadorSeleccionarUbicacion extends Mediador{
 		GUISeleccionarUbicacion.setModal(true);
 		GUISeleccionarUbicacion.setListenerButtons(this);
 		GUISeleccionarUbicacion.setListenerTable(this);
+		GUISeleccionarUbicacion.setMouseListener(this);
+		GUISeleccionarUbicacion.setKeyListener(this);     
 		GUISeleccionarUbicacion.show();
 	}
 	
@@ -82,13 +88,13 @@ public class MediadorSeleccionarUbicacion extends Mediador{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUISeleccionarUbicacion.getJButtonSeleccionar() == source){
+		if (this.GUISeleccionarUbicacion.getJButtonSeleccionar() == source || GUISeleccionarUbicacion.getSeleccionarMenu()==source){
 			seleccionarUbicacion();
 		}
-		if (this.GUISeleccionarUbicacion.getJButtonBuscar() == source){
+		if (this.GUISeleccionarUbicacion.getJButtonBuscar() == source || GUISeleccionarUbicacion.getBuscarMenu()==source){
 	   		buscarUbicacion();
 		}
-		if (this.GUISeleccionarUbicacion.getJButtonSalir() == source){
+		if (this.GUISeleccionarUbicacion.getJButtonCancelar() == source || GUISeleccionarUbicacion.getCancelarMenu()==source){
 			GUISeleccionarUbicacion.dispose();
 		}
 	}
@@ -130,15 +136,14 @@ public class MediadorSeleccionarUbicacion extends Mediador{
 	 * Metodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
 	 */
-	public void mouseClicked(MouseEvent arg0) {
-		Object source = arg0.getSource();
-		System.out.println(" mouse eventtt" );
-		if (this.GUISeleccionarUbicacion.getTablePanel() == source)
-			System.out.println("GestionarMediador.actionPerformed() jJTableTabla");
-		if (arg0.getClickCount() == 2){
+	public void mouseClicked(MouseEvent e){
+		if (e.getClickCount() == 2)
 			seleccionarUbicacion();
-        System.out.println(" double click" );
-		}
+	}
+	
+	public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == e.VK_ENTER)
+        	seleccionarUbicacion();
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {
@@ -159,5 +164,19 @@ public class MediadorSeleccionarUbicacion extends Mediador{
 	
 
 	public void itemStateChanged(ItemEvent e) {
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

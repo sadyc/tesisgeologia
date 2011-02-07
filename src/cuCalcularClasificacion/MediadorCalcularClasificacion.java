@@ -54,8 +54,8 @@ public class MediadorCalcularClasificacion extends Mediador{
 		cargarTablaDeAnalisis(muestra);
 		ControlClasificacion control = new ControlClasificacion();
 		
-		AASHTO clasificacion2 = new AASHTO();
-		control.calcularClasificacionAASHTO(muestra,clasificacion2);
+		//AASHTO clasificacion2 = new AASHTO();
+	//	control.calcularClasificacionAASHTO(muestra,clasificacion2);
 		SUCS clasificacion = new SUCS();
 		control.calcularClasificacionSUCS(muestra,clasificacion);
 		GUIClasificacion = new GUIClasificacion(clasificacion,muestra,data);
@@ -129,7 +129,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUIClasificacion.getJButtonImprimir() == source) {
-			String [][]data1 = new String [22] [22];
+			String [][]data1 = new String [1] [22];
 			data1 [0][0] = GUIClasificacion.getUbicacion().getText();
 			data1 [0][1] = GUIClasificacion.getUbicacion().getText();
 			data1 [0][2] = GUIClasificacion.getPeso().getText();
@@ -141,17 +141,17 @@ public class MediadorCalcularClasificacion extends Mediador{
 			data1 [0][8] = GUIClasificacion.getD60().getText();
 			data1 [0][9] = GUIClasificacion.getD30().getText();
 			data1 [0][10] = GUIClasificacion.getD10().getText();
-			data1 [0][11] = GUIClasificacion.getCoeficienteUniformidad().getText();
-			data1 [0][12] = GUIClasificacion.getGradoCurvatura().getText();
-			data1 [0][13] = GUIClasificacion.getGradoCurvatura().getText();
-			data1 [0][14] = GUIClasificacion.getGradoCurvatura().getText();
-			data1 [0][15] = GUIClasificacion.getGradoCurvatura().getText();
-			data1 [0][16] = GUIClasificacion.getGradoCurvatura().getText();
-			data1 [0][17] = GUIClasificacion.getGradoCurvatura().getText();
-			data1 [0][18] = GUIClasificacion.getGradoCurvatura().getText();
-			data1 [0][19] = GUIClasificacion.getGradoCurvatura().getText();
-			data1 [0][20] = GUIClasificacion.getGradoCurvatura().getText();
-			data1 [0][21] = GUIClasificacion.getGradoCurvatura().getText();
+			data1 [0][11] = GUIClasificacion.getD60().getText();
+			data1 [0][12] = GUIClasificacion.getD60().getText();
+			data1 [0][13] = GUIClasificacion.getD60().getText();
+			data1 [0][14] = GUIClasificacion.getD60().getText();
+			data1 [0][15] = GUIClasificacion.getD60().getText();
+			data1 [0][16] = GUIClasificacion.getD60().getText();
+			data1 [0][17] = GUIClasificacion.getD60().getText();
+			data1 [0][18] = GUIClasificacion.getD60().getText();
+			data1 [0][19] = GUIClasificacion.getD60().getText();
+			data1 [0][20] = GUIClasificacion.getD60().getText();
+			data1 [0][21] = GUIClasificacion.getD60().getText();
 			MakeReport makeReporte = new MakeReport();
 			makeReporte.make("report1");
 			ViewReport view = new ViewReport(data1);
