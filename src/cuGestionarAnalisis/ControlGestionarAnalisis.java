@@ -189,12 +189,11 @@ public class ControlGestionarAnalisis {
         	Persistencia persistencia = new Persistencia();
     		persistencia.abrirTransaccion();
     		Analisis aux = new Analisis();
-    		List listaAnalisis = null;
     		try {
-    			listaAnalisis = persistencia.buscarListaFiltro(aux.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
-    			int i = listaAnalisis.size();
+    			List listaAnalisis = persistencia.buscarListaFiltro(aux.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+    			int i = 0;
     			if (!listaAnalisis.isEmpty()){
-	    			while(i<listaAnalisis.size()){
+    				while(i<listaAnalisis.size()){
 	    				aux = (Analisis)listaAnalisis.get(i);
 	    				i++;
 	    			}
@@ -212,13 +211,12 @@ public class ControlGestionarAnalisis {
         	Persistencia persistencia = new Persistencia();
     		persistencia.abrirTransaccion();
     		Analisis aux = new Analisis();
-    		List listaAnalisis = null;
     		Float resultado = new Float(0);
     		try {
-    			listaAnalisis =persistencia.buscarListaFiltro(aux.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+    			List listaAnalisis =persistencia.buscarListaFiltro(aux.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
     			int i = 0;
     			if (!listaAnalisis.isEmpty()){
-    	    			while(i<listaAnalisis.size()){
+    				while(i<listaAnalisis.size()){
     	    				aux = (Analisis)listaAnalisis.get(i);
     	    				resultado = resultado + aux.getPesoRetenido();
     	    				i++;
