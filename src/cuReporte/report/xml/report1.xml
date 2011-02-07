@@ -39,8 +39,8 @@
 				<text><![CDATA[Sistema Clasificador de Suelos]]></text>
 			</staticText>
 			<image>
-				<reportElement x="466" y="-4" width="62" height="57"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\franco\\Desktop\\aaaa.jpg"]]></imageExpression>
+				<reportElement x="466" y="-10" width="62" height="63"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Tesis\\Geologia\\src\\cuReporte\\report\\image\\LogoSCS.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
