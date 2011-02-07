@@ -3,6 +3,7 @@ package cuGestionarMuestra;
 
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
@@ -40,6 +41,7 @@ public class GUIABMMuestra extends JDialog{
 	private JButton jButtonEliminar;
 	private JButton jButtonModificar;
 	private JButton jButtonSeleccionar;
+	private JButton jButtonBuscar;
 	private JButton jButtonSalir;
 	private JMenuItem agregarMenu;
 	private JMenuItem modificarMenu;
@@ -88,6 +90,7 @@ public class GUIABMMuestra extends JDialog{
 		jButtonModificar = new JButton("MODIFICAR");
 		jButtonEliminar = new JButton("ELIMINAR");
 		jButtonSeleccionar = new JButton("SELECCIONAR");
+		jButtonBuscar = new JButton("BUSCAR");
 		jButtonSalir = new JButton("SALIR");
 		initialize();
 	}
@@ -213,7 +216,9 @@ public class GUIABMMuestra extends JDialog{
 		this.jButtonEliminar.addActionListener(lis);
 		this.jButtonModificar.addActionListener(lis);
 		this.jButtonSeleccionar.addActionListener(lis);
+		this.jButtonBuscar.addActionListener(lis);
 		this.jButtonSalir.addActionListener(lis);
+		this.buscarMenu.addActionListener(lis);
         
 	}
 	/**
@@ -251,9 +256,14 @@ public class GUIABMMuestra extends JDialog{
 		this.panelSur.add(getJButtonModificar());
 		this.panelSur.add(getJButtonEliminar());
 		this.panelSur.add(getJButtonSeleccionar());
+		this.panelSur.add(getJButtonBuscar());
 		this.panelSur.add(getJButtonSalir());
 		}
 		return this.panelSur;
+	}
+
+	public JButton getJButtonBuscar() {
+		return jButtonBuscar;
 	}
 
 	/**
@@ -296,7 +306,9 @@ public class GUIABMMuestra extends JDialog{
         jButtonEliminar.addActionListener(lis);
         jButtonModificar.addActionListener(lis);
         jButtonSalir.addActionListener(lis);
+        jButtonBuscar.addActionListener(lis);
         jButtonSeleccionar.addActionListener(lis);
+        buscarMenu.addActionListener(lis);
   }
 	
 

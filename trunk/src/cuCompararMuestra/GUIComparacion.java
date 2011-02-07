@@ -168,7 +168,7 @@ public class GUIComparacion extends JDialog{
 		this.profundidadFinal1 = new JLabel("Profundidad Final: "+muestra1.getProfundidadFinal()+"mts");
 		ubicacion1 = new JLabel ("Ubicacion: "+muestra1.getUbicacion().getNombreUbicacion());
 		clasificacion1 = new JLabel ("Clasificacion: ");
-		descripcion1 = new JLabel ("Descripcion: "+muestra1.getClasificacion().getDescripcion());
+		descripcion1 = new JLabel ("Descripcion: "+muestra1.getSucs().getDescripcion());
 		limiteLiquido1 = new JLabel ("Límite Líquido (LL): ");    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
 		limitePlastico1 = new JLabel ("Límite Plástico (LP): ");	//***************************************
 		indicePlasticidad1 = new JLabel ("Íncide de Plasticidad (IP): ");
@@ -184,7 +184,7 @@ public class GUIComparacion extends JDialog{
 		this.profundidadFinal2 = new JLabel("Profundidad Final: "+muestra2.getProfundidadFinal()+"mts");
 		ubicacion2 = new JLabel ("Ubicacion: "+muestra2.getUbicacion().getNombreUbicacion());
 		clasificacion2 = new JLabel ("Clasificacion: ");
-		descripcion2 = new JLabel ("Descripcion: "+muestra2.getClasificacion().getDescripcion());
+		descripcion2 = new JLabel ("Descripcion: "+muestra2.getSucs().getDescripcion());
 		limiteLiquido2 = new JLabel ("Límite Líquido (LL): ");    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
 		limitePlastico2 = new JLabel ("Límite Plástico (LP): ");	//***************************************
 		indicePlasticidad2 = new JLabel ("Íncide de Plasticidad (IP): ");

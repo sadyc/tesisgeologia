@@ -77,6 +77,7 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 		    data [i][4]= muestra.getProfundidadFinal();
 		    i++;
 		}
+		
 
 	}
 
@@ -123,10 +124,13 @@ public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, 
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUIABMMuestra.getJButtonSeleccionar() == source){
-			seleccionarMuestra();
+			if (seleccionoMuestra){
+				seleccionarMuestra();
+			}
 		}
-		if (this.GUIABMMuestra.getBuscarMenu() == source){
-			GUISeleccionarMuestra.dispose();
+		if (this.GUIABMMuestra.getBuscarMenu() == source || this.GUIABMMuestra.getJButtonBuscar() == source){
+			GUIABMMuestra.dispose();
+			System.out.println("dentro del source");
 			buscarMuestra();
 		}
 		if (this.GUIABMMuestra.getJButtonSalir() == source){

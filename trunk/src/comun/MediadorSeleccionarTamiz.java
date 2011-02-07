@@ -13,7 +13,6 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Tamiz;
-import cuGestionarAnalisis.MediadorBuscar;
 import cuGestionarMuestra.ControlGestionarMuestra;
 
 
