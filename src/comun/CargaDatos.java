@@ -21,6 +21,7 @@ public class CargaDatos {
 	
 	public CargaDatos(){
 		
+		
 	}
 	
 	/**
