@@ -30,8 +30,11 @@
         <field name="indicePlasticidad" persistence-modifier="persistent">
                  <column jdbc-type="FLOAT"/>
 		</field>		 
-        <field name="clasificacion" persistence-modifier="persistent">
-                <column name="CLASIFICACION_ID"/>
+        <field name="aashto" persistence-modifier="persistent">
+                <column name="CLASIFICACION_AASHTO"/>
+        </field>
+        <field name="sucs" persistence-modifier="persistent">
+                <column name="CLASIFICACION_SUCS"/>
         </field>
         <field name="operadorLaboratorio" persistence-modifier="persistent">
                <column name="dni_operador"/>
@@ -141,10 +144,7 @@
      </class>
 
      <class name="persistencia.domain.Clasificacion" identity-type="datastore">
-         <field name="muestras" persistence-modifier="persistent" mapped-by="clasificacion">
-                <collection element-type="persistencia.domain.Muestra"/>
-            </field>
-			<field name="coeficienteUniformidad" persistence-modifier="persistent">
+         <field name="coeficienteUniformidad" persistence-modifier="persistent">
                  <column jdbc-type="FLOAT"/>
         </field>
 			<field name="gradoCurvatura" persistence-modifier="persistent">
@@ -171,12 +171,18 @@
  <class name="persistencia.domain.SUCS" identity-type="datastore">
              <inheritance strategy="new-table"/>
 			  <field name="frame" persistence-modifier="persistent"/>
+			  <field name="muestras" persistence-modifier="persistent" mapped-by="sucs">
+                <collection element-type="persistencia.domain.Muestra"/>
+            </field>
          
  
  </class>
  <class name="persistencia.domain.AASHTO" identity-type="datastore">
 		<inheritance strategy="new-table"/>
             <field name="frame" persistence-modifier="persistent"/>
+            <field name="muestras" persistence-modifier="persistent" mapped-by="aashto">
+                <collection element-type="persistencia.domain.Muestra"/>
+            </field>
         </class>
  
      
