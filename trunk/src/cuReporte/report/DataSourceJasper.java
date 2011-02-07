@@ -10,7 +10,7 @@ import java.util.Hashtable;
 
 	public class DataSourceJasper implements JRDataSource {  
 
-		private String[][] data;
+		private Object[][] data;
 
 		private Hashtable tabla = null; // entrada: nombre campo - valor: indice en
 
@@ -18,7 +18,7 @@ import java.util.Hashtable;
 
 		private int index = -1;
 
-		public DataSourceJasper(String[][] newData, Hashtable newTabla) {
+		public DataSourceJasper(Object[][] newData, Hashtable newTabla) {
 			data = newData;
 			tabla = newTabla;
 			
@@ -42,7 +42,7 @@ import java.util.Hashtable;
 		 * @see dori.jasper.engine.JRDataSource#getFieldValue(dori.jasper.engine.JRField)
 		 */
 		public Object getFieldValue(JRField field) throws JRException {
-	 		//String value = null;
+	 		String value = null;
 			String fieldName = field.getName();
 			Object res = data[index][((Integer) tabla.get(fieldName)).intValue()];
 			return res;

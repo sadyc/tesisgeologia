@@ -389,7 +389,7 @@ public class ControlClasificacion {
         rr.setBaseShapesVisible(true);
         rr.setSeriesPaint(0, Color.black);
                 
-        plot1.setBackgroundPaint(Color.yellow);//lightGray
+        plot1.setBackgroundPaint(Color.yellow);
         plot1.setDomainCrosshairPaint(Color.black);
         plot1.setDomainMinorGridlinePaint(Color.blue);
         plot1.setDomainGridlinesVisible(true);
@@ -399,13 +399,16 @@ public class ControlClasificacion {
         
         final ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new java.awt.Dimension(200, 350));
-       
-        ChartUtilities.saveChartAsJPEG(new File(PATH_SOURCE_REPORT), chart, 500, 300);
-   
+        exportarJPG(plot1);
         return chartPanel;
     }
 	
-	
+	public void exportarJPG (XYPlot plot) throws Exception {
+		final XYPlot plot1 = (XYPlot) plot.clone();
+		final JFreeChart chart1 = new JFreeChart("Curva Granulométrica", plot1);
+		plot1.setBackgroundPaint(Color.white);
+		ChartUtilities.saveChartAsJPEG(new File(PATH_SOURCE_REPORT), chart1, 500, 300);
+	}
 	
 	/**
 	 * Imprime la clasificacion y el grafico.
