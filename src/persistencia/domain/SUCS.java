@@ -20,7 +20,6 @@ import javax.swing.JOptionPane;
 @PersistenceCapable
 public class SUCS extends Clasificacion {
 	
-	Frame frame;
 	protected Collection<Muestra> muestras = new HashSet();
 	
 	/**
@@ -35,6 +34,7 @@ public class SUCS extends Clasificacion {
 	 * @param nombre, nombre de la clasificacion.
 	 */
 	public void setClasificacionSUCS(String nombre) {
+		Frame frame = new Frame();
 		if (nombre.equals("ML") || nombre.equals("CL") || nombre.equals("OL") || nombre.equals("MH") || nombre.equals("CH")||nombre.equals("OH")||nombre.equals("PT")||nombre.equals("SW")||nombre.equals("SP")||nombre.equals("SC")||nombre.equals("SM")||nombre.equals("GW")||nombre.equals("GP")||nombre.equals("GM")||nombre.equals("GC")){
 			if (nombre.equals("ML")) {
 				this.nombre = "Grano Fino - Limos y Arcillas con limite liquido menor a 50 - ML";

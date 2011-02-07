@@ -170,7 +170,6 @@
 	 
  <class name="persistencia.domain.SUCS" identity-type="datastore">
              <inheritance strategy="new-table"/>
-			  <field name="frame" persistence-modifier="persistent"/>
 			  <field name="muestras" persistence-modifier="persistent" mapped-by="sucs">
                 <collection element-type="persistencia.domain.Muestra"/>
             </field>
@@ -179,7 +178,6 @@
  </class>
  <class name="persistencia.domain.AASHTO" identity-type="datastore">
 		<inheritance strategy="new-table"/>
-            <field name="frame" persistence-modifier="persistent"/>
             <field name="muestras" persistence-modifier="persistent" mapped-by="aashto">
                 <collection element-type="persistencia.domain.Muestra"/>
             </field>

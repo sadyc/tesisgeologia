@@ -22,8 +22,7 @@ public class Clasificacion {
 	private Float D10;
 	private Float gradoCurvatura;
 	private Float coeficienteUniformidad;
-	protected Collection<Muestra> muestras = new HashSet();
-
+	
 	/**
 	 * @brief Constructor por defecto.
 	 */
@@ -67,31 +66,12 @@ public class Clasificacion {
 		this.nombre = nombre;
 	}
 
-
-	/**
-	 * Metodo que permite agregar una muestra a la clasificacion.
-	 * @param muestra, muestra a ser agregada a la clasificacion.
-	 */
-	public void addMuestra (Muestra muestra){
-		this.muestras.add(muestra);
-	}
-	
-	/**
-	 * Metodo que permite quitar una muestra a la clasificacion.
-	 * @param muestra, muestra a ser eliminada a la clasificacion.
-	 */
-	public void removeMuesra (Muestra muestra){
-		muestras.remove(muestra);
-	}
-
-
 	/**
 	 * @return the d60
 	 */
 	public Float getD60() {
 		return D60;
 	}
-
 
 	/**
 	 * @param d60 the d60 to set
