@@ -200,6 +200,7 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
                     .addComponent(cancelar))
                 .addContainerGap())
         );
+        this.setLocationRelativeTo(null);
 
         pack();
     }// </editor-fold>

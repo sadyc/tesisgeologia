@@ -4,6 +4,8 @@
 package persistencia.domain;
 
 import java.awt.Frame;
+import java.util.Collection;
+import java.util.HashSet;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.swing.JOptionPane;
@@ -16,11 +18,18 @@ import javax.swing.JOptionPane;
 @PersistenceCapable
 public class AASHTO extends Clasificacion{
 	Frame frame;
+	protected Collection<Muestra> muestras = new HashSet();
 	/**
 	 * @brief Constructor por defecto.
 	 * @param nombre, nombre de la clasific
 	 */
-	public AASHTO(String nombre) {
+	public AASHTO() {
+		super();
+	}
+	
+	
+	public void setClasificacionAASHTO(String nombre) {
+		System.out.println(nombre);
 		if (nombre.equals("A1a")|| nombre.equals("A1b")|| nombre.equals("A3")|| nombre.equals("A24")|| nombre.equals("A25")|| nombre.equals("A26")|| nombre.equals("A27")|| nombre.equals("A4")|| nombre.equals("A5")|| nombre.equals("A6")|| nombre.equals("A7")|| nombre.equals("A75")|| nombre.equals("A76")){
 			if (nombre.equals("A1a")|| nombre.equals("A1b") ) {
 				this.nombre = "Granulares - A1 - "+nombre;
@@ -51,6 +60,7 @@ public class AASHTO extends Clasificacion{
 		else{
 			JOptionPane.showMessageDialog(frame,"Estan mal pasados los nombres de la clasificacion","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
+		
 	}
 
 }

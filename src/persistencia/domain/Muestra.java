@@ -30,7 +30,9 @@ public class Muestra {
 	protected OperadorDeLaboratorio operadorLaboratorio ;
 	protected Usuario usuario;
 	protected Ubicacion ubicacion;
-	protected Clasificacion clasificacion;
+	
+	protected AASHTO aashto;
+	protected SUCS sucs;
 	
 	
 	protected Collection<Analisis> analisis= new HashSet();
@@ -45,7 +47,9 @@ public class Muestra {
 		operadorLaboratorio = new OperadorDeLaboratorio();
 		usuario = new Usuario();
 		ubicacion = new Ubicacion();
-		clasificacion = new Clasificacion();
+		aashto = new AASHTO();
+		sucs = new SUCS();
+		
 		java.util.Date f = new java.util.Date();
 		fecha = new java.sql.Date(f.getTime());
 	}
@@ -66,7 +70,8 @@ public class Muestra {
 		this.operadorLaboratorio = operador;
 		this.usuario = usuario;
 		this.ubicacion = ubicacion;
-		this.clasificacion = new Clasificacion();
+		this.aashto = new AASHTO();
+		this.sucs = new SUCS();
 		this.fecha = fecha;
 	}
 		
@@ -184,20 +189,6 @@ public class Muestra {
 	}
 
 	/**
-	 * @return the clasificacion
-	 */
-	public Clasificacion getClasificacion() {
-		return clasificacion;
-	}
-
-	/**
-	 * @param clasificacion the clasificacion to set
-	 */
-	public void setClasificacion(Clasificacion clasificacion) {
-		this.clasificacion = clasificacion;
-	}
-
-	/**
 	 * @return the fecha
 	 */
 	public java.sql.Date getFecha() {
@@ -294,5 +285,35 @@ public class Muestra {
 	public void setIndicePlasticidad(Float indicePlasticidad) {
 		this.indicePlasticidad = indicePlasticidad;
 	}
+	
+	/**
+	 * @return the aashto
+	 */
+	public AASHTO getAashto() {
+		return aashto;
+	}
+
+	/**
+	 * @param aashto the aashto to set
+	 */
+	public void setAashto(AASHTO aashto) {
+		this.aashto = aashto;
+	}
+
+	/**
+	 * @return the sucs
+	 */
+	public SUCS getSucs() {
+		return sucs;
+	}
+
+	/**
+	 * @param sucs the sucs to set
+	 */
+	public void setSucs(SUCS sucs) {
+		this.sucs = sucs;
+	}
+
+	
 	
 }

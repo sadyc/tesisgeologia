@@ -191,9 +191,14 @@ public class ControlGestionarAnalisis {
     		Analisis aux = new Analisis();
     		List listaAnalisis = null;
     		try {
-    			listaAnalisis =persistencia.buscarListaFiltro(aux.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+    			listaAnalisis = persistencia.buscarListaFiltro(aux.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
     			int i = listaAnalisis.size();
-    			aux = (Analisis)listaAnalisis.get(i-1);
+    			if (!listaAnalisis.isEmpty()){
+	    			while(i<listaAnalisis.size()){
+	    				aux = (Analisis)listaAnalisis.get(i);
+	    				i++;
+	    			}
+    			}
     			persistencia.cerrarTransaccion();
     		}
     		catch (Exception e) {
