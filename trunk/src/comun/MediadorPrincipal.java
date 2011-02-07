@@ -82,7 +82,7 @@ public class MediadorPrincipal implements ActionListener{
 	 */
 	public void gestionarMuestra(){
 		try {
-			MediadorGestionarMuestra gestionarMuestra = new MediadorGestionarMuestra("Listado de Muestras");
+			MediadorGestionarMuestra gestionarMuestra = new MediadorGestionarMuestra("Gestionar Muestra");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

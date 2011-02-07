@@ -22,9 +22,9 @@ import cuGestionarMuestra.MediadorSeleccionarMuestra;
  * @author TesisGeologia.
  */
 public class MediadorBuscar extends Mediador{
-	private String[][] resultado;
+	private Collection resultado;
 	private GUIBuscar GUIBuscar;
-	private boolean busco;
+	private boolean encotro;
 	private Component frame;
 	private ControlBuscar control = new ControlBuscar();
 	
@@ -34,7 +34,7 @@ public class MediadorBuscar extends Mediador{
 	 */
 	public MediadorBuscar(){
 		super();
-		busco = false;
+		encotro = false;
 		GUIBuscar = new GUIBuscar();
 		GUIBuscar.setTitle("Buscar Muestra");
 		GUIBuscar.setListenerButtons(this);
@@ -65,40 +65,35 @@ public class MediadorBuscar extends Mediador{
 
 	
 	private void buscarPorOperador() throws Exception {
-		Collection coleccion = control.buscarOperadorDeMuestra(GUIBuscar.getBuscar().getText());
-		if (coleccion.isEmpty()){
+		resultado = control.buscarOperadorDeMuestra(GUIBuscar.getBuscar().getText().toUpperCase());
+		if (resultado.isEmpty()){
 			JOptionPane.showMessageDialog(frame,"No se encontro ninguna muestra con ese Operador de laboratorio","ATENCION", JOptionPane.WARNING_MESSAGE);
 		}
 		else{
-			busco=true;
-			MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra(coleccion);
 			GUIBuscar.dispose();
 		}
 	}
 
 	private void buscarPorUbicacion() throws Exception {
-		Collection coleccion = control.buscarUbicacionMuestra(GUIBuscar.getBuscar().getText());
-		if (coleccion.isEmpty()){
+		resultado = control.buscarUbicacionMuestra(GUIBuscar.getBuscar().getText().toUpperCase());
+		if (resultado.isEmpty()){
 			JOptionPane.showMessageDialog(frame,"No se encontro ninguna muestra con esa ubicacion","ATENCION", JOptionPane.WARNING_MESSAGE);
 		}
 		else{
-			busco=true;
+			encotro=true;
 			GUIBuscar.dispose();
-			MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra(coleccion);
 		}
-		
 	}
 
 	private void buscarPorNombre() throws Exception {
-		Collection coleccion = control.buscarNombreMuestra(GUIBuscar.getBuscar().getText());
-		if (coleccion.isEmpty()){
+		resultado = control.buscarNombreMuestra(GUIBuscar.getBuscar().getText().toUpperCase());
+		if (resultado.isEmpty()){
 			JOptionPane.showMessageDialog(frame,"No se encontro ninguna muestra con ese nombre","ATENCION", JOptionPane.WARNING_MESSAGE);
 		}
 		else{
-			busco=true;
+			encotro=true;
 			GUIBuscar.dispose();
-			MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra(coleccion);
-		}
+			}
 	}
 
 	@Override
@@ -109,8 +104,6 @@ public class MediadorBuscar extends Mediador{
 		}
 		if (this.GUIBuscar.getJButtonCancelar() == source || this.GUIBuscar.getjMenuItem2() == source){
 			GUIBuscar.dispose();
-			
-			
 		}
 	}
 	
@@ -119,5 +112,21 @@ public class MediadorBuscar extends Mediador{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	/**
+	 * @return the busco
+	 */
+	public boolean seEncontro() {
+		return encotro;
+	}
+	/**
+	 * @return the resultado
+	 */
+	public Collection getResultado() {
+		return resultado;
+	}
+
+	
+
 	
 }
