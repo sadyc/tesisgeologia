@@ -194,7 +194,7 @@ public class ControlClasificacion {
 		muestra.setCoeficienteUniformidad(muestra.getD60()/muestra.getD10());//Coeficiente de uniformidad
 		Float gradoCurvatura = ((muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60()));//grado de curvatura.
 		muestra.setGradoCurvatura(gradoCurvatura);
-				
+		/**		
 		try{
 			Analisis analisis = new Analisis();
 			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'";
@@ -276,7 +276,7 @@ public class ControlClasificacion {
 			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
-				
+			*/	
 	}
 	
 	/**
