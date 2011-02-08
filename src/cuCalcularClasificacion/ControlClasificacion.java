@@ -194,7 +194,6 @@ public class ControlClasificacion {
 		muestra.setCoeficienteUniformidad(muestra.getD60()/muestra.getD10());//Coeficiente de uniformidad
 		Float gradoCurvatura = ((muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60()));//grado de curvatura.
 		muestra.setGradoCurvatura(gradoCurvatura);
-		/**		
 		try{
 			Analisis analisis = new Analisis();
 			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'";
@@ -276,7 +275,7 @@ public class ControlClasificacion {
 			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
-			*/	
+				
 	}
 	
 	/**
@@ -462,11 +461,6 @@ public class ControlClasificacion {
         	        1.0f, new float[] {6.0f, 6.0f}, 0.0f 
         	    ));
                       
-        //XYItemRenderer rend = chart.getXYPlot().getRenderer();
-        //StandardXYItemRenderer rr = (StandardXYItemRenderer)rend;
-        //rr.setBaseShapesVisible(true);
-        //rr.setSeriesPaint(0, Color.black);
-                
         plot1.setBackgroundPaint(Color.yellow);
         plot1.setDomainCrosshairPaint(Color.black);
         plot1.setDomainMinorGridlinePaint(Color.blue);
@@ -487,8 +481,22 @@ public class ControlClasificacion {
     }
 	
 	/**
-	 * Imprime la clasificacion y el grafico.
+	 * Busca un analisis y retorna un valor booleano 
+	 * con el resultado de la busqueda.
+	 * @param tamiz
+	 * @return
+	 * @throws Exception
 	 */
-	public void imprimirClasificacion(){
+	public boolean buscarAnalisis(String tamiz) throws Exception {
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		Analisis aux = new Analisis();
+		aux = (Analisis)persistencia.buscarObjeto(aux.getClass(),"tamiz.numeroTamiz=='"+tamiz+"'");
+		if(aux==null){
+			return false;
+		}else{
+			return true;
+		}
+		
 	}
 }
