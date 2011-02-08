@@ -1,231 +1,237 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="121"/>
-	<style name="Crosstab Data Text" hAlign="Center"/>
-	<field name="nombre" class="java.lang.String"/>
-	<field name="ubicacion" class="java.lang.String"/>
-	<field name="peso" class="java.lang.String"/>
-	<field name="profundidadInicial" class="java.lang.String"/>
-	<field name="profundidadFinal" class="java.lang.String"/>
-	<field name="limiteLiquido" class="java.lang.String"/>
-	<field name="limitePlastico" class="java.lang.String"/>
-	<field name="indicePlasticidad" class="java.lang.String"/>
-	<field name="D60" class="java.lang.String"/>
-	<field name="D30" class="java.lang.String"/>
-	<field name="D10" class="java.lang.String"/>
-	<field name="coefUniformidad" class="java.lang.String"/>
-	<field name="gradoCurvatura" class="java.lang.String"/>
-	<field name="numeroTamiz" class="java.lang.String"/>
-	<field name="aberturaMalla" class="java.lang.String"/>
+	<property name="ireport.y" value="47"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<reportFont name="Arial_Normal" isDefault="true" fontName="Arial" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<reportFont name="Arial_Bold" isDefault="false" fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<reportFont name="Arial_Italic" isDefault="false" fontName="Arial" size="12" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Oblique" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+	<parameter name="reportTitle" class="java.lang.String"/>
+	<parameter name="datePrint" class="java.lang.String"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="ubicacion" class="java.lang.String"/>
+	<parameter name="peso" class="java.lang.String"/>
+	<parameter name="profundidadInicial" class="java.lang.String"/>
+	<parameter name="profundidadFinal" class="java.lang.String"/>
+	<field name="NumeroTamiz" class="java.lang.String"/>
+	<field name="AberturaMalla" class="java.lang.String"/>
 	<field name="%Pasante" class="java.lang.String"/>
 	<field name="%RetenidoAcumulado" class="java.lang.String"/>
 	<field name="%RetenidoParcial" class="java.lang.String"/>
-	<field name="clasificacionAashto" class="java.lang.String"/>
-	<field name="descripcionAashto" class="java.lang.String"/>
-	<field name="clasificacionSucs" class="java.lang.String"/>
-	<field name="descripcionSucs" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="53" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="0" width="334" height="44"/>
-				<textElement>
-					<font size="22"/>
+		<band height="225" splitType="Stretch">
+			<line>
+				<reportElement key="line" x="0" y="89" width="515" height="1" forecolor="#111111" backcolor="#EEEEEE"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="0" y="27" width="363" height="39"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" lineSpacing="Single">
+					<font size="24"/>
 				</textElement>
-				<text><![CDATA[Sistema Clasificador de Suelos]]></text>
-			</staticText>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{reportTitle}]]></textFieldExpression>
+			</textField>
 			<image>
-				<reportElement x="466" y="-10" width="62" height="63"/>
+				<reportElement x="452" y="2" width="63" height="84"/>
 				<imageExpression class="java.lang.String"><![CDATA["C:\\Tesis\\Geologia\\src\\cuReporte\\report\\image\\LogoSCS.jpg"]]></imageExpression>
 			</image>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="145" splitType="Prevent">
 			<staticText>
-				<reportElement x="0" y="0" width="147" height="20"/>
+				<reportElement x="1" y="93" width="147" height="20"/>
 				<textElement/>
 				<text><![CDATA[DATOS DE LA MUESTRA]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="0" y="20" width="169" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA["Nombre: "+$F{nombre}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="40" width="169" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{ubicacion}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="60" width="169" height="15"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{peso}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="79" width="169" height="15"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{profundidadInicial}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="99" width="169" height="16"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{profundidadFinal}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="213" y="0" width="100" height="20"/>
+				<reportElement x="215" y="93" width="100" height="20"/>
 				<textElement/>
 				<text><![CDATA[PLASTICIDAD]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="213" y="30" width="153" height="20"/>
+				<reportElement x="1" y="116" width="175" height="20"/>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{limiteLiquido}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="213" y="60" width="153" height="20"/>
+				<reportElement x="1" y="136" width="175" height="20"/>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{limitePlastico}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{ubicacion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="213" y="90" width="153" height="20"/>
+				<reportElement x="1" y="156" width="175" height="20"/>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{indicePlasticidad}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{peso}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="394" y="10" width="161" height="20"/>
+				<reportElement x="1" y="176" width="175" height="20"/>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{D60}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{profundidadInicial}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="394" y="30" width="161" height="20"/>
+				<reportElement x="1" y="196" width="175" height="20"/>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{D30}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{profundidadFinal}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="394" y="50" width="161" height="15"/>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle" x="1" y="0" width="515" height="20" forecolor="#666666" backcolor="#666666"/>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText" x="89" y="3" width="87" height="15" forecolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{D10}]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement x="394" y="71" width="161" height="1"/>
-			</line>
-			<textField>
-				<reportElement x="394" y="76" width="161" height="20"/>
+				<text><![CDATA[Abertura Malla]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="176" y="3" width="85" height="15" forecolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{coefUniformidad}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="394" y="96" width="161" height="20"/>
+				<text><![CDATA[% Pasante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="1" y="3" width="92" height="15" forecolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left"/>
+				<text><![CDATA[Numero Tamiz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="258" y="3" width="128" height="15" forecolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{gradoCurvatura}]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[% Retenido Acumulado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" x="393" y="4" width="122" height="15" forecolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[% Retenido Parcial]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="577" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="1" width="100" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Numero Tamiz]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="102" y="1" width="108" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Abertura de Malla (mm)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="217" y="1" width="100" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[% Pasante]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="321" y="0" width="116" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[% Retenido Acumulado]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="437" y="0" width="100" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[% Retenido Parcial]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="0" y="21" width="100" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{numeroTamiz}]]></textFieldExpression>
+		<band height="25" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="1" y="5" width="80" height="15"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NumeroTamiz}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="102" y="21" width="100" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{aberturaMalla}]]></textFieldExpression>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField" positionType="Float" x="81" y="5" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{AberturaMalla}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="210" y="21" width="117" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField" positionType="Float" x="180" y="5" width="90" height="15"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{%Pasante}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="334" y="21" width="88" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{%RetenidoAcumulado}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="437" y="20" width="131" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField" positionType="Float" x="391" y="5" width="124" height="15"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{%RetenidoParcial}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="0" y="20" width="555" height="1"/>
-			</line>
-			<textField pattern="dd MMMMM yyyy">
-				<reportElement x="455" y="557" width="100" height="20"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField" positionType="Float" x="280" y="5" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
 				<textElement/>
-				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{%RetenidoAcumulado}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="0" y="326" width="123" height="20"/>
-				<textElement>
-					<font isBold="true" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[DATOS CLASIFICACIÓN:]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="16" y="346" width="134" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{clasificacionAashto}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="16" y="371" width="132" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcionAashto}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="366" y="346" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{clasificacionSucs}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="366" y="371" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcionSucs}]]></textFieldExpression>
-			</textField>
-			<image hAlign="Center">
-				<reportElement x="0" y="406" width="227" height="135"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\Tesis\\Geologia\\src\\cuCalcularClasificacion\\curvaGranulometrica.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band splitType="Stretch"/>
+		<band height="110" splitType="Stretch">
+			<line>
+				<reportElement key="line" x="0" y="42" width="515" height="1"/>
+			</line>
+		</band>
 	</pageFooter>
+	<summary>
+		<band height="278" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="1" y="53" width="420" height="20"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" lineSpacing="Single"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Fecha : "+ $P{datePrint}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
 </jasperReport>

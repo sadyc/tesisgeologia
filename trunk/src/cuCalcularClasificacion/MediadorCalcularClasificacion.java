@@ -132,13 +132,18 @@ public class MediadorCalcularClasificacion extends Mediador{
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUIClasificacion.getJButtonImprimir() == source) {
-			String [][]data1 = new String [2] [22];
-			data1 [0][0] = GUIClasificacion.getUbicacion().getText();
-			data1 [0][1] = GUIClasificacion.getUbicacion().getText();
+			String [][]data1 = new String [2] [5];
+			data1 [0][0] = GUIClasificacion.getPeso().getText();
+			data1 [0][1] = GUIClasificacion.getPeso().getText();
 			data1 [0][2] = GUIClasificacion.getPeso().getText();
-			data1 [0][3] = GUIClasificacion.getProfundidadInicial().getText();
-			data1 [0][4] = GUIClasificacion.getProfundidadFinal().getText();
-			data1 [0][5] = GUIClasificacion.getLimiteLiquido().getText();
+			data1 [0][3] = GUIClasificacion.getPeso().getText();
+			data1 [0][4] = GUIClasificacion.getPeso().getText();
+			data1 [1][0] = GUIClasificacion.getPeso().getText();
+			data1 [1][1] = GUIClasificacion.getPeso().getText();
+			data1 [1][2] = GUIClasificacion.getPeso().getText();
+			data1 [1][3] = GUIClasificacion.getPeso().getText();
+			data1 [1][4] = GUIClasificacion.getPeso().getText();
+			/**data1 [0][5] = GUIClasificacion.getLimiteLiquido().getText();
 			data1 [0][6] = GUIClasificacion.getLimitePlastico().getText();
 			data1 [0][7] = GUIClasificacion.getIndicePlasticidad().getText();
 			data1 [0][8] = GUIClasificacion.getD60().getText();
@@ -160,7 +165,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 			data1 [0][18] = GUIClasificacion.getD60().getText();
 			data1 [0][19] = GUIClasificacion.getD60().getText();
 			data1 [0][20] = GUIClasificacion.getD60().getText();
-			data1 [0][21] = GUIClasificacion.getD60().getText();
+			data1 [0][21] = GUIClasificacion.getD60().getText();*/
 			MakeReport makeReporte = new MakeReport();
 			makeReporte.make("report1");
 			ViewReport view = new ViewReport(data1);
