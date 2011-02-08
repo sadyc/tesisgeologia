@@ -83,8 +83,8 @@ public class Muestra {
 	 * @param coeficienteUniformidad
 	 */
 	public Muestra(String nombreMuestra,Float peso, Float profundidadInicial,Float profundidadFinal, 
-			OperadorDeLaboratorio operador, Usuario usuario, Ubicacion ubicacion,
-			java.sql.Date fecha) {
+			OperadorDeLaboratorio operador, Usuario usuario, Ubicacion ubicacion, AASHTO aashto,
+			SUCS sucs,java.sql.Date fecha) {
 		this.nombreMuestra = nombreMuestra;
 		this.profundidadInicial = profundidadInicial;
 		this.profundidadFinal = profundidadFinal;
@@ -92,8 +92,8 @@ public class Muestra {
 		this.operadorLaboratorio = operador;
 		this.usuario = usuario;
 		this.ubicacion = ubicacion;
-		this.aashto = new AASHTO();
-		this.sucs = new SUCS();
+		this.aashto = aashto;
+		this.sucs = sucs;
 		this.fecha = fecha;
 		D10= new Float(0);
 		D30= new Float(0);

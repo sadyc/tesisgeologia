@@ -118,7 +118,7 @@ public class GUIClasificacion extends JDialog{
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 * @throws Exception 
 	 */
-	public GUIClasificacion(Clasificacion clasificacion,Muestra muestra, Object [] [] data) throws Exception {
+	public GUIClasificacion(Muestra muestra, Object [] [] data) throws Exception {
 		super();
 		ControlClasificacion control = new ControlClasificacion();
 		grafico = control.emitirGrafico(muestra);
@@ -138,12 +138,12 @@ public class GUIClasificacion extends JDialog{
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
 		this.muestra = new JLabel(muestra.getNombreMuestra());
-		this.peso = new JLabel("Peso: "+muestra.getPeso().toString()+"grs");
-		this.profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
-		this.profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
+		peso = new JLabel("Peso: "+muestra.getPeso().toString()+"grs");
+		profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
+		profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
 		ubicacion = new JLabel ("Ubicacion: "+muestra.getUbicacion().getNombreUbicacion());
-		this.clasificacion = new JLabel ("Clasificacion: "+clasificacion.getNombre());
-		descripcion = new JLabel ("Descripcion: "+clasificacion.getDescripcion());
+		clasificacion = new JLabel ("Clasificacion: "+muestra.getSucs().getNombre());
+		descripcion = new JLabel ("Descripcion: "+muestra.getSucs().getDescripcion());
 		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    
 		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	
 		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): "+muestra.getIndicePlasticidad());

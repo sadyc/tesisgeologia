@@ -244,8 +244,8 @@ public class CargaDatos {
 		Usuario usuario1 = new Usuario("Juan", "Perez", "34.771.488", "4917015", "juan@perez.com","juanPerez","pepe");
 		Usuario usuario2 = new Usuario("Susana", "Gomez", "34.101.098", "4917015", "Sus@gomez.com","susy","ana");
 		
-		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),operador1,null,ubicacion1,null);	
-		Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),operador2,null,ubicacion2,null);	
+		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),operador1,null,ubicacion1,null,null,null);	
+		Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),operador2,null,ubicacion2,null,null,null);	
 		try {
 			insertarMuestra(muestra2);
 			insertarMuestra(muestra3);

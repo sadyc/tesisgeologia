@@ -73,9 +73,9 @@ public class ControlGestionarMuestra {
 	 * Retorna todos los elementos de la clase pasada como persistente.
 	 */
 	public Collection coleccionMuestras(Class clase) throws Exception {
-		Collection<Muestra> aux = null; 
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
+		Collection<Muestra> aux = null;
 		try {
 			aux = (persistencia.buscarColeccion(clase));
 			persistencia.cerrarTransaccion();
