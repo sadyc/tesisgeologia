@@ -51,6 +51,8 @@ public class GUIClasificacion extends JDialog{
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
 	private JPanel panelCenter=null;
+	private JPanel panelEste=null;
+	private JPanel panelOeste=null;
 	private JLabel muestra;
 	private JLabel peso;
 	private JLabel profundidadInicial;
@@ -66,7 +68,8 @@ public class GUIClasificacion extends JDialog{
 	private JLabel D10;
 	private JLabel coeficienteUniformidad;
 	private JLabel gradoCurvatura;
-	private ChartPanel grafico;
+	private ChartPanel curva;
+	private ChartPanel carta;
 		
 	private TablePanel tablePanel;
 	private Object [][] data = null;
@@ -121,7 +124,8 @@ public class GUIClasificacion extends JDialog{
 	public GUIClasificacion(Muestra muestra, Object [] [] data) throws Exception {
 		super();
 		ControlClasificacion control = new ControlClasificacion();
-		grafico = control.emitirGrafico(muestra);
+		curva = control.emitirGrafico(muestra);
+		carta = control.cartaPlasticidad(muestra);
 		this.data = data; 
 		menu = new JMenuBar();
 		herramientas = new JMenu ("Archivo");
@@ -142,8 +146,15 @@ public class GUIClasificacion extends JDialog{
 		profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
 		profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
 		ubicacion = new JLabel ("Ubicacion: "+muestra.getUbicacion().getNombreUbicacion());
-		clasificacion = new JLabel ("Clasificacion: "+muestra.getSucs().getNombre());
-		descripcion = new JLabel ("Descripcion: "+muestra.getSucs().getDescripcion());
+		
+		if (muestra.getSucs()==null){
+			descripcion = new JLabel ("Descripcion: ");
+			clasificacion = new JLabel ("Clasificacion: ");
+		}
+		else{
+			clasificacion = new JLabel ("Clasificacion: "+muestra.getSucs().getNombre());
+			descripcion = new JLabel ("Descripcion: "+muestra.getSucs().getDescripcion());
+		}
 		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    
 		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	
 		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): "+muestra.getIndicePlasticidad());
@@ -226,7 +237,11 @@ public class GUIClasificacion extends JDialog{
 		this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
 		this.setJMenuBar(this.getMenu());
 	  	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
+	  	
+	  	
 	  	this.getContentPane().add(this.getPanelCenter(),BorderLayout.CENTER);
+	  	//this.getContentPane().add(this.getPanelEste(),BorderLayout.WEST);
+	  	//this.getContentPane().add(this.getPanelOeste(),BorderLayout.EAST);
     	this.setLocationRelativeTo(null);
 	}
    
@@ -295,13 +310,15 @@ public class GUIClasificacion extends JDialog{
 	 */
 	public JPanel getPanelCenter() {
 		if (this.panelCenter==null) {
+			
 			this.panelCenter = new JPanel();
 			this.panelCenter.setLayout(new BoxLayout(this.panelCenter,BoxLayout.Y_AXIS));
 			this.panelCenter.add(this.getTablePanel());
+			this.panelCenter.add(getPanelEste());
+			
 			this.panelCenter.add(new JLabel("DATOS DE LA CLASIFICACION S.U.C.S: "));
 			this.panelCenter.add(clasificacion);
 			this.panelCenter.add(descripcion);
-			this.panelCenter.add(grafico);
 			}
 			return this.panelCenter;
 	}
@@ -318,6 +335,34 @@ public class GUIClasificacion extends JDialog{
 			this.panelSur.add(salir);
 			}
 			return this.panelSur;
+	}
+	/**
+	 * Metodo que retorna el panelSur.
+	 *
+	 * @return Jpanel
+	 */
+	public JPanel getPanelEste() {
+		if (this.panelEste==null) {
+			this.panelEste= new JPanel();
+			this.panelEste.setLayout(new BoxLayout(this.panelEste,BoxLayout.X_AXIS));
+			this.panelEste.add(curva);
+			this.panelEste.add(carta);
+			}
+			return this.panelEste;
+	}
+	
+	/**
+	 * Metodo que retorna el panelSur.
+	 *
+	 * @return Jpanel
+	 */
+	public JPanel getPanelOeste() {
+		if (this.panelOeste==null) {
+			this.panelOeste= new JPanel();
+			this.panelOeste.setLayout(new BoxLayout(this.panelOeste,BoxLayout.X_AXIS));
+			this.panelOeste.add(carta);
+			}
+			return this.panelOeste;
 	}
 	
 	/**
