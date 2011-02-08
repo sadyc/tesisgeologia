@@ -325,5 +325,6 @@ public class GUILogin extends javax.swing.JFrame {
 	public void setListenerButtons(ActionListener lis){
 		this.jButtonAceptar.addActionListener(lis);
 		this.jButtonCancelar.addActionListener(lis);
+		this.jMenuItemSalir.addActionListener(lis);
 	}
 }

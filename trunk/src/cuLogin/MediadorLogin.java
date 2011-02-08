@@ -9,8 +9,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+
+
 import persistencia.Persistencia;
 import persistencia.domain.Muestra;
+import persistencia.domain.Persona;
+import persistencia.domain.Usuario;
 
 import comun.MediadorPrincipal;
 
@@ -20,9 +24,10 @@ import comun.MediadorPrincipal;
  */
 public class MediadorLogin implements ActionListener{
 	
-	private GUILogin login = null;
+	private GUILogin login;
 	private Component frame;
 	private ControlLogin control;
+	private Usuario persona;
 	
 	/**
 	 * Constructor con parametros
@@ -52,8 +57,16 @@ public class MediadorLogin implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.login.getjButtonAceptar() == source){
-			System.out.println("NOMBREEE : "+login.getJnombreUsuario().getText());
-	   		aceptar();
+			try {
+				aceptar();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (this.login.getjMenuItemSalir() == source){
+			System.out.println("GestionarMediador.actionPerformed() jMenuItemSalir");
+			login.dispose();
 		}
 		if (this.login.getjButtonCancelar() == source){
 	   		System.out.println("GestionarMediador.actionPerformed() jButtonCancelar");
@@ -63,34 +76,51 @@ public class MediadorLogin implements ActionListener{
 	
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Aceptar"
+	 * @throws Exception 
 	 */
-	public void aceptar(){
+	public void aceptar() throws Exception{
 		System.out.println("GestionarMediador.actionPerformed() jButtonAceptar");
-		String nombre = login.getJnombreUsuario().getText();
-
-		try {
-
-			//control.obtenerUsuario(login.getNombre().getText(), login.getPassword().getText());
-			System.out.println("");
-
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+		String nombreUsuario = login.getJnombreUsuario().getText();
+        String password =  login.getJpassword().getText();
+        Encriptar encriptar =new Encriptar();
+        password = encriptar.hash(password);
+        control = new ControlLogin(); 
+        Usuario aux = new Usuario();
+        try {
+               	
+        	aux = control.obtenerUsuario(nombreUsuario, password);
+      
+        } catch (Exception e1) {
+			JOptionPane.showMessageDialog(frame,"El usuario es incorrecto","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			e1.printStackTrace();
+			
 		}
+        
    		if (login.getJnombreUsuario().getText().equals("")) {
 			JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Nombre Usuario'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else {
 			if (login.getJpassword().getText().equals("")) {
+			
 				JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Password'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				try {
-					new MediadorPrincipal("SISTEMA DE CLASIFICACION DE SUELOS");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				login.dispose();
+				if (control.seEncontro() == false){
+					JOptionPane.showMessageDialog(frame,"El usuario es incorrecto","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				}else{
+					if (password.compareTo(aux.getContraseña()) != 0){
+						JOptionPane.showMessageDialog(frame,"El password es incorrecto","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+	        		        	
+						try {
+							new MediadorPrincipal("SISTEMA DE CLASIFICACION DE SUELOS");
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					login.dispose();
+				 }
+			   }
 			}
 		}
 	}
