@@ -7,10 +7,12 @@ import net.sf.jasperreports.view.*;
 
 public class ViewReport {
 	
-	private static Object[][] valores;
+	private Object[][] tabla;
+	private Object [] datos;
     
-    public ViewReport(Object[][] valores){
-            this.valores = valores.clone();
+    public ViewReport(Object[][] tabla, Object[] datos){
+            this.tabla = tabla.clone();
+            this.datos = datos.clone();
             
     }
 	public void viewReport(Object[][] param, String[] fieldXml,
@@ -41,22 +43,18 @@ public class ViewReport {
 	}
 	public void viewPersons() {
 
-		Object[][] values = valores ; //INFO A LLENAR EN EL REPORTE. la cantidad de filas son la cantidad de hojas :-/
+		Object[][] tablaAux = {{" "," "," "," "," "}};//tabla ; //INFO A LLENAR EN EL REPORTE. la cantidad de filas son la cantidad de hojas :-/
 		
 		
+		System.out.println("nombre de la muestra en arregloo datos--->" + datos[0]);
+		Object[][] parameters = {{ "reportTitle", "Sistema Clasificador de Suelos" }};//, {"nombre",(String)datos[0]}};//,{"ubicacion",(String)datos[1]},{"peso",(String)datos[2]},{"profundidadInicial",(String)datos[3]},{"profundidadFinal",(String)datos[4]},{"limiteLiquido", (String)datos[5]},{"limitePlastico",(String)datos[6]},{"indicePlasticidad",(String)datos[7]},{"D60",(String)datos[8]},{"D30",(String)datos[9]},{"D10",(String)datos[10]},{"gradoCurvatura",(String)datos[11]},{"coeficienteUniformidad",(String)datos[12]},{"clasificacionSucs",(String)datos[13]},{"detallesSucs",(String)datos[14]},{"clasificacionAashto",(String)datos[15]},{"detallesAastho",(String)datos[16]}};
+     	String[] filedXml = {"NumeroTamiz", "AberturaMalla", "%Pasante", "%RetenidoAcumulado", "%RetenidoParcial"};   //Son los campos a llenar en el XML. Deben tener el mismo nombre.
+ 		String nameReport = "report1";
 		
-		Object[][] parameters = { { "datePrint", "29/11/1988" },{ "reportTitle", "Sistema Clasificador de Suelos" }, {"nombre", "nombre: "},{"ubicacion","ubicacion:"},{"peso","peso:"},{"profundidadInicial","profundidadINI:"},{"profundidadFinal","profundidaFIN: "} };
-     	String[] filedXml = {"NumeroTamiz", "AberturaMalla", "%Pasante", "%RetenidoAcumulado", "%RetenidoParcial"};// "nombre", "ubicacion", "peso", "profundidadInicial", "profundidadFinal", "limiteLiquido", "limitePlastico", "indicePlasticidad", "D60", "D30" , "D10", "coefUniformidad", "gradoCurvatura",*/ "numeroTamiz", "aberturaMalla", "%Pasante", "%RetenidoAcumulado", "%RetenidoParcial"};//, "clasificacionAashto", "descripcionAashto", "clasificacionSucs", "descripcionSucs"};   //Son los campos a llenar en el XML. Deben tener el mismo nombre.
- 
-		String nameReport = "report1";
-		this.viewReport(parameters, filedXml, nameReport, values);
+		this.viewReport(parameters, filedXml, nameReport, tablaAux);
 	}
 
-	public static void main(String[] args) {
-
-		ViewReport ve = new ViewReport(valores);
-		ve.viewPersons();
-
-	}
+	
+	
 
 	}
