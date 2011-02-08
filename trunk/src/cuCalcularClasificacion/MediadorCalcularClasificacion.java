@@ -3,16 +3,17 @@
  */
 package cuCalcularClasificacion;
 
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.MouseEvent;
 import java.util.Collection;
 import java.util.Iterator;
 
-import persistencia.domain.AASHTO;
+import javax.swing.JOptionPane;
+
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
-import persistencia.domain.SUCS;
 
 import comun.Mediador;
 
@@ -29,6 +30,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	private GUIClasificacion GUIClasificacion;
 	
 	private Muestra muestra = new Muestra();
+	private Frame frame;
 	private Object [][] data;
 	
 	/**
@@ -53,14 +55,25 @@ public class MediadorCalcularClasificacion extends Mediador{
 		super();
 		cargarTablaDeAnalisis(muestra);
 		ControlClasificacion control = new ControlClasificacion();
-		control.cartaPlasticidad(muestra);
-		/*if (muestra.getAashto()==null) {
-			control.calcularClasificacionAASHTO(muestra);
+		if (!(data==null)){
+			if(control.buscarAnalisis("200") && control.buscarAnalisis("4") && muestra.getIndicePlasticidad()!=0){
+				if (muestra.getSucs()==null){
+					control.calcularClasificacionSUCS(muestra);
+				}
+			}
+			else{
+				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificacion SUCS, Faltan analisis o indice de plasticidad","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+			if (control.buscarAnalisis("200") && control.buscarAnalisis("40")&& control.buscarAnalisis("10")  && muestra.getIndicePlasticidad()!=0){
+				if (muestra.getAashto()==null) {
+					control.calcularClasificacionAASHTO(muestra);
+				}
+			}
+			else{
+				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificacion AASHTO, Faltan analisis para los tamices 10, 40 0 200","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
 		}
-		if (muestra.getSucs()==null){
-			control.calcularClasificacionSUCS(muestra);
-		}
-		*/
+		
 		GUIClasificacion = new GUIClasificacion(muestra,data);
 		GUIClasificacion.setTitle(titulo);
 		GUIClasificacion.setModal(true);
