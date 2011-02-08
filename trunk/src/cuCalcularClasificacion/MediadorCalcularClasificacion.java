@@ -53,14 +53,15 @@ public class MediadorCalcularClasificacion extends Mediador{
 		super();
 		cargarTablaDeAnalisis(muestra);
 		ControlClasificacion control = new ControlClasificacion();
-		
-
-		//AASHTO clasificacion2 = new AASHTO();
-		//control.calcularClasificacionAASHTO(muestra,clasificacion2);
-
-		SUCS clasificacion = new SUCS();
-		control.calcularClasificacionSUCS(muestra,clasificacion);
-		GUIClasificacion = new GUIClasificacion(clasificacion,muestra,data);
+		control.cartaPlasticidad(muestra);
+		/*if (muestra.getAashto()==null) {
+			control.calcularClasificacionAASHTO(muestra);
+		}
+		if (muestra.getSucs()==null){
+			control.calcularClasificacionSUCS(muestra);
+		}
+		*/
+		GUIClasificacion = new GUIClasificacion(muestra,data);
 		GUIClasificacion.setTitle(titulo);
 		GUIClasificacion.setModal(true);
 		GUIClasificacion.setListenerButtons(this);

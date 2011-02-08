@@ -4,7 +4,9 @@
 package cuCalcularClasificacion;
 
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Stroke;
 import java.io.File;
 import java.util.Collection;
 import java.util.Iterator;
@@ -25,7 +27,6 @@ import org.jfree.data.xy.XYSeriesCollection;
 import persistencia.Persistencia;
 import persistencia.domain.AASHTO;
 import persistencia.domain.Analisis;
-import persistencia.domain.Clasificacion;
 import persistencia.domain.Muestra;
 import persistencia.domain.SUCS;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
@@ -47,7 +48,7 @@ public class ControlClasificacion {
 	 * Realiza los calculos correspondientes para determinar la clasificacion de una muestra.
 	 * @param muestra 
 	 */
-	public void calcularClasificacionSUCS(Muestra muestra,SUCS clasificacionSUCS) throws Exception{
+	public void calcularClasificacionSUCS(Muestra muestra) throws Exception{
 		Float IndicePlasticidad = muestra.getIndicePlasticidad();
 		Float limiteLiquido = muestra.getLimiteLiquido();
 		calcularDiametro(muestra);
@@ -55,7 +56,7 @@ public class ControlClasificacion {
 		muestra.setCoeficienteUniformidad(muestra.getD60()/muestra.getD10());//Coeficiente de uniformidad
 		Float gradoCurvatura = ((muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60()));//grado de curvatura.
 		muestra.setGradoCurvatura(gradoCurvatura);
-		
+		String clasificacion= new String(); 
 		
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
@@ -74,20 +75,20 @@ public class ControlClasificacion {
 						//GravasLimpias
 						if((muestra.getCoeficienteUniformidad()>=4) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3)){
 							//GW
-							clasificacionSUCS.setClasificacionSUCS("GW");
+							clasificacion="GW";
 						}else {
 							//GP
-							clasificacionSUCS.setClasificacionSUCS("GP");
+							clasificacion="GP";
 						}
 					}else if (analisis.getPorcentajePasante()>12){
 						//Gravas con finos
 						if (IndicePlasticidad<4){
 							//GM
-							clasificacionSUCS.setClasificacionSUCS("GM");
+							clasificacion="GM";
 						}
 						else if (IndicePlasticidad>7){
 							//GC
-							clasificacionSUCS.setClasificacionSUCS("GC");
+							clasificacion=("GC");
 						}
 					}else{
 						//Gravas Limpias y con finos.
@@ -109,19 +110,19 @@ public class ControlClasificacion {
 						//Arenas Limpias
 						if ((muestra.getCoeficienteUniformidad()>=6) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3) ){
 							//SW
-							clasificacionSUCS.setClasificacionSUCS("SW");
+							clasificacion=("SW");
 						}else {
 							//SP
-							clasificacionSUCS.setClasificacionSUCS("SP");
+							clasificacion=("SP");
 						}
 					}else if (analisis.getPorcentajePasante()>12){
 						//Arenas con finos
 						if (IndicePlasticidad<4){
 							//SM
-							clasificacionSUCS.setClasificacionSUCS("SM");
+							clasificacion=("SM");
 						}else{
 							//SC
-							clasificacionSUCS.setClasificacionSUCS("SC");
+							clasificacion=("SC");
 						}
 					}else{
 						//arenas limpias y con finos.
@@ -145,30 +146,30 @@ public class ControlClasificacion {
 					//Limos y arcillas
 					if ((IndicePlasticidad>7)){
 						//CL
-						clasificacionSUCS.setClasificacionSUCS("CL");
+						clasificacion=("CL");
 					}else if (IndicePlasticidad<4){
 						//ML
-						clasificacionSUCS.setClasificacionSUCS("ML");
+						clasificacion=("ML");
 					}else if (limiteLiquido<0.75){
 						//OL
-						clasificacionSUCS.setClasificacionSUCS("OL");
+						clasificacion=("OL");
 					}
 				}else {
 					//limos y arcilla > 50
 					if ((IndicePlasticidad>7)){
 						//CH
-						clasificacionSUCS.setClasificacionSUCS("CH");
+						clasificacion=("CH");
 					}else if (IndicePlasticidad<4){
 						//MH
-						clasificacionSUCS.setClasificacionSUCS("MH");
+						clasificacion=("MH");
 					}else if (limiteLiquido<0.75){
 						//OH
-						clasificacionSUCS.setClasificacionSUCS("OH");
+						clasificacion=("OH");
 					}
 				}
 			}
-			persistencia.insertarObjeto(clasificacionSUCS);
-			muestra.setSucs(clasificacionSUCS);
+			SUCS clasificacionSUCS = new SUCS();
+			muestra.setSucs((SUCS)persistencia.buscarObjeto(clasificacionSUCS.getClass(), "clasificacion=='"+clasificacion+"'"));
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
@@ -181,9 +182,11 @@ public class ControlClasificacion {
 	 * Realiza los calculos correspondientes para determinar la clasificacion de una muestra.
 	 * @param muestra 
 	 */
-	public void calcularClasificacionAASHTO(Muestra muestra,AASHTO clasificacion) throws Exception{
+	public void calcularClasificacionAASHTO(Muestra muestra) throws Exception{
 		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
 		
+		String clasificacion= new String();
 		Float IndicePlasticidad = muestra.getIndicePlasticidad();
 		Float limiteLiquido = muestra.getLimiteLiquido();
 		calcularDiametro(muestra);
@@ -198,19 +201,19 @@ public class ControlClasificacion {
 			analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='10'");
 			System.out.println(muestra.getNombreMuestra());
 			if (analisis.getPorcentajePasante()<50){
-				clasificacion.setClasificacionAASHTO("A1a");
+				clasificacion=("A1a");
 			}
 			else{
 				analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='40'");
 				if (analisis.getPorcentajePasante()<=50){
 					//A-1-b
-					clasificacion.setClasificacionAASHTO("A1b");
+					clasificacion=("A1b");
 				}
 				else{
 					analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='200'");
 					if (analisis.getPorcentajePasante()<10){
 						//A-3
-						clasificacion.setClasificacionAASHTO("A3");
+						clasificacion=("A3");
 					}
 					else{
 						if (analisis.getPorcentajePasante()<35){
@@ -219,21 +222,21 @@ public class ControlClasificacion {
 							if (analisis.getPorcentajePasante()<=50){
 								if (muestra.getIndicePlasticidad()<10){
 									//A-2-4
-									clasificacion.setClasificacionAASHTO("A24");
+									clasificacion=("A24");
 								}
 								else{
 									//A-2-6
-									clasificacion.setClasificacionAASHTO("A26");
+									clasificacion=("A26");
 								}
 							}	
 							else{
 								if (muestra.getIndicePlasticidad()<10){
 									//A-2-5
-									clasificacion.setClasificacionAASHTO("A25");
+									clasificacion=("A25");
 								}
 								else{
 									//A-2-7
-									clasificacion.setClasificacionAASHTO("A27");
+									clasificacion=("A27");
 								}
 							}
 						}
@@ -242,30 +245,30 @@ public class ControlClasificacion {
 							if (analisis.getPorcentajePasante()<=50){
 								if (muestra.getIndicePlasticidad()<10){
 									//A-2-4
-									clasificacion.setClasificacionAASHTO("A4");
+									clasificacion=("A4");
 								}
 								else{
 									//A-2-6
-									clasificacion.setClasificacionAASHTO("A6");
+									clasificacion=("A6");
 								}
 							}	
 							else{
 								if (muestra.getIndicePlasticidad()<10){
 									//A-2-5
-									clasificacion.setClasificacionAASHTO("A5");
+									clasificacion=("A5");
 								}
 								else{
 									//A-2-7
-									clasificacion.setClasificacionAASHTO("A7");
+									clasificacion=("A7");
 								}
 							}
 						}
 					}
 				}
 			}
-			persistencia.abrirTransaccion();
-			persistencia.insertarObjeto(clasificacion);
-			muestra.setAashto(clasificacion);
+			
+			AASHTO clasificacionAASHTO = new AASHTO();
+			muestra.setAashto((AASHTO)persistencia.buscarObjeto(clasificacionAASHTO.getClass(), "clasificacion=='"+clasificacion+"'"));
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
@@ -407,6 +410,81 @@ public class ControlClasificacion {
 		plot1.setBackgroundPaint(Color.white);
 		ChartUtilities.saveChartAsJPEG(new File(PATH_SOURCE_REPORT), chart1, 500, 300);
 	}
+	
+	/**
+	 * Emite grafico de la clasificacion
+	 * @throws Exception 
+	 */
+	public ChartPanel cartaPlasticidad(Muestra muestra) throws Exception{
+		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
+		
+		final XYSeries series = new XYSeries("Linea A");
+		final XYSeries series2 = new XYSeries("Linea U");
+		Float ll= muestra.getLimiteLiquido();
+		Float ip= muestra.getIndicePlasticidad();
+		ll = ll-20;
+		series.add(0,20);
+		//series.add(ip,ll);
+		while (ll-20<=100){
+			series.add(0.73*(ll-20),ll);
+			ll= ll + 5;
+		}
+		ll = muestra.getLimiteLiquido();
+		series2.add(0,8);
+		while (ll-20<=100){
+			series2.add(0.9*(ll-8),ll);
+			ll= ll + 5;
+		}
+		// Add the series to your data set
+		XYSeriesCollection dataset = new XYSeriesCollection();
+		dataset.addSeries(series);
+		dataset.addSeries(series2);
+			
+		// Generate the graph
+		final NumberAxis rangeAxis = new NumberAxis("Indice de Plasticidad, IP");
+        rangeAxis.setRange(0.0,60);
+        
+        final NumberAxis domainAxis = new NumberAxis("Limite Liquido, LL");
+        domainAxis.setRange(0.0, 100);
+        final XYItemRenderer renderer = new StandardXYItemRenderer();
+        
+        final XYPlot plot1 = new XYPlot(dataset, rangeAxis,domainAxis,renderer);
+        plot1.setOrientation(PlotOrientation.HORIZONTAL);
+                
+        final JFreeChart chart = new JFreeChart("Carta de Plasticidad", plot1);
+        chart.setBackgroundPaint(Color.white);
+        plot1.getRenderer().setSeriesStroke(1, new BasicStroke( 
+        	        2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 
+        	        1.0f, new float[] {6.0f, 6.0f}, 0.0f 
+        	    ));
+        plot1.getRenderer().setSeriesStroke(0, new BasicStroke( 
+    	        5.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL, 
+    	        5.0f, new float[] {6.0f, 6.0f}, 0.0f 
+    	    ));
+              
+        //XYItemRenderer rend = chart.getXYPlot().getRenderer();
+        //StandardXYItemRenderer rr = (StandardXYItemRenderer)rend;
+        //rr.setBaseShapesVisible(true);
+        //rr.setSeriesPaint(0, Color.black);
+                
+        plot1.setBackgroundPaint(Color.yellow);
+        plot1.setDomainCrosshairPaint(Color.black);
+        plot1.setDomainMinorGridlinePaint(Color.blue);
+        plot1.setDomainGridlinesVisible(true);
+        
+        plot1.setDomainGridlinePaint(Color.black);
+        plot1.setRangeGridlinePaint(Color.black);
+        
+        final ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(200, 350));
+        try {
+        	ChartUtilities.saveChartAsJPEG(new File("C:\\chart5.jpg"), chart, 500, 300);
+        	} catch (Exception e) {
+        	System.out.println("Problem occurred creating chart.");
+        	}
+        //exportarJPG(plot1);
+        return chartPanel;
+    }
 	
 	/**
 	 * Imprime la clasificacion y el grafico.

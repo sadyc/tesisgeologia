@@ -73,6 +73,10 @@ public class Clasificacion {
 		this.nombre = nombre;
 	}
 
-	
-
+	/**
+	 * @return the clasificacion
+	 */
+	public String getClasificacion() {
+		return clasificacion;
+	}
 }
