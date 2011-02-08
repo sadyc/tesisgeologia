@@ -420,10 +420,13 @@ public class ControlClasificacion {
 		
 		final XYSeries series = new XYSeries("Linea A");
 		final XYSeries series2 = new XYSeries("Linea U");
+		final XYSeries series3 = new XYSeries("Linea B");
+		series3.add(0,50);
+		series3.add(100,50);
 		Float ll= muestra.getLimiteLiquido();
 		Float ip= muestra.getIndicePlasticidad();
 		ll = ll-20;
-		series.add(0,20);
+		series.add(ip,ll);
 		//series.add(ip,ll);
 		while (ll-20<=100){
 			series.add(0.73*(ll-20),ll);
@@ -439,6 +442,7 @@ public class ControlClasificacion {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
 		dataset.addSeries(series2);
+		dataset.addSeries(series3);
 			
 		// Generate the graph
 		final NumberAxis rangeAxis = new NumberAxis("Indice de Plasticidad, IP");
@@ -457,11 +461,7 @@ public class ControlClasificacion {
         	        2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 
         	        1.0f, new float[] {6.0f, 6.0f}, 0.0f 
         	    ));
-        plot1.getRenderer().setSeriesStroke(0, new BasicStroke( 
-    	        5.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL, 
-    	        5.0f, new float[] {6.0f, 6.0f}, 0.0f 
-    	    ));
-              
+                      
         //XYItemRenderer rend = chart.getXYPlot().getRenderer();
         //StandardXYItemRenderer rr = (StandardXYItemRenderer)rend;
         //rr.setBaseShapesVisible(true);
