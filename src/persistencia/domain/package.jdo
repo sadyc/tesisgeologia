@@ -65,8 +65,9 @@
            </field>
 	</class>
 
+		
+		
 <class name="persistencia.domain.Persona" identity-type="datastore">
-	<inheritance strategy="new-table"/>
 		   <field name="dni" persistence-modifier="persistent">
                   <column length="30" jdbc-type="CHAR"/>
            </field>
@@ -87,13 +88,16 @@
 
 
  <class name="persistencia.domain.OperadorDeLaboratorio" identity-type="datastore">
-	<field name="muestras" persistence-modifier="persistent" mapped-by="operadorLaboratorio">
+		<inheritance strategy="new-table"/>
+            <field name="muestras" persistence-modifier="persistent" mapped-by="operadorLaboratorio">
                 <collection element-type="persistencia.domain.Muestra"/>
             </field>
- </class>
-
+ </class> 
+ 
+  
   <class name="persistencia.domain.Usuario" identity-type="datastore">
-         <field name="muestras" persistence-modifier="persistent" mapped-by="usuario">
+		<inheritance strategy="new-table"/>
+            <field name="muestras" persistence-modifier="persistent" mapped-by="usuario">
                 <collection element-type="persistencia.domain.Muestra"/>
             </field>
  	 <field name="nombreUsuario" persistence-modifier="persistent">
