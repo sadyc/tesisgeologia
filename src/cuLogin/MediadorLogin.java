@@ -31,9 +31,12 @@ public class MediadorLogin implements ActionListener{
 	 */
 	public MediadorLogin (String nombreVentana) throws Exception {
 		super();
-		this.login = new GUILogin(nombreVentana);
-		this.login.setListenerButtons(this);
-		show();
+		login = new GUILogin(true);
+		
+        login.setLocationRelativeTo(null);
+		login.setListenerButtons(this);
+		
+		login.show();
 	}
 
 	
@@ -48,10 +51,11 @@ public class MediadorLogin implements ActionListener{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.login.getJButtonAceptar() == source){
+		if (this.login.getjButtonAceptar() == source){
+			System.out.println("NOMBREEE : "+login.getJnombreUsuario().getText());
 	   		aceptar();
 		}
-		if (this.login.getJButtonCancelar() == source){
+		if (this.login.getjButtonCancelar() == source){
 	   		System.out.println("GestionarMediador.actionPerformed() jButtonCancelar");
 	   		login.dispose();	
 	   	}
@@ -62,20 +66,22 @@ public class MediadorLogin implements ActionListener{
 	 */
 	public void aceptar(){
 		System.out.println("GestionarMediador.actionPerformed() jButtonAceptar");
-		String nombre = login.getNombre().getText();
-		
+		String nombre = login.getJnombreUsuario().getText();
+
 		try {
+
 			//control.obtenerUsuario(login.getNombre().getText(), login.getPassword().getText());
 			System.out.println("");
+
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-   		if (login.getNombre().getText().equals("")) {
+   		if (login.getJnombreUsuario().getText().equals("")) {
 			JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Nombre Usuario'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else {
-			if (login.getPassword().getText().equals("")) {
+			if (login.getJpassword().getText().equals("")) {
 				JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Password'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
