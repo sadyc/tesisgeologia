@@ -59,7 +59,7 @@ public class GUISeleccionarMuestra extends JDialog	{
 			ayuda.add(versionMenu);
 			jButtonBuscarMuestra = new JButton("BUSCAR");
 			jButtonSeleccionarMuestra  = new JButton("SELECCIONAR");
-			jButtonSalir  = new JButton("SALIR");
+			jButtonSalir  = new JButton("CANCELAR");
 		}
 		initialize();
 	}

@@ -18,12 +18,11 @@ public class ControlLimiteConsistencia {
         /**
          * Inserta un analisis de consistencia con persistencia. 
          */ 
-        public void insertarConsistencia(Float limiteLiquido ,Float limitePlastico,String nombreMuestra) throws Exception{
+        public void insertarConsistencia(Float limiteLiquido ,Float limitePlastico,Muestra muestra) throws Exception{
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
-                Muestra muestra = new Muestra();
-	            try {
-                        muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"'");
+                try {
+                        muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
                         muestra.setLimiteLiquido(limiteLiquido);
                         muestra.setLimitePlastico(limitePlastico);
                         muestra.calcularIndicePlasticidad();

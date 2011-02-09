@@ -175,7 +175,7 @@ public class GUIMuestraDetallada extends JDialog{
 		jButtonEliminarAnalisis = new JButton("ELIMINAR ANALISIS");
 		jButtonModificarAnalisis  = new JButton("MODIFICAR ANALISIS");
 		imprimir = new JButton("IMPRIMIR");
-		salir = new JButton("SALIR");
+		salir = new JButton("CANCELAR");
 		initialize();
 	}
 	
@@ -259,7 +259,7 @@ public class GUIMuestraDetallada extends JDialog{
 	 * @return Jpanel
 	 */
 		
-	public JPanel getPanelNorte() { //PA JUGAAAAAAAAA!!!
+	public JPanel getPanelNorte() { 
 		if (this.panelNorte==null) {
 			this.panelNorte= new JPanel();
 			GridBagLayout gridbag = new GridBagLayout();
