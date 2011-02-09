@@ -169,7 +169,9 @@ public class ControlClasificacion {
 				}
 			}
 			SUCS clasificacionSUCS = new SUCS();
-			muestra.setSucs((SUCS)persistencia.buscarObjeto(clasificacionSUCS.getClass(), "clasificacion=='"+clasificacion+"'"));
+			clasificacionSUCS =((SUCS)persistencia.buscarObjeto(clasificacionSUCS.getClass(), "clasificacion=='"+clasificacion+"'"));
+			muestra = ((Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'"));
+			muestra.setSucs(clasificacionSUCS);
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
@@ -265,9 +267,14 @@ public class ControlClasificacion {
 					}
 				}
 			}
+			persistencia.cerrarTransaccion();
+			persistencia.abrirTransaccion();
 			
 			AASHTO clasificacionAASHTO = new AASHTO();
-			muestra.setAashto((AASHTO)persistencia.buscarObjeto(clasificacionAASHTO.getClass(), "clasificacion=='"+clasificacion+"'"));
+			clasificacionAASHTO =((AASHTO)persistencia.buscarObjeto(clasificacionAASHTO.getClass(), "clasificacion=='"+clasificacion+"'"));
+			muestra = ((Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'"));
+			muestra.setAashto(clasificacionAASHTO);
+			
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
