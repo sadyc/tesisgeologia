@@ -117,7 +117,6 @@ public class MediadorGestionarMuestra implements ActionListener, KeyListener, Mo
 			seleccionarMuestra();
 			analisis();
 			}
-			
 		}
 		if (this.GUIABMMuestra.getJButtonCancelar() == source || GUIABMMuestra.getCancelarMenu()==source){
 
