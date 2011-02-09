@@ -18,6 +18,8 @@ import persistencia.domain.Muestra;
 import comun.Mediador;
 
 import cuGestionarAnalisis.ControlGestionarAnalisis;
+import cuGestionarAnalisis.MediadorGestionarAnalisis;
+import cuGestionarMuestra.GUIMuestraDetallada;
 import cuReporte.report.MakeReport;
 import cuReporte.report.ViewReport;
 
@@ -31,6 +33,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	
 	private Muestra muestra = new Muestra();
 	private Frame frame;
+	private GUIMuestraDetallada GUIMuestraDetallada;
 	private Object [][] data;
 	
 	/**
@@ -53,6 +56,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	 */
 	public MediadorCalcularClasificacion(String titulo, Muestra muestra) throws Exception {
 		super();
+		boolean clasificar = true;
 		cargarTablaDeAnalisis(muestra);
 		ControlClasificacion control = new ControlClasificacion();
 		if (!(data==null)){
@@ -63,6 +67,8 @@ public class MediadorCalcularClasificacion extends Mediador{
 			}
 			else{
 				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificacion SUCS, Faltan analisis o indice de plasticidad","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				clasificar = false;
+				
 			}
 			if (control.buscarAnalisis("200") && control.buscarAnalisis("40")&& control.buscarAnalisis("10")  && muestra.getIndicePlasticidad()!=0){
 				if (muestra.getAashto()==null) {
@@ -71,14 +77,21 @@ public class MediadorCalcularClasificacion extends Mediador{
 			}
 			else{
 				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificacion AASHTO, Faltan analisis para los tamices 10, 40 0 200","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				clasificar = false;
 			}
 		}
 		
-		GUIClasificacion = new GUIClasificacion(muestra,data);
-		GUIClasificacion.setTitle(titulo);
-		GUIClasificacion.setModal(true);
-		GUIClasificacion.setListenerButtons(this);
-		GUIClasificacion.show();
+		if (clasificar){
+			GUIClasificacion = new GUIClasificacion(muestra,data);
+			GUIClasificacion.setTitle(titulo);
+			GUIClasificacion.setModal(true);
+			GUIClasificacion.setListenerButtons(this);
+			GUIClasificacion.show();
+		}
+		else{
+			new MediadorGestionarAnalisis("Gestionar Analisis", muestra);
+		}
+		
 	}
 	
 	/**

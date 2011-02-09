@@ -28,18 +28,16 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	/**
 	 * This is the default constructor
 	 */
-	public MediadorAltaLimiteConsistencia(String nombreMuestra) {
+	public MediadorAltaLimiteConsistencia(Muestra muestra2) {
 		super();
-		this.nombreMuestra = nombreMuestra;
-		obtenerMuestra();
-		this.GUILimiteConsistencia = new GUILimiteConsistencia("Limite Consistencia",muestra);
+		muestra = muestra2;
+		GUILimiteConsistencia = new GUILimiteConsistencia("Limite Consistencia",muestra);
 		GUILimiteConsistencia.setLocationRelativeTo(null);
 		GUILimiteConsistencia.setModal(true);
-		this.GUILimiteConsistencia.setListenerButtons(this);
+		GUILimiteConsistencia.setListenerButtons(this);
 		show();
 	}
-	
-		
+			
 	public void show(){
 		GUILimiteConsistencia.show();
 	}
@@ -81,18 +79,6 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 			e.printStackTrace();
 		}
 		GUILimiteConsistencia.dispose();
-	}
-
-	/**
-	 * Permite recuperar una muestra de la base de datos. 
-	 */
-	public void obtenerMuestra(){
-		ControlLimiteConsistencia control = new ControlLimiteConsistencia();
-		try {
-			this.muestra = control.obtenerMuestra(muestra.getClass(), nombreMuestra);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void itemStateChanged(ItemEvent arg0) {

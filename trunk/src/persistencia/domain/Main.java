@@ -1,7 +1,9 @@
 package persistencia.domain;
 
 
+
 import comun.MediadorPrincipal;
+
 
 
 
@@ -27,9 +29,10 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		//Muestra mu = new Muestra();
 		//MediadorAltaLimiteConsistencia hola = new MediadorAltaLimiteConsistencia("Limite Consistencia");
+
 		//new MediadorLogin("Login");
 		new MediadorPrincipal ("Sistema Clasificador de Suelos");
-		//MediadorGestionarMuestra med = new MediadorGestionarMuestra("");
+	//MediadorGestionarMuestra med = new MediadorGestionarMuestra("");
 		
        
 	}
