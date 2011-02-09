@@ -87,7 +87,7 @@ public class MediadorSeleccionarOperador implements ActionListener, KeyListener,
 		if (this.GUISeleccionarOperador.getJButtonBuscar() == source){
 	   		buscarOperador();
 		}
-		if (this.GUISeleccionarOperador.getJButtonSalir() == source){
+		if (this.GUISeleccionarOperador.getJButtonCancelar() == source){
 			GUISeleccionarOperador.dispose();
 		}
 	}

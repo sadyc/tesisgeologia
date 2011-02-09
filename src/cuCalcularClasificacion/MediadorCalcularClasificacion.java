@@ -172,10 +172,10 @@ public class MediadorCalcularClasificacion extends Mediador{
 			parameters [10] = GUIClasificacion.getD10().getText();
 			parameters [11] = GUIClasificacion.getGradoCurvatura().getText();
 			parameters [12] = GUIClasificacion.getCoeficienteUniformidad().getText();
-			parameters [13] = GUIClasificacion.getD60().getText();
-			parameters [14] = GUIClasificacion.getD60().getText();
-			parameters [15] = GUIClasificacion.getD60().getText();
-			parameters [16] = GUIClasificacion.getD60().getText();
+			parameters [13] = GUIClasificacion.getClasificacionSucs().getText();
+			parameters [14] = GUIClasificacion.getDescripcionSucs().getText();
+			parameters [15] = GUIClasificacion.getClasificacionSucs().getText();
+			parameters [16] = GUIClasificacion.getDescripcionSucs().getText();
 			MakeReport makeReporte = new MakeReport();
 			makeReporte.make("report1");
 			ViewReport view = new ViewReport(data, parameters);

@@ -44,7 +44,7 @@ public class ViewReport {
 	}
 	public void viewPersons() {
 
-		Object[][] tablaAux = {{" "," "," "," "," "}};//tabla ; //INFO A LLENAR EN EL REPORTE. la cantidad de filas son la cantidad de hojas :-/
+		Object[][] tablaAux =tabla ; //INFO A LLENAR EN EL REPORTE. la cantidad de filas son la cantidad de hojas :-/
 		
 		
 		System.out.println("nombre de la muestra en arregloo datos--->" + datos[0]);

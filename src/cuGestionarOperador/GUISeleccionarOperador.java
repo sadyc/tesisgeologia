@@ -25,12 +25,18 @@ public class GUISeleccionarOperador extends JDialog	{
 	private JMenuBar menu = null;
 	private JMenu herramientas;
 	private JMenu ayuda;
+	private JButton jButtonAgregarOperador;
+	private JButton jButtonModificarOperador;
+	private JButton jButtonEliminarOperador;
 	private JButton jButtonBuscarOperador;
 	private JButton jButtonSeleccionarOperador;
-	private JButton jButtonSalir;
+	private JButton jButtonCancelar;
+	private JMenuItem agregarMenu;
+	private JMenuItem modificarMenu;
+	private JMenuItem eliminarMenu;
 	private JMenuItem seleccionarMenu;
 	private JMenuItem buscarMenu;
-	private JMenuItem salirMenu;
+	private JMenuItem cancelarMenu;
 	private JMenuItem versionMenu;
 	private JPanel panelSur;
 	private TablePanel tablePanel;
@@ -50,18 +56,28 @@ public class GUISeleccionarOperador extends JDialog	{
 			ayuda = new JMenu("Ayuda");
 			menu.add(herramientas);
 			menu.add(ayuda);
+			agregarMenu= new JMenuItem("Agregar");
+			modificarMenu= new JMenuItem("Modificar");
+			eliminarMenu= new JMenuItem("Eliminar");
 			buscarMenu = new JMenuItem("Buscar");
 			seleccionarMenu = new JMenuItem("Seleccionar");
-			salirMenu = new JMenuItem("Salir");
+			cancelarMenu = new JMenuItem("Salir");
+			herramientas.add(agregarMenu);
+			herramientas.add(modificarMenu);
+			herramientas.add(eliminarMenu);
+			herramientas.add(new JSeparator());
 			herramientas.add(seleccionarMenu);
 			herramientas.add(buscarMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
-			herramientas.add(salirMenu);
+			herramientas.add(cancelarMenu);
 			versionMenu = new JMenuItem("Version");
 			ayuda.add(versionMenu);
-			jButtonBuscarOperador = new JButton("BUSCAR OPERADOR");
+			jButtonAgregarOperador = new JButton("AGREGAR");
+			jButtonModificarOperador = new JButton("MODIFICAR");
+			jButtonEliminarOperador = new JButton("ELIMINAR");
+			jButtonBuscarOperador = new JButton("BUSCAR");
 			jButtonSeleccionarOperador  = new JButton("SELECCIONAR");
-			jButtonSalir  = new JButton("SALIR");
+			jButtonCancelar  = new JButton("CANCELAR");
 		}
 		initialize();
 	}
@@ -80,6 +96,25 @@ public class GUISeleccionarOperador extends JDialog	{
 	   	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	 	this.setLocationRelativeTo(null);
+	}
+	
+	/**
+	 * @return the jButtonAgregarOperador
+	 */
+	public JButton getjButtonAgregarOperador() {
+		return jButtonAgregarOperador;
+	}
+	/**
+	 * @return the jButtonModificarOperador
+	 */
+	public JButton getjButtonModificarOperador() {
+		return jButtonModificarOperador;
+	}
+	/**
+	 * @return the jButtonEliminarOperador
+	 */
+	public JButton getjButtonElminarOperador() {
+		return jButtonEliminarOperador;
 	}
 	/**
 	 * This method retorna botonAgregar	
@@ -104,8 +139,8 @@ public class GUISeleccionarOperador extends JDialog	{
 	 * 	
 	 * @return javax.swing.JButton	
 	 */
-	public JButton getJButtonSalir() {
-		return jButtonSalir;
+	public JButton getJButtonCancelar() {
+		return jButtonCancelar;
 	}
 	
 	/**
@@ -114,9 +149,18 @@ public class GUISeleccionarOperador extends JDialog	{
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
-		this.jButtonSeleccionarOperador.addActionListener(lis);
-		this.jButtonBuscarOperador.addActionListener(lis);
-		this.jButtonSalir.addActionListener(lis);
+		agregarMenu.addActionListener(lis);
+		eliminarMenu.addActionListener(lis);
+		modificarMenu.addActionListener(lis);
+		seleccionarMenu.addActionListener(lis);
+		cancelarMenu.addActionListener(lis);
+		buscarMenu.addActionListener(lis);
+		jButtonAgregarOperador.addActionListener(lis);
+		jButtonEliminarOperador.addActionListener(lis);
+		jButtonModificarOperador.addActionListener(lis);
+		jButtonSeleccionarOperador.addActionListener(lis);
+		jButtonBuscarOperador.addActionListener(lis);
+		jButtonCancelar.addActionListener(lis);
 	
 	}
 	/**
@@ -146,9 +190,12 @@ public class GUISeleccionarOperador extends JDialog	{
 		if (this.panelSur==null) {
 		this.panelSur = new JPanel();
 		this.panelSur.setLayout(new FlowLayout());
+		this.panelSur.add(jButtonAgregarOperador);
+		this.panelSur.add(jButtonModificarOperador);
+		this.panelSur.add(jButtonEliminarOperador);
 		this.panelSur.add(getJButtonSeleccionar());
 		this.panelSur.add(getJButtonBuscar());
-		this.panelSur.add(getJButtonSalir());
+		this.panelSur.add(getJButtonCancelar());
 		}
 		return this.panelSur;
 	}
