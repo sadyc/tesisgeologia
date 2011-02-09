@@ -4,6 +4,7 @@
 	<property name="ireport.encoding" value="UTF-8"/>
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
+
 	<property name="ireport.y" value="193"/>
 	<import value="net.sf.jasperreports.engine.*"/>
 	<import value="java.util.*"/>
@@ -12,7 +13,7 @@
 	<reportFont name="Arial_Bold" isDefault="false" fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 	<reportFont name="Arial_Italic" isDefault="false" fontName="Arial" size="12" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Oblique" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 	<parameter name="reportTitle" class="java.lang.String"/>
-<!--	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="nombre" class="java.lang.String"/>
 	<parameter name="ubicacion" class="java.lang.String"/>
 	<parameter name="peso" class="java.lang.String"/>
 	<parameter name="profundidadInicial" class="java.lang.String"/>
@@ -29,7 +30,7 @@
 	<parameter name="detallesSucs" class="java.lang.String"/>
 	<parameter name="clasificacionAashto" class="java.lang.String"/>
 	<parameter name="detallesAashto" class="java.lang.String"/>
--->	<field name="NumeroTamiz" class="java.lang.String"/>
+	<field name="NumeroTamiz" class="java.lang.String"/>
 	<field name="AberturaMalla" class="java.lang.String"/>
 	<field name="%Pasante" class="java.lang.String"/>
 	<field name="%RetenidoAcumulado" class="java.lang.String"/>
@@ -69,7 +70,7 @@
 				<textElement/>
 				<text><![CDATA[PLASTICIDAD]]></text>
 			</staticText>
-<!--			<textField>
+			<textField>
 				<reportElement x="1" y="116" width="175" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{nombre}]]></textFieldExpression>
@@ -79,7 +80,7 @@
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{ubicacion}]]></textFieldExpression>
 			</textField>
-			<textField>
+    		<textField>
 				<reportElement x="1" y="156" width="175" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{peso}]]></textFieldExpression>
@@ -94,7 +95,7 @@
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{profundidadFinal}]]></textFieldExpression>
 			</textField>
-			<textField>
+    		<textField>
 				<reportElement x="215" y="126" width="148" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{limiteLiquido}]]></textFieldExpression>
@@ -137,7 +138,7 @@
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{gradoCurvatura}]]></textFieldExpression>
 			</textField>
--->		</band>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="22" splitType="Stretch">
@@ -277,7 +278,7 @@
 	</pageFooter>
 	<summary>
 		<band height="240" splitType="Stretch">
-	<!--		<textField>
+			<textField>
 				<reportElement x="12" y="35" width="223" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{clasificacionSucs}]]></textFieldExpression>
@@ -312,6 +313,6 @@
 				<reportElement x="292" y="122" width="181" height="110"/>
 				<imageExpression class="java.lang.String"><![CDATA["C:\\Tesis\\Geologia\\src\\cuCalcularClasificacion\\curvaGranulometrica.jpg"]]></imageExpression>
 			</image>
-		--></band>
+		</band>
 	</summary>
 </jasperReport>
