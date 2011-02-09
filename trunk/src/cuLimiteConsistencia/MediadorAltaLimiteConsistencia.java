@@ -73,7 +73,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 		limiteLiquido = GUILimiteConsistencia.getjTextFieldLL().getText();
 		limitePlastico = GUILimiteConsistencia.getjTextFieldLP().getText();
 		try {
-			control.insertarConsistencia(Float.parseFloat(limiteLiquido),Float.parseFloat(limitePlastico), nombreMuestra);
+			control.insertarConsistencia(Float.parseFloat(limiteLiquido),Float.parseFloat(limitePlastico), muestra);
 			altaConsistencia= true;
 		} catch (Exception e) {
 			e.printStackTrace();
