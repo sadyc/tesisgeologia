@@ -25,7 +25,6 @@ public class MakeReport {
 			System.out.println("fileJASPER:"+fileJASPER);
 			JasperCompileManager.compileReportToFile(fileXML, fileJASPER);
 			System.out.println("Compiling time : "+ (System.currentTimeMillis() - start) + "\n");
-
 			System.out.println("Fill Report to File : " + fileJRPRINT);
 			JasperFillManager.fillReportToFile(fileJASPER, fileJRPRINT, null,new JREmptyDataSource());
 			System.out.println("Filling time : "+ (System.currentTimeMillis() - start) + "\n");

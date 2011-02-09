@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import comun.FondoJPG;
+
 
 
 /**
@@ -13,6 +15,7 @@ import javax.swing.*;
 */
 public class GUIPrincipal extends JFrame {
 
+	//private final FondoJPG fondo = null;
 	private JPanel panelCentro=null;
 	private JPanel panelSur=null;
 	private JMenuBar menu = null;
@@ -77,6 +80,7 @@ public class GUIPrincipal extends JFrame {
 			ayuda.add(versionMenu);
 		
 		}
+		this.setExtendedState(this.MAXIMIZED_BOTH);
 		initialize();
 	}
 
@@ -93,7 +97,9 @@ public class GUIPrincipal extends JFrame {
 	 	this.setJMenuBar(this.getMenu());	
 	 	this.getContentPane().add(this.getPanelCentro(),BorderLayout.CENTER);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
+	 	//setIconImage(new ImageIcon(getClass().getResource("/src/cuReporte/report/image/LogoSCS.jpg")).getImage());
 	 	this.setLocationRelativeTo(null);
+	
 	}
 
 	/**
@@ -125,6 +131,7 @@ public class GUIPrincipal extends JFrame {
 			this.panelCentro.add(getJButtonCompararMuestras(),gbc);
 			gbc.gridx = 4;
 			this.panelCentro.add(getJButtonClasificacion(),gbc);
+			
 		}
 		return this.panelCentro;
 	}

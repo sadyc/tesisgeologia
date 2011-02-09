@@ -5,9 +5,12 @@ package cuCalcularClasificacion;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.FileOutputStream;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -18,12 +21,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
-
-import jxl.read.biff.File;
+import javax.swing.JTable;
 
 import org.jfree.chart.ChartPanel;
-import org.jfree.chart.ChartUtilities;
-import org.jfree.chart.JFreeChart;
 
 import persistencia.domain.Clasificacion;
 import persistencia.domain.Muestra;
@@ -110,7 +110,6 @@ public class GUIClasificacion extends JDialog{
 		D10 = new JLabel("D10(mm): ");
 		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): ");
 		gradoCurvatura = new JLabel ("Grado de Curvatura (Cc): ");
-		
 		imprimir = new JButton("Imprimir");
 		salir = new JButton("Salir");
 		initialize();
@@ -163,7 +162,6 @@ public class GUIClasificacion extends JDialog{
 		D10 = new JLabel("D10: "+muestra.getD10()+" mm"); 
 		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): "+muestra.getCoeficienteUniformidad());
 		gradoCurvatura = new JLabel ("Grado de Curvatura (Cc): "+muestra.getGradoCurvatura());
-		
 		imprimir = new JButton("Imprimir");
 		salir = new JButton("Cancelar");
 		initialize();
@@ -605,7 +603,7 @@ public class GUIClasificacion extends JDialog{
 	public void setProfundidadFinal(JLabel profundidadFinal) {
 		this.profundidadFinal = profundidadFinal;
 	}
-
+ 
 	/**
 	 * @return the indicePlasticidad
 	 */
@@ -620,5 +618,5 @@ public class GUIClasificacion extends JDialog{
 		this.indicePlasticidad = indicePlasticidad;
 	}
 	
-	
+
 }
