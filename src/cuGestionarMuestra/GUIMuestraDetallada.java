@@ -157,7 +157,7 @@ public class GUIMuestraDetallada extends JDialog{
 		this.profundidadFinal1 = new JLabel("Profundidad Final: "+muestra1.getProfundidadFinal()+"mts");
 		ubicacion1 = new JLabel ("Ubicacion: "+muestra1.getUbicacion().getNombreUbicacion());
 		clasificacion1 = new JLabel ("Clasificacion: ");
-		if (muestra1.getSucs().getDescripcion()==null){
+		if (muestra1.getSucs()==null){
 			descripcion1 = new JLabel ("Descripcion: ");
 		}
 		else{
