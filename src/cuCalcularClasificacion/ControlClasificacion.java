@@ -424,9 +424,8 @@ public class ControlClasificacion {
 		series3.add(100,50);
 		Float ll= muestra.getLimiteLiquido();
 		Float ip= muestra.getIndicePlasticidad();
-		ll = ll-20;
-		series.add(ip,ll);
-		//series.add(ip,ll);
+		
+		
 		while (ll-20<=100){
 			series.add(0.73*(ll-20),ll);
 			ll= ll + 5;
