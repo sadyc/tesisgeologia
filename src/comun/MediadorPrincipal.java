@@ -9,7 +9,6 @@ import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
 import cuGestionarMuestra.MediadorGestionarMuestra;
-import cuGestionarMuestra.MediadorListarMuestras;
 import cuGestionarMuestra.MediadorSeleccionarMuestra;
 import cuLimiteConsistencia.MediadorAltaLimiteConsistencia;
 import cuLimiteConsistencia.MediadorConsistencia;
@@ -123,7 +122,8 @@ public class MediadorPrincipal implements ActionListener{
 	 */
 	private void listarMuestras() {
 		try {
-			new MediadorListarMuestras();
+			//new MediadorListarMuestras();
+			new MediadorGestionarMuestra("Listar Muestra");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -157,7 +157,7 @@ public class MediadorPrincipal implements ActionListener{
 		try {
 			MediadorConsistencia consistencia = new MediadorConsistencia();
 			if (consistencia.seSeleccionoMuestra()){
-				new MediadorAltaLimiteConsistencia(consistencia.getSeleccionado().getNombreMuestra());
+				new MediadorAltaLimiteConsistencia(consistencia.getSeleccionado());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

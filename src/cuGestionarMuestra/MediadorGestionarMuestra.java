@@ -5,19 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.MouseEvent;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Muestra;
-import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.Ubicacion;
-import persistencia.domain.Usuario;
 
 import comun.Mediador;
+
 import cuBuscar.MediadorBuscar;
+import cuGestionarAnalisis.MediadorGestionarAnalisis;
 
 
 
@@ -30,11 +28,10 @@ public class MediadorGestionarMuestra extends Mediador{
 	private GUIABMMuestra GUIABMMuestra;
 	private Object [][] data ;
 	private Component frame;
-	private OperadorDeLaboratorio op = new OperadorDeLaboratorio();
-	private Ubicacion ubicacion = new Ubicacion();
-	private Usuario usuario = new Usuario();
-	private java.sql.Date fecha;
+	private Muestra muestra;
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
+	private Object [] seleccionado = new Object [4];
+	private boolean seleccionoMuestra = false;
 		
 	
 	public MediadorGestionarMuestra(String nombreVentana) throws Exception {
@@ -44,7 +41,7 @@ public class MediadorGestionarMuestra extends Mediador{
 		this.GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
-		GUIABMMuestra.getJButtonSeleccionar().setEnabled(false);
+		GUIABMMuestra.getJButtonSeleccionar().setEnabled(true);
 		GUIABMMuestra.getSeleccionarMenu().setEnabled(false);
 		GUIABMMuestra.setModal(true);
 		GUIABMMuestra.show();
@@ -107,12 +104,48 @@ public class MediadorGestionarMuestra extends Mediador{
 			buscarMuestra();
 			
 		}
+		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || this.GUIABMMuestra.getSeleccionarMenu() == source){
+			if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
+				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna muestra","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}else{
+			seleccionarMuestra();
+			analisis();
+			}
+			
+		}
 		if (this.GUIABMMuestra.getJButtonCancelar() == source || GUIABMMuestra.getCancelarMenu()==source){
 
 			GUIABMMuestra.dispose();
 		}
 	}
 	
+	private void analisis() {
+		GUIABMMuestra.dispose();
+		try {
+			MediadorGestionarAnalisis gestionarAnalisis = new MediadorGestionarAnalisis("Gestionar Analisis",muestra);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Muestra"
+	 */
+	public void seleccionarMuestra(){
+			System.out.println("Button Seleccionar Muestra");
+			try {
+				seleccionado = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+				seleccionoMuestra = true;
+				muestra = control.obtenerMuestra((String)seleccionado[1], (String)seleccionado[0]);
+				
+				
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+   				   		
+		}
+
+
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Muestra"
 	 */

@@ -104,7 +104,7 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 		if (this.GUISeleccionarMuestra.getJButtonBuscar() == source){
 	   		try {
 	   			System.out.println("Button Buscar Muestra");
-				MediadorBuscar analisis = new MediadorBuscar();	// HACE LA BUSQUEDA!
+				MediadorBuscar analisis = new MediadorBuscar();	
 				
 	   		} catch (Exception e) {
 				e.printStackTrace();
