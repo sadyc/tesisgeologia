@@ -15,6 +15,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.table.TableColumn;
 
 import persistencia.domain.Muestra;
 
@@ -381,7 +382,9 @@ public class GUIMuestraDetallada extends JDialog{
 	public TablePanel getTablePanel1() {
 		if (this.tablePanel1==null) {
 			this.tablePanel1 = new TablePanel();
-	 		this.tablePanel1.setData(data1, getColumName());			
+	 		this.tablePanel1.setData(data1, getColumName());
+	 		
+
 		}
 		return this.tablePanel1;
 	}

@@ -1,8 +1,9 @@
 package cuReporte.report;
 
 
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.view.*;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 public class ViewReport {
@@ -53,7 +54,9 @@ public class ViewReport {
 		this.viewReport(parameters, filedXml, nameReport, tablaAux);
 
 	}
-
+	
+	
+	
 	
 	
 
