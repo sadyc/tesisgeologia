@@ -2,8 +2,12 @@ package cuGestionarMuestra;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -23,7 +27,7 @@ import cuGestionarAnalisis.MediadorGestionarAnalisis;
  * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana de GestionarMuestra
  * @author TesisGeologia
  */
-public class MediadorGestionarMuestra extends Mediador{
+public class MediadorGestionarMuestra implements ActionListener, KeyListener, MouseListener{
 
 	private GUIABMMuestra GUIABMMuestra;
 	private Object [][] data ;
@@ -41,6 +45,8 @@ public class MediadorGestionarMuestra extends Mediador{
 		this.GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
+		this.GUIABMMuestra.setMouseListener(this);
+		this.GUIABMMuestra.setKeyListener(this);     
 		GUIABMMuestra.getJButtonSeleccionar().setEnabled(true);
 		GUIABMMuestra.getSeleccionarMenu().setEnabled(false);
 		GUIABMMuestra.setModal(true);
@@ -260,11 +266,14 @@ public class MediadorGestionarMuestra extends Mediador{
 	 * Metodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
 	 */
-	public void mouseClicked(MouseEvent arg0) {
-		Object source = arg0.getSource();
-		if (this.GUIABMMuestra.getTablePanel() == source){
-			System.out.println("GestionarMediador.actionPerformed() jJTableTabla");
-		}
+	public void mouseClicked(MouseEvent e){
+		if (e.getClickCount() == 2)
+			seleccionarMuestra();
+	}
+	
+	public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == e.VK_ENTER)
+        	seleccionarMuestra();
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {
@@ -285,6 +294,20 @@ public class MediadorGestionarMuestra extends Mediador{
 	
 
 	public void itemStateChanged(ItemEvent e) {
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

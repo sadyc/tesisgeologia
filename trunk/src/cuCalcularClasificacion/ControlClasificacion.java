@@ -37,7 +37,7 @@ import cuGestionarAnalisis.ControlGestionarAnalisis;
  */
 public class ControlClasificacion {
 	 public static String BASE = (new java.io.File("")).getAbsolutePath(); 
- 	 public static String PATH_SOURCE_REPORT = BASE + "/src/cuCalcularClasificacion/curvaGranulometrica.jpg";
+ 	 public static String PATH_SOURCE_REPORT = BASE + "/src/cuCalcularClasificacion/";
 	/**
 	 * Constructor por defecto de la clase.
 	 */
@@ -399,15 +399,22 @@ public class ControlClasificacion {
         
         final ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new java.awt.Dimension(200, 350));
-        exportarJPG(plot1);
+        exportarJPG(plot1,"curvaGranulometrica.jpg");
         return chartPanel;
     }
 	
-	public void exportarJPG (XYPlot plot) throws Exception {
+	public void exportarJPG (XYPlot plot, String fileName) throws Exception {
 		final XYPlot plot1 = (XYPlot) plot.clone();
-		final JFreeChart chart1 = new JFreeChart("Curva Granulométrica", plot1);
-		plot1.setBackgroundPaint(Color.white);
-		ChartUtilities.saveChartAsJPEG(new File(PATH_SOURCE_REPORT), chart1, 500, 300);
+		if (fileName.compareTo("curvaGranulometrica.jpg")==0){
+			final JFreeChart chart1 = new JFreeChart("Curva Granulométrica", plot1);
+			plot1.setBackgroundPaint(Color.white);
+			ChartUtilities.saveChartAsJPEG(new File(PATH_SOURCE_REPORT+fileName), chart1, 500, 300);
+		}
+		else{
+			final JFreeChart chart1 = new JFreeChart("Carta de Plasticidad", plot1);
+			plot1.setBackgroundPaint(Color.white);
+			ChartUtilities.saveChartAsJPEG(new File(PATH_SOURCE_REPORT+fileName), chart1, 500, 300);
+		}
 	}
 	
 	/**
@@ -470,12 +477,7 @@ public class ControlClasificacion {
         
         final ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new java.awt.Dimension(200, 350));
-        try {
-        	ChartUtilities.saveChartAsJPEG(new File("C:\\chart5.jpg"), chart, 500, 300);
-        	} catch (Exception e) {
-        	System.out.println("Problem occurred creating chart.");
-        	}
-        //exportarJPG(plot1);
+        exportarJPG(plot1,"cartaPlasticidad.jpg");
         return chartPanel;
     }
 	

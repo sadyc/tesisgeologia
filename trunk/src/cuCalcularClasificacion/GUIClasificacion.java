@@ -58,8 +58,8 @@ public class GUIClasificacion extends JDialog{
 	private JLabel profundidadInicial;
 	private JLabel profundidadFinal;
 	private JLabel ubicacion;
-	private JLabel clasificacion;
-	private JLabel descripcion;
+	private JLabel clasificacionSucs;
+	private JLabel descripcionSucs;
 	private JLabel limiteLiquido;
 	private JLabel limitePlastico;
 	private JLabel indicePlasticidad;
@@ -100,8 +100,8 @@ public class GUIClasificacion extends JDialog{
 		profundidadInicial = new JLabel("Profundidad Inicial: ");
 		profundidadFinal = new JLabel("Profundidad Final: ");
 		ubicacion = new JLabel ("Ubicación: ");
-		clasificacion = new JLabel ("Clasificación: ");
-		descripcion = new JLabel ("Descripción: ");
+		clasificacionSucs = new JLabel ("Clasificación: ");
+		descripcionSucs = new JLabel ("Descripción: ");
 		limiteLiquido = new JLabel ("Límite Líquido (LL): ");
 		limitePlastico = new JLabel ("Límite Plástico (LP): ");
 		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): ");
@@ -147,12 +147,12 @@ public class GUIClasificacion extends JDialog{
 		ubicacion = new JLabel ("Ubicacion: "+muestra.getUbicacion().getNombreUbicacion());
 		
 		if (muestra.getSucs()==null){
-			descripcion = new JLabel ("Descripcion: ");
-			clasificacion = new JLabel ("Clasificacion: ");
+			descripcionSucs = new JLabel ("Descripcion: ");
+			clasificacionSucs = new JLabel ("Clasificacion: ");
 		}
 		else{
-			clasificacion = new JLabel ("Clasificacion: "+muestra.getSucs().getNombre());
-			descripcion = new JLabel ("Descripcion: "+muestra.getSucs().getDescripcion());
+			clasificacionSucs = new JLabel ("Clasificacion: "+muestra.getSucs().getNombre());
+			descripcionSucs = new JLabel ("Descripcion: "+muestra.getSucs().getDescripcion());
 		}
 		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    
 		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	
@@ -182,19 +182,19 @@ public class GUIClasificacion extends JDialog{
 	}
 
 	/**
-	 * @return the profundidadFinal
-	 */
-	public JLabel getProfundidadFinal() {
-		return profundidadFinal;
-	}
-	
-	/**
 	 * @return the peso
 	 */
 	public JLabel getPeso() {
 		return peso;
 	}
 	
+	/**
+	 * @return the profundidadFinal
+	 */
+	public JLabel getProfundidadFinal() {
+		return profundidadFinal;
+	}
+
 	/**
 	 * @return the imprimir
 	 */
@@ -315,8 +315,8 @@ public class GUIClasificacion extends JDialog{
 			this.panelCenter.add(getPanelEste());
 			
 			this.panelCenter.add(new JLabel("DATOS DE LA CLASIFICACION S.U.C.S: "));
-			this.panelCenter.add(clasificacion);
-			this.panelCenter.add(descripcion);
+			this.panelCenter.add(clasificacionSucs);
+			this.panelCenter.add(descripcionSucs);
 			}
 			return this.panelCenter;
 	}
@@ -402,17 +402,17 @@ public class GUIClasificacion extends JDialog{
 	}
 
 	/**
-	 * @param clasificacion the clasificacion to set
+	 * @param clasificacionSucs the clasificacionSucs to set
 	 */
 	public void setClasificacion(String clasificacion) {
-		this.clasificacion.setText(clasificacion);
+		this.clasificacionSucs.setText(clasificacion);
 	}
 
 	/**
-	 * @param descripcion the descripcion to set
+	 * @param descripcionSucs the descripcionSucs to set
 	 */
 	public void setDescripcion(String descripcion) {
-		this.descripcion.setText(descripcion);
+		this.descripcionSucs.setText(descripcion);
 	}
 
 	/**
@@ -616,6 +616,20 @@ public class GUIClasificacion extends JDialog{
 	 */
 	public void setIndicePlasticidad(JLabel indicePlasticidad) {
 		this.indicePlasticidad = indicePlasticidad;
+	}
+
+	/**
+	 * @return the clasificacionSucs
+	 */
+	public JLabel getClasificacionSucs() {
+		return clasificacionSucs;
+	}
+
+	/**
+	 * @return the descripcionSucs
+	 */
+	public JLabel getDescripcionSucs() {
+		return descripcionSucs;
 	}
 	
 

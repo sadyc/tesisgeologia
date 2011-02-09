@@ -218,8 +218,8 @@ public class GUIABMMuestra extends JDialog{
 		jButtonEliminar.addActionListener(lis);
 		jButtonModificar.addActionListener(lis);
 		jButtonSeleccionar.addActionListener(lis);
-		jButtonCancelar.addActionListener(lis);
 		jButtonBuscar.addActionListener(lis);
+		jButtonCancelar.addActionListener(lis);
 		buscarMenu.addActionListener(lis);
 		agregarMenu.addActionListener(lis);
 		eliminarMenu.addActionListener(lis);

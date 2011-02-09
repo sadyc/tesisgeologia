@@ -67,7 +67,7 @@ public class MediadorBuscar extends Mediador{
 	private void buscarPorOperador() throws Exception {
 		resultado = control.buscarOperadorDeMuestra(GUIBuscar.getBuscar().getText().toUpperCase());
 		if (resultado.isEmpty()){
-			JOptionPane.showMessageDialog(frame,"No se encontro ninguna muestra con ese Operador de laboratorio","ATENCION", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se encontró ninguna muestra con ese Operador de laboratorio","ATENCIÓN", JOptionPane.WARNING_MESSAGE);
 		}
 		else{
 			GUIBuscar.dispose();
@@ -77,7 +77,7 @@ public class MediadorBuscar extends Mediador{
 	private void buscarPorUbicacion() throws Exception {
 		resultado = control.buscarUbicacionMuestra(GUIBuscar.getBuscar().getText().toUpperCase());
 		if (resultado.isEmpty()){
-			JOptionPane.showMessageDialog(frame,"No se encontro ninguna muestra con esa ubicacion","ATENCION", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se encontró ninguna muestra con esa Ubicación","ATENCIÓN", JOptionPane.WARNING_MESSAGE);
 		}
 		else{
 			encotro=true;
@@ -88,7 +88,7 @@ public class MediadorBuscar extends Mediador{
 	private void buscarPorNombre() throws Exception {
 		resultado = control.buscarNombreMuestra(GUIBuscar.getBuscar().getText().toUpperCase());
 		if (resultado.isEmpty()){
-			JOptionPane.showMessageDialog(frame,"No se encontro ninguna muestra con ese nombre","ATENCION", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se encontró ninguna muestra con ese nombre","ATENCIÓN", JOptionPane.WARNING_MESSAGE);
 		}
 		else{
 			encotro=true;
