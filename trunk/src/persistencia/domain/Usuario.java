@@ -18,16 +18,18 @@ import javax.jdo.annotations.PersistenceCapable;
 public class Usuario extends Persona{
 	private String nombreUsuario;
 	private String password;
+	private String categoria;
 	protected Collection<Muestra> muestras = new HashSet();
 	
 	public Usuario (){
 		super();
 		
 	}
-	public Usuario (String nombre, String apellido, String dni, String tel, String email,String nombreUsuario, String password){
+	public Usuario (String nombre, String apellido, String dni, String tel, String email,String nombreUsuario, String password, String categoria){
 		super(nombre, apellido,dni,tel, email);
 		this.nombreUsuario = nombreUsuario;
 		this.password = password;
+		this.categoria = categoria;
 		
 	}
 	/**

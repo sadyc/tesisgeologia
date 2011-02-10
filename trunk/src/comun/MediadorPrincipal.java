@@ -10,6 +10,7 @@ import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
 import cuGestionarMuestra.MediadorGestionarMuestra;
 import cuGestionarMuestra.MediadorSeleccionarMuestra;
+import cuGestionarUsuario.GUIUsuario;
 import cuLimiteConsistencia.MediadorAltaLimiteConsistencia;
 import cuLimiteConsistencia.MediadorConsistencia;
 
@@ -62,8 +63,8 @@ public class MediadorPrincipal implements ActionListener{
 		if (this.GUIPrincipal.getJButtonClasificacion() == source || this.GUIPrincipal.getCalcularClasificacionMenu()== source){
 			calcularClasificacion();
 		}
-		if (this.GUIPrincipal.getJButtonListarMuestras() == source || this.GUIPrincipal.getListarMuestrasMenu()== source){
-			listarMuestras();
+		if (this.GUIPrincipal.getJButtonGestionarUsuario() == source || this.GUIPrincipal.getGestionarUsuarioMenu()== source){
+			gestionarUsuario();
      	}
 		if (this.GUIPrincipal.getJButtonCompararMuestras() == source || this.GUIPrincipal.getCompararMuestrasMenu()== source){
 			compararMuestras();
@@ -120,13 +121,9 @@ public class MediadorPrincipal implements ActionListener{
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Listar Muestras"
 	 */
-	private void listarMuestras() {
-		try {
-			//new MediadorListarMuestras();
-			new MediadorGestionarMuestra("Listar Muestra");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	private void gestionarUsuario() {
+		GUIUsuario GUIUsuario = new GUIUsuario();
+		GUIUsuario.show();
 	    System.out.println("GestionarMediador.actionPerformed() jButtonListarMuestra"); 
 	}
 	

@@ -46,6 +46,7 @@ public class MediadorGestionarAnalisis  implements ActionListener, KeyListener, 
 		this.muestra = muestra;
 		cargarTablaDeAnalisis();
 		muestraDetallada = new GUIMuestraDetallada(muestra,data);
+		muestraDetallada.setTitle(titulo);
 		muestraDetallada.setListenerButtons(this);
 		muestraDetallada.setModal(true);
 		muestraDetallada.getImprimir().setEnabled(false);

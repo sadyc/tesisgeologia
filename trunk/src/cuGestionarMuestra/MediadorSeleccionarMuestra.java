@@ -27,7 +27,6 @@ import cuGestionarAnalisis.ControlGestionarAnalisis;
 public class MediadorSeleccionarMuestra implements ActionListener, KeyListener, MouseListener {
 
 	private GUIABMMuestra GUIABMMuestra = null;
-	private GUISeleccionarMuestra GUISeleccionarMuestra = null;
 	private Object [] seleccionado = new Object [4];
 	private Object [][] data;
 	private boolean seleccionoMuestra = false;

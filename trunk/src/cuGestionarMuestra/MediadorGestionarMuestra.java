@@ -42,11 +42,11 @@ public class MediadorGestionarMuestra implements ActionListener, KeyListener, Mo
 		super();
 		cargarTablaDeMuestras();
 		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
-		this.GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
-		this.GUIABMMuestra.setListenerButtons(this);
-		this.GUIABMMuestra.setListenerTable(this);
-		this.GUIABMMuestra.setMouseListener(this);
-		this.GUIABMMuestra.setKeyListener(this);     
+		GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
+		GUIABMMuestra.setListenerButtons(this);
+		GUIABMMuestra.setListenerTable(this);
+		GUIABMMuestra.setMouseListener(this);
+		GUIABMMuestra.setKeyListener(this);     
 		GUIABMMuestra.getJButtonSeleccionar().setEnabled(true);
 		GUIABMMuestra.getSeleccionarMenu().setEnabled(false);
 		GUIABMMuestra.setModal(true);
@@ -127,7 +127,7 @@ public class MediadorGestionarMuestra implements ActionListener, KeyListener, Mo
 	private void analisis() {
 		GUIABMMuestra.dispose();
 		try {
-			MediadorGestionarAnalisis gestionarAnalisis = new MediadorGestionarAnalisis("Gestionar Analisis",muestra);
+			new MediadorGestionarAnalisis("Gestionar Analisis",muestra);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
@@ -266,8 +266,10 @@ public class MediadorGestionarMuestra implements ActionListener, KeyListener, Mo
 	 * Para tratar los eventos de mouse 
 	 */
 	public void mouseClicked(MouseEvent e){
-		if (e.getClickCount() == 2)
+		if (e.getClickCount() == 2){
 			seleccionarMuestra();
+			analisis();
+		}
 	}
 	
 	public void keyPressed(KeyEvent e) {

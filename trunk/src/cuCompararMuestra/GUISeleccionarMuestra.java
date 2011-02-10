@@ -3,6 +3,7 @@ package cuCompararMuestra;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
@@ -184,5 +185,13 @@ public class GUISeleccionarMuestra extends JDialog	{
 		this.menu = menu;
 	}
 	
+	public void setMouseListener(MouseListener lis){
+        tablePanel.addTableMouseListener(lis);
+    }
+	
+	public void setKeyListener(KeyListener lis){
+        tablePanel.addTableKeyListener(lis);
+	}
+
 }
 
