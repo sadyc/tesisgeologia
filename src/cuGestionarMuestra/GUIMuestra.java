@@ -13,19 +13,8 @@ import javax.swing.JPanel;
 
 import javax.swing.JTextField;
 
-	/*
-	 * To change this template, choose Tools | Templates
-	 * and open the template in the editor.
-	 */
-
-	/*
-	 * GUIMuestra.java
-	 *
-	 * Created on 10/12/2010, 02:28:18
-	 */
-
 	/**
-	 *
+	 * Clase GUI que reprensenta la ventana para una muestra.
 	 * @author TesisGeologia.
 	 */
 	public class GUIMuestra extends javax.swing.JDialog {
