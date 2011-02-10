@@ -66,7 +66,7 @@ import javax.swing.JTextField;
 			ubicacion = new JLabel("(*) Ubicacion: ");
 			operador = new JLabel ("(*) Operador: ");
 	        initComponents();
-	        setModal(true);
+	        setModal(modal);
 	        this.setLocationRelativeTo(null);
 	    }
 	    
@@ -90,7 +90,7 @@ import javax.swing.JTextField;
 			
 			seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
 			seleccionarOperador = new JButton("SELECCIONAR OPERADOR");
-			
+			setModal(true);
 			initComponents();
 		}
 
@@ -153,9 +153,6 @@ import javax.swing.JTextField;
 	            }
 	        });
 
-
-
-	        cancelar.setText("Cancelar");
 	        cancelar.setAutoscrolls(true);
 	        cancelar.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {

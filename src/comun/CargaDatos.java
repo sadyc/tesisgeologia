@@ -244,8 +244,8 @@ public class CargaDatos {
 		Encriptar encriptar = new Encriptar();
 		String a = encriptar.hash("ana");
 		String b = encriptar.hash("pepe");
-		Usuario usuario1 = new Usuario("Juan", "Perez", "34.771.488", "4917015", "juan@perez.com","juanPerez",b);
-		Usuario usuario2 = new Usuario("Susana", "Gomez", "34.101.098", "4917015", "Sus@gomez.com","susy",a);
+		//Usuario usuario1 = new Usuario("Juan", "Perez", "34.771.488", "4917015", "juan@perez.com","juanPerez",b);
+	//	Usuario usuario2 = new Usuario("Susana", "Gomez", "34.101.098", "4917015", "Sus@gomez.com","susy",a);
 		
 		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),operador1,null,ubicacion1,null,null,null);	
 		Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),operador2,null,ubicacion2,null,null,null);	
@@ -305,8 +305,8 @@ public class CargaDatos {
 			insertarTamiz(tamiz42);
 			insertarTamiz(tamiz43);
 			System.out.println("Comienza carga usuarios");
-			insertarUsuario(usuario1); 
-			insertarUsuario(usuario2);
+		//	insertarUsuario(usuario1); 
+		//	insertarUsuario(usuario2);
 		} catch (Exception e) {
 			System.out.println("No se pudieron insertar");
 			e.printStackTrace();

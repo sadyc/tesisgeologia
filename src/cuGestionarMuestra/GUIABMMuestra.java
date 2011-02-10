@@ -265,8 +265,8 @@ public class GUIABMMuestra extends JDialog{
 		this.panelSur.add(getJButtonModificar());
 		this.panelSur.add(getJButtonEliminar());
 		this.panelSur.add(getJButtonSeleccionar());
-		this.panelSur.add(getJButtonCancelar());
 		this.panelSur.add(getJButtonBuscar());
+		this.panelSur.add(getJButtonCancelar());
 		
 		}
 		return this.panelSur;

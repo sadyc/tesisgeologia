@@ -142,7 +142,37 @@ public class GUISeleccionarOperador extends JDialog	{
 	public JButton getJButtonCancelar() {
 		return jButtonCancelar;
 	}
-	
+
+	/**
+	 * @return the agregarMenu
+	 */
+	public JMenuItem getAgregarMenu() {
+		return agregarMenu;
+	}
+	/**
+	 * @return the modificarMenu
+	 */
+	public JMenuItem getModificarMenu() {
+		return modificarMenu;
+	}
+	/**
+	 * @return the eliminarMenu
+	 */
+	public JMenuItem getEliminarMenu() {
+		return eliminarMenu;
+	}
+	/**
+	 * @return the buscarMenu
+	 */
+	public JMenuItem getBuscarMenu() {
+		return buscarMenu;
+	}
+	/**
+	 * @return the cancelarMenu
+	 */
+	public JMenuItem getCancelarMenu() {
+		return cancelarMenu;
+	}
 	/**
 	 * Metodo que permite escuchar los botones Seleccionar y Buscar.
 	 *

@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.OperadorDeLaboratorio;
@@ -19,6 +20,8 @@ import comun.Mediador;
 
 import cuBuscar.MediadorBuscar;
 import cuGestionarMuestra.ControlGestionarMuestra;
+import cuGestionarMuestra.MediadorAltaMuestra;
+import cuGestionarMuestra.MediadorModificarMuestra;
 
 
 /**
@@ -81,6 +84,15 @@ public class MediadorSeleccionarOperador implements ActionListener, KeyListener,
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
+		if (this.GUISeleccionarOperador.getjButtonAgregarOperador() == source||GUISeleccionarOperador.getAgregarMenu()==source){
+			agregarOperador();
+	   	}
+		if (this.GUISeleccionarOperador.getjButtonElminarOperador() == source||GUISeleccionarOperador.getEliminarMenu()==source){
+			eliminarOperador();
+		}
+		if (this.GUISeleccionarOperador.getjButtonModificarOperador() == source||GUISeleccionarOperador.getModificarMenu()==source){
+			modificarOperador();
+		}
 		if (this.GUISeleccionarOperador.getJButtonSeleccionar() == source){
 			seleccionarOperador();
 		}
@@ -90,6 +102,27 @@ public class MediadorSeleccionarOperador implements ActionListener, KeyListener,
 		if (this.GUISeleccionarOperador.getJButtonCancelar() == source){
 			GUISeleccionarOperador.dispose();
 		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Modificar Operador"
+	 */
+	public void modificarOperador(){
+		
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Eliminar Operador"
+	 */
+	public void eliminarOperador(){
+		
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Operador"
+	 */
+	public void agregarOperador(){
+		//new GUIOperador();
 	}
 	
 	/**
