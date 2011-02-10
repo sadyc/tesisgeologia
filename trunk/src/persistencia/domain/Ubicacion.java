@@ -13,8 +13,9 @@ public class Ubicacion {
 
 	private String nombreUbicacion;
 	public enum Provincia {BuenosAires,Catamarca,Chaco,Chubut,CiudadAutonomadeBuenosAires,Cordoba,Corrientes,EntreRíos,Formosa,Jujuy,LaPampa,LaRioja,Mendoza,Misiones,Neuquen,RíoNegro,Salta,SanJuan,SanLuis,SantaCruz,SantaFe,SantiagoDelEstero,TierraDelFuego,Tucuman};
-	private String latitud;
-	private String longitud;
+	public String ciudad;
+	private Float latitud;
+	private Float longitud;
 	private Provincia prov;
 	private Collection<Muestra> muestras = new HashSet();
 	
@@ -22,11 +23,11 @@ public class Ubicacion {
 	public Ubicacion(){
 		nombreUbicacion= "";
 		prov = null;
-		latitud = "";
-		longitud = "";		
+		latitud = new Float(0);
+		longitud = new Float(0);
 	}
 	
-	public Ubicacion(String nombreUbicacion, Provincia prov, String latitud, String longitud){
+	public Ubicacion(String nombreUbicacion, Provincia prov, Float latitud, Float longitud){
 		this.nombreUbicacion= nombreUbicacion;
 		this.prov = prov;
 		this.latitud = latitud;
@@ -39,28 +40,28 @@ public class Ubicacion {
 	/**
 	 * @return the latitud
 	 */
-	public String getLatitud() {
+	public Float getLatitud() {
 		return latitud;
 	}
 
 	/**
 	 * @param latitud the latitud to set
 	 */
-	public void setLatitud(String latitud) {
+	public void setLatitud(Float latitud) {
 		this.latitud = latitud;
 	}
 
 	/**
 	 * @return the longitud
 	 */
-	public String getLongitud() {
+	public Float getLongitud() {
 		return longitud;
 	}
 
 	/**
 	 * @param longitud the longitud to set
 	 */
-	public void setLongitud(String longitud) {
+	public void setLongitud(Float longitud) {
 		this.longitud = longitud;
 	}
 
@@ -124,6 +125,21 @@ public class Ubicacion {
 	public int getCantidadMuestras(){
 		return (muestras.size());
 	}
+	
+	/**
+	 * @return the ciudad
+	 */
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	/**
+	 * @param ciudad the ciudad to set
+	 */
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
 	
 	
 }

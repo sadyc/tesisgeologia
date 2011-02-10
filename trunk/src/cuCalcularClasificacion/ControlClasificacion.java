@@ -6,7 +6,6 @@ package cuCalcularClasificacion;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Stroke;
 import java.io.File;
 import java.util.Collection;
 import java.util.Iterator;
@@ -189,8 +188,6 @@ public class ControlClasificacion {
 		persistencia.abrirTransaccion();
 		
 		String clasificacion= new String();
-		Float IndicePlasticidad = muestra.getIndicePlasticidad();
-		Float limiteLiquido = muestra.getLimiteLiquido();
 		calcularDiametro(muestra);
 		
 		muestra.setCoeficienteUniformidad(muestra.getD60()/muestra.getD10());//Coeficiente de uniformidad
@@ -429,17 +426,14 @@ public class ControlClasificacion {
 	 * @throws Exception 
 	 */
 	public ChartPanel cartaPlasticidad(Muestra muestra) throws Exception{
-		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
-		
+	
 		final XYSeries series = new XYSeries("Linea A");
 		final XYSeries series2 = new XYSeries("Linea U");
 		final XYSeries series3 = new XYSeries("Linea B");
 		series3.add(0,50);
 		series3.add(100,50);
 		Float ll= muestra.getLimiteLiquido();
-		Float ip= muestra.getIndicePlasticidad();
-		
-		
+				
 		while (ll-20<=100){
 			series.add(0.73*(ll-20),ll);
 			ll= ll + 5;
@@ -459,7 +453,6 @@ public class ControlClasificacion {
 		// Generate the graph
 		final NumberAxis rangeAxis = new NumberAxis("Indice de Plasticidad, IP");
         rangeAxis.setRange(0.0,60);
-        
         final NumberAxis domainAxis = new NumberAxis("Limite Liquido, LL");
         domainAxis.setRange(0.0, 100);
         final XYItemRenderer renderer = new StandardXYItemRenderer();

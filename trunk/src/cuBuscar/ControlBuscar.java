@@ -14,7 +14,7 @@ import persistencia.domain.Muestra;
  * 
  * @author TesisGeologia
  */
-public class ControlBuscar {
+public class ControlBuscar{
 
 	/**
 	 * Constructor por defecto.
