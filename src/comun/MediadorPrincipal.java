@@ -10,7 +10,7 @@ import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
 import cuGestionarMuestra.MediadorGestionarMuestra;
 import cuGestionarMuestra.MediadorSeleccionarMuestra;
-import cuGestionarUsuario.GUIUsuario;
+import cuGestionarUsuario.MediadorGestionarUsuario;
 import cuLimiteConsistencia.MediadorAltaLimiteConsistencia;
 import cuLimiteConsistencia.MediadorConsistencia;
 
@@ -122,9 +122,13 @@ public class MediadorPrincipal implements ActionListener{
 	 * Acciones a realizar cuando se selecciona la opcion de "Listar Muestras"
 	 */
 	private void gestionarUsuario() {
-		GUIUsuario GUIUsuario = new GUIUsuario();
-		GUIUsuario.show();
-	    System.out.println("GestionarMediador.actionPerformed() jButtonListarMuestra"); 
+		try {
+			new MediadorGestionarUsuario("Ingresar Usuario");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    System.out.println("GestionarMediador.actionPerformed() jButtonGestionarUsuario"); 
 	}
 	
 	/**

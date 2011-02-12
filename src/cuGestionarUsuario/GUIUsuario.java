@@ -2,7 +2,7 @@ package cuGestionarUsuario;
 
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
+import persistencia.domain.Usuario;
 
 
 /**
@@ -46,7 +46,20 @@ public class GUIUsuario extends javax.swing.JDialog {
     public GUIUsuario() {
         initComponents();
     }
-
+    
+    public GUIUsuario(Usuario usuario){
+    	initComponents();
+    	jTextFieldApellido.setText(usuario.getApellido());
+    	jTextFieldDni.setText(usuario.getDni());
+    	jTextFieldEmail.setText(usuario.getEmail());
+    	jTextFieldNombre.setText(usuario.getNombre());
+    	jTextFieldNombreUsuario.setText(usuario.getNombreUsuario());
+    	jTextFieldTelefono.setText(usuario.getTel());
+    	jPasswordField.setText(usuario.getContraseña());
+    	jPasswordField2.setText(usuario.getContraseña());
+    	jComboBoxCategoria.setSelectedItem(usuario.getCategoria());
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is

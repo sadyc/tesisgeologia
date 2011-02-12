@@ -25,7 +25,7 @@ public class Usuario extends Persona{
 		super();
 		
 	}
-	public Usuario (String nombre, String apellido, String dni, String tel, String email,String nombreUsuario, String password, String categoria){
+	public Usuario (String nombre, String apellido, String dni, String nombreUsuario, String categoria,String email, String tel, String password){
 		super(nombre, apellido,dni,tel, email);
 		this.nombreUsuario = nombreUsuario;
 		this.password = password;
@@ -93,4 +93,18 @@ public class Usuario extends Persona{
 	public String toString(){
 		return("nombre: " + nombreUsuario + "contraseña: " + password);
 	}
+	/**
+	 * @return the categoria
+	 */
+	public String getCategoria() {
+		return categoria;
+	}
+	/**
+	 * @param categoria the categoria to set
+	 */
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+	
+	
 }

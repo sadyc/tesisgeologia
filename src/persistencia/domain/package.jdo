@@ -181,12 +181,9 @@
          
  
  </class>
- <class name="persistencia.domain.AASHTO" identity-type="datastore">
-		<inheritance strategy="new-table"/>
-            <field name="muestras" persistence-modifier="persistent" mapped-by="aashto">
-                <collection element-type="persistencia.domain.Muestra"/>
-            </field>
-        </class>
+
+ 
+ 
  
      
      </package>
