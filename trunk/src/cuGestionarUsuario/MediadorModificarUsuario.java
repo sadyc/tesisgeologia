@@ -1,11 +1,9 @@
-/**
- * 
- */
 package cuGestionarUsuario;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -14,45 +12,31 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Usuario;
-import cuGestionarMuestra.ControlGestionarMuestra;
+import cuGestionarMuestra.GUIMuestra;
+import cuGestionarOperador.MediadorSeleccionarOperador;
+import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
 
-/**
- * @brief Clase que se utiliza para realizar los sucesos en la ventana Muestra.
- * 
- * @author TesisGeologia
- *
- */
-public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseListener{
+public class MediadorModificarUsuario implements ActionListener, KeyListener, MouseListener {
 	private GUIUsuario GUIUsuario;
+	private boolean modificoUsuario;
 	private String[] data = new String [10];
-	private Usuario usuario ;
 	private Component frame;
-	private ControlGestionarUsuario control;
-	private boolean altaUsuario= false;
-
+	private Usuario usuarioModificar;
+	private ControlGestionarUsuario control = new ControlGestionarUsuario();
 	
-	/**
-	 * @param nombreVentana
-	 * Constructor con pasaje de parametros.
-	 */
-	public MediadorAltaUsuario(String nombreVentana) {
+
+	public MediadorModificarUsuario(String[] fila) throws Exception {
 		super();
-		control = new ControlGestionarUsuario();
-		usuario = new Usuario();
-		GUIUsuario = new GUIUsuario();
-		GUIUsuario.setTitle(nombreVentana);
+		usuarioModificar = (control.obtenerUsuario(fila[2]));
+		GUIUsuario = new GUIUsuario(usuarioModificar);
+		GUIUsuario.setTitle("Modificar Usuario");
 		GUIUsuario.setListenerButtons(this);
 		GUIUsuario.setModal(true);
 		GUIUsuario.show();
 	}
 	
-	/**
-	 * @return the alta usuario
-	 */
-	public boolean esAltaUsuario() {
-		return altaUsuario;
-	}
 
+	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
@@ -86,14 +70,14 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIUsuario.getjButtonAgregar() == source || this.GUIUsuario.getjMenuItemAgregar()== source) {
+		if (this.GUIUsuario.getjButtonAgregar() == source|| GUIUsuario.getjMenuItemAgregar()==source) {
 			aceptar();
 		}
 		if (this.GUIUsuario.getjButtonCancelar() == source || GUIUsuario.getjMenuItemCancelar()==source){
 			GUIUsuario.dispose();
 		}
 	}
-	
+
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Aceptar"
 	 */
@@ -108,34 +92,35 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 					JOptionPane.showMessageDialog(frame,"Los Passwords no son iguales.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 				}
 				else{
-					insertarUsuario();
-					altaUsuario = true;
+					modificarUsuario();
+					modificoUsuario = true;
 				}
 			}
 		}
 		catch (NumberFormatException e){
 			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
+
 	}
 	
 	/**
-	 * Una vez verificados que los datos ingresados son correctos se procede a la carga de los mismos al sistema.
+	 * Una vez verificados que los datos modificados son correctos se procede a la carga de los mismos al sistema.
 	 */
-	public void insertarUsuario(){
+	public void modificarUsuario(){
 		data[0]= GUIUsuario.getjTextFieldNombre().getText().toUpperCase();
 		data[1]= GUIUsuario.getjTextFieldApellido().getText().toUpperCase();
 		data[2]= GUIUsuario.getjTextFieldDni().getText();
-		data[3]= GUIUsuario.getjTextFieldNombreUsuario().getText().toUpperCase();
-		data[4]= (String) GUIUsuario.getjComboBoxCategoria().getSelectedItem();
+		data[3]= GUIUsuario.getjTextFieldNombreUsuario().getText().toUpperCase(); 
+		data[4]= (String)GUIUsuario.getjComboBoxCategoria().getSelectedItem();
 		data[5]= GUIUsuario.getjTextFieldEmail().getText().toUpperCase();
 		data[6]= GUIUsuario.getjTextFieldTelefono().getText();
 		data[7]= GUIUsuario.getjPasswordField().getText().toUpperCase();
-		usuario = new Usuario(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]);
+		System.out.println(String.valueOf(GUIUsuario.getjComboBoxCategoria().getSelectedIndex()));
 		try {
-			control.insertarUsuario(usuario);
-			altaUsuario = true;
+			control.modificarUsuario(usuarioModificar.getDni(),data);
+			modificoUsuario = true;
 		} catch (Exception e) {
-			System.out.println("No inserta Usuario Mediador Alta Usuario");
+			System.out.println("No modifica Usuario Mediador Modificar Usuario");
 			e.printStackTrace();
 		}
 		GUIUsuario.dispose();
@@ -145,6 +130,15 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 	public String[] getData() {
 		return data;
 	}
+	
+	/**
+	 * retorna true si se modifico el usuario.
+	 * @return modificoUsuario.
+	 */
+	public boolean seModificoUsuario() {
+		return modificoUsuario;
+	}
+
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
@@ -152,15 +146,19 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 		
 	}
 
+
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 }
