@@ -3,7 +3,6 @@ package cuGestionarUsuario;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -12,9 +11,6 @@ import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Usuario;
-import cuGestionarMuestra.GUIMuestra;
-import cuGestionarOperador.MediadorSeleccionarOperador;
-import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
 
 public class MediadorModificarUsuario implements ActionListener, KeyListener, MouseListener {
 	private GUIUsuario GUIUsuario;

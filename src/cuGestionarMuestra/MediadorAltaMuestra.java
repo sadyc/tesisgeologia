@@ -19,7 +19,7 @@ import persistencia.domain.Usuario;
 import comun.Mediador;
 
 import cuGestionarOperador.MediadorSeleccionarOperador;
-import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
+import cuGestionarUbicacion.MediadorSeleccionarUbicacion;
 
 /**
  * @brief Clase que se utiliza para realizar los sucesos en la ventana Muestra.

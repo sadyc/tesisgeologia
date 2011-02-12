@@ -113,13 +113,17 @@
          <field name="nombreUbicacion" persistence-modifier="persistent">
                   <column length="30" jdbc-type="CHAR"/>
          </field>
-         <field name="prov" persistence-modifier="persistent" mapped-by="Provincia">
+         <field name="provincia" persistence-modifier="persistent">
+			<column length="30" jdbc-type="CHAR"/>
+         </field>
+		  <field name="ciudad" persistence-modifier="persistent">
+			<column length="30" jdbc-type="CHAR"/>
          </field>
         <field name="latitud" persistence-modifier="persistent">
-                 <column length="30" jdbc-type="CHAR"/>
+                 <column length="30" jdbc-type="FLOAT"/>
         </field>
         <field name="longitud" persistence-modifier="persistent">
-                 <column length="30" jdbc-type="CHAR"/>
+                 <column length="30" jdbc-type="FLOAT"/>
         </field>
 	    <field name="muestras" persistence-modifier="persistent" mapped-by="ubicacion">
                 <collection element-type="persistencia.domain.Muestra"/>
