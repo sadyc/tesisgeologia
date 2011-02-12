@@ -16,7 +16,7 @@ import persistencia.domain.Ubicacion;
 
 import comun.Mediador;
 
-import cuGestionarOperador.MediadorSeleccionarOperador;
+import cuGestionarOperador.MediadorGestionarOperador;
 import cuGestionarUbicacion.MediadorGestionarUbicacion;
 
 /**
@@ -175,7 +175,7 @@ public class MediadorModificarMuestra extends Mediador{
 	 */
 	public void seleccionarOperador(){
 		try {
-			MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
+			MediadorGestionarOperador seleccionarOperador = new MediadorGestionarOperador();
 			GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
 			dniOperadorModificar =((String)seleccionarOperador.getSeleccionado()[2]);
 		} catch (Exception e) {

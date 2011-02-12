@@ -20,7 +20,7 @@ import comun.TablePanel;
 * @author TesisGeología
 * Esta clase implementa la ventana que me permite seleccionar un operador de laboratorio de los almacenados.
 */
-public class GUISeleccionarOperador extends JDialog	{
+public class GUIGestionarOperador extends JDialog	{
 
 	private JMenuBar menu = null;
 	private JMenu herramientas;
@@ -46,7 +46,7 @@ public class GUISeleccionarOperador extends JDialog	{
 	 * Constructor de la clase.
 	 * @param datos, contiene la informacion de las muestras almacenadas en el sistema.
 	 */
-	public GUISeleccionarOperador(Object [][] datos) {
+	public GUIGestionarOperador(Object [][] datos) {
 		super();
 		data = datos;
 		if (this.menu==null) {
@@ -255,13 +255,6 @@ public class GUISeleccionarOperador extends JDialog	{
 	 */
 	public void setMenu(JMenuBar menu) {
 		this.menu = menu;
-	}
-	
-	/**
-	 * @return the jButtonSeleccionarOperador
-	 */
-	public JButton getjButtonSeleccionarOperador() {
-		return jButtonSeleccionarOperador;
 	}
 	
 	public void setMouseListener(MouseListener lis){

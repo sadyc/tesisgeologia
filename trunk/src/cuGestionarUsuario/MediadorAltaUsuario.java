@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 
 import persistencia.domain.Usuario;
 import cuGestionarMuestra.ControlGestionarMuestra;
+import cuLogin.Encriptar;
 
 /**
  * @brief Clase que se utiliza para realizar los sucesos en la ventana Muestra.
@@ -129,7 +130,15 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 		data[4]= (String) GUIUsuario.getjComboBoxCategoria().getSelectedItem();
 		data[5]= GUIUsuario.getjTextFieldEmail().getText().toUpperCase();
 		data[6]= GUIUsuario.getjTextFieldTelefono().getText();
-		data[7]= GUIUsuario.getjPasswordField().getText().toUpperCase();
+		Encriptar encriptar = new Encriptar();
+		String password = "";
+		try {
+			password = encriptar.hash(GUIUsuario.getjPasswordField().getText());
+		} catch (Exception e1) {
+			System.out.println("El password es muy extenso!");
+			e1.printStackTrace();
+		}
+		data[7]= password;
 		usuario = new Usuario(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]);
 		try {
 			control.insertarUsuario(usuario);

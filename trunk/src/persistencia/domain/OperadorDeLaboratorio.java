@@ -34,7 +34,7 @@ public class OperadorDeLaboratorio extends Persona {
 	 * @param apellido, apellido del operadorLaboratorio de laboratorio creado.
 	 * @param dni, DNI del operadorLaboratorio de laboratorio creado.
 	 */
-	public OperadorDeLaboratorio(String nombre, String apellido, String dni, String tel, String email) {
+	public OperadorDeLaboratorio(String nombre, String apellido, String dni, String email, String tel) {
 		super(nombre, apellido, dni, tel, email);
 	}
 	
