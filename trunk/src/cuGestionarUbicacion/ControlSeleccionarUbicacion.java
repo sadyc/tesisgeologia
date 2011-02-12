@@ -1,4 +1,4 @@
-package cuGestionarUbiacion;
+package cuGestionarUbicacion;
 
 import java.util.Collection;
 
@@ -17,6 +17,9 @@ public class ControlSeleccionarUbicacion {
 	 */
 	public ControlSeleccionarUbicacion(){}
 	
+	public boolean pepe(String asd){
+		return true;
+	}
 		
 	/**
 	 * Retorna todos los elementos de la clase pasada como persistente.

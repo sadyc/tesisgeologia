@@ -1,11 +1,10 @@
-package cuGestionarUbiacion;
+package cuGestionarUbicacion;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Collection;
@@ -13,16 +12,16 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Ubicacion;
-
-import comun.Mediador;
+import comun.GUISeleccionarUbicacion;
 
 import cuGestionarMuestra.ControlGestionarMuestra;
 
-public class MediadorSeleccionarUbicacion implements ActionListener, KeyListener, MouseListener{
+import persistencia.domain.Ubicacion;
+
+public class MediadorSeleccionarUbicacion implements ActionListener,MouseListener,ItemListener {
 
 	private GUISeleccionarUbicacion GUISeleccionarUbicacion = null;
-	private Object [][] data;
+	private Object [][] data = new Object [100] [4];
 	private Object [] seleccionado = new Object [4];
 	private Component frame;
 	
@@ -30,13 +29,11 @@ public class MediadorSeleccionarUbicacion implements ActionListener, KeyListener
 	public MediadorSeleccionarUbicacion() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		this.GUISeleccionarUbicacion = new GUISeleccionarUbicacion(data);
+		GUISeleccionarUbicacion = new GUISeleccionarUbicacion(data);
 		GUISeleccionarUbicacion.setTitle("Seleccionar una muestra");
 		GUISeleccionarUbicacion.setModal(true);
 		GUISeleccionarUbicacion.setListenerButtons(this);
 		GUISeleccionarUbicacion.setListenerTable(this);
-		GUISeleccionarUbicacion.setMouseListener(this);
-		GUISeleccionarUbicacion.setKeyListener(this);     
 		GUISeleccionarUbicacion.show();
 	}
 	
@@ -51,7 +48,6 @@ public class MediadorSeleccionarUbicacion implements ActionListener, KeyListener
 		Class clase = ubicacion.getClass();
 		Collection ubicaciones = control.coleccionMuestras(clase);
 		Iterator<Ubicacion> it = ubicaciones.iterator();
-		data = new Object [ubicaciones.size()] [4];
 		int i = 0;
 		while (it.hasNext()){
 			ubicacion = it.next();
@@ -88,44 +84,36 @@ public class MediadorSeleccionarUbicacion implements ActionListener, KeyListener
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUISeleccionarUbicacion.getJButtonSeleccionar() == source || GUISeleccionarUbicacion.getSeleccionarMenu()==source){
-			seleccionarUbicacion();
+		if (this.GUISeleccionarUbicacion.getJButtonSeleccionar() == source){
+			if (GUISeleccionarUbicacion.getTablePanel().getSelectedRow() == -1){
+				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicacion","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+			else{
+				try{
+				System.out.println("Button Seleccionar Ubicacion");
+				seleccionado = GUISeleccionarUbicacion.getTablePanel().getRow(GUISeleccionarUbicacion.getTablePanel().getSelectedRow());
+	   			GUISeleccionarUbicacion.dispose();
+				}
+				catch (Exception e) {
+					JOptionPane.showMessageDialog(frame,"Se ha seleccionado una ubicacion invalida","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				}
+			}
 		}
-		if (this.GUISeleccionarUbicacion.getJButtonBuscar() == source || GUISeleccionarUbicacion.getBuscarMenu()==source){
-	   		buscarUbicacion();
+		if (this.GUISeleccionarUbicacion.getJButtonBuscar() == source){
+	   		try {
+	   			System.out.println("Button Buscar Muestra");
+				
+				
+	   		} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		if (this.GUISeleccionarUbicacion.getJButtonCancelar() == source || GUISeleccionarUbicacion.getCancelarMenu()==source){
+		if (this.GUISeleccionarUbicacion.getjButtonAgregar() == source){
+			new MediadorGestionarUbicacion();
+			
+		}
+		if (this.GUISeleccionarUbicacion.getJButtonSalir() == source){
 			GUISeleccionarUbicacion.dispose();
-		}
-	}
-	
-	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Ubicacion"
-	 */
-	public void seleccionarUbicacion(){
-		if (GUISeleccionarUbicacion.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicacion","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-		}
-		else{
-			try{
-			System.out.println("Button Seleccionar Ubicacion");
-			seleccionado = GUISeleccionarUbicacion.getTablePanel().getRow(GUISeleccionarUbicacion.getTablePanel().getSelectedRow());
-   			GUISeleccionarUbicacion.dispose();
-			}
-			catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado una ubicacion invalida","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-			}
-		}
-	}
-	
-	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Ubicacion"
-	 */
-	public void buscarUbicacion(){
-		try {
-   			System.out.println("Button Buscar Muestra"); // TODAVIA NO HACE NADAAA!!!!!
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 	
@@ -136,14 +124,11 @@ public class MediadorSeleccionarUbicacion implements ActionListener, KeyListener
 	 * Metodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
 	 */
-	public void mouseClicked(MouseEvent e){
-		if (e.getClickCount() == 2)
-			seleccionarUbicacion();
-	}
-	
-	public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == e.VK_ENTER)
-        	seleccionarUbicacion();
+	public void mouseClicked(MouseEvent arg0) {
+		Object source = arg0.getSource();
+		if (this.GUISeleccionarUbicacion.getTablePanel() == source)
+			System.out.println("GestionarMediador.actionPerformed() jJTableTabla");
+		
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {
@@ -164,19 +149,5 @@ public class MediadorSeleccionarUbicacion implements ActionListener, KeyListener
 	
 
 	public void itemStateChanged(ItemEvent e) {
-	}
-
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 }

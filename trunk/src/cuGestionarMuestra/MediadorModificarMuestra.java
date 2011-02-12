@@ -17,7 +17,7 @@ import persistencia.domain.Ubicacion;
 import comun.Mediador;
 
 import cuGestionarOperador.MediadorSeleccionarOperador;
-import cuGestionarUbiacion.MediadorSeleccionarUbicacion;
+import cuGestionarUbicacion.MediadorSeleccionarUbicacion;
 
 /**
  * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana Modificar Muestra

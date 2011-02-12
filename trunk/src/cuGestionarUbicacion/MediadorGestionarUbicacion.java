@@ -50,7 +50,11 @@ public class MediadorGestionarUbicacion extends Mediador{
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUIUbicacion.getjButtonAceptar() == source||GUIUbicacion.getjMenuItemAgregar()==source){
-			aceptar();
+			try {
+				aceptar();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	   	}
 		if (this.GUIUbicacion.getjButtonCancelar()== source || GUIUbicacion.getjMenuItemCancelar()==source){
 			GUIUbicacion.dispose();
@@ -59,8 +63,9 @@ public class MediadorGestionarUbicacion extends Mediador{
 	
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Muestra"
+	 * @throws Exception 
 	 */
-	public void aceptar(){
+	public void aceptar() throws Exception{
 		try {
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");
 			if (GUIUbicacion.getjTextFieldCiudad().getText().equals("") || GUIUbicacion.getjTextFieldNombreUbicacion().getText().equals("")){
@@ -76,9 +81,9 @@ public class MediadorGestionarUbicacion extends Mediador{
    	}
 
 
-	private void agregarUbicacion() {
+	private void agregarUbicacion() throws Exception {
 		
-		//control.insertarUbicacion(GUIUbicacion.getData());
+		control.insertarUbicacion(GUIUbicacion.getData());
 		
 	}
 

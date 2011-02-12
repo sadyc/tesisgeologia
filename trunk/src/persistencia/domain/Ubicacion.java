@@ -12,24 +12,28 @@ public class Ubicacion {
 	
 
 	private String nombreUbicacion;
-	public enum Provincia {BuenosAires,Catamarca,Chaco,Chubut,CiudadAutonomadeBuenosAires,Cordoba,Corrientes,EntreRíos,Formosa,Jujuy,LaPampa,LaRioja,Mendoza,Misiones,Neuquen,RíoNegro,Salta,SanJuan,SanLuis,SantaCruz,SantaFe,SantiagoDelEstero,TierraDelFuego,Tucuman};
 	public String ciudad;
 	private Float latitud;
 	private Float longitud;
-	private Provincia prov;
+	private String provincia;
 	private Collection<Muestra> muestras = new HashSet();
 	
-	
+	/**
+	 *Contructor por defecto.
+	 */
 	public Ubicacion(){
 		nombreUbicacion= "";
-		prov = null;
+		provincia = null;
 		latitud = new Float(0);
 		longitud = new Float(0);
 	}
 	
-	public Ubicacion(String nombreUbicacion, Provincia prov, Float latitud, Float longitud){
+	/**
+	 *Contructor con pasaje de parametros.
+	 */
+	public Ubicacion(String nombreUbicacion, String prov, Float latitud, Float longitud){
 		this.nombreUbicacion= nombreUbicacion;
-		this.prov = prov;
+		this.provincia = prov;
 		this.latitud = latitud;
 		this.longitud = longitud;
 	}
@@ -68,15 +72,15 @@ public class Ubicacion {
 	/**
 	 * @return the prov
 	 */
-	public Provincia getProvincia() {
-		return prov;
+	public String getProvincia() {
+		return provincia;
 	}
 
 	/**
 	 * @param prov the prov to set
 	 */
-	public void setProvincia(Provincia prov) {
-		this.prov = prov;
+	public void setProvincia(String prov) {
+		this.provincia = prov;
 	}
 
 	/**

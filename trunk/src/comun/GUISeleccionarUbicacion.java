@@ -26,6 +26,9 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	private JMenuBar menu = null;
 	private JMenu herramientas;
 	private JMenu ayuda;
+	private JButton jButtonAgregar;
+	private JButton jButtonModificar;
+	private JButton jButtonEliminar;
 	private JButton jButtonBuscarUbicacion;
 	private JButton jButtonSeleccionarUbicacion;
 	private JButton jButtonSalir;
@@ -63,11 +66,15 @@ public class GUISeleccionarUbicacion extends JDialog	{
 			ayuda.add(versionMenu);
 			jButtonBuscarUbicacion = new JButton("BUSCAR");
 			jButtonSeleccionarUbicacion  = new JButton("SELECCIONAR");
-			jButtonSalir  = new JButton("SALIR");
+			jButtonSalir  = new JButton("CANCELAR");
+			jButtonAgregar = new JButton("AGREGAR");
+			jButtonModificar = new JButton("MODIFICAR");
+			jButtonEliminar = new JButton("ELIMINAR");
 		}
 		initialize();
 	}
 	
+
 	/**
 	 * Metodo que inicializa la interfaz.
 	 *
@@ -80,6 +87,7 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	  	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	}
+	
 	/**
 	 * This method retorna botonAgregar	
 	 * 	
@@ -116,7 +124,9 @@ public class GUISeleccionarUbicacion extends JDialog	{
 		this.jButtonSeleccionarUbicacion.addActionListener(lis);
 		this.jButtonBuscarUbicacion.addActionListener(lis);
 		this.jButtonSalir.addActionListener(lis);
-	
+		this.jButtonAgregar.addActionListener(lis);
+		this.jButtonModificar.addActionListener(lis);
+		this.jButtonEliminar.addActionListener(lis);
 	}
 	/**
 	 * Metodo que permite escuchar la tabla panel.
@@ -145,6 +155,9 @@ public class GUISeleccionarUbicacion extends JDialog	{
 		if (this.panelSur==null) {
 		this.panelSur = new JPanel();
 		this.panelSur.setLayout(new FlowLayout());
+		this.panelSur.add(getjButtonAgregar());
+		this.panelSur.add(getjButtonModificar());
+		this.panelSur.add(getjButtonEliminar());
 		this.panelSur.add(getJButtonSeleccionar());
 		this.panelSur.add(getJButtonBuscar());
 		this.panelSur.add(getJButtonSalir());
@@ -179,5 +192,26 @@ public class GUISeleccionarUbicacion extends JDialog	{
 		this.menu = menu;
 	}
 	
+
+	/**
+	 * @return the jButtonAgregar
+	 */
+	public JButton getjButtonAgregar() {
+		return jButtonAgregar;
+	}
+
+	/**
+	 * @return the jButtonModificar
+	 */
+	public JButton getjButtonModificar() {
+		return jButtonModificar;
+	}
+
+	/**
+	 * @return the jButtonEliminar
+	 */
+	public JButton getjButtonEliminar() {
+		return jButtonEliminar;
+	}
 }
 

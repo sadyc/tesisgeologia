@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cuGestionarUbiacion;
+package cuGestionarUbicacion;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
