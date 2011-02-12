@@ -1,27 +1,18 @@
-package cuGestionarUsuario;
+package cuGestionarOperador;
 
 import java.awt.event.ActionListener;
 
+import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Usuario;
 
-
-/**
- *
- * @author franco
- */
-public class GUIUsuario extends javax.swing.JDialog {
+public class GUIOperador extends javax.swing.JDialog {
 		   
     private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JComboBox jComboBoxCategoria;
     private javax.swing.JLabel jLabelApellido;
-    private javax.swing.JLabel jLabelCategoria;
     private javax.swing.JLabel jLabelDni;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelNombre;
-    private javax.swing.JLabel jLabelNombreUsuario;
-    private javax.swing.JLabel jLabelPassword;
-    private javax.swing.JLabel jLabelRePassword;
     private javax.swing.JLabel jLabelTelefono;
     private javax.swing.JMenu jMenuAyuda;
     private javax.swing.JMenuBar jMenuBar1;
@@ -29,35 +20,30 @@ public class GUIUsuario extends javax.swing.JDialog {
     private javax.swing.JMenuItem jMenuItemAgregar;
     private javax.swing.JMenuItem jMenuItemCancelar;
     private javax.swing.JMenuItem jMenuItemVersion;
-    private javax.swing.JPasswordField jPasswordField;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldDni;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldNombreUsuario;
     private javax.swing.JTextField jTextFieldTelefono;
    
 
-    /** Creates new form GUIPersona */
-    public GUIUsuario() {
+    /** Creates new form GUIOperador */
+    public GUIOperador() {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
     }
     
-    public GUIUsuario(Usuario usuario){
+    public GUIOperador(OperadorDeLaboratorio operador){
     	initComponents();
-    	jTextFieldApellido.setText(usuario.getApellido());
-    	jTextFieldDni.setText(usuario.getDni());
-    	jTextFieldEmail.setText(usuario.getEmail());
-    	jTextFieldNombre.setText(usuario.getNombre());
-    	jTextFieldNombreUsuario.setText(usuario.getNombreUsuario());
-    	jTextFieldTelefono.setText(usuario.getTel());
-    	jComboBoxCategoria.setSelectedItem(usuario.getCategoria());
-    	setResizable(false);
+    	jTextFieldApellido.setText(operador.getApellido());
+    	jTextFieldDni.setText(operador.getDni());
+    	jTextFieldEmail.setText(operador.getEmail());
+    	jTextFieldNombre.setText(operador.getNombre());
+      	jTextFieldTelefono.setText(operador.getTel());
+       	setResizable(false);
         setLocationRelativeTo(null);
     }
     
@@ -75,21 +61,13 @@ public class GUIUsuario extends javax.swing.JDialog {
         jLabelDni = new javax.swing.JLabel();
         jLabelTelefono = new javax.swing.JLabel();
         jLabelEmail = new javax.swing.JLabel();
-        jLabelNombreUsuario = new javax.swing.JLabel();
-        jLabelPassword = new javax.swing.JLabel();
-        jLabelRePassword = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldApellido = new javax.swing.JTextField();
         jTextFieldDni = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldTelefono = new javax.swing.JTextField();
-        jTextFieldNombreUsuario = new javax.swing.JTextField();
-        jPasswordField = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
         jButtonAgregar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
-        jComboBoxCategoria = new javax.swing.JComboBox();
-        jLabelCategoria = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuHerramientas = new javax.swing.JMenu();
         jMenuItemAgregar = new javax.swing.JMenuItem();
@@ -110,12 +88,6 @@ public class GUIUsuario extends javax.swing.JDialog {
 
         jLabelEmail.setText("E-mail: ");
 
-        jLabelNombreUsuario.setText("(*) Nombre Usuario: ");
-
-        jLabelPassword.setText("(*) Password: ");
-
-        jLabelRePassword.setText("(*) Reingrese Password: ");
-
         jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldEmailActionPerformed(evt);
@@ -125,10 +97,6 @@ public class GUIUsuario extends javax.swing.JDialog {
         jButtonAgregar.setText("Agregar");
 
         jButtonCancelar.setText("Cancelar");
-
-        jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Operador", "Restringido" }));
-
-        jLabelCategoria.setText("(*) Categoría: ");
 
         jMenuHerramientas.setText("Herramientas");
 
@@ -188,19 +156,11 @@ public class GUIUsuario extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
                                 .addComponent(jButtonCancelar))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelNombreUsuario)
-                                    .addComponent(jLabelPassword)
-                                    .addComponent(jLabelRePassword))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPasswordField2)
-                                    .addComponent(jPasswordField)
-                                    .addComponent(jTextFieldNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                                .addComponent(jLabelCategoria)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72))))
         );
         layout.setVerticalGroup(
@@ -227,19 +187,7 @@ public class GUIUsuario extends javax.swing.JDialog {
                     .addComponent(jTextFieldDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelDni))
                 .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNombreUsuario))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPassword)
-                    .addComponent(jLabelCategoria)
-                    .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelRePassword))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAgregar)
@@ -262,7 +210,6 @@ public class GUIUsuario extends javax.swing.JDialog {
 	public void setListenerButtons(ActionListener lis){
 		jButtonAgregar.addActionListener(lis);
 		jButtonCancelar.addActionListener(lis);
-		jComboBoxCategoria.addActionListener(lis);
 		jMenuItemAgregar.addActionListener(lis);
 		jMenuItemVersion.addActionListener(lis);
 		jMenuItemCancelar.addActionListener(lis);
@@ -325,22 +272,7 @@ public class GUIUsuario extends javax.swing.JDialog {
 		this.jTextFieldNombre = jTextFieldNombre;
 	}
 
-	/**
-	 * @return the jTextFieldNombreUsuario
-	 */
-	public javax.swing.JTextField getjTextFieldNombreUsuario() {
-		return jTextFieldNombreUsuario;
-	}
-
-	/**
-	 * @param jTextFieldNombreUsuario the jTextFieldNombreUsuario to set
-	 */
-	public void setjTextFieldNombreUsuario(
-			javax.swing.JTextField jTextFieldNombreUsuario) {
-		this.jTextFieldNombreUsuario = jTextFieldNombreUsuario;
-	}
-
-	/**
+		/**
 	 * @return the jTextFieldTelefono
 	 */
 	public javax.swing.JTextField getjTextFieldTelefono() {
@@ -369,13 +301,6 @@ public class GUIUsuario extends javax.swing.JDialog {
 	}
 
 	/**
-	 * @return the jComboBoxCategoria
-	 */
-	public javax.swing.JComboBox getjComboBoxCategoria() {
-		return jComboBoxCategoria;
-	}
-
-	/**
 	 * @return the jMenuItemAgregar
 	 */
 	public javax.swing.JMenuItem getjMenuItemAgregar() {
@@ -396,41 +321,5 @@ public class GUIUsuario extends javax.swing.JDialog {
 		return jMenuItemVersion;
 	}
 
-	/**
-	 * @return the jPasswordField
-	 */
-	public javax.swing.JPasswordField getjPasswordField() {
-		return jPasswordField;
-	}
-
-	/**
-	 * @return the jPasswordField2
-	 */
-	public javax.swing.JPasswordField getjPasswordField2() {
-		return jPasswordField2;
-	}
-
-	/**
-	 * @return the jLabelNombreUsuario
-	 */
-	public javax.swing.JLabel getjLabelNombreUsuario() {
-		return jLabelNombreUsuario;
-	}
-
-	/**
-	 * @return the jLabelPassword
-	 */
-	public javax.swing.JLabel getjLabelPassword() {
-		return jLabelPassword;
-	}
-
-	/**
-	 * @return the jLabelRePassword
-	 */
-	public javax.swing.JLabel getjLabelRePassword() {
-		return jLabelRePassword;
-	}
-
-	
-	
+		
 }

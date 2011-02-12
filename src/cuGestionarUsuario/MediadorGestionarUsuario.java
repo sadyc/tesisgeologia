@@ -152,6 +152,9 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 		}
 		else{
 			String [] fila = GUIGestionarUsuario.getTablePanel().getRow(GUIGestionarUsuario.getTablePanel().getSelectedRow());
+			MediadorVerificarPassword verif = new MediadorVerificarPassword(fila[2],fila[3]);
+			if (verif.getCorrecto()){
+			
 			try {
 				MediadorModificarUsuario modificarUsuario = new MediadorModificarUsuario(fila);
 				if (modificarUsuario.seModificoUsuario()) {
@@ -162,11 +165,12 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 			catch (Exception e) {
 				e.printStackTrace();
 			}
+			}
 		}
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Eliminar Muestra"
+	 * Acciones a realizar cuando se selecciona la opcion de "Eliminar Usuario"
 	 */
 	public void eliminarUsuario(){
 		if (GUIGestionarUsuario.getTablePanel().getSelectedRow() == -1){

@@ -10,6 +10,7 @@ import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
 import cuGestionarMuestra.MediadorGestionarMuestra;
 import cuGestionarMuestra.MediadorSeleccionarMuestra;
+import cuGestionarOperador.MediadorGestionarOperador;
 import cuGestionarUsuario.MediadorGestionarUsuario;
 import cuLimiteConsistencia.MediadorAltaLimiteConsistencia;
 import cuLimiteConsistencia.MediadorConsistencia;
@@ -56,6 +57,7 @@ public class MediadorPrincipal implements ActionListener{
 		Object source = arg0.getSource();
 		if (this.GUIPrincipal.getJButtonGestionarMuestra() == source || this.GUIPrincipal.getGestionarMuestraMenu()== source){
 			gestionarMuestra();
+		
      	}
 		if (this.GUIPrincipal.getJButtonAnalisis() == source || this.GUIPrincipal.getGestionarAnalisisMenu()== source){
 			gestionarAnalisis();
@@ -66,6 +68,9 @@ public class MediadorPrincipal implements ActionListener{
 		if (this.GUIPrincipal.getJButtonGestionarUsuario() == source || this.GUIPrincipal.getGestionarUsuarioMenu()== source){
 			gestionarUsuario();
      	}
+		if (this.GUIPrincipal.getjButtonGestionarOperador() == source || this.GUIPrincipal.getGestionarOperadorMenu()== source){
+			gestionarOperador();
+     	}
 		if (this.GUIPrincipal.getJButtonCompararMuestras() == source || this.GUIPrincipal.getCompararMuestrasMenu()== source){
 			compararMuestras();
      	}
@@ -74,6 +79,19 @@ public class MediadorPrincipal implements ActionListener{
 		}
 		if (this.GUIPrincipal.getJButtonSalir() == source || this.GUIPrincipal.getSalirMenu()== source){
 			GUIPrincipal.dispose();
+		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Gestionar Operador"
+	 */
+	public void gestionarOperador(){
+		try {
+		MediadorGestionarOperador gestionarOperador = new MediadorGestionarOperador();
+		gestionarOperador.getGUIGestionarOperador().getJButtonSeleccionar().setEnabled(false);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	

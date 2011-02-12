@@ -18,7 +18,7 @@ import persistencia.domain.Usuario;
 
 import comun.Mediador;
 
-import cuGestionarOperador.MediadorSeleccionarOperador;
+import cuGestionarOperador.MediadorGestionarOperador;
 import cuGestionarUbicacion.MediadorGestionarUbicacion;
 
 /**
@@ -200,7 +200,7 @@ public class MediadorAltaMuestra extends Mediador{
 	 */
 	public void seleccionarOperador(){
 		try {
-			MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
+			MediadorGestionarOperador seleccionarOperador = new MediadorGestionarOperador();
 			if ((String)seleccionarOperador.getSeleccionado()[0]!=null) {
 				this.GUIMuestra.setOperador("(*) Operador:"+(String)seleccionarOperador.getSeleccionado()[0]+" "+(String)seleccionarOperador.getSeleccionado()[1]);
 				this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);

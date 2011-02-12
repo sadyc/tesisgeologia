@@ -1,41 +1,32 @@
-package cuBuscar;
+package cuGestionarUsuario;
 
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-
-/**
- * @author TesisGeologia
- * 
- * Clase que define la interfaz para buscar en la base de datos.
- *
- */
-public class GUIBuscar extends javax.swing.JDialog {
+public class GUIVerificarPassword extends javax.swing.JDialog {
 
 	
 	// Variables declaration - do not modify
-    private JButton jButtonBuscar;
+    private JButton jButtonAceptar;
     private JButton jButtonCancelar;
-    private JComboBox jComboBox1;
     private JLabel jLabel1;
-    private JLabel jLabel2;
     private JMenu jMenu1;
     private JMenuBar jMenuBar1;
     private JMenuItem jMenuItem1;
     private JMenuItem jMenuItem2;
-    private JTextField buscar;
+    private JPasswordField password;
     // End of variables declaration
     
     
     /** Creates new form GUIBuscar */
-    public GUIBuscar() {
+    public GUIVerificarPassword() {
     	super();
     	setLocationRelativeTo(null);
         setResizable(false);
@@ -53,10 +44,8 @@ public class GUIBuscar extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        buscar = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jButtonBuscar = new javax.swing.JButton();
+        password = new javax.swing.JPasswordField();
+        jButtonAceptar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -65,21 +54,11 @@ public class GUIBuscar extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Buscar:");
-
-        jLabel2.setText("Por :");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Muestra", "Ubicación", "Operador Lab" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setText("Password:");
+        jButtonAceptar.setText("Aceptar");
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        jButtonBuscar.setText("Buscar");
-        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarActionPerformed(evt);
+                aceptarActionPerformed(evt);
             }
         });
 
@@ -88,7 +67,7 @@ public class GUIBuscar extends javax.swing.JDialog {
         jMenu1.setText("Archivo");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
-        jMenuItem1.setText("Buscar");
+        jMenuItem1.setText("Aceptar");
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
@@ -109,15 +88,15 @@ public class GUIBuscar extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2))
-                    .addComponent(jButtonBuscar))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                        
+                    .addComponent(jButtonAceptar))
+                
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING))
+                   
                     .addComponent(jButtonCancelar))
-                .addContainerGap(26, Short.MAX_VALUE))
+         
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,15 +104,15 @@ public class GUIBuscar extends javax.swing.JDialog {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+         
+         
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar)
-                    .addComponent(jButtonBuscar))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
+                    .addComponent(jButtonAceptar))
+         
+        ));
 
         pack();
     }// </editor-fold>
@@ -142,28 +121,28 @@ public class GUIBuscar extends javax.swing.JDialog {
         // TODO add your handling code here:
     }
 
-    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
     
     /**
-	 * Metodo que permite escuchar los botones Buscar, Cancelar.
+	 * Metodo que permite escuchar los botones Aceptar, Cancelar.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
 		jMenuItem1.addActionListener(lis);
 		jMenuItem2.addActionListener(lis);
-		jButtonBuscar.addActionListener(lis);
+		jButtonAceptar.addActionListener(lis);
 		jButtonCancelar.addActionListener(lis);
-		jComboBox1.addActionListener(lis);
+		
 	}
 	
 	/**
-	 * @return the jButtonBuscar
+	 * @return the jButtonAceptar
 	 */
 	public javax.swing.JButton getJButtonBuscar() {
-		return jButtonBuscar;
+		return jButtonAceptar;
 	}
 
 	/**
@@ -173,31 +152,22 @@ public class GUIBuscar extends javax.swing.JDialog {
 		return jButtonCancelar;
 	}
 
-	public JTextField getBuscar() {
-		return buscar;
+	public JTextField getPassword() {
+		return password;
 	}
 
 	/**
-	 * @return the jComboBox1
-	 */
-	public JComboBox getjComboBox1() {
-		return jComboBox1;
-	}
-	
-    /**
 	 * @return the jMenuItem1
 	 */
-	public JMenuItem getjMenuItem1() {
+	public JMenuItem getjMenuItemAceptar() {
 		return jMenuItem1;
 	}
 
 	/**
 	 * @return the jMenuItem2
 	 */
-	public JMenuItem getjMenuItem2() {
+	public JMenuItem getjMenuItemCancelar() {
 		return jMenuItem2;
 	}
-
-	
 
 }

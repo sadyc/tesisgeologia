@@ -8,7 +8,10 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+
+import cuLogin.Encriptar;
 
 import persistencia.domain.Usuario;
 
@@ -110,7 +113,15 @@ public class MediadorModificarUsuario implements ActionListener, KeyListener, Mo
 		data[4]= (String)GUIUsuario.getjComboBoxCategoria().getSelectedItem();
 		data[5]= GUIUsuario.getjTextFieldEmail().getText().toUpperCase();
 		data[6]= GUIUsuario.getjTextFieldTelefono().getText();
-		data[7]= GUIUsuario.getjPasswordField().getText().toUpperCase();
+		Encriptar encriptar = new Encriptar();
+		String password = "";
+		try {
+			password = encriptar.hash(GUIUsuario.getjPasswordField().getText());
+		} catch (Exception e1) {
+			System.out.println("El password es muy extenso!");
+			e1.printStackTrace();
+		}
+		data[7]= password;
 		System.out.println(String.valueOf(GUIUsuario.getjComboBoxCategoria().getSelectedIndex()));
 		try {
 			control.modificarUsuario(usuarioModificar.getDni(),data);

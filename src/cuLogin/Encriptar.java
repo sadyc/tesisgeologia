@@ -26,12 +26,5 @@ public class Encriptar {
 		
 		return h.toString();
 	} 
-	
-	public static void main (String[]args) throws Exception{
-		Encriptar en = new Encriptar();
-		String pepe  = en.hash("pete");
-		System.out.println("PRIMERA CLAVE    "+pepe);
-		String pepe2  = en.hash("PETEsaddassadasdads");
-		System.out.println("SEGUNDA CLAVE    "+pepe2);
-	}
+		
 }
