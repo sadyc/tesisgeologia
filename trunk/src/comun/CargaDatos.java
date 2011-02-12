@@ -131,9 +131,9 @@ public class CargaDatos {
 	public void cargar () throws Exception{
 		
 
-		Ubicacion ubicacion1 = new Ubicacion("El Impenetrable","Chaco",new Float(0),new Float(0));
-		Ubicacion ubicacion2 = new Ubicacion("Rio Cuarto","Cordoba",new Float(0),new Float(0));
-		Ubicacion ubicacion3 = new Ubicacion("Ushuaia","TierraDelFuego",new Float(0),new Float(0));
+		Ubicacion ubicacion1 = new Ubicacion("UBA","El Impenetrable","Chaco",new Float(0),new Float(0));
+		Ubicacion ubicacion2 = new Ubicacion("UNRC","Rio Cuarto","Cordoba",new Float(0),new Float(0));
+		Ubicacion ubicacion3 = new Ubicacion("Campo 1","Ushuaia","TierraDelFuego",new Float(0),new Float(0));
 
 		OperadorDeLaboratorio operador1 = new OperadorDeLaboratorio("Lionel", "Messi", "10.054.605", "4665458", "lionel@messi.com");
 		Muestra muestra = new Muestra();

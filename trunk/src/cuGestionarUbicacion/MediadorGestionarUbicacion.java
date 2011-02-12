@@ -1,98 +1,238 @@
-/**
- * 
- */
 package cuGestionarUbicacion;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.Collection;
+import java.util.Iterator;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Ubicacion;
-
-import comun.Mediador;
-
-import cuCalcularClasificacion.GUIClasificacion;
 import cuGestionarMuestra.ControlGestionarMuestra;
 
-/**
- * @author TesisGeologia.
- *
- */
+public class MediadorGestionarUbicacion implements ActionListener, KeyListener, MouseListener {
 
-public class MediadorGestionarUbicacion extends Mediador{
-	
-	private GUIUbicacion GUIUbicacion;
-	private Object [][] data ;
-	private Component frame;
-	private Ubicacion ubicacion;
-	private ControlGestionarUbicacion control = new ControlGestionarUbicacion();
+	private GUIGestionarUbicacion GUIGestionarUbicacion = null;
+	private Object [][] data;
 	private Object [] seleccionado = new Object [4];
+	private Component frame;
 	
 	
-	/**
-	 * Contructor por defecto.
-	 */
-	public MediadorGestionarUbicacion() {
+	public MediadorGestionarUbicacion() throws Exception {
 		super();
-		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
-		GUIUbicacion = new GUIUbicacion();
-		GUIUbicacion.setListenerButtons(this);
-		GUIUbicacion.show();
-		
+		cargarTablaDeMuestras();
+		GUIGestionarUbicacion = new GUIGestionarUbicacion(data);
+		GUIGestionarUbicacion.setTitle("Seleccionar una muestra");
+		GUIGestionarUbicacion.setModal(true);
+		GUIGestionarUbicacion.setListenerButtons(this);
+		GUIGestionarUbicacion.setListenerTable(this);
+		GUIGestionarUbicacion.setMouseListener(this);
+		GUIGestionarUbicacion.setKeyListener(this);
+		GUIGestionarUbicacion.show();
 	}
 	
+	
 	/**
-	 * Metodo que necesita definir al implementar la interface ActionListener 
-	 * Para tratar los eventos de acciones de los componentes 
+	 * Levanta informacion almacenada en la 
+	 * base de datos al atributo data de la clase mediador.
 	 */
+	public void cargarTablaDeMuestras()throws Exception{
+		ControlGestionarMuestra control = new ControlGestionarMuestra();
+		Ubicacion ubicacion = new Ubicacion();
+		Class clase = ubicacion.getClass();
+		Collection ubicaciones = control.coleccionMuestras(clase);
+		Iterator<Ubicacion> it = ubicaciones.iterator();
+		int i = 0;
+		data = new Object [ubicaciones.size()] [5];
+		while (it.hasNext()){
+			ubicacion = it.next();
+			data [i][0]= ubicacion.getNombreUbicacion();
+			data [i][1]= ubicacion.getCiudad();
+			data [i][2]= ubicacion.getProvincia();
+		    data [i][3]= ubicacion.getLatitud();		        
+		    data [i][4]= ubicacion.getLongitud();
+		    i++;
+		}
+	}
+	/**
+	 * @return the gUISeleccionarUbicacion
+	 */
+	public GUIGestionarUbicacion getGUISeleccionarUbicacion() {
+		return GUIGestionarUbicacion;
+	}
+
+	/**
+	 * @param gUISeleccionarMuestra the gUISeleccionarMuestra to set
+	 */
+	public void setGUIGestionarMuestra(GUIGestionarUbicacion gUISeleccionarUbicacion) {
+		GUIGestionarUbicacion = gUISeleccionarUbicacion;
+	}
+
+		
+	/**
+	 * @return the seleccionado
+	 */
+	public Object[] getSeleccionado() {
+		return seleccionado;
+	}
+
+
+	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIUbicacion.getjButtonAceptar() == source||GUIUbicacion.getjMenuItemAgregar()==source){
-			try {
-				aceptar();
+		if (this.GUIGestionarUbicacion.getjButtonEliminar() == source){
+			eliminar();
+		}
+		if (this.GUIGestionarUbicacion.getJButtonSeleccionar() == source){
+			seleccionar();
+		}
+		if (this.GUIGestionarUbicacion.getjButtonModificar() == source){
+			modificar();
+		}
+		if (this.GUIGestionarUbicacion.getJButtonBuscar() == source){
+	   		try {
+	   			System.out.println("Button Buscar Ubicacion");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-	   	}
-		if (this.GUIUbicacion.getjButtonCancelar()== source || GUIUbicacion.getjMenuItemCancelar()==source){
-			GUIUbicacion.dispose();
+		}
+		if (this.GUIGestionarUbicacion.getjButtonAgregar() == source){
+			MediadorAltaUbicacion altaUbicacion = new MediadorAltaUbicacion();
+			if (altaUbicacion.esAltaUbicacion()){  
+				this.GUIGestionarUbicacion.getTablePanel().addRow(altaUbicacion.getData());
+     		}
+			
+		}
+		if (this.GUIGestionarUbicacion.getJButtonSalir() == source){
+			GUIGestionarUbicacion.dispose();
+		}
+	}
+	
+	public void show(){
+		GUIGestionarUbicacion.show();
+	}
+	
+	public void modificar(){
+		if (GUIGestionarUbicacion.getTablePanel().getSelectedRow() == -1){
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicacion.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		}
+		else{
+			try{
+				System.out.println("Button Modificar Ubicacion");
+				MediadorModificarUbicacion modificarUbicacion = new MediadorModificarUbicacion(GUIGestionarUbicacion.getTablePanel().getRow(GUIGestionarUbicacion.getTablePanel().getSelectedRow()));
+				if (modificarUbicacion.seModificoUbicacion()) {
+					GUIGestionarUbicacion.getTablePanel().removeRow(GUIGestionarUbicacion.getTablePanel().getSelectedRow());
+					GUIGestionarUbicacion.getTablePanel().addRow(modificarUbicacion.getData());
+				}
+			}
+			catch (Exception e) {
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado una ubicacion invalida","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		
+	}
+	
+	public void seleccionar(){
+		if (GUIGestionarUbicacion.getTablePanel().getSelectedRow() == -1){
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicacion.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		}
+		else{
+			try{
+				System.out.println("Button Seleccionar Ubicacion");
+				seleccionado = GUIGestionarUbicacion.getTablePanel().getRow(GUIGestionarUbicacion.getTablePanel().getSelectedRow());
+				GUIGestionarUbicacion.dispose();
+			}
+			catch (Exception e) {
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado una ubicacion invalida","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Eliminar Muestra"
+	 */
+	public void eliminar(){
+		if (GUIGestionarUbicacion.getTablePanel().getSelectedRow() == -1){
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		}
+		else{
+		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la ubicacion?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		    ControlGestionarUbicacion control = new ControlGestionarUbicacion(); 
+            if(quitOption==JOptionPane.YES_OPTION){
+            	try{
+            		System.out.println(GUIGestionarUbicacion.getTablePanel().getSelectedRow());
+            	   	String [] fila = GUIGestionarUbicacion.getTablePanel().getRow(GUIGestionarUbicacion.getTablePanel().getSelectedRow());
+	            	GUIGestionarUbicacion.getTablePanel().removeRow(GUIGestionarUbicacion.getTablePanel().getSelectedRow());
+	            	String nombreUbicacion = fila[0];
+	            	String ciudad = fila[1];
+	               	try {
+	               		control.eliminarUbicacion(nombreUbicacion,ciudad);
+	               	} catch (Exception e) {
+						e.printStackTrace();
+	               	}
+            	}
+            	catch (Exception e) {
+            		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+            	}
+            }
 		}
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Muestra"
-	 * @throws Exception 
+	 * Metodos que necesita definir al implementar la interface MouseListener 
+	 * Para tratar los eventos de mouse 
 	 */
-	public void aceptar() throws Exception{
-		try {
-			System.out.println("Muestra.actionPerformed() jButtonAceptar");
-			if (GUIUbicacion.getjTextFieldCiudad().getText().equals("") || GUIUbicacion.getjTextFieldNombreUbicacion().getText().equals("")){
-		 		JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-			}
-			else {
-				agregarUbicacion();
-			}
+	public void mouseClicked(MouseEvent e){
+		if (e.getClickCount() == 2){
+			seleccionar();
+			
 		}
-		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo numeros en los campos de latitud y longitud","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-		}
-   	}
-
-
-	private void agregarUbicacion() throws Exception {
-		
-		control.insertarUbicacion(GUIUbicacion.getData());
-		
+	}
+	
+	public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == e.VK_ENTER)
+        	seleccionar();
+	}
+	
+	public void mouseEntered(MouseEvent arg0) {
 	}
 
+	public void mouseExited(MouseEvent arg0) {
+	}
+
+	public void mousePressed(MouseEvent arg0) {
+	}
+
+	public void mouseReleased(MouseEvent arg0) {
+	}
+	
+	/**
+	 * @returns data 
+	*/
+	
+
+	public void itemStateChanged(ItemEvent e) {
+	}
+
+
 	@Override
-	public void itemStateChanged(ItemEvent arg0) {
+	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
+
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }

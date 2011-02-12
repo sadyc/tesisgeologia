@@ -31,8 +31,9 @@ public class Ubicacion {
 	/**
 	 *Contructor con pasaje de parametros.
 	 */
-	public Ubicacion(String nombreUbicacion, String prov, Float latitud, Float longitud){
+	public Ubicacion(String nombreUbicacion,String ciudad, String prov, Float latitud, Float longitud){
 		this.nombreUbicacion= nombreUbicacion;
+		this.ciudad = ciudad;
 		this.provincia = prov;
 		this.latitud = latitud;
 		this.longitud = longitud;
@@ -41,7 +42,7 @@ public class Ubicacion {
 
 
 
-	/**
+		/**
 	 * @return the latitud
 	 */
 	public Float getLatitud() {

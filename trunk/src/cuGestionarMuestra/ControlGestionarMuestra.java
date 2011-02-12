@@ -86,6 +86,13 @@ public class ControlGestionarMuestra {
 		return aux;
 	}
 
+	/**
+	 * Modifica una muestra con persistencia. 
+	 * @param nombreMuestraModificar 
+	 * @param ubicacionModificar
+	 * @param data
+	 * @throws Exception
+	 */
 	public void ModificarMuestra(String nombreMuestraModificar,String ubicacionModificar,String[] data) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();

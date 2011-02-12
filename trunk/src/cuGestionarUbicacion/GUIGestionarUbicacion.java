@@ -1,11 +1,12 @@
 /**
  * 
  */
-package comun;
+package cuGestionarUbicacion;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
@@ -16,12 +17,14 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
+import comun.TablePanel;
+
 
 /**
 * @author TesisGeología
 * Esta clase implementa la ventana que me permite seleccionar una ubicacion de las almacenados.
 */
-public class GUISeleccionarUbicacion extends JDialog	{
+public class GUIGestionarUbicacion extends JDialog	{
 
 	private JMenuBar menu = null;
 	private JMenu herramientas;
@@ -44,9 +47,11 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	 * Constructor de la clase.
 	 * @param datos, contiene la informacion de las ubicaciones almacenadas.
 	 */
-	public GUISeleccionarUbicacion(Object [][] datos) {
+	public GUIGestionarUbicacion(Object [][] datos) {
 		super();
-		
+		setModal(true);
+        setResizable(false);
+        setLocationRelativeTo(null);
 		data = datos;
 		if (this.menu==null) {
 			tablePanel = getTablePanel();
@@ -81,7 +86,7 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	 * @return void
 	 */
 	private  void initialize() {
-		this.setSize(803, 200);
+		this.setSize(803, 400);
       	this.getContentPane().setLayout(new BorderLayout());
 		this.setJMenuBar(this.getMenu());
 	  	this.getContentPane().add(this.getTablePanel(),BorderLayout.CENTER);
@@ -142,7 +147,7 @@ public class GUISeleccionarUbicacion extends JDialog	{
      *@return data  
     */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre","Provincia","Latitud","Longitud"};
+		String[] columnName = {"Nombre Ubicacion","Ciudad","Provincia","Latitud","Longitud"};
 		return columnName;
 	}
 
@@ -212,6 +217,14 @@ public class GUISeleccionarUbicacion extends JDialog	{
 	 */
 	public JButton getjButtonEliminar() {
 		return jButtonEliminar;
+	}
+	
+	public void setMouseListener(MouseListener lis){
+        tablePanel.addTableMouseListener(lis);
+    }
+	
+	public void setKeyListener(KeyListener lis){
+        tablePanel.addTableKeyListener(lis);
 	}
 }
 

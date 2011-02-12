@@ -29,13 +29,53 @@ public class ControlGestionarUbicacion {
 		Persistencia persistencia= new Persistencia();
 		persistencia.abrirTransaccion();
 		Ubicacion ubicacion = new Ubicacion();
-		ubicacion.setProvincia(data[1]);
-		ubicacion.setCiudad(data[2]);
-		ubicacion.setNombreUbicacion(data[3]);
-		ubicacion.setLatitud(Float.parseFloat(data[4]));
-		ubicacion.setLongitud(Float.parseFloat(data[5]));
+		ubicacion.setProvincia(data[0]);
+		ubicacion.setCiudad(data[1]);
+		ubicacion.setNombreUbicacion(data[2]);
+		ubicacion.setLatitud(Float.parseFloat(data[3]));
+		ubicacion.setLongitud(Float.parseFloat(data[4]));
 		persistencia.insertarObjeto(ubicacion);
 		persistencia.cerrarTransaccion();
-	}	
+	}
+
+	
+	/**
+	 * Modifica una ubicacion con persistencia.
+	 * @param ciudad 
+	 * @param nombreUbicacion 
+	 * @param data
+	 * @throws Exception
+	 */
+	public void modificarUbicacion(String nombreUbicacion, String ciudad, String[] data) throws Exception {
+		Persistencia persistencia= new Persistencia();
+		persistencia.abrirTransaccion();
+		Ubicacion ubicacion = new Ubicacion();
+		ubicacion = (Ubicacion)persistencia.buscarObjeto(ubicacion.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
+		ubicacion.setNombreUbicacion(data[0]);
+		ubicacion.setCiudad(data[1]);
+		ubicacion.setProvincia(data[2]);
+		ubicacion.setLatitud(Float.parseFloat(data[3]));
+		ubicacion.setLongitud(Float.parseFloat(data[4]));
+		persistencia.insertarObjeto(ubicacion);
+		persistencia.cerrarTransaccion();
+		
+	}
+
+	/**
+	 * Metodo para eliminar una Ubicacion con presistencia.
+	 * @param nombreUbicacion
+	 * @param ciudad
+	 * @throws Exception
+	 */
+	public void eliminarUbicacion(String nombreUbicacion, String ciudad) throws Exception {
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		Ubicacion ubicacion = new Ubicacion();
+		ubicacion = (Ubicacion)persistencia.buscarObjeto(ubicacion.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
+		persistencia.eliminarObjeto(ubicacion);
+		persistencia.cerrarTransaccion();
+	}
+
+		
 
 }
