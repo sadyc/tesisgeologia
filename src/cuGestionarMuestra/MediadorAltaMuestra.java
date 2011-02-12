@@ -19,7 +19,7 @@ import persistencia.domain.Usuario;
 import comun.Mediador;
 
 import cuGestionarOperador.MediadorSeleccionarOperador;
-import cuGestionarUbicacion.MediadorSeleccionarUbicacion;
+import cuGestionarUbicacion.MediadorGestionarUbicacion;
 
 /**
  * @brief Clase que se utiliza para realizar los sucesos en la ventana Muestra.
@@ -185,7 +185,7 @@ public class MediadorAltaMuestra extends Mediador{
 	 */
 	public void seleccionarUbicacion(){
 		try {
-			MediadorSeleccionarUbicacion mediadorSelUbic = new MediadorSeleccionarUbicacion();
+			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion();
 			if((String)mediadorSelUbic.getSeleccionado()[0]!= null){
 				this.GUIMuestra.setUbicacion("(*) Ubicacion:"+(String)mediadorSelUbic.getSeleccionado()[0]);
 				this.ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);

@@ -37,20 +37,24 @@ public class GUIUbicacion extends javax.swing.JDialog {
     /** Creates new form GUIUbicacion */
     public GUIUbicacion() {
     	super();
-        setModal(true);
+    	setModal(true);
         setResizable(false);
+        setLocationRelativeTo(null);
         jTextFieldCiudad = new javax.swing.JTextField();
         jTextFieldNombreUbicacion = new javax.swing.JTextField();
         jTextFieldLongitud = new javax.swing.JTextField();
         jTextFieldLatitud = new javax.swing.JTextField();
+        jButtonAceptar = new javax.swing.JButton();
+        jButtonAceptar.setText("AGREGAR");
         initComponents();
     }
     
     /** Creates new form GUIUbicacion */
     public GUIUbicacion(Ubicacion ubicacion) {
     	super();
-        setModal(true);
+    	setModal(true);
         setResizable(false);
+        setLocationRelativeTo(null);
         jTextFieldCiudad = new javax.swing.JTextField();
         jTextFieldNombreUbicacion = new javax.swing.JTextField();
         jTextFieldLongitud = new javax.swing.JTextField();
@@ -59,6 +63,8 @@ public class GUIUbicacion extends javax.swing.JDialog {
         jTextFieldNombreUbicacion.setText(ubicacion.getNombreUbicacion());
         jTextFieldLongitud.setText(ubicacion.getLongitud().toString());
         jTextFieldLatitud.setText(ubicacion.getLatitud().toString());
+        jButtonAceptar = new javax.swing.JButton();
+        jButtonAceptar.setText("MODIFICAR");
         initComponents();
     }
 
@@ -71,7 +77,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        jButtonAceptar = new javax.swing.JButton();
+    	
         jButtonCancelar = new javax.swing.JButton();
         jLabelNombreUbicacion = new javax.swing.JLabel();
         jLabelCiudad = new javax.swing.JLabel();
@@ -89,7 +95,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButtonAceptar.setText("Agregar");
+        
 
         jButtonCancelar.setText("Cancelar");
 
@@ -198,7 +204,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
 	 * Metodo que permite escuchar los botones y los item
 	 * del menu.
 	 *
-	 *@param lis actionEvent asignado a los botones.
+	 *@param mediadorModificarUbicacion actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
 		this.jButtonAceptar.addActionListener(lis);
@@ -210,9 +216,9 @@ public class GUIUbicacion extends javax.swing.JDialog {
 	
 	public String[] getData() {
 		String[] data = new String[5];
-		data[0]= jComboBoxProvincia.getSelectedItem().toString();
+		data[0]= jTextFieldNombreUbicacion.getText();
 		data[1]= jTextFieldCiudad.getText();
-		data[2]= jTextFieldNombreUbicacion.getText();
+		data[2]= jComboBoxProvincia.getSelectedItem().toString();
 		data[3]= jTextFieldLongitud.getText();
 		data[4]= jTextFieldLatitud.getText();
 		return data;
