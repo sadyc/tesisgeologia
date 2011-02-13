@@ -135,12 +135,12 @@ public class CargaDatos {
 		Ubicacion ubicacion2 = new Ubicacion("UNRC","Rio Cuarto","Cordoba",new Float(0),new Float(0));
 		Ubicacion ubicacion3 = new Ubicacion("Campo 1","Ushuaia","TierraDelFuego",new Float(0),new Float(0));
 
-		OperadorDeLaboratorio operador1 = new OperadorDeLaboratorio("Lionel", "Messi", "10.054.605", "4665458", "lionel@messi.com");
+		OperadorDeLaboratorio operador1 = new OperadorDeLaboratorio("Lionel", "Messi", "10.054.605", "lionel@messi.com", "4665458");
 		Muestra muestra = new Muestra();
 		muestra.setNombreMuestra("nombreMuestra");
 		muestra.setPeso(new Float(50));
-		OperadorDeLaboratorio operador2 = new OperadorDeLaboratorio("Javier", "Pastore", "34.101.099", "4917015", "javier@pastore.com");
-		OperadorDeLaboratorio operador3 = new OperadorDeLaboratorio("Manuel", "Varela", "34.254.973", "3584192871", "manuvarel@gmail.com");
+		OperadorDeLaboratorio operador2 = new OperadorDeLaboratorio("Javier", "Pastore", "34.101.099", "javier@pastore.com", "4917015");
+		OperadorDeLaboratorio operador3 = new OperadorDeLaboratorio("Manuel", "Varela", "34.254.973", "manuvarel@gmail.com", "3584192871");
 		Tamiz tamiz1 = new Tamiz("4",4.75);
 		Tamiz tamiz2 = new Tamiz("5",4.0);
 		Tamiz tamiz3 = new Tamiz("6",3.35);

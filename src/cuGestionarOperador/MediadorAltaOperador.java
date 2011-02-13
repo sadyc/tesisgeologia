@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
@@ -123,6 +124,19 @@ public class MediadorAltaOperador implements ActionListener, KeyListener, MouseL
 		GUIOperador.dispose();
 
 	}
+	
+	/**  PARA VALIDAR EL MAIL!
+	public boolean validarEmail(String email) {
+		// Expressio regular extreta de http://regexlib.com/
+		Pattern p = Pattern.compile(\"^([0-9a-zA-Z]([_.w]*[-.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)*([a-zA-Z]{1,9}.)+[a-zA-Z]{2,3})$\");
+		Matcher m = p.matcher(email);
+		if (m.find()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	*/
 	
 	public String[] getData() {
 		return data;
