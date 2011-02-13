@@ -4,6 +4,10 @@ package persistencia.domain;
 
 import comun.MediadorPrincipal;
 
+import cuLogin.MediadorLogin;
+
+
+
 
 
 
@@ -27,13 +31,10 @@ public class Main {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		//Muestra mu = new Muestra();
-		//MediadorAltaLimiteConsistencia hola = new MediadorAltaLimiteConsistencia("Limite Consistencia");
 
 		//new MediadorLogin("Login");
-		new MediadorPrincipal ("Sistema Clasificador de Suelos");
-	//MediadorGestionarMuestra med = new MediadorGestionarMuestra("");
-		
+		new MediadorPrincipal("SISTEMA DE CLASIFICACION DE SUELOS");
+
        
 	}
 }

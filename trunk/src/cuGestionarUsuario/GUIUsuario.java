@@ -1,6 +1,10 @@
 package cuGestionarUsuario;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import javax.swing.JTextField;
 
 import persistencia.domain.Usuario;
 
@@ -80,9 +84,32 @@ public class GUIUsuario extends javax.swing.JDialog {
         jLabelRePassword = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldApellido = new javax.swing.JTextField();
-        jTextFieldDni = new javax.swing.JTextField();
+        jTextFieldDni.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
         jTextFieldEmail = new javax.swing.JTextField();
-        jTextFieldTelefono = new javax.swing.JTextField();
+        jTextFieldTelefono = new JTextField(15);
+        jTextFieldTelefono.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '-'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
         jTextFieldNombreUsuario = new javax.swing.JTextField();
         jPasswordField = new javax.swing.JPasswordField();
         jPasswordField2 = new javax.swing.JPasswordField();

@@ -1,9 +1,12 @@
 package cuGestionarOperador;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import javax.swing.JTextField;
 
 import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.Usuario;
 
 public class GUIOperador extends javax.swing.JDialog {
 		   
@@ -63,9 +66,33 @@ public class GUIOperador extends javax.swing.JDialog {
         jLabelEmail = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldApellido = new javax.swing.JTextField();
-        jTextFieldDni = new javax.swing.JTextField();
+        jTextFieldDni = new JTextField(15);
+        jTextFieldDni.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
         jTextFieldEmail = new javax.swing.JTextField();
-        jTextFieldTelefono = new javax.swing.JTextField();
+        jTextFieldTelefono = new JTextField(15);
+        jTextFieldTelefono.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '-'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
         jButtonAgregar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
