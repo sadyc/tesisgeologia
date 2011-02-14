@@ -87,34 +87,39 @@ public class MediadorGestionarUbicacion implements ActionListener, KeyListener, 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIGestionarUbicacion.getjButtonEliminar() == source){
+		if (GUIGestionarUbicacion.getjButtonEliminar() == source || GUIGestionarUbicacion.getjMenuEliminar() == source ){
 			eliminar();
 		}
-		if (this.GUIGestionarUbicacion.getjButtonSeleccionar() == source){
+		if (GUIGestionarUbicacion.getjButtonSeleccionar() == source || GUIGestionarUbicacion.getjMenuSeleccionar() == source){
 			seleccionar();
 		}
-		if (this.GUIGestionarUbicacion.getjButtonModificar() == source){
+		if (GUIGestionarUbicacion.getjButtonModificar() == source || GUIGestionarUbicacion.getjMenuModificar() == source){
 			modificar();
 		}
-		if (this.GUIGestionarUbicacion.getjButtonBuscar() == source){
-	   		try {
-	   			System.out.println("Button Buscar Ubicacion");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		if (GUIGestionarUbicacion.getjButtonBuscar() == source || GUIGestionarUbicacion.getjButtonBuscar() == source){
+	   		buscar();
 		}
-		if (this.GUIGestionarUbicacion.getjButtonAgregar() == source){
+		if (GUIGestionarUbicacion.getjButtonAgregar() == source || GUIGestionarUbicacion.getjMenuAgregar() == source){
 			MediadorAltaUbicacion altaUbicacion = new MediadorAltaUbicacion();
 			if (altaUbicacion.esAltaUbicacion()){  
 				this.GUIGestionarUbicacion.getTablePanel().addRow(altaUbicacion.getData());
      		}
 			
 		}
-		if (this.GUIGestionarUbicacion.getJButtonSalir() == source){
+		if (GUIGestionarUbicacion.getJButtonSalir() == source || GUIGestionarUbicacion.getjMenuSalir() == source){
 			GUIGestionarUbicacion.dispose();
 		}
 	}
 	
+	private void buscar() {
+		try {
+   			System.out.println("Button Buscar Ubicacion");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
 	public void show(){
 		GUIGestionarUbicacion.show();
 	}

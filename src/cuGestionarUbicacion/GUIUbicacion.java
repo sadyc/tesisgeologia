@@ -87,10 +87,6 @@ public class GUIUbicacion extends javax.swing.JDialog {
         jLabelLongitud = new javax.swing.JLabel();
         jComboBoxProvincia = new javax.swing.JComboBox();
         jLabelProvincia = new javax.swing.JLabel();
-        jTextFieldCiudad = new javax.swing.JTextField();
-        jTextFieldNombreUbicacion = new javax.swing.JTextField();
-        jTextFieldLongitud = new javax.swing.JTextField();
-        jTextFieldLatitud = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();

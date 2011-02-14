@@ -40,6 +40,9 @@ public class MediadorModificarUbicacion extends Mediador{
 		ubicacion.setProvincia(data[2]);
 		ubicacion.setLatitud(Float.parseFloat(data[3]));
 		ubicacion.setLongitud(Float.parseFloat(data[4]));
+		System.out.println(data[1]);
+		System.out.println(ubicacion.getCiudad());
+		
 		GUIUbicacion = new GUIUbicacion(ubicacion);
 		GUIUbicacion.setListenerButtons(this);
 		GUIUbicacion.show();
