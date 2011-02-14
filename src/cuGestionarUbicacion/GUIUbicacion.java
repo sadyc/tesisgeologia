@@ -219,8 +219,14 @@ public class GUIUbicacion extends javax.swing.JDialog {
 		data[0]= jTextFieldNombreUbicacion.getText();
 		data[1]= jTextFieldCiudad.getText();
 		data[2]= jComboBoxProvincia.getSelectedItem().toString();
-		data[3]= jTextFieldLongitud.getText();
-		data[4]= jTextFieldLatitud.getText();
+		if (jTextFieldLongitud.getText().equals(""))
+			data[3]="0";
+		else
+			data[3]= jTextFieldLongitud.getText();
+		if (jTextFieldLatitud.getText().equals(""))
+			data[4]="0";
+		else
+			data[4]= jTextFieldLatitud.getText();
 		return data;
 	}
 

@@ -29,9 +29,9 @@ public class ControlGestionarUbicacion {
 		Persistencia persistencia= new Persistencia();
 		persistencia.abrirTransaccion();
 		Ubicacion ubicacion = new Ubicacion();
-		ubicacion.setProvincia(data[0]);
+		ubicacion.setNombreUbicacion(data[0]);
 		ubicacion.setCiudad(data[1]);
-		ubicacion.setNombreUbicacion(data[2]);
+		ubicacion.setProvincia(data[2]);
 		ubicacion.setLatitud(Float.parseFloat(data[3]));
 		ubicacion.setLongitud(Float.parseFloat(data[4]));
 		persistencia.insertarObjeto(ubicacion);

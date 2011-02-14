@@ -48,8 +48,6 @@ public class MediadorAltaUbicacion extends Mediador{
 		if (this.GUIUbicacion.getjButtonAceptar() == source||GUIUbicacion.getjMenuItemAgregar()==source){
 			try {
 				aceptar();
-				alta = true;
-				GUIUbicacion.dispose();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -71,10 +69,13 @@ public class MediadorAltaUbicacion extends Mediador{
 			}
 			else {
 				control.insertarUbicacion(GUIUbicacion.getData());
+				alta = true;
+				GUIUbicacion.dispose();
 				
 			}
 		}
 		catch (NumberFormatException e){
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo numeros en los campos de latitud y longitud","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
    	}
