@@ -34,6 +34,7 @@ public class Muestra {
 	private Float coeficienteUniformidad;
 	
 	protected OperadorDeLaboratorio operadorLaboratorio ;
+	protected Cliente cliente;
 	protected Usuario usuario;
 	protected Ubicacion ubicacion;
 	
@@ -51,6 +52,7 @@ public class Muestra {
 		profundidadFinal= new Float(0);
 		peso= new Float(0);
 		operadorLaboratorio = new OperadorDeLaboratorio();
+		cliente = new Cliente();
 		usuario = new Usuario();
 		ubicacion = new Ubicacion();
 		aashto = new AASHTO();
@@ -73,6 +75,7 @@ public class Muestra {
 	 * @param profundidadInicial
 	 * @param profundidadFinal
 	 * @param operador
+	 * @param cliente
 	 * @param usuario
 	 * @param ubicacion
 	 * @param fecha
@@ -82,14 +85,14 @@ public class Muestra {
 	 * @param gradoCurvatura
 	 * @param coeficienteUniformidad
 	 */
-	public Muestra(String nombreMuestra,Float peso, Float profundidadInicial,Float profundidadFinal, 
-			OperadorDeLaboratorio operador, Usuario usuario, Ubicacion ubicacion, AASHTO aashto,
-			SUCS sucs,java.sql.Date fecha) {
+	public Muestra(String nombreMuestra,Float peso, Float profundidadInicial,Float profundidadFinal,OperadorDeLaboratorio operador,
+					Usuario usuario, Ubicacion ubicacion, AASHTO aashto, SUCS sucs,Cliente cliente,java.sql.Date fecha) {
 		this.nombreMuestra = nombreMuestra;
 		this.profundidadInicial = profundidadInicial;
 		this.profundidadFinal = profundidadFinal;
 		this.peso = peso;
 		this.operadorLaboratorio = operador;
+		this.cliente = cliente;
 		this.usuario = usuario;
 		this.ubicacion = ubicacion;
 		this.aashto = aashto;
@@ -170,26 +173,12 @@ public class Muestra {
 	}
 	
 	/**
-	 * @return the operadorLaboratorio
-	 */
-	public OperadorDeLaboratorio getOperador() {
-		return operadorLaboratorio;
-	}
-
-	/**
 	 * Metodo que elimina el operadorLaboratorio cargado
 	 */
 	public void removeOperador() {
 		operadorLaboratorio=null;
 	}
 	
-	/**
-	 * @param operadorLaboratorio the operadorLaboratorio to set
-	 */
-	public void setOperador(OperadorDeLaboratorio operador) {
-		this.operadorLaboratorio = operador;
-	}
-
 	/**
 	 * @return the usuario
 	 */
@@ -420,6 +409,20 @@ public class Muestra {
 		this.coeficienteUniformidad = coeficienteUniformidad;
 	}
 
-	
-	
+
+	/**
+	 * @return the cliente
+	 */
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+
+	/**
+	 * @param cliente the cliente to set
+	 */
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 }

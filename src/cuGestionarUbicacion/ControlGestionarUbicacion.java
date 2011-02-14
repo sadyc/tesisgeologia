@@ -4,6 +4,7 @@
 package cuGestionarUbicacion;
 
 import persistencia.Persistencia;
+import persistencia.domain.Muestra;
 import persistencia.domain.Ubicacion;
 
 /**
@@ -76,6 +77,24 @@ public class ControlGestionarUbicacion {
 		persistencia.cerrarTransaccion();
 	}
 
-		
+	/**
+	 * Retorna la ubicacion persistente que cumpla con el nombre y la ciudad pasado como parametro.
+	 * @param nombreUbicacion
+	 * @param ciudad
+	 * @return
+	 */
+	public Ubicacion obtenerUbicacion (String nombreUbicacion,String ciudad) throws Exception{
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		Ubicacion aux = new Ubicacion();
+		try {
+			aux =(Ubicacion)persistencia.buscarObjeto(aux.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
+			persistencia.cerrarTransaccion();
+		}
+		catch (Exception e) {
+			persistencia.realizarRollback();
+		}
+		return aux;
+	}
 
 }

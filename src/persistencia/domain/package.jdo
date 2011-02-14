@@ -57,6 +57,9 @@
         <field name="usuario" persistence-modifier="persistent">
                  <column name="dni_usuario"/>
         </field>
+		<field name="cliente" persistence-modifier="persistent">
+                 <column name="dni_cliente"/>
+        </field>
          <field name="ubicacion" persistence-modifier="persistent">
                  <column name="ubicacion"/>
         </field>
@@ -107,6 +110,13 @@
                  <column length="100" jdbc-type="CHAR"/>
          </field>
  </class>
+ 
+ <class name="persistencia.domain.Cliente" identity-type="datastore">
+		<inheritance strategy="new-table"/>
+            <field name="muestras" persistence-modifier="persistent" mapped-by="cliente">
+                <collection element-type="persistencia.domain.Muestra"/>
+            </field>
+ </class> 
 
  <class name="persistencia.domain.Ubicacion" identity-type="datastore">
               <inheritance strategy="new-table"/>

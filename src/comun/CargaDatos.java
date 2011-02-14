@@ -3,15 +3,16 @@
  */
 package comun;
 
-import cuLogin.Encriptar;
 import persistencia.Persistencia;
 import persistencia.domain.AASHTO;
+import persistencia.domain.Cliente;
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.SUCS;
 import persistencia.domain.Tamiz;
 import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
+import cuLogin.Encriptar;
 
 /**
  * @author TesisGeologia
@@ -48,6 +49,20 @@ public class CargaDatos {
 		persistencia.abrirTransaccion();
 		try {
 			persistencia.insertarObjeto(operador);
+			persistencia.cerrarTransaccion();
+		} catch (Exception e) {
+			persistencia.realizarRollback();
+		}
+	}
+	
+	/**
+	 * Inserta un cliente con persistencia. 
+	 */ 
+	public void insertarCliente(Cliente cliente) throws Exception{
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		try {
+			persistencia.insertarObjeto(cliente);
 			persistencia.cerrarTransaccion();
 		} catch (Exception e) {
 			persistencia.realizarRollback();
@@ -136,9 +151,6 @@ public class CargaDatos {
 		Ubicacion ubicacion3 = new Ubicacion("Campo 1","Ushuaia","TierraDelFuego",new Float(0),new Float(0));
 
 		OperadorDeLaboratorio operador1 = new OperadorDeLaboratorio("Lionel", "Messi", "10.054.605", "lionel@messi.com", "4665458");
-		Muestra muestra = new Muestra();
-		muestra.setNombreMuestra("nombreMuestra");
-		muestra.setPeso(new Float(50));
 		OperadorDeLaboratorio operador2 = new OperadorDeLaboratorio("Javier", "Pastore", "34.101.099", "javier@pastore.com", "4917015");
 		OperadorDeLaboratorio operador3 = new OperadorDeLaboratorio("Manuel", "Varela", "34.254.973", "manuvarel@gmail.com", "3584192871");
 		Tamiz tamiz1 = new Tamiz("4",4.75);
@@ -246,14 +258,16 @@ public class CargaDatos {
 		Encriptar encriptar = new Encriptar();
 		String a = encriptar.hash("ana");
 		String b = encriptar.hash("pepe");
-		//Usuario usuario1 = new Usuario("Juan", "Perez", "34.771.488", "4917015", "juan@perez.com","juanPerez",b);
+		Usuario usuario1 = new Usuario("Juan", "Perez", "555","juanPerez","administrador", "4917015", "juan@perez.com",b);
 	//	Usuario usuario2 = new Usuario("Susana", "Gomez", "34.101.098", "4917015", "Sus@gomez.com","susy",a);
-		
-		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),operador1,null,ubicacion1,null,null,null);	
-		Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),operador2,null,ubicacion2,null,null,null);	
+		Cliente cliente1 = new Cliente("cliente 1", "no se", "dni", "email", "tel");
+		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),operador1,null,ubicacion1,null,null,cliente1,null);	
+	//	Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),operador2,null,ubicacion2,null,null,cliente1,null);	
 		try {
+			
+			System.out.println("Comienza carga muestras");
 			insertarMuestra(muestra2);
-			insertarMuestra(muestra3);
+	//		insertarMuestra(muestra3);
 			//insertarUbicacion(ubicacion1);
 			//insertarUbicacion(ubicacion2);
 			insertarUbicacion(ubicacion3);
@@ -261,6 +275,8 @@ public class CargaDatos {
 			//insertarOperador(operador1);
 		    insertarOperador(operador3);
 			//insertarOperador(operador2);
+		    System.out.println("Comienza carga clientes");
+			//insertarCliente(cliente1);
 			System.out.println("Comienza carga tamices");
 			
 			insertarTamiz(tamiz1);
@@ -307,7 +323,7 @@ public class CargaDatos {
 			insertarTamiz(tamiz42);
 			insertarTamiz(tamiz43);
 			System.out.println("Comienza carga usuarios");
-		//	insertarUsuario(usuario1); 
+			insertarUsuario(usuario1); 
 		//	insertarUsuario(usuario2);
 		} catch (Exception e) {
 			System.out.println("No se pudieron insertar");

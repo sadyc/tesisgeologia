@@ -7,10 +7,10 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.MouseEvent;
-import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+import persistencia.domain.Cliente;
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
@@ -19,6 +19,7 @@ import persistencia.domain.Usuario;
 import comun.Mediador;
 
 import cuGestionarOperador.MediadorGestionarOperador;
+import cuGestionarUbicacion.ControlGestionarUbicacion;
 import cuGestionarUbicacion.MediadorGestionarUbicacion;
 
 /**
@@ -34,7 +35,8 @@ public class MediadorAltaMuestra extends Mediador{
 	private Ubicacion ubicacion;
 	private OperadorDeLaboratorio operador;
 	private Component frame;
-	private ControlGestionarMuestra control;
+	private ControlGestionarMuestra controlMuestra;
+	private ControlGestionarUbicacion controlUbicacion;
 	private Usuario usuario ;
 	private java.sql.Date sqlDate;
 	private boolean altaMuestra= false;
@@ -47,7 +49,8 @@ public class MediadorAltaMuestra extends Mediador{
 	public MediadorAltaMuestra(String nombreVentana) {
 		super();
 		muestra = new Muestra();
-		control = new ControlGestionarMuestra();
+		controlMuestra = new ControlGestionarMuestra();
+		controlUbicacion = new ControlGestionarUbicacion();
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 	    System.out.println("utilDate:" + utilDate);
@@ -168,9 +171,10 @@ public class MediadorAltaMuestra extends Mediador{
 		data[4]= GUIMuestra.getProfundidadFinal().getText();
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-	    muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,ubicacion,null,null,sqlDate);
+	    Cliente c = new Cliente();
+	    muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,ubicacion,null,null,c,sqlDate);
 		try {
-			control.insertarMuestra(muestra, ubicacion, operador);
+			controlMuestra.insertarMuestra(muestra, ubicacion, operador);
 			altaMuestra = true;
 		} catch (Exception e) {
 			System.out.println("No inserta muestra Mediador Alta Muestra");
@@ -187,8 +191,11 @@ public class MediadorAltaMuestra extends Mediador{
 		try {
 			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion();
 			if((String)mediadorSelUbic.getSeleccionado()[0]!= null){
-				this.GUIMuestra.setUbicacion("(*) Ubicacion:"+(String)mediadorSelUbic.getSeleccionado()[0]);
-				this.ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
+				this.GUIMuestra.setUbicacion("(*) Ubicacion: "+(String)mediadorSelUbic.getSeleccionado()[0]);
+				System.out.println((String)mediadorSelUbic.getSeleccionado()[0]);
+				System.out.println((String)mediadorSelUbic.getSeleccionado()[1]);
+				ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
+				ubicacion.setCiudad((String)mediadorSelUbic.getSeleccionado()[1]);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -202,7 +209,7 @@ public class MediadorAltaMuestra extends Mediador{
 		try {
 			MediadorGestionarOperador seleccionarOperador = new MediadorGestionarOperador();
 			if ((String)seleccionarOperador.getSeleccionado()[0]!=null) {
-				this.GUIMuestra.setOperador("(*) Operador:"+(String)seleccionarOperador.getSeleccionado()[0]+" "+(String)seleccionarOperador.getSeleccionado()[1]);
+				this.GUIMuestra.setOperador("(*) Operador: "+(String)seleccionarOperador.getSeleccionado()[0]+" "+(String)seleccionarOperador.getSeleccionado()[1]);
 				this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
 			}
 			

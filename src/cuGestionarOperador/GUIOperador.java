@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JTextField;
 
-import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.Persona;
 
 public class GUIOperador extends javax.swing.JDialog {
 		   
@@ -39,7 +39,7 @@ public class GUIOperador extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }
     
-    public GUIOperador(OperadorDeLaboratorio operador){
+    public GUIOperador(Persona operador){
     	initComponents();
     	jTextFieldApellido.setText(operador.getApellido());
     	jTextFieldDni.setText(operador.getDni());
