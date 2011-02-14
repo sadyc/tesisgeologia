@@ -90,13 +90,13 @@ public class MediadorGestionarUbicacion implements ActionListener, KeyListener, 
 		if (this.GUIGestionarUbicacion.getjButtonEliminar() == source){
 			eliminar();
 		}
-		if (this.GUIGestionarUbicacion.getJButtonSeleccionar() == source){
+		if (this.GUIGestionarUbicacion.getjButtonSeleccionar() == source){
 			seleccionar();
 		}
 		if (this.GUIGestionarUbicacion.getjButtonModificar() == source){
 			modificar();
 		}
-		if (this.GUIGestionarUbicacion.getJButtonBuscar() == source){
+		if (this.GUIGestionarUbicacion.getjButtonBuscar() == source){
 	   		try {
 	   			System.out.println("Button Buscar Ubicacion");
 			} catch (Exception e) {
