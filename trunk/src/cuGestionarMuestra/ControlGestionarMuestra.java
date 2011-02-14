@@ -4,9 +4,9 @@
 package cuGestionarMuestra;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import persistencia.Persistencia;
+import persistencia.domain.Cliente;
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
@@ -39,9 +39,12 @@ public class ControlGestionarMuestra {
 			Class claseUbicacion = ubicacion.getClass();
 			mu.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
 			Class claseOperador = operador.getClass();
-			mu.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
+			mu.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
 			Class claseUsuario = usuario.getClass();
-			//mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni==123"));//Todavia no esta implementado el caso de uso Usuario
+			mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+"555"+"'")); //(Usuario)persistencia.buscarObjeto(claseUsuario, "dni==123"));//Todavia no esta implementado el caso de uso Usuario
+			Cliente cliente = new Cliente();
+			Class claseCliente = cliente.getClass();
+			mu.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+"dni"+"'"));
 			persistencia.insertarObjeto(mu);
 			persistencia.cerrarTransaccion();
 			persistencia.cerrarPersistencia();
@@ -106,7 +109,7 @@ public class ControlGestionarMuestra {
 			aux.setProfundidadFinal(Float.parseFloat(data[4]));
 			OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
 			Class claseOperador = operador.getClass();
-			aux.setOperador((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+data[5]+"'"));
+			aux.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+data[5]+"'"));
 			Ubicacion ubicacion = new Ubicacion();
 			Class claseUbicacion = ubicacion.getClass();
 			aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+data[0]+"'"));

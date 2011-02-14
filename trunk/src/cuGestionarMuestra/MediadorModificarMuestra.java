@@ -41,8 +41,8 @@ public class MediadorModificarMuestra extends Mediador{
 		super();
 		ubicacionModificar = fila[0];
 		nombreMuestraModificar = fila[1];
-		dniOperadorModificar = (control.obtenerMuestra(fila[1], fila[0])).getOperador().getDni();
-		String nombreOperador = (control.obtenerMuestra(fila[1], fila[0])).getOperador().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0]).getOperador().getApellido();
+		dniOperadorModificar = (control.obtenerMuestra(fila[1], fila[0])).getOperadorLaboratorio().getDni();
+		String nombreOperador = (control.obtenerMuestra(fila[1], fila[0])).getOperadorLaboratorio().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0]).getOperadorLaboratorio().getApellido();
 		GUIMuestra = new GUIMuestra(fila, nombreOperador);
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);

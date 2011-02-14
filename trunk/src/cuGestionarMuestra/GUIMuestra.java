@@ -1,325 +1,337 @@
 package cuGestionarMuestra;
 
 
-	import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
+	import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-
 import javax.swing.JTextField;
 
-	/**
-	 * Clase GUI que reprensenta la ventana para una muestra.
-	 * @author TesisGeologia.
+/**
+ * Clase GUI que reprensenta la ventana para una muestra.
+ * @author TesisGeologia.
+ */
+	    
+public class GUIMuestra extends javax.swing.JDialog {
+	
+    private javax.swing.JLabel cliente;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JButton seleccionarUbicacion;
+    private javax.swing.JButton seleccionarOperador;
+    private javax.swing.JButton aceptar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem aceptarMenu;
+    private javax.swing.JMenuItem cancelarMenu;
+    private javax.swing.JMenuItem versionMenu;
+    private javax.swing.JMenuItem jMenuItemSeleccionarCliente;
+    private javax.swing.JMenuItem jMenuItemSeleccionarOperador;
+    private javax.swing.JMenuItem jMenuItemSeleccionarUbicacion;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField profundidadInicial;
+    private javax.swing.JTextField profundidadFinal;
+    private javax.swing.JTextField peso;
+    private javax.swing.JLabel operador;
+    private javax.swing.JButton seleccionarCliente;
+    private javax.swing.JLabel ubicacion;
+    private javax.swing.JLabel usuario;
+    
+    
+
+    /** Creates new form GUIMuestra */
+    public GUIMuestra(boolean modal) {
+        super();
+        nombre = new JTextField(15);
+        profundidadInicial = new JTextField(15);
+		profundidadFinal = new JTextField(15);
+		peso = new JTextField(15);
+        this.setLocationRelativeTo(null);
+        setModal(modal);
+	    initComponents();
+
+ 
+    }
+    
+    /**
+	 * This is the parametrized constructor used in modification
+	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
-	public class GUIMuestra extends javax.swing.JDialog {
-
-	    // Variables declaration - do not modify
-	    private javax.swing.JButton aceptar;
-	    private javax.swing.JButton cancelar;
-	    private javax.swing.JButton seleccionarUbicacion;
-	    private javax.swing.JButton seleccionarOperador;
-	    private javax.swing.JLabel jLabel1;
-	    private javax.swing.JLabel jLabel2;
-	    private javax.swing.JLabel jLabel3;
-	    private javax.swing.JLabel jLabel4;
-	    private javax.swing.JLabel ubicacion;
-	    private javax.swing.JLabel operador;
-	    private javax.swing.JLabel usuario;
-	    private javax.swing.JMenu jMenu1;
-	    private javax.swing.JMenu jMenu2;
-	    private javax.swing.JMenuBar jMenuBar1;
-	    private javax.swing.JMenuItem aceptarMenu;
-	    private javax.swing.JMenuItem cancelarMenu;
-	    private javax.swing.JMenuItem versionMenu;
-	    private javax.swing.JTextField nombre;
-	    private javax.swing.JTextField peso;
-	    private javax.swing.JTextField profundidadInicial;
-	    private javax.swing.JTextField profundidadFinal;
-	    // End of variables declaration
-
-
-	    
-	    /** Creates new form GUIMuestra */
-	    public GUIMuestra(boolean modal) {
-	        super();
-	        nombre = new JTextField(15);
-			profundidadInicial = new JTextField(15);
-			profundidadFinal = new JTextField(15);
-			peso = new JTextField(15);
-			ubicacion = new JLabel("(*) Ubicacion: ");
-			operador = new JLabel ("(*) Operador: ");
-	        initComponents();
-	        setModal(modal);
-	        this.setLocationRelativeTo(null);
-	    }
-	    
-	    /**
-		 * This is the parametrized constructor used in modification
-		 * @param data  arreglo que almacena los datos de una muestra. 
-		 */
-		public GUIMuestra(String[] fila,String nombreOperador) {
+	public GUIMuestra(String[] fila,String nombreOperador) {
+	
+		super();
+		initComponents();
+		nombre.setText(fila[1]);
+		peso.setText(fila[2]);
+		profundidadInicial.setText(fila[3]);
+		profundidadFinal.setText(fila[4]);
+		ubicacion = new JLabel("(*) Ubicación: "+ fila[0]);
+		operador = new JLabel ("(*) Operador: "+ nombreOperador);
+		cliente = new JLabel("(*) Cliente: ");
+		setModal(true);
 		
-			super();
-			nombre = new JTextField(15);
-			profundidadInicial = new JTextField(15);
-			profundidadFinal = new JTextField(15);
-			peso = new JTextField(15);
-			nombre.setText(fila[1]);
-			peso.setText(fila[2]);
-			profundidadInicial.setText(fila[3]);
-			profundidadFinal.setText(fila[4]);
-			ubicacion = new JLabel("(*) Ubicacion: "+ fila[0]);
-			operador = new JLabel ("(*) Operador: "+ nombreOperador);
-			
-			seleccionarUbicacion = new JButton("SELECCIONAR UBICACION");
-			seleccionarOperador = new JButton("SELECCIONAR OPERADOR");
-			setModal(true);
-			initComponents();
-		}
+	}
 
-	    
-	    
+  
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+    private void initComponents() {
 
-	    /** This method is called from within the constructor to
-	     * initialize the form.
-	     * WARNING: Do NOT modify this code. The content of this method is
-	     * always regenerated by the Form Editor.
-	     */
-	    @SuppressWarnings("unchecked")
-	    // <editor-fold defaultstate="collapsed" desc="Generated Code">
-	    private void initComponents() {
+        aceptar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        nombre = new javax.swing.JTextField();
+        profundidadInicial = new javax.swing.JTextField();
+        profundidadFinal = new javax.swing.JTextField();
+        peso = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        ubicacion = new javax.swing.JLabel();
+        seleccionarUbicacion = new javax.swing.JButton();
+        operador = new javax.swing.JLabel();
+        seleccionarOperador = new javax.swing.JButton();
+        usuario = new javax.swing.JLabel();
+        cliente = new javax.swing.JLabel();
+        seleccionarCliente = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItemSeleccionarUbicacion = new javax.swing.JMenuItem();
+        jMenuItemSeleccionarOperador = new javax.swing.JMenuItem();
+        jMenuItemSeleccionarCliente = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        aceptarMenu = new javax.swing.JMenuItem();
+        cancelarMenu = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        versionMenu = new javax.swing.JMenuItem();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cargar Muestra\n");
+        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(null);
+        setModal(true);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
-	        
-	        jLabel1 = new javax.swing.JLabel();
-	        jLabel2 = new javax.swing.JLabel();
-	        jLabel3 = new javax.swing.JLabel();
-	        jLabel4 = new javax.swing.JLabel();
-	        seleccionarUbicacion = new javax.swing.JButton();
-	        seleccionarOperador = new javax.swing.JButton();
-	        usuario = new javax.swing.JLabel();
-	        jMenuBar1 = new javax.swing.JMenuBar();
-	        jMenu1 = new javax.swing.JMenu();
-	        aceptarMenu = new javax.swing.JMenuItem();
-	        cancelarMenu = new javax.swing.JMenuItem();
-	        jMenu2 = new javax.swing.JMenu();
-	        versionMenu = new javax.swing.JMenuItem();
-	        aceptar = new JButton("AGREGAR");
-			cancelar = new JButton("CANCELAR");
-	        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-	        setTitle("Cargar Muestra\n");
-	        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
-	        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-	        setModal(true);
-	        addMouseListener(new java.awt.event.MouseAdapter() {
-	            public void mouseClicked(java.awt.event.MouseEvent evt) {
-	                formMouseClicked(evt);
-	            }
-	        });
+        aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png"))); // NOI18N
+        aceptar.setText("Agregar");
+        aceptar.setAutoscrolls(true);
 
-	        
-	        
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
+        cancelar.setText("Cancelar");
+        cancelar.setAutoscrolls(true);
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
+        profundidadInicial.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-	        
-	        aceptar.setAutoscrolls(true);
+        profundidadFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
 
-	        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-	        setTitle("Cargar Muestra\n");
-	        setBounds(new java.awt.Rectangle(0, 0, 0, 0));
-	        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-	        setModal(true);
-	        addMouseListener(new java.awt.event.MouseAdapter() {
-	            public void mouseClicked(java.awt.event.MouseEvent evt) {
-	                formMouseClicked(evt);
-	            }
-	        });
+        peso.setMinimumSize(new java.awt.Dimension(5, 20));
+        peso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
-	        cancelar.setAutoscrolls(true);
-	        cancelar.addActionListener(new java.awt.event.ActionListener() {
-	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	                jButton2ActionPerformed(evt);
-	            }
-	        });
+        jLabel1.setText("(*) Nombre: ");
 
+        jLabel2.setText("(*) Peso: ");
 
+        jLabel3.setText("Profundidad Inicial: ");
 
-	        nombre.addActionListener(new java.awt.event.ActionListener() {
-	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	                jTextField1ActionPerformed(evt);
-	            }
-	        });
+        jLabel4.setText("Profundidad Final: ");
 
-	        
-	        cancelar.setAutoscrolls(true);
-	        cancelar.addActionListener(new java.awt.event.ActionListener() {
-	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	                jButton2ActionPerformed(evt);
-	            }
-	        });
+        ubicacion.setText("(*) Ubicación: ");
 
+        seleccionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
+        seleccionarUbicacion.setText("Seleccionar Ubicación"); 
 
-	        nombre.addActionListener(new java.awt.event.ActionListener() {
-	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	                jTextField1ActionPerformed(evt);
-	            }
-	        });
+        operador.setText("(*) Operador:");
 
+        seleccionarOperador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-engineering-3.png"))); // NOI18N
+        seleccionarOperador.setText("Seleccionar Operador");
 
+        usuario.setText("Usuario:");
 
-	        peso.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        cliente.setText("(*) Cliente:");
 
+        seleccionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/system-switch-user.png"))); // NOI18N
+        seleccionarCliente.setText("Seleccionar Cliente");
+        seleccionarCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
+        jLabel5.setText("( grs. )");
 
-	        profundidadInicial.addActionListener(new java.awt.event.ActionListener() {
-	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	                jTextField3ActionPerformed(evt);
-	            }
-	        });
+        jLabel6.setText("( mts. )");
 
+        jLabel7.setText("( mts. )");
 
-	        profundidadFinal.addActionListener(new java.awt.event.ActionListener() {
-	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	                jTextField4ActionPerformed(evt);
-	            }
-	        });
+        jMenu1.setText("Herramientas");
 
+        jMenuItemSeleccionarUbicacion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemSeleccionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
+        jMenuItemSeleccionarUbicacion.setText("Seleccionar Ubicación");
+        jMenu1.add(jMenuItemSeleccionarUbicacion);
 
-	        jLabel1.setText("(*) Nombre: ");
+        jMenuItemSeleccionarOperador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemSeleccionarOperador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-engineering-3.png"))); // NOI18N
+        jMenuItemSeleccionarOperador.setText("Seleccionar Operador");
+        jMenu1.add(jMenuItemSeleccionarOperador);
 
+        jMenuItemSeleccionarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemSeleccionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/system-switch-user.png"))); // NOI18N
+        jMenuItemSeleccionarCliente.setText("Seleccionar Cliente");
+        jMenu1.add(jMenuItemSeleccionarCliente);
+        jMenu1.add(jSeparator1);
 
+        aceptarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png"))); // NOI18N
+        aceptarMenu.setText("Agregar");
+        jMenu1.add(aceptarMenu);
 
-	        jLabel3.setText("(*) Profundidad Inicial : mts");
+        cancelarMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        cancelarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
+        cancelarMenu.setText("Cancelar");
+        jMenu1.add(cancelarMenu);
 
-	        jLabel2.setText("(*) Peso: gr");
+        jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("Ayuda");
 
-	        jLabel4.setText("(*) Profundidad Final : mts");
+        versionMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
+        versionMenu.setText("Versión");
+        jMenu2.add(versionMenu);
 
-	        jLabel3.setText("(*) Profundidad Inicial : mts");
+        jMenuBar1.add(jMenu2);
 
-	        seleccionarUbicacion.setText("Seleccionar Ubicación");
+        setJMenuBar(jMenuBar1);
 
-	        jLabel4.setText("(*) Profundidad Final : mts");
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(aceptar)
+                        .addGap(79, 79, 79)
+                        .addComponent(cancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(profundidadInicial)
+                                    .addComponent(peso)
+                                    .addComponent(profundidadFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ubicacion, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                    .addComponent(operador, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                    .addComponent(cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(seleccionarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(seleccionarUbicacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(seleccionarOperador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(usuario)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(peso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(profundidadInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(profundidadFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(seleccionarUbicacion)
+                    .addComponent(ubicacion))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(seleccionarOperador)
+                    .addComponent(operador))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(seleccionarCliente)
+                    .addComponent(cliente))
+                .addGap(38, 38, 38)
+                .addComponent(usuario)
+                .addGap(73, 73, 73)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cancelar))
+                .addContainerGap())
+        );
 
-	        seleccionarOperador.setText("Seleccionar Operador");
+        pack();
+    }// </editor-fold>
 
-	        usuario.setText("Usuario:");
+                                   
 
-	        jMenu1.setText("Herramientas");
-
-	        aceptarMenu.setText("Agregar");
-	        jMenu1.add(aceptarMenu);
-
-	        cancelarMenu.setText("Cancelar");
-	        jMenu1.add(cancelarMenu);
-
-	        jMenuBar1.add(jMenu1);
-
-	        jMenu2.setText("Ayuda");
-
-	        versionMenu.setText("Versión");
-	        jMenu2.add(versionMenu);
-
-	        jMenuBar1.add(jMenu2);
-
-	        setJMenuBar(jMenuBar1);
-	        
-	        JPanel jPanel1 = new JPanel();
-            jPanel1.setLayout(new BorderLayout());
-            jPanel1.add(new JPanel(),BorderLayout.WEST);
-            jPanel1.add(new JPanel(),BorderLayout.SOUTH);
-	        
-	        
-	        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-	        getContentPane().setLayout(layout);
-	        layout.setHorizontalGroup(
-	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	            .addGroup(layout.createSequentialGroup()
-	                .addContainerGap()
-	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                    .addGroup(layout.createSequentialGroup()
-	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                            .addComponent(jLabel1)
-	                            .addComponent(jLabel4)
-	                            .addComponent(jLabel3)
-	                            .addComponent(jLabel2))
-	                        .addGap(18, 18, 18)
-	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-	                            .addComponent(profundidadFinal)
-	                            .addComponent(profundidadInicial)
-	                            .addComponent(peso)
-	                            .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
-	                        .addGap(272, 272, 272))
-	                    .addGroup(layout.createSequentialGroup()
-	                        .addComponent(usuario)
-	                        .addContainerGap(484, Short.MAX_VALUE))
-	                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-	                        .addComponent(aceptar)
-	                        .addGap(58, 58, 58)
-	                        .addComponent(cancelar)
-	                        .addGap(160, 160, 160))
-	                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                            .addComponent(ubicacion)
-	                            .addComponent(operador))
-	                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 292, Short.MAX_VALUE)
-	                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-	                            .addGroup(layout.createSequentialGroup()
-	                                .addComponent(seleccionarOperador)
-	                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-	                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-	                                .addComponent( seleccionarUbicacion)
-	                                .addGap(30, 30, 30))))))
-	        );
-	        layout.setVerticalGroup(
-	            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	            .addGroup(layout.createSequentialGroup()
-	                .addContainerGap()
-	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(jLabel1))
-	                .addGap(18, 18, 18)
-	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(peso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(jLabel2))
-	                .addGap(18, 18, 18)
-	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(profundidadInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(jLabel3))
-	                .addGap(18, 18, 18)
-	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(profundidadFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-	                    .addComponent(jLabel4))
-	                .addGap(18, 18, 18)
-	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                    .addComponent(seleccionarUbicacion)
-	                    .addComponent(ubicacion))
-	                .addGap(18, 18, 18)
-	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-	                    .addGroup(layout.createSequentialGroup()
-	                        .addComponent(operador)
-	                        .addGap(37, 37, 37)
-	                        .addComponent(usuario))
-	                    .addComponent(seleccionarOperador))
-	                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-	                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-	                    .addComponent(cancelar)
-	                    .addComponent(aceptar))
-	                .addContainerGap())
-	        );
-	        setResizable(false);
-	        pack();
-	    }// </editor-fold>
-
-	    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+   	    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 	        // TODO add your handling code here:
 	    }                                        
 
