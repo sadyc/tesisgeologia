@@ -29,7 +29,7 @@ public class MediadorGestionarUbicacion implements ActionListener, KeyListener, 
 		super();
 		cargarTablaDeMuestras();
 		GUIGestionarUbicacion = new GUIGestionarUbicacion(data);
-		GUIGestionarUbicacion.setTitle("Seleccionar una muestra");
+		GUIGestionarUbicacion.setTitle("Gestionar Ubicacion");
 		GUIGestionarUbicacion.setModal(true);
 		GUIGestionarUbicacion.setListenerButtons(this);
 		GUIGestionarUbicacion.setListenerTable(this);
