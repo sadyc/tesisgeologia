@@ -46,7 +46,8 @@ public class MediadorGestionarMuestra extends Mediador{
 		GUIABMMuestra.setListenerButtons(this);
 		GUIABMMuestra.setListenerTable(this);
 		GUIABMMuestra.setMouseListener(this);
-		GUIABMMuestra.setKeyListener(this);     
+		GUIABMMuestra.setKeyListener(this);    
+		GUIABMMuestra.setLocationRelativeTo(null);
 		GUIABMMuestra.getJButtonSeleccionar().setEnabled(true);
 		GUIABMMuestra.getSeleccionarMenu().setEnabled(false);
 		GUIABMMuestra.setModal(true);

@@ -4,6 +4,8 @@
 package cuGestionarUbicacion;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import persistencia.domain.Ubicacion;
@@ -88,6 +90,30 @@ public class GUIUbicacion extends javax.swing.JDialog {
         jLabelLongitud = new javax.swing.JLabel();
         jComboBoxProvincia = new javax.swing.JComboBox();
         jLabelProvincia = new javax.swing.JLabel();
+        jTextFieldLongitud.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '-'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
+        jTextFieldLatitud.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '-') && (caracter != '.'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();

@@ -59,8 +59,7 @@ public class GUIGestionarUbicacion extends JDialog	{
 	public GUIGestionarUbicacion(Object [][] datos) {
 		super();
 		setModal(true);
-		setLocationRelativeTo(null);
-        setResizable(true);
+		setResizable(true);
         data = datos;
 		tablePanel = getTablePanel();
 		initComponents();

@@ -35,6 +35,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 		GUIGestionarUbicacion.setModal(true);
 		GUIGestionarUbicacion.setListenerButtons(this);
 		GUIGestionarUbicacion.setListenerTable(this);
+		GUIGestionarUbicacion.setLocationRelativeTo(null);
 		GUIGestionarUbicacion.setMouseListener(this);
 		GUIGestionarUbicacion.setKeyListener(this);
 		GUIGestionarUbicacion.getjButtonSeleccionar().setEnabled(false);

@@ -66,6 +66,7 @@ public class MediadorAltaMuestra extends Mediador{
 		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
+		GUIMuestra.setKeyListener(this);
 		GUIMuestra.show();
 	}
 	
@@ -139,16 +140,16 @@ public class MediadorAltaMuestra extends Mediador{
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
 		try{
 		 	if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("(*) Ubicacion:") || GUIMuestra.getOperador().getText().equals("(*) Operador:") ){
-	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atencion", JOptionPane.WARNING_MESSAGE);
 			}
 			else {
 				if (Float.parseFloat(GUIMuestra.getPeso().getText()) <= 0 || Float.parseFloat(GUIMuestra.getPeso().getText()) > 5000) {
-					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","Atencion", JOptionPane.WARNING_MESSAGE);
 				}
 				else {
 					if (!GUIMuestra.getProfundidadInicial().getText().equals("") && !GUIMuestra.getProfundidadFinal().getText().equals("")){
 						if (Float.parseFloat(GUIMuestra.getProfundidadFinal().getText()) < Float.parseFloat(GUIMuestra.getProfundidadInicial().getText())){
-							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","Atencion", JOptionPane.WARNING_MESSAGE);
 						}
 						else{
 							insertarMuestra();
@@ -163,7 +164,7 @@ public class MediadorAltaMuestra extends Mediador{
 			}
 		}
 		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo numeros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"El formato de uno de los numeros no es correcto, solo deben poseer un punto(.)","Atencion", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 	
@@ -239,10 +240,46 @@ public class MediadorAltaMuestra extends Mediador{
 	public String[] getData() {
 		return data;
 	}
-
+	
 	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+	public void keyTyped(KeyEvent arg0) {
+		if (GUIMuestra.getPeso().getText().length()==25){ 
+			arg0.consume();
+			System.out.print("\07");
+		}
+		if (GUIMuestra.getProfundidadInicial().getText().length()==25){ 
+			arg0.consume();
+			System.out.print("\07");
+		}
+		if (GUIMuestra.getProfundidadFinal().getText().length()==25){ 
+			arg0.consume();
+			System.out.print("\07");
+		}
+		if (GUIMuestra.getNombre().getText().length()==25){ 
+			arg0.consume();
+			System.out.print("\07");
+		}
+		if (!GUIMuestra.getPeso().getText().isEmpty()){
+			char caracter = GUIMuestra.getPeso().getText().charAt(0);
+			if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.')){
+	             arg0.consume();  
+	             System.out.print("\07");
+			}
+		}
+		if (!GUIMuestra.getProfundidadFinal().getText().isEmpty()){
+			char caracter = GUIMuestra.getProfundidadFinal().getText().charAt(0);
+			if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.')){
+	             arg0.consume();  
+	             System.out.print("\07");
+			}
+		}
+		if (!GUIMuestra.getProfundidadInicial().getText().isEmpty()){
+			char caracter = GUIMuestra.getProfundidadInicial().getText().charAt(0);
+			if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.')){
+	             arg0.consume();  
+	             System.out.print("\07");
+			}
+		}
 		
 	}
 }

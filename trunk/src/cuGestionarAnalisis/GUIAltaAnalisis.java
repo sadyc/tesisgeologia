@@ -9,6 +9,9 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
@@ -95,6 +98,18 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        pesoRetenido.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
         jMenuItemTamiz = new javax.swing.JMenuItem();
         jMenuItemAgregar = new javax.swing.JMenuItem();
         jMenuItemCancelar = new javax.swing.JMenuItem();
@@ -206,11 +221,9 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
     }// </editor-fold>
 
     private void jButtonSeleccionarTamizActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
     }
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
     }
 
 	public void setListenerButtons(ActionListener lis) {
@@ -220,8 +233,6 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 	    jMenuItemAgregar.addActionListener(lis);
 	    jMenuItemCancelar.addActionListener(lis);
 	    jMenuItemTamiz.addActionListener(lis);
-	    
-		
 	}
 	/**
 	 * @return the aceptar
@@ -273,6 +284,10 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 	 */
 	public javax.swing.JMenuItem getjMenuItemTamiz() {
 		return jMenuItemTamiz;
+	}
+	
+	public void setKeyListener(KeyListener lis){
+		pesoRetenido.addKeyListener(lis);
 	}
 
 	
