@@ -32,6 +32,7 @@ public class MediadorSeleccionarOperador implements ActionListener, KeyListener,
 	private Object [] seleccionado;
 	private Object [][] data;
 	private Component frame;
+	private boolean seleccionoOperador = false;
 	private ControlGestionarOperador control = new ControlGestionarOperador();
 
 	
@@ -179,7 +180,8 @@ public class MediadorSeleccionarOperador implements ActionListener, KeyListener,
 		}
 		else{
 			try{
-				seleccionado = GUIGestionarOperador.getTablePanel().getRow(GUIGestionarOperador.getTablePanel().getSelectedRow());//
+				seleccionado = GUIGestionarOperador.getTablePanel().getRow(GUIGestionarOperador.getTablePanel().getSelectedRow());
+				seleccionoOperador = true;
 				System.out.println("Button Seleccionar Operador");
 				GUIGestionarOperador.dispose();
 			}
@@ -250,4 +252,13 @@ public class MediadorSeleccionarOperador implements ActionListener, KeyListener,
 			// TODO Auto-generated method stub
 			
 		}
+
+		/**
+		 * @return the seleccionoOperador
+		 */
+		public boolean isSeleccionoOperador() {
+			return seleccionoOperador;
+		}
+		
+		
 }

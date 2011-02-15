@@ -177,6 +177,8 @@ public class MediadorAltaMuestra extends Mediador{
 		data[2]= GUIMuestra.getPeso().getText();
 		data[3]= GUIMuestra.getProfundidadInicial().getText();
 		data[4]= GUIMuestra.getProfundidadFinal().getText();
+		data[5]= operador.getNombre()+" "+operador.getApellido();
+		data[6]= cliente.getNombre()+" "+cliente.getApellido();
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 	    muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,ubicacion,null,null,cliente,sqlDate);
@@ -215,8 +217,10 @@ public class MediadorAltaMuestra extends Mediador{
 	public void seleccionarOperador(){
 		try {
 			MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
-			if ((String)seleccionarOperador.getSeleccionado()[0]!=null) {
+			if (seleccionarOperador.isSeleccionoOperador()) {
 				this.GUIMuestra.setOperador("(*) Operador: "+(String)seleccionarOperador.getSeleccionado()[0]+" "+(String)seleccionarOperador.getSeleccionado()[1]);
+				operador.setNombre(((String)seleccionarOperador.getSeleccionado()[0]));
+				operador.setApellido(((String)seleccionarOperador.getSeleccionado()[1]));
 				this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
 			}
 		} catch (Exception e) {
@@ -230,8 +234,12 @@ public class MediadorAltaMuestra extends Mediador{
 	public void seleccionarCliente(){
 		try {
 			MediadorSeleccionarCliente seleccionarCliente = new MediadorSeleccionarCliente();
+			if (seleccionarCliente.isSeleccionoCliente()){
 			GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]);
+			cliente.setNombre(((String)seleccionarCliente.getSeleccionado()[0]));
+			cliente.setApellido(((String)seleccionarCliente.getSeleccionado()[1]));
 			cliente.setDni(((String)seleccionarCliente.getSeleccionado()[2]));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

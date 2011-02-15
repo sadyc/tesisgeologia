@@ -27,6 +27,7 @@ public class MediadorSeleccionarCliente implements ActionListener, KeyListener, 
 	private Object [] seleccionado = new Object [5];
 	private Object [][] data;
 	private Component frame;
+	private boolean seleccionoCliente = false;
 	private ControlGestionarCliente control = new ControlGestionarCliente();
 
 	
@@ -175,6 +176,7 @@ public class MediadorSeleccionarCliente implements ActionListener, KeyListener, 
 		else{
 			try{
 				seleccionado = GUIGestionarCliente.getTablePanel().getRow(GUIGestionarCliente.getTablePanel().getSelectedRow());//
+				seleccionoCliente = true;
 				System.out.println("Button Seleccionar Cliente");
 				GUIGestionarCliente.dispose();
 			}
@@ -245,4 +247,13 @@ public class MediadorSeleccionarCliente implements ActionListener, KeyListener, 
 			// TODO Auto-generated method stub
 			
 		}
+
+		/**
+		 * @return the seleccionoCliente
+		 */
+		public boolean isSeleccionoCliente() {
+			return seleccionoCliente;
+		}
+		
+		
 }
