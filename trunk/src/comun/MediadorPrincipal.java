@@ -22,6 +22,39 @@ public class MediadorPrincipal implements ActionListener{
 	private GUIPrincipal GUIPrincipal = null;
 	private Component frame;
 	private Usuario usuario;
+
+	private void btnGenerarActionPerformed(java.awt.event.ActionEve nt evt) {
+		SimpleDateFormat dateformat = new SimpleDateFormat("ddMMyy");
+		if(txtContenedor.getText().equalsIgnoreCase("")){
+			JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
+		}else{
+		try{
+			Runtime runtime = Runtime.getRuntime();
+			File backupFile = new File(String.valueOf(FileChooser.getCurrentDirectory()) + "\\nombreArchivo" + dateformat.format(calendario.getTime()) + ".sql");
+			/*backupFile se utiliza para indicarle la ubicacion y nombre del archivo que contendra el backup con la extencion .sql*/
+	
+			FileWriter fw = new FileWriter(backupFile); 
+			/*objeto que escribira sobre el backup archivo*/
+	
+			Process child = runtime.exec("C:\\Archivos de programa\\MySQL\\MySQL Server 5.0\\bin\\mysqldump --opt --password= --user=root <nameDB>");
+			/*Process es el que ejecuta el comando para buscar el mysqldump.exe*/
+			InputStreamReader irs = new InputStreamReader(child.getInputStream());
+			BufferedReader br = new BufferedReader(irs);
+			/* se escribe sobre el archivo*/
+			String line;
+			while( (line=br.readLine()) != null ) {
+			fw.write(line + "\n");
+			}
+			fw.close();
+			irs.close();
+			br.close();
+		}catch(Exception e){
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Error no se genero el archivo por el siguiente motivo: " + e.getMessage(), "Verificar",JOptionPane.ERROR_MESSAGE);
+		}
+		JOptionPane.showMessageDialog(null, "Archivo generado", "Verificar",JOptionPane.INFORMATION_MESSAGE);
+		}
+	}
 	
 	public MediadorPrincipal(String nombreVentana, Usuario usuario) throws Exception {
 		super();
@@ -203,6 +236,5 @@ public class MediadorPrincipal implements ActionListener{
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
 	
 }
