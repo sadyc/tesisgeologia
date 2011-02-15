@@ -36,6 +36,7 @@ public class MediadorAltaUbicacion extends Mediador{
 		super();
 		GUIUbicacion = new GUIUbicacion();
 		GUIUbicacion.setListenerButtons(this);
+		GUIUbicacion.setKeyListener(this);
 		GUIUbicacion.show();
 		
 	}
@@ -101,10 +102,12 @@ public class MediadorAltaUbicacion extends Mediador{
 	
 	public void keyTyped(KeyEvent arg0) {
 		if (GUIUbicacion.getjTextFieldCiudad().getText().length()==25){ 
-			arg0.consume(); 
+			arg0.consume();
+			System.out.print("\07");
 		}
 		if (GUIUbicacion.getjTextFieldNombreUbicacion().getText().length()==25){
 			arg0.consume();
+			System.out.print("\07");
 		}
 	}
 	

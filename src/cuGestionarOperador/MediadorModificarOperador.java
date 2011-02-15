@@ -28,6 +28,7 @@ public class MediadorModificarOperador extends Mediador{
 		GUIOperador = new GUIOperador(operadorModificar);
 		GUIOperador.setTitle("Modificar Operador de Laboratorio");
 		GUIOperador.setListenerButtons(this);
+		GUIOperador.setKeyListener(this);
 		GUIOperador.setModal(true);
 		GUIOperador.show();
 	}
@@ -144,23 +145,31 @@ public class MediadorModificarOperador extends Mediador{
 	
 	public void keyTyped(KeyEvent arg0) {
 		if (GUIOperador.getjTextFieldNombre().getText().length()==25){ 
-			arg0.consume(); 
+			arg0.consume();
+			System.out.print("\07");
 		}
 		if (GUIOperador.getjTextFieldApellido().getText().length()==25){ 
 			arg0.consume(); 
+			System.out.print("\07");
 		}
 		if (GUIOperador.getjTextFieldDni().getText().length()==25){ 
 			arg0.consume(); 
+			System.out.print("\07");
 		}
-		char caracter = arg0.getKeyChar();
-        if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.')){
-	             arg0.consume();  // ignorar el evento de teclado
-	    }
+		if (!GUIOperador.getjTextFieldTelefono().getText().isEmpty()){
+			char caracter = GUIOperador.getjTextFieldTelefono().getText().charAt(0);
+			if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.')){
+	             arg0.consume();  
+	             System.out.print("\07");
+			}
+		}
         if (GUIOperador.getjTextFieldEmail().getText().length()==25){ 
 			arg0.consume(); 
+			System.out.print("\07");
 		}
-        if (GUIOperador.getjTextFieldEmail().getText().length()==25){ 
+        if (GUIOperador.getjTextFieldTelefono().getText().length()==25){ 
 			arg0.consume(); 
+			System.out.print("\07");
 		}
 	}
 

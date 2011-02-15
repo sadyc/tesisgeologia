@@ -54,6 +54,7 @@ public class MediadorModificarMuestra extends Mediador{
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
+		GUIMuestra.setKeyListener(this);
 		GUIMuestra.show();
 	}
 	
@@ -221,11 +222,24 @@ public class MediadorModificarMuestra extends Mediador{
 		return modificoMuestra;
 	}
 
-
 	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void keyTyped(KeyEvent arg0) {
+		if (GUIMuestra.getNombre().getText().length()==25){ 
+			arg0.consume();
+			System.out.print("\07");
+		}
+		if (GUIMuestra.getPeso().getText().length()==25){ 
+			arg0.consume();
+			System.out.print("\07");
+		}
+		if (GUIMuestra.getProfundidadInicial().getText().length()==25){ 
+			arg0.consume();
+			System.out.print("\07");
+		}
+		if (GUIMuestra.getProfundidadFinal().getText().length()==25){ 
+			arg0.consume();
+			System.out.print("\07");
+		}
 	}
 
 	

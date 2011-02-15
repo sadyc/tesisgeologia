@@ -82,6 +82,20 @@ public class GUIOperador extends javax.swing.JDialog {
               }
            }
         });
+        jTextFieldDni.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
+        
+        
         jButtonAgregar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();

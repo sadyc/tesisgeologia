@@ -2,6 +2,9 @@ package cuGestionarMuestra;
 
 
 	import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -61,8 +64,6 @@ public class GUIMuestra extends javax.swing.JDialog {
 	    initComponents();
 	    usuario.setText("Usuario: "+ nombreUsuario);
 	    setLocationRelativeTo(null);
-
- 
     }
     
     /**
@@ -120,6 +121,42 @@ public class GUIMuestra extends javax.swing.JDialog {
         cancelarMenu = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         versionMenu = new javax.swing.JMenuItem();
+        peso.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
+        profundidadInicial.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
+        profundidadFinal.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cargar Muestra\n");
@@ -513,6 +550,13 @@ public class GUIMuestra extends javax.swing.JDialog {
 			data[2]= profundidadInicial.getText();
 			data[3]= profundidadFinal.getText();
 			return data;
+		}
+		
+		public void setKeyListener(KeyListener lis){
+			nombre.addKeyListener(lis);
+		    profundidadInicial.addKeyListener(lis);
+		    profundidadFinal.addKeyListener(lis);
+		    peso.addKeyListener(lis);
 		}
 	
 	}

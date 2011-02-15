@@ -3,8 +3,8 @@
  */
 package persistencia.domain;
 
+import java.sql.Date;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashSet;
 
 import javax.jdo.annotations.PersistenceCapable;
@@ -23,7 +23,7 @@ public class Muestra {
 	private Float profundidadInicial;
 	private Float profundidadFinal;
 	private Float peso;
-	private java.sql.Date fecha;
+	private Date fecha;
 	private Float limitePlastico;
 	private Float limiteLiquido;
 	private Float indicePlasticidad;

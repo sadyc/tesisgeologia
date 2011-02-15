@@ -47,6 +47,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 		GUIAnalisis.setTitle("Analisis por Tamiz de una Muestra");
 		GUIAnalisis.setModal(true);
 		GUIAnalisis.setListenerButtons(this);
+		GUIAnalisis.setKeyListener(this);
 		show();
 	}
 	
@@ -197,8 +198,11 @@ public class MediadorAltaAnalisis  extends Mediador{
 
 
 	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+	public void keyTyped(KeyEvent arg0) {
+		if (GUIAnalisis.getPesoRetenido().getText().length()==25){ 
+			arg0.consume();
+			System.out.print("\07");
+		}
 		
 	}
 }
