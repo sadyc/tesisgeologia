@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.Usuario;
 
 import comun.Mediador;
 import comun.MediadorSeleccionarOperador;
@@ -36,18 +37,20 @@ public class MediadorModificarMuestra extends Mediador{
 	private String dniClienteModificar;
 	private OperadorDeLaboratorio operador;
 	private Muestra muestra;
+	private Usuario usuario;
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
 	
 
-	public MediadorModificarMuestra(String[] fila) throws Exception {
+	public MediadorModificarMuestra(String[] fila, Usuario usuario) throws Exception {
 		super();
+		this.usuario = usuario;
 		ubicacionModificar = fila[0];
 		nombreMuestraModificar = fila[1];
 		dniOperadorModificar = (control.obtenerMuestra(fila[1], fila[0])).getOperadorLaboratorio().getDni();
 		dniClienteModificar = (control.obtenerMuestra(fila[1], fila[0])).getCliente().getDni();
 		String nombreOperador = (control.obtenerMuestra(fila[1], fila[0])).getOperadorLaboratorio().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0]).getOperadorLaboratorio().getApellido();
 		String nombreCliente = (control.obtenerMuestra(fila[1], fila[0])).getCliente().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0]).getCliente().getApellido();
-		GUIMuestra = new GUIMuestra(fila, nombreOperador, nombreCliente);
+		GUIMuestra = new GUIMuestra(fila, nombreOperador, nombreCliente,usuario.getNombreUsuario());
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
@@ -152,13 +155,14 @@ public class MediadorModificarMuestra extends Mediador{
 	 */
 	public void modificarMuestra(){
 		try {
-			data[0]= GUIMuestra.getUbicacion().getText().substring(15);
+			data[0]= GUIMuestra.getUbicacion().getText();
 			data[1]= GUIMuestra.getNombre().getText();
 			data[2]= GUIMuestra.getPeso().getText();
 			data[3]= GUIMuestra.getProfundidadInicial().getText();
 			data[4]= GUIMuestra.getProfundidadFinal().getText();
 			data[5]= dniOperadorModificar;
 			data[6]= dniClienteModificar;
+			data[7]= usuario.getNombreUsuario();
 			control.ModificarMuestra(nombreMuestraModificar,ubicacionModificar,data);
 		} catch (Exception e1) {
 			e1.printStackTrace();

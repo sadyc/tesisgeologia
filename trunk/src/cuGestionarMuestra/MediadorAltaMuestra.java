@@ -49,7 +49,7 @@ public class MediadorAltaMuestra extends Mediador{
 	 * @param nombreVentana
 	 * Constructor con pasaje de parametros.
 	 */
-	public MediadorAltaMuestra(String nombreVentana) {
+	public MediadorAltaMuestra(String nombreVentana, Usuario usuario) {
 		super();
 		muestra = new Muestra();
 		controlMuestra = new ControlGestionarMuestra();
@@ -58,11 +58,11 @@ public class MediadorAltaMuestra extends Mediador{
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 	    System.out.println("utilDate:" + utilDate);
 	    System.out.println("sqlDate:" + sqlDate);
-		usuario = new Usuario();
+		this.usuario = usuario;
 		ubicacion = new Ubicacion();
 		operador= new OperadorDeLaboratorio();
 		cliente = new Cliente();
-		GUIMuestra = new GUIMuestra(true);
+		GUIMuestra = new GUIMuestra(true, usuario.getNombreUsuario());
 		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
@@ -180,7 +180,7 @@ public class MediadorAltaMuestra extends Mediador{
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 	    muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,ubicacion,null,null,cliente,sqlDate);
 		try {
-			controlMuestra.insertarMuestra(muestra, ubicacion, operador, cliente);
+			controlMuestra.insertarMuestra(muestra, ubicacion, operador, cliente,usuario);
 			altaMuestra = true;
 		} catch (Exception e) {
 			System.out.println("No inserta muestra Mediador Alta Muestra");

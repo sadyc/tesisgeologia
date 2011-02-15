@@ -51,7 +51,7 @@ public class GUIMuestra extends javax.swing.JDialog {
     
 
     /** Creates new form GUIMuestra */
-    public GUIMuestra(boolean modal) {
+    public GUIMuestra(boolean modal, String nombreUsuario) {
         super();
         nombre = new JTextField(15);
         profundidadInicial = new JTextField(15);
@@ -59,6 +59,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 		peso = new JTextField(15);
         setModal(modal);
 	    initComponents();
+	    usuario.setText("Usuario: "+ nombreUsuario);
 	    setLocationRelativeTo(null);
 
  
@@ -68,7 +69,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
-	public GUIMuestra(String[] fila,String nombreOperador, String nombreCliente) {
+	public GUIMuestra(String[] fila,String nombreOperador, String nombreCliente, String nombreUsuario) {
 	
 		super();
 		initComponents();
@@ -78,7 +79,8 @@ public class GUIMuestra extends javax.swing.JDialog {
 		profundidadFinal.setText(fila[4]);
 		ubicacion.setText("(*) Ubicación: "+ fila[0]);
 		operador.setText("(*) Operador: "+ nombreOperador);
-		cliente.setText("(*) Cliente: "+ nombreCliente);
+		cliente.setText(" Cliente: "+ nombreCliente);
+		usuario.setText("Usuario: "+ nombreUsuario);
 		setModal(true);
 		setLocationRelativeTo(null);
 	}
@@ -178,14 +180,14 @@ public class GUIMuestra extends javax.swing.JDialog {
         seleccionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
         seleccionarUbicacion.setText("Seleccionar Ubicación"); 
 
-        operador.setText("(*) Operador:");
+        operador.setText("(*) Operador: ");
 
         seleccionarOperador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-engineering-3.png"))); // NOI18N
         seleccionarOperador.setText("Seleccionar Operador");
 
-        usuario.setText("Usuario:");
+        usuario.setText("Usuario: ");
 
-        cliente.setText("(*) Cliente:");
+        cliente.setText("Cliente: ");
 
         seleccionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/system-switch-user.png"))); // NOI18N
         seleccionarCliente.setText("Seleccionar Cliente");

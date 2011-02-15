@@ -31,11 +31,9 @@ public class Main {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-
 		//new MediadorLogin("Login");
-		new MediadorPrincipal("SISTEMA DE CLASIFICACION DE SUELOS");
-
-       
+		Usuario usuario = new Usuario("pepe", "grillo", "111", "pepito", "administrador", "pepe@grillo", "444-222", "pepito el grosso");
+		new MediadorPrincipal("SISTEMA DE CLASIFICACION DE SUELOS",usuario);
 	}
 }
 
