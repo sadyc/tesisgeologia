@@ -49,7 +49,6 @@ public class MediadorGestionarMuestra extends Mediador{
 		GUIABMMuestra.setKeyListener(this);    
 		GUIABMMuestra.setLocationRelativeTo(null);
 		GUIABMMuestra.getJButtonSeleccionar().setEnabled(true);
-		GUIABMMuestra.getSeleccionarMenu().setEnabled(false);
 		GUIABMMuestra.setModal(true);
 		GUIABMMuestra.show();
 		
@@ -101,21 +100,21 @@ public class MediadorGestionarMuestra extends Mediador{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIABMMuestra.getJButtonAgregar() == source||GUIABMMuestra.getAgregarMenu()==source){
+		if (this.GUIABMMuestra.getJButtonAgregar() == source||GUIABMMuestra.getjMenuAgregar()==source){
 			agregarMuestra();
 	   	}
-		if (this.GUIABMMuestra.getJButtonEliminar() == source||GUIABMMuestra.getEliminarMenu()==source){
+		if (this.GUIABMMuestra.getJButtonEliminar() == source||GUIABMMuestra.getjMenuEliminar()==source){
 			eliminarMuestra();
 		}
-		if (this.GUIABMMuestra.getJButtonModificar() == source||GUIABMMuestra.getModificarMenu()==source){
+		if (this.GUIABMMuestra.getJButtonModificar() == source||GUIABMMuestra.getjMenuModificar()==source){
 			modificarMuestra();
 		}
 
-		if (this.GUIABMMuestra.getBuscarMenu() == source || this.GUIABMMuestra.getJButtonBuscar() == source){
+		if (this.GUIABMMuestra.getjMenuBuscar() == source || this.GUIABMMuestra.getJButtonBuscar() == source){
 			buscarMuestra();
 			
 		}
-		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || this.GUIABMMuestra.getSeleccionarMenu() == source){
+		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || this.GUIABMMuestra.getjMenuSeleccionar() == source){
 			if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
 				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna muestra","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}else{
@@ -123,7 +122,7 @@ public class MediadorGestionarMuestra extends Mediador{
 			analisis();
 			}
 		}
-		if (this.GUIABMMuestra.getJButtonCancelar() == source || GUIABMMuestra.getCancelarMenu()==source){
+		if (this.GUIABMMuestra.getjButtonSalir() == source || GUIABMMuestra.getjMenuSalir()==source){
 
 			GUIABMMuestra.dispose();
 		}
@@ -171,7 +170,7 @@ public class MediadorGestionarMuestra extends Mediador{
    				GUIABMMuestra.setListenerButtons(this);
    				GUIABMMuestra.setListenerTable(this);
    				GUIABMMuestra.getJButtonSeleccionar().setEnabled(false);
-   				GUIABMMuestra.getSeleccionarMenu().setEnabled(false);
+   				//GUIABMMuestra.getSeleccionarMenu().setEnabled(false);
    				GUIABMMuestra.setModal(true);
    				GUIABMMuestra.show();
    			}

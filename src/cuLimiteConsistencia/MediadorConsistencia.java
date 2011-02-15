@@ -50,11 +50,13 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 		this.GUIABMMuestra.setMouseListener(this);
 		this.GUIABMMuestra.setKeyListener(this);     
 		GUIABMMuestra.getJButtonAgregar().setEnabled(false);
-		GUIABMMuestra.getAgregarMenu().setEnabled(false);
+		GUIABMMuestra.getjMenuAgregar().setEnabled(false);
 		GUIABMMuestra.getJButtonEliminar().setEnabled(false);
-		GUIABMMuestra.getEliminarMenu().setEnabled(false);
+		GUIABMMuestra.getjMenuEliminar().setEnabled(false);
 		GUIABMMuestra.getJButtonModificar().setEnabled(false);
-		GUIABMMuestra.getModificarMenu().setEnabled(false);
+		GUIABMMuestra.getjMenuModificar().setEnabled(false);
+		GUIABMMuestra.getJButtonSeleccionar().setEnabled(true);
+		GUIABMMuestra.getjMenuSeleccionar().setEnabled(true);
 		GUIABMMuestra.setModal(true);
 		GUIABMMuestra.show();
 	}
@@ -137,14 +139,14 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || GUIABMMuestra.getSeleccionarMenu()==source){
+		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || GUIABMMuestra.getjMenuSeleccionar()==source){
 			seleccionarMuestra();
 		}
-		if (this.GUIABMMuestra.getBuscarMenu() == source || GUIABMMuestra.getBuscarMenu()==source){
+		if (this.GUIABMMuestra.getjMenuBuscar() == source || GUIABMMuestra.getjMenuBuscar()==source){
 			GUISeleccionarMuestra.dispose();
 			buscarMuestra();
 		}
-		if (this.GUIABMMuestra.getJButtonCancelar() == source || GUIABMMuestra.getCancelarMenu()==source){
+		if (this.GUIABMMuestra.getjButtonSalir() == source || GUIABMMuestra.getjMenuSalir()==source){
 			GUIABMMuestra.dispose();
 		}
 	}

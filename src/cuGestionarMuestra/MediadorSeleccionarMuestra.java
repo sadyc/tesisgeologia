@@ -45,11 +45,11 @@ public class MediadorSeleccionarMuestra extends Mediador{
 		this.GUIABMMuestra.setMouseListener(this);
 		this.GUIABMMuestra.setKeyListener(this);     
 		GUIABMMuestra.getJButtonAgregar().setEnabled(false);
-		GUIABMMuestra.getAgregarMenu().setEnabled(false);
+		GUIABMMuestra.getjMenuAgregar().setEnabled(false);
 		GUIABMMuestra.getJButtonEliminar().setEnabled(false);
-		GUIABMMuestra.getEliminarMenu().setEnabled(false);
+		GUIABMMuestra.getjMenuEliminar().setEnabled(false);
 		GUIABMMuestra.getJButtonModificar().setEnabled(false);
-		GUIABMMuestra.getModificarMenu().setEnabled(false);
+		GUIABMMuestra.getjMenuModificar().setEnabled(false);
 		GUIABMMuestra.setModal(true);
 		GUIABMMuestra.show();
 	}
@@ -99,14 +99,14 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || GUIABMMuestra.getSeleccionarMenu()==source){
+		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || GUIABMMuestra.getjMenuSeleccionar()==source){
 				seleccionarMuestra();
 			
 		}
-		if (this.GUIABMMuestra.getBuscarMenu() == source || this.GUIABMMuestra.getJButtonBuscar() == source){
+		if (this.GUIABMMuestra.getjMenuBuscar() == source || this.GUIABMMuestra.getJButtonBuscar() == source){
 			buscarMuestra();
 		}
-		if (this.GUIABMMuestra.getJButtonCancelar() == source || GUIABMMuestra.getCancelarMenu()==source){
+		if (this.GUIABMMuestra.getjButtonSalir() == source || GUIABMMuestra.getjMenuSalir()==source){
 			GUIABMMuestra.dispose();
 		}
 	}
@@ -163,13 +163,13 @@ public class MediadorSeleccionarMuestra extends Mediador{
    				GUIABMMuestra.setListenerButtons(this);
    				GUIABMMuestra.setListenerTable(this);
    				GUIABMMuestra.getJButtonAgregar().setEnabled(false);
-   				GUIABMMuestra.getAgregarMenu().setEnabled(false);
+   				GUIABMMuestra.getjMenuAgregar().setEnabled(false);
    				GUIABMMuestra.getJButtonEliminar().setEnabled(false);
-   				GUIABMMuestra.getEliminarMenu().setEnabled(false);
+   				GUIABMMuestra.getjMenuEliminar().setEnabled(false);
    				GUIABMMuestra.getJButtonModificar().setEnabled(false);
-   				GUIABMMuestra.getModificarMenu().setEnabled(false);
+   				GUIABMMuestra.getjMenuModificar().setEnabled(false);
    				GUIABMMuestra.getJButtonSeleccionar().setEnabled(true);
-   				GUIABMMuestra.getSeleccionarMenu().setEnabled(true);
+   				GUIABMMuestra.getjMenuSeleccionar().setEnabled(true);
    				GUIABMMuestra.setModal(true);
    				GUIABMMuestra.show();
    			}
