@@ -89,32 +89,47 @@ public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUISeleccionarMuestra.getJButtonSeleccionar() == source){
-			if (GUISeleccionarMuestra.getTablePanel().getSelectedRow() == -1){
-				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-			}
-			else{
-				System.out.println("Button Seleccionar Muestra");
-				try {
-					seleccionado = GUISeleccionarMuestra.getTablePanel().getRow(GUISeleccionarMuestra.getTablePanel().getSelectedRow());
-					seleccionoMuestra = true;
-					GUISeleccionarMuestra.dispose();
-				} catch (Exception e) {
-					JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-				}
-	   				   		
-			}
+			seleccionar();
 		}
 		if (this.GUISeleccionarMuestra.getJButtonBuscar() == source){
-	   		try {
-	   			System.out.println("Button Buscar Muestra");
-				MediadorBuscar analisis = new MediadorBuscar();	
-				
-	   		} catch (Exception e) {
-				e.printStackTrace();
-			}
+	   		buscar();
 		}
 		if (this.GUISeleccionarMuestra.getJButtonSalir() == source){
 			GUISeleccionarMuestra.dispose();
+		}
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Buscar"
+	 */
+	public void buscar(){
+		try {
+   			System.out.println("Button Buscar Muestra");
+			MediadorBuscar analisis = new MediadorBuscar();	
+			
+   		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Muestra"
+	 */
+	public void seleccionar(){
+		if (GUISeleccionarMuestra.getTablePanel().getSelectedRow() == -1){
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		}
+		else{
+			System.out.println("Button Seleccionar Muestra");
+			try {
+				seleccionado = GUISeleccionarMuestra.getTablePanel().getRow(GUISeleccionarMuestra.getTablePanel().getSelectedRow());
+				seleccionoMuestra = true;
+				GUISeleccionarMuestra.dispose();
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+   				   		
 		}
 	}
 	

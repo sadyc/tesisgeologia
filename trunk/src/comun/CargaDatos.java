@@ -258,7 +258,7 @@ public class CargaDatos {
 		Encriptar encriptar = new Encriptar();
 		String a = encriptar.hash("ana");
 		String b = encriptar.hash("pepe");
-		Usuario usuario1 = new Usuario("Juan", "Perez", "555","juanPerez","administrador", "4917015", "juan@perez.com",b);
+		Usuario usuario1 = new Usuario("Juan", "Perez", "555","juanPerez","administrador", "juan@perez.com", "4917015",b);
 		Usuario usuario2 = new Usuario("pepe", "grillo", "111", "pepito", "administrador", "pepe@grillo", "444-222", "pepito el grosso");
 		Cliente cliente1 = new Cliente("cliente 1", "no se", "dni", "email", "tel");
 		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),operador1,null,ubicacion1,null,null,cliente1,null);	
