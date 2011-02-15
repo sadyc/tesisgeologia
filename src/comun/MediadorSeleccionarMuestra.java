@@ -24,7 +24,7 @@ import cuGestionarMuestra.ControlGestionarMuestra;
 public class MediadorSeleccionarMuestra implements ActionListener,MouseListener,ItemListener {
 
 	private GUISeleccionarMuestra GUISeleccionarMuestra = null;
-	private Object [] seleccionado = new Object [4];
+	private Object [] seleccionado = new Object [10];
 	private Object [][] data;
 	private boolean seleccionoMuestra = false;
 	private Component frame;

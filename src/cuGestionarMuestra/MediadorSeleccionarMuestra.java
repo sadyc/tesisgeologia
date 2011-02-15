@@ -75,7 +75,9 @@ public class MediadorSeleccionarMuestra extends Mediador{
 		    data [i][3]= muestra.getProfundidadInicial();
 		    data [i][4]= muestra.getProfundidadFinal();
 		    data [i][5]= muestra.getOperadorLaboratorio().getNombre()+" "+muestra.getOperadorLaboratorio().getApellido();
-		    data [i][6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
+		    if (muestra.getCliente()!=null){
+		    	data [i][6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
+		    }
 		    i++;
 		}
 	}
