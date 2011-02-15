@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import persistencia.domain.Muestra;
+import persistencia.domain.Usuario;
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
@@ -20,10 +21,11 @@ public class MediadorPrincipal implements ActionListener{
 
 	private GUIPrincipal GUIPrincipal = null;
 	private Component frame;
+	private Usuario usuario;
 	
-	
-	public MediadorPrincipal(String nombreVentana) throws Exception {
+	public MediadorPrincipal(String nombreVentana, Usuario usuario) throws Exception {
 		super();
+		this.usuario = usuario;
 		this.GUIPrincipal = new GUIPrincipal(nombreVentana);
 		this.GUIPrincipal.setListenerButtons(this);
 		GUIPrincipal.show();
@@ -90,9 +92,8 @@ public class MediadorPrincipal implements ActionListener{
 	 */
 	public void gestionarCliente(){
 		try {
-		MediadorGestionarCliente gestionarCliente = new MediadorGestionarCliente();
+			new MediadorGestionarCliente();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -102,9 +103,8 @@ public class MediadorPrincipal implements ActionListener{
 	 */
 	public void gestionarOperador(){
 		try {
-		MediadorGestionarOperador gestionarOperador = new MediadorGestionarOperador();
+			new MediadorGestionarOperador();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -114,7 +114,7 @@ public class MediadorPrincipal implements ActionListener{
 	 */
 	public void gestionarMuestra(){
 		try {
-			MediadorGestionarMuestra gestionarMuestra = new MediadorGestionarMuestra("Gestionar Muestra");
+			new MediadorGestionarMuestra("Gestionar Muestra",usuario);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -157,7 +157,6 @@ public class MediadorPrincipal implements ActionListener{
 		try {
 			new MediadorGestionarUsuario("Ingresar Usuario");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    System.out.println("GestionarMediador.actionPerformed() jButtonGestionarUsuario"); 
@@ -196,7 +195,14 @@ public class MediadorPrincipal implements ActionListener{
 			e.printStackTrace();
 		}
 	    System.out.println("GestionarMediador.actionPerformed() jButtonCalcularClasificacion");
-
-
 	}
+
+	/**
+	 * @return the usuario
+	 */
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	
+	
 }

@@ -114,7 +114,8 @@ public class MediadorLogin implements ActionListener{
 					else {
 	        		        	
 						try {
-							new MediadorPrincipal("SISTEMA DE CLASIFICACION DE SUELOS");
+							Usuario usuario = new Usuario("pepe", "grillo", "111", "pepito", "Administrador", "pepe@grillo", "444-222", "pepito el grosso");
+							new MediadorPrincipal("SISTEMA DE CLASIFICACION DE SUELOS",usuario);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

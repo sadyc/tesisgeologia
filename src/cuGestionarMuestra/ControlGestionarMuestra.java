@@ -30,20 +30,22 @@ public class ControlGestionarMuestra {
 	/**
 	 * Inserta una muestra con persistencia. 
 	 */ 
-	public void insertarMuestra(Muestra mu, Ubicacion ubicacion, OperadorDeLaboratorio operador, Cliente cliente) throws Exception{
+	public void insertarMuestra(Muestra mu, Ubicacion ubicacion, OperadorDeLaboratorio operador, Cliente cliente, Usuario usuario1) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
-			
-			Usuario usuario = new Usuario();
+			Usuario usuario = usuario1;
 			Class claseUbicacion = ubicacion.getClass();
 			mu.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
 			Class claseOperador = operador.getClass();
 			mu.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
 			Class claseUsuario = usuario.getClass();
-			mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+"555"+"'")); //(Usuario)persistencia.buscarObjeto(claseUsuario, "dni==123"));//Todavia no esta implementado el caso de uso Usuario
-			Class claseCliente = cliente.getClass();
-			mu.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+cliente.getDni()+"'"));
+			mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+usuario.getDni()+"'")); //(Usuario)persistencia.buscarObjeto(claseUsuario, "dni==123"));//Todavia no esta implementado el caso de uso Usuario
+			if (cliente != null){
+				Class claseCliente = cliente.getClass();
+				mu.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+cliente.getDni()+"'"));
+			}
+			//mu.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+cliente.getDni()+"'"));
 			persistencia.insertarObjeto(mu);
 			persistencia.cerrarTransaccion();
 			persistencia.cerrarPersistencia();
@@ -115,6 +117,9 @@ public class ControlGestionarMuestra {
 			Ubicacion ubicacion = new Ubicacion();
 			Class claseUbicacion = ubicacion.getClass();
 			aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+data[0]+"'"));
+			Usuario usuario = new Usuario();
+			Class claseUsuario = usuario.getClass();
+			aux.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "nombreUsuario=='"+data[7]+"'"));
 			java.util.Date utilDate = new java.util.Date();
 		    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 		    aux.setFecha(sqlDate);

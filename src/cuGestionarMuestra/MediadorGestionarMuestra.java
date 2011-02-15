@@ -2,12 +2,9 @@ package cuGestionarMuestra;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -15,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Muestra;
+import persistencia.domain.Usuario;
 
 import comun.Mediador;
 
@@ -33,13 +31,15 @@ public class MediadorGestionarMuestra extends Mediador{
 	private Object [][] data ;
 	private Component frame;
 	private Muestra muestra;
+	private Usuario usuario;
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
 	private Object [] seleccionado = new Object [4];
 	private boolean seleccionoMuestra = false;
 		
 	
-	public MediadorGestionarMuestra(String nombreVentana) throws Exception {
+	public MediadorGestionarMuestra(String nombreVentana, Usuario usuario) throws Exception {
 		super();
+		this.usuario=usuario;
 		cargarTablaDeMuestras();
 		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente"};
 		GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
@@ -206,7 +206,7 @@ public class MediadorGestionarMuestra extends Mediador{
 		else{
 			String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 			try {
-				MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(fila);
+				MediadorModificarMuestra modificarMuestra = new MediadorModificarMuestra(fila, usuario);
 				if (modificarMuestra.seModificoMuestra()) {
 					GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 					this.GUIABMMuestra.getTablePanel().addRow(modificarMuestra.getData());
@@ -253,7 +253,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	public void agregarMuestra(){
 		try {
    			System.out.println("Button Agregar Muestra");
-			MediadorAltaMuestra altaMuestra = new MediadorAltaMuestra("Ingresar Muestra");	
+			MediadorAltaMuestra altaMuestra = new MediadorAltaMuestra("Ingresar Muestra",usuario);	
 			if (altaMuestra.esAltaMuestra()){  
 				this.GUIABMMuestra.getTablePanel().addRow(altaMuestra.getData());
      		}
