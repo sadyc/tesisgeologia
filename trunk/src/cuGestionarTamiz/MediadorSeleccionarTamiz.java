@@ -2,12 +2,9 @@ package cuGestionarTamiz;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -17,11 +14,9 @@ import persistencia.domain.Tamiz;
 
 import comun.Mediador;
 
-import cuGestionarMuestra.ControlGestionarMuestra;
 
 
-
-public class MediadorSeleccionarTamiz implements ActionListener, KeyListener, MouseListener {
+public class MediadorSeleccionarTamiz extends Mediador{
 
 	private GUISeleccionarTamiz GUISeleccionarTamiz = null;
 	private String seleccionado = new String();
@@ -141,6 +136,12 @@ public class MediadorSeleccionarTamiz implements ActionListener, KeyListener, Mo
 
 	@Override
 	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
 		// TODO Auto-generated method stub
 		
 	}	

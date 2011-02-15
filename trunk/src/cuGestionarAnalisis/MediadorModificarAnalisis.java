@@ -3,6 +3,7 @@ package cuGestionarAnalisis;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
@@ -133,5 +134,12 @@ public class MediadorModificarAnalisis  extends Mediador{
 
 	public String[] getData() {
 		return null;
+	}
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

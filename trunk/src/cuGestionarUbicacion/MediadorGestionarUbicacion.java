@@ -14,10 +14,12 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import comun.Mediador;
+
 import persistencia.domain.Ubicacion;
 import cuGestionarMuestra.ControlGestionarMuestra;
 
-public class MediadorGestionarUbicacion implements ActionListener, KeyListener, MouseListener {
+public class MediadorGestionarUbicacion extends Mediador{
 
 	private GUIGestionarUbicacion GUIGestionarUbicacion = null;
 	private Object [][] data;
@@ -237,7 +239,8 @@ public class MediadorGestionarUbicacion implements ActionListener, KeyListener, 
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		if (GUIGestionarUbicacion.getjTextFieldBuscar().getText().length()==25){ 
+			arg0.consume(); 
+		}
 	}
 }

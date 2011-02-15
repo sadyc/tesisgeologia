@@ -27,7 +27,7 @@ import cuGestionarAnalisis.MediadorGestionarAnalisis;
  * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana de GestionarMuestra
  * @author TesisGeologia
  */
-public class MediadorGestionarMuestra implements ActionListener, KeyListener, MouseListener{
+public class MediadorGestionarMuestra extends Mediador{
 
 	private GUIABMMuestra GUIABMMuestra;
 	private Object [][] data ;

@@ -6,6 +6,7 @@ package cuGestionarUbicacion;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JOptionPane;
 
@@ -97,7 +98,14 @@ public class MediadorAltaUbicacion extends Mediador{
 	public String[] getData() {
 		return GUIUbicacion.getData();
 	}
-
 	
+	public void keyTyped(KeyEvent arg0) {
+		if (GUIUbicacion.getjTextFieldCiudad().getText().length()==25){ 
+			arg0.consume(); 
+		}
+		if (GUIUbicacion.getjTextFieldNombreUbicacion().getText().length()==25){
+			arg0.consume();
+		}
+	}
 	
 }

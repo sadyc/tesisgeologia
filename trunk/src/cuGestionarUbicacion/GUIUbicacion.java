@@ -4,6 +4,7 @@
 package cuGestionarUbicacion;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 
 import persistencia.domain.Ubicacion;
 
@@ -239,6 +240,11 @@ public class GUIUbicacion extends javax.swing.JDialog {
 		else
 			data[4]= jTextFieldLatitud.getText();
 		return data;
+	}
+	
+	public void setKeyListener(KeyListener lis){
+		jTextFieldCiudad.addKeyListener(lis);
+	    jTextFieldNombreUbicacion.addKeyListener(lis);
 	}
 
 
