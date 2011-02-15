@@ -2,21 +2,17 @@ package cuGestionarOperador;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
 import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.Usuario;
-import cuGestionarUsuario.ControlGestionarUsuario;
-import cuGestionarUsuario.GUIUsuario;
-import cuLogin.Encriptar;
 
-public class MediadorModificarOperador implements ActionListener, KeyListener, MouseListener {
+import comun.Mediador;
+
+public class MediadorModificarOperador extends Mediador{
 	
 	private GUIOperador GUIOperador;
 	private boolean modificoOperador;
@@ -145,9 +141,33 @@ public class MediadorModificarOperador implements ActionListener, KeyListener, M
 		
 	}
 
+	
+	public void keyTyped(KeyEvent arg0) {
+		if (GUIOperador.getjTextFieldNombre().getText().length()==25){ 
+			arg0.consume(); 
+		}
+		if (GUIOperador.getjTextFieldApellido().getText().length()==25){ 
+			arg0.consume(); 
+		}
+		if (GUIOperador.getjTextFieldDni().getText().length()==25){ 
+			arg0.consume(); 
+		}
+		char caracter = arg0.getKeyChar();
+        if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.')){
+	             arg0.consume();  // ignorar el evento de teclado
+	    }
+        if (GUIOperador.getjTextFieldEmail().getText().length()==25){ 
+			arg0.consume(); 
+		}
+        if (GUIOperador.getjTextFieldEmail().getText().length()==25){ 
+			arg0.consume(); 
+		}
+	}
+
+
 
 	@Override
-	public void keyTyped(KeyEvent arg0) {
+	public void itemStateChanged(ItemEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -3,6 +3,7 @@ package cuGestionarOperador;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JTextField;
 
@@ -67,18 +68,6 @@ public class GUIOperador extends javax.swing.JDialog {
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldApellido = new javax.swing.JTextField();
         jTextFieldDni = new JTextField(15);
-        jTextFieldDni.addKeyListener(new KeyAdapter()
-        {
-           public void keyTyped(KeyEvent e)
-           {
-              char caracter = e.getKeyChar();
-
-              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.'))
-              {
-                 e.consume();  // ignorar el evento de teclado
-              }
-           }
-        });
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldTelefono = new JTextField(15);
         jTextFieldTelefono.addKeyListener(new KeyAdapter()
@@ -347,6 +336,13 @@ public class GUIOperador extends javax.swing.JDialog {
 	public javax.swing.JMenuItem getjMenuItemVersion() {
 		return jMenuItemVersion;
 	}
-
-		
+	
+	public void setKeyListener(KeyListener lis){
+		jTextFieldDni.addKeyListener(lis);
+		jTextFieldApellido.addKeyListener(lis);
+	    jTextFieldEmail.addKeyListener(lis);
+	    jTextFieldNombre.addKeyListener(lis);
+	    jTextFieldTelefono.addKeyListener(lis);
+	}
+		 	
 }

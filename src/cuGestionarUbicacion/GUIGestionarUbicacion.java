@@ -3,19 +3,12 @@
  */
 package cuGestionarUbicacion;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JSeparator;
 
 import comun.TablePanel;
 
@@ -85,7 +78,7 @@ public class GUIGestionarUbicacion extends JDialog	{
         jButtonSalir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldBuscar = new javax.swing.JTextField(15);
+        jTextFieldBuscar = new javax.swing.JTextField(25);
         jLabel2 = new javax.swing.JLabel();
         jComboBoxBuscar = new javax.swing.JComboBox();
         jButtonBuscar = new javax.swing.JButton();
@@ -359,6 +352,7 @@ public class GUIGestionarUbicacion extends JDialog	{
 	
 	public void setKeyListener(KeyListener lis){
         tablePanel.addTableKeyListener(lis);
+        jTextFieldBuscar.addKeyListener(lis);
 	}
 	
 	/**
@@ -438,6 +432,12 @@ public class GUIGestionarUbicacion extends JDialog	{
 	public javax.swing.JMenuItem getjMenuVersion() {
 		return jMenuVersion;
 	}
-
+	
+	/**
+	 * @return the jTextFieldBuscar
+	 */
+	public javax.swing.JTextField getjTextFieldBuscar() {
+		return jTextFieldBuscar;
+	}
 }
 

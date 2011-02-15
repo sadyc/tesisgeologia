@@ -29,7 +29,7 @@ import cuGestionarMuestra.GUIMuestraDetallada;
  * en este caso: ActionListener,MouseListener,ItemListener.
  */
 
-public class MediadorGestionarAnalisis  implements ActionListener, KeyListener, MouseListener{
+public class MediadorGestionarAnalisis extends Mediador{
 	
 	private GUIMuestraDetallada muestraDetallada;
 	private Muestra muestra;

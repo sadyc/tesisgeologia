@@ -6,6 +6,7 @@ package cuCalcularClasificacion;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.Collection;
 import java.util.Iterator;
@@ -189,6 +190,12 @@ public class MediadorCalcularClasificacion extends Mediador{
 	}
 	public Object[][] getData() {
 		return data;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 		
 }

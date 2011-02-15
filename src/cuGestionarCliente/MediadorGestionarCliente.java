@@ -2,12 +2,9 @@ package cuGestionarCliente;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -15,6 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Cliente;
+
+import comun.Mediador;
+
 import cuBuscar.MediadorBuscar;
 import cuGestionarOperador.GUIGestionarOperador;
 
@@ -22,7 +22,7 @@ import cuGestionarOperador.GUIGestionarOperador;
 /**
 * @author TesisGeología
 */
-public class MediadorGestionarCliente implements ActionListener, KeyListener, MouseListener{
+public class MediadorGestionarCliente extends Mediador{
 
 	private GUIGestionarOperador GUIGestionarCliente = null;
 	private Object [] seleccionado = new Object [5];

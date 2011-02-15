@@ -3,6 +3,7 @@ package cuGestionarOperador;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -11,9 +12,11 @@ import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
+import comun.Mediador;
+
 import persistencia.domain.OperadorDeLaboratorio;
 
-public class MediadorAltaOperador implements ActionListener, KeyListener, MouseListener{
+public class MediadorAltaOperador extends Mediador{
 	private GUIOperador GUIOperador;
 	private String[] data = new String [6];
 	private OperadorDeLaboratorio operador ;
@@ -33,6 +36,7 @@ public class MediadorAltaOperador implements ActionListener, KeyListener, MouseL
 		GUIOperador = new GUIOperador();
 		GUIOperador.setTitle(nombreVentana);
 		GUIOperador.setListenerButtons(this);
+		GUIOperador.setKeyListener(this);
 		GUIOperador.setModal(true);
 		GUIOperador.show();
 	}
@@ -154,8 +158,31 @@ public class MediadorAltaOperador implements ActionListener, KeyListener, MouseL
 		
 	}
 
-	@Override
 	public void keyTyped(KeyEvent arg0) {
+		if (GUIOperador.getjTextFieldNombre().getText().length()==25){ 
+			arg0.consume(); 
+		}
+		if (GUIOperador.getjTextFieldApellido().getText().length()==25){ 
+			arg0.consume(); 
+		}
+		if (GUIOperador.getjTextFieldDni().getText().length()==25){ 
+			arg0.consume(); 
+		}
+		//GUIOperador.getjTextFieldTelefono().getText();
+		char caracter = arg0.getKeyChar();
+        if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '.')){
+	             arg0.consume();  // ignorar el evento de teclado
+	    }
+        if (GUIOperador.getjTextFieldEmail().getText().length()==25){ 
+			arg0.consume(); 
+		}
+        if (GUIOperador.getjTextFieldTelefono().getText().length()==25){ 
+			arg0.consume(); 
+		}
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
