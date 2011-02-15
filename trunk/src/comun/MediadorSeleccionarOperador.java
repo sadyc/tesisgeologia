@@ -31,7 +31,7 @@ public class MediadorSeleccionarOperador implements ActionListener, KeyListener,
 	private GUIGestionarOperador GUIGestionarOperador = null;
 	private Object [] seleccionado;
 	private Object [][] data;
-	private Component frame;
+	private Component frame; 
 	private boolean seleccionoOperador = false;
 	private ControlGestionarOperador control = new ControlGestionarOperador();
 
