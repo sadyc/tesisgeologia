@@ -2,9 +2,12 @@ package cuGestionarCliente;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -12,17 +15,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Cliente;
-
-import comun.Mediador;
-
 import cuBuscar.MediadorBuscar;
 import cuGestionarOperador.GUIGestionarOperador;
-
 
 /**
 * @author TesisGeología
 */
-public class MediadorGestionarCliente extends Mediador{
+public class MediadorSeleccionarCliente implements ActionListener, KeyListener, MouseListener{
 
 	private GUIGestionarOperador GUIGestionarCliente = null;
 	private Object [] seleccionado = new Object [5];
@@ -35,17 +34,15 @@ public class MediadorGestionarCliente extends Mediador{
 	 * Constructor por defecto de la clase.
 	 * @throws Exception
 	 */
-	public MediadorGestionarCliente() throws Exception {
+	public MediadorSeleccionarCliente() throws Exception {
 		super();
 		cargarTablaDeCliente();
 		GUIGestionarCliente = new GUIGestionarOperador(data);
-		GUIGestionarCliente.setTitle("Gestionar Clientes");
+		GUIGestionarCliente.setTitle("Seleccionar un Cliente");
 		GUIGestionarCliente.setListenerButtons(this);
 		GUIGestionarCliente.setListenerTable(this);
 		GUIGestionarCliente.setMouseListener(this);
 		GUIGestionarCliente.setKeyListener(this);
-		GUIGestionarCliente.getJButtonSeleccionar().setEnabled(false);
-		GUIGestionarCliente.getSeleccionarMenu().setEnabled(false);
 		GUIGestionarCliente.setModal(true);
 		GUIGestionarCliente.show();
 	}
@@ -208,12 +205,12 @@ public class MediadorGestionarCliente extends Mediador{
 	 */
 	public void mouseClicked(MouseEvent e){
 		if (e.getClickCount() == 2)
-			modificarCliente();
+			seleccionarCliente();
 	}
 	
 	public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_ENTER)
-        	modificarCliente();
+        	seleccionarCliente();
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {

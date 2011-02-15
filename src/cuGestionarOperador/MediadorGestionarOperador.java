@@ -34,7 +34,7 @@ import cuGestionarUsuario.MediadorVerificarPassword;
 public class MediadorGestionarOperador implements ActionListener, KeyListener, MouseListener{
 
 	private GUIGestionarOperador GUIGestionarOperador = null;
-	private Object [] seleccionado = new Object [5];
+	private Object [] seleccionado;
 	private Object [][] data;
 	private Component frame;
 	private ControlGestionarOperador control = new ControlGestionarOperador();
@@ -53,6 +53,8 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 		GUIGestionarOperador.setListenerTable(this);
 		GUIGestionarOperador.setMouseListener(this);
 		GUIGestionarOperador.setKeyListener(this);
+		GUIGestionarOperador.getJButtonSeleccionar().setEnabled(false);
+		GUIGestionarOperador.getSeleccionarMenu().setEnabled(false);
 		GUIGestionarOperador.setModal(true);
 		GUIGestionarOperador.show();
 	}
@@ -215,12 +217,12 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 	 */
 	public void mouseClicked(MouseEvent e){
 		if (e.getClickCount() == 2)
-			seleccionarOperador();
+			modificarOperador();
 	}
 	
 	public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_ENTER)
-        	seleccionarOperador();
+        	modificarOperador();
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {

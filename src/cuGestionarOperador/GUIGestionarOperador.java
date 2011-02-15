@@ -173,6 +173,13 @@ public class GUIGestionarOperador extends JDialog	{
 	public JMenuItem getCancelarMenu() {
 		return cancelarMenu;
 	}
+	
+	/**
+	 * @return the seleccionarMenu
+	 */
+	public JMenuItem getSeleccionarMenu() {
+		return seleccionarMenu;
+	}
 	/**
 	 * Metodo que permite escuchar los botones Seleccionar y Buscar.
 	 *

@@ -24,8 +24,8 @@ import cuBuscar.MediadorBuscar;
 
 public class MediadorSeleccionarMuestra extends Mediador{
 
-	private GUIABMMuestra GUIABMMuestra = null;
-	private Object [] seleccionado = new Object [4];
+	private GUIABMMuestra GUIABMMuestra;
+	private Object [] seleccionado;
 	private Object [][] data;
 	private boolean seleccionoMuestra = false;
 	private Component frame;
@@ -38,7 +38,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	public MediadorSeleccionarMuestra() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
+		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente"};
 		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
@@ -65,7 +65,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 		Class clase = muestra.getClass();
 		Collection muestras = control.coleccionMuestras(clase);
 		Iterator<Muestra> it = muestras.iterator();
-		data = new Object [muestras.size()] [5];
+		data = new Object [muestras.size()] [10];
 		int i = 0;
 		while (it.hasNext()){
 			muestra = it.next();
@@ -74,6 +74,8 @@ public class MediadorSeleccionarMuestra extends Mediador{
 			data [i][2]= muestra.getPeso();
 		    data [i][3]= muestra.getProfundidadInicial();
 		    data [i][4]= muestra.getProfundidadFinal();
+		    data [i][5]= muestra.getOperadorLaboratorio().getNombre()+" "+muestra.getOperadorLaboratorio().getApellido();
+		    data [i][6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
 		    i++;
 		}
 	}

@@ -84,6 +84,7 @@ public class GUIUsuario extends javax.swing.JDialog {
         jLabelRePassword = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldApellido = new javax.swing.JTextField();
+        jTextFieldDni = new javax.swing.JTextField();
         jTextFieldDni.addKeyListener(new KeyAdapter()
         {
            public void keyTyped(KeyEvent e)
