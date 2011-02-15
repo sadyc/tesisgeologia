@@ -57,9 +57,9 @@ public class GUIMuestra extends javax.swing.JDialog {
         profundidadInicial = new JTextField(15);
 		profundidadFinal = new JTextField(15);
 		peso = new JTextField(15);
-        this.setLocationRelativeTo(null);
         setModal(modal);
 	    initComponents();
+	    setLocationRelativeTo(null);
 
  
     }
@@ -68,7 +68,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 */
-	public GUIMuestra(String[] fila,String nombreOperador) {
+	public GUIMuestra(String[] fila,String nombreOperador, String nombreCliente) {
 	
 		super();
 		initComponents();
@@ -76,11 +76,11 @@ public class GUIMuestra extends javax.swing.JDialog {
 		peso.setText(fila[2]);
 		profundidadInicial.setText(fila[3]);
 		profundidadFinal.setText(fila[4]);
-		ubicacion = new JLabel("(*) Ubicación: "+ fila[0]);
-		operador = new JLabel ("(*) Operador: "+ nombreOperador);
-		cliente = new JLabel("(*) Cliente: ");
+		ubicacion.setText("(*) Ubicación: "+ fila[0]);
+		operador.setText("(*) Operador: "+ nombreOperador);
+		cliente.setText("(*) Cliente: "+ nombreCliente);
 		setModal(true);
-		
+		setLocationRelativeTo(null);
 	}
 
   
@@ -418,8 +418,36 @@ public class GUIMuestra extends javax.swing.JDialog {
 	    public JMenuItem getjMenuVersion() {
 	        return versionMenu;
 	    }
+	    
+	    /**
+		 * @return the seleccionarCliente
+		 */
+		public javax.swing.JButton getSeleccionarCliente() {
+			return seleccionarCliente;
+		}
 
-	    public JTextField getNombre() {
+		/**
+		 * @return the jMenuItemSeleccionarCliente
+		 */
+		public javax.swing.JMenuItem getjMenuItemSeleccionarCliente() {
+			return jMenuItemSeleccionarCliente;
+		}
+
+		/**
+		 * @return the jMenuItemSeleccionarOperador
+		 */
+		public javax.swing.JMenuItem getjMenuItemSeleccionarOperador() {
+			return jMenuItemSeleccionarOperador;
+		}
+
+		/**
+		 * @return the jMenuItemSeleccionarUbicacion
+		 */
+		public javax.swing.JMenuItem getjMenuItemSeleccionarUbicacion() {
+			return jMenuItemSeleccionarUbicacion;
+		}
+
+		public JTextField getNombre() {
 	        return nombre;
 	    }
 
@@ -443,10 +471,17 @@ public class GUIMuestra extends javax.swing.JDialog {
 		}
 		
 		/**
-		 * @param ubicacion the operador to set
+		 * @param operador the operador to set
 		 */
 		public void setOperador(String operador) {
 			this.operador.setText(operador);
+		}
+		
+		/**
+		 * @param cliente the cliente to set
+		 */
+		public void setCliente(String cliente) {
+			this.cliente.setText(cliente);
 		}
 		
 		/**
@@ -459,9 +494,13 @@ public class GUIMuestra extends javax.swing.JDialog {
 			this.cancelar.addActionListener(lis);
 			this.seleccionarOperador.addActionListener(lis);
 			this.seleccionarUbicacion.addActionListener(lis);
+			this.seleccionarCliente.addActionListener(lis);
 			this.aceptarMenu.addActionListener(lis);
 			this.cancelarMenu.addActionListener(lis);
 			this.versionMenu.addActionListener(lis);
+			this.jMenuItemSeleccionarCliente.addActionListener(lis);
+			this.jMenuItemSeleccionarOperador.addActionListener(lis);
+			this.jMenuItemSeleccionarUbicacion.addActionListener(lis);
 		}
 		
 		

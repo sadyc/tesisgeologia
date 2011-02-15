@@ -103,7 +103,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUIGestionarUsuario.getJButtonAgregar() == source||GUIGestionarUsuario.getAgregarMenu()==source){
-			agregarMuestra();
+			agregarUsuario();
 	   	}
 		if (this.GUIGestionarUsuario.getJButtonEliminar() == source||GUIGestionarUsuario.getEliminarMenu()==source){
 			eliminarUsuario();
@@ -154,9 +154,8 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 			String [] fila = GUIGestionarUsuario.getTablePanel().getRow(GUIGestionarUsuario.getTablePanel().getSelectedRow());
 			MediadorVerificarPassword verif = new MediadorVerificarPassword(fila[2],fila[3]);
 			if (verif.getCorrecto()){
-			
-			try {
-				MediadorModificarUsuario modificarUsuario = new MediadorModificarUsuario(fila);
+				try {
+					MediadorModificarUsuario modificarUsuario = new MediadorModificarUsuario(fila);
 				if (modificarUsuario.seModificoUsuario()) {
 					GUIGestionarUsuario.getTablePanel().removeRow(GUIGestionarUsuario.getTablePanel().getSelectedRow());
 					this.GUIGestionarUsuario.getTablePanel().addRow(modificarUsuario.getData());
@@ -200,7 +199,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Usuario"
 	 */
-	public void agregarMuestra(){
+	public void agregarUsuario(){
 		try {
 				System.out.println("Button Agregar Usuario");
 			MediadorAltaUsuario altaUsuario = new MediadorAltaUsuario("Ingresar Usuario");	

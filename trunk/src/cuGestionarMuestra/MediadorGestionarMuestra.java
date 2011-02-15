@@ -41,7 +41,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	public MediadorGestionarMuestra(String nombreVentana) throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
+		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente"};
 		GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
 		GUIABMMuestra.setListenerButtons(this);
 		GUIABMMuestra.setListenerTable(this);
@@ -65,7 +65,7 @@ public class MediadorGestionarMuestra extends Mediador{
 		Class clase = muestra.getClass();
 		Collection<Muestra> muestras = control.coleccionMuestras(clase);
 		Iterator<Muestra> it = muestras.iterator();
-		data = new Object [muestras.size()] [6];
+		data = new Object [muestras.size()] [10];
 		int i = 0;
 		while (it.hasNext()){
 			muestra = it.next();
@@ -74,6 +74,8 @@ public class MediadorGestionarMuestra extends Mediador{
 			data [i][2]= muestra.getPeso();
 		    data [i][3]= muestra.getProfundidadInicial();
 		    data [i][4]= muestra.getProfundidadFinal();
+		    data [i][5]= muestra.getOperadorLaboratorio().getNombre()+" "+muestra.getOperadorLaboratorio().getApellido();
+		    data [i][6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
 		    i++;
 		}
 	}

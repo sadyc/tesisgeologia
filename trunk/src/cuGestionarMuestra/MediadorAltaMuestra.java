@@ -18,8 +18,9 @@ import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
 
 import comun.Mediador;
+import comun.MediadorSeleccionarOperador;
 
-import cuGestionarOperador.MediadorGestionarOperador;
+import cuGestionarCliente.MediadorSeleccionarCliente;
 import cuGestionarUbicacion.ControlGestionarUbicacion;
 import cuGestionarUbicacion.MediadorGestionarUbicacion;
 
@@ -35,6 +36,7 @@ public class MediadorAltaMuestra extends Mediador{
 	private Muestra muestra ;
 	private Ubicacion ubicacion;
 	private OperadorDeLaboratorio operador;
+	private Cliente cliente;
 	private Component frame;
 	private ControlGestionarMuestra controlMuestra;
 	private ControlGestionarUbicacion controlUbicacion;
@@ -59,6 +61,7 @@ public class MediadorAltaMuestra extends Mediador{
 		usuario = new Usuario();
 		ubicacion = new Ubicacion();
 		operador= new OperadorDeLaboratorio();
+		cliente = new Cliente();
 		GUIMuestra = new GUIMuestra(true);
 		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
@@ -112,11 +115,14 @@ public class MediadorAltaMuestra extends Mediador{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIMuestra.getJButtonSeleccionarOperador()== source) {
+		if (this.GUIMuestra.getJButtonSeleccionarOperador()== source||GUIMuestra.getjMenuItemSeleccionarOperador()==source) {
 			seleccionarOperador();
 		}
-		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
+		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source || GUIMuestra.getjMenuItemSeleccionarUbicacion()==source) {
 			seleccionarUbicacion();
+		}
+		if (this.GUIMuestra.getSeleccionarCliente()== source || GUIMuestra.getjMenuItemSeleccionarCliente()==source) {
+			seleccionarCliente();
 		}
 		if (this.GUIMuestra.getJButtonAceptar() == source || this.GUIMuestra.getjMenuAceptar()== source) {
 			aceptar();
@@ -172,10 +178,9 @@ public class MediadorAltaMuestra extends Mediador{
 		data[4]= GUIMuestra.getProfundidadFinal().getText();
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-	    Cliente c = new Cliente();
-	    muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,ubicacion,null,null,c,sqlDate);
+	    muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,ubicacion,null,null,cliente,sqlDate);
 		try {
-			controlMuestra.insertarMuestra(muestra, ubicacion, operador);
+			controlMuestra.insertarMuestra(muestra, ubicacion, operador, cliente);
 			altaMuestra = true;
 		} catch (Exception e) {
 			System.out.println("No inserta muestra Mediador Alta Muestra");
@@ -208,16 +213,27 @@ public class MediadorAltaMuestra extends Mediador{
 	 */
 	public void seleccionarOperador(){
 		try {
-			MediadorGestionarOperador seleccionarOperador = new MediadorGestionarOperador();
+			MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
 			if ((String)seleccionarOperador.getSeleccionado()[0]!=null) {
 				this.GUIMuestra.setOperador("(*) Operador: "+(String)seleccionarOperador.getSeleccionado()[0]+" "+(String)seleccionarOperador.getSeleccionado()[1]);
 				this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Cliente"
+	 */
+	public void seleccionarCliente(){
+		try {
+			MediadorSeleccionarCliente seleccionarCliente = new MediadorSeleccionarCliente();
+			GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]);
+			cliente.setDni(((String)seleccionarCliente.getSeleccionado()[2]));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public String[] getData() {

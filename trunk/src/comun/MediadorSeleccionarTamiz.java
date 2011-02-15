@@ -21,7 +21,6 @@ public class MediadorSeleccionarTamiz implements ActionListener,MouseListener,It
 
 	private GUISeleccionarTamiz GUISeleccionarTamiz = null;
 	private String seleccionado = new String();
-	//private Object [] seleccionado = new Object [5];
 	private Object [][] data ;
 	private Component frame;
 	

@@ -22,6 +22,7 @@ public class GUIPrincipal extends JFrame {
 	private JMenu herramientas;
 	private JMenu ayuda;
 	private JButton jButtonGestionarUsuario;
+	private JButton jButtonGestionarCliente;
 	private JButton jButtonGestionarOperador;
 	private JButton jButtongestionarMuestra;
 	private JButton jButtonGestionarLimiteConsistencia;
@@ -30,6 +31,7 @@ public class GUIPrincipal extends JFrame {
 	private JButton jButtonCompararMuestras;
 	private JButton jButtonSalir;
 	private JMenuItem gestionarUsuarioMenu;
+	private JMenuItem gestionarClienteMenu;
 	private JMenuItem gestionarOperadorMenu;
 	private JMenuItem gestionarMuestraMenu;
 	private JMenuItem gestionarAnalisisMenu;
@@ -54,6 +56,7 @@ public class GUIPrincipal extends JFrame {
 			jButtonclasificacion = new JButton("CALCULAR CLASIFICACION");
 			jButtonAnalisis  = new JButton("GESTIONAR ANALISIS");
 			jButtonGestionarUsuario = new JButton("GESTIONAR USUARIO");
+			jButtonGestionarCliente = new JButton("GESTIONAR CLIENTE");
 			jButtonGestionarOperador = new JButton("GESTIONAR OPERADOR");
 			jButtonCompararMuestras = new JButton("COMPARAR MUESTRAS");
 			jButtonGestionarLimiteConsistencia = new JButton("GESTIONAR LIMITE CONSISTENCIA");
@@ -64,6 +67,7 @@ public class GUIPrincipal extends JFrame {
 			menu.add(herramientas);
 			menu.add(ayuda);
 			gestionarUsuarioMenu = new JMenuItem("Gestionar Usuario");
+			gestionarClienteMenu = new JMenuItem("Gestionar Cliente");
 			gestionarOperadorMenu = new JMenuItem("Gestionar Operador");
 			gestionarMuestraMenu = new JMenuItem("Gestionar Muestra");
 			gestionarAnalisisMenu = new JMenuItem("Gestionar Analisis");
@@ -78,6 +82,7 @@ public class GUIPrincipal extends JFrame {
 			herramientas.add(compararMuestrasMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
 			herramientas.add(gestionarUsuarioMenu);
+			herramientas.add(gestionarClienteMenu);
 			herramientas.add(gestionarOperadorMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
 			herramientas.add(salirMenu);
@@ -139,6 +144,8 @@ public class GUIPrincipal extends JFrame {
 			gbc.gridy = 5;
 			gbc.gridx = 0;
 			this.panelCentro.add(getjButtonGestionarOperador(),gbc);
+			gbc.gridx = 2;
+			this.panelCentro.add(getjButtonGestionarCliente(),gbc);
 			
 		}
 		return this.panelCentro;
@@ -207,6 +214,14 @@ public class GUIPrincipal extends JFrame {
 	 */
 	public JButton getjButtonGestionarOperador() {
 		return jButtonGestionarOperador;
+	}
+
+
+	/**
+	 * @return the jButtonGestionarCliente
+	 */
+	public JButton getjButtonGestionarCliente() {
+		return jButtonGestionarCliente;
 	}
 
 
@@ -291,6 +306,13 @@ public class GUIPrincipal extends JFrame {
 		return versionMenu;
 	}
 
+	/**
+	 * @return the gestionarClienteMenu
+	 */
+	public JMenuItem getGestionarClienteMenu() {
+		return gestionarClienteMenu;
+	}
+
 
 	public void setListenerButtons(ActionListener lis){
 		this.jButtongestionarMuestra.addActionListener(lis);
@@ -300,16 +322,18 @@ public class GUIPrincipal extends JFrame {
         this.jButtonGestionarUsuario.addActionListener(lis);
         this.jButtonCompararMuestras.addActionListener(lis);
         this.jButtonGestionarLimiteConsistencia.addActionListener(lis);
-        jButtonGestionarOperador.addActionListener(lis);
+        this.jButtonGestionarOperador.addActionListener(lis);
+        this.jButtonGestionarCliente.addActionListener(lis);
         this.salirMenu.addActionListener(lis);
         this.gestionarUsuarioMenu.addActionListener(lis);
+        this.gestionarClienteMenu.addActionListener(lis);
         this.gestionarMuestraMenu.addActionListener(lis);
         this.gestionarAnalisisMenu.addActionListener(lis);
         this.calcularClasificacionMenu.addActionListener(lis);
         this.versionMenu.addActionListener(lis);
         this.compararMuestrasMenu.addActionListener(lis);
         this.gestionarLimiteConsistenciaMenu.addActionListener(lis);
-        gestionarOperadorMenu.addActionListener(lis);
+        this.gestionarOperadorMenu.addActionListener(lis);
 	}
 
 }

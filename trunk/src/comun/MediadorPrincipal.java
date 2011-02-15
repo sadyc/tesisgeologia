@@ -8,6 +8,7 @@ import persistencia.domain.Muestra;
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
+import cuGestionarCliente.MediadorGestionarCliente;
 import cuGestionarMuestra.MediadorGestionarMuestra;
 import cuGestionarMuestra.MediadorSeleccionarMuestra;
 import cuGestionarOperador.MediadorGestionarOperador;
@@ -57,8 +58,7 @@ public class MediadorPrincipal implements ActionListener{
 		Object source = arg0.getSource();
 		if (this.GUIPrincipal.getJButtonGestionarMuestra() == source || this.GUIPrincipal.getGestionarMuestraMenu()== source){
 			gestionarMuestra();
-		
-     	}
+		}
 		if (this.GUIPrincipal.getJButtonAnalisis() == source || this.GUIPrincipal.getGestionarAnalisisMenu()== source){
 			gestionarAnalisis();
 			}
@@ -70,6 +70,9 @@ public class MediadorPrincipal implements ActionListener{
      	}
 		if (this.GUIPrincipal.getjButtonGestionarOperador() == source || this.GUIPrincipal.getGestionarOperadorMenu()== source){
 			gestionarOperador();
+     	}
+		if (this.GUIPrincipal.getjButtonGestionarCliente() == source || this.GUIPrincipal.getGestionarClienteMenu()== source){
+			gestionarCliente();
      	}
 		if (this.GUIPrincipal.getJButtonCompararMuestras() == source || this.GUIPrincipal.getCompararMuestrasMenu()== source){
 			compararMuestras();
@@ -83,12 +86,23 @@ public class MediadorPrincipal implements ActionListener{
 	}
 	
 	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Gestionar Cliente"
+	 */
+	public void gestionarCliente(){
+		try {
+		MediadorGestionarCliente gestionarCliente = new MediadorGestionarCliente();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Gestionar Operador"
 	 */
 	public void gestionarOperador(){
 		try {
 		MediadorGestionarOperador gestionarOperador = new MediadorGestionarOperador();
-		gestionarOperador.getGUIGestionarOperador().getJButtonSeleccionar().setEnabled(false);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -30,7 +30,7 @@ public class ControlGestionarMuestra {
 	/**
 	 * Inserta una muestra con persistencia. 
 	 */ 
-	public void insertarMuestra(Muestra mu, Ubicacion ubicacion, OperadorDeLaboratorio operador) throws Exception{
+	public void insertarMuestra(Muestra mu, Ubicacion ubicacion, OperadorDeLaboratorio operador, Cliente cliente) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
@@ -42,9 +42,8 @@ public class ControlGestionarMuestra {
 			mu.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
 			Class claseUsuario = usuario.getClass();
 			mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+"555"+"'")); //(Usuario)persistencia.buscarObjeto(claseUsuario, "dni==123"));//Todavia no esta implementado el caso de uso Usuario
-			Cliente cliente = new Cliente();
 			Class claseCliente = cliente.getClass();
-			mu.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+"dni"+"'"));
+			mu.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+cliente.getDni()+"'"));
 			persistencia.insertarObjeto(mu);
 			persistencia.cerrarTransaccion();
 			persistencia.cerrarPersistencia();
@@ -110,6 +109,9 @@ public class ControlGestionarMuestra {
 			OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
 			Class claseOperador = operador.getClass();
 			aux.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+data[5]+"'"));
+			Cliente cliente = new Cliente();
+			Class claseCliente = cliente.getClass();
+			aux.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+data[6]+"'"));
 			Ubicacion ubicacion = new Ubicacion();
 			Class claseUbicacion = ubicacion.getClass();
 			aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+data[0]+"'"));

@@ -13,11 +13,11 @@ import javax.swing.JOptionPane;
 
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.Ubicacion;
 
 import comun.Mediador;
+import comun.MediadorSeleccionarOperador;
 
-import cuGestionarOperador.MediadorGestionarOperador;
+import cuGestionarCliente.MediadorSeleccionarCliente;
 import cuGestionarUbicacion.MediadorGestionarUbicacion;
 
 /**
@@ -28,11 +28,12 @@ import cuGestionarUbicacion.MediadorGestionarUbicacion;
 public class MediadorModificarMuestra extends Mediador{
 	private GUIMuestra GUIMuestra;
 	private boolean modificoMuestra;
-	private String[] data = new String [6];
+	private String[] data = new String [10];
 	private Component frame;
 	private String nombreMuestraModificar;
 	private String ubicacionModificar;
 	private String dniOperadorModificar;
+	private String dniClienteModificar;
 	private OperadorDeLaboratorio operador;
 	private Muestra muestra;
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
@@ -43,8 +44,10 @@ public class MediadorModificarMuestra extends Mediador{
 		ubicacionModificar = fila[0];
 		nombreMuestraModificar = fila[1];
 		dniOperadorModificar = (control.obtenerMuestra(fila[1], fila[0])).getOperadorLaboratorio().getDni();
+		dniClienteModificar = (control.obtenerMuestra(fila[1], fila[0])).getCliente().getDni();
 		String nombreOperador = (control.obtenerMuestra(fila[1], fila[0])).getOperadorLaboratorio().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0]).getOperadorLaboratorio().getApellido();
-		GUIMuestra = new GUIMuestra(fila, nombreOperador);
+		String nombreCliente = (control.obtenerMuestra(fila[1], fila[0])).getCliente().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0]).getCliente().getApellido();
+		GUIMuestra = new GUIMuestra(fila, nombreOperador, nombreCliente);
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
@@ -91,11 +94,14 @@ public class MediadorModificarMuestra extends Mediador{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIMuestra.getJButtonSeleccionarOperador()== source) {
+		if (this.GUIMuestra.getJButtonSeleccionarOperador()== source || GUIMuestra.getjMenuItemSeleccionarOperador()==source) {
 			seleccionarOperador();
 		}
-		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source) {
+		if (this.GUIMuestra.getJButtonSeleccionarUbicacion()== source || GUIMuestra.getjMenuItemSeleccionarUbicacion()==source) {
 			seleccionarUbicacion();
+		}
+		if (this.GUIMuestra.getSeleccionarCliente()== source || GUIMuestra.getjMenuItemSeleccionarCliente()==source) {
+			seleccionarCliente();
 		}
 		if (this.GUIMuestra.getJButtonAceptar() == source|| GUIMuestra.getjMenuAceptar()==source) {
 			aceptar();
@@ -152,6 +158,7 @@ public class MediadorModificarMuestra extends Mediador{
 			data[3]= GUIMuestra.getProfundidadInicial().getText();
 			data[4]= GUIMuestra.getProfundidadFinal().getText();
 			data[5]= dniOperadorModificar;
+			data[6]= dniClienteModificar;
 			control.ModificarMuestra(nombreMuestraModificar,ubicacionModificar,data);
 		} catch (Exception e1) {
 			e1.printStackTrace();
@@ -176,13 +183,27 @@ public class MediadorModificarMuestra extends Mediador{
 	 */
 	public void seleccionarOperador(){
 		try {
-			MediadorGestionarOperador seleccionarOperador = new MediadorGestionarOperador();
+			MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
 			GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
 			dniOperadorModificar =((String)seleccionarOperador.getSeleccionado()[2]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Cliente"
+	 */
+	public void seleccionarCliente(){
+		try {
+			MediadorSeleccionarCliente seleccionarCliente = new MediadorSeleccionarCliente();
+			GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]);
+			dniClienteModificar =((String)seleccionarCliente.getSeleccionado()[2]);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public String[] getData() {
 		return data;
