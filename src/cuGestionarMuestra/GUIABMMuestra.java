@@ -262,6 +262,7 @@ public class GUIABMMuestra extends JDialog{
 	        setJMenuBar(jMenuBar1);
 
 	        pack();
+	        this.setSize(1300 , 700);
 	    }
 	 
 	 

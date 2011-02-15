@@ -116,14 +116,13 @@ public class MediadorGestionarMuestra extends Mediador{
 		}
 		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || this.GUIABMMuestra.getjMenuSeleccionar() == source){
 			if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna muestra","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna muestra","Atencion", JOptionPane.WARNING_MESSAGE);
 			}else{
-			seleccionarMuestra();
-			analisis();
+				seleccionarMuestra();
+				analisis();
 			}
 		}
 		if (this.GUIABMMuestra.getjButtonSalir() == source || GUIABMMuestra.getjMenuSalir()==source){
-
 			GUIABMMuestra.dispose();
 		}
 	}
@@ -146,8 +145,6 @@ public class MediadorGestionarMuestra extends Mediador{
 				seleccionado = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 				seleccionoMuestra = true;
 				muestra = control.obtenerMuestra((String)seleccionado[1], (String)seleccionado[0]);
-				
-				
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
