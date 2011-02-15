@@ -3,6 +3,13 @@ package comun;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+
+import javax.swing.JOptionPane;
 
 import persistencia.domain.Muestra;
 import persistencia.domain.Usuario;
@@ -23,7 +30,7 @@ public class MediadorPrincipal implements ActionListener{
 	private Component frame;
 	private Usuario usuario;
 
-	private void btnGenerarActionPerformed(java.awt.event.ActionEve nt evt) {
+/*	private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {
 		SimpleDateFormat dateformat = new SimpleDateFormat("ddMMyy");
 		if(txtContenedor.getText().equalsIgnoreCase("")){
 			JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
@@ -31,16 +38,16 @@ public class MediadorPrincipal implements ActionListener{
 		try{
 			Runtime runtime = Runtime.getRuntime();
 			File backupFile = new File(String.valueOf(FileChooser.getCurrentDirectory()) + "\\nombreArchivo" + dateformat.format(calendario.getTime()) + ".sql");
-			/*backupFile se utiliza para indicarle la ubicacion y nombre del archivo que contendra el backup con la extencion .sql*/
+			
 	
 			FileWriter fw = new FileWriter(backupFile); 
-			/*objeto que escribira sobre el backup archivo*/
+			
 	
 			Process child = runtime.exec("C:\\Archivos de programa\\MySQL\\MySQL Server 5.0\\bin\\mysqldump --opt --password= --user=root <nameDB>");
-			/*Process es el que ejecuta el comando para buscar el mysqldump.exe*/
+			
 			InputStreamReader irs = new InputStreamReader(child.getInputStream());
 			BufferedReader br = new BufferedReader(irs);
-			/* se escribe sobre el archivo*/
+			
 			String line;
 			while( (line=br.readLine()) != null ) {
 			fw.write(line + "\n");
@@ -55,7 +62,7 @@ public class MediadorPrincipal implements ActionListener{
 		JOptionPane.showMessageDialog(null, "Archivo generado", "Verificar",JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-	
+	*/
 	public MediadorPrincipal(String nombreVentana, Usuario usuario) throws Exception {
 		super();
 		this.usuario = usuario;
