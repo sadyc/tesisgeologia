@@ -6,6 +6,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import javax.jdo.JDOException;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Cliente;
@@ -118,10 +119,15 @@ public class MediadorAltaCliente extends Mediador{
 		try {
 			control.insertarCliente(cliente);
 			altaCliente = true;
-		} catch (Exception e) {
+		}
+		catch (JDOException e) {
+			System.out.println("El guachin existe ya..");
+		}
+		catch (Exception e) {
 			System.out.println("No inserta cliente Mediador Alta cliente");
 			e.printStackTrace();
 		}
+		
 		GUICliente.dispose();
 
 	}
