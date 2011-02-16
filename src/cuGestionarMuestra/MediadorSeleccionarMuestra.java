@@ -105,9 +105,6 @@ public class MediadorSeleccionarMuestra extends Mediador{
 				seleccionarMuestra();
 			
 		}
-		if (this.GUIABMMuestra.getjMenuBuscar() == source || this.GUIABMMuestra.getJButtonBuscar() == source){
-			buscarMuestra();
-		}
 		if (this.GUIABMMuestra.getjButtonSalir() == source || GUIABMMuestra.getjMenuSalir()==source){
 			GUIABMMuestra.dispose();
 		}
@@ -117,13 +114,13 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Muestra"
 	 */
 	public void seleccionarMuestra(){
-		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
+		if (GUIABMMuestra.InicializarTabla().getSelectedRow() == -1){
 			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			System.out.println("Button Seleccionar Muestra");
 			try {
-				seleccionado = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+				seleccionado = GUIABMMuestra.InicializarTabla().getRow(GUIABMMuestra.InicializarTabla().getSelectedRow());
 				seleccionoMuestra = true;
 				GUIABMMuestra.dispose();
 			} catch (Exception e) {
@@ -150,37 +147,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 		
 	}
 	
-	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Muestra"
-	 */
-	public void buscarMuestra(){
-		try {
-   			System.out.println("Button Buscar Muestra");
-   			MediadorBuscar buscar = new MediadorBuscar();
-   			if (buscar.seEncontro()){
-   				GUIABMMuestra.dispose();
-   				cargarTablaDeMuestras(buscar.getResultado());
-   				String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
-   				GUIABMMuestra = new GUIABMMuestra("Gestionar Muestra", data, columAux);
-   				GUIABMMuestra.setListenerButtons(this);
-   				GUIABMMuestra.setListenerTable(this);
-   				GUIABMMuestra.getJButtonAgregar().setEnabled(false);
-   				GUIABMMuestra.getjMenuAgregar().setEnabled(false);
-   				GUIABMMuestra.getJButtonEliminar().setEnabled(false);
-   				GUIABMMuestra.getjMenuEliminar().setEnabled(false);
-   				GUIABMMuestra.getJButtonModificar().setEnabled(false);
-   				GUIABMMuestra.getjMenuModificar().setEnabled(false);
-   				GUIABMMuestra.getJButtonSeleccionar().setEnabled(true);
-   				GUIABMMuestra.getjMenuSeleccionar().setEnabled(true);
-   				GUIABMMuestra.setModal(true);
-   				GUIABMMuestra.show();
-   			}
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
-	}
-	
+		
 	/**
 	 * @return the seleccionado
 	 * @throws Exception 

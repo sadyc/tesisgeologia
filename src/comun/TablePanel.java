@@ -17,8 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 
 /**
  * @author Daniel
@@ -33,7 +35,11 @@ public class TablePanel extends JPanel {
 	
 	private Table tableModel = null;
 
-    private JScrollPane scrollPane = null;  
+    private JScrollPane scrollPane = null;
+    
+    private final TableRowSorter<TableModel> modeloOrdenado;
+    
+   
 	
     
 	
@@ -41,7 +47,16 @@ public class TablePanel extends JPanel {
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		this.scrollPane = new JScrollPane();
 		this.tableModel = new Table();
-		this.table = new JTable(this.tableModel);
+		this.table = new JTable(tableModel){
+			
+			public boolean isCellEditable(int row,int column) { 
+			  return false;
+			}
+			
+		};
+		modeloOrdenado = new TableRowSorter<TableModel>(tableModel);
+		table.setRowSorter(modeloOrdenado);
+		table.getTableHeader().setReorderingAllowed(false);
 	//	table.setDefaultRenderer ( Object.class, new MyRenderer ()) ;
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.addMouseListener(null);
@@ -54,6 +69,10 @@ public class TablePanel extends JPanel {
 	    this.scrollPane.setBounds( x, y, w-10, h-10);
 	    this.table.setBounds(x, y, w-20, h-20);
 	}
+	
+	public TableRowSorter<TableModel> getSorter(){
+		  return modeloOrdenado;
+	  }
 	
 	/**
 	 * It load the data in the table
@@ -107,5 +126,20 @@ public class TablePanel extends JPanel {
 	public void addTableKeyListener (KeyListener lis){
 		this.table.addKeyListener(lis);
 	}
-	 
+	/**
+	 * @return the table
+	 */
+	public JTable getTable() {
+		return table;
+	}
+
+	/**
+	 * @param table the table to set
+	 */
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+
+	
+
 }
