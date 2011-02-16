@@ -98,7 +98,7 @@ public class MediadorAltaCliente extends Mediador{
 			}
 			else {
 				insertarUsuario();
-				altaCliente = true;
+				
 				}
 		}
 		catch (NumberFormatException e){
@@ -118,17 +118,21 @@ public class MediadorAltaCliente extends Mediador{
 		cliente = new Cliente(data[0],data[1],data[2],data[3],data[4]);
 		try {
 			control.insertarCliente(cliente);
-			altaCliente = true;
-		}
-		catch (JDOException e) {
-			System.out.println("El guachin existe ya..");
+			if (control.getExiste()) {
+				System.out.println("El objeto ya existe");
+				JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				altaCliente = true;
+				GUICliente.dispose();
+			}
 		}
 		catch (Exception e) {
 			System.out.println("No inserta cliente Mediador Alta cliente");
 			e.printStackTrace();
 		}
 		
-		GUICliente.dispose();
+		
 
 	}
 	

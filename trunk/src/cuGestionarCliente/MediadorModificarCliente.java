@@ -108,7 +108,13 @@ public class MediadorModificarCliente extends Mediador{
 		data[4]= GUICliente.getjTextFieldTelefono().getText();
 		try {
 			control.modificarCliente(clienteModificar.getDni(),data);
-			modificoCliente = true;
+			if (control.getExiste()) {
+				System.out.println("El objeto ya existe");
+				JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				modificoCliente = true;
+			}
 		} catch (Exception e) {
 			System.out.println("No modifica Operador Mediador Modificar Operador");
 			e.printStackTrace();
