@@ -60,6 +60,11 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
         jTextFieldLL = new javax.swing.JTextField();
         jTextFieldLP = new javax.swing.JTextField();
         initComponents();
+        jButtonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+        agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+        version.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png")));
         show();
 }
 

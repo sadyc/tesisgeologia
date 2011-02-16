@@ -57,6 +57,10 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
         setModal(true);
         setResizable(false);
         initComponents();
+        aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+        jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
+        jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
     }
     
     public GUIAltaAnalisis(Muestra muestra) {
@@ -68,6 +72,11 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 		jLabelTamiz = new javax.swing.JLabel();
 		jLabelTamiz.setText("Tamiz: ");
 		initComponents();
+		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
+	    cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+	    jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
+	    jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+	      
 	}
     
     public GUIAltaAnalisis(Muestra muestra,Float peso, String numeroTamiz) {
@@ -80,6 +89,11 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 		jLabelTamiz = new javax.swing.JLabel();
 		jLabelTamiz.setText("Tamiz: "+numeroTamiz);
 		initComponents();
+		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
+	    cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+	    jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
+	    jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+	      
 	}
 
     /** This method is called from within the constructor to
