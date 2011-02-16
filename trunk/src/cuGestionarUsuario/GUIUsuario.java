@@ -61,6 +61,8 @@ public class GUIUsuario extends javax.swing.JDialog {
     	jTextFieldNombreUsuario.setText(usuario.getNombreUsuario());
     	jTextFieldTelefono.setText(usuario.getTel());
     	jComboBoxCategoria.setSelectedItem(usuario.getCategoria());
+        jButtonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png"))); // NOI18N
+    	jButtonAgregar.setText("Modificar");
     	setResizable(false);
         setLocationRelativeTo(null);
     }

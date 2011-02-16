@@ -390,7 +390,7 @@ public class GUIMuestraDetallada extends JDialog{
      *@return columName  
      * */
 	public static String[] getColumName(){
-		String[] columnName = {"Nro Tamiz","Abertura (mm)","% Pasante","% Retenido Acumulado","% Retenido Parcial"};
+		String[] columnName = {"Nro Tamiz","Peso Retenido (grs.)","% Pasante","% Retenido Acumulado","% Retenido Parcial"};
 		return columnName;
 	}
 	

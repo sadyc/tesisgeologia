@@ -82,6 +82,8 @@ public class GUIMuestra extends javax.swing.JDialog {
 		operador.setText("(*) Operador: "+ nombreOperador);
 		cliente.setText(" Cliente: "+ nombreCliente);
 		usuario.setText("Usuario: "+ nombreUsuario);
+		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png")));
+		aceptar.setText("Modificar");
 		setModal(true);
 		setLocationRelativeTo(null);
 	}

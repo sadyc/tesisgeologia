@@ -47,6 +47,8 @@ public class GUIOperador extends javax.swing.JDialog {
     	jTextFieldEmail.setText(operador.getEmail());
     	jTextFieldNombre.setText(operador.getNombre());
       	jTextFieldTelefono.setText(operador.getTel());
+        jButtonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png"))); // NOI18N
+     	jButtonAgregar.setText("Modificar");
        	setResizable(false);
         setLocationRelativeTo(null);
     }
