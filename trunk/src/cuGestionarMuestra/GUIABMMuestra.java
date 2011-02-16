@@ -3,11 +3,16 @@ package cuGestionarMuestra;
 
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import comun.TablePanel;
 
@@ -22,7 +27,6 @@ public class GUIABMMuestra extends JDialog{
 
 	 // Variables declaration - do not modify
     private javax.swing.JButton jButtonAgregar;
-    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonSalir;
@@ -34,7 +38,6 @@ public class GUIABMMuestra extends JDialog{
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuAgregar;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuBuscar;
     private javax.swing.JMenuItem jMenuEliminar;
     private javax.swing.JMenuItem jMenuModificar;
     private javax.swing.JMenuItem jMenuSalir;
@@ -49,14 +52,14 @@ public class GUIABMMuestra extends JDialog{
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
-    
     private javax.swing.JTextField jTextFieldBuscar;
    	private String [] columName;
 	private Object [][] data;
 	private TablePanel tablePanel;
 	 // End of variables declaration
 	
-		
+	
+
 	/**
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una muestra. 
@@ -66,7 +69,8 @@ public class GUIABMMuestra extends JDialog{
 		columName = colum;
 		setTitle(title);
 		data = datos.clone();
-		tablePanel = getTablePanel();
+		
+		
 		initComponents();
 	}
 	
@@ -81,11 +85,40 @@ public class GUIABMMuestra extends JDialog{
 	        jPanel6 = new javax.swing.JPanel();
 	        jButtonSalir = new javax.swing.JButton();
 	        jPanel2 = new javax.swing.JPanel();
+	        jComboBoxBuscar = new javax.swing.JComboBox();
+	        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Muestra", "Nombre Ubicacion", "Operador","Cliente" }));
+	        jComboBoxBuscar.addActionListener(new java.awt.event.ActionListener() {
+	            public void actionPerformed(java.awt.event.ActionEvent evt) {
+	                jComboBoxBuscarActionPerformed(evt);
+	            }
+	        });
 	        jLabel1 = new javax.swing.JLabel();
 	        jTextFieldBuscar = new javax.swing.JTextField(25);
+	        jTextFieldBuscar.addKeyListener(new KeyAdapter() {
+	        	
+	               public void keyReleased(final KeyEvent e) {
+	            	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Muestra"){
+	            		   System.out.println(jTextFieldBuscar.getText());
+	            		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),1));
+	            	   }
+	            	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Ubicacion"){
+	            		   System.out.println(jTextFieldBuscar.getText());
+	            		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),0));
+	            	   }
+	            	   if (jComboBoxBuscar.getSelectedItem()=="Operador"){
+	            		   System.out.println(jTextFieldBuscar.getText());
+	            		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),5));
+	            	   }
+	            	   if (jComboBoxBuscar.getSelectedItem()=="Cliente"){
+	            		   System.out.println(jTextFieldBuscar.getText());
+	            		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),6));
+	            	   }
+	               }
+	        });
+	           
+	        tablePanel = InicializarTabla();
 	        jLabel2 = new javax.swing.JLabel();
-	        jComboBoxBuscar = new javax.swing.JComboBox();
-	        jButtonBuscar = new javax.swing.JButton();
+	        
 	        jScrollPane1 = new javax.swing.JScrollPane();
 	        
 	        jPanel3 = new javax.swing.JPanel();
@@ -97,7 +130,6 @@ public class GUIABMMuestra extends JDialog{
 	        jMenuEliminar = new javax.swing.JMenuItem();
 	        jSeparator2 = new javax.swing.JPopupMenu.Separator();
 	        jMenuSeleccionar = new javax.swing.JMenuItem();
-	        jMenuBuscar = new javax.swing.JMenuItem();
 	        jSeparator1 = new javax.swing.JPopupMenu.Separator();
 	        jMenuSalir = new javax.swing.JMenuItem();
 	        jMenu2 = new javax.swing.JMenu();
@@ -168,17 +200,8 @@ public class GUIABMMuestra extends JDialog{
 	        jLabel2.setText("Por :");
 	        jPanel2.add(jLabel2);
 
-	        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Muestra", "Nombre Ubicacion", "Operador", "Provincia", "Cliente" }));
-	        jComboBoxBuscar.addActionListener(new java.awt.event.ActionListener() {
-	            public void actionPerformed(java.awt.event.ActionEvent evt) {
-	                jComboBoxBuscarActionPerformed(evt);
-	            }
-	        });
+	        
 	        jPanel2.add(jComboBoxBuscar);
-
-	        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-find-3.png"))); // NOI18N
-	        jButtonBuscar.setText("Buscar");
-	        jPanel2.add(jButtonBuscar);
 
 	        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
@@ -237,10 +260,6 @@ public class GUIABMMuestra extends JDialog{
 	        jMenuSeleccionar.setText("Seleccionar");
 	        jMenu1.add(jMenuSeleccionar);
 
-	        jMenuBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
-	        jMenuBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-find-3.png"))); // NOI18N
-	        jMenuBuscar.setText("Buscar");
-	        jMenu1.add(jMenuBuscar);
 	        jMenu1.add(jSeparator1);
 
 	        jMenuSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
@@ -320,17 +339,15 @@ public class GUIABMMuestra extends JDialog{
 		jButtonEliminar.addActionListener(lis);
 		jButtonModificar.addActionListener(lis);
 		jButtonSeleccionar.addActionListener(lis);
-		jButtonBuscar.addActionListener(lis);
 		jButtonSalir.addActionListener(lis);
 		jMenuAgregar.addActionListener(lis);
-		jMenuBuscar.addActionListener(lis);
-	    jMenuEliminar.addActionListener(lis);
+		jMenuEliminar.addActionListener(lis);
 	    jMenuModificar.addActionListener(lis);
 	    jMenuSalir.addActionListener(lis);
 	    jMenuSeleccionar.addActionListener(lis);
 	    jMenuVersion.addActionListener(lis);
-		        
 	}
+	
 	/**
 	 * Metodo que permite escuchar la tabla panel.
 	 *
@@ -345,7 +362,6 @@ public class GUIABMMuestra extends JDialog{
      *@return data  
      * */
 	public String[] getColumName(){
-		
 		return columName;
 	}
 
@@ -353,21 +369,17 @@ public class GUIABMMuestra extends JDialog{
 		this.columName = columName.clone();
 	}
 	
-	
-	public JButton getJButtonBuscar() {
-		return jButtonBuscar;
-	}
-
 	/**
 	 * Metodo que retorna la tabla panel.
 	 *
 	 * @return TablePanel
 	 */
-	public TablePanel getTablePanel() {
+	public TablePanel InicializarTabla() {
 		if (this.tablePanel==null) {
 			this.tablePanel = new TablePanel();
 	 		this.tablePanel.setData(data, columName);			
 		}
+		
 		return this.tablePanel;
 	}
 
@@ -377,6 +389,7 @@ public class GUIABMMuestra extends JDialog{
 	
 	public void setKeyListener(KeyListener lis){
         tablePanel.addTableKeyListener(lis);
+        jTextFieldBuscar.addKeyListener(lis);
 	}
 	
 	/**
@@ -384,13 +397,6 @@ public class GUIABMMuestra extends JDialog{
 	 */
 	public javax.swing.JButton getjButtonAgregar() {
 		return jButtonAgregar;
-	}
-
-	/**
-	 * @return the jButtonBuscar
-	 */
-	public javax.swing.JButton getjButtonBuscar() {
-		return jButtonBuscar;
 	}
 
 	/**
@@ -429,13 +435,6 @@ public class GUIABMMuestra extends JDialog{
 	}
 
 	/**
-	 * @return the jMenuBuscar
-	 */
-	public javax.swing.JMenuItem getjMenuBuscar() {
-		return jMenuBuscar;
-	}
-
-	/**
 	 * @return the jMenuEliminar
 	 */
 	public javax.swing.JMenuItem getjMenuEliminar() {
@@ -469,8 +468,25 @@ public class GUIABMMuestra extends JDialog{
 	public javax.swing.JMenuItem getjMenuVersion() {
 		return jMenuVersion;
 	}
-
 	
-
-
+	/**
+	 * @return the jTextFieldBuscar
+	 */
+	public javax.swing.JTextField getjTextFieldBuscar() {
+			return jTextFieldBuscar;
+	}
+	/**
+	 * @return the jComboBoxBuscar
+	 */
+	public javax.swing.JComboBox getjComboBoxBuscar() {
+		return jComboBoxBuscar;
+	}
+	
+	
+	/**
+	 * @return the tablePanel
+	 */
+	public TablePanel getTablePanel() {
+		return tablePanel;
+	}
 }

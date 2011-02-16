@@ -142,10 +142,6 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || GUIABMMuestra.getjMenuSeleccionar()==source){
 			seleccionarMuestra();
 		}
-		if (this.GUIABMMuestra.getjMenuBuscar() == source || GUIABMMuestra.getjMenuBuscar()==source){
-			GUISeleccionarMuestra.dispose();
-			buscarMuestra();
-		}
 		if (this.GUIABMMuestra.getjButtonSalir() == source || GUIABMMuestra.getjMenuSalir()==source){
 			GUIABMMuestra.dispose();
 		}
@@ -155,13 +151,13 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Muestra"
 	 */
 	public void seleccionarMuestra(){
-		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
+		if (GUIABMMuestra.InicializarTabla().getSelectedRow() == -1){
 			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			System.out.println("Button Seleccionar Muestra");
 			try {
-				seleccionado = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+				seleccionado = GUIABMMuestra.InicializarTabla().getRow(GUIABMMuestra.InicializarTabla().getSelectedRow());
 				seleccionoMuestra = true;
 				GUIABMMuestra.dispose();
 			} catch (Exception e) {

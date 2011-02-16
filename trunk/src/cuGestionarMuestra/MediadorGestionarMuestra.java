@@ -10,6 +10,10 @@ import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import persistencia.domain.Muestra;
 import persistencia.domain.Usuario;
@@ -28,6 +32,7 @@ import cuGestionarAnalisis.MediadorGestionarAnalisis;
 public class MediadorGestionarMuestra extends Mediador{
 
 	private GUIABMMuestra GUIABMMuestra;
+	private TableRowSorter<TableModel> tablaOrdenada;
 	private Object [][] data ;
 	private Component frame;
 	private Muestra muestra;
@@ -110,10 +115,6 @@ public class MediadorGestionarMuestra extends Mediador{
 			modificarMuestra();
 		}
 
-		if (this.GUIABMMuestra.getjMenuBuscar() == source || this.GUIABMMuestra.getJButtonBuscar() == source){
-			buscarMuestra();
-			
-		}
 		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || this.GUIABMMuestra.getjMenuSeleccionar() == source){
 			if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
 				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna muestra","Atencion", JOptionPane.WARNING_MESSAGE);
@@ -152,31 +153,7 @@ public class MediadorGestionarMuestra extends Mediador{
 		}
 
 
-	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Muestra"
-	 */
-	public void buscarMuestra(){
-		try {
-   			System.out.println("Button Buscar Muestra");
-   			MediadorBuscar buscar = new MediadorBuscar();
-   			if (buscar.seEncontro()){
-   				GUIABMMuestra.dispose();
-   				cargarTablaDeMuestras(buscar.getResultado());
-   				String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
-   				GUIABMMuestra = new GUIABMMuestra("Gestionar Muestra", data, columAux);
-   				GUIABMMuestra.setListenerButtons(this);
-   				GUIABMMuestra.setListenerTable(this);
-   				GUIABMMuestra.getJButtonSeleccionar().setEnabled(false);
-   				//GUIABMMuestra.getSeleccionarMenu().setEnabled(false);
-   				GUIABMMuestra.setModal(true);
-   				GUIABMMuestra.show();
-   			}
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
-	}
-	
+		
 	private void cargarTablaDeMuestras(Collection resultado) {
 		data = new Object [resultado.size()] [6];
 		int i = 0;
@@ -193,7 +170,6 @@ public class MediadorGestionarMuestra extends Mediador{
 		}
 		
 	}
-
 
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Modificar Muestra"
@@ -304,12 +280,8 @@ public class MediadorGestionarMuestra extends Mediador{
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
