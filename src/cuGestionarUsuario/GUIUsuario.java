@@ -149,9 +149,10 @@ public class GUIUsuario extends javax.swing.JDialog {
                 jTextFieldEmailActionPerformed(evt);
             }
         });
-
+        jButtonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png"))); // NOI18N
         jButtonAgregar.setText("Agregar");
-
+        
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
 
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Operador", "Restringido" }));
@@ -159,12 +160,14 @@ public class GUIUsuario extends javax.swing.JDialog {
         jLabelCategoria.setText("(*) Categoría: ");
 
         jMenuHerramientas.setText("Herramientas");
-
+        
+        jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png"))); // NOI18N
         jMenuItemAgregar.setText("Agregar");
         jMenuHerramientas.add(jMenuItemAgregar);
 
         jMenuHerramientas.add(jSeparator2);
 
+        jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
         jMenuItemCancelar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemCancelar.setText("Cancelar");
         jMenuHerramientas.add(jMenuItemCancelar);
@@ -173,6 +176,8 @@ public class GUIUsuario extends javax.swing.JDialog {
 
         jMenuAyuda.setText("Ayuda");
 
+        jMenuItemVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
+        
         jMenuItemVersion.setText("Versión");
         jMenuAyuda.add(jMenuItemVersion);
 

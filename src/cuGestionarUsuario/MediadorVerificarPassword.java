@@ -42,7 +42,7 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 	private void buscar() {
 		System.out.println("Verificar.actionPerformed() jButtonAceptar");
 		try{
-		 	if (GUIVerificarPassword.getPassword().getText().equals("")){
+		 	if (GUIVerificarPassword.getjPasswordField1().getText().equals("")){
 	 			JOptionPane.showMessageDialog(frame,"El password no puede ser vacio.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 		 	else{
@@ -50,7 +50,7 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 		 		Encriptar encriptar = new Encriptar();
 				String password = "";
 				try {
-					password = encriptar.hash(GUIVerificarPassword.getPassword().getText());
+					password = encriptar.hash(GUIVerificarPassword.getjPasswordField1().getText());
 				} catch (Exception e1) {
 					System.out.println("El password es muy extenso!");
 					e1.printStackTrace();
@@ -72,11 +72,11 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIVerificarPassword.getJButtonBuscar() == source || this.GUIVerificarPassword.getjMenuItemAceptar() == source) {
+		if (this.GUIVerificarPassword.getjButton1() == source || this.GUIVerificarPassword.getjMenuItem1() == source) {
 			buscar();
 			GUIVerificarPassword.dispose();
 		}
-		if (this.GUIVerificarPassword.getJButtonCancelar() == source || this.GUIVerificarPassword.getjMenuItemCancelar() == source){
+		if (this.GUIVerificarPassword.getjButton2() == source || this.GUIVerificarPassword.getjMenuItem2() == source){
 			GUIVerificarPassword.dispose();
 		}
 	}
