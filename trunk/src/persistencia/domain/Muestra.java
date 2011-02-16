@@ -7,7 +7,9 @@ import java.sql.Date;
 import java.util.Collection;
 import java.util.HashSet;
 
+import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 
 /**
  * Implementacion de la clase que define la muestra de manera
@@ -16,10 +18,22 @@ import javax.jdo.annotations.PersistenceCapable;
  * @version 1.0 24/09/2010 
  *
  */
-@PersistenceCapable
+@PersistenceCapable//(objectIdClass=ComposedIdKey.class)
 public class Muestra {
- 
+	@PrimaryKey
 	private String nombreMuestra;
+	@ForeignKey
+	private Ubicacion ubicacion;
+	@ForeignKey
+	private OperadorDeLaboratorio operadorLaboratorio ;
+	@ForeignKey
+	private Cliente cliente;
+	@ForeignKey
+	private Usuario usuario;
+	@ForeignKey
+	private AASHTO aashto;
+	@ForeignKey
+	private SUCS sucs;
 	private Float profundidadInicial;
 	private Float profundidadFinal;
 	private Float peso;
@@ -33,13 +47,6 @@ public class Muestra {
 	private Float gradoCurvatura;
 	private Float coeficienteUniformidad;
 	
-	protected OperadorDeLaboratorio operadorLaboratorio ;
-	protected Cliente cliente;
-	protected Usuario usuario;
-	protected Ubicacion ubicacion;
-	
-	protected AASHTO aashto;
-	protected SUCS sucs;
 	
 	
 	protected Collection<Analisis> analisis= new HashSet();

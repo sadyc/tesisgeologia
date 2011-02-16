@@ -3,13 +3,17 @@ package comun;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import persistencia.domain.Muestra;
 import persistencia.domain.Usuario;
@@ -24,14 +28,16 @@ import cuGestionarUsuario.MediadorGestionarUsuario;
 import cuLimiteConsistencia.MediadorAltaLimiteConsistencia;
 import cuLimiteConsistencia.MediadorConsistencia;
 
-public class MediadorPrincipal implements ActionListener{
+public class MediadorPrincipal extends Mediador{
 
 	private GUIPrincipal GUIPrincipal = null;
 	private Component frame;
 	private Usuario usuario;
-
-
-	/**private void btnGenerarActionPerformed(java.awt.event.ActionEve nt evt) {
+	private java.sql.Date calendario;
+	
+	private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {
+		JFileChooser FileChooser = new JFileChooser();
+		JTextField txtContenedor = new JTextField("C:");
 		SimpleDateFormat dateformat = new SimpleDateFormat("ddMMyy");
 		if(txtContenedor.getText().equalsIgnoreCase("")){
 			JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
@@ -41,15 +47,15 @@ public class MediadorPrincipal implements ActionListener{
 			File backupFile = new File(String.valueOf(FileChooser.getCurrentDirectory()) + "\\nombreArchivo" + dateformat.format(calendario.getTime()) + ".sql");
 			
 	
-	/**		FileWriter fw = new FileWriter(backupFile); 
+			FileWriter fw = new FileWriter(backupFile); 
 			
 	
-	/**		Process child = runtime.exec("C:\\Archivos de programa\\MySQL\\MySQL Server 5.0\\bin\\mysqldump --opt --password= --user=root <nameDB>");
+			Process child = runtime.exec("C:\\Program Files\\MySQL\\MySQL Server 5.1\\bin\\mysqldump --opt --password= --user=root <tesis>");
 			
-	/**		InputStreamReader irs = new InputStreamReader(child.getInputStream());
+			InputStreamReader irs = new InputStreamReader(child.getInputStream());
 			BufferedReader br = new BufferedReader(irs);
 			
-	/**		String line;
+			String line;
 			while( (line=br.readLine()) != null ) {
 			fw.write(line + "\n");
 			}
@@ -62,10 +68,12 @@ public class MediadorPrincipal implements ActionListener{
 		}
 		JOptionPane.showMessageDialog(null, "Archivo generado", "Verificar",JOptionPane.INFORMATION_MESSAGE);
 		}
-	}*/
-
+	}
+	
 	public MediadorPrincipal(String nombreVentana, Usuario usuario) throws Exception {
 		super();
+		java.util.Date utilDate = new java.util.Date();
+	    java.sql.Date calendario = new java.sql.Date(utilDate.getTime());
 		this.usuario = usuario;
 		this.GUIPrincipal = new GUIPrincipal(nombreVentana);
 		this.GUIPrincipal.setListenerButtons(this);
@@ -124,6 +132,7 @@ public class MediadorPrincipal implements ActionListener{
 			gestionarLimiteConsistencia();
 		}
 		if (this.GUIPrincipal.getJButtonSalir() == source || this.GUIPrincipal.getSalirMenu()== source){
+			btnGenerarActionPerformed(arg0);
 			GUIPrincipal.dispose();
 		}
 	}
@@ -243,6 +252,18 @@ public class MediadorPrincipal implements ActionListener{
 	 */
 	public Usuario getUsuario() {
 		return usuario;
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
