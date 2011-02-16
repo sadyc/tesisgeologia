@@ -100,11 +100,10 @@ public class MediadorAltaOperador extends Mediador{
 			}
 			else {
 				insertarUsuario();
-				altaOperador = true;
 				}
 		}
 		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -120,12 +119,20 @@ public class MediadorAltaOperador extends Mediador{
 		operador = new OperadorDeLaboratorio(data[0],data[1],data[2],data[3],data[4]);
 		try {
 			control.insertarOperador(operador);
-			altaOperador = true;
+			if (control.getExiste()) {
+				System.out.println("El objeto ya existe");
+				JOptionPane.showMessageDialog(frame,"El Operador de Laboratorio con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				altaOperador = true;
+				GUIOperador.dispose();
+			}
+			
 		} catch (Exception e) {
 			System.out.println("No inserta Operador Mediador Alta Operador");
 			e.printStackTrace();
 		}
-		GUIOperador.dispose();
+		
 
 	}
 	

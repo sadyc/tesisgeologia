@@ -142,12 +142,20 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 		usuario = new Usuario(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]);
 		try {
 			control.insertarUsuario(usuario);
-			altaUsuario = true;
+			if (control.getExiste()) {
+				System.out.println("El objeto ya existe");
+				JOptionPane.showMessageDialog(frame,"El usuario con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				altaUsuario = true;
+				GUIUsuario.dispose();
+			}
+			
 		} catch (Exception e) {
 			System.out.println("No inserta Usuario Mediador Alta Usuario");
 			e.printStackTrace();
 		}
-		GUIUsuario.dispose();
+		
 
 	}
 	

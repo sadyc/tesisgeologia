@@ -14,7 +14,8 @@ import persistencia.domain.Ubicacion;
  *
  */
 public class ControlGestionarUbicacion {
-
+	private boolean yaExiste;
+	
 	/**
 	 * Contructor por defecto.
 	 */
@@ -27,16 +28,25 @@ public class ControlGestionarUbicacion {
 	 * @throws Exception
 	 */
 	public void insertarUbicacion (String[] data) throws Exception{
+		yaExiste=false;
 		Persistencia persistencia= new Persistencia();
 		persistencia.abrirTransaccion();
-		Ubicacion ubicacion = new Ubicacion();
-		ubicacion.setNombreUbicacion(data[0]);
-		ubicacion.setCiudad(data[1]);
-		ubicacion.setProvincia(data[2]);
-		ubicacion.setLatitud(data[3]);
-		ubicacion.setLongitud(data[4]);
-		persistencia.insertarObjeto(ubicacion);
-		persistencia.cerrarTransaccion();
+		try{
+			Ubicacion ubicacion = new Ubicacion();
+			ubicacion.setNombreUbicacion(data[0]);
+			ubicacion.setCiudad(data[1]);
+			ubicacion.setProvincia(data[2]);
+			ubicacion.setLatitud(data[3]);
+			ubicacion.setLongitud(data[4]);
+			persistencia.insertarObjeto(ubicacion);
+			persistencia.cerrarTransaccion();
+		}
+		catch (Exception e) {
+			yaExiste=persistencia.getExiste();
+			System.out.println("Fatal error en ControlGestionarUbicacion insertar");
+			persistencia.realizarRollback();
+		}
+		
 	}
 
 	
@@ -50,16 +60,22 @@ public class ControlGestionarUbicacion {
 	public void modificarUbicacion(String nombreUbicacion, String ciudad, String[] data) throws Exception {
 		Persistencia persistencia= new Persistencia();
 		persistencia.abrirTransaccion();
-		Ubicacion ubicacion = new Ubicacion();
-		ubicacion = (Ubicacion)persistencia.buscarObjeto(ubicacion.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
-		ubicacion.setNombreUbicacion(data[0]);
-		ubicacion.setCiudad(data[1]);
-		ubicacion.setProvincia(data[2]);
-		ubicacion.setLatitud(data[3]);
-		ubicacion.setLongitud(data[4]);
-		persistencia.insertarObjeto(ubicacion);
-		persistencia.cerrarTransaccion();
-		
+		try{
+			Ubicacion ubicacion = new Ubicacion();
+			ubicacion = (Ubicacion)persistencia.buscarObjeto(ubicacion.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
+			ubicacion.setNombreUbicacion(data[0]);
+			ubicacion.setCiudad(data[1]);
+			ubicacion.setProvincia(data[2]);
+			ubicacion.setLatitud(data[3]);
+			ubicacion.setLongitud(data[4]);
+			persistencia.insertarObjeto(ubicacion);
+			persistencia.cerrarTransaccion();
+		}
+		catch (Exception e) {
+			yaExiste=persistencia.getExiste();
+			System.out.println("Fatal error en ControlGestionarUbicacion modificar");
+			persistencia.realizarRollback();
+		}
 	}
 
 	/**
@@ -97,4 +113,12 @@ public class ControlGestionarUbicacion {
 		return aux;
 	}
 
+	/**
+	 * Retorna si un objeto a insertar ya existe en la base de datos.
+	 * @return yaExiste
+	 */
+	public boolean getExiste(){
+		return yaExiste;
+	}
+	
 }

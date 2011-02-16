@@ -20,7 +20,7 @@ import persistencia.domain.Usuario;
  * @version 1.0
  */
 public class ControlGestionarMuestra {
-
+	private boolean yaExiste;
 	
 	/**
 	 * Contructor por defecto
@@ -31,6 +31,7 @@ public class ControlGestionarMuestra {
 	 * Inserta una muestra con persistencia. 
 	 */ 
 	public void insertarMuestra(Muestra mu, Ubicacion ubicacion, OperadorDeLaboratorio operador, Cliente cliente, Usuario usuario1) throws Exception{
+		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
@@ -40,18 +41,18 @@ public class ControlGestionarMuestra {
 			Class claseOperador = operador.getClass();
 			mu.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
 			Class claseUsuario = usuario.getClass();
-			mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+usuario.getDni()+"'")); //(Usuario)persistencia.buscarObjeto(claseUsuario, "dni==123"));//Todavia no esta implementado el caso de uso Usuario
+			mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+usuario.getDni()+"'")); 
 			if (cliente != null){
 				Class claseCliente = cliente.getClass();
 				mu.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+cliente.getDni()+"'"));
 			}
-			//mu.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+cliente.getDni()+"'"));
+			
 			persistencia.insertarObjeto(mu);
 			persistencia.cerrarTransaccion();
 			persistencia.cerrarPersistencia();
 		} catch (Exception e) {
+			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarMuestra insertar");
-			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
 	}
@@ -98,6 +99,7 @@ public class ControlGestionarMuestra {
 	 * @throws Exception
 	 */
 	public void ModificarMuestra(String nombreMuestraModificar,String ubicacionModificar,String[] data) throws Exception {
+		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Muestra aux = new Muestra();
@@ -126,8 +128,8 @@ public class ControlGestionarMuestra {
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
+			yaExiste=persistencia.getExiste();
 			System.out.println("Error al modificar");
-			e.printStackTrace();
 			persistencia.realizarRollback();
 		}		
 	}
@@ -149,6 +151,14 @@ public class ControlGestionarMuestra {
 			persistencia.realizarRollback();
 		}
 		return aux;
+	}
+	
+	/**
+	 * Retorna si un objeto a insertar ya existe en la base de datos.
+	 * @return yaExiste
+	 */
+	public boolean getExiste(){
+		return yaExiste;
 	}
 }
 	

@@ -91,7 +91,7 @@ public class MediadorModificarOperador extends Mediador{
 				}
 			}
 		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -107,12 +107,20 @@ public class MediadorModificarOperador extends Mediador{
 		data[4]= GUIOperador.getjTextFieldTelefono().getText();
 		try {
 			control.modificarOperador(operadorModificar.getDni(),data);
-			modificoOperador = true;
+			if (control.getExiste()) {
+				System.out.println("El objeto ya existe");
+				JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				modificoOperador = true;
+				GUIOperador.dispose();
+			}
+			
 		} catch (Exception e) {
 			System.out.println("No modifica Operador Mediador Modificar Operador");
 			e.printStackTrace();
 		}
-		GUIOperador.dispose();
+		
 
 	}
 	

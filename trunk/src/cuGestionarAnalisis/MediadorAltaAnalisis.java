@@ -31,8 +31,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 	private Analisis analisis;
 	private String[] data= new String[5];
 	private String numeroTamiz;
-	private String nombreMuestra;
-	private ControlGestionarAnalisis control = new ControlGestionarAnalisis();
+	private ControlGestionarAnalisis control;
 	private boolean altaAnalisis = false;
 	private Component frame;
 	
@@ -41,6 +40,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 	 */
 	public MediadorAltaAnalisis(Muestra muestra) {
 		super();
+		control =   new ControlGestionarAnalisis();
 		this.muestra = muestra;
 		analisis = new Analisis();
 		GUIAnalisis = new GUIAltaAnalisis(muestra);
@@ -158,10 +158,15 @@ public class MediadorAltaAnalisis  extends Mediador{
 						analisis = new Analisis();
 						analisis.setPesoRetenido(Float.parseFloat(pesoRetenido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
 						try {
-							
 							data = control.insertarAnalisis(analisis, muestra, numeroTamiz);
-							System.out.println(analisis.toString()+"Mediador");
-							altaAnalisis= true;
+							if (control.getExiste()) {
+								System.out.println("El objeto ya existe");
+								JOptionPane.showMessageDialog(frame,"El análisis de la muestra correspondiente ya tiene cargado un resultado en el Tamiz Nº: "+data[0]+". Por favor ingrese otro.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+							}
+							else {
+								altaAnalisis = true;
+								GUIAnalisis.dispose();
+							}
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

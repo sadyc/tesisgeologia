@@ -6,6 +6,7 @@ import persistencia.Persistencia;
 import persistencia.domain.OperadorDeLaboratorio;
 
 public class ControlGestionarOperador {
+	private boolean yaExiste;
 	/**
 	 * Contructor por defecto
 	 */
@@ -15,6 +16,7 @@ public class ControlGestionarOperador {
 	 * Inserta un operador con persistencia. 
 	 */ 
 	public void insertarOperador(OperadorDeLaboratorio operador) throws Exception{
+		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
@@ -22,8 +24,8 @@ public class ControlGestionarOperador {
 			persistencia.cerrarTransaccion();
 			persistencia.cerrarPersistencia();
 		} catch (Exception e) {
+			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarOperador insertar");
-			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
 	}
@@ -47,6 +49,7 @@ public class ControlGestionarOperador {
 	}
 			
 	public void modificarOperador(String DNI,String[] data) throws Exception {
+		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		OperadorDeLaboratorio aux = new OperadorDeLaboratorio();
@@ -61,8 +64,8 @@ public class ControlGestionarOperador {
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
+			yaExiste=persistencia.getExiste();
 			System.out.println("Error al modificar");
-			e.printStackTrace();
 			persistencia.realizarRollback();
 		}		
 	}
@@ -102,5 +105,13 @@ public class ControlGestionarOperador {
 			persistencia.realizarRollback();
 		}
 		return aux;
+	}
+	
+	/**
+	 * Retorna si un objeto a insertar ya existe en la base de datos.
+	 * @return yaExiste
+	 */
+	public boolean getExiste(){
+		return yaExiste;
 	}
 }

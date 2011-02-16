@@ -125,12 +125,20 @@ public class MediadorModificarUsuario implements ActionListener, KeyListener, Mo
 		System.out.println(String.valueOf(GUIUsuario.getjComboBoxCategoria().getSelectedIndex()));
 		try {
 			control.modificarUsuario(usuarioModificar.getDni(),data);
-			modificoUsuario = true;
+			if (control.getExiste()) {
+				System.out.println("El objeto ya existe");
+				JOptionPane.showMessageDialog(frame,"El usuario con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				modificoUsuario = true;
+				GUIUsuario.dispose();
+			}
+	
 		} catch (Exception e) {
 			System.out.println("No modifica Usuario Mediador Modificar Usuario");
 			e.printStackTrace();
 		}
-		GUIUsuario.dispose();
+		
 
 	}
 	
