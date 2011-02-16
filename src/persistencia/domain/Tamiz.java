@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 
 
 /**
@@ -15,6 +16,7 @@ import javax.jdo.annotations.PersistenceCapable;
  */
 @PersistenceCapable
 public class Tamiz {
+	@PrimaryKey
 	private String numeroTamiz;
 	private Double aberturaMalla;
 	protected Collection<Analisis> analisis = new HashSet();

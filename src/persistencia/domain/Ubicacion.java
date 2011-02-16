@@ -5,16 +5,18 @@ package persistencia.domain;
 import java.util.Collection;
 import java.util.HashSet;
 
+import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable
+@PersistenceCapable (objectIdClass=ComposedIdKey.class)
 public class Ubicacion {
-	
-
+	@PrimaryKey
+	private String latitud;
+	@PrimaryKey
+	private String longitud;
 	private String nombreUbicacion;
 	public String ciudad;
-	private Float latitud;
-	private Float longitud;
 	private String provincia;
 	private Collection<Muestra> muestras = new HashSet();
 	
@@ -24,14 +26,14 @@ public class Ubicacion {
 	public Ubicacion(){
 		nombreUbicacion= "";
 		provincia = null;
-		latitud = new Float(0);
-		longitud = new Float(0);
+		latitud = "";
+		longitud = "";
 	}
 	
 	/**
 	 *Contructor con pasaje de parametros.
 	 */
-	public Ubicacion(String nombreUbicacion,String ciudad, String prov, Float latitud, Float longitud){
+	public Ubicacion(String nombreUbicacion,String ciudad, String prov, String latitud, String longitud){
 		this.nombreUbicacion= nombreUbicacion;
 		this.ciudad = ciudad;
 		this.provincia = prov;
@@ -45,28 +47,28 @@ public class Ubicacion {
 		/**
 	 * @return the latitud
 	 */
-	public Float getLatitud() {
+	public String getLatitud() {
 		return latitud;
 	}
 
 	/**
 	 * @param latitud the latitud to set
 	 */
-	public void setLatitud(Float latitud) {
+	public void setLatitud(String latitud) {
 		this.latitud = latitud;
 	}
 
 	/**
 	 * @return the longitud
 	 */
-	public Float getLongitud() {
+	public String getLongitud() {
 		return longitud;
 	}
 
 	/**
 	 * @param longitud the longitud to set
 	 */
-	public void setLongitud(Float longitud) {
+	public void setLongitud(String longitud) {
 		this.longitud = longitud;
 	}
 
@@ -145,6 +147,12 @@ public class Ubicacion {
 		this.ciudad = ciudad;
 	}
 
+	public String toString(){
+		return nombreUbicacion;
+	}
 	
+	public boolean equals(Ubicacion ubicacion){
+		return (this.latitud.equals(ubicacion.getLatitud()) && this.longitud.equals(ubicacion.getLongitud())); 
+	}
 	
 }

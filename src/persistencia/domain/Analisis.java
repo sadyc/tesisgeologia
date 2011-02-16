@@ -4,6 +4,7 @@
 package persistencia.domain;
 
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 
 
 /**
@@ -15,8 +16,10 @@ public class Analisis {
 	private Float pesoRetenido;
 	private Float porcentajePasante;
 	private Float porcentajeRetenidoParcial;
-	private Float porcentajeRetenidoAcumulado;  
+	private Float porcentajeRetenidoAcumulado;
+	@PrimaryKey
 	protected Muestra muestra;
+	@PrimaryKey
 	protected Tamiz tamiz;
 	
 	

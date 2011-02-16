@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.PrimaryKey;
 
 /**
  * Implementacion de la clase que define la clasificacion 
@@ -16,7 +17,7 @@ import javax.jdo.annotations.PersistenceCapable;
  */
 @PersistenceCapable
 public class Clasificacion {
-	
+	@PrimaryKey
 	protected String clasificacion;
 	protected String nombre;
 	protected String descripcion;
