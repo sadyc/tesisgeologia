@@ -7,11 +7,13 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.jdo.Extent;
+import javax.jdo.JDOException;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
+import javax.swing.JOptionPane;
 
 
 
@@ -24,12 +26,14 @@ public class Persistencia {
 	private static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	private static PersistenceManager pmi = null;
 	private Transaction tx = null;
+	private boolean yaExiste;
 	
 	/**
 	 * Default constructor.
 	 * @throws Exception 
 	 */
 	public Persistencia () {
+		yaExiste = false;
 	}
 	
 	public void abrirTransaccion() throws Exception{
@@ -46,10 +50,15 @@ public class Persistencia {
 		try{
             pmi.makePersistent(elemento);   
         }
+		catch (JDOException e) {
+			System.out.println("Error insertar Objeto con clave ya existente en Persistencia Generico");
+		    yaExiste=true;
+		    realizarRollback();
+		}
 		catch (Exception e){
 		    System.out.println("Exception insertar Objeto en Persistencia Generico");
-		    e.printStackTrace();
 		    realizarRollback();
+
 		}
         
     }
@@ -163,6 +172,13 @@ public class Persistencia {
 		if (!pmi.isClosed())
 		pmi.close();
 	}
-		
+
+	/**
+	 * Retorna si un objeto a insertar ya existe en la base de datos.
+	 * @return yaExiste
+	 */
+	public boolean getExiste(){
+		return yaExiste;
+	}
 	//metodos particulares de busqueda.
 }

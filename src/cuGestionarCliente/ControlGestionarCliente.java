@@ -2,28 +2,35 @@ package cuGestionarCliente;
 
 import java.util.Collection;
 
+import javax.jdo.JDOException;
+
 import persistencia.Persistencia;
 import persistencia.domain.Cliente;
 
 public class ControlGestionarCliente {
+	private boolean yaExiste;
 	/**
 	 * Contructor por defecto
 	 */
-	public ControlGestionarCliente(){}
+	public ControlGestionarCliente(){
+		
+	}
 	
 	/**
 	 * Inserta un cliente con persistencia. 
 	 */ 
 	public void insertarCliente(Cliente cliente) throws Exception{
+		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
 			persistencia.insertarObjeto(cliente);
 			persistencia.cerrarTransaccion();
 			persistencia.cerrarPersistencia();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
+			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarCliente insertar");
-			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
 	}
@@ -47,6 +54,7 @@ public class ControlGestionarCliente {
 	}
 			
 	public void modificarCliente(String DNI,String[] data) throws Exception {
+		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Cliente aux = new Cliente();
@@ -60,9 +68,13 @@ public class ControlGestionarCliente {
 			aux.setTel(data[4]);
 			persistencia.cerrarTransaccion();
 		}
+		catch (JDOException e) {
+			yaExiste=true;
+			System.out.println("Error al modificar porque ya existe esa clave");
+			persistencia.realizarRollback();
+		}
 		catch (Exception e) {
 			System.out.println("Error al modificar");
-			e.printStackTrace();
 			persistencia.realizarRollback();
 		}		
 	}
@@ -102,5 +114,13 @@ public class ControlGestionarCliente {
 			persistencia.realizarRollback();
 		}
 		return aux;
+	}
+	
+	/**
+	 * Retorna si un objeto a insertar ya existe en la base de datos.
+	 * @return yaExiste
+	 */
+	public boolean getExiste(){
+		return yaExiste;
 	}
 }
