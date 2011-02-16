@@ -136,7 +136,7 @@
                  <column length="30" jdbc-type="FLOAT"/>
         </field>
 	    <field name="muestras" persistence-modifier="persistent" mapped-by="ubicacion">
-                <collection element-type="persistencia.domain.Muestra"/>
+                <collection element-type="persistencia.domain.Muestra" dependent-element="true"/>
         </field>
  </class>
 
