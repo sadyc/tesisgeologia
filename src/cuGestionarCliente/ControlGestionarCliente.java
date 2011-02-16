@@ -67,6 +67,7 @@ public class ControlGestionarCliente {
 			aux.setEmail(data[3]);
 			aux.setTel(data[4]);
 			persistencia.cerrarTransaccion();
+			
 		}
 		catch (JDOException e) {
 			yaExiste=true;

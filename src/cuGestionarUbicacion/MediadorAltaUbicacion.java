@@ -67,18 +67,23 @@ public class MediadorAltaUbicacion extends Mediador{
 		try {
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");
 			if (GUIUbicacion.getjTextFieldCiudad().getText().equals("") || GUIUbicacion.getjTextFieldNombreUbicacion().getText().equals("")){
-		 		JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		 		JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				control.insertarUbicacion(GUIUbicacion.getData());
-				alta = true;
-				GUIUbicacion.dispose();
-				
+				if (control.getExiste()) {
+					System.out.println("El objeto ya existe");
+					JOptionPane.showMessageDialog(frame,"La ubicación con esas coordenadas ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					alta = true;
+					GUIUbicacion.dispose();
+				}
 			}
 		}
 		catch (NumberFormatException e){
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo numeros en los campos de latitud y longitud","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos de latitud y longitud","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
    	}
 

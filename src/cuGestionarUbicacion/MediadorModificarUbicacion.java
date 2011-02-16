@@ -82,13 +82,19 @@ public class MediadorModificarUbicacion extends Mediador{
 			}
 			else {
 				control.modificarUbicacion(nombreUbicacion,ciudad,GUIUbicacion.getData());
-				data = GUIUbicacion.getData();
-				modifico = true;
-				
+				if (control.getExiste()) {
+					System.out.println("El objeto ya existe");
+					JOptionPane.showMessageDialog(frame,"La ubicación con esas coordenadas ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					modifico = true;
+					GUIUbicacion.dispose();
+					data = GUIUbicacion.getData();
+				}			
 			}
 		}
 		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo numeros en los campos de latitud y longitud","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos de latitud y longitud","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
    	}
 

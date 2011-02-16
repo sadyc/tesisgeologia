@@ -114,12 +114,13 @@ public class MediadorModificarCliente extends Mediador{
 			}
 			else {
 				modificoCliente = true;
+				GUICliente.dispose();
 			}
 		} catch (Exception e) {
 			System.out.println("No modifica Operador Mediador Modificar Operador");
 			e.printStackTrace();
 		}
-		GUICliente.dispose();
+		
 
 	}
 	

@@ -9,6 +9,7 @@ import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
 
 public class ControlGestionarUsuario {
+	private boolean yaExiste;
 	/**
 	 * Contructor por defecto
 	 */
@@ -18,6 +19,7 @@ public class ControlGestionarUsuario {
 	 * Inserta una muestra con persistencia. 
 	 */ 
 	public void insertarUsuario(Usuario usuario) throws Exception{
+		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
@@ -25,6 +27,7 @@ public class ControlGestionarUsuario {
 			persistencia.cerrarTransaccion();
 			persistencia.cerrarPersistencia();
 		} catch (Exception e) {
+			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarUsuario insertar");
 			e.printStackTrace();
 			persistencia.realizarRollback();
@@ -49,6 +52,7 @@ public class ControlGestionarUsuario {
 	}
 			
 	public void modificarUsuario(String DNI,String[] data) throws Exception {
+		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Usuario aux = new Usuario();
@@ -66,6 +70,7 @@ public class ControlGestionarUsuario {
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
+			yaExiste=persistencia.getExiste();
 			System.out.println("Error al modificar");
 			e.printStackTrace();
 			persistencia.realizarRollback();
@@ -107,5 +112,13 @@ public class ControlGestionarUsuario {
 			persistencia.realizarRollback();
 		}
 		return aux;
+	}
+	
+	/**
+	 * Retorna si un objeto a insertar ya existe en la base de datos.
+	 * @return yaExiste
+	 */
+	public boolean getExiste(){
+		return yaExiste;
 	}
 }

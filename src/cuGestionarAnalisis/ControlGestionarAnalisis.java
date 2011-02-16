@@ -15,6 +15,7 @@ import persistencia.domain.Tamiz;
  */
 public class ControlGestionarAnalisis {
 
+	private boolean yaExiste;
         
         /**
          * Contructor por defecto
@@ -26,6 +27,7 @@ public class ControlGestionarAnalisis {
          * Inserta un analisis con persistencia. 
          */ 
         public String[] insertarAnalisis(Analisis analisis,Muestra muestra, String numeroTamiz) throws Exception{
+        		yaExiste=false;
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 Tamiz tamiz= new Tamiz();
@@ -58,14 +60,14 @@ public class ControlGestionarAnalisis {
                         data[4] = analisis.getPorcentajeRetenidoParcial().toString();
                         persistencia.insertarObjeto(analisis);                                      
                         persistencia.cerrarTransaccion();
+                        persistencia.cerrarPersistencia();
                         System.out.println("Analisis insertado con persistencia");
                 } catch (Exception e) {
+                		yaExiste=persistencia.getExiste();
                 		e.printStackTrace();
                         persistencia.realizarRollback();
                 }
-                finally{
-        			persistencia.cerrarPersistencia();
-        		}
+               
                 return data;
         }
         
@@ -146,6 +148,7 @@ public class ControlGestionarAnalisis {
         }
         
         public void ModificarAnalisis(Float pesoRetenido,Muestra muestra, String numeroTamiz) throws Exception {
+        		yaExiste=false;
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 Analisis analisis = new Analisis();
@@ -158,6 +161,7 @@ public class ControlGestionarAnalisis {
         			System.out.println("Muestra modificada con persistencia");
                 }
                 catch (Exception e) {
+                	
                         e.printStackTrace();
                 		persistencia.realizarRollback();
                 }               
@@ -230,5 +234,13 @@ public class ControlGestionarAnalisis {
     		}
     		return resultado;
         }
+        
+        /**
+    	 * Retorna si un objeto a insertar ya existe en la base de datos.
+    	 * @return yaExiste
+    	 */
+    	public boolean getExiste(){
+    		return yaExiste;
+    	}
 }
 
