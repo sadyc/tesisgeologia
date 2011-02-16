@@ -12,10 +12,13 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  * @author Daniel
@@ -38,7 +41,8 @@ public class TablePanel extends JPanel {
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		this.scrollPane = new JScrollPane();
 		this.tableModel = new Table();
-		this.table = new JTable(this.tableModel);	
+		this.table = new JTable(this.tableModel);
+	//	table.setDefaultRenderer ( Object.class, new MyRenderer ()) ;
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.addMouseListener(null);
 		this.scrollPane.getViewport().add(this.table, null);
@@ -103,4 +107,5 @@ public class TablePanel extends JPanel {
 	public void addTableKeyListener (KeyListener lis){
 		this.table.addKeyListener(lis);
 	}
+	 
 }
