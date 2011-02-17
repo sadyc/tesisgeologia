@@ -95,22 +95,17 @@ public class GUIABMMuestra extends JDialog{
 	        jLabel1 = new javax.swing.JLabel();
 	        jTextFieldBuscar = new javax.swing.JTextField(25);
 	        jTextFieldBuscar.addKeyListener(new KeyAdapter() {
-	        	
-	               public void keyReleased(final KeyEvent e) {
+	        	  public void keyReleased(final KeyEvent e) {
 	            	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Muestra"){
-	            		   System.out.println(jTextFieldBuscar.getText());
 	            		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),1));
 	            	   }
 	            	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Ubicacion"){
-	            		   System.out.println(jTextFieldBuscar.getText());
 	            		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),0));
 	            	   }
 	            	   if (jComboBoxBuscar.getSelectedItem()=="Operador"){
-	            		   System.out.println(jTextFieldBuscar.getText());
 	            		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),5));
 	            	   }
 	            	   if (jComboBoxBuscar.getSelectedItem()=="Cliente"){
-	            		   System.out.println(jTextFieldBuscar.getText());
 	            		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),6));
 	            	   }
 	               }

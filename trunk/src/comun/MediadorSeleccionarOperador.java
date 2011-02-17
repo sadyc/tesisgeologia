@@ -86,22 +86,19 @@ public class MediadorSeleccionarOperador implements ActionListener, KeyListener,
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIGestionarOperador.getjButtonAgregarOperador() == source||GUIGestionarOperador.getAgregarMenu()==source){
+		if (this.GUIGestionarOperador.getjButtonAgregar() == source||GUIGestionarOperador.getjMenuAgregar()==source){
 			agregarOperador();
 	   	}
-		if (this.GUIGestionarOperador.getjButtonElminarOperador() == source||GUIGestionarOperador.getEliminarMenu()==source){
+		if (this.GUIGestionarOperador.getjButtonEliminar() == source||GUIGestionarOperador.getjMenuEliminar()==source){
 			eliminarOperador();
 		}
-		if (this.GUIGestionarOperador.getjButtonModificarOperador() == source||GUIGestionarOperador.getModificarMenu()==source){
+		if (this.GUIGestionarOperador.getjButtonModificar() == source||GUIGestionarOperador.getjMenuModificar()==source){
 			modificarOperador();
 		}
-		if (this.GUIGestionarOperador.getJButtonSeleccionar() == source){
+		if (this.GUIGestionarOperador.getjButtonSeleccionar() == source){
 			seleccionarOperador();
 		}
-		if (this.GUIGestionarOperador.getJButtonBuscar() == source){
-	   		buscarOperador();
-		}
-		if (this.GUIGestionarOperador.getJButtonCancelar() == source){
+		if (this.GUIGestionarOperador.getjButtonSalir() == source || this.GUIGestionarOperador.getjMenuSalir()==source){
 			GUIGestionarOperador.dispose();
 		}
 	}

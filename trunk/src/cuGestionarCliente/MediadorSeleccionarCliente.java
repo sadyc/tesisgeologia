@@ -80,22 +80,19 @@ public class MediadorSeleccionarCliente implements ActionListener, KeyListener, 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIGestionarCliente.getjButtonAgregarOperador() == source||GUIGestionarCliente.getAgregarMenu()==source){
+		if (this.GUIGestionarCliente.getjButtonAgregar() == source||GUIGestionarCliente.getjMenuAgregar()==source){
 			agregarCliente();
 	   	}
-		if (this.GUIGestionarCliente.getjButtonElminarOperador() == source||GUIGestionarCliente.getEliminarMenu()==source){
+		if (this.GUIGestionarCliente.getjButtonEliminar() == source||GUIGestionarCliente.getjMenuEliminar()==source){
 			eliminarCliente();
 		}
-		if (this.GUIGestionarCliente.getjButtonModificarOperador() == source||GUIGestionarCliente.getModificarMenu()==source){
+		if (this.GUIGestionarCliente.getjButtonModificar() == source||GUIGestionarCliente.getjMenuModificar()==source){
 			modificarCliente();
 		}
-		if (this.GUIGestionarCliente.getJButtonSeleccionar() == source){
+		if (this.GUIGestionarCliente.getjButtonSeleccionar() == source){
 			seleccionarCliente();
 		}
-		if (this.GUIGestionarCliente.getJButtonBuscar() == source){
-	   		buscarCliente();
-		}
-		if (this.GUIGestionarCliente.getJButtonCancelar() == source){
+		if (this.GUIGestionarCliente.getjButtonSalir() == source || this.GUIGestionarCliente.getjMenuSalir()==source){
 			GUIGestionarCliente.dispose();
 		}
 	}
@@ -183,18 +180,6 @@ public class MediadorSeleccionarCliente implements ActionListener, KeyListener, 
 			catch (Exception e) {
 				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un Cliente invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
-		}
-	}
-	
-	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Cliente"
-	 */
-	public void buscarCliente(){
-		try {
-   			System.out.println("Button Buscar Cliente");
-   			new MediadorBuscar();	
-   		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 	

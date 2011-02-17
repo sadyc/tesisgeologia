@@ -4,11 +4,14 @@
 package cuGestionarUbicacion;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.RowFilter;
 
 import comun.TablePanel;
 
@@ -21,7 +24,6 @@ public class GUIGestionarUbicacion extends JDialog	{
 	
 	// Variables declaration - do not modify
     private javax.swing.JButton jButtonAgregar;
-    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonSalir;
@@ -33,7 +35,6 @@ public class GUIGestionarUbicacion extends JDialog	{
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuAgregar;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuBuscar;
     private javax.swing.JMenuItem jMenuEliminar;
     private javax.swing.JMenuItem jMenuModificar;private javax.swing.JMenuItem jMenuSalir;
     private javax.swing.JMenuItem jMenuSeleccionar;
@@ -80,7 +81,6 @@ public class GUIGestionarUbicacion extends JDialog	{
         jTextFieldBuscar = new javax.swing.JTextField(25);
         jLabel2 = new javax.swing.JLabel();
         jComboBoxBuscar = new javax.swing.JComboBox();
-        jButtonBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -91,7 +91,6 @@ public class GUIGestionarUbicacion extends JDialog	{
         jMenuEliminar = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuSeleccionar = new javax.swing.JMenuItem();
-        jMenuBuscar = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuSalir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -149,29 +148,35 @@ public class GUIGestionarUbicacion extends JDialog	{
 
         jLabel1.setText("Buscar : ");
         jPanel2.add(jLabel1);
-
-        jTextFieldBuscar.setMinimumSize(new java.awt.Dimension(15, 20));
-        jTextFieldBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldBuscarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextFieldBuscar);
-
-        jLabel2.setText("Por :");
-        jPanel2.add(jLabel2);
-
         jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Ubicacion", "Ciudad", "Provincia" }));
         jComboBoxBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxBuscarActionPerformed(evt);
             }
         });
+        
+
+        jTextFieldBuscar.setMinimumSize(new java.awt.Dimension(15, 20));
+        jTextFieldBuscar.addKeyListener(new KeyAdapter() {
+      	  public void keyReleased(final KeyEvent e) {
+          	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Ubicacion"){
+          		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),0));
+          	   }
+          	   if (jComboBoxBuscar.getSelectedItem()=="Ciudad"){
+          		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),1));
+          	   }
+          	   if (jComboBoxBuscar.getSelectedItem()=="Provincia"){
+          		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),2));
+          	   }
+          	 }
+      });
+        jPanel2.add(jTextFieldBuscar);
+
+        jLabel2.setText("Por :");
+        jPanel2.add(jLabel2);
         jPanel2.add(jComboBoxBuscar);
 
-        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-find-3.png"))); // NOI18N
-        jButtonBuscar.setText("Buscar");
-        jPanel2.add(jButtonBuscar);
+        
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
@@ -230,10 +235,6 @@ public class GUIGestionarUbicacion extends JDialog	{
         jMenuSeleccionar.setText("Seleccionar");
         jMenu1.add(jMenuSeleccionar);
 
-        jMenuBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-find-3.png"))); // NOI18N
-        jMenuBuscar.setText("Buscar");
-        jMenu1.add(jMenuBuscar);
         jMenu1.add(jSeparator1);
 
         jMenuSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
@@ -281,13 +282,11 @@ public class GUIGestionarUbicacion extends JDialog	{
 	 */
 	public void setListenerButtons(ActionListener lis){
 		jButtonSeleccionar.addActionListener(lis);
-		jButtonBuscar.addActionListener(lis);
 		jButtonSalir.addActionListener(lis);
 		jButtonAgregar.addActionListener(lis);
 		jButtonModificar.addActionListener(lis);
 		jButtonEliminar.addActionListener(lis);
-		jMenuBuscar.addActionListener(lis);
-	    jMenuEliminar.addActionListener(lis);
+		jMenuEliminar.addActionListener(lis);
 	    jMenuModificar.addActionListener(lis);
 	    jMenuSalir.addActionListener(lis);
 	    jMenuSeleccionar.addActionListener(lis);
@@ -355,13 +354,6 @@ public class GUIGestionarUbicacion extends JDialog	{
 	}
 	
 	/**
-	 * @return the jButtonBuscar
-	 */
-	public javax.swing.JButton getjButtonBuscar() {
-		return jButtonBuscar;
-	}
-
-	/**
 	 * @return the jButtonSalir
 	 */
 	public javax.swing.JButton getjButtonSalir() {
@@ -388,13 +380,6 @@ public class GUIGestionarUbicacion extends JDialog	{
 	 */
 	public javax.swing.JMenuItem getjMenuAgregar() {
 		return jMenuAgregar;
-	}
-
-	/**
-	 * @return the jMenuBuscar
-	 */
-	public javax.swing.JMenuItem getjMenuBuscar() {
-		return jMenuBuscar;
 	}
 
 	/**

@@ -53,8 +53,8 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 		GUIGestionarOperador.setListenerTable(this);
 		GUIGestionarOperador.setMouseListener(this);
 		GUIGestionarOperador.setKeyListener(this);
-		GUIGestionarOperador.getJButtonSeleccionar().setEnabled(false);
-		GUIGestionarOperador.getSeleccionarMenu().setEnabled(false);
+		GUIGestionarOperador.getjButtonSeleccionar().setEnabled(false);
+		GUIGestionarOperador.getjMenuSeleccionar().setEnabled(false);
 		GUIGestionarOperador.setModal(true);
 		GUIGestionarOperador.show();
 	}
@@ -91,22 +91,19 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIGestionarOperador.getjButtonAgregarOperador() == source||GUIGestionarOperador.getAgregarMenu()==source){
+		if (this.GUIGestionarOperador.getjButtonAgregar() == source||GUIGestionarOperador.getjMenuAgregar()==source){
 			agregarOperador();
 	   	}
-		if (this.GUIGestionarOperador.getjButtonElminarOperador() == source||GUIGestionarOperador.getEliminarMenu()==source){
+		if (this.GUIGestionarOperador.getjButtonEliminar() == source||GUIGestionarOperador.getjMenuEliminar()==source){
 			eliminarOperador();
 		}
-		if (this.GUIGestionarOperador.getjButtonModificarOperador() == source||GUIGestionarOperador.getModificarMenu()==source){
+		if (this.GUIGestionarOperador.getjButtonModificar() == source||GUIGestionarOperador.getjMenuModificar()==source){
 			modificarOperador();
 		}
-		if (this.GUIGestionarOperador.getJButtonSeleccionar() == source){
+		if (this.GUIGestionarOperador.getjButtonSeleccionar() == source){
 			seleccionarOperador();
 		}
-		if (this.GUIGestionarOperador.getJButtonBuscar() == source){
-	   		buscarOperador();
-		}
-		if (this.GUIGestionarOperador.getJButtonCancelar() == source){
+		if (this.GUIGestionarOperador.getjButtonSalir() == source || this.GUIGestionarOperador.getjMenuSalir()==source){
 			GUIGestionarOperador.dispose();
 		}
 	}
@@ -196,21 +193,6 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 		}
 	}
 	
-	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Operador"
-	 */
-	public void buscarOperador(){
-		try {
-   			System.out.println("Button Buscar Operador");
-   			new MediadorBuscar();	
-   		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void show(){
-		GUIGestionarOperador.show();
-	}
 	/**
 	 * Metodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 

@@ -10,10 +10,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 import persistencia.domain.Usuario;
-import cuBuscar.MediadorBuscar;
 
 public class MediadorGestionarUsuario implements ActionListener, KeyListener, MouseListener{
 		
@@ -27,15 +28,14 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	public MediadorGestionarUsuario(String nombreVentana) throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		String [] columAux = {"Nombre","Apellido","DNI","Nombre Usuario","Categoria","E-mail","Teléfono"};
-		GUIGestionarUsuario = new GUIGestionarUsuario(nombreVentana,data,columAux);
+		GUIGestionarUsuario = new GUIGestionarUsuario(data);
+		GUIGestionarUsuario.setTitle("Gestionar Usuario");
 		GUIGestionarUsuario.setListenerButtons(this);
 		GUIGestionarUsuario.setListenerTable(this);
 		GUIGestionarUsuario.setMouseListener(this);
 		GUIGestionarUsuario.setKeyListener(this);     
 		GUIGestionarUsuario.setModal(true);
 		GUIGestionarUsuario.show();
-		
 	}
 	
 	
@@ -64,29 +64,6 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 		}
 	}
 	
-	private void cargarTablaDeMuestras(Collection resultado) {
-		data = new Object [resultado.size()] [7];
-		int i = 0;
-		Usuario usuario = new Usuario();
-		Iterator<Usuario> it = resultado.iterator();
-		while (it.hasNext()){
-			usuario = it.next();
-			data [i][0]= usuario.getNombre();
-			data [i][1]= usuario.getApellido();
-			data [i][2]= usuario.getDni();
-		    data [i][3]= usuario.getNombreUsuario();
-		    data [i][4]= usuario.getCategoria();
-		    data [i][5]= usuario.getEmail();
-		    data [i][6]= usuario.getTel();
-		    i++;
-		}
-		
-	}
-			
-	public void show()	{
-		 GUIGestionarUsuario.show();
-	}
-	
 	public GUIGestionarUsuario getGestionarUsuario() {
 		return GUIGestionarUsuario;
 	}
@@ -102,47 +79,21 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIGestionarUsuario.getJButtonAgregar() == source||GUIGestionarUsuario.getAgregarMenu()==source){
+		if (this.GUIGestionarUsuario.getjButtonAgregar() == source||GUIGestionarUsuario.getjMenuAgregar()==source){
 			agregarUsuario();
 	   	}
-		if (this.GUIGestionarUsuario.getJButtonEliminar() == source||GUIGestionarUsuario.getEliminarMenu()==source){
+		if (this.GUIGestionarUsuario.getjButtonEliminar() == source||GUIGestionarUsuario.getjMenuEliminar()==source){
 			eliminarUsuario();
 		}
-		if (this.GUIGestionarUsuario.getJButtonModificar() == source||GUIGestionarUsuario.getModificarMenu()==source){
+		if (this.GUIGestionarUsuario.getjButtonModificar() == source||GUIGestionarUsuario.getjMenuModificar()==source){
 			modificarUsuario();
 		}
-		if (this.GUIGestionarUsuario.getBuscarMenu() == source || this.GUIGestionarUsuario.getJButtonBuscar() == source){
-			buscarUsuario();
-		}
-		if (this.GUIGestionarUsuario.getJButtonCancelar() == source || GUIGestionarUsuario.getCancelarMenu()==source){
+		if (this.GUIGestionarUsuario.getjButtonSalir() == source || GUIGestionarUsuario.getjMenuSalir()==source){
 			GUIGestionarUsuario.dispose();
 		}
 	}
 	
 		
-	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Usuario"
-	 */
-	public void buscarUsuario(){
-		try {
-				System.out.println("Button Buscar Usuario");
-				MediadorBuscar buscar = new MediadorBuscar();
-				if (buscar.seEncontro()){
-					GUIGestionarUsuario.dispose();
-					cargarTablaDeMuestras(buscar.getResultado());
-					String [] columAux = {"Nombre","Apellido","DNI","Nombre Usuario","Categoria","E-mail","Teléfono"};
-					GUIGestionarUsuario = new GUIGestionarUsuario("Gestionar Usuario", data, columAux);
-					GUIGestionarUsuario.setListenerButtons(this);
-					GUIGestionarUsuario.setListenerTable(this);
-					GUIGestionarUsuario.setModal(true);
-					GUIGestionarUsuario.show();
-				}
-		} catch (Exception e) {
-	
-			e.printStackTrace();
-		}
-	}
-
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Modificar Usuario"
 	 */
