@@ -60,12 +60,12 @@ public class ControlGestionarAnalisis {
                         data[4] = analisis.getPorcentajeRetenidoParcial().toString();
                         persistencia.insertarObjeto(analisis);                                      
                         persistencia.cerrarTransaccion();
-                        persistencia.cerrarPersistencia();
+
                         System.out.println("Analisis insertado con persistencia");
                 } catch (Exception e) {
+                	 	System.out.println("Error al insertar Analisis con persistencia");
                 		yaExiste=persistencia.getExiste();
-                		e.printStackTrace();
-                        persistencia.realizarRollback();
+                	    persistencia.realizarRollback();
                 }
                
                 return data;
@@ -84,6 +84,7 @@ public class ControlGestionarAnalisis {
     			System.out.println("Muestra eliminada con persistencia");
     		}
     		catch (Exception e) {
+    			System.out.println("Error al eliminar Analisis con persistencia");
     			persistencia.realizarRollback();
     		}
     		
@@ -123,7 +124,7 @@ public class ControlGestionarAnalisis {
     			System.out.println("Todo recalculado sin rollback");
     		}
     		catch (Exception e) {
-    			e.printStackTrace();
+    			System.out.println("Error al recalcular Analisis con persistencia");
     			persistencia.realizarRollback();
     		}
     		
@@ -142,6 +143,7 @@ public class ControlGestionarAnalisis {
                         persistencia.cerrarTransaccion();
                         System.out.println("analisis coleccionados");
                 } catch (Exception e) {
+                		System.out.println("Error al obtener coleccion Analisis con persistencia");
                         persistencia.realizarRollback();
                 }
                 return aux;
@@ -161,8 +163,7 @@ public class ControlGestionarAnalisis {
         			System.out.println("Muestra modificada con persistencia");
                 }
                 catch (Exception e) {
-                	
-                        e.printStackTrace();
+                		System.out.println("Error al modificar Analisis con persistencia");
                 		persistencia.realizarRollback();
                 }               
         }
@@ -205,7 +206,7 @@ public class ControlGestionarAnalisis {
     			persistencia.cerrarTransaccion();
     		}
     		catch (Exception e) {
-    			e.printStackTrace();
+    			System.out.println("Error al obtener ultimo Analisis con persistencia");
     			persistencia.realizarRollback();
     		}
     		return aux;
@@ -229,7 +230,7 @@ public class ControlGestionarAnalisis {
     			persistencia.cerrarTransaccion();
     			}
     		catch (Exception e) {
-    			e.printStackTrace();
+    			System.out.println("Error al obtener peso pasante Analisis con persistencia");
     			persistencia.realizarRollback();
     		}
     		return resultado;

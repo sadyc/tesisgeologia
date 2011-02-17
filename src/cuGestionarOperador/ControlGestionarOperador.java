@@ -22,7 +22,6 @@ public class ControlGestionarOperador {
 		try {
 			persistencia.insertarObjeto(operador);
 			persistencia.cerrarTransaccion();
-			persistencia.cerrarPersistencia();
 		} catch (Exception e) {
 			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarOperador insertar");

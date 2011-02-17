@@ -49,7 +49,6 @@ public class ControlGestionarMuestra {
 			
 			persistencia.insertarObjeto(mu);
 			persistencia.cerrarTransaccion();
-			persistencia.cerrarPersistencia();
 		} catch (Exception e) {
 			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarMuestra insertar");

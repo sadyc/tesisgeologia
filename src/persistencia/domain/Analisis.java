@@ -17,9 +17,7 @@ public class Analisis {
 	private Float porcentajePasante;
 	private Float porcentajeRetenidoParcial;
 	private Float porcentajeRetenidoAcumulado;
-	@PrimaryKey
 	protected Muestra muestra;
-	@PrimaryKey
 	protected Tamiz tamiz;
 	
 	

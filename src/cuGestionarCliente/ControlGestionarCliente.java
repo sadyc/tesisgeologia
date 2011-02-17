@@ -26,7 +26,6 @@ public class ControlGestionarCliente {
 		try {
 			persistencia.insertarObjeto(cliente);
 			persistencia.cerrarTransaccion();
-			persistencia.cerrarPersistencia();
 		}
 		catch (Exception e) {
 			yaExiste=persistencia.getExiste();
