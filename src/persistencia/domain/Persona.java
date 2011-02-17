@@ -16,7 +16,6 @@ public class Persona {
 	
 	private String nombre;
 	private String apellido;
-	@PrimaryKey
 	private String dni;
 	private String tel;
 	private String email;

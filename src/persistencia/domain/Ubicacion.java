@@ -9,11 +9,11 @@ import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable (objectIdClass=ComposedIdKey.class)
+@PersistenceCapable 
 public class Ubicacion {
-	@PrimaryKey
+	
 	private String latitud;
-	@PrimaryKey
+	
 	private String longitud;
 	private String nombreUbicacion;
 	public String ciudad;
