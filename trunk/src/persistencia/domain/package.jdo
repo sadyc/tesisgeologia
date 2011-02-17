@@ -141,7 +141,7 @@
         </field>
  </class>
 
- <class name="persistencia.domain.Analisis" identity-type="application">
+ <class name="persistencia.domain.Analisis" identity-type="datastore">
               <inheritance strategy="new-table"/>
 		<field name="pesoRetenido" persistence-modifier="persistent">
                   <column jdbc-type="FLOAT"/>

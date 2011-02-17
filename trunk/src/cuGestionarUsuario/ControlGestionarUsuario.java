@@ -25,7 +25,6 @@ public class ControlGestionarUsuario {
 		try {
 			persistencia.insertarObjeto(usuario);
 			persistencia.cerrarTransaccion();
-			persistencia.cerrarPersistencia();
 		} catch (Exception e) {
 			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarUsuario insertar");
