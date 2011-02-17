@@ -17,7 +17,7 @@ import javax.jdo.annotations.PrimaryKey;
  */
 @PersistenceCapable
 public class Clasificacion {
-	@PrimaryKey
+	
 	protected String clasificacion;
 	protected String nombre;
 	protected String descripcion;

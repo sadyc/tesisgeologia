@@ -16,7 +16,7 @@ import javax.jdo.annotations.PrimaryKey;
  */
 @PersistenceCapable
 public class Tamiz {
-	@PrimaryKey
+	
 	private String numeroTamiz;
 	private Double aberturaMalla;
 	protected Collection<Analisis> analisis = new HashSet();

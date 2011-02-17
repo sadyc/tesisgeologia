@@ -20,20 +20,15 @@ import javax.jdo.annotations.PrimaryKey;
  */
 @PersistenceCapable//(objectIdClass=ComposedIdKey.class)
 public class Muestra {
-	@PrimaryKey
+	
 	private String nombreMuestra;
-	@ForeignKey
 	private Ubicacion ubicacion;
-	@ForeignKey
 	private OperadorDeLaboratorio operadorLaboratorio ;
-	@ForeignKey
 	private Cliente cliente;
-	@ForeignKey
 	private Usuario usuario;
-	@ForeignKey
 	private AASHTO aashto;
-	@ForeignKey
 	private SUCS sucs;
+	
 	private Float profundidadInicial;
 	private Float profundidadFinal;
 	private Float peso;
