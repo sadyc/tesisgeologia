@@ -99,9 +99,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 		if (GUIGestionarUbicacion.getjButtonModificar() == source || GUIGestionarUbicacion.getjMenuModificar() == source){
 			modificar();
 		}
-		if (GUIGestionarUbicacion.getjButtonBuscar() == source || GUIGestionarUbicacion.getjButtonBuscar() == source){
-	   		buscar();
-		}
+		
 		if (GUIGestionarUbicacion.getjButtonAgregar() == source || GUIGestionarUbicacion.getjMenuAgregar() == source){
 			MediadorAltaUbicacion altaUbicacion = new MediadorAltaUbicacion();
 			if (altaUbicacion.esAltaUbicacion()){  

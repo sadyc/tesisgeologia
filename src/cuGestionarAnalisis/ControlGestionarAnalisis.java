@@ -67,7 +67,6 @@ public class ControlGestionarAnalisis {
                 		yaExiste=persistencia.getExiste();
                 	    persistencia.realizarRollback();
                 }
-               
                 return data;
         }
         
