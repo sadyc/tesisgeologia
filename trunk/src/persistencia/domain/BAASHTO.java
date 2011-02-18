@@ -16,14 +16,14 @@ import javax.swing.JOptionPane;
  * @version 1.0.
  */
 @PersistenceCapable
-public class AASHTO extends Clasificacion{
+public class BAASHTO extends AClasificacion{
 	
-	protected Collection<Muestra> muestras = new HashSet();
+	protected Collection<HMuestra> muestras = new HashSet();
 	
 	/**
 	 * @brief Constructor por defecto.
 	 */
-	public AASHTO() {
+	public BAASHTO() {
 		super();
 	}
 	
@@ -31,7 +31,7 @@ public class AASHTO extends Clasificacion{
 	 * Constructor con pasaje de parametros.
 	 * @param clasificacion.
 	 */
-	public AASHTO(String clasificacion){
+	public BAASHTO(String clasificacion){
 		String nombreAux = new String();
 		String descripcionAux = new String();
 		Frame frame = new Frame();

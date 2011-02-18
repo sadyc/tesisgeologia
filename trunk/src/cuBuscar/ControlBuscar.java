@@ -6,7 +6,7 @@ package cuBuscar;
 import java.util.Collection;
 
 import persistencia.Persistencia;
-import persistencia.domain.Muestra;
+import persistencia.domain.HMuestra;
 
 /**
  * Clase que se utiliza para gestionar los datos con persistencia en la base
@@ -28,7 +28,7 @@ public class ControlBuscar{
         persistencia.abrirTransaccion();
         try {
         	String filtro = "nombreMuestra=='"+nombre+"'";
-        	Muestra muestra = new Muestra();
+        	HMuestra muestra = new HMuestra();
         	aux = (persistencia.buscarColeccionFiltro(muestra.getClass(), filtro));
             persistencia.cerrarTransaccion();
             System.out.println("muestras coleccionados");
@@ -44,7 +44,7 @@ public class ControlBuscar{
         persistencia.abrirTransaccion();
         try {
         	String filtro = "ubicacion.nombreUbicacion=='"+ubicacion+"'";
-        	Muestra muestra = new Muestra();
+        	HMuestra muestra = new HMuestra();
         	aux = (persistencia.buscarColeccionFiltro(muestra.getClass(), filtro));
             persistencia.cerrarTransaccion();
             System.out.println("muestras coleccionados");
@@ -60,7 +60,7 @@ public class ControlBuscar{
         persistencia.abrirTransaccion();
         try {
         	String filtro = "operadorLaboratorio.nombre=='"+operador+"'";
-        	Muestra muestra = new Muestra();
+        	HMuestra muestra = new HMuestra();
         	aux = (persistencia.buscarColeccionFiltro(muestra.getClass(), filtro));
             persistencia.cerrarTransaccion();
             System.out.println("muestras coleccionados");

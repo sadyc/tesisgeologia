@@ -13,8 +13,8 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Analisis;
-import persistencia.domain.Muestra;
+import persistencia.domain.IAnalisis;
+import persistencia.domain.HMuestra;
 
 import comun.Mediador;
 
@@ -32,7 +32,7 @@ import cuReporte.report.ViewReport;
 public class MediadorCalcularClasificacion extends Mediador{
 	private GUIClasificacion GUIClasificacion;
 	
-	private Muestra muestra = new Muestra();
+	private HMuestra muestra = new HMuestra();
 	private Frame frame;
 	private GUIMuestraDetallada GUIMuestraDetallada;
 	private Object [][] data;
@@ -55,7 +55,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	 * @param muestra
 	 * @throws Exception
 	 */
-	public MediadorCalcularClasificacion(String titulo, Muestra muestra) throws Exception {
+	public MediadorCalcularClasificacion(String titulo, HMuestra muestra) throws Exception {
 		super();
 		boolean clasificar = true;
 		cargarTablaDeAnalisis(muestra);
@@ -67,7 +67,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 				}
 			}
 			else{
-				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificacion AASHTO, Faltan analisis para los tamices 10, 40 0 200","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificacion BAASHTO, Faltan analisis para los tamices 10, 40 0 200","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 			}
 			if(control.buscarAnalisis("200") && control.buscarAnalisis("4") && muestra.getIndicePlasticidad()!=0){
@@ -76,7 +76,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 				}
 			}
 			else{
-				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificacion SUCS, Faltan analisis o indice de plasticidad","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificacion BSUCS, Faltan analisis o indice de plasticidad","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 				
 			}
@@ -100,12 +100,12 @@ public class MediadorCalcularClasificacion extends Mediador{
 	 * base de datos al atributo data de la clase mediador.
 	 * @param nombreMuestra 
 	 */
-	public void cargarTablaDeAnalisis(Muestra muestra)throws Exception{
+	public void cargarTablaDeAnalisis(HMuestra muestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
-		Analisis analisis = new Analisis();
+		IAnalisis analisis = new IAnalisis();
 		Class clase = analisis.getClass();
 		Collection muestras = control.coleccionAnalisisDeMuestra(clase, muestra);
-		Iterator<Analisis> it = muestras.iterator();
+		Iterator<IAnalisis> it = muestras.iterator();
 		data = new Object [muestras.size()] [5];
 		int i = 0;
 		while (it.hasNext()){

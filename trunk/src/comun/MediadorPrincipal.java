@@ -1,22 +1,27 @@
 package comun;
 
+
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.swing.JPanel;
 
-import persistencia.domain.Muestra;
-import persistencia.domain.Usuario;
+import persistencia.domain.HMuestra;
+import persistencia.domain.DUsuario;
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
@@ -32,10 +37,17 @@ public class MediadorPrincipal extends Mediador{
 
 	private GUIPrincipal GUIPrincipal = null;
 	private Component frame;
-	private Usuario usuario;
+	private DUsuario usuario;
 	private java.sql.Date calendario;
+	private int BUFFER = 10485760;  
+    private JFileChooser directorio= null;
+    //para guardar en memmoria
+    private StringBuffer temp = null;
+    //para guardar el archivo SQL
+    private FileWriter  fichero = null;
+    private PrintWriter pw = null;
 	
-	private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {
+/**	private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {
 		JFileChooser FileChooser = new JFileChooser();
 		JTextField txtContenedor = new JTextField("C:");
 		SimpleDateFormat dateformat = new SimpleDateFormat("ddMMyy");
@@ -69,8 +81,8 @@ public class MediadorPrincipal extends Mediador{
 		JOptionPane.showMessageDialog(null, "Archivo generado", "Verificar",JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-	
-	public MediadorPrincipal(String nombreVentana, Usuario usuario) throws Exception {
+*/	
+	public MediadorPrincipal(String nombreVentana, DUsuario usuario) throws Exception {
 		super();
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date calendario = new java.sql.Date(utilDate.getTime());
@@ -154,10 +166,168 @@ public class MediadorPrincipal extends Mediador{
 			gestionarLimiteConsistencia();
 		}
 		if (this.GUIPrincipal.getJButtonSalir() == source || this.GUIPrincipal.getSalirMenu()== source){
-			btnGenerarActionPerformed(arg0);
+			 //JFileChooser directorio = new JFileChooser();
+            //directorio = guiPrincipal.getFileChooser();
+            //int dir = directorio.DIRECTORIES_ONLY;
+            //directorio.showOpenDialog(new JPanel());
+            //directorio.setDialogType(directorio.DIRECTORIES_ONLY);
+            //String dir = String.valueOf(directorio.DIRECTORIES_ONLY);
+            //System.out.println(dir);
+            //MediadorTree medTree = new MediadorTree();
+            String fecha = String.valueOf(new Date().toGMTString());
+            
+            //aca va la linea del jTextield PathSQL de la GUIConfiguracion
+            String fila = "D:\\wakavaca.sql";
+            //String fila = (String.valueOf(directorio.DIRECTORIES_ONLY) + "backUp-" + ControlFecha.parseDate(new Date())+ ".sql");
+            //System.out.println(fila);
+            //CrearBackup("localhost", "3306", "root", "root", "tesis",fila);
+            System.out.println("Copia de seguridad realizada exitosamente!");
+			
+			//btnGenerarActionPerformed(arg0);
+			
+
+			
+			 
+/** //		CON ESTO LEVANTAMOS EL BACK-UP DE LA BASE DE DATOS...
+  			fila = "";
+            if(fila.equalsIgnoreCase("")){
+            	JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
+            	directorio = GUIPrincipal.getFileChooser();
+            	directorio.showOpenDialog(new JPanel());
+                directorio.setDialogType(directorio.DIRECTORIES_ONLY);
+                String dir = String.valueOf(directorio.DIRECTORIES_ONLY);
+                System.out.println("Direccion: "+dir);
+            }
+            
+            	try{
+            	String ubicacion= String.valueOf(directorio.getSelectedFile());
+            	System.out.println("Ubicación: "+ubicacion);
+            	//Nuevamente fileChooser para indicarle donde esta el archivoBackUp
+            	Process child = Runtime.getRuntime().exec("cmd /c mysql --password= root --user=root tesis <" + ubicacion);
+
+            	}catch(Exception e){
+            	JOptionPane.showMessageDialog(null, "Error no se actualizo la DB por el siguiente motivo: " + e.getMessage(), "Verificar",JOptionPane.ERROR_MESSAGE);
+            	e.printStackTrace();
+            	}
+            	JOptionPane.showMessageDialog(null, "Base Actualizada", "Verificar",JOptionPane.INFORMATION_MESSAGE);
+            
+
+   */         	 
+
+            
+            
+            recuperarBackup();
 			GUIPrincipal.dispose();
 		}
 	}
+	
+	//METODO PARA RECUPERAR DE UN BACKUP
+	 public void recuperarBackup() {
+	        try {
+	            // Ejecucion del cliente mysql
+	            Process p = Runtime
+	                    .getRuntime()
+	                    .exec(
+	                            "mysql -u root -proot tesis");
+
+	            // Lectura de la salida de error y se muestra por pantalla.
+	            InputStream es = p.getErrorStream();
+	            muestraSalidaDeError(es);
+
+	            // Lectura del fichero de backup y redireccion a la entrada estandar
+	            // de mysql.
+	            OutputStream os = p.getOutputStream(); 
+	            FileInputStream fis = new FileInputStream("d:/vaca.sql");
+
+	            byte buffer[] = new byte[1024];
+	            int leido = fis.read(buffer);
+	            while (leido > 0) {
+	                System.out.println(leido);
+	                os.write(buffer, 0, leido);
+	                leido = fis.read(buffer);
+	            }
+	            os.close();
+	            fis.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	 private void muestraSalidaDeError(final InputStream es) {
+	        Thread hiloError = new Thread() {
+	            public void run() {
+	                try {
+	                    byte[] buffer = new byte[1024];
+	                    int leido = es.read(buffer);
+	                    while (leido > 0) {
+	                        System.out.println(new String(buffer, 0, leido));
+	                        leido = es.read(buffer);
+	                    }
+	                    es.close();
+	                } catch (Exception e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        };
+	        hiloError.start();
+	    }
+	
+	// METODO PARA REALIZAR EL BACKP
+	 public boolean CrearBackup(String host, String port, String user, String password, String db, String file_backup){
+		   boolean ok=false;
+         try{       
+             //sentencia para crear el BackUp
+
+              Process run = Runtime.getRuntime().exec("mysqldump --host=" + "localhost" + " --port=" + "3306" + " --user=" + "root" + " --password=" + "root" +
+             " --compact --complete-insert --extended-insert --skip-quote-names" +" --skip-comments --skip-triggers" + " tesis");
+
+             //se guarda en memoria el backup
+             InputStream in = run.getInputStream();
+             BufferedReader br = new BufferedReader(new InputStreamReader(in));
+             File backupFile = new File("D:\\vaca.sql");//String.valueOf(JFileChooser.DIRECTORIES_ONLY) + "\\nombreArchivo" + fecha + ".sql");
+             
+             fichero = new FileWriter(backupFile);
+             temp = new StringBuffer();
+             int count;
+
+             char[] cbuf = new char[BUFFER];
+             while ((count = br.read(cbuf, 0, BUFFER)) != -1)
+                 temp.append(cbuf, 0, count);
+        
+             
+             // SUPONGO QUE IMPRIME LO QUE TIENE EL ARCHIVO..
+             String line;
+ 			while( (line=br.readLine()) != null ) {
+ 			fichero.write(line + "\n");
+ 			}
+ 			///////
+ 			
+             br.close();
+             in.close();        
+
+             String fecha = String.valueOf(new Date().toGMTString());
+             /* se crea y escribe el archivo SQL */
+             
+             fichero = new FileWriter(backupFile);
+
+             pw = new PrintWriter(fichero);                                         
+             pw.println(temp.toString());  
+
+             ok=true;
+        }
+         catch (Exception ex){
+        	 System.out.println("Se trabo el backup");
+        	 ex.printStackTrace();
+         } finally {
+            try {           
+              if (null != fichero)
+                   fichero.close();
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+         }   
+         return ok; 
+      }  
 	
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Gestionar Cliente"
@@ -208,13 +378,13 @@ public class MediadorPrincipal extends Mediador{
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Calcular Clasificacion"
+	 * Acciones a realizar cuando se selecciona la opcion de "Calcular AClasificacion"
 	 */
 	public void calcularClasificacion(){
 		try {
 			MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
 			if (seleccionarMuestra.seSeleccionoMuestra()){
-				new MediadorCalcularClasificacion("Clasificacion",seleccionarMuestra.getSeleccionado());
+				new MediadorCalcularClasificacion("AClasificacion",seleccionarMuestra.getSeleccionado());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -241,10 +411,10 @@ public class MediadorPrincipal extends Mediador{
 		try {
 			MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
 			if (seleccionarMuestra.seSeleccionoMuestra()){
-				Muestra muestra1 = seleccionarMuestra.getSeleccionado();
+				HMuestra muestra1 = seleccionarMuestra.getSeleccionado();
 				seleccionarMuestra = new MediadorSeleccionarMuestra();
 				if (seleccionarMuestra.seSeleccionoMuestra()){
-					Muestra muestra2 = seleccionarMuestra.getSeleccionado();
+					HMuestra muestra2 = seleccionarMuestra.getSeleccionado();
 					new MediadorCompararMuestra("Comparacion de Muestras",muestra1,muestra2);
 				}
 			}
@@ -269,10 +439,11 @@ public class MediadorPrincipal extends Mediador{
 	    System.out.println("GestionarMediador.actionPerformed() jButtonCalcularClasificacion");
 	}
 
+	
 	/**
 	 * @return the usuario
 	 */
-	public Usuario getUsuario() {
+	public DUsuario getUsuario() {
 		return usuario;
 	}
 

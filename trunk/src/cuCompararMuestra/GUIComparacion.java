@@ -17,7 +17,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
-import persistencia.domain.Muestra;
+import persistencia.domain.HMuestra;
 
 import comun.TablePanel;
 
@@ -144,7 +144,7 @@ public class GUIComparacion extends JDialog{
 	 * This is the parametrized constructor used in modification
 	 * @param data1  arreglo que almacena los datos de una muestra1. 
 	 */
-	public GUIComparacion (Muestra muestra1, Object [] [] data1, Muestra muestra2, Object [] [] data2) {
+	public GUIComparacion (HMuestra muestra1, Object [] [] data1, HMuestra muestra2, Object [] [] data2) {
 		super();
 		this.data1 = data1;
 		this.data2 = data2; 
@@ -167,7 +167,7 @@ public class GUIComparacion extends JDialog{
 		this.profundidadInicial1= new JLabel("Profundidad Inicial: "+muestra1.getProfundidadInicial()+"mts");
 		this.profundidadFinal1 = new JLabel("Profundidad Final: "+muestra1.getProfundidadFinal()+"mts");
 		ubicacion1 = new JLabel ("Ubicacion: "+muestra1.getUbicacion().getNombreUbicacion());
-		clasificacion1 = new JLabel ("Clasificacion: ");
+		clasificacion1 = new JLabel ("AClasificacion: ");
 		if (muestra1.getSucs()!=null){
 			descripcion1 = new JLabel ("Descripcion: "+muestra1.getSucs().getDescripcion());
 		}
@@ -188,7 +188,7 @@ public class GUIComparacion extends JDialog{
 		this.profundidadInicial2= new JLabel("Profundidad Inicial: "+muestra2.getProfundidadInicial()+"mts");
 		this.profundidadFinal2 = new JLabel("Profundidad Final: "+muestra2.getProfundidadFinal()+"mts");
 		ubicacion2 = new JLabel ("Ubicacion: "+muestra2.getUbicacion().getNombreUbicacion());
-		clasificacion2 = new JLabel ("Clasificacion: ");
+		clasificacion2 = new JLabel ("AClasificacion: ");
 		if (muestra1.getSucs()!=null){
 			descripcion2 = new JLabel ("Descripcion: "+muestra2.getSucs().getDescripcion());
 		}

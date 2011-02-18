@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Tamiz;
+import persistencia.domain.ETamiz;
 
 import comun.Mediador;
 
@@ -44,10 +44,10 @@ public class MediadorSeleccionarTamiz extends Mediador{
 	 */
 	public void cargarTablaDeTamiz(Double abertura)throws Exception{
 		ControlTamiz control = new ControlTamiz();
-		Tamiz tamiz = new Tamiz();
+		ETamiz tamiz = new ETamiz();
 		Class clase = tamiz.getClass();
 		Collection tamices = control.coleccionTamicesFiltro(abertura);
-		Iterator<Tamiz> it = tamices.iterator();
+		Iterator<ETamiz> it = tamices.iterator();
 		data =  new Object [tamices.size()] [2];
 		int i = 0;
 		while (it.hasNext()){

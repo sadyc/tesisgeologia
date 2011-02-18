@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 import javax.jdo.JDOException;
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Cliente;
+import persistencia.domain.DCliente;
 
 import comun.Mediador;
 
@@ -18,7 +18,7 @@ import cuGestionarOperador.GUIOperador;
 public class MediadorAltaCliente extends Mediador{
 	private GUIOperador GUICliente;
 	private String[] data = new String [6];
-	private Cliente cliente ;
+	private DCliente cliente ;
 	private Component frame;
 	private ControlGestionarCliente control;
 	private boolean altaCliente= false;
@@ -31,7 +31,7 @@ public class MediadorAltaCliente extends Mediador{
 	public MediadorAltaCliente(String nombreVentana) {
 		super();
 		control = new ControlGestionarCliente();
-		cliente = new Cliente();
+		cliente = new DCliente();
 		GUICliente = new GUIOperador();
 		GUICliente.setTitle(nombreVentana);
 		GUICliente.setListenerButtons(this);
@@ -114,7 +114,7 @@ public class MediadorAltaCliente extends Mediador{
 		data[2]= GUICliente.getjTextFieldDni().getText();
 		data[3]= GUICliente.getjTextFieldEmail().getText();
 		data[4]= GUICliente.getjTextFieldTelefono().getText();
-		cliente = new Cliente(data[0],data[1],data[2],data[3],data[4]);
+		cliente = new DCliente(data[0],data[1],data[2],data[3],data[4]);
 		try {
 			control.insertarCliente(cliente);
 			if (control.getExiste()) {

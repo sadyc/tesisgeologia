@@ -33,7 +33,7 @@ public class TablePanel extends JPanel {
 	/** table */
 	private JTable table = null; 
 	
-	private Table tableModel = null;
+	private DefaultTableModel tableModel = null;
 
     private JScrollPane scrollPane = null;
     
@@ -46,7 +46,7 @@ public class TablePanel extends JPanel {
 	public TablePanel(){
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		this.scrollPane = new JScrollPane();
-		this.tableModel = new Table();
+		this.tableModel = new DefaultTableModel();
 		this.table = new JTable(tableModel){
 			
 			public boolean isCellEditable(int row,int column) { 

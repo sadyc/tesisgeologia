@@ -7,12 +7,12 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- * Implementacion de la clase que define una Persona. 
+ * Implementacion de la clase que define una CPersona. 
  * @author TesisGeologia
  * @version 1.0  21/09/10
  */
 @PersistenceCapable
-public class Persona { 
+public class CPersona { 
 	
 	private String nombre;
 	private String apellido;
@@ -24,7 +24,7 @@ public class Persona {
 	/**
 	 * Default constructor
 	 */
-	public Persona (){
+	public CPersona (){
 		this.nombre = null;
 		this.apellido = null;
 		this.dni = null;
@@ -38,7 +38,7 @@ public class Persona {
 	 * @param apellido, apellido de la persona creada.
 	 * @param dni, DNI de la persona creada.
 	 */
-	public Persona(String nombre, String apellido, String dni, String tel, String email) {
+	public CPersona(String nombre, String apellido, String dni, String tel, String email) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;

@@ -7,8 +7,8 @@ import java.awt.event.MouseEvent;
 import java.util.Collection;
 import java.util.Iterator;
 
-import persistencia.domain.Analisis;
-import persistencia.domain.Muestra;
+import persistencia.domain.IAnalisis;
+import persistencia.domain.HMuestra;
 
 import comun.Mediador;
 
@@ -22,10 +22,10 @@ import cuGestionarAnalisis.ControlGestionarAnalisis;
  */
 public class MediadorCompararMuestra extends Mediador{
 	private GUIComparacion GUIComparacion;
-	private Muestra muestra1 = new Muestra();
+	private HMuestra muestra1 = new HMuestra();
 	private Object [] [] data1;
 	
-	private Muestra muestra2 = new Muestra();
+	private HMuestra muestra2 = new HMuestra();
 	private Object [] [] data2;
 	
 	/**
@@ -46,7 +46,7 @@ public class MediadorCompararMuestra extends Mediador{
 	 * @param muestra1
 	 * @throws Exception
 	 */
-	public MediadorCompararMuestra(String titulo, Muestra muestra1, Muestra muestra2) throws Exception {
+	public MediadorCompararMuestra(String titulo, HMuestra muestra1, HMuestra muestra2) throws Exception {
 		super();
 		this.muestra1=muestra1;
 		this.muestra2=muestra2;
@@ -65,12 +65,12 @@ public class MediadorCompararMuestra extends Mediador{
 	 * @param nombreMuestra, es el nombre de la muestra de la cual se desean obtener los analisis.
 	 * @return data, es la tabla con los datos de los analisis correspondientes a la muestra.
 	 */
-	public Object [] [] cargarTablaDeAnalisis(Muestra muestra)throws Exception{
+	public Object [] [] cargarTablaDeAnalisis(HMuestra muestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
-		Analisis analisis = new Analisis();
+		IAnalisis analisis = new IAnalisis();
 		Class clase = analisis.getClass();
 		Collection muestras = control.coleccionAnalisisDeMuestra(clase, muestra);
-		Iterator<Analisis> it = muestras.iterator();
+		Iterator<IAnalisis> it = muestras.iterator();
 		int i = 0;
 		Object [] [] data = new Object [muestras.size()] [5];
 		while (it.hasNext()){

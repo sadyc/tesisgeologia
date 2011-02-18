@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Ubicacion;
+import persistencia.domain.FUbicacion;
 
 import comun.Mediador;
 

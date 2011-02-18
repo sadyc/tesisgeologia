@@ -13,19 +13,19 @@ import javax.swing.JOptionPane;
 
 /**
  * Clase que se utiliza para la clasificacion de la muestra de la 
- * forma SUCS.
+ * forma BSUCS.
  * @author TesisGeologia
  * @version 1.0
  */
 @PersistenceCapable
-public class SUCS extends Clasificacion {
+public class BSUCS extends AClasificacion {
 	
-	protected Collection<Muestra> muestras = new HashSet();
+	protected Collection<HMuestra> muestras = new HashSet();
 	
 	/**
 	 * @brief Constructor por defecto.
 	 */
-	public SUCS(){
+	public BSUCS(){
 		super();
 	}
 	
@@ -33,7 +33,7 @@ public class SUCS extends Clasificacion {
 	 * Constructor con pasaje de parametros.
 	 * @param clasificacion.
 	 */
-	public SUCS(String clasificacion){
+	public BSUCS(String clasificacion){
 		Frame frame = new Frame();
 		String nombreAux = new String();
 		String descripcionAux = new String();

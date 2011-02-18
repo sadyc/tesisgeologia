@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
 
 import comun.Mediador;
 
-import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.GOperadorDeLaboratorio;
 
 public class MediadorAltaOperador extends Mediador{
 	private GUIOperador GUIOperador;
 	private String[] data = new String [6];
-	private OperadorDeLaboratorio operador ;
+	private GOperadorDeLaboratorio operador ;
 	private Component frame;
 	private ControlGestionarOperador control;
 	private boolean altaOperador= false;
@@ -32,7 +32,7 @@ public class MediadorAltaOperador extends Mediador{
 	public MediadorAltaOperador(String nombreVentana) {
 		super();
 		control = new ControlGestionarOperador();
-		operador = new OperadorDeLaboratorio();
+		operador = new GOperadorDeLaboratorio();
 		GUIOperador = new GUIOperador();
 		GUIOperador.setTitle(nombreVentana);
 		GUIOperador.setListenerButtons(this);
@@ -116,7 +116,7 @@ public class MediadorAltaOperador extends Mediador{
 		data[2]= GUIOperador.getjTextFieldDni().getText();
 		data[3]= GUIOperador.getjTextFieldEmail().getText().toUpperCase();
 		data[4]= GUIOperador.getjTextFieldTelefono().getText();
-		operador = new OperadorDeLaboratorio(data[0],data[1],data[2],data[3],data[4]);
+		operador = new GOperadorDeLaboratorio(data[0],data[1],data[2],data[3],data[4]);
 		try {
 			control.insertarOperador(operador);
 			if (control.getExiste()) {

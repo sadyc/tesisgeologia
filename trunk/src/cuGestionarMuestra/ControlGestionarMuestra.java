@@ -6,11 +6,11 @@ package cuGestionarMuestra;
 import java.util.Collection;
 
 import persistencia.Persistencia;
-import persistencia.domain.Cliente;
-import persistencia.domain.Muestra;
-import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.Ubicacion;
-import persistencia.domain.Usuario;
+import persistencia.domain.DCliente;
+import persistencia.domain.HMuestra;
+import persistencia.domain.GOperadorDeLaboratorio;
+import persistencia.domain.FUbicacion;
+import persistencia.domain.DUsuario;
 
 /**
  * Clase que se utiliza para gestionar los datos con persistencia en la base
@@ -30,25 +30,26 @@ public class ControlGestionarMuestra {
 	/**
 	 * Inserta una muestra con persistencia. 
 	 */ 
-	public void insertarMuestra(Muestra mu, Ubicacion ubicacion, OperadorDeLaboratorio operador, Cliente cliente, Usuario usuario1) throws Exception{
+	public void insertarMuestra(HMuestra mu, FUbicacion ubicacion, GOperadorDeLaboratorio operador, DCliente cliente, DUsuario usuario1) throws Exception{
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
-			Usuario usuario = usuario1;
+			DUsuario usuario = usuario1;
 			Class claseUbicacion = ubicacion.getClass();
-			if ((Muestra)persistencia.buscarObjeto(mu.getClass(), "nombreMuestra=='"+mu.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'")==null){
-				mu.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
+			if ((HMuestra)persistencia.buscarObjeto(mu.getClass(), "nombreMuestra=='"+mu.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'")==null){
+				mu.setUbicacion((FUbicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
 				Class claseOperador = operador.getClass();
-				mu.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
+				mu.setOperadorLaboratorio((GOperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
 				Class claseUsuario = usuario.getClass();
-				mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+usuario.getDni()+"'")); 
+				mu.setUsuario((DUsuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+usuario.getDni()+"'")); 
 				if (cliente != null){
 					Class claseCliente = cliente.getClass();
-					mu.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+cliente.getDni()+"'"));
+					mu.setCliente((DCliente)persistencia.buscarObjeto(claseCliente, "dni=='"+cliente.getDni()+"'"));
 				}
 				
 				persistencia.insertarObjeto(mu);
+
 			}
 			else{
 				yaExiste=true;
@@ -67,8 +68,8 @@ public class ControlGestionarMuestra {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
-			Muestra muestra = new Muestra();
-			Muestra auxMuestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+ubicacion+"'");
+			HMuestra muestra = new HMuestra();
+			HMuestra auxMuestra = (HMuestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+ubicacion+"'");
 			persistencia.eliminarObjeto(auxMuestra);
 			persistencia.cerrarTransaccion();
 		}
@@ -83,7 +84,7 @@ public class ControlGestionarMuestra {
 	public Collection coleccionMuestras(Class clase) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		Collection<Muestra> aux = null;
+		Collection<HMuestra> aux = null;
 		try {
 			aux = (persistencia.buscarColeccion(clase));
 			persistencia.cerrarTransaccion();
@@ -105,28 +106,27 @@ public class ControlGestionarMuestra {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		Muestra aux = new Muestra();
+		HMuestra aux = new HMuestra();
 		try {
 			Class claseMuestra = aux.getClass();
-
-			if ((Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+data[1]+"' && ubicacion.nombreUbicacion=='"+data[0]+"'")==null){
-				aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestraModificar+"' && ubicacion.nombreUbicacion=='"+ubicacionModificar+"'");
+			if ((HMuestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+data[1]+"' && ubicacion.nombreUbicacion=='"+data[0]+"'")==null){
+				aux =(HMuestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestraModificar+"' && ubicacion.nombreUbicacion=='"+ubicacionModificar+"'");
 				aux.setPeso(Float.parseFloat(data[2]));
 				aux.setNombreMuestra(data[1]);
 				aux.setProfundidadInicial(Float.parseFloat(data[3]));
 				aux.setProfundidadFinal(Float.parseFloat(data[4]));
-				OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
+				GOperadorDeLaboratorio operador = new GOperadorDeLaboratorio();
 				Class claseOperador = operador.getClass();
-				aux.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+data[5]+"'"));
-				Cliente cliente = new Cliente();
+				aux.setOperadorLaboratorio((GOperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+data[5]+"'"));
+				DCliente cliente = new DCliente();
 				Class claseCliente = cliente.getClass();
-				aux.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+data[6]+"'"));
-				Ubicacion ubicacion = new Ubicacion();
+				aux.setCliente((DCliente)persistencia.buscarObjeto(claseCliente, "dni=='"+data[6]+"'"));
+				FUbicacion ubicacion = new FUbicacion();
 				Class claseUbicacion = ubicacion.getClass();
-				aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+data[0]+"'"));
-				Usuario usuario = new Usuario();
+				aux.setUbicacion((FUbicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+data[0]+"'"));
+				DUsuario usuario = new DUsuario();
 				Class claseUsuario = usuario.getClass();
-				aux.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "nombreUsuario=='"+data[7]+"'"));
+				aux.setUsuario((DUsuario)persistencia.buscarObjeto(claseUsuario, "nombreUsuario=='"+data[7]+"'"));
 				java.util.Date utilDate = new java.util.Date();
 			    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 			    aux.setFecha(sqlDate);
@@ -134,8 +134,6 @@ public class ControlGestionarMuestra {
 			else{
 				yaExiste=true;
 			}
-			
-
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
@@ -149,12 +147,12 @@ public class ControlGestionarMuestra {
 	 * @param nombreMuestra
 	 * @return
 	 */
-	public Muestra obtenerMuestra (String nombreMuestra,String ubicacion) throws Exception{
+	public HMuestra obtenerMuestra (String nombreMuestra,String ubicacion) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		Muestra aux = new Muestra();
+		HMuestra aux = new HMuestra();
 		try {
-			aux =(Muestra)persistencia.buscarObjeto(aux.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+ubicacion+"'");
+			aux =(HMuestra)persistencia.buscarObjeto(aux.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+ubicacion+"'");
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {

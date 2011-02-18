@@ -1,8 +1,8 @@
 package cuLogin;
 
 import persistencia.Persistencia;
-import persistencia.domain.Muestra;
-import persistencia.domain.Usuario;
+import persistencia.domain.HMuestra;
+import persistencia.domain.DUsuario;
 
 public class ControlLogin {
 
@@ -17,13 +17,13 @@ public class ControlLogin {
 	 * @param nombreMuestra
 	 * @return
 	 */
-	public Usuario obtenerUsuario (String nombreUsuario,String password) throws Exception{
+	public DUsuario obtenerUsuario (String nombreUsuario,String password) throws Exception{
 		
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		Usuario aux = new Usuario();
+		DUsuario aux = new DUsuario();
 		try {
-			aux =(Usuario)persistencia.buscarObjeto(aux.getClass(), "nombreUsuario=='"+nombreUsuario+"'");
+			aux =(DUsuario)persistencia.buscarObjeto(aux.getClass(), "nombreUsuario=='"+nombreUsuario+"'");
 			if (aux==null){
 				encontrado = false;
 			}
