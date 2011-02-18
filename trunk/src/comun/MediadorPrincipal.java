@@ -1,24 +1,9 @@
 package comun;
 
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.util.Date;
-
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 import persistencia.domain.DUsuario;
 import persistencia.domain.HMuestra;
@@ -36,56 +21,14 @@ import cuLimiteConsistencia.MediadorConsistencia;
 public class MediadorPrincipal extends Mediador{
 
 	private GUIPrincipal GUIPrincipal = null;
-	private Component frame;
 	private DUsuario usuario;
-	private java.sql.Date calendario;
-	private int BUFFER = 10485760;  
-    private JFileChooser directorio= null;
-    //para guardar en memmoria
-    private StringBuffer temp = null;
-    //para guardar el archivo SQL
-    private FileWriter  fichero = null;
-    private PrintWriter pw = null;
+	private Backup backup;
 	
-/**	private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {
-		JFileChooser FileChooser = new JFileChooser();
-		JTextField txtContenedor = new JTextField("C:");
-		SimpleDateFormat dateformat = new SimpleDateFormat("ddMMyy");
-		if(txtContenedor.getText().equalsIgnoreCase("")){
-			JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
-		}else{
-		try{
-			Runtime runtime = Runtime.getRuntime();
-			File backupFile = new File(String.valueOf(FileChooser.getCurrentDirectory()) + "\\nombreArchivo" + dateformat.format(calendario.getTime()) + ".sql");
-			
 	
-			FileWriter fw = new FileWriter(backupFile); 
-			
-	
-			Process child = runtime.exec("C:\\Program Files\\MySQL\\MySQL Server 5.1\\bin\\mysqldump --opt --password= --user=root <tesis>");
-			
-			InputStreamReader irs = new InputStreamReader(child.getInputStream());
-			BufferedReader br = new BufferedReader(irs);
-			
-			String line;
-			while( (line=br.readLine()) != null ) {
-			fw.write(line + "\n");
-			}
-			fw.close();
-			irs.close();
-			br.close();
-		}catch(Exception e){
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Error no se genero el archivo por el siguiente motivo: " + e.getMessage(), "Verificar",JOptionPane.ERROR_MESSAGE);
-		}
-		JOptionPane.showMessageDialog(null, "Archivo generado", "Verificar",JOptionPane.INFORMATION_MESSAGE);
-		}
-	}
-*/	
+
 	public MediadorPrincipal(String nombreVentana, DUsuario usuario) throws Exception {
 		super();
-		java.util.Date utilDate = new java.util.Date();
-	    java.sql.Date calendario = new java.sql.Date(utilDate.getTime());
+		this.backup=new Backup();	    
 		this.usuario = usuario;
 		this.GUIPrincipal = new GUIPrincipal(nombreVentana);
 		this.GUIPrincipal.setListenerButtons(this);
@@ -177,132 +120,14 @@ public class MediadorPrincipal extends Mediador{
 			GUIPrincipal.dispose();
 		}
 		if (this.GUIPrincipal.getjButtonCrearBackup()==source || this.GUIPrincipal.getCrearBackupMenu()==source){
-			crearBackup();
+			backup.crearBackup();
 		}
 		if (this.GUIPrincipal.getjButtonCargarBackup()==source || this.GUIPrincipal.getCargarBackupMenu()==source){
-			cargarBackup();
+			backup.cargarBackup();
 		}
 	}
 	
 	
-	 public void cargarBackup() {
-		 JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
-		 JFileChooser directorio = new JFileChooser();
-         directorio = GUIPrincipal.getFileChooser();
-         directorio.setFileSelectionMode(JFileChooser.FILES_ONLY);
-         int seleccion = directorio.showOpenDialog(new JPanel());
-         directorio.setDialogType(directorio.DIRECTORIES_ONLY);
-         if (seleccion == JFileChooser.APPROVE_OPTION){
-         	File f = directorio.getSelectedFile();
-	            String filePath = f.getPath();
-	            try {
-		            // Ejecucion del cliente mysql
-		            Process p = Runtime.getRuntime().exec("mysql -u root -proot tesis");
-
-		            // Lectura de la salida de error y se muestra por pantalla.
-		            InputStream es = p.getErrorStream();
-		            muestraSalidaDeError(es);
-
-		            // Lectura del fichero de backup y redireccion a la entrada estandar
-		            // de mysql.
-		            OutputStream os = p.getOutputStream(); 
-		            FileInputStream fis = new FileInputStream(filePath);
-
-		            byte buffer[] = new byte[1024];
-		            int leido = fis.read(buffer);
-		            while (leido > 0) {
-		                System.out.println(leido);
-		                os.write(buffer, 0, leido);
-		                leido = fis.read(buffer);
-		            }
-		            os.close();
-		            fis.close();
-		        } catch (IOException e) {
-		            e.printStackTrace();
-		        }
-
-	            
-	        }          
-		 	    }
-
-	 private void muestraSalidaDeError(final InputStream es) {
-	        Thread hiloError = new Thread() {
-	            public void run() {
-	                try {
-	                    byte[] buffer = new byte[1024];
-	                    int leido = es.read(buffer);
-	                    while (leido > 0) {
-	                        System.out.println(new String(buffer, 0, leido));
-	                        leido = es.read(buffer);
-	                    }
-	                    es.close();
-	                } catch (Exception e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	        };
-	        hiloError.start();
-	    }
-	
-	// METODO PARA REALIZAR EL BACKP
-	 public void crearBackup(){
-		 JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
-		 JFileChooser directorio = new JFileChooser();
-         directorio = GUIPrincipal.getFileChooser();
-         int seleccion = directorio.showSaveDialog(new JPanel());
-         directorio.setDialogType(directorio.DIRECTORIES_ONLY);
-         if (seleccion == JFileChooser.APPROVE_OPTION){
-         	File f = directorio.getSelectedFile();
-	            String filePath = f.getPath();
-	            if(!filePath.toLowerCase().endsWith(".sql"))
-	            {
-	                f = new File(filePath + ".sql");
-	                filePath = f.getPath();  
-	            }
-
-	            try{       
-	                //sentencia para crear el BackUp
-	                 Process run = Runtime.getRuntime().exec("mysqldump --host=localhost --port=3306 --user=root --password=root --compact --complete-insert --extended-insert --skip-quote-names"
-	                		 +" --skip-comments --skip-triggers tesis");
-	                 
-	                //se guarda en memoria el backup
-	                InputStream in = run.getInputStream();
-	                BufferedReader br = new BufferedReader(new InputStreamReader(in));
-	                File backupFile = new File(filePath);
-	                fichero = new FileWriter(backupFile);
-	                temp = new StringBuffer();
-	                int count;
-	                char[] cbuf = new char[BUFFER];
-	                while ((count = br.read(cbuf, 0, BUFFER)) != -1)
-	                    temp.append(cbuf, 0, count);
-	                String line;
-	    			while( (line=br.readLine()) != null ) {
-	    			fichero.write(line + "\n");
-	    			}
-	    			br.close();
-	                in.close();        
-
-	                String fecha = String.valueOf(new Date().toGMTString());
-	                /* se crea y escribe el archivo SQL */
-	                
-	                fichero = new FileWriter(backupFile);
-	                pw = new PrintWriter(fichero);                                         
-	                pw.println(temp.toString());  
-
-	           }
-	            catch (Exception ex){
-	            	System.out.println("Falló el backup");
-	            	ex.printStackTrace();
-	            } finally {
-	            	try {           
-	            	   if (null != fichero)
-	                	 fichero.close();
-	               } catch (Exception e2) {
-	                   e2.printStackTrace();
-	               }
-	            }   
-         }          
-	 }  
 	
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Gestionar Cliente"
