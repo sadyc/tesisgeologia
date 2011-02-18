@@ -168,6 +168,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 								GUIAnalisis.dispose();
 							}
 						} catch (Exception e) {
+							JOptionPane.showMessageDialog(frame,"Asegurese que el peso retenido tiene un formato valido como por ej, 23.34 gramos.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 							e.printStackTrace();
 						}
 						GUIAnalisis.dispose();

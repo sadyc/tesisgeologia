@@ -23,10 +23,14 @@ public class ControlGestionarUsuario {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
-			persistencia.insertarObjeto(usuario);
+			if(persistencia.buscarObjeto(usuario.getClass(), "nombreUsuario=='"+usuario.getNombreUsuario()+"' || dni=='"+usuario.getDni()+"'")==null){
+				persistencia.insertarObjeto(usuario);
+			}
+			else{
+				yaExiste=true;
+			}
 			persistencia.cerrarTransaccion();
 		} catch (Exception e) {
-			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarUsuario insertar");
 			e.printStackTrace();
 			persistencia.realizarRollback();
@@ -57,19 +61,24 @@ public class ControlGestionarUsuario {
 		Usuario aux = new Usuario();
 		try {
 			Class claseUsuario = aux.getClass();
-			aux =(Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+DNI+"'");
-			aux.setNombre(data[0]);
-			aux.setApellido(data[1]);
-			aux.setDni(data[2]);
-			aux.setNombreUsuario(data[3]);
-			aux.setCategoria(data[4]);
-			aux.setEmail(data[5]);
-			aux.setTel(data[6]);
-			aux.setContraseña(data[7]);
+			if(persistencia.buscarObjeto(claseUsuario, "nombreUsuario=='"+data[3]+"' || dni=='"+data[2]+"'")==null){
+				aux =(Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+DNI+"'");
+				aux.setNombre(data[0]);
+				aux.setApellido(data[1]);
+				aux.setDni(data[2]);
+				aux.setNombreUsuario(data[3]);
+				aux.setCategoria(data[4]);
+				aux.setEmail(data[5]);
+				aux.setTel(data[6]);
+				aux.setContraseña(data[7]);
+				
+			}
+			else{
+				yaExiste=true;
+			}
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
-			yaExiste=persistencia.getExiste();
 			System.out.println("Error al modificar");
 			e.printStackTrace();
 			persistencia.realizarRollback();

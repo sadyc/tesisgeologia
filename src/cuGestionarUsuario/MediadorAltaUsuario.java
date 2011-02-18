@@ -110,7 +110,6 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 				}
 				else{
 					insertarUsuario();
-					altaUsuario = true;
 				}
 			}
 		}
@@ -123,12 +122,12 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 	 * Una vez verificados que los datos ingresados son correctos se procede a la carga de los mismos al sistema.
 	 */
 	public void insertarUsuario(){
-		data[0]= GUIUsuario.getjTextFieldNombre().getText().toUpperCase();
-		data[1]= GUIUsuario.getjTextFieldApellido().getText().toUpperCase();
+		data[0]= GUIUsuario.getjTextFieldNombre().getText();
+		data[1]= GUIUsuario.getjTextFieldApellido().getText();
 		data[2]= GUIUsuario.getjTextFieldDni().getText();
-		data[3]= GUIUsuario.getjTextFieldNombreUsuario().getText().toUpperCase();
+		data[3]= GUIUsuario.getjTextFieldNombreUsuario().getText();
 		data[4]= (String) GUIUsuario.getjComboBoxCategoria().getSelectedItem();
-		data[5]= GUIUsuario.getjTextFieldEmail().getText().toUpperCase();
+		data[5]= GUIUsuario.getjTextFieldEmail().getText();
 		data[6]= GUIUsuario.getjTextFieldTelefono().getText();
 		Encriptar encriptar = new Encriptar();
 		String password = "";
@@ -144,7 +143,7 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 			control.insertarUsuario(usuario);
 			if (control.getExiste()) {
 				System.out.println("El objeto ya existe");
-				JOptionPane.showMessageDialog(frame,"El usuario con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"El usuario con DNI: "+data[2]+" ó nombre de usuario: "+data[3]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				altaUsuario = true;

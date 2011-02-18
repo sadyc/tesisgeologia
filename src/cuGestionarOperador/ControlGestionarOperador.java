@@ -20,10 +20,14 @@ public class ControlGestionarOperador {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
-			persistencia.insertarObjeto(operador);
+			if (persistencia.buscarObjeto(operador.getClass(), "dni=='"+operador.getDni()+"'")==null){
+				persistencia.insertarObjeto(operador);
+			}
+			else{
+				yaExiste=true;
+			}
 			persistencia.cerrarTransaccion();
 		} catch (Exception e) {
-			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarOperador insertar");
 			persistencia.realizarRollback();
 		}
@@ -54,16 +58,20 @@ public class ControlGestionarOperador {
 		OperadorDeLaboratorio aux = new OperadorDeLaboratorio();
 		try {
 			Class claseOperador = aux.getClass();
-			aux =(OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+DNI+"'");
-			aux.setNombre(data[0]);
-			aux.setApellido(data[1]);
-			aux.setDni(data[2]);
-			aux.setEmail(data[3]);
-			aux.setTel(data[4]);
+			if (persistencia.buscarObjeto(claseOperador, "dni=='"+data[2]+"'")==null){
+				aux =(OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+DNI+"'");
+				aux.setNombre(data[0]);
+				aux.setApellido(data[1]);
+				aux.setDni(data[2]);
+				aux.setEmail(data[3]);
+				aux.setTel(data[4]);
+			}
+			else{
+				yaExiste=true;
+			}
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
-			yaExiste=persistencia.getExiste();
 			System.out.println("Error al modificar");
 			persistencia.realizarRollback();
 		}		

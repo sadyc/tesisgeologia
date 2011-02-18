@@ -175,7 +175,7 @@ public class GUIMuestraDetallada extends JDialog{
 		jButtonEliminarAnalisis = new JButton("ELIMINAR ANALISIS");
 		jButtonModificarAnalisis  = new JButton("MODIFICAR ANALISIS");
 		imprimir = new JButton("IMPRIMIR");
-		salir = new JButton("CANCELAR");
+		salir = new JButton("SALIR");
 		initialize();
 	}
 	

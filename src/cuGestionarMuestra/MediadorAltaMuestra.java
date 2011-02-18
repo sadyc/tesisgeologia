@@ -171,7 +171,7 @@ public class MediadorAltaMuestra extends Mediador{
 	 */
 	public void insertarMuestra(){
 		data[0]= ubicacion.getNombreUbicacion();
-		data[1]= GUIMuestra.getNombre().getText().toUpperCase();
+		data[1]= GUIMuestra.getNombre().getText();
 		data[2]= GUIMuestra.getPeso().getText();
 		data[3]= GUIMuestra.getProfundidadInicial().getText();
 		data[4]= GUIMuestra.getProfundidadFinal().getText();
