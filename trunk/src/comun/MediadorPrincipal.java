@@ -120,7 +120,7 @@ public class MediadorPrincipal extends Mediador{
 			GUIPrincipal.dispose();
 		}
 		if (this.GUIPrincipal.getjButtonCrearBackup()==source || this.GUIPrincipal.getCrearBackupMenu()==source){
-			backup.crearBackup();
+			backup.crearBackUpWindowsX86();
 		}
 		if (this.GUIPrincipal.getjButtonCargarBackup()==source || this.GUIPrincipal.getCargarBackupMenu()==source){
 			backup.cargarBackup();
