@@ -105,7 +105,7 @@ public class Backup {
 
 	            try{       
 	                //sentencia para crear el BackUp
-	                 Process run = Runtime.getRuntime().exec("mysqldump --host=localhost --port=3306 --user=root --password=root --compact --complete-insert --extended-insert --skip-quote-names"
+	                 Process run = Runtime.getRuntime().exec("C:/Program Files (x86)/MySQL/MySQL Server 5.1/bin/mysqldump --host=localhost --port=3306 --user=root --password=root --compact --complete-insert --extended-insert --skip-quote-names"
 	                		 +" --skip-comments --skip-triggers tesis");
 	                 
 	                //se guarda en memoria el backup
@@ -124,8 +124,7 @@ public class Backup {
 	    			}
 	    			br.close();
 	                in.close();        
-
-	                String fecha = String.valueOf(new Date().toGMTString());
+	           
 	                /* se crea y escribe el archivo SQL */
 	                
 	                fichero = new FileWriter(backupFile);
