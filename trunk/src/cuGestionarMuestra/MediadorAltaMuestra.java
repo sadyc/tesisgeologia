@@ -153,12 +153,10 @@ public class MediadorAltaMuestra extends Mediador{
 						}
 						else{
 							insertarMuestra();
-							altaMuestra = true;
 						}
 					}
 					else{
 						insertarMuestra();
-						altaMuestra = true;
 					}
 				}
 			}

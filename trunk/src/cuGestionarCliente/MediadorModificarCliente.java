@@ -88,7 +88,6 @@ public class MediadorModificarCliente extends Mediador{
 			}
 			else {
 				modificarCliente();
-				modificoCliente = true;
 				}
 			}
 		catch (NumberFormatException e){
@@ -101,10 +100,10 @@ public class MediadorModificarCliente extends Mediador{
 	 * Una vez verificados que los datos modificados son correctos se procede a la carga de los mismos al sistema.
 	 */
 	public void modificarCliente(){
-		data[0]= GUICliente.getjTextFieldNombre().getText().toUpperCase();
-		data[1]= GUICliente.getjTextFieldApellido().getText().toUpperCase();
+		data[0]= GUICliente.getjTextFieldNombre().getText();
+		data[1]= GUICliente.getjTextFieldApellido().getText();
 		data[2]= GUICliente.getjTextFieldDni().getText();
-		data[3]= GUICliente.getjTextFieldEmail().getText().toUpperCase();
+		data[3]= GUICliente.getjTextFieldEmail().getText();
 		data[4]= GUICliente.getjTextFieldTelefono().getText();
 		try {
 			control.modificarCliente(clienteModificar.getDni(),data);

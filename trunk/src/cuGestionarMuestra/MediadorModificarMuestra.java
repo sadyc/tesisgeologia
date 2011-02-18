@@ -135,12 +135,10 @@ public class MediadorModificarMuestra extends Mediador{
 						}
 						else{
 							modificarMuestra();
-							modificoMuestra = true;
 						}
 					}
 					else{
 						modificarMuestra();
-						modificoMuestra = true;
 					}
 				}
 			}
@@ -166,8 +164,7 @@ public class MediadorModificarMuestra extends Mediador{
 			data[7]= usuario.getNombreUsuario();
 			control.ModificarMuestra(nombreMuestraModificar,ubicacionModificar,data);
 			if (control.getExiste()) {
-				System.out.println("El objeto ya existe");
-				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+", ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+", ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				modificoMuestra = true;

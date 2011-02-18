@@ -97,8 +97,7 @@ public class MediadorAltaCliente extends Mediador{
 	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				insertarUsuario();
-				
+				insertarCliente();
 				}
 		}
 		catch (NumberFormatException e){
@@ -109,11 +108,11 @@ public class MediadorAltaCliente extends Mediador{
 	/**
 	 * Una vez verificados que los datos ingresados son correctos se procede a la carga de los mismos al sistema.
 	 */
-	public void insertarUsuario(){
-		data[0]= GUICliente.getjTextFieldNombre().getText().toUpperCase();
-		data[1]= GUICliente.getjTextFieldApellido().getText().toUpperCase();
+	public void insertarCliente(){
+		data[0]= GUICliente.getjTextFieldNombre().getText();
+		data[1]= GUICliente.getjTextFieldApellido().getText();
 		data[2]= GUICliente.getjTextFieldDni().getText();
-		data[3]= GUICliente.getjTextFieldEmail().getText().toUpperCase();
+		data[3]= GUICliente.getjTextFieldEmail().getText();
 		data[4]= GUICliente.getjTextFieldTelefono().getText();
 		cliente = new Cliente(data[0],data[1],data[2],data[3],data[4]);
 		try {
