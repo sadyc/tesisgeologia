@@ -77,6 +77,28 @@ public class MediadorPrincipal extends Mediador{
 		this.usuario = usuario;
 		this.GUIPrincipal = new GUIPrincipal(nombreVentana);
 		this.GUIPrincipal.setListenerButtons(this);
+		if (usuario.getCategoria().compareTo("Operador") == 0){
+			GUIPrincipal.getJButtonGestionarUsuario().setEnabled(false);
+			GUIPrincipal.getGestionarUsuarioMenu().setEnabled(false);
+		}else{
+			if(usuario.getCategoria().compareTo("Restringido") == 0){
+				GUIPrincipal.getJButtonGestionarMuestra().setEnabled(false);
+				GUIPrincipal.getJButtonAnalisis().setEnabled(false);
+				GUIPrincipal.getJButtonGestionarLimiteConsistencia().setEnabled(false);
+				GUIPrincipal.getJButtonGestionarUsuario().setEnabled(false);
+				GUIPrincipal.getJButtonClasificacion().setEnabled(false);
+				GUIPrincipal.getjButtonGestionarOperador().setEnabled(false);
+				GUIPrincipal.getjButtonGestionarCliente().setEnabled(false);
+				GUIPrincipal.getGestionarAnalisisMenu().setEnabled(false);
+				GUIPrincipal.getGestionarClienteMenu().setEnabled(false);
+				GUIPrincipal.getGestionarLimiteConsistenciaMenu().setEnabled(false);
+				GUIPrincipal.getGestionarMuestraMenu().setEnabled(false);
+				GUIPrincipal.getGestionarOperadorMenu().setEnabled(false);
+				GUIPrincipal.getGestionarUsuarioMenu().setEnabled(false);
+				GUIPrincipal.getCalcularClasificacionMenu().setEnabled(false);
+			}
+		}
+		System.out.println(usuario.getCategoria());
 		GUIPrincipal.show();
 		
 	}

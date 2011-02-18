@@ -108,6 +108,7 @@ public class ControlGestionarMuestra {
 		Muestra aux = new Muestra();
 		try {
 			Class claseMuestra = aux.getClass();
+
 			if ((Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+data[1]+"' && ubicacion.nombreUbicacion=='"+data[0]+"'")==null){
 				aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestraModificar+"' && ubicacion.nombreUbicacion=='"+ubicacionModificar+"'");
 				aux.setPeso(Float.parseFloat(data[2]));
@@ -134,6 +135,7 @@ public class ControlGestionarMuestra {
 				yaExiste=true;
 			}
 			
+
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
