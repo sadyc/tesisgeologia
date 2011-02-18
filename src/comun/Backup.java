@@ -29,6 +29,14 @@ public class Backup {
 	
     public Backup(){}
     
+    public void crearBackUpWindowsX86(){
+    	crearBackup("C:/Program Files/MySQL/MySQL Server 5.1/bin/","Falló el backup de windows de 32 bits");
+    }
+    
+    public void crearBackUpWindowsX64(){
+    	crearBackup("C:/Program Files (x86)/MySQL/MySQL Server 5.1/bin/","Falló el backup de windows de 64 bits");
+    }
+    
 	public void cargarBackup() {
 		 JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
 		 JFileChooser directorio = new JFileChooser();
@@ -89,7 +97,7 @@ public class Backup {
 	    }
 	
 	// METODO PARA REALIZAR EL BACKP
-	 public void crearBackup(){
+	 public void crearBackup(String dirMySQL, String error){
 		 JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
 		 JFileChooser directorio = new JFileChooser();
          int seleccion = directorio.showSaveDialog(new JPanel());
@@ -105,7 +113,7 @@ public class Backup {
 
 	            try{       
 	                //sentencia para crear el BackUp
-	                 Process run = Runtime.getRuntime().exec("C:/Program Files (x86)/MySQL/MySQL Server 5.1/bin/mysqldump --host=localhost --port=3306 --user=root --password=root --compact --complete-insert --extended-insert --skip-quote-names"
+	                 Process run = Runtime.getRuntime().exec(dirMySQL+"mysqldump --host=localhost --port=3306 --user=root --password=root --compact --complete-insert --extended-insert --skip-quote-names"
 	                		 +" --skip-comments --skip-triggers tesis");
 	                 
 	                //se guarda en memoria el backup
@@ -134,8 +142,8 @@ public class Backup {
 
 	           }
 	            catch (Exception ex){
-	            	System.out.println("Falló el backup");
-	            	ex.printStackTrace();
+	            	System.out.println(error);
+	            	crearBackUpWindowsX64();
 	            } finally {
 	            	try {           
 	            	   if (null != fichero)
