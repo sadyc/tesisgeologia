@@ -92,6 +92,10 @@ public class MediadorPrincipal extends Mediador{
 		if (usuario.getCategoria().compareTo("Operador") == 0){
 			GUIPrincipal.getJButtonGestionarUsuario().setEnabled(false);
 			GUIPrincipal.getGestionarUsuarioMenu().setEnabled(false);
+			GUIPrincipal.getjButtonCrearBackup().setEnabled(false);
+			GUIPrincipal.getCrearBackupMenu().setEnabled(false);
+			GUIPrincipal.getCargarBackupMenu().setEnabled(false);
+			GUIPrincipal.getjButtonCargarBackup().setEnabled(false);
 		}else{
 			if(usuario.getCategoria().compareTo("Restringido") == 0){
 				GUIPrincipal.getJButtonGestionarMuestra().setEnabled(false);
@@ -108,6 +112,10 @@ public class MediadorPrincipal extends Mediador{
 				GUIPrincipal.getGestionarOperadorMenu().setEnabled(false);
 				GUIPrincipal.getGestionarUsuarioMenu().setEnabled(false);
 				GUIPrincipal.getCalcularClasificacionMenu().setEnabled(false);
+				GUIPrincipal.getjButtonCrearBackup().setEnabled(false);
+				GUIPrincipal.getCrearBackupMenu().setEnabled(false);
+				GUIPrincipal.getCargarBackupMenu().setEnabled(false);
+				GUIPrincipal.getjButtonCargarBackup().setEnabled(false);
 			}
 		}
 		System.out.println(usuario.getCategoria());
