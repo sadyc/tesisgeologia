@@ -56,7 +56,7 @@ public class MediadorLogin implements ActionListener{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.login.getjButtonAceptar() == source){
+		if (this.login.getjButtonAceptar() == source || this.login.getjMenuItemAgregar() == source){
 			try {
 				aceptar();
 			} catch (Exception e) {

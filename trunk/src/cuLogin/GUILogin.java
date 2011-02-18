@@ -1,3 +1,6 @@
+package cuLogin;
+
+import java.awt.event.ActionListener;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -9,39 +12,17 @@
  * Created on 08/02/2011, 09:20:02
  */
 
-package cuLogin;
-
-import java.awt.event.ActionListener;
 
 /**
  *
  * @author franco
  */
-public class GUILogin extends javax.swing.JFrame {
-
-	  // Variables declaration - do not modify
-    private javax.swing.JButton jButtonAceptar;
-    private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JMenu jMenuAyuda;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuHerramientas;
-    private javax.swing.JMenuItem jMenuItemAgregar;
-    private javax.swing.JMenuItem jMenuItemSalir;
-    private javax.swing.JMenuItem jMenuItemVersion;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JTextField jnombreUsuario;
-    private javax.swing.JPasswordField jpassword;
-    private javax.swing.JLabel nombreUsuario;
-    private javax.swing.JLabel password;
-    // End of variables declaration
-
+public class GUILogin extends javax.swing.JDialog {
 
     /** Creates new form GUILogin */
     public GUILogin(boolean modal) {
         super();
         initComponents();
-        setTitle("Login Usuario");
-        this.setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -53,6 +34,7 @@ public class GUILogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         nombreUsuario = new javax.swing.JLabel();
         password = new javax.swing.JLabel();
         jnombreUsuario = new javax.swing.JTextField();
@@ -67,27 +49,46 @@ public class GUILogin extends javax.swing.JFrame {
         jMenuAyuda = new javax.swing.JMenu();
         jMenuItemVersion = new javax.swing.JMenuItem();
 
+        jMenuItem1.setText("jMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         nombreUsuario.setText("Nombre Usuario: ");
 
         password.setText("Password: ");
-      
-        
 
+        jnombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jnombreUsuarioActionPerformed(evt);
+            }
+        });
+
+        jButtonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-ok-apply-6.png"))); // NOI18N
         jButtonAceptar.setText("Aceptar");
-      
+        jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAceptarActionPerformed(evt);
+            }
+        });
 
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
         jButtonCancelar.setText("Cancelar");
-       
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         jMenuHerramientas.setText("Herramientas");
 
-        jMenuItemAgregar.setText("Agregar Usuario");
+        jMenuItemAgregar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
+        jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-ok-apply-6.png"))); // NOI18N
+        jMenuItemAgregar.setText("Aceptar");
         jMenuHerramientas.add(jMenuItemAgregar);
         jMenuHerramientas.add(jSeparator1);
 
         jMenuItemSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
         jMenuItemSalir.setText("Salir");
         jMenuHerramientas.add(jMenuItemSalir);
 
@@ -95,58 +96,110 @@ public class GUILogin extends javax.swing.JFrame {
 
         jMenuAyuda.setText("Ayuda");
 
+        jMenuItemVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jMenuItemVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
         jMenuItemVersion.setText("Versión");
         jMenuAyuda.add(jMenuItemVersion);
 
         jMenuBar1.add(jMenuAyuda);
 
         setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(nombreUsuario)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonAceptar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addComponent(password))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jpassword)
-                            .addComponent(jnombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
-                        .addContainerGap(34, Short.MAX_VALUE))
+                        .addComponent(nombreUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButtonAceptar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addComponent(password, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                            .addComponent(jnombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(30, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonCancelar)
-                        .addGap(58, 58, 58))))
+                        .addGap(41, 41, 41))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreUsuario)
-                    .addComponent(jnombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                    .addComponent(jnombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreUsuario))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(password)
+                    .addComponent(jpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(password))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAceptar))
+                    .addComponent(jButtonAceptar)
+                    .addComponent(jButtonCancelar))
                 .addGap(37, 37, 37))
         );
-        setResizable(false);
+
         pack();
     }// </editor-fold>
 
-   
+    private void jnombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        // TODO add your handling code here:
+    }                                              
+
+    private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        // TODO add your handling code here:
+    }                                              
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        // TODO add your handling code here:
+    }                                               
+
+    /**
+    * @param args the command line arguments
+    */
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                GUILogin dialog = new GUILogin(true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify
+    private javax.swing.JButton jButtonAceptar;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JMenu jMenuAyuda;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuHerramientas;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemAgregar;
+    private javax.swing.JMenuItem jMenuItemSalir;
+    private javax.swing.JMenuItem jMenuItemVersion;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JTextField jnombreUsuario;
+    private javax.swing.JPasswordField jpassword;
+    private javax.swing.JLabel nombreUsuario;
+    private javax.swing.JLabel password;
+    // End of variables declaration
+
+
+
    
 	
 	/**
@@ -326,5 +379,6 @@ public class GUILogin extends javax.swing.JFrame {
 		this.jButtonAceptar.addActionListener(lis);
 		this.jButtonCancelar.addActionListener(lis);
 		this.jMenuItemSalir.addActionListener(lis);
+		this.jMenuItemAgregar.addActionListener(lis);
 	}
 }
