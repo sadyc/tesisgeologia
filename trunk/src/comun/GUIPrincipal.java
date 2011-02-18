@@ -30,6 +30,8 @@ public class GUIPrincipal extends JFrame {
 	private JButton jButtonAnalisis;
 	private JButton jButtonCompararMuestras;
 	private JButton jButtonSalir;
+	private JButton jButtonCrearBackup;
+	private JButton jButtonCargarBackup;
 	private JMenuItem gestionarUsuarioMenu;
 	private JMenuItem gestionarClienteMenu;
 	private JMenuItem gestionarOperadorMenu;
@@ -38,6 +40,8 @@ public class GUIPrincipal extends JFrame {
 	private JMenuItem gestionarLimiteConsistenciaMenu;
 	private JMenuItem calcularClasificacionMenu;
 	private JMenuItem compararMuestrasMenu;
+	private JMenuItem crearBackupMenu;
+	private JMenuItem cargarBackupMenu;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
 	private JFileChooser fileChooser = null;
@@ -61,6 +65,8 @@ public class GUIPrincipal extends JFrame {
 			jButtonGestionarOperador = new JButton("GESTIONAR OPERADOR");
 			jButtonCompararMuestras = new JButton("COMPARAR MUESTRAS");
 			jButtonGestionarLimiteConsistencia = new JButton("GESTIONAR LIMITE CONSISTENCIA");
+			jButtonCrearBackup = new JButton("CREAR BACKUP");
+			jButtonCargarBackup = new JButton("CARGAR BACKUP");
 			jButtonSalir  = new JButton("SALIR");
 			jButtonSalir.setBackground( SystemColor.red );
 			herramientas = new JMenu("Herramientas");
@@ -75,6 +81,8 @@ public class GUIPrincipal extends JFrame {
 			gestionarLimiteConsistenciaMenu = new JMenuItem("Gestionar Limite Consistencia");
 			calcularClasificacionMenu = new JMenuItem("Calcular AClasificacion");
 			compararMuestrasMenu = new JMenuItem("Comparar Muestras");
+			crearBackupMenu = new JMenuItem("Crear BackUp");
+			cargarBackupMenu = new JMenuItem("Cargar BackUp");
 			salirMenu = new JMenuItem("Salir");
 			herramientas.add(gestionarMuestraMenu);
 			herramientas.add(gestionarAnalisisMenu);
@@ -85,6 +93,9 @@ public class GUIPrincipal extends JFrame {
 			herramientas.add(gestionarUsuarioMenu);
 			herramientas.add(gestionarClienteMenu);
 			herramientas.add(gestionarOperadorMenu);
+			herramientas.add(new JSeparator()); // Una rayita separadora.
+			herramientas.add(crearBackupMenu);
+			herramientas.add(cargarBackupMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
 			herramientas.add(salirMenu);
 			versionMenu = new JMenuItem("Version");
@@ -147,6 +158,11 @@ public class GUIPrincipal extends JFrame {
 			this.panelCentro.add(getjButtonGestionarOperador(),gbc);
 			gbc.gridx = 2;
 			this.panelCentro.add(getjButtonGestionarCliente(),gbc);
+			gbc.gridy = 7;
+			gbc.gridx = 0;
+			this.panelCentro.add(getjButtonCrearBackup(),gbc);
+			gbc.gridx = 2;
+			this.panelCentro.add(getjButtonCargarBackup(),gbc);
 			
 		}
 		return this.panelCentro;
@@ -318,6 +334,37 @@ public class GUIPrincipal extends JFrame {
 	public JMenuItem getGestionarClienteMenu() {
 		return gestionarClienteMenu;
 	}
+	
+	/**
+	 * @return the jButtonCrearBackup
+	 */
+	public JButton getjButtonCrearBackup() {
+		return jButtonCrearBackup;
+	}
+
+
+	/**
+	 * @return the jButtonCargarBackup
+	 */
+	public JButton getjButtonCargarBackup() {
+		return jButtonCargarBackup;
+	}
+
+
+	/**
+	 * @return the crearBackupMenu
+	 */
+	public JMenuItem getCrearBackupMenu() {
+		return crearBackupMenu;
+	}
+
+
+	/**
+	 * @return the cargarBackupMenu
+	 */
+	public JMenuItem getCargarBackupMenu() {
+		return cargarBackupMenu;
+	}
 
 
 	public void setListenerButtons(ActionListener lis){
@@ -330,6 +377,8 @@ public class GUIPrincipal extends JFrame {
         this.jButtonGestionarLimiteConsistencia.addActionListener(lis);
         this.jButtonGestionarOperador.addActionListener(lis);
         this.jButtonGestionarCliente.addActionListener(lis);
+        this.jButtonCargarBackup.addActionListener(lis);
+        this.jButtonCrearBackup.addActionListener(lis);
         this.salirMenu.addActionListener(lis);
         this.gestionarUsuarioMenu.addActionListener(lis);
         this.gestionarClienteMenu.addActionListener(lis);
@@ -340,6 +389,8 @@ public class GUIPrincipal extends JFrame {
         this.compararMuestrasMenu.addActionListener(lis);
         this.gestionarLimiteConsistenciaMenu.addActionListener(lis);
         this.gestionarOperadorMenu.addActionListener(lis);
+        this.cargarBackupMenu.addActionListener(lis);
+        this.crearBackupMenu.addActionListener(lis);
 	}
 
 }

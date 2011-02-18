@@ -20,8 +20,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import persistencia.domain.HMuestra;
 import persistencia.domain.DUsuario;
+import persistencia.domain.HMuestra;
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
@@ -166,92 +166,56 @@ public class MediadorPrincipal extends Mediador{
 			gestionarLimiteConsistencia();
 		}
 		if (this.GUIPrincipal.getJButtonSalir() == source || this.GUIPrincipal.getSalirMenu()== source){
-			 //JFileChooser directorio = new JFileChooser();
-            //directorio = guiPrincipal.getFileChooser();
-            //int dir = directorio.DIRECTORIES_ONLY;
-            //directorio.showOpenDialog(new JPanel());
-            //directorio.setDialogType(directorio.DIRECTORIES_ONLY);
-            //String dir = String.valueOf(directorio.DIRECTORIES_ONLY);
-            //System.out.println(dir);
-            //MediadorTree medTree = new MediadorTree();
-            String fecha = String.valueOf(new Date().toGMTString());
-            
-            //aca va la linea del jTextield PathSQL de la GUIConfiguracion
-            String fila = "D:\\wakavaca.sql";
-            //String fila = (String.valueOf(directorio.DIRECTORIES_ONLY) + "backUp-" + ControlFecha.parseDate(new Date())+ ".sql");
-            //System.out.println(fila);
-            //CrearBackup("localhost", "3306", "root", "root", "tesis",fila);
-            System.out.println("Copia de seguridad realizada exitosamente!");
-			
-			//btnGenerarActionPerformed(arg0);
-			
-
-			
-			 
-/** //		CON ESTO LEVANTAMOS EL BACK-UP DE LA BASE DE DATOS...
-  			fila = "";
-            if(fila.equalsIgnoreCase("")){
-            	JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
-            	directorio = GUIPrincipal.getFileChooser();
-            	directorio.showOpenDialog(new JPanel());
-                directorio.setDialogType(directorio.DIRECTORIES_ONLY);
-                String dir = String.valueOf(directorio.DIRECTORIES_ONLY);
-                System.out.println("Direccion: "+dir);
-            }
-            
-            	try{
-            	String ubicacion= String.valueOf(directorio.getSelectedFile());
-            	System.out.println("Ubicación: "+ubicacion);
-            	//Nuevamente fileChooser para indicarle donde esta el archivoBackUp
-            	Process child = Runtime.getRuntime().exec("cmd /c mysql --password= root --user=root tesis <" + ubicacion);
-
-            	}catch(Exception e){
-            	JOptionPane.showMessageDialog(null, "Error no se actualizo la DB por el siguiente motivo: " + e.getMessage(), "Verificar",JOptionPane.ERROR_MESSAGE);
-            	e.printStackTrace();
-            	}
-            	JOptionPane.showMessageDialog(null, "Base Actualizada", "Verificar",JOptionPane.INFORMATION_MESSAGE);
-            
-
-   */         	 
-
-            
-            
-            recuperarBackup();
 			GUIPrincipal.dispose();
+		}
+		if (this.GUIPrincipal.getjButtonCrearBackup()==source || this.GUIPrincipal.getCrearBackupMenu()==source){
+			crearBackup();
+		}
+		if (this.GUIPrincipal.getjButtonCargarBackup()==source || this.GUIPrincipal.getCargarBackupMenu()==source){
+			cargarBackup();
 		}
 	}
 	
-	//METODO PARA RECUPERAR DE UN BACKUP
-	 public void recuperarBackup() {
-	        try {
-	            // Ejecucion del cliente mysql
-	            Process p = Runtime
-	                    .getRuntime()
-	                    .exec(
-	                            "mysql -u root -proot tesis");
+	
+	 public void cargarBackup() {
+		 JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
+		 JFileChooser directorio = new JFileChooser();
+         directorio = GUIPrincipal.getFileChooser();
+         directorio.setFileSelectionMode(JFileChooser.FILES_ONLY);
+         int seleccion = directorio.showOpenDialog(new JPanel());
+         directorio.setDialogType(directorio.DIRECTORIES_ONLY);
+         if (seleccion == JFileChooser.APPROVE_OPTION){
+         	File f = directorio.getSelectedFile();
+	            String filePath = f.getPath();
+	            try {
+		            // Ejecucion del cliente mysql
+		            Process p = Runtime.getRuntime().exec("mysql -u root -proot tesis");
 
-	            // Lectura de la salida de error y se muestra por pantalla.
-	            InputStream es = p.getErrorStream();
-	            muestraSalidaDeError(es);
+		            // Lectura de la salida de error y se muestra por pantalla.
+		            InputStream es = p.getErrorStream();
+		            muestraSalidaDeError(es);
 
-	            // Lectura del fichero de backup y redireccion a la entrada estandar
-	            // de mysql.
-	            OutputStream os = p.getOutputStream(); 
-	            FileInputStream fis = new FileInputStream("d:/vaca.sql");
+		            // Lectura del fichero de backup y redireccion a la entrada estandar
+		            // de mysql.
+		            OutputStream os = p.getOutputStream(); 
+		            FileInputStream fis = new FileInputStream(filePath);
 
-	            byte buffer[] = new byte[1024];
-	            int leido = fis.read(buffer);
-	            while (leido > 0) {
-	                System.out.println(leido);
-	                os.write(buffer, 0, leido);
-	                leido = fis.read(buffer);
-	            }
-	            os.close();
-	            fis.close();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	    }
+		            byte buffer[] = new byte[1024];
+		            int leido = fis.read(buffer);
+		            while (leido > 0) {
+		                System.out.println(leido);
+		                os.write(buffer, 0, leido);
+		                leido = fis.read(buffer);
+		            }
+		            os.close();
+		            fis.close();
+		        } catch (IOException e) {
+		            e.printStackTrace();
+		        }
+
+	            
+	        }          
+		 	    }
 
 	 private void muestraSalidaDeError(final InputStream es) {
 	        Thread hiloError = new Thread() {
@@ -273,61 +237,64 @@ public class MediadorPrincipal extends Mediador{
 	    }
 	
 	// METODO PARA REALIZAR EL BACKP
-	 public boolean CrearBackup(String host, String port, String user, String password, String db, String file_backup){
-		   boolean ok=false;
-         try{       
-             //sentencia para crear el BackUp
+	 public void crearBackup(){
+		 JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
+		 JFileChooser directorio = new JFileChooser();
+         directorio = GUIPrincipal.getFileChooser();
+         int seleccion = directorio.showSaveDialog(new JPanel());
+         directorio.setDialogType(directorio.DIRECTORIES_ONLY);
+         if (seleccion == JFileChooser.APPROVE_OPTION){
+         	File f = directorio.getSelectedFile();
+	            String filePath = f.getPath();
+	            if(!filePath.toLowerCase().endsWith(".sql"))
+	            {
+	                f = new File(filePath + ".sql");
+	                filePath = f.getPath();  
+	            }
 
-              Process run = Runtime.getRuntime().exec("mysqldump --host=" + "localhost" + " --port=" + "3306" + " --user=" + "root" + " --password=" + "root" +
-             " --compact --complete-insert --extended-insert --skip-quote-names" +" --skip-comments --skip-triggers" + " tesis");
+	            try{       
+	                //sentencia para crear el BackUp
+	                 Process run = Runtime.getRuntime().exec("mysqldump --host=localhost --port=3306 --user=root --password=root --compact --complete-insert --extended-insert --skip-quote-names"
+	                		 +" --skip-comments --skip-triggers tesis");
+	                 
+	                //se guarda en memoria el backup
+	                InputStream in = run.getInputStream();
+	                BufferedReader br = new BufferedReader(new InputStreamReader(in));
+	                File backupFile = new File(filePath);
+	                fichero = new FileWriter(backupFile);
+	                temp = new StringBuffer();
+	                int count;
+	                char[] cbuf = new char[BUFFER];
+	                while ((count = br.read(cbuf, 0, BUFFER)) != -1)
+	                    temp.append(cbuf, 0, count);
+	                String line;
+	    			while( (line=br.readLine()) != null ) {
+	    			fichero.write(line + "\n");
+	    			}
+	    			br.close();
+	                in.close();        
 
-             //se guarda en memoria el backup
-             InputStream in = run.getInputStream();
-             BufferedReader br = new BufferedReader(new InputStreamReader(in));
-             File backupFile = new File("D:\\vaca.sql");//String.valueOf(JFileChooser.DIRECTORIES_ONLY) + "\\nombreArchivo" + fecha + ".sql");
-             
-             fichero = new FileWriter(backupFile);
-             temp = new StringBuffer();
-             int count;
+	                String fecha = String.valueOf(new Date().toGMTString());
+	                /* se crea y escribe el archivo SQL */
+	                
+	                fichero = new FileWriter(backupFile);
+	                pw = new PrintWriter(fichero);                                         
+	                pw.println(temp.toString());  
 
-             char[] cbuf = new char[BUFFER];
-             while ((count = br.read(cbuf, 0, BUFFER)) != -1)
-                 temp.append(cbuf, 0, count);
-        
-             
-             // SUPONGO QUE IMPRIME LO QUE TIENE EL ARCHIVO..
-             String line;
- 			while( (line=br.readLine()) != null ) {
- 			fichero.write(line + "\n");
- 			}
- 			///////
- 			
-             br.close();
-             in.close();        
-
-             String fecha = String.valueOf(new Date().toGMTString());
-             /* se crea y escribe el archivo SQL */
-             
-             fichero = new FileWriter(backupFile);
-
-             pw = new PrintWriter(fichero);                                         
-             pw.println(temp.toString());  
-
-             ok=true;
-        }
-         catch (Exception ex){
-        	 System.out.println("Se trabo el backup");
-        	 ex.printStackTrace();
-         } finally {
-            try {           
-              if (null != fichero)
-                   fichero.close();
-            } catch (Exception e2) {
-                e2.printStackTrace();
-            }
-         }   
-         return ok; 
-      }  
+	           }
+	            catch (Exception ex){
+	            	System.out.println("Falló el backup");
+	            	ex.printStackTrace();
+	            } finally {
+	            	try {           
+	            	   if (null != fichero)
+	                	 fichero.close();
+	               } catch (Exception e2) {
+	                   e2.printStackTrace();
+	               }
+	            }   
+         }          
+	 }  
 	
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Gestionar Cliente"
