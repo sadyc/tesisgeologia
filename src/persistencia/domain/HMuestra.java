@@ -19,15 +19,15 @@ import javax.jdo.annotations.PrimaryKey;
  *
  */
 @PersistenceCapable//(objectIdClass=ComposedIdKey.class)
-public class Muestra {
+public class HMuestra {
 	
 	private String nombreMuestra;
-	private Ubicacion ubicacion;
-	private OperadorDeLaboratorio operadorLaboratorio ;
-	private Cliente cliente;
-	private Usuario usuario;
-	private AASHTO aashto;
-	private SUCS sucs;
+	private FUbicacion ubicacion;
+	private GOperadorDeLaboratorio operadorLaboratorio ;
+	private DCliente cliente;
+	private DUsuario usuario;
+	private BAASHTO aashto;
+	private BSUCS sucs;
 	
 	private Float profundidadInicial;
 	private Float profundidadFinal;
@@ -44,21 +44,21 @@ public class Muestra {
 	
 	
 	
-	protected Collection<Analisis> analisis= new HashSet();
+	protected Collection<IAnalisis> analisis= new HashSet();
 	/**
 	 * Default contructors
 	 */
-	public Muestra() {
+	public HMuestra() {
 		nombreMuestra = "";
 		profundidadInicial= new Float(0);
 		profundidadFinal= new Float(0);
 		peso= new Float(0);
-		operadorLaboratorio = new OperadorDeLaboratorio();
-		cliente = new Cliente();
-		usuario = new Usuario();
-		ubicacion = new Ubicacion();
-		aashto = new AASHTO();
-		sucs = new SUCS();
+		operadorLaboratorio = new GOperadorDeLaboratorio();
+		cliente = new DCliente();
+		usuario = new DUsuario();
+		ubicacion = new FUbicacion();
+		aashto = new BAASHTO();
+		sucs = new BSUCS();
 		D60= new Float(0);
 		D30= new Float(0);
 		D10= new Float(0);
@@ -87,8 +87,8 @@ public class Muestra {
 	 * @param gradoCurvatura
 	 * @param coeficienteUniformidad
 	 */
-	public Muestra(String nombreMuestra,Float peso, Float profundidadInicial,Float profundidadFinal,OperadorDeLaboratorio operador,
-					Usuario usuario, Ubicacion ubicacion, AASHTO aashto, SUCS sucs,Cliente cliente,java.sql.Date fecha) {
+	public HMuestra(String nombreMuestra,Float peso, Float profundidadInicial,Float profundidadFinal,GOperadorDeLaboratorio operador,
+					DUsuario usuario, FUbicacion ubicacion, BAASHTO aashto, BSUCS sucs,DCliente cliente,java.sql.Date fecha) {
 		this.nombreMuestra = nombreMuestra;
 		this.profundidadInicial = profundidadInicial;
 		this.profundidadFinal = profundidadFinal;
@@ -184,28 +184,28 @@ public class Muestra {
 	/**
 	 * @return the usuario
 	 */
-	public Usuario getUsuario() {
+	public DUsuario getUsuario() {
 		return usuario;
 	}
 
 	/**
 	 * @param usuario the usuario to set
 	 */
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(DUsuario usuario) {
 		this.usuario = usuario;
 	}
 
 	/**
 	 * @return the ubicacion
 	 */
-	public Ubicacion getUbicacion() {
+	public FUbicacion getUbicacion() {
 		return ubicacion;
 	}
 
 	/**
 	 * @param ubicacion the ubicacion to set
 	 */
-	public void setUbicacion(Ubicacion ubicacion) {
+	public void setUbicacion(FUbicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
 
@@ -233,28 +233,28 @@ public class Muestra {
 	/**
 	 * @return the operadorLaboratorio
 	 */
-	public OperadorDeLaboratorio getOperadorLaboratorio() {
+	public GOperadorDeLaboratorio getOperadorLaboratorio() {
 		return operadorLaboratorio;
 	}
 
 	/**
 	 * @param operadorLaboratorio the operadorLaboratorio to set
 	 */
-	public void setOperadorLaboratorio(OperadorDeLaboratorio operadorLaboratorio) {
+	public void setOperadorLaboratorio(GOperadorDeLaboratorio operadorLaboratorio) {
 		this.operadorLaboratorio = operadorLaboratorio;
 	}
 
 	/**
 	 * @return the analisis
 	 */
-	public Collection<Analisis> getAnalisis() {
+	public Collection<IAnalisis> getAnalisis() {
 		return analisis;
 	}
 
 	/**
 	 * @param analisis the analisis to set
 	 */
-	public void setAnalisis(Collection<Analisis> analisis) {
+	public void setAnalisis(Collection<IAnalisis> analisis) {
 		this.analisis = analisis;
 	}
 	
@@ -310,28 +310,28 @@ public class Muestra {
 	/**
 	 * @return the aashto
 	 */
-	public AASHTO getAashto() {
+	public BAASHTO getAashto() {
 		return aashto;
 	}
 
 	/**
 	 * @param aashto the aashto to set
 	 */
-	public void setAashto(AASHTO aashto) {
+	public void setAashto(BAASHTO aashto) {
 		this.aashto = aashto;
 	}
 
 	/**
 	 * @return the sucs
 	 */
-	public SUCS getSucs() {
+	public BSUCS getSucs() {
 		return sucs;
 	}
 
 	/**
 	 * @param sucs the sucs to set
 	 */
-	public void setSucs(SUCS sucs) {
+	public void setSucs(BSUCS sucs) {
 		this.sucs = sucs;
 	}
 	
@@ -415,7 +415,7 @@ public class Muestra {
 	/**
 	 * @return the cliente
 	 */
-	public Cliente getCliente() {
+	public DCliente getCliente() {
 		return cliente;
 	}
 
@@ -423,7 +423,7 @@ public class Muestra {
 	/**
 	 * @param cliente the cliente to set
 	 */
-	public void setCliente(Cliente cliente) {
+	public void setCliente(DCliente cliente) {
 		this.cliente = cliente;
 	}
 

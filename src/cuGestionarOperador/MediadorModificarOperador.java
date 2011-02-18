@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.GOperadorDeLaboratorio;
 
 import comun.Mediador;
 
@@ -18,7 +18,7 @@ public class MediadorModificarOperador extends Mediador{
 	private boolean modificoOperador;
 	private String[] data = new String [7];
 	private Component frame;
-	private OperadorDeLaboratorio operadorModificar;
+	private GOperadorDeLaboratorio operadorModificar;
 	private ControlGestionarOperador control = new ControlGestionarOperador();
 	
 

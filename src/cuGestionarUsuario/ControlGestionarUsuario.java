@@ -3,10 +3,10 @@ package cuGestionarUsuario;
 import java.util.Collection;
 
 import persistencia.Persistencia;
-import persistencia.domain.Muestra;
-import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.Ubicacion;
-import persistencia.domain.Usuario;
+import persistencia.domain.HMuestra;
+import persistencia.domain.GOperadorDeLaboratorio;
+import persistencia.domain.FUbicacion;
+import persistencia.domain.DUsuario;
 
 public class ControlGestionarUsuario {
 	private boolean yaExiste;
@@ -18,7 +18,7 @@ public class ControlGestionarUsuario {
 	/**
 	 * Inserta una muestra con persistencia. 
 	 */ 
-	public void insertarUsuario(Usuario usuario) throws Exception{
+	public void insertarUsuario(DUsuario usuario) throws Exception{
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
@@ -44,8 +44,8 @@ public class ControlGestionarUsuario {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
-			Usuario usuario = new Usuario();
-			Usuario auxUsuario = (Usuario)persistencia.buscarObjeto(usuario.getClass(), "dni=='"+DNI+"'");
+			DUsuario usuario = new DUsuario();
+			DUsuario auxUsuario = (DUsuario)persistencia.buscarObjeto(usuario.getClass(), "dni=='"+DNI+"'");
 			persistencia.eliminarObjeto(auxUsuario);
 			persistencia.cerrarTransaccion();
 		}
@@ -58,11 +58,11 @@ public class ControlGestionarUsuario {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		Usuario aux = new Usuario();
+		DUsuario aux = new DUsuario();
 		try {
 			Class claseUsuario = aux.getClass();
 			if(persistencia.buscarObjeto(claseUsuario, "nombreUsuario=='"+data[3]+"' || dni=='"+data[2]+"'")==null){
-				aux =(Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+DNI+"'");
+				aux =(DUsuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+DNI+"'");
 				aux.setNombre(data[0]);
 				aux.setApellido(data[1]);
 				aux.setDni(data[2]);
@@ -91,12 +91,12 @@ public class ControlGestionarUsuario {
 	 * @param DNI
 	 * @return
 	 */
-	public Usuario obtenerUsuario (String DNI) throws Exception{
+	public DUsuario obtenerUsuario (String DNI) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		Usuario aux = new Usuario();
+		DUsuario aux = new DUsuario();
 		try {
-			aux =(Usuario)persistencia.buscarObjeto(aux.getClass(), "dni=='"+DNI+"'");
+			aux =(DUsuario)persistencia.buscarObjeto(aux.getClass(), "dni=='"+DNI+"'");
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
@@ -111,7 +111,7 @@ public class ControlGestionarUsuario {
 	public Collection coleccionUsuarios(Class clase) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		Collection<Usuario> aux = null;
+		Collection<DUsuario> aux = null;
 		try {
 			aux = (persistencia.buscarColeccion(clase));
 			persistencia.cerrarTransaccion();

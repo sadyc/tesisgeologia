@@ -8,8 +8,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Analisis;
-import persistencia.domain.Muestra;
+import persistencia.domain.IAnalisis;
+import persistencia.domain.HMuestra;
 
 import comun.Mediador;
 
@@ -22,10 +22,10 @@ import comun.Mediador;
  */
 
 public class MediadorModificarAnalisis  extends Mediador{
-	private Muestra muestra;
+	private HMuestra muestra;
 	private GUIAltaAnalisis GUIAnalisis;
 	private String pesoRetenido;
-	private Analisis analisis;
+	private IAnalisis analisis;
 	private String numeroTamiz;
 	private boolean modifico = false;
 	private ControlGestionarAnalisis control ;
@@ -34,12 +34,12 @@ public class MediadorModificarAnalisis  extends Mediador{
 	/**
 	 * This is the default constructor
 	 */
-	public MediadorModificarAnalisis(Muestra muestra,Float pesoRetenido,String numeroTamiz) {
+	public MediadorModificarAnalisis(HMuestra muestra,Float pesoRetenido,String numeroTamiz) {
 		super();
 		this.muestra = muestra;
 		control = new ControlGestionarAnalisis();
 		this.numeroTamiz = numeroTamiz;
-		analisis = new Analisis();
+		analisis = new IAnalisis();
 		GUIAnalisis = new GUIAltaAnalisis(muestra,pesoRetenido,numeroTamiz);
 		GUIAnalisis.setTitle("Modificar el peso retenido del tamizado de la muestra: "+muestra.getNombreMuestra());
 		GUIAnalisis.setModal(true);

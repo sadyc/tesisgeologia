@@ -22,8 +22,8 @@ import javax.swing.JTextField;
 
 import comun.TablePanel;
 
-import persistencia.domain.Muestra;
-import persistencia.domain.Tamiz;
+import persistencia.domain.HMuestra;
+import persistencia.domain.ETamiz;
 
 /**
  * @author TesisGeologia
@@ -63,7 +63,7 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
         jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
     }
     
-    public GUIAltaAnalisis(Muestra muestra) {
+    public GUIAltaAnalisis(HMuestra muestra) {
 		super();
 		pesoRetenido = new JTextField(15);
 		jLabelMuestra = new JLabel("Muestra: "+muestra.getNombreMuestra());
@@ -79,7 +79,7 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 	      
 	}
     
-    public GUIAltaAnalisis(Muestra muestra,Float peso, String numeroTamiz) {
+    public GUIAltaAnalisis(HMuestra muestra,Float peso, String numeroTamiz) {
 		super();
 		pesoRetenido = new JTextField(15);
 		pesoRetenido.setText(peso.toString());

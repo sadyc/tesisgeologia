@@ -13,14 +13,14 @@ import javax.swing.JOptionPane;
 
 import cuLogin.Encriptar;
 
-import persistencia.domain.Usuario;
+import persistencia.domain.DUsuario;
 
 public class MediadorModificarUsuario implements ActionListener, KeyListener, MouseListener {
 	private GUIUsuario GUIUsuario;
 	private boolean modificoUsuario;
 	private String[] data = new String [10];
 	private Component frame;
-	private Usuario usuarioModificar;
+	private DUsuario usuarioModificar;
 	private ControlGestionarUsuario control = new ControlGestionarUsuario();
 	
 

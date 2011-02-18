@@ -10,7 +10,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable 
-public class Ubicacion {
+public class FUbicacion {
 	
 	private String latitud;
 	
@@ -18,12 +18,12 @@ public class Ubicacion {
 	private String nombreUbicacion;
 	public String ciudad;
 	private String provincia;
-	private Collection<Muestra> muestras = new HashSet();
+	private Collection<HMuestra> muestras = new HashSet();
 	
 	/**
 	 *Contructor por defecto.
 	 */
-	public Ubicacion(){
+	public FUbicacion(){
 		nombreUbicacion= "";
 		provincia = null;
 		latitud = "";
@@ -33,7 +33,7 @@ public class Ubicacion {
 	/**
 	 *Contructor con pasaje de parametros.
 	 */
-	public Ubicacion(String nombreUbicacion,String ciudad, String prov, String latitud, String longitud){
+	public FUbicacion(String nombreUbicacion,String ciudad, String prov, String latitud, String longitud){
 		this.nombreUbicacion= nombreUbicacion;
 		this.ciudad = ciudad;
 		this.provincia = prov;
@@ -104,7 +104,7 @@ public class Ubicacion {
 	 * Metodo que permite agregar una muestra a la ubicacion
 	 * @param muestra, muestra a ser agregada a la ubicacion.
 	 */
-	public void addMuestra (Muestra muestra){
+	public void addMuestra (HMuestra muestra){
 		this.muestras.add(muestra);
 	}
 	
@@ -112,7 +112,7 @@ public class Ubicacion {
 	 * Metodo que permite quitar una muestra a la ubicacion.
 	 * @param muestra, muestra a ser eliminada a la ubicacion.
 	 */
-	public void removeMuesra (Muestra muestra){
+	public void removeMuesra (HMuestra muestra){
 		muestras.remove(muestra);
 	}
 	
@@ -121,7 +121,7 @@ public class Ubicacion {
 	 * Metodo que me retorna las muestras tomadas en una ubicacion.
 	 * @return muestras, coleccion de muestras tomadas en una ubicacion.
 	 */
-	public Collection<Muestra> getMuestras(){
+	public Collection<HMuestra> getMuestras(){
 		return (muestras);
 	}
 
@@ -151,7 +151,7 @@ public class Ubicacion {
 		return nombreUbicacion;
 	}
 	
-	public boolean equals(Ubicacion ubicacion){
+	public boolean equals(FUbicacion ubicacion){
 		return (this.latitud.equals(ubicacion.getLatitud()) && this.longitud.equals(ubicacion.getLongitud())); 
 	}
 	

@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Muestra;
+import persistencia.domain.HMuestra;
 
 import comun.Mediador;
 
@@ -61,10 +61,10 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	 */
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
-		Muestra muestra = new Muestra();
+		HMuestra muestra = new HMuestra();
 		Class clase = muestra.getClass();
 		Collection muestras = control.coleccionMuestras(clase);
-		Iterator<Muestra> it = muestras.iterator();
+		Iterator<HMuestra> it = muestras.iterator();
 		data = new Object [muestras.size()] [10];
 		int i = 0;
 		while (it.hasNext()){
@@ -133,8 +133,8 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	private void cargarTablaDeMuestras(Collection resultado) {
 		data = new Object [resultado.size()] [6];
 		int i = 0;
-		Muestra muestra = new Muestra();
-		Iterator<Muestra> it = resultado.iterator();
+		HMuestra muestra = new HMuestra();
+		Iterator<HMuestra> it = resultado.iterator();
 		while (it.hasNext()){
 			muestra = it.next();
 			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
@@ -152,9 +152,9 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	 * @return the seleccionado
 	 * @throws Exception 
 	 */
-	public Muestra getSeleccionado() throws Exception {
+	public HMuestra getSeleccionado() throws Exception {
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
-		Muestra muestra = (control.obtenerMuestra((String)seleccionado[1],(String)seleccionado[0]));
+		HMuestra muestra = (control.obtenerMuestra((String)seleccionado[1],(String)seleccionado[0]));
 		return muestra;
 	}
 	

@@ -11,7 +11,7 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Cliente;
+import persistencia.domain.DCliente;
 
 import comun.Mediador;
 
@@ -55,10 +55,10 @@ public class MediadorGestionarCliente extends Mediador{
 	 * base de datos al atributo data de la clase mediador.
 	 */
 	public void cargarTablaDeCliente()throws Exception{
-		Cliente cliente = new Cliente();
+		DCliente cliente = new DCliente();
 		Class clase = cliente.getClass();
 		Collection clientes = control.coleccionClientes(clase);
-		Iterator<Cliente> it = clientes.iterator();
+		Iterator<DCliente> it = clientes.iterator();
 		data = new Object [clientes.size()] [5];
 		int i = 0;
 		while (it.hasNext()){

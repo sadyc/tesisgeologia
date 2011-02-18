@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JTextField;
 
-import persistencia.domain.Usuario;
+import persistencia.domain.DUsuario;
 
 
 /**
@@ -52,7 +52,7 @@ public class GUIUsuario extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }
     
-    public GUIUsuario(Usuario usuario){
+    public GUIUsuario(DUsuario usuario){
     	initComponents();
     	jTextFieldApellido.setText(usuario.getApellido());
     	jTextFieldDni.setText(usuario.getDni());

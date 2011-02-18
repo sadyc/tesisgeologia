@@ -12,7 +12,7 @@ import java.util.Collection;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Usuario;
+import persistencia.domain.DUsuario;
 
 import cuBuscar.ControlBuscar;
 import cuBuscar.GUIBuscar;
@@ -46,7 +46,7 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 	 			JOptionPane.showMessageDialog(frame,"El password no puede ser vacio.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 		 	else{
-		 		Usuario usuario = control.obtenerUsuario(dni);
+		 		DUsuario usuario = control.obtenerUsuario(dni);
 		 		Encriptar encriptar = new Encriptar();
 				String password = "";
 				try {

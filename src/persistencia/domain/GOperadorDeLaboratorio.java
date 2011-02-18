@@ -17,14 +17,14 @@ import javax.jdo.annotations.PersistenceCapable;
  * @version 1.0  24/09/2010
  */
 @PersistenceCapable
-public class OperadorDeLaboratorio extends Persona {
+public class GOperadorDeLaboratorio extends CPersona {
 
-	protected Collection<Muestra> muestras = new HashSet();
+	protected Collection<HMuestra> muestras = new HashSet();
 	
 	/**
 	 * Default constructor.
 	 */
-	public OperadorDeLaboratorio() {
+	public GOperadorDeLaboratorio() {
 		super();
 	}
 	
@@ -34,7 +34,7 @@ public class OperadorDeLaboratorio extends Persona {
 	 * @param apellido, apellido del operadorLaboratorio de laboratorio creado.
 	 * @param dni, DNI del operadorLaboratorio de laboratorio creado.
 	 */
-	public OperadorDeLaboratorio(String nombre, String apellido, String dni, String email, String tel) {
+	public GOperadorDeLaboratorio(String nombre, String apellido, String dni, String email, String tel) {
 		super(nombre, apellido, dni, tel, email);
 	}
 	
@@ -42,7 +42,7 @@ public class OperadorDeLaboratorio extends Persona {
 	 * Metodo que permite agregar una muestra al operadorLaboratorio de laboratorio
 	 * @param muestra, muestra a ser agregada al operadorLaboratorio de laboratorio.
 	 */
-	public void addMuestra (Muestra muestra){
+	public void addMuestra (HMuestra muestra){
 		this.muestras.add(muestra);
 	}
 	
@@ -50,7 +50,7 @@ public class OperadorDeLaboratorio extends Persona {
 	 * Metodo que permite quitar una muestra al operadorLaboratorio de laboratorio
 	 * @param muestra, muestra a ser eliminada al operadorLaboratorio de laboratorio.
 	 */
-	public void removeMuesra (Muestra muestra){
+	public void removeMuesra (HMuestra muestra){
 		muestras.remove(muestra);
 	}
 	
@@ -59,7 +59,7 @@ public class OperadorDeLaboratorio extends Persona {
 	 * Metodo que me retorna las muestras tomadas por el operadorLaboratorio de laboratorio.
 	 * @return muestras, coleccion de muestras tomadas por el operadorLaboratorio de laboratorio.
 	 */
-	public Collection<Muestra> getMuestras(){
+	public Collection<HMuestra> getMuestras(){
 		return (muestras);
 	}
 

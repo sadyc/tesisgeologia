@@ -13,7 +13,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Usuario;
+import persistencia.domain.DUsuario;
 import cuGestionarMuestra.ControlGestionarMuestra;
 import cuLogin.Encriptar;
 
@@ -26,7 +26,7 @@ import cuLogin.Encriptar;
 public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseListener{
 	private GUIUsuario GUIUsuario;
 	private String[] data = new String [10];
-	private Usuario usuario ;
+	private DUsuario usuario ;
 	private Component frame;
 	private ControlGestionarUsuario control;
 	private boolean altaUsuario= false;
@@ -39,7 +39,7 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 	public MediadorAltaUsuario(String nombreVentana) {
 		super();
 		control = new ControlGestionarUsuario();
-		usuario = new Usuario();
+		usuario = new DUsuario();
 		GUIUsuario = new GUIUsuario();
 		GUIUsuario.setTitle(nombreVentana);
 		GUIUsuario.setListenerButtons(this);
@@ -138,7 +138,7 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 			e1.printStackTrace();
 		}
 		data[7]= password;
-		usuario = new Usuario(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]);
+		usuario = new DUsuario(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]);
 		try {
 			control.insertarUsuario(usuario);
 			if (control.getExiste()) {

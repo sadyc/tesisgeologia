@@ -25,8 +25,8 @@ import javax.swing.JTable;
 
 import org.jfree.chart.ChartPanel;
 
-import persistencia.domain.Clasificacion;
-import persistencia.domain.Muestra;
+import persistencia.domain.AClasificacion;
+import persistencia.domain.HMuestra;
 
 import comun.TablePanel;
 
@@ -120,7 +120,7 @@ public class GUIClasificacion extends JDialog{
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 * @throws Exception 
 	 */
-	public GUIClasificacion(Muestra muestra, Object [] [] data) throws Exception {
+	public GUIClasificacion(HMuestra muestra, Object [] [] data) throws Exception {
 		super();
 		ControlClasificacion control = new ControlClasificacion();
 		curva = control.emitirGrafico(muestra);
@@ -148,10 +148,10 @@ public class GUIClasificacion extends JDialog{
 		
 		if (muestra.getSucs()==null){
 			descripcionSucs = new JLabel ("Descripcion: ");
-			clasificacionSucs = new JLabel ("Clasificacion: ");
+			clasificacionSucs = new JLabel ("AClasificacion: ");
 		}
 		else{
-			clasificacionSucs = new JLabel ("Clasificacion: "+muestra.getSucs().getNombre());
+			clasificacionSucs = new JLabel ("AClasificacion: "+muestra.getSucs().getNombre());
 			descripcionSucs = new JLabel ("Descripcion: "+muestra.getSucs().getDescripcion());
 		}
 		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    

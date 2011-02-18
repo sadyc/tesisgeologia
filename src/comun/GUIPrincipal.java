@@ -40,6 +40,7 @@ public class GUIPrincipal extends JFrame {
 	private JMenuItem compararMuestrasMenu;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
+	private JFileChooser fileChooser = null;
 	
 
 
@@ -72,7 +73,7 @@ public class GUIPrincipal extends JFrame {
 			gestionarMuestraMenu = new JMenuItem("Gestionar Muestra");
 			gestionarAnalisisMenu = new JMenuItem("Gestionar Analisis");
 			gestionarLimiteConsistenciaMenu = new JMenuItem("Gestionar Limite Consistencia");
-			calcularClasificacionMenu = new JMenuItem("Calcular Clasificacion");
+			calcularClasificacionMenu = new JMenuItem("Calcular AClasificacion");
 			compararMuestrasMenu = new JMenuItem("Comparar Muestras");
 			salirMenu = new JMenuItem("Salir");
 			herramientas.add(gestionarMuestraMenu);
@@ -165,6 +166,11 @@ public class GUIPrincipal extends JFrame {
 		return this.panelSur;
 	}
 
+	public JFileChooser getFileChooser() {
+        if(fileChooser == null)
+                fileChooser = new JFileChooser();
+        return fileChooser;
+}
 	
 	/**
 	 * @return the menuBar

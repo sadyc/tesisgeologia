@@ -14,7 +14,7 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Usuario;
+import persistencia.domain.DUsuario;
 
 public class MediadorGestionarUsuario implements ActionListener, KeyListener, MouseListener{
 		
@@ -45,10 +45,10 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	 */
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarUsuario control = new ControlGestionarUsuario();
-		Usuario usuario = new Usuario();
+		DUsuario usuario = new DUsuario();
 		Class clase = usuario.getClass();
-		Collection<Usuario> usuarios = control.coleccionUsuarios(clase);
-		Iterator<Usuario> it = usuarios.iterator();
+		Collection<DUsuario> usuarios = control.coleccionUsuarios(clase);
+		Iterator<DUsuario> it = usuarios.iterator();
 		data = new Object [usuarios.size()] [7];
 		int i = 0;
 		while (it.hasNext()){
@@ -64,6 +64,30 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 		}
 	}
 	
+	private void cargarTablaDeMuestras(Collection resultado) {
+		data = new Object [resultado.size()] [7];
+		int i = 0;
+		DUsuario usuario = new DUsuario();
+		Iterator<DUsuario> it = resultado.iterator();
+		while (it.hasNext()){
+			usuario = it.next();
+			data [i][0]= usuario.getNombre();
+			data [i][1]= usuario.getApellido();
+			data [i][2]= usuario.getDni();
+		    data [i][3]= usuario.getNombreUsuario();
+		    data [i][4]= usuario.getCategoria();
+		    data [i][5]= usuario.getEmail();
+		    data [i][6]= usuario.getTel();
+		    i++;
+		}
+		
+	}
+			
+	public void show()	{
+		 GUIGestionarUsuario.show();
+	}
+	
+
 	public GUIGestionarUsuario getGestionarUsuario() {
 		return GUIGestionarUsuario;
 	}

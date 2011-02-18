@@ -4,8 +4,8 @@
 package cuGestionarUbicacion;
 
 import persistencia.Persistencia;
-import persistencia.domain.Muestra;
-import persistencia.domain.Ubicacion;
+import persistencia.domain.HMuestra;
+import persistencia.domain.FUbicacion;
 
 /**
  * Clase que se utiliza para gestionar los datos con persistencia en la base
@@ -32,7 +32,7 @@ public class ControlGestionarUbicacion {
 		Persistencia persistencia= new Persistencia();
 		persistencia.abrirTransaccion();
 		try{
-			Ubicacion ubicacion = new Ubicacion();
+			FUbicacion ubicacion = new FUbicacion();
 			if (persistencia.buscarObjeto(ubicacion.getClass(), "ciudad=='"+data[1]+"' && 'nombreUbicacion=='"+data[0]+"'")==null){
 				ubicacion.setNombreUbicacion(data[0]);
 				ubicacion.setCiudad(data[1]);
@@ -65,9 +65,9 @@ public class ControlGestionarUbicacion {
 		Persistencia persistencia= new Persistencia();
 		persistencia.abrirTransaccion();
 		try{
-			Ubicacion ubicacion = new Ubicacion();
+			FUbicacion ubicacion = new FUbicacion();
 			if (persistencia.buscarObjeto(ubicacion.getClass(), "ciudad=='"+data[1]+"' && 'nombreUbicacion=='"+data[0]+"'")==null){
-				ubicacion = (Ubicacion)persistencia.buscarObjeto(ubicacion.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
+				ubicacion = (FUbicacion)persistencia.buscarObjeto(ubicacion.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
 				ubicacion.setNombreUbicacion(data[0]);
 				ubicacion.setCiudad(data[1]);
 				ubicacion.setProvincia(data[2]);
@@ -95,8 +95,8 @@ public class ControlGestionarUbicacion {
 	public void eliminarUbicacion(String nombreUbicacion, String ciudad) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		Ubicacion ubicacion = new Ubicacion();
-		ubicacion = (Ubicacion)persistencia.buscarObjeto(ubicacion.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
+		FUbicacion ubicacion = new FUbicacion();
+		ubicacion = (FUbicacion)persistencia.buscarObjeto(ubicacion.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
 		persistencia.eliminarObjeto(ubicacion);
 		persistencia.cerrarTransaccion();
 	}
@@ -107,12 +107,12 @@ public class ControlGestionarUbicacion {
 	 * @param ciudad
 	 * @return
 	 */
-	public Ubicacion obtenerUbicacion (String nombreUbicacion,String ciudad) throws Exception{
+	public FUbicacion obtenerUbicacion (String nombreUbicacion,String ciudad) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		Ubicacion aux = new Ubicacion();
+		FUbicacion aux = new FUbicacion();
 		try {
-			aux =(Ubicacion)persistencia.buscarObjeto(aux.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
+			aux =(FUbicacion)persistencia.buscarObjeto(aux.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {

@@ -6,7 +6,7 @@ package cuGestionarTamiz;
 import java.util.Collection;
 
 import persistencia.Persistencia;
-import persistencia.domain.Tamiz;
+import persistencia.domain.ETamiz;
 
 /**
  * Clase que se utiliza para gestionar los datos con persistencia en la base
@@ -26,8 +26,8 @@ public class ControlTamiz {
 	 * Retorna todos los elementos de la clase pasada como parametro.
 	 */
 	public Collection coleccionTamicesFiltro(Double abertura) throws Exception {
-		Tamiz tamiz = new Tamiz();
-		Collection<Tamiz> aux = null;
+		ETamiz tamiz = new ETamiz();
+		Collection<ETamiz> aux = null;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
