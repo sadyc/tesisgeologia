@@ -24,11 +24,15 @@ public class ControlGestionarCliente {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
-			persistencia.insertarObjeto(cliente);
+			if (persistencia.buscarObjeto(cliente.getClass(),"dni=='"+cliente.getDni()+"'")==null){
+				persistencia.insertarObjeto(cliente);
+			}
+			else{
+				yaExiste=true;
+			}
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
-			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarCliente insertar");
 			persistencia.realizarRollback();
 		}
@@ -59,17 +63,20 @@ public class ControlGestionarCliente {
 		Cliente aux = new Cliente();
 		try {
 			Class claseCliente = aux.getClass();
-			aux =(Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+DNI+"'");
-			aux.setNombre(data[0]);
-			aux.setApellido(data[1]);
-			aux.setDni(data[2]);
-			aux.setEmail(data[3]);
-			aux.setTel(data[4]);
+			if (persistencia.buscarObjeto(claseCliente,"dni=='"+data[2]+"'")==null){
+				aux =(Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+DNI+"'");
+				aux.setNombre(data[0]);
+				aux.setApellido(data[1]);
+				aux.setDni(data[2]);
+				aux.setEmail(data[3]);
+				aux.setTel(data[4]);
+			}
+			else{
+				yaExiste=true;
+			}
 			persistencia.cerrarTransaccion();
-			
 		}
 		catch (JDOException e) {
-			yaExiste=true;
 			System.out.println("Error al modificar porque ya existe esa clave");
 			persistencia.realizarRollback();
 		}

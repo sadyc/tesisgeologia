@@ -37,20 +37,24 @@ public class ControlGestionarMuestra {
 		try {
 			Usuario usuario = usuario1;
 			Class claseUbicacion = ubicacion.getClass();
-			mu.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
-			Class claseOperador = operador.getClass();
-			mu.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
-			Class claseUsuario = usuario.getClass();
-			mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+usuario.getDni()+"'")); 
-			if (cliente != null){
-				Class claseCliente = cliente.getClass();
-				mu.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+cliente.getDni()+"'"));
+			if ((Muestra)persistencia.buscarObjeto(mu.getClass(), "nombreMuestra=='"+mu.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'")==null){
+				mu.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
+				Class claseOperador = operador.getClass();
+				mu.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
+				Class claseUsuario = usuario.getClass();
+				mu.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+usuario.getDni()+"'")); 
+				if (cliente != null){
+					Class claseCliente = cliente.getClass();
+					mu.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+cliente.getDni()+"'"));
+				}
+				
+				persistencia.insertarObjeto(mu);
 			}
-			
-			persistencia.insertarObjeto(mu);
+			else{
+				yaExiste=true;
+			}
 			persistencia.cerrarTransaccion();
 		} catch (Exception e) {
-			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarMuestra insertar");
 			persistencia.realizarRollback();
 		}
@@ -104,30 +108,35 @@ public class ControlGestionarMuestra {
 		Muestra aux = new Muestra();
 		try {
 			Class claseMuestra = aux.getClass();
-			aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestraModificar+"' && ubicacion.nombreUbicacion=='"+ubicacionModificar+"'");
-			aux.setPeso(Float.parseFloat(data[2]));
-			aux.setNombreMuestra(data[1]);
-			aux.setProfundidadInicial(Float.parseFloat(data[3]));
-			aux.setProfundidadFinal(Float.parseFloat(data[4]));
-			OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
-			Class claseOperador = operador.getClass();
-			aux.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+data[5]+"'"));
-			Cliente cliente = new Cliente();
-			Class claseCliente = cliente.getClass();
-			aux.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+data[6]+"'"));
-			Ubicacion ubicacion = new Ubicacion();
-			Class claseUbicacion = ubicacion.getClass();
-			aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+data[0]+"'"));
-			Usuario usuario = new Usuario();
-			Class claseUsuario = usuario.getClass();
-			aux.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "nombreUsuario=='"+data[7]+"'"));
-			java.util.Date utilDate = new java.util.Date();
-		    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-		    aux.setFecha(sqlDate);
+			if ((Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+data[1]+"' && ubicacion.nombreUbicacion=='"+data[0]+"'")==null){
+				aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestraModificar+"' && ubicacion.nombreUbicacion=='"+ubicacionModificar+"'");
+				aux.setPeso(Float.parseFloat(data[2]));
+				aux.setNombreMuestra(data[1]);
+				aux.setProfundidadInicial(Float.parseFloat(data[3]));
+				aux.setProfundidadFinal(Float.parseFloat(data[4]));
+				OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
+				Class claseOperador = operador.getClass();
+				aux.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+data[5]+"'"));
+				Cliente cliente = new Cliente();
+				Class claseCliente = cliente.getClass();
+				aux.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+data[6]+"'"));
+				Ubicacion ubicacion = new Ubicacion();
+				Class claseUbicacion = ubicacion.getClass();
+				aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+data[0]+"'"));
+				Usuario usuario = new Usuario();
+				Class claseUsuario = usuario.getClass();
+				aux.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "nombreUsuario=='"+data[7]+"'"));
+				java.util.Date utilDate = new java.util.Date();
+			    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+			    aux.setFecha(sqlDate);
+			}
+			else{
+				yaExiste=true;
+			}
+			
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
-			yaExiste=persistencia.getExiste();
 			System.out.println("Error al modificar");
 			persistencia.realizarRollback();
 		}		
