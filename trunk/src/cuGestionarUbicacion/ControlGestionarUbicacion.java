@@ -33,16 +33,20 @@ public class ControlGestionarUbicacion {
 		persistencia.abrirTransaccion();
 		try{
 			Ubicacion ubicacion = new Ubicacion();
-			ubicacion.setNombreUbicacion(data[0]);
-			ubicacion.setCiudad(data[1]);
-			ubicacion.setProvincia(data[2]);
-			ubicacion.setLatitud(data[3]);
-			ubicacion.setLongitud(data[4]);
-			persistencia.insertarObjeto(ubicacion);
+			if (persistencia.buscarObjeto(ubicacion.getClass(), "ciudad=='"+data[1]+"' && 'nombreUbicacion=='"+data[0]+"'")==null){
+				ubicacion.setNombreUbicacion(data[0]);
+				ubicacion.setCiudad(data[1]);
+				ubicacion.setProvincia(data[2]);
+				ubicacion.setLatitud(data[3]);
+				ubicacion.setLongitud(data[4]);
+				persistencia.insertarObjeto(ubicacion);
+			}
+			else{
+				yaExiste=true;
+			}
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
-			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarUbicacion insertar");
 			persistencia.realizarRollback();
 		}
@@ -62,17 +66,21 @@ public class ControlGestionarUbicacion {
 		persistencia.abrirTransaccion();
 		try{
 			Ubicacion ubicacion = new Ubicacion();
-			ubicacion = (Ubicacion)persistencia.buscarObjeto(ubicacion.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
-			ubicacion.setNombreUbicacion(data[0]);
-			ubicacion.setCiudad(data[1]);
-			ubicacion.setProvincia(data[2]);
-			ubicacion.setLatitud(data[3]);
-			ubicacion.setLongitud(data[4]);
-			persistencia.insertarObjeto(ubicacion);
+			if (persistencia.buscarObjeto(ubicacion.getClass(), "ciudad=='"+data[1]+"' && 'nombreUbicacion=='"+data[0]+"'")==null){
+				ubicacion = (Ubicacion)persistencia.buscarObjeto(ubicacion.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
+				ubicacion.setNombreUbicacion(data[0]);
+				ubicacion.setCiudad(data[1]);
+				ubicacion.setProvincia(data[2]);
+				ubicacion.setLatitud(data[3]);
+				ubicacion.setLongitud(data[4]);
+				persistencia.insertarObjeto(ubicacion);
+			}
+			else{
+				yaExiste=true;
+			}
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
-			yaExiste=persistencia.getExiste();
 			System.out.println("Fatal error en ControlGestionarUbicacion modificar");
 			persistencia.realizarRollback();
 		}

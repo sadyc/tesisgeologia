@@ -87,7 +87,6 @@ public class MediadorModificarOperador extends Mediador{
 			}
 			else {
 				modificarUsuario();
-				modificoOperador = true;
 				}
 			}
 		catch (NumberFormatException e){
