@@ -1,5 +1,7 @@
 package cuReporte.report;
 
+import java.util.HashMap;
+
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -26,7 +28,9 @@ public class MakeReport {
 			JasperCompileManager.compileReportToFile(fileXML, fileJASPER);
 			System.out.println("Compiling time : "+ (System.currentTimeMillis() - start) + "\n");
 			System.out.println("Fill Report to File : " + fileJRPRINT);
-			JasperFillManager.fillReportToFile(fileJASPER, fileJRPRINT, null,new JREmptyDataSource());
+			HashMap directorio = new HashMap();
+			directorio.put("pathSistema", BASE);
+			JasperFillManager.fillReportToFile(fileJASPER, fileJRPRINT, directorio,new JREmptyDataSource());
 			System.out.println("Filling time : "+ (System.currentTimeMillis() - start) + "\n");
 
 			
