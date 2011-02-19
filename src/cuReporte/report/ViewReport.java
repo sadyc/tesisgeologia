@@ -10,6 +10,7 @@ public class ViewReport {
 	
 	private Object[][] tabla;
 	private Object [] datos;
+	public static String BASE = (new java.io.File("")).getAbsolutePath(); 
     
     public ViewReport(Object[][] tabla, Object[] datos){
             this.tabla = tabla.clone();
@@ -33,8 +34,7 @@ public class ViewReport {
 			}
 			DataSourceJasper data = new DataSourceJasper(values, ht);
 			String fileNameReport = MakeReport.PATH_OUTPUT_REPORT + nameReport + ".jasper";
-			JasperViewer.viewReport(JasperFillManager.fillReport(
-					fileNameReport, parameters, data));
+			JasperViewer.viewReport(JasperFillManager.fillReport(fileNameReport, parameters, data));
 		} catch (JRException exc) {
 			System.out.println("Excepcion del reporte");
 			exc.printStackTrace(System.out);
@@ -42,8 +42,8 @@ public class ViewReport {
 	}
 	public void viewPersons() {
 
-		Object[][] tablaAux =tabla ; //INFO A LLENAR EN EL REPORTE. la cantidad de filas son la cantidad de hojas :-/
-		Object[][] parameters = {{ "reportTitle", "Sistema Clasificador de Suelos" }, {"nombre",(String)datos[0]},{"ubicacion",(String)datos[1]},{"peso",(String)datos[2]},{"profundidadInicial",(String)datos[3]},{"profundidadFinal",(String)datos[4]},{"limiteLiquido", (String)datos[5]},{"limitePlastico",(String)datos[6]},{"indicePlasticidad",(String)datos[7]},{"D60",(String)datos[8]},{"D30",(String)datos[9]},{"D10",(String)datos[10]},{"gradoCurvatura",(String)datos[11]},{"coeficienteUniformidad",(String)datos[12]},{"clasificacionSucs",(String)datos[13]},{"detallesSucs",(String)datos[14]},{"clasificacionAashto",(String)datos[15]},{"detallesAashto",(String)datos[16]}};
+		Object[][] tablaAux =tabla ; 
+		Object[][] parameters = {{ "reportTitle", "Sistema Clasificador de Suelos" }, {"nombre",(String)datos[0]},{"ubicacion",(String)datos[1]},{"peso",(String)datos[2]},{"profundidadInicial",(String)datos[3]},{"profundidadFinal",(String)datos[4]},{"limiteLiquido", (String)datos[5]},{"limitePlastico",(String)datos[6]},{"indicePlasticidad",(String)datos[7]},{"D60",(String)datos[8]},{"D30",(String)datos[9]},{"D10",(String)datos[10]},{"gradoCurvatura",(String)datos[11]},{"coeficienteUniformidad",(String)datos[12]},{"clasificacionSucs",(String)datos[13]},{"detallesSucs",(String)datos[14]},{"clasificacionAashto",(String)datos[15]},{"detallesAashto",(String)datos[16]},{"pathSistema",BASE}};
      	String[] filedXml = {"NumeroTamiz", "AberturaMalla", "%Pasante", "%RetenidoAcumulado", "%RetenidoParcial"};   //Son los campos a llenar en el XML. Deben tener el mismo nombre.
  		String nameReport = "report1";
 		this.viewReport(parameters, filedXml, nameReport, tablaAux);

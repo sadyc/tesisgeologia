@@ -29,6 +29,7 @@
 	<parameter name="detallesSucs" class="java.lang.String"/>
 	<parameter name="clasificacionAashto" class="java.lang.String"/>
 	<parameter name="detallesAashto" class="java.lang.String"/>
+	<parameter name="pathSistema" class="java.lang.String"/>
 	<field name="NumeroTamiz" class="java.lang.String"/>
 	<field name="AberturaMalla" class="java.lang.String"/>
 	<field name="%Pasante" class="java.lang.String"/>
@@ -344,11 +345,11 @@
 			</textField>
 			<image>
 				<reportElement x="8" y="113" width="238" height="146"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\Tesis\\Geologia\\src\\cuCalcularClasificacion\\curvaGranulometrica.jpg"]]></imageExpression>
+				<imageExpression class="java.lang.String"><![CDATA[$P{pathSistema}+"\\src\\cuCalcularClasificacion\\curvaGranulometrica.jpg"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="271" y="113" width="238" height="146"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\Tesis\\Geologia\\src\\cuCalcularClasificacion\\cartaPlasticidad.jpg"]]></imageExpression>
+				<imageExpression class="java.lang.String"><![CDATA[$P{pathSistema}+"\\src\\cuCalcularClasificacion\\cartaPlasticidad.jpg"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="8" y="2" width="236" height="20"/>
