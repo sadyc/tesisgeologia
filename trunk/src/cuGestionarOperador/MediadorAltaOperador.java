@@ -38,6 +38,7 @@ public class MediadorAltaOperador extends Mediador{
 		GUIOperador.setListenerButtons(this);
 		GUIOperador.setKeyListener(this);
 		GUIOperador.setModal(true);
+		GUIOperador.setLocationRelativeTo(null);
 		GUIOperador.show();
 	}
 	

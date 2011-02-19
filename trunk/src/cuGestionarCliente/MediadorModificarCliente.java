@@ -31,6 +31,7 @@ public class MediadorModificarCliente extends Mediador{
 		GUICliente.setTitle("Modificar Cliente");
 		GUICliente.setListenerButtons(this);
 		GUICliente.setModal(true);
+		GUICliente.setLocationRelativeTo(null);
 		GUICliente.show();
 	}
 	

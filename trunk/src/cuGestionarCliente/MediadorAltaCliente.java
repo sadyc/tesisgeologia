@@ -36,6 +36,7 @@ public class MediadorAltaCliente extends Mediador{
 		GUICliente.setTitle(nombreVentana);
 		GUICliente.setListenerButtons(this);
 		GUICliente.setModal(true);
+		GUICliente.setLocationRelativeTo(null);
 		GUICliente.show();
 	}
 	

@@ -36,6 +36,7 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 		GUIVerificarPassword = new GUIVerificarPassword();
 		GUIVerificarPassword.setTitle("Nombre Usuario: "+nombreUsuario);
 		GUIVerificarPassword.setListenerButtons(this);
+		GUIVerificarPassword.setLocationRelativeTo(null);
 		GUIVerificarPassword.show();
 	}
 	

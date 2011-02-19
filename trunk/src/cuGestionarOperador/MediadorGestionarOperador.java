@@ -56,6 +56,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 		GUIGestionarOperador.getjButtonSeleccionar().setEnabled(false);
 		GUIGestionarOperador.getjMenuSeleccionar().setEnabled(false);
 		GUIGestionarOperador.setModal(true);
+		GUIGestionarOperador.setLocationRelativeTo(null);
 		GUIGestionarOperador.show();
 	}
 	

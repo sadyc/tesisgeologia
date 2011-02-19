@@ -34,6 +34,7 @@ public class MediadorSeleccionarTamiz extends Mediador{
 		GUISeleccionarTamiz.setMouseListener(this);
 		GUISeleccionarTamiz.setKeyListener(this);
 		GUISeleccionarTamiz.setModal(true);
+		GUISeleccionarTamiz.setLocationRelativeTo(null);
 		GUISeleccionarTamiz.show();
 	}
 	

@@ -45,6 +45,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 		GUIAnalisis.setModal(true);
 		GUIAnalisis.getJButtonSeleccionarTamiz().setEnabled(false);
 		GUIAnalisis.setListenerButtons(this);
+		GUIAnalisis.setLocationRelativeTo(null);
 		show();
 	}
 	

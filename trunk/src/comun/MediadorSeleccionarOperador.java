@@ -51,6 +51,7 @@ public class MediadorSeleccionarOperador implements ActionListener, KeyListener,
 		GUIGestionarOperador.setMouseListener(this);
 		GUIGestionarOperador.setKeyListener(this);
 		GUIGestionarOperador.setModal(true);
+		GUIGestionarOperador.setLocationRelativeTo(null);
 		GUIGestionarOperador.show();
 	}
 	
