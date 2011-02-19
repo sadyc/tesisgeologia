@@ -163,7 +163,6 @@ public class Backup {
 
 	           }
 	            catch (Exception ex){
-	            	ex.printStackTrace();
 	            	System.out.println(error);
 	            	if(error.compareTo("Falló el backup de windows de 64 bits")!=0){
 	            		crearBackUpWindowsX64();
