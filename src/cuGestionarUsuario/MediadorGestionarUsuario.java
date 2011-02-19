@@ -35,6 +35,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 		GUIGestionarUsuario.setMouseListener(this);
 		GUIGestionarUsuario.setKeyListener(this);     
 		GUIGestionarUsuario.setModal(true);
+		GUIGestionarUsuario.setLocationRelativeTo(null);
 		GUIGestionarUsuario.show();
 	}
 	

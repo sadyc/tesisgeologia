@@ -356,14 +356,14 @@
 				<textElement>
 					<font isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[CLASIFICACION SUCS:]]></text>
+				<text><![CDATA[CLASIFICACION SUCS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="272" y="2" width="237" height="20"/>
 				<textElement>
 					<font isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[CLASIFICACION AASHTO:]]></text>
+				<text><![CDATA[CLASIFICACION AASHTO]]></text>
 			</staticText>
 		</band>
 	</summary>

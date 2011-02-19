@@ -31,7 +31,7 @@ import cuGestionarMuestra.GUIMuestraDetallada;
 
 public class MediadorGestionarAnalisis extends Mediador{
 	
-	private GUIMuestraDetallada muestraDetallada;
+	private GUIMuestraDetallada GUImuestraDetallada;
 	private HMuestra muestra;
 	private IAnalisis analisis;
 	private Object [][] data;
@@ -45,12 +45,13 @@ public class MediadorGestionarAnalisis extends Mediador{
 		super();
 		this.muestra = muestra;
 		cargarTablaDeAnalisis();
-		muestraDetallada = new GUIMuestraDetallada(muestra,data);
-		muestraDetallada.setTitle(titulo);
-		muestraDetallada.setListenerButtons(this);
-		muestraDetallada.setModal(true);
-		muestraDetallada.getImprimir().setEnabled(false);
-		muestraDetallada.getImprimirMenu().setEnabled(false);
+		GUImuestraDetallada = new GUIMuestraDetallada(muestra,data);
+		GUImuestraDetallada.setTitle(titulo);
+		GUImuestraDetallada.setListenerButtons(this);
+		GUImuestraDetallada.setModal(true);
+		GUImuestraDetallada.getImprimir().setEnabled(false);
+		GUImuestraDetallada.getImprimirMenu().setEnabled(false);
+		GUImuestraDetallada.setLocationRelativeTo(null);
 		show();
 	}
 	
@@ -79,7 +80,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 	}
 		
 	public void show(){
-		muestraDetallada.show();
+		GUImuestraDetallada.show();
 	}
 	
 	
@@ -87,7 +88,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 	 * @return the gestionarAnalisis.
 	 */
 	public GUIMuestraDetallada getMuestraDetallada() {
-		return muestraDetallada;
+		return GUImuestraDetallada;
 	}	
 	
 	/**
@@ -96,17 +97,17 @@ public class MediadorGestionarAnalisis extends Mediador{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.muestraDetallada.getjButtonAgregarAnalisis() == source || muestraDetallada.getAgregarMenu()==source){
+		if (this.GUImuestraDetallada.getjButtonAgregarAnalisis() == source || GUImuestraDetallada.getAgregarMenu()==source){
 			agregarAnalisis();
 		}
-		if (this.muestraDetallada.getjButtonModificarAnalisis() == source || muestraDetallada.getModificarMenu()==source){
+		if (this.GUImuestraDetallada.getjButtonModificarAnalisis() == source || GUImuestraDetallada.getModificarMenu()==source){
 			modificarAnalisis();
 		}
-		if (this.muestraDetallada.getjButtonEliminarAnalisis() == source || muestraDetallada.getEliminarMenu()==source){
+		if (this.GUImuestraDetallada.getjButtonEliminarAnalisis() == source || GUImuestraDetallada.getEliminarMenu()==source){
 			eliminarAnalisis();
 		}
-		if (this.muestraDetallada.getJButtonSalir() == source || muestraDetallada.getSalirMenu()==source){
-			muestraDetallada.dispose();
+		if (this.GUImuestraDetallada.getJButtonSalir() == source || GUImuestraDetallada.getSalirMenu()==source){
+			GUImuestraDetallada.dispose();
 		}
 	}
 	
@@ -115,21 +116,21 @@ public class MediadorGestionarAnalisis extends Mediador{
 	 */
 	public void eliminarAnalisis(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonEliminar");
-		if (muestraDetallada.getTablePanel1().getSelectedRow() == -1){
+		if (GUImuestraDetallada.getTablePanel1().getSelectedRow() == -1){
 			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
             if(quitOption==JOptionPane.YES_OPTION){
             	ControlGestionarAnalisis control = new ControlGestionarAnalisis();
-            	String [] fila = muestraDetallada.getTablePanel1().getRow(muestraDetallada.getTablePanel1().getSelectedRow());
+            	String [] fila = GUImuestraDetallada.getTablePanel1().getRow(GUImuestraDetallada.getTablePanel1().getSelectedRow());
             	ETamiz tamiz = new ETamiz();
             	tamiz.setNumeroTamiz(fila[0]);
               	analisis = new IAnalisis(Float.parseFloat(fila[1]),muestra,tamiz);
               	try {
 					control.eliminarAnalisis(analisis);
 					control.recalcularAnalisis(analisis);
-					muestraDetallada.dispose();
+					GUImuestraDetallada.dispose();
 					new MediadorGestionarAnalisis("Analisis de la muestra "+ muestra.getNombreMuestra(), muestra);
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -143,13 +144,13 @@ public class MediadorGestionarAnalisis extends Mediador{
 	 */
 	public void modificarAnalisis(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");
-		if (muestraDetallada.getTablePanel1().getSelectedRow() == -1){
+		if (GUImuestraDetallada.getTablePanel1().getSelectedRow() == -1){
 			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
-			String [] fila = muestraDetallada.getTablePanel1().getRow(muestraDetallada.getTablePanel1().getSelectedRow());
+			String [] fila = GUImuestraDetallada.getTablePanel1().getRow(GUImuestraDetallada.getTablePanel1().getSelectedRow());
 			new MediadorModificarAnalisis(muestra,Float.parseFloat(fila[1]),(String)fila[0]);
-			muestraDetallada.dispose();
+			GUImuestraDetallada.dispose();
 			try {
 				new MediadorGestionarAnalisis("Analisis de la muestra "+muestra.getNombreMuestra(), muestra);
 			} catch (Exception e) {
@@ -165,7 +166,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 		MediadorAltaAnalisis altaAnalisis = new MediadorAltaAnalisis(muestra);
 		if (altaAnalisis.isAltaAnalisis()){
-			this.muestraDetallada.getTablePanel1().addRow(altaAnalisis.getData());
+			this.GUImuestraDetallada.getTablePanel1().addRow(altaAnalisis.getData());
 		}
 	}
 

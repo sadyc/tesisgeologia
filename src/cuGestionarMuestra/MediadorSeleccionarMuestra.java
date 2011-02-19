@@ -50,6 +50,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 		GUIABMMuestra.getjMenuEliminar().setEnabled(false);
 		GUIABMMuestra.getJButtonModificar().setEnabled(false);
 		GUIABMMuestra.getjMenuModificar().setEnabled(false);
+		GUIABMMuestra.setLocationRelativeTo(null);
 		GUIABMMuestra.setModal(true);
 		GUIABMMuestra.show();
 	}

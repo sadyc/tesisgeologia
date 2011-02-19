@@ -45,6 +45,7 @@ public class MediadorSeleccionarCliente implements ActionListener, KeyListener, 
 		GUIGestionarCliente.setMouseListener(this);
 		GUIGestionarCliente.setKeyListener(this);
 		GUIGestionarCliente.setModal(true);
+		GUIGestionarCliente.setLocationRelativeTo(null);
 		GUIGestionarCliente.show();
 	}
 	

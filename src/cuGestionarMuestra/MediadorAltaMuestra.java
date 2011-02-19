@@ -67,6 +67,7 @@ public class MediadorAltaMuestra extends Mediador{
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
 		GUIMuestra.setKeyListener(this);
+		GUIMuestra.setLocationRelativeTo(null);
 		GUIMuestra.show();
 	}
 	

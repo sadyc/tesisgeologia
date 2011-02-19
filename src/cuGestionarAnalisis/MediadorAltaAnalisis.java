@@ -48,6 +48,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 		GUIAnalisis.setModal(true);
 		GUIAnalisis.setListenerButtons(this);
 		GUIAnalisis.setKeyListener(this);
+		GUIAnalisis.setLocationRelativeTo(null);
 		show();
 	}
 	

@@ -47,6 +47,7 @@ public class MediadorGestionarCliente extends Mediador{
 		GUIGestionarCliente.getjButtonSeleccionar().setEnabled(false);
 		GUIGestionarCliente.getjMenuSeleccionar().setEnabled(false);
 		GUIGestionarCliente.setModal(true);
+		GUIGestionarCliente.setLocationRelativeTo(null);
 		GUIGestionarCliente.show();
 	}
 	

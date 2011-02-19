@@ -58,6 +58,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 		GUIABMMuestra.getJButtonSeleccionar().setEnabled(true);
 		GUIABMMuestra.getjMenuSeleccionar().setEnabled(true);
 		GUIABMMuestra.setModal(true);
+		GUIABMMuestra.setLocationRelativeTo(null);
 		GUIABMMuestra.show();
 	}
 	

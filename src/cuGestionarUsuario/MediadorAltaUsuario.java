@@ -44,6 +44,7 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 		GUIUsuario.setTitle(nombreVentana);
 		GUIUsuario.setListenerButtons(this);
 		GUIUsuario.setModal(true);
+		GUIUsuario.setLocationRelativeTo(null);
 		GUIUsuario.show();
 	}
 	

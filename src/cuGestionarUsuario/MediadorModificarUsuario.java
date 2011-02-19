@@ -31,6 +31,7 @@ public class MediadorModificarUsuario implements ActionListener, KeyListener, Mo
 		GUIUsuario.setTitle("Modificar Usuario");
 		GUIUsuario.setListenerButtons(this);
 		GUIUsuario.setModal(true);
+		GUIUsuario.setLocationRelativeTo(null);
 		GUIUsuario.show();
 	}
 	
