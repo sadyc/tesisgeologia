@@ -64,8 +64,7 @@ public class ControlGestionarAnalisis {
                         System.out.println("Analisis insertado con persistencia");
                 } catch (Exception e) {
                 	 	System.out.println("Error al insertar Analisis con persistencia");
-                		yaExiste=persistencia.getExiste();
-                	    persistencia.realizarRollback();
+                		persistencia.realizarRollback();
                 }
                 return data;
         }

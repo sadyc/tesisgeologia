@@ -15,6 +15,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import persistencia.domain.HMuestra;
 
@@ -381,7 +383,13 @@ public class GUIMuestraDetallada extends JDialog{
 	public TablePanel getTablePanel1() {
 		if (this.tablePanel1==null) {
 			this.tablePanel1 = new TablePanel();
-	 		this.tablePanel1.setData(data1, getColumName());			
+	 		this.tablePanel1.setData(data1, getColumName());
+	 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+	 	    tcr.setHorizontalAlignment(SwingConstants.CENTER);
+	 	    for (int i = 0; i < 5; i++) {
+	 	    	tablePanel1.getTable().getColumnModel().getColumn(i).setCellRenderer(tcr);
+	 	    	
+			}
 		}
 		return this.tablePanel1;
 	}

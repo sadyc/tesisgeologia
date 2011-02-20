@@ -35,9 +35,10 @@ public class BSUCS extends AClasificacion {
 	 */
 	public BSUCS(String clasificacion){
 		Frame frame = new Frame();
+		
 		String nombreAux = new String();
 		String descripcionAux = new String();
-		if (clasificacion.equals("ML") || clasificacion.equals("CL") || clasificacion.equals("OL") || clasificacion.equals("MH") || clasificacion.equals("CH")||clasificacion.equals("OH")||clasificacion.equals("PT")||clasificacion.equals("SW")||clasificacion.equals("SP")||clasificacion.equals("SC")||clasificacion.equals("SM")||clasificacion.equals("GW")||clasificacion.equals("GP")||clasificacion.equals("GM")||clasificacion.equals("GC")){
+		if (clasificacion.equals("ML") || clasificacion.equals("CL") || clasificacion.equals("OL") || clasificacion.equals("MH") || clasificacion.equals("CH")||clasificacion.equals("OH")||clasificacion.equals("PT")||clasificacion.equals("SW")||clasificacion.equals("SP")||clasificacion.equals("SC")||clasificacion.equals("SM")||clasificacion.equals("GW")||clasificacion.equals("GP")||clasificacion.equals("GM")||clasificacion.equals("GC")||clasificacion.equals("GW-GM")||clasificacion.equals("GW-GC")||clasificacion.equals("GP-GM")||clasificacion.equals("GP-GC")){
 			if (clasificacion.equals("ML")) {
 				nombreAux= "Grano Fino - Limos y Arcillas con limite liquido menor a 50 - ML";
 				descripcionAux="Limos inorgánicos y arenas muy finas, limos límpios, arenas finas, limosas o arcillosa, o limos arcillosos con ligera plásticidad.";
@@ -95,6 +96,7 @@ public class BSUCS extends AClasificacion {
 																	nombreAux= "Grano Grueso - Gravas - Gravas con Finos - GM";
 																	descripcionAux="Gravas limosas, mezclas grava-arena-limo.";
 																} else {
+																	//clasificacion.equals("GW-GM")clasificacion.equals("GW-GC")clasificacion.equals("GP-GM")clasificacion.equals("GP-GC");
 																	nombreAux= "Grano Grueso - Gravas - Gravas con Finos - GC";
 																	descripcionAux="Gravas arcillosas, mezclas grava-arena-arcilla.";
 																}

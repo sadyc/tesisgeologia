@@ -11,8 +11,8 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.RowFilter;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import comun.TablePanel;
 
@@ -372,7 +372,12 @@ public class GUIABMMuestra extends JDialog{
 	public TablePanel InicializarTabla() {
 		if (this.tablePanel==null) {
 			this.tablePanel = new TablePanel();
-	 		this.tablePanel.setData(data, columName);			
+	 		this.tablePanel.setData(data, columName);
+	 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+	 	    tcr.setHorizontalAlignment(SwingConstants.CENTER);
+	 	    for (int i = 0; i < 7; i++) {
+	 	    	tablePanel.getTable().getColumnModel().getColumn(i).setCellRenderer(tcr);
+			}
 		}
 		
 		return this.tablePanel;
