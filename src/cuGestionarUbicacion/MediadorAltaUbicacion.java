@@ -74,7 +74,7 @@ public class MediadorAltaUbicacion extends Mediador{
 				control.insertarUbicacion(GUIUbicacion.getData());
 				if (control.getExiste()) {
 					System.out.println("El objeto ya existe");
-					JOptionPane.showMessageDialog(frame,"La ubicación con esas coordenadas ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frame,"La ubicación con ese nombre y esa ciudad ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
 					alta = true;

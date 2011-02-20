@@ -25,9 +25,9 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import persistencia.Persistencia;
 import persistencia.domain.BAASHTO;
-import persistencia.domain.IAnalisis;
-import persistencia.domain.HMuestra;
 import persistencia.domain.BSUCS;
+import persistencia.domain.HMuestra;
+import persistencia.domain.IAnalisis;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 
 /**
@@ -108,7 +108,6 @@ public class ControlClasificacion {
 				}
 				else{
 					//Arenas
-					System.out.println("estooooooooooooy aca");
 					analisis = (IAnalisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='200'");
 					if (analisis.getPorcentajePasante()<=5){
 						//Arenas Limpias
@@ -225,8 +224,8 @@ public class ControlClasificacion {
 					else{
 						if (analisis.getPorcentajePasante()<35){
 							//A-2
-							analisis = (IAnalisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='40'");
-							if (analisis.getPorcentajePasante()<=50){
+							Float limiteLiquido = muestra.getLimiteLiquido();
+							if (limiteLiquido<=40){
 								if (muestra.getIndicePlasticidad()<10){
 									//A-2-4
 									clasificacion=("A24");
@@ -248,8 +247,9 @@ public class ControlClasificacion {
 							}
 						}
 						else{
-							analisis = (IAnalisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='40'");
-							if (analisis.getPorcentajePasante()<=50){
+							Float limiteLiquido = muestra.getLimiteLiquido();
+							System.out.println("adsasd"+analisis.getPorcentajePasante());
+							if (limiteLiquido<=40){
 								if (muestra.getIndicePlasticidad()<10){
 									//A-2-4
 									clasificacion=("A4");
@@ -280,6 +280,8 @@ public class ControlClasificacion {
 			clasificacionAASHTO =((BAASHTO)persistencia.buscarObjeto(clasificacionAASHTO.getClass(), "clasificacion=='"+clasificacion+"'"));
 			muestra = ((HMuestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'"));
 			muestra.setAashto(clasificacionAASHTO);
+			muestra.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));//Coeficiente de uniformidad
+			muestra.setGradoCurvatura(gradoCurvatura);
 			
 			persistencia.cerrarTransaccion();
 		}
@@ -318,7 +320,7 @@ public class ControlClasificacion {
 				double exponente = (Math.log10(abertura1)-
 						((pasante1-60)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 				Float calculo = new Float(Math.pow(10,exponente));
-				muestra.setD60(truncaNum(calculo));
+				muestra.setD60((calculo));
 				d60 = true;
 			}
 			if (analisis.getPorcentajePasante()<30 && !d30){
@@ -331,7 +333,7 @@ public class ControlClasificacion {
 					double exponente = (Math.log10(abertura1)-
 							((pasante1-30)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 					Float calculo = new Float(Math.pow(10,exponente));
-					muestra.setD30(truncaNum(calculo));
+					muestra.setD30((calculo));
 					d30 = true;
 					analisis= (IAnalisis)listaAnalisis.get(i);
 				}
@@ -345,21 +347,32 @@ public class ControlClasificacion {
 						double exponente = (Math.log10(abertura1)-
 								((pasante1-10)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 						Float calculo = new Float(Math.pow(10,exponente));
-						muestra.setD10(truncaNum(calculo));
+						muestra.setD10((calculo));
 						d10 = true;
 					}
+				analisis = (IAnalisis)listaAnalisis.get(i);
 				i++;	
 		}
+		Float aberturaMalla = new Float(analisis.getTamiz().getAberturaMalla());
 		if (!d60) {
-			Float aberturaMalla = new Float(analisis.getTamiz().getAberturaMalla());
+			
 			muestra.setD60(aberturaMalla);
 		}
 		if (!d30){
-			muestra.setD30(muestra.getD60());
+			muestra.setD30(aberturaMalla);
 		}
 		if (!d10){
-			muestra.setD10(muestra.getD30());
+			muestra.setD10(aberturaMalla);
 		}
+		Persistencia persistencia2 = new Persistencia();
+		persistencia.abrirTransaccion();
+		HMuestra muestraAux = new HMuestra();
+		muestraAux = (HMuestra)persistencia.buscarObjeto(muestraAux.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+		muestraAux.setD10(muestra.getD10());
+		muestraAux.setD30(muestra.getD30());
+		muestraAux.setD60(muestra.getD60());
+		persistencia.cerrarTransaccion();
+		
 	}
 
 	

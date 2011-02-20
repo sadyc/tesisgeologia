@@ -1,6 +1,8 @@
 package cuLimiteConsistencia;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -99,6 +101,8 @@ public GUILimiteConsistencia(String title,String limLiq, String limPlas, HMuestr
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+    	
+    	this.setModal(true);
 
         jSeparator1 = new javax.swing.JSeparator();
         limiteLiquido = new javax.swing.JLabel();
@@ -116,6 +120,32 @@ public GUILimiteConsistencia(String title,String limLiq, String limPlas, HMuestr
         cancelar = new javax.swing.JMenuItem();
         ayuda = new javax.swing.JMenu();
         version = new javax.swing.JMenuItem();
+        
+        jTextFieldLL.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '-') && (caracter != '.'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
+        
+        jTextFieldLP.addKeyListener(new KeyAdapter()
+        {
+           public void keyTyped(KeyEvent e)
+           {
+              char caracter = e.getKeyChar();
+
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '-') && (caracter != '.'))
+              {
+                 e.consume();  // ignorar el evento de teclado
+              }
+           }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
