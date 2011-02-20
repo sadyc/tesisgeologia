@@ -33,7 +33,7 @@ public class ControlGestionarUbicacion {
 		persistencia.abrirTransaccion();
 		try{
 			FUbicacion ubicacion = new FUbicacion();
-			if (persistencia.buscarObjeto(ubicacion.getClass(), "ciudad=='"+data[1]+"' && 'nombreUbicacion=='"+data[0]+"'")==null){
+			if (persistencia.buscarObjeto(ubicacion.getClass(), "ciudad=='"+data[1]+"' && nombreUbicacion=='"+data[0]+"'")==null){
 				ubicacion.setNombreUbicacion(data[0]);
 				ubicacion.setCiudad(data[1]);
 				ubicacion.setProvincia(data[2]);
@@ -66,17 +66,25 @@ public class ControlGestionarUbicacion {
 		persistencia.abrirTransaccion();
 		try{
 			FUbicacion ubicacion = new FUbicacion();
-			if (persistencia.buscarObjeto(ubicacion.getClass(), "ciudad=='"+data[1]+"' && 'nombreUbicacion=='"+data[0]+"'")==null){
+			if (!nombreUbicacion.equals(data[0]) || !ciudad.equals(data[1])){
+				if (persistencia.buscarObjeto(ubicacion.getClass(), "ciudad=='"+data[1]+"' && nombreUbicacion=='"+data[0]+"'")==null){
+					ubicacion = (FUbicacion)persistencia.buscarObjeto(ubicacion.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
+					ubicacion.setNombreUbicacion(data[0]);
+					ubicacion.setCiudad(data[1]);
+					ubicacion.setProvincia(data[2]);
+					ubicacion.setLatitud(data[3]);
+					ubicacion.setLongitud(data[4]);
+				}
+				else{
+					yaExiste=true;
+				}
+			}else{
 				ubicacion = (FUbicacion)persistencia.buscarObjeto(ubicacion.getClass(), "nombreUbicacion=='"+nombreUbicacion+"' && ciudad=='"+ciudad+"'");
 				ubicacion.setNombreUbicacion(data[0]);
 				ubicacion.setCiudad(data[1]);
 				ubicacion.setProvincia(data[2]);
 				ubicacion.setLatitud(data[3]);
-				ubicacion.setLongitud(data[4]);
-				persistencia.insertarObjeto(ubicacion);
-			}
-			else{
-				yaExiste=true;
+				ubicacion.setLongitud(data[4]);	
 			}
 			persistencia.cerrarTransaccion();
 		}
