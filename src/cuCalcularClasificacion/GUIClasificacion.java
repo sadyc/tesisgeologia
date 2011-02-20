@@ -4,13 +4,12 @@
 package cuCalcularClasificacion;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.ScrollPane;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.FileOutputStream;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -20,12 +19,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
-import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import org.jfree.chart.ChartPanel;
 
-import persistencia.domain.AClasificacion;
 import persistencia.domain.HMuestra;
 
 import comun.TablePanel;
@@ -53,13 +53,17 @@ public class GUIClasificacion extends JDialog{
 	private JPanel panelCenter=null;
 	private JPanel panelEste=null;
 	private JPanel panelOeste=null;
-	private JLabel muestra;
+	private JPanel panelSucs= null;
+	private JPanel panelAashto= null;
+	private JLabel jLabelmuestra;
 	private JLabel peso;
 	private JLabel profundidadInicial;
 	private JLabel profundidadFinal;
 	private JLabel ubicacion;
 	private JLabel clasificacionSucs;
 	private JLabel descripcionSucs;
+	private JLabel clasificacionAashto;
+	private JLabel descripcionAashto;
 	private JLabel limiteLiquido;
 	private JLabel limitePlastico;
 	private JLabel indicePlasticidad;
@@ -70,6 +74,7 @@ public class GUIClasificacion extends JDialog{
 	private JLabel gradoCurvatura;
 	private ChartPanel curva;
 	private ChartPanel carta;
+	private JScrollPane scrollPane;
 		
 	private TablePanel tablePanel;
 	private Object [][] data = null;
@@ -95,7 +100,7 @@ public class GUIClasificacion extends JDialog{
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
-		muestra = new JLabel("Muestra: ");
+		jLabelmuestra = new JLabel("Muestra: ");
 		peso = new JLabel("Peso: ");
 		profundidadInicial = new JLabel("Profundidad Inicial: ");
 		profundidadFinal = new JLabel("Profundidad Final: ");
@@ -123,7 +128,7 @@ public class GUIClasificacion extends JDialog{
 	public GUIClasificacion(HMuestra muestra, Object [] [] data) throws Exception {
 		super();
 		ControlClasificacion control = new ControlClasificacion();
-		curva = control.emitirGrafico(muestra);
+		curva = control.curvaGranulometrica(muestra);
 		carta = control.cartaPlasticidad(muestra);
 		this.data = data; 
 		menu = new JMenuBar();
@@ -140,7 +145,7 @@ public class GUIClasificacion extends JDialog{
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
-		this.muestra = new JLabel(muestra.getNombreMuestra());
+		this.jLabelmuestra = new JLabel(muestra.getNombreMuestra());
 		peso = new JLabel("Peso: "+muestra.getPeso().toString()+"grs");
 		profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
 		profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
@@ -148,11 +153,19 @@ public class GUIClasificacion extends JDialog{
 		
 		if (muestra.getSucs()==null){
 			descripcionSucs = new JLabel ("Descripcion: ");
-			clasificacionSucs = new JLabel ("AClasificacion: ");
+			clasificacionSucs = new JLabel ("Clasificacion: ");
 		}
 		else{
-			clasificacionSucs = new JLabel ("AClasificacion: "+muestra.getSucs().getNombre());
-			descripcionSucs = new JLabel ("Descripcion: "+muestra.getSucs().getDescripcion());
+			clasificacionSucs = new JLabel ("Clasificacion: "+muestra.getAashto().getNombre());
+			descripcionSucs = new JLabel ("Descripcion: "+muestra.getAashto().getDescripcion());
+		}
+		if (muestra.getAashto()==null){
+			descripcionAashto = new JLabel ("Descripcion: ");
+			clasificacionAashto = new JLabel ("Clasificacion: ");
+		}
+		else{
+			clasificacionAashto= new JLabel ("Clasificacion: "+muestra.getAashto().getNombre());
+			descripcionAashto = new JLabel ("Descripcion: "+muestra.getAashto().getDescripcion());
 		}
 		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    
 		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	
@@ -171,7 +184,7 @@ public class GUIClasificacion extends JDialog{
 	 * @return the muestra
 	 */
 	public JLabel getMuestra() {
-		return muestra;
+		return jLabelmuestra;
 	}
 
 	/**
@@ -238,9 +251,7 @@ public class GUIClasificacion extends JDialog{
 	  	
 	  	
 	  	this.getContentPane().add(this.getPanelCenter(),BorderLayout.CENTER);
-	  	//this.getContentPane().add(this.getPanelEste(),BorderLayout.WEST);
-	  	//this.getContentPane().add(this.getPanelOeste(),BorderLayout.EAST);
-    	this.setLocationRelativeTo(null);
+	  	this.setLocationRelativeTo(null);
 	}
    
 	
@@ -313,13 +324,48 @@ public class GUIClasificacion extends JDialog{
 			this.panelCenter.setLayout(new BoxLayout(this.panelCenter,BoxLayout.Y_AXIS));
 			this.panelCenter.add(this.getTablePanel());
 			this.panelCenter.add(getPanelEste());
-			
-			this.panelCenter.add(new JLabel("DATOS DE LA CLASIFICACION S.U.C.S: "));
-			this.panelCenter.add(clasificacionSucs);
-			this.panelCenter.add(descripcionSucs);
+			this.panelCenter.add(getPanelOeste());
 			}
 			return this.panelCenter;
 	}
+	/**
+	 * Metodo que retorna el panelCenter.
+	 *
+	 * @return Jpanel
+	 */
+	public JPanel getPanelSucs() {
+		if (this.panelSucs==null) {
+			
+			this.panelSucs = new JPanel();
+						
+			GridBagLayout gridbag = new GridBagLayout();
+			GridBagConstraints gbc = new GridBagConstraints();
+			gbc.gridwidth = 1;
+			gbc.gridheight = 1;
+			gbc.weightx = 1.0;
+			gbc.weighty = 0.50;
+			gbc.gridx = 0;
+			gbc.gridy = 0;
+			gbc.fill=GridBagConstraints.HORIZONTAL;
+			this.panelSucs.setLayout(gridbag);
+			gbc.ipady = 15;
+			this.panelSucs.add(new JLabel("DATOS DE LA CLASIFICACION S.U.C.S "),gbc);
+			gbc.ipady = 0;
+			gbc.gridy = 1;
+			this.panelSucs.add(clasificacionSucs,gbc);
+			gbc.gridy = 2;
+			this.panelSucs.add(descripcionSucs,gbc);
+			gbc.gridx = 1;
+			gbc.gridy = 0;
+			this.panelSucs.add(new JLabel("DATOS DE LA CLASIFICACION A.A.S.H.T.O "),gbc);
+			gbc.gridy = 1;
+			this.panelSucs.add(clasificacionAashto,gbc);
+			gbc.gridy = 2;
+			this.panelSucs.add(descripcionAashto,gbc);
+			}
+			return this.panelSucs;
+	}
+	
 	/**
 	 * Metodo que retorna el panelSur.
 	 *
@@ -358,9 +404,9 @@ public class GUIClasificacion extends JDialog{
 		if (this.panelOeste==null) {
 			this.panelOeste= new JPanel();
 			this.panelOeste.setLayout(new BoxLayout(this.panelOeste,BoxLayout.X_AXIS));
-			this.panelOeste.add(carta);
-			}
-			return this.panelOeste;
+			this.panelOeste.add(getPanelSucs());
+		}
+		return this.panelOeste;
 	}
 	
 	/**
@@ -381,9 +427,18 @@ public class GUIClasificacion extends JDialog{
 	public TablePanel getTablePanel() {
 		if (this.tablePanel==null) {
 			this.tablePanel = new TablePanel();
-	 		this.tablePanel.setData(data, getColumName());			
-		}
-		return this.tablePanel;
+	 		this.tablePanel.setData(data, getColumName());
+	 		Dimension dimension = new Dimension(160,140);
+	 		tablePanel.getScrollPane().setPreferredSize(dimension);
+	 		
+	 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+	 	    tcr.setHorizontalAlignment(SwingConstants.CENTER);
+	 	    for (int i = 0; i < 5; i++) {
+	 	    	tablePanel.getTable().getColumnModel().getColumn(i).setCellRenderer(tcr);
+	 	    	
+			}
+	 	}
+		return tablePanel;
 	}
 
 	/** 

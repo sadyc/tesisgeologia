@@ -9,11 +9,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-
-
-import persistencia.Persistencia;
-import persistencia.domain.HMuestra;
-import persistencia.domain.CPersona;
 import persistencia.domain.DUsuario;
 
 import comun.MediadorPrincipal;

@@ -15,7 +15,6 @@ import persistencia.domain.DCliente;
 
 import comun.Mediador;
 
-import cuBuscar.MediadorBuscar;
 import cuGestionarOperador.GUIGestionarOperador;
 
 

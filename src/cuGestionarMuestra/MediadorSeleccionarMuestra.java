@@ -14,8 +14,6 @@ import persistencia.domain.HMuestra;
 
 import comun.Mediador;
 
-import cuBuscar.MediadorBuscar;
-
 
 /**
 * @author TesisGeología

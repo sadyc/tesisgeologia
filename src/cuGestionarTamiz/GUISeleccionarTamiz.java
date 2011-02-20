@@ -13,6 +13,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import comun.TablePanel;
 
@@ -167,7 +169,12 @@ public class GUISeleccionarTamiz extends JDialog	{
 	public TablePanel getTablePanel() {
 		if (this.tablePanel==null) {
 			this.tablePanel = new TablePanel();
-	 		this.tablePanel.setData(data, getColumName());			
+	 		this.tablePanel.setData(data, getColumName());
+	 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+	 	    tcr.setHorizontalAlignment(SwingConstants.CENTER);
+	 	    for (int i = 0; i < 2; i++) {
+	 	    	tablePanel.getTable().getColumnModel().getColumn(i).setCellRenderer(tcr);
+			}
 		}
 		return this.tablePanel;
 	}

@@ -16,17 +16,6 @@ import javax.swing.JOptionPane;
 
 import persistencia.domain.GOperadorDeLaboratorio;
 
-import comun.Mediador;
-
-import cuBuscar.MediadorBuscar;
-import cuGestionarMuestra.ControlGestionarMuestra;
-import cuGestionarMuestra.MediadorAltaMuestra;
-import cuGestionarMuestra.MediadorModificarMuestra;
-import cuGestionarUsuario.ControlGestionarUsuario;
-import cuGestionarUsuario.MediadorAltaUsuario;
-import cuGestionarUsuario.MediadorModificarUsuario;
-import cuGestionarUsuario.MediadorVerificarPassword;
-
 
 /**
 * @author TesisGeología
@@ -37,7 +26,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 	private Object [] seleccionado;
 	private Object [][] data;
 	private Component frame;
-	private ControlGestionarOperador control = new ControlGestionarOperador();
+	private ControlGestionarOperador control; 
 
 	
 	/**
@@ -67,6 +56,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 	public void cargarTablaDeOperador()throws Exception{
 		GOperadorDeLaboratorio operador = new GOperadorDeLaboratorio();
 		Class clase = operador.getClass();
+		control = new ControlGestionarOperador();
 		Collection operadores = control.coleccionOperadores(clase);
 		Iterator<GOperadorDeLaboratorio> it = operadores.iterator();
 		data = new Object [operadores.size()] [5];

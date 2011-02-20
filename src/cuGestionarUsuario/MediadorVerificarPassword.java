@@ -3,19 +3,14 @@ package cuGestionarUsuario;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Collection;
 
 import javax.swing.JOptionPane;
 
 import persistencia.domain.DUsuario;
-
-import cuBuscar.ControlBuscar;
-import cuBuscar.GUIBuscar;
 import cuLogin.Encriptar;
 
 public class MediadorVerificarPassword implements ActionListener, KeyListener, MouseListener {

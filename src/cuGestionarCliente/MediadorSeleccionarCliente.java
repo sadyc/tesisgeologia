@@ -15,7 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.DCliente;
-import cuBuscar.MediadorBuscar;
 import cuGestionarOperador.GUIGestionarOperador;
 
 /**

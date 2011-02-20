@@ -52,8 +52,8 @@ public class ControlClasificacion {
 		Float limiteLiquido = muestra.getLimiteLiquido();
 		calcularDiametro(muestra);
 		
-		muestra.setCoeficienteUniformidad(muestra.getD60()/muestra.getD10());//Coeficiente de uniformidad
-		Float gradoCurvatura = ((muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60()));//grado de curvatura.
+		muestra.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));//Coeficiente de uniformidad
+		Float gradoCurvatura = (truncaNum((muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60())));//grado de curvatura.
 		muestra.setGradoCurvatura(gradoCurvatura);
 		String clasificacion= new String(); 
 		
@@ -93,18 +93,23 @@ public class ControlClasificacion {
 						//Gravas Limpias y con finos.
 						if ((muestra.getCoeficienteUniformidad()>=4) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3) && (IndicePlasticidad<4)){
 							//GW-GM
+							clasificacion=("GW-GM");
 						}else if(IndicePlasticidad<4 && IndicePlasticidad>7){
 							//GW-GC
+							clasificacion=("GW-GC");
 						}else if((IndicePlasticidad<4) && !((muestra.getCoeficienteUniformidad()>=4) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3))){
 							//GP-GM
+							clasificacion=("GP-GM");
 						}else{
 							//GP-GC
+							clasificacion=("GP-GC");
 						}
 					}
 				}
 				else{
 					//Arenas
-					analisis = (IAnalisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && tamiz.numeroTamiz=='200'");
+					System.out.println("estooooooooooooy aca");
+					analisis = (IAnalisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='200'");
 					if (analisis.getPorcentajePasante()<=5){
 						//Arenas Limpias
 						if ((muestra.getCoeficienteUniformidad()>=6) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3) ){
@@ -167,13 +172,18 @@ public class ControlClasificacion {
 					}
 				}
 			}
+			persistencia.cerrarTransaccion();
+			persistencia.abrirTransaccion();
+			
 			BSUCS clasificacionSUCS = new BSUCS();
+			System.out.println(clasificacion);
 			clasificacionSUCS =((BSUCS)persistencia.buscarObjeto(clasificacionSUCS.getClass(), "clasificacion=='"+clasificacion+"'"));
 			muestra = ((HMuestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'"));
 			muestra.setSucs(clasificacionSUCS);
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
+			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
 				
@@ -190,14 +200,13 @@ public class ControlClasificacion {
 		String clasificacion= new String();
 		calcularDiametro(muestra);
 		
-		muestra.setCoeficienteUniformidad(muestra.getD60()/muestra.getD10());//Coeficiente de uniformidad
-		Float gradoCurvatura = ((muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60()));//grado de curvatura.
+		muestra.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));//Coeficiente de uniformidad
+		Float gradoCurvatura = (truncaNum(muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60()));//grado de curvatura.
 		muestra.setGradoCurvatura(gradoCurvatura);
 		try{
 			IAnalisis analisis = new IAnalisis();
 			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'";
 			analisis = (IAnalisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='10'");
-			System.out.println(muestra.getNombreMuestra());
 			if (analisis.getPorcentajePasante()<50){
 				clasificacion=("A1a");
 			}
@@ -309,7 +318,7 @@ public class ControlClasificacion {
 				double exponente = (Math.log10(abertura1)-
 						((pasante1-60)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 				Float calculo = new Float(Math.pow(10,exponente));
-				muestra.setD60(calculo);
+				muestra.setD60(truncaNum(calculo));
 				d60 = true;
 			}
 			if (analisis.getPorcentajePasante()<30 && !d30){
@@ -322,7 +331,7 @@ public class ControlClasificacion {
 					double exponente = (Math.log10(abertura1)-
 							((pasante1-30)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 					Float calculo = new Float(Math.pow(10,exponente));
-					muestra.setD30(calculo);
+					muestra.setD30(truncaNum(calculo));
 					d30 = true;
 					analisis= (IAnalisis)listaAnalisis.get(i);
 				}
@@ -336,7 +345,7 @@ public class ControlClasificacion {
 						double exponente = (Math.log10(abertura1)-
 								((pasante1-10)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 						Float calculo = new Float(Math.pow(10,exponente));
-						muestra.setD10(calculo);
+						muestra.setD10(truncaNum(calculo));
 						d10 = true;
 					}
 				i++;	
@@ -358,7 +367,7 @@ public class ControlClasificacion {
 	 * Emite grafico de la clasificacion
 	 * @throws Exception 
 	 */
-	public ChartPanel emitirGrafico(HMuestra muestra) throws Exception{
+	public ChartPanel curvaGranulometrica(HMuestra muestra) throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		IAnalisis analisis = new IAnalisis();
 		Class clase = analisis.getClass();
@@ -386,7 +395,7 @@ public class ControlClasificacion {
         plot1.setOrientation(PlotOrientation.HORIZONTAL);
                 
         final JFreeChart chart = new JFreeChart("Curva Granulométrica", plot1);
-        chart.setBackgroundPaint(Color.white);   
+        //chart.setBackgroundPaint(Color.white);   
               
         XYItemRenderer rend = chart.getXYPlot().getRenderer();
         StandardXYItemRenderer rr = (StandardXYItemRenderer)rend;
@@ -394,8 +403,8 @@ public class ControlClasificacion {
         rr.setSeriesPaint(0, Color.black);
                 
         plot1.setBackgroundPaint(Color.yellow);
-        plot1.setDomainCrosshairPaint(Color.black);
-        plot1.setDomainMinorGridlinePaint(Color.blue);
+        //plot1.setDomainCrosshairPaint(Color.black);
+        //plot1.setDomainMinorGridlinePaint(Color.blue);
         plot1.setDomainGridlinesVisible(true);
         
         plot1.setDomainGridlinePaint(Color.black);
@@ -461,19 +470,24 @@ public class ControlClasificacion {
         plot1.setOrientation(PlotOrientation.HORIZONTAL);
                 
         final JFreeChart chart = new JFreeChart("Carta de Plasticidad", plot1);
-        chart.setBackgroundPaint(Color.white);
         plot1.getRenderer().setSeriesStroke(1, new BasicStroke( 
         	        2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 
         	        1.0f, new float[] {6.0f, 6.0f}, 0.0f 
         	    ));
                       
-        plot1.setBackgroundPaint(Color.yellow);
-        plot1.setDomainCrosshairPaint(Color.black);
-        plot1.setDomainMinorGridlinePaint(Color.blue);
-        plot1.setDomainGridlinesVisible(true);
+        plot1.setBackgroundPaint(Color.YELLOW);
+        XYItemRenderer rend = chart.getXYPlot().getRenderer();
+        StandardXYItemRenderer rr = (StandardXYItemRenderer)rend;
+       
+        rr.setSeriesPaint(0, Color.black);
+        rr.setSeriesPaint(1,Color.red);
+        rr.setSeriesPaint(2, Color.cyan);
+        //plot1.setDomainCrosshairPaint(Color.black);
+        //plot1.setDomainMinorGridlinePaint(Color.red);
+        //plot1.setDomainGridlinesVisible(true);
         
-        plot1.setDomainGridlinePaint(Color.black);
-        plot1.setRangeGridlinePaint(Color.black);
+        //plot1.setDomainGridlinePaint(Color.black);
+        //plot1.setRangeGridlinePaint(Color.black);
         
         final ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new java.awt.Dimension(200, 350));
@@ -498,6 +512,21 @@ public class ControlClasificacion {
 		}else{
 			return true;
 		}
-		
 	}
+	
+	/**
+    * Trunca el numero a solo una decimal.
+    * @param num
+    * @return valor
+    * @throws Exception
+    */
+	public static Float truncaNum(Float num) throws Exception{
+		float valor = 0;
+		valor = num;
+		valor = valor*10;
+        valor = java.lang.Math.round(valor);
+        valor = valor/10;
+        return valor;
+    }
+	
 }

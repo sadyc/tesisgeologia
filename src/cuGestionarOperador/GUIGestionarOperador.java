@@ -1,7 +1,6 @@
 package cuGestionarOperador;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -10,12 +9,9 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import javax.swing.RowFilter;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import comun.TablePanel;
 
@@ -321,7 +317,13 @@ public class GUIGestionarOperador extends JDialog	{
 	public TablePanel getTablePanel() {
 		if (this.tablePanel==null) {
 			this.tablePanel = new TablePanel();
-	 		this.tablePanel.setData(data, getColumName());			
+	 		this.tablePanel.setData(data, getColumName());
+	 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+	 	    tcr.setHorizontalAlignment(SwingConstants.CENTER);
+	 	    for (int i = 0; i < 5; i++) {
+	 	    	tablePanel.getTable().getColumnModel().getColumn(i).setCellRenderer(tcr);
+	 	    	
+			}
 		}
 		return this.tablePanel;
 	}

@@ -26,14 +26,12 @@ public class Persistencia {
 	private static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	private static PersistenceManager pmi = null;
 	private Transaction tx = null;
-	private boolean yaExiste;
 	
 	/**
 	 * Default constructor.
 	 * @throws Exception 
 	 */
 	public Persistencia () {
-		yaExiste = false;
 	}
 	
 	public void abrirTransaccion() throws Exception{
@@ -52,7 +50,6 @@ public class Persistencia {
         }
 		catch (JDOException e) {
 			System.out.println("Error insertar Objeto con clave ya existente en Persistencia Generico");
-		    yaExiste=true;
 		    realizarRollback();
 		}
 		catch (Exception e){
@@ -173,12 +170,5 @@ public class Persistencia {
 		pmi.close();
 	}
 
-	/**
-	 * Retorna si un objeto a insertar ya existe en la base de datos.
-	 * @return yaExiste
-	 */
-	public boolean getExiste(){
-		return yaExiste;
-	}
 	//metodos particulares de busqueda.
 }

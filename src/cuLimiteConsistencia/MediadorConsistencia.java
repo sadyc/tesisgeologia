@@ -14,9 +14,7 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.HMuestra;
-import cuBuscar.MediadorBuscar;
 import cuCompararMuestra.GUISeleccionarMuestra;
-import cuGestionarAnalisis.ControlGestionarAnalisis;
 import cuGestionarMuestra.ControlGestionarMuestra;
 import cuGestionarMuestra.GUIABMMuestra;
 
@@ -167,20 +165,6 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
    				   		
 		}
 	}
-	
-	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Muestra"
-	 */
-	public void buscarMuestra(){
-		try {
-   			System.out.println("Button Buscar Muestra");
-   			new MediadorBuscar();	
-		} catch (Exception e) {
-
-			e.printStackTrace();
-		}
-	}
-	
 	/**
 	 * @return the seleccionado
 	 * @throws Exception 

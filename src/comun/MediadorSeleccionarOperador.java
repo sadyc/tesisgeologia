@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -16,7 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.GOperadorDeLaboratorio;
-import cuBuscar.MediadorBuscar;
 import cuGestionarOperador.ControlGestionarOperador;
 import cuGestionarOperador.GUIGestionarOperador;
 import cuGestionarOperador.MediadorAltaOperador;
@@ -26,7 +24,7 @@ import cuGestionarOperador.MediadorModificarOperador;
 /**
 * @author TesisGeología
 */
-public class MediadorSeleccionarOperador implements ActionListener, KeyListener, MouseListener{
+public class MediadorSeleccionarOperador extends Mediador{
 
 
 	private GUIGestionarOperador GUIGestionarOperador = null;
@@ -187,18 +185,6 @@ public class MediadorSeleccionarOperador implements ActionListener, KeyListener,
 			catch (Exception e) {
 				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un Operador invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
-		}
-	}
-	
-	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Buscar Operador"
-	 */
-	public void buscarOperador(){
-		try {
-   			System.out.println("Button Buscar Operador");
-   			new MediadorBuscar();	
-   		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 	

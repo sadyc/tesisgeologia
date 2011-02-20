@@ -231,6 +231,21 @@ public class MediadorPrincipal extends Mediador{
 		try {
 			MediadorConsistencia consistencia = new MediadorConsistencia();
 			if (consistencia.seSeleccionoMuestra()){
+				/*Muestra muestra = consistencia.getSeleccionado();
+				ControlClasificacion control = new ControlClasificacion();
+				if (control.buscarAnalisis("200") && control.buscarAnalisis("40")&& control.buscarAnalisis("10")  && muestra.getIndicePlasticidad()!=0){
+					if (muestra.getAashto()==null) {
+						control.calcularClasificacionAASHTO(muestra);
+					}
+					if (muestra.getAashto().getNombre()==){
+						
+					}
+					new MediadorAltaLimiteConsistencia(consistencia.getSeleccionado());
+				}
+				else{
+					JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificacion AASHTO, Faltan analisis para los tamices 10, 40 0 200","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+					
+				}*/
 				new MediadorAltaLimiteConsistencia(consistencia.getSeleccionado());
 			}
 		} catch (Exception e) {
