@@ -156,8 +156,8 @@ public class GUIClasificacion extends JDialog{
 			clasificacionSucs = new JLabel ("Clasificacion: ");
 		}
 		else{
-			clasificacionSucs = new JLabel ("Clasificacion: "+muestra.getAashto().getNombre());
-			descripcionSucs = new JLabel ("Descripcion: "+muestra.getAashto().getDescripcion());
+			clasificacionSucs = new JLabel ("Clasificacion: "+muestra.getSucs().getNombre());
+			descripcionSucs = new JLabel ("Descripcion: "+muestra.getSucs().getDescripcion());
 		}
 		if (muestra.getAashto()==null){
 			descripcionAashto = new JLabel ("Descripcion: ");

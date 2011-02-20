@@ -223,6 +223,8 @@ public class CargaDatos {
 		insertarAashto(aashto11);
 		
 		
+		
+		
 		BSUCS sucs = new BSUCS("ML");
 		BSUCS sucs1 = new BSUCS("CL");
 		BSUCS sucs2 = new BSUCS("OL");
@@ -239,6 +241,11 @@ public class CargaDatos {
 		BSUCS sucs13 = new BSUCS("GM");
 		BSUCS sucs14 = new BSUCS("GC");
 		
+		BSUCS sucs15 = new BSUCS("GW-GM");
+		BSUCS sucs16 = new BSUCS("GW-GC");
+		BSUCS sucs17 = new BSUCS("GP-GM");
+		BSUCS sucs18 = new BSUCS("GP-GC");
+		
 		insertarSucs(sucs);
 		insertarSucs(sucs1);
 		insertarSucs(sucs2);
@@ -254,6 +261,10 @@ public class CargaDatos {
 		insertarSucs(sucs12);
 		insertarSucs(sucs13);
 		insertarSucs(sucs14);
+		insertarSucs(sucs15);
+		insertarSucs(sucs16);
+		insertarSucs(sucs17);
+		insertarSucs(sucs18);
 		
 		Encriptar encriptar = new Encriptar();
 		String a = encriptar.hash("ana");

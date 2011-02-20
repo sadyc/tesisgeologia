@@ -44,11 +44,13 @@ public class ControlGestionarAnalisis {
                         listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
                         Integer porcentajeRetenidoAcumulado= 0;
                         if (listaAnalisis.isEmpty()){
+                        	System.out.println(analisis.getPesoRetenido()*100);
                         	analisis.setPorcentajeRetenidoAcumulado(truncaNum((analisis.getPesoRetenido()*100)/muestra.getPeso()));
                         	analisis.setPorcentajePasante(truncaNum(100-analisis.getPorcentajeRetenidoParcial()));
                         }else{
                         	int i = listaAnalisis.size();
                         	IAnalisis auxAnalisis = new IAnalisis();
+                        	System.out.println(analisis.getPesoRetenido()*100);
                         	auxAnalisis = (IAnalisis)listaAnalisis.get(i-1);
                         	analisis.setPorcentajePasante(truncaNum(auxAnalisis.getPorcentajePasante()- analisis.getPorcentajeRetenidoParcial()));
                         	analisis.setPorcentajeRetenidoAcumulado(truncaNum(auxAnalisis.getPorcentajeRetenidoAcumulado()+ analisis.getPorcentajeRetenidoParcial()));
@@ -96,19 +98,18 @@ public class ControlGestionarAnalisis {
     		HMuestra muestra = new HMuestra();
     		try {
     			String nombreMuestra = analisis.getMuestra().getNombreMuestra();
-    			muestra = (HMuestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"'");
-    			List listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+nombreMuestra+"'");
+    			muestra = (HMuestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+    			List listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+nombreMuestra+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
     			int i=0;
     			analisis = new IAnalisis();
     			while (listaAnalisis.size()>i){
     				if (i==0){
-    					System.out.println("i = 0");
     					analisis = (IAnalisis)listaAnalisis.get(i);
+    					
     					analisis.setPorcentajeRetenidoAcumulado(truncaNum(analisis.getPesoRetenido()*100)/muestra.getPeso());
                     	analisis.setPorcentajePasante(truncaNum(100-analisis.getPorcentajeRetenidoParcial()));
                     	persistencia.insertarObjeto(analisis);
     				}else{
-    					System.out.println("i > 0");
     					IAnalisis auxAnalisis = new IAnalisis();
     					auxAnalisis = (IAnalisis)listaAnalisis.get(i-1);
     					analisis = (IAnalisis)listaAnalisis.get(i);
