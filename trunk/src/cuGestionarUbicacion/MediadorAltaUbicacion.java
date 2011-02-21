@@ -18,8 +18,11 @@ import cuCalcularClasificacion.GUIClasificacion;
 import cuGestionarMuestra.ControlGestionarMuestra;
 
 /**
- * @author TesisGeologia.
- *
+ * @brief Clase que se utiliza para realizar los sucesos en la ventana GestionarUbicacion.
+ * 
+ * @author TesisGeologia
+ * 
+ * @version 1.0.
  */
 
 public class MediadorAltaUbicacion extends Mediador{

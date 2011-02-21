@@ -15,8 +15,11 @@ import persistencia.domain.Ubicacion;
 import comun.Mediador;
 
 /**
- * @author Leon
- *
+ * @brief Clase que se utiliza para realizar los sucesos en la ventana ModificarUbicacion.
+ * 
+ * @author TesisGeologia
+ * 
+ * @version 1.0.
  */
 public class MediadorModificarUbicacion extends Mediador{
 	private GUIUbicacion GUIUbicacion;
@@ -81,7 +84,6 @@ public class MediadorModificarUbicacion extends Mediador{
 			else {
 				control.modificarUbicacion(nombreUbicacion,ciudad,GUIUbicacion.getData());
 				if (control.getExiste()) {
-					System.out.println("El objeto ya existe");
 					JOptionPane.showMessageDialog(frame,"La ubicación con esas coordenadas ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
 				}
 				else {

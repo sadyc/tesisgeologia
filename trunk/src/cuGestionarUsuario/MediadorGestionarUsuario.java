@@ -16,6 +16,13 @@ import javax.swing.JOptionPane;
 
 import persistencia.domain.Usuario;
 
+/**
+ * @brief Clase que se utiliza para realizar los sucesos en la ventana para gestionar un Usuario.
+ * 
+ * @author TesisGeologia
+ * @version 1.0
+ *
+ */
 public class MediadorGestionarUsuario implements ActionListener, KeyListener, MouseListener{
 		
 	private GUIGestionarUsuario GUIGestionarUsuario;
@@ -25,6 +32,11 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 
 		
 	
+	/**
+	 * Constructor con pasaje de parametros.
+	 * @param nombreVentana
+	 * @throws Exception
+	 */
 	public MediadorGestionarUsuario(String nombreVentana) throws Exception {
 		super();
 		cargarTablaDeMuestras();
@@ -64,26 +76,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 		    i++;
 		}
 	}
-	
-	private void cargarTablaDeMuestras(Collection resultado) {
-		data = new Object [resultado.size()] [7];
-		int i = 0;
-		Usuario usuario = new Usuario();
-		Iterator<Usuario> it = resultado.iterator();
-		while (it.hasNext()){
-			usuario = it.next();
-			data [i][0]= usuario.getNombre();
-			data [i][1]= usuario.getApellido();
-			data [i][2]= usuario.getDni();
-		    data [i][3]= usuario.getNombreUsuario();
-		    data [i][4]= usuario.getCategoria();
-		    data [i][5]= usuario.getEmail();
-		    data [i][6]= usuario.getTel();
-		    i++;
-		}
-		
-	}
-			
+				
 	public void show()	{
 		 GUIGestionarUsuario.show();
 	}
@@ -155,8 +148,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta seguro de eliminar este usuario?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	        if(quitOption==JOptionPane.YES_OPTION){
 	        	try{
-	        		System.out.println(GUIGestionarUsuario.getTablePanel().getSelectedRow());
-	        	   	String [] fila = GUIGestionarUsuario.getTablePanel().getRow(GUIGestionarUsuario.getTablePanel().getSelectedRow());
+	        		String [] fila = GUIGestionarUsuario.getTablePanel().getRow(GUIGestionarUsuario.getTablePanel().getSelectedRow());
 	            	GUIGestionarUsuario.getTablePanel().removeRow(GUIGestionarUsuario.getTablePanel().getSelectedRow());
 	            	String dni = fila[2];
 	               	try {

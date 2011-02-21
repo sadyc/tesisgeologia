@@ -9,8 +9,8 @@ import persistencia.Persistencia;
 import persistencia.domain.Tamiz;
 
 /**
- * Clase que se utiliza para gestionar los datos con persistencia en la base
- * de datos del sistema.
+ * Clase que se utiliza para gestionar los datos de tamiz 
+ * con persistencia en la base de datos del sistema.
  * 
  * @author tesisGeologia
  * @version 1.0
@@ -33,7 +33,6 @@ public class ControlTamiz {
 		try {
 			aux = (persistencia.buscarColeccionFiltro(tamiz.getClass(),"aberturaMalla<"+abertura));
 			persistencia.cerrarTransaccion();
-			System.out.println("La coleccion ha sido cargada");
 		} catch (Exception e) {
 			persistencia.realizarRollback();
 		}

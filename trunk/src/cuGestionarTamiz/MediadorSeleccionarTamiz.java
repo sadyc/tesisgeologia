@@ -15,7 +15,13 @@ import persistencia.domain.Tamiz;
 import comun.Mediador;
 
 
-
+/**
+ * @brief Clase que se utiliza para realizar los sucesos en la ventana SeleccionarTamiz.
+ * 
+ * @author TesisGeologia
+ * 
+ * @version 1.0.
+ */
 public class MediadorSeleccionarTamiz extends Mediador{
 
 	private GUISeleccionarTamiz GUISeleccionarTamiz = null;
@@ -24,6 +30,11 @@ public class MediadorSeleccionarTamiz extends Mediador{
 	private Component frame;
 	
 	
+	/**
+	 * Constructor con pasaje de parametros.
+	 * @param abertura
+	 * @throws Exception
+	 */
 	public MediadorSeleccionarTamiz(Double abertura) throws Exception {
 		super();
 		cargarTablaDeTamiz(abertura);

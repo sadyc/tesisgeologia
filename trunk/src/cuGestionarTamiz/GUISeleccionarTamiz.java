@@ -21,6 +21,8 @@ import comun.TablePanel;
 /**
 * @author TesisGeología
 * Esta clase implementa la ventana que me permite seleccionar un tamiz de los almacenados.
+* 
+* @version 1.0.
 */
 public class GUISeleccionarTamiz extends JDialog	{
 

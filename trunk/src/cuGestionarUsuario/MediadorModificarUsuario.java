@@ -15,6 +15,13 @@ import cuLogin.Encriptar;
 
 import persistencia.domain.Usuario;
 
+/**
+ * @brief Clase que se utiliza para realizar los sucesos en la ventana para modificar un Usuario.
+ * 
+ * @author TesisGeologia
+ * @version 1.0
+ *
+ */
 public class MediadorModificarUsuario implements ActionListener, KeyListener, MouseListener {
 	private GUIUsuario GUIUsuario;
 	private boolean modificoUsuario;
@@ -24,6 +31,11 @@ public class MediadorModificarUsuario implements ActionListener, KeyListener, Mo
 	private ControlGestionarUsuario control = new ControlGestionarUsuario();
 	
 
+	/**
+	 * Constructor con pasaje de parametros.
+	 * @param fila
+	 * @throws Exception
+	 */
 	public MediadorModificarUsuario(String[] fila) throws Exception {
 		super();
 		usuarioModificar = (control.obtenerUsuario(fila[2]));
@@ -118,15 +130,12 @@ public class MediadorModificarUsuario implements ActionListener, KeyListener, Mo
 		try {
 			password = encriptar.hash(GUIUsuario.getjPasswordField().getText());
 		} catch (Exception e1) {
-			System.out.println("El password es muy extenso!");
 			e1.printStackTrace();
 		}
 		data[7]= password;
-		System.out.println(String.valueOf(GUIUsuario.getjComboBoxCategoria().getSelectedIndex()));
 		try {
 			control.modificarUsuario(usuarioModificar.getDni(),data);
 			if (control.getExiste()) {
-				System.out.println("El objeto ya existe");
 				JOptionPane.showMessageDialog(frame,"El usuario con DNI: "+data[2]+" ó nombre de usuario: "+data[3]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {

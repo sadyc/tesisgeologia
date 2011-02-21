@@ -21,8 +21,14 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import comun.TablePanel;
 
+/**
+ * Clase GUI que reprensenta la ventana para gestionar usuarios.
+ * @author TesisGeologia.
+ * @version 1.0.
+ *
+ */
 public class GUIGestionarUsuario extends JDialog{
-	// Variables declaration - do not modify
+	
     private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonModificar;
@@ -263,10 +269,6 @@ public class GUIGestionarUsuario extends JDialog{
 
         pack();
     }// </editor-fold>
-
-    private void jTextFieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
 
     private void jComboBoxBuscarActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
