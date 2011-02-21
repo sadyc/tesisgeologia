@@ -15,10 +15,9 @@ import persistencia.domain.Usuario;
 import cuLogin.Encriptar;
 
 /**
- * Clase que permite la carga de ciertos datos para poder utilizar el 
- * Sistema Clasificador de Suelos
  * @author TesisGeologia
- * @version 1.0
+ * Clase que permite la carga de ciertos datos para poder utilizar el 
+ * Sistema Clasificador de Suelos 
  */
 public class CargaDatos {
 
@@ -266,10 +265,10 @@ public class CargaDatos {
 		
 		Encriptar encriptar = new Encriptar();
 		String a = encriptar.hash("ana");
-		String b = encriptar.hash("pepe");
-		Usuario usuario1 = new Usuario("Juan", "Perez", "555","juanPerez","administrador", "juan@perez.com", "4917015",b);
-		Usuario usuario2 = new Usuario("pepe", "grillo", "111", "pepito", "administrador", "pepe@grillo", "444-222", "pepito el grosso");
-		Cliente cliente1 = new Cliente("cliente 1", "no se", "dni", "email", "tel");
+		String b = encriptar.hash("admin");
+		Usuario usuario1 = new Usuario("Juan", "Perez", "555","admin","Administrador", "juan@perez.com", "4917015",b);
+		Usuario usuario2 = new Usuario("pepe", "grillo", "111", "pepito", "Administrador", "pepe@grillo", "444-222", "pepito el grosso");
+		Cliente cliente1 = new Cliente("Carlos", "Leoni", "453342", "email@email.com", "45678");
 		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),operador1,null,ubicacion1,null,null,cliente1,null);	
 	//	Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),operador2,null,ubicacion2,null,null,cliente1,null);	
 		try {
