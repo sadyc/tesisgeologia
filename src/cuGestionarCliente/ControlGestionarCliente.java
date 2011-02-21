@@ -5,7 +5,7 @@ import java.util.Collection;
 import javax.jdo.JDOException;
 
 import persistencia.Persistencia;
-import persistencia.domain.DCliente;
+import persistencia.domain.Cliente;
 
 public class ControlGestionarCliente {
 	private boolean yaExiste;
@@ -19,7 +19,7 @@ public class ControlGestionarCliente {
 	/**
 	 * Inserta un cliente con persistencia. 
 	 */ 
-	public void insertarCliente(DCliente cliente) throws Exception{
+	public void insertarCliente(Cliente cliente) throws Exception{
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
@@ -45,8 +45,8 @@ public class ControlGestionarCliente {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
-			DCliente cliente = new DCliente();
-			DCliente auxcliente = (DCliente)persistencia.buscarObjeto(cliente.getClass(), "dni=='"+DNI+"'");
+			Cliente cliente = new Cliente();
+			Cliente auxcliente = (Cliente)persistencia.buscarObjeto(cliente.getClass(), "dni=='"+DNI+"'");
 			persistencia.eliminarObjeto(auxcliente);
 			persistencia.cerrarTransaccion();
 		}
@@ -60,11 +60,11 @@ public class ControlGestionarCliente {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		DCliente aux = new DCliente();
+		Cliente aux = new Cliente();
 		try {
 			Class claseCliente = aux.getClass();
 			if (persistencia.buscarObjeto(claseCliente,"dni=='"+data[2]+"'")==null){
-				aux =(DCliente)persistencia.buscarObjeto(claseCliente, "dni=='"+DNI+"'");
+				aux =(Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+DNI+"'");
 				aux.setNombre(data[0]);
 				aux.setApellido(data[1]);
 				aux.setDni(data[2]);
@@ -91,12 +91,12 @@ public class ControlGestionarCliente {
 	 * @param DNI
 	 * @return
 	 */
-	public DCliente obtenerCliente (String DNI) throws Exception{
+	public Cliente obtenerCliente (String DNI) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		DCliente aux = new DCliente();
+		Cliente aux = new Cliente();
 		try {
-			aux =(DCliente)persistencia.buscarObjeto(aux.getClass(), "dni=='"+DNI+"'");
+			aux =(Cliente)persistencia.buscarObjeto(aux.getClass(), "dni=='"+DNI+"'");
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
@@ -111,7 +111,7 @@ public class ControlGestionarCliente {
 	public Collection coleccionClientes(Class clase) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		Collection<DCliente> aux = null;
+		Collection<Cliente> aux = null;
 		try {
 			aux = (persistencia.buscarColeccion(clase));
 			persistencia.cerrarTransaccion();

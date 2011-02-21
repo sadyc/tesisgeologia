@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.DCliente;
+import persistencia.domain.Cliente;
 
 import comun.Mediador;
 
@@ -20,7 +20,7 @@ public class MediadorModificarCliente extends Mediador{
 	private boolean modificoCliente;
 	private String[] data = new String [7];
 	private Component frame;
-	private DCliente clienteModificar;
+	private Cliente clienteModificar;
 	private ControlGestionarCliente control = new ControlGestionarCliente();
 	
 

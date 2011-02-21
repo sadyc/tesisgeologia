@@ -10,7 +10,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable 
-public class FUbicacion {
+public class Ubicacion {
 	
 	private String latitud;
 	
@@ -18,12 +18,12 @@ public class FUbicacion {
 	private String nombreUbicacion;
 	public String ciudad;
 	private String provincia;
-	private Collection<HMuestra> muestras = new HashSet();
+	private Collection<Muestra> muestras = new HashSet();
 	
 	/**
 	 *Contructor por defecto.
 	 */
-	public FUbicacion(){
+	public Ubicacion(){
 		nombreUbicacion= "";
 		provincia = null;
 		latitud = "";
@@ -33,7 +33,7 @@ public class FUbicacion {
 	/**
 	 *Contructor con pasaje de parametros.
 	 */
-	public FUbicacion(String nombreUbicacion,String ciudad, String prov, String latitud, String longitud){
+	public Ubicacion(String nombreUbicacion,String ciudad, String prov, String latitud, String longitud){
 		this.nombreUbicacion= nombreUbicacion;
 		this.ciudad = ciudad;
 		this.provincia = prov;
@@ -104,7 +104,7 @@ public class FUbicacion {
 	 * Metodo que permite agregar una muestra a la ubicacion
 	 * @param muestra, muestra a ser agregada a la ubicacion.
 	 */
-	public void addMuestra (HMuestra muestra){
+	public void addMuestra (Muestra muestra){
 		this.muestras.add(muestra);
 	}
 	
@@ -112,7 +112,7 @@ public class FUbicacion {
 	 * Metodo que permite quitar una muestra a la ubicacion.
 	 * @param muestra, muestra a ser eliminada a la ubicacion.
 	 */
-	public void removeMuesra (HMuestra muestra){
+	public void removeMuesra (Muestra muestra){
 		muestras.remove(muestra);
 	}
 	
@@ -121,7 +121,7 @@ public class FUbicacion {
 	 * Metodo que me retorna las muestras tomadas en una ubicacion.
 	 * @return muestras, coleccion de muestras tomadas en una ubicacion.
 	 */
-	public Collection<HMuestra> getMuestras(){
+	public Collection<Muestra> getMuestras(){
 		return (muestras);
 	}
 
@@ -151,7 +151,7 @@ public class FUbicacion {
 		return nombreUbicacion;
 	}
 	
-	public boolean equals(FUbicacion ubicacion){
+	public boolean equals(Ubicacion ubicacion){
 		return (this.latitud.equals(ubicacion.getLatitud()) && this.longitud.equals(ubicacion.getLongitud())); 
 	}
 	

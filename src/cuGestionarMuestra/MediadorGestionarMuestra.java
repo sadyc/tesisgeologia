@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import persistencia.domain.DUsuario;
-import persistencia.domain.HMuestra;
+import persistencia.domain.Muestra;
+import persistencia.domain.Usuario;
 
 import comun.Mediador;
 
@@ -32,14 +32,14 @@ public class MediadorGestionarMuestra extends Mediador{
 	private TableRowSorter<TableModel> tablaOrdenada;
 	private Object [][] data ;
 	private Component frame;
-	private HMuestra muestra;
-	private DUsuario usuario;
+	private Muestra muestra;
+	private Usuario usuario;
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
 	private Object [] seleccionado = new Object [4];
 	private boolean seleccionoMuestra = false;
 		
 	
-	public MediadorGestionarMuestra(String nombreVentana, DUsuario usuario) throws Exception {
+	public MediadorGestionarMuestra(String nombreVentana, Usuario usuario) throws Exception {
 		super();
 		this.usuario=usuario;
 		cargarTablaDeMuestras();
@@ -63,10 +63,10 @@ public class MediadorGestionarMuestra extends Mediador{
 	 */
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
-		HMuestra muestra = new HMuestra();
+		Muestra muestra = new Muestra();
 		Class clase = muestra.getClass();
-		Collection<HMuestra> muestras = control.coleccionMuestras(clase);
-		Iterator<HMuestra> it = muestras.iterator();
+		Collection<Muestra> muestras = control.coleccionMuestras(clase);
+		Iterator<Muestra> it = muestras.iterator();
 		data = new Object [muestras.size()] [10];
 		int i = 0;
 		while (it.hasNext()){
@@ -154,8 +154,8 @@ public class MediadorGestionarMuestra extends Mediador{
 	private void cargarTablaDeMuestras(Collection resultado) {
 		data = new Object [resultado.size()] [6];
 		int i = 0;
-		HMuestra muestra = new HMuestra();
-		Iterator<HMuestra> it = resultado.iterator();
+		Muestra muestra = new Muestra();
+		Iterator<Muestra> it = resultado.iterator();
 		while (it.hasNext()){
 			muestra = it.next();
 			data [i][0]= muestra.getUbicacion().getNombreUbicacion();

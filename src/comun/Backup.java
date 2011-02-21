@@ -49,7 +49,7 @@ public class Backup {
 	                f = new File(filePath + ".sql");
 	                filePath = f.getPath();  
 	            }
-	            crearBackUpWindowsX86();
+	            crearBackUpWindowsX86(); 
         }
     }
     
@@ -133,11 +133,8 @@ public class Backup {
 		 
 
 	            try{       
-	                //sentencia para crear el BackUp
-	                 Process run = Runtime.getRuntime().exec(dirMySQL+"mysqldump --host=localhost --port=3306 --user=root --password=root --compact --complete-insert --extended-insert --skip-quote-names"
-	                		 +" --skip-comments --skip-triggers tesis");
-	              
-	                //se guarda en memoria el backup
+	                Process run = Runtime.getRuntime().exec(dirMySQL+"mysqldump --host=localhost --port=3306 --user=root --password=root tesis");
+
 	                InputStream in = run.getInputStream();
 	                BufferedReader br = new BufferedReader(new InputStreamReader(in));
 	                File backupFile = new File(filePath);
@@ -154,12 +151,12 @@ public class Backup {
 	    			br.close();
 	                in.close();        
 	           
-	                /* se crea y escribe el archivo SQL */
+	                // se crea y escribe el archivo SQL 
 	                
 	                fichero = new FileWriter(backupFile);
 	                pw = new PrintWriter(fichero);                                         
 	                pw.println(temp.toString());  
-	                JOptionPane.showMessageDialog(null, "Se ha creado el Back-Up con éxito", "Exito!",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha creado el Back-Up con éxito", "Exito!",JOptionPane.INFORMATION_MESSAGE);
 
 	           }
 	            catch (Exception ex){

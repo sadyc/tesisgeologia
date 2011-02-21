@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.DUsuario;
+import persistencia.domain.Usuario;
 import cuLogin.Encriptar;
 
 public class MediadorVerificarPassword implements ActionListener, KeyListener, MouseListener {
@@ -42,7 +42,7 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 	 			JOptionPane.showMessageDialog(frame,"El password no puede ser vacio.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 		 	else{
-		 		DUsuario usuario = control.obtenerUsuario(dni);
+		 		Usuario usuario = control.obtenerUsuario(dni);
 		 		Encriptar encriptar = new Encriptar();
 				String password = "";
 				try {

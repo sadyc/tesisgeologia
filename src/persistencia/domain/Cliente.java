@@ -13,13 +13,13 @@ import javax.jdo.annotations.PersistenceCapable;
  *
  */
 @PersistenceCapable
-public class DCliente extends CPersona{
-	protected Collection<HMuestra> muestras = new HashSet();
+public class Cliente extends Persona{
+	protected Collection<Muestra> muestras = new HashSet();
 	
 	/**
 	 * Default constructor.
 	 */
-	public DCliente() {
+	public Cliente() {
 		super();
 	}
 	
@@ -31,7 +31,7 @@ public class DCliente extends CPersona{
 	 * @param email, direccion de e-mail del cliente creado.
 	 * @param tel, numero de telefono del cliente creado.
 	 */
-	public DCliente(String nombre, String apellido, String dni, String email, String tel) {
+	public Cliente(String nombre, String apellido, String dni, String email, String tel) {
 		super(nombre, apellido, dni, tel, email);
 	}
 	
@@ -39,7 +39,7 @@ public class DCliente extends CPersona{
 	 * Metodo que permite agregar una muestra al cliente.
 	 * @param muestra, muestra a ser agregada al cliente.
 	 */
-	public void addMuestra (HMuestra muestra){
+	public void addMuestra (Muestra muestra){
 		this.muestras.add(muestra);
 	}
 	
@@ -47,7 +47,7 @@ public class DCliente extends CPersona{
 	 * Metodo que permite quitar una muestra al cliente.
 	 * @param muestra, muestra a ser eliminada al cliente.
 	 */
-	public void removeMuesra (HMuestra muestra){
+	public void removeMuesra (Muestra muestra){
 		muestras.remove(muestra);
 	}
 	
@@ -56,7 +56,7 @@ public class DCliente extends CPersona{
 	 * Metodo que me retorna las muestras correspondientes a el cliente.
 	 * @return muestras, coleccion de muestras correspondientes cliente.
 	 */
-	public Collection<HMuestra> getMuestras(){
+	public Collection<Muestra> getMuestras(){
 		return (muestras);
 	}
 

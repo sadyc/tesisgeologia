@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 import comun.Mediador;
 
-import persistencia.domain.FUbicacion;
+import persistencia.domain.Ubicacion;
 import cuGestionarMuestra.ControlGestionarMuestra;
 
 public class MediadorGestionarUbicacion extends Mediador{
@@ -48,10 +48,10 @@ public class MediadorGestionarUbicacion extends Mediador{
 	 */
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
-		FUbicacion ubicacion = new FUbicacion();
+		Ubicacion ubicacion = new Ubicacion();
 		Class clase = ubicacion.getClass();
 		Collection ubicaciones = control.coleccionMuestras(clase);
-		Iterator<FUbicacion> it = ubicaciones.iterator();
+		Iterator<Ubicacion> it = ubicaciones.iterator();
 		int i = 0;
 		data = new Object [ubicaciones.size()] [5];
 		while (it.hasNext()){

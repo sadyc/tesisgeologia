@@ -8,8 +8,8 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.IAnalisis;
-import persistencia.domain.HMuestra;
+import persistencia.domain.Analisis;
+import persistencia.domain.Muestra;
 
 import comun.Mediador;
 
@@ -27,8 +27,8 @@ public class MediadorAltaAnalisis  extends Mediador{
 	
 	private GUIAltaAnalisis GUIAnalisis;
 	private String pesoRetenido;
-	private HMuestra muestra = new HMuestra();
-	private IAnalisis analisis;
+	private Muestra muestra = new Muestra();
+	private Analisis analisis;
 	private String[] data= new String[5];
 	private String numeroTamiz;
 	private ControlGestionarAnalisis control;
@@ -38,11 +38,11 @@ public class MediadorAltaAnalisis  extends Mediador{
 	/**
 	 * This is the default constructor
 	 */
-	public MediadorAltaAnalisis(HMuestra muestra) {
+	public MediadorAltaAnalisis(Muestra muestra) {
 		super();
 		control =   new ControlGestionarAnalisis();
 		this.muestra = muestra;
-		analisis = new IAnalisis();
+		analisis = new Analisis();
 		GUIAnalisis = new GUIAltaAnalisis(muestra);
 		GUIAnalisis.setTitle("Analisis por Tamiz de una Muestra");
 		GUIAnalisis.setModal(true);
@@ -67,7 +67,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 	/**
 	 * @return the altaMuestra
 	 */
-	public IAnalisis getAnalisis() {
+	public Analisis getAnalisis() {
 		return analisis;
 	}
 	/**
@@ -113,7 +113,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 	private void seleccionarTamiz() {
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonSeleccionarTamiz");
 		try {
-			analisis = new IAnalisis();
+			analisis = new Analisis();
 			analisis = control.ultimoAnalisis(muestra);
 			System.out.println(analisis.getTamiz().getAberturaMalla());
 			if (analisis.getTamiz().getAberturaMalla()==0){
@@ -156,7 +156,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 						JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso pasante por el último tamiz que es: "+(muestra.getPeso()-pesoPasante),"ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
 					}
 					else{
-						analisis = new IAnalisis();
+						analisis = new Analisis();
 						analisis.setPesoRetenido(Float.parseFloat(pesoRetenido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
 						try {
 							data = control.insertarAnalisis(analisis, muestra, numeroTamiz);

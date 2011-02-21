@@ -17,14 +17,14 @@ import javax.jdo.annotations.PersistenceCapable;
  * @version 1.0  24/09/2010
  */
 @PersistenceCapable
-public class GOperadorDeLaboratorio extends CPersona {
+public class OperadorDeLaboratorio extends Persona {
 
-	protected Collection<HMuestra> muestras = new HashSet();
+	protected Collection<Muestra> muestras = new HashSet();
 	
 	/**
 	 * Default constructor.
 	 */
-	public GOperadorDeLaboratorio() {
+	public OperadorDeLaboratorio() {
 		super();
 	}
 	
@@ -34,7 +34,7 @@ public class GOperadorDeLaboratorio extends CPersona {
 	 * @param apellido, apellido del operadorLaboratorio de laboratorio creado.
 	 * @param dni, DNI del operadorLaboratorio de laboratorio creado.
 	 */
-	public GOperadorDeLaboratorio(String nombre, String apellido, String dni, String email, String tel) {
+	public OperadorDeLaboratorio(String nombre, String apellido, String dni, String email, String tel) {
 		super(nombre, apellido, dni, tel, email);
 	}
 	
@@ -42,7 +42,7 @@ public class GOperadorDeLaboratorio extends CPersona {
 	 * Metodo que permite agregar una muestra al operadorLaboratorio de laboratorio
 	 * @param muestra, muestra a ser agregada al operadorLaboratorio de laboratorio.
 	 */
-	public void addMuestra (HMuestra muestra){
+	public void addMuestra (Muestra muestra){
 		this.muestras.add(muestra);
 	}
 	
@@ -50,7 +50,7 @@ public class GOperadorDeLaboratorio extends CPersona {
 	 * Metodo que permite quitar una muestra al operadorLaboratorio de laboratorio
 	 * @param muestra, muestra a ser eliminada al operadorLaboratorio de laboratorio.
 	 */
-	public void removeMuesra (HMuestra muestra){
+	public void removeMuesra (Muestra muestra){
 		muestras.remove(muestra);
 	}
 	
@@ -59,7 +59,7 @@ public class GOperadorDeLaboratorio extends CPersona {
 	 * Metodo que me retorna las muestras tomadas por el operadorLaboratorio de laboratorio.
 	 * @return muestras, coleccion de muestras tomadas por el operadorLaboratorio de laboratorio.
 	 */
-	public Collection<HMuestra> getMuestras(){
+	public Collection<Muestra> getMuestras(){
 		return (muestras);
 	}
 

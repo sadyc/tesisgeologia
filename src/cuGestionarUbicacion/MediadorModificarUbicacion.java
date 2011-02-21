@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.FUbicacion;
+import persistencia.domain.Ubicacion;
 
 import comun.Mediador;
 
@@ -33,7 +33,7 @@ public class MediadorModificarUbicacion extends Mediador{
 	 */
 	public MediadorModificarUbicacion(String[] data) {
 		super();
-		FUbicacion ubicacion = new FUbicacion();
+		Ubicacion ubicacion = new Ubicacion();
 		nombreUbicacion = data[0];
 		ciudad = data[1];
 		ubicacion.setNombreUbicacion(data[0]);

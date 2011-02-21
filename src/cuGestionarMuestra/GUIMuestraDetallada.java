@@ -18,7 +18,7 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import persistencia.domain.HMuestra;
+import persistencia.domain.Muestra;
 
 import comun.TablePanel;
 
@@ -129,7 +129,7 @@ public class GUIMuestraDetallada extends JDialog{
 	 * This is the parametrized constructor used in modification
 	 * @param data1  arreglo que almacena los datos de una muestra1. 
 	 */
-	public GUIMuestraDetallada (HMuestra muestra1, Object [] [] data1) {
+	public GUIMuestraDetallada (Muestra muestra1, Object [] [] data1) {
 		super();
 		this.data1 = data1;
 		menu = new JMenuBar();
@@ -158,7 +158,7 @@ public class GUIMuestraDetallada extends JDialog{
 		this.profundidadInicial1= new JLabel("Profundidad Inicial: "+muestra1.getProfundidadInicial()+"mts");
 		this.profundidadFinal1 = new JLabel("Profundidad Final: "+muestra1.getProfundidadFinal()+"mts");
 		ubicacion1 = new JLabel ("Ubicacion: "+muestra1.getUbicacion().getNombreUbicacion());
-		clasificacion1 = new JLabel ("AClasificacion: ");
+		clasificacion1 = new JLabel ("Clasificacion: ");
 		if (muestra1.getSucs()==null){
 			descripcion1 = new JLabel ("Descripcion: ");
 		}

@@ -11,9 +11,9 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.HMuestra;
-import persistencia.domain.GOperadorDeLaboratorio;
-import persistencia.domain.DUsuario;
+import persistencia.domain.Muestra;
+import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.Usuario;
 
 import comun.Mediador;
 import comun.MediadorSeleccionarOperador;
@@ -35,13 +35,13 @@ public class MediadorModificarMuestra extends Mediador{
 	private String ubicacionModificar;
 	private String dniOperadorModificar;
 	private String dniClienteModificar;
-	private GOperadorDeLaboratorio operador;
-	private HMuestra muestra;
-	private DUsuario usuario;
+	private OperadorDeLaboratorio operador;
+	private Muestra muestra;
+	private Usuario usuario;
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
 	
 
-	public MediadorModificarMuestra(String[] fila, DUsuario usuario) throws Exception {
+	public MediadorModificarMuestra(String[] fila, Usuario usuario) throws Exception {
 		super();
 		this.usuario = usuario;
 		ubicacionModificar = fila[0];

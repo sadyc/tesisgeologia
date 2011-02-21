@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import persistencia.domain.HMuestra;
+import persistencia.domain.Muestra;
 
 
 /*
@@ -52,7 +52,7 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
     private javax.swing.JMenuItem version;
     // End of variables declaration//GEN-END:variables
    
-    public GUILimiteConsistencia(String title, HMuestra muestra) {
+    public GUILimiteConsistencia(String title, Muestra muestra) {
         super();
         setTitle(title);
         jTextFieldLL = new JTextField();
@@ -74,7 +74,7 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
  * This is the parametrized constructor used in modification
  * @param limLiq  arreglo que almacena los datos de una limiteLiquido.
  */
-public GUILimiteConsistencia(String title,String limLiq, String limPlas, HMuestra muestra) {
+public GUILimiteConsistencia(String title,String limLiq, String limPlas, Muestra muestra) {
         super();
         setTitle(title);
         jTextFieldLL = new JTextField(limLiq);

@@ -12,32 +12,32 @@ import javax.jdo.annotations.PrimaryKey;
  *
  */
 @PersistenceCapable
-public class IAnalisis {
+public class Analisis {
 	private Float pesoRetenido;
 	private Float porcentajePasante;
 	private Float porcentajeRetenidoParcial;
 	private Float porcentajeRetenidoAcumulado;
-	protected HMuestra muestra;
-	protected ETamiz tamiz;
+	protected Muestra muestra;
+	protected Tamiz tamiz;
 	
 	
 	/**
 	 * Constructor por defecto 
 	 */
-	public IAnalisis(){
+	public Analisis(){
 		pesoRetenido= null;
 		porcentajePasante= null;
 		porcentajeRetenidoParcial=null;
 		porcentajeRetenidoAcumulado=null;
-		muestra = new HMuestra();
-		tamiz = new ETamiz();
+		muestra = new Muestra();
+		tamiz = new Tamiz();
 	}
 	
 	
 	/**
 	 * Constructor con parametros
 	 */
-	public IAnalisis(Float pesoRetenido, HMuestra muestra, ETamiz tamiz){
+	public Analisis(Float pesoRetenido, Muestra muestra, Tamiz tamiz){
 		this.pesoRetenido = pesoRetenido;
 		this.muestra = muestra;
 		this.tamiz=tamiz;
@@ -79,25 +79,25 @@ public class IAnalisis {
 	/**
 	 * @return the muestra
 	 */
-	public HMuestra getMuestra() {
+	public Muestra getMuestra() {
 		return muestra;
 	}
 	/**
 	 * @param muestra the muestra to set
 	 */
-	public void setMuestra(HMuestra muestra) {
+	public void setMuestra(Muestra muestra) {
 		this.muestra = muestra;
 	}
 	/**
 	 * @return the tamiz
 	 */
-	public ETamiz getTamiz() {
+	public Tamiz getTamiz() {
 		return tamiz;
 	}
 	/**
 	 * @param tamiz the tamiz to set
 	 */
-	public void setTamiz(ETamiz tamiz) {
+	public void setTamiz(Tamiz tamiz) {
 		this.tamiz = tamiz;
 	}
 		

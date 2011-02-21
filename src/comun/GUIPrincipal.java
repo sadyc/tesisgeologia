@@ -79,7 +79,7 @@ public class GUIPrincipal extends JFrame {
 			gestionarMuestraMenu = new JMenuItem("Gestionar Muestra");
 			gestionarAnalisisMenu = new JMenuItem("Gestionar Analisis");
 			gestionarLimiteConsistenciaMenu = new JMenuItem("Gestionar Limite Consistencia");
-			calcularClasificacionMenu = new JMenuItem("Calcular AClasificacion");
+			calcularClasificacionMenu = new JMenuItem("Calcular Clasificacion");
 			compararMuestrasMenu = new JMenuItem("Comparar Muestras");
 			crearBackupMenu = new JMenuItem("Crear BackUp");
 			cargarBackupMenu = new JMenuItem("Cargar BackUp");

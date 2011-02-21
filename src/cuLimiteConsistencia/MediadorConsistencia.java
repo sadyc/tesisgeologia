@@ -13,7 +13,7 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.HMuestra;
+import persistencia.domain.Muestra;
 import cuCompararMuestra.GUISeleccionarMuestra;
 import cuGestionarMuestra.ControlGestionarMuestra;
 import cuGestionarMuestra.GUIABMMuestra;
@@ -67,11 +67,11 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	 */
 	public MediadorConsistencia(Collection coleccion) {
 		super();
-		Iterator<HMuestra> it = coleccion.iterator();
+		Iterator<Muestra> it = coleccion.iterator();
 		data = new Object [coleccion.size()] [8];
 		int i = 0;
 		while (it.hasNext()){
-			HMuestra muestra = it.next();
+			Muestra muestra = it.next();
 			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
 			data [i][1]= muestra.getNombreMuestra();
 			data [i][2]= muestra.getPeso();
@@ -91,10 +91,10 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	 */
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
-		HMuestra muestra = new HMuestra();
+		Muestra muestra = new Muestra();
 		Class clase = muestra.getClass();
 		Collection muestras = control.coleccionMuestras(clase);
-		Iterator<HMuestra> it = muestras.iterator();
+		Iterator<Muestra> it = muestras.iterator();
 		data = new Object [muestras.size()] [8];
 		int i = 0;
 		while (it.hasNext()){
@@ -169,9 +169,9 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	 * @return the seleccionado
 	 * @throws Exception 
 	 */
-	public HMuestra getSeleccionado() throws Exception {
+	public Muestra getSeleccionado() throws Exception {
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
-		HMuestra muestra = (control.obtenerMuestra((String)seleccionado[1],(String)seleccionado[0]));
+		Muestra muestra = (control.obtenerMuestra((String)seleccionado[1],(String)seleccionado[0]));
 		return muestra;
 	}
 	

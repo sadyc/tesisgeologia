@@ -14,9 +14,9 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import persistencia.domain.IAnalisis;
-import persistencia.domain.HMuestra;
-import persistencia.domain.ETamiz;
+import persistencia.domain.Analisis;
+import persistencia.domain.Muestra;
+import persistencia.domain.Tamiz;
 
 import comun.Mediador;
 import cuGestionarMuestra.GUIMuestraDetallada;
@@ -32,8 +32,8 @@ import cuGestionarMuestra.GUIMuestraDetallada;
 public class MediadorGestionarAnalisis extends Mediador{
 	
 	private GUIMuestraDetallada GUImuestraDetallada;
-	private HMuestra muestra;
-	private IAnalisis analisis;
+	private Muestra muestra;
+	private Analisis analisis;
 	private Object [][] data;
 	private Component frame;
 	
@@ -41,7 +41,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 	 * This is the default constructor
 	 * @throws Exception 
 	 */
-	public MediadorGestionarAnalisis(String titulo, HMuestra muestra) throws Exception {
+	public MediadorGestionarAnalisis(String titulo, Muestra muestra) throws Exception {
 		super();
 		this.muestra = muestra;
 		cargarTablaDeAnalisis();
@@ -62,10 +62,10 @@ public class MediadorGestionarAnalisis extends Mediador{
 	 */
 	public void cargarTablaDeAnalisis()throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
-		IAnalisis analisis = new IAnalisis();
+		Analisis analisis = new Analisis();
 		Class clase = analisis.getClass();
 		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(clase,muestra);
-		Iterator<IAnalisis> it = coleccionAnalisis.iterator();
+		Iterator<Analisis> it = coleccionAnalisis.iterator();
 		data = new Object [coleccionAnalisis.size()] [5];
 		int i = 0;
 		while (it.hasNext()){
@@ -124,9 +124,9 @@ public class MediadorGestionarAnalisis extends Mediador{
             if(quitOption==JOptionPane.YES_OPTION){
             	ControlGestionarAnalisis control = new ControlGestionarAnalisis();
             	String [] fila = GUImuestraDetallada.getTablePanel1().getRow(GUImuestraDetallada.getTablePanel1().getSelectedRow());
-            	ETamiz tamiz = new ETamiz();
+            	Tamiz tamiz = new Tamiz();
             	tamiz.setNumeroTamiz(fila[0]);
-              	analisis = new IAnalisis(Float.parseFloat(fila[1]),muestra,tamiz);
+              	analisis = new Analisis(Float.parseFloat(fila[1]),muestra,tamiz);
               	try {
 					control.eliminarAnalisis(analisis);
 					control.recalcularAnalisis(analisis);

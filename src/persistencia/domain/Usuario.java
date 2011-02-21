@@ -15,17 +15,17 @@ import javax.jdo.annotations.PersistenceCapable;
  *
  */
 @PersistenceCapable
-public class DUsuario extends CPersona{
+public class Usuario extends Persona{
 	private String nombreUsuario;
 	private String password;
 	private String categoria;
-	protected Collection<HMuestra> muestras = new HashSet();
+	protected Collection<Muestra> muestras = new HashSet();
 	
-	public DUsuario (){
+	public Usuario (){
 		super();
 		
 	}
-	public DUsuario (String nombre, String apellido, String dni, String nombreUsuario, String categoria,String email, String tel, String password){
+	public Usuario (String nombre, String apellido, String dni, String nombreUsuario, String categoria,String email, String tel, String password){
 		super(nombre, apellido,dni,tel, email);
 		this.nombreUsuario = nombreUsuario;
 		this.password = password;
@@ -61,7 +61,7 @@ public class DUsuario extends CPersona{
 	 * Metodo que permite agregar una muestra al usuario.
 	 * @param muestra, muestra a ser agregada al usuario.
 	 */
-	public void addMuestra (HMuestra muestra){
+	public void addMuestra (Muestra muestra){
 		this.muestras.add(muestra);
 	}
 	
@@ -69,7 +69,7 @@ public class DUsuario extends CPersona{
 	 * Metodo que permite quitar una muestra al usuario.
 	 * @param muestra, muestra a ser eliminada al usuario.
 	 */
-	public void removeMuesra (HMuestra muestra){
+	public void removeMuesra (Muestra muestra){
 		muestras.remove(muestra);
 	}
 	

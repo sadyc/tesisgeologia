@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 
-import persistencia.domain.DUsuario;
-import persistencia.domain.HMuestra;
+import persistencia.domain.Usuario;
+import persistencia.domain.Muestra;
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
@@ -21,12 +21,12 @@ import cuLimiteConsistencia.MediadorConsistencia;
 public class MediadorPrincipal extends Mediador{
 
 	private GUIPrincipal GUIPrincipal = null;
-	private DUsuario usuario;
+	private Usuario usuario;
 	private Backup backup;
 	
 	
 
-	public MediadorPrincipal(String nombreVentana, DUsuario usuario) throws Exception {
+	public MediadorPrincipal(String nombreVentana, Usuario usuario) throws Exception {
 		super();
 		this.backup=new Backup();	    
 		this.usuario = usuario;
@@ -178,13 +178,13 @@ public class MediadorPrincipal extends Mediador{
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Calcular AClasificacion"
+	 * Acciones a realizar cuando se selecciona la opcion de "Calcular Clasificacion"
 	 */
 	public void calcularClasificacion(){
 		try {
 			MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
 			if (seleccionarMuestra.seSeleccionoMuestra()){
-				new MediadorCalcularClasificacion("AClasificacion",seleccionarMuestra.getSeleccionado());
+				new MediadorCalcularClasificacion("Clasificacion",seleccionarMuestra.getSeleccionado());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -211,10 +211,10 @@ public class MediadorPrincipal extends Mediador{
 		try {
 			MediadorSeleccionarMuestra seleccionarMuestra = new MediadorSeleccionarMuestra();
 			if (seleccionarMuestra.seSeleccionoMuestra()){
-				HMuestra muestra1 = seleccionarMuestra.getSeleccionado();
+				Muestra muestra1 = seleccionarMuestra.getSeleccionado();
 				seleccionarMuestra = new MediadorSeleccionarMuestra();
 				if (seleccionarMuestra.seSeleccionoMuestra()){
-					HMuestra muestra2 = seleccionarMuestra.getSeleccionado();
+					Muestra muestra2 = seleccionarMuestra.getSeleccionado();
 					new MediadorCompararMuestra("Comparacion de Muestras",muestra1,muestra2);
 				}
 			}
@@ -258,7 +258,7 @@ public class MediadorPrincipal extends Mediador{
 	/**
 	 * @return the usuario
 	 */
-	public DUsuario getUsuario() {
+	public Usuario getUsuario() {
 		return usuario;
 	}
 

@@ -18,14 +18,14 @@ import javax.swing.JOptionPane;
  * @version 1.0
  */
 @PersistenceCapable
-public class BSUCS extends AClasificacion {
+public class SUCS extends Clasificacion {
 	
-	protected Collection<HMuestra> muestras = new HashSet();
+	protected Collection<Muestra> muestras = new HashSet();
 	
 	/**
 	 * @brief Constructor por defecto.
 	 */
-	public BSUCS(){
+	public SUCS(){
 		super();
 	}
 	
@@ -33,7 +33,7 @@ public class BSUCS extends AClasificacion {
 	 * Constructor con pasaje de parametros.
 	 * @param clasificacion.
 	 */
-	public BSUCS(String clasificacion){
+	public SUCS(String clasificacion){
 		Frame frame = new Frame();
 		
 		String nombreAux = new String();
