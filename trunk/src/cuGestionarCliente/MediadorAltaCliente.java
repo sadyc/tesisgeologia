@@ -15,6 +15,11 @@ import comun.Mediador;
 
 import cuGestionarOperador.GUIOperador;
 
+/**
+ * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana "Alta Cliente".
+ * @author TesisGeologia
+ * @version 1.0
+ */
 public class MediadorAltaCliente extends Mediador{
 	private GUIOperador GUICliente;
 	private String[] data = new String [6];
@@ -25,8 +30,8 @@ public class MediadorAltaCliente extends Mediador{
 
 	
 	/**
-	 * @param nombreVentana
 	 * Constructor con pasaje de parametros.
+	 * @param nombreVentana
 	 */
 	public MediadorAltaCliente(String nombreVentana) {
 		super();
@@ -77,7 +82,9 @@ public class MediadorAltaCliente extends Mediador{
 		
 	}
 
-	@Override
+	/**
+	 * Método que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
+	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUICliente.getjButtonAgregar() == source || this.GUICliente.getjMenuItemAgregar()== source) {
@@ -95,14 +102,14 @@ public class MediadorAltaCliente extends Mediador{
 		System.out.println("cliente.actionPerformed() jButtonAceptar");
 		try{
 		 	if (GUICliente.getjTextFieldNombre().getText().equals("") || GUICliente.getjTextFieldDni().getText().equals("")){
-	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				insertarCliente();
 				}
 		}
 		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -120,7 +127,7 @@ public class MediadorAltaCliente extends Mediador{
 			control.insertarCliente(cliente);
 			if (control.getExiste()) {
 				System.out.println("El objeto ya existe");
-				JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				altaCliente = true;
@@ -135,19 +142,6 @@ public class MediadorAltaCliente extends Mediador{
 		
 
 	}
-	
-	/**  PARA VALIDAR EL MAIL!
-	public boolean validarEmail(String email) {
-		// Expressio regular extreta de http://regexlib.com/
-		Pattern p = Pattern.compile(\"^([0-9a-zA-Z]([_.w]*[-.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)*([a-zA-Z]{1,9}.)+[a-zA-Z]{2,3})$\");
-		Matcher m = p.matcher(email);
-		if (m.find()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	*/
 	
 	public String[] getData() {
 		return data;

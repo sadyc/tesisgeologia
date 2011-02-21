@@ -13,7 +13,11 @@ import persistencia.domain.Cliente;
 import comun.Mediador;
 
 import cuGestionarOperador.GUIOperador;
-
+/**
+ * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana "Modificar Cliente".
+ * @author TesisGeologia
+ * @version 1.0
+ */
 public class MediadorModificarCliente extends Mediador{
 	
 	private GUIOperador GUICliente;
@@ -23,7 +27,12 @@ public class MediadorModificarCliente extends Mediador{
 	private Cliente clienteModificar;
 	private ControlGestionarCliente control = new ControlGestionarCliente();
 	
-
+	
+	/**
+	 * Constructor parametrizado de la clase.
+	 * @param fila, arreglo que contiene los datos del cliente.
+	 * @throws Exception
+	 */
 	public MediadorModificarCliente(String[] fila) throws Exception {
 		super();
 		clienteModificar = (control.obtenerCliente(fila[2]));
@@ -67,7 +76,9 @@ public class MediadorModificarCliente extends Mediador{
 		
 	}
 
-	@Override
+	/**
+	 * Método que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
+	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUICliente.getjButtonAgregar() == source|| GUICliente.getjMenuItemAgregar()==source) {
@@ -85,14 +96,14 @@ public class MediadorModificarCliente extends Mediador{
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
 		try{
 		 	if (GUICliente.getjTextFieldNombre().getText().equals("") || GUICliente.getjTextFieldDni().getText().equals("")){
-	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				modificarCliente();
 				}
 			}
 		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
