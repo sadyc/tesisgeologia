@@ -187,7 +187,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement/>
-				<text><![CDATA[Abertura Malla]]></text>
+				<text><![CDATA[Peso Retenido]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText" x="183" y="3" width="85" height="15" forecolor="#FFFFFF"/>

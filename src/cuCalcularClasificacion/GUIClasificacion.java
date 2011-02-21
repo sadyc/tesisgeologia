@@ -75,6 +75,7 @@ public class GUIClasificacion extends JDialog{
 	private ChartPanel curva;
 	private ChartPanel carta;
 	private TablePanel tablePanel;
+	private Muestra muestra;
 	private Object [][] data = null;
 
 	/**
@@ -83,6 +84,7 @@ public class GUIClasificacion extends JDialog{
 	public GUIClasificacion() {
 		super();
 		menu = new JMenuBar();
+		muestra= new Muestra();
 		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
 		ayuda = new JMenu("Ayuda");
@@ -125,6 +127,7 @@ public class GUIClasificacion extends JDialog{
 	 */
 	public GUIClasificacion(Muestra muestra, Object [] [] data) throws Exception {
 		super();
+		this.muestra=muestra;
 		ControlClasificacion control = new ControlClasificacion();
 		curva = control.curvaGranulometrica(muestra);
 		carta = control.cartaPlasticidad(muestra);
@@ -143,7 +146,7 @@ public class GUIClasificacion extends JDialog{
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
-		this.jLabelmuestra = new JLabel(muestra.getNombreMuestra());
+		this.jLabelmuestra = new JLabel("Nombre muestra:"+muestra.getNombreMuestra());
 		peso = new JLabel("Peso: "+muestra.getPeso().toString()+"grs");
 		profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
 		profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
@@ -269,7 +272,7 @@ public class GUIClasificacion extends JDialog{
 			gbc.fill=GridBagConstraints.HORIZONTAL;
 			this.panelNorte.setLayout(gridbag);
 			gbc.ipady = 15;
-			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA: "),gbc);
+			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA: "+ muestra.getNombreMuestra() ),gbc);
 			gbc.ipady = 0;
 			gbc.gridy = 1;
 			this.panelNorte.add(ubicacion,gbc);

@@ -19,7 +19,9 @@ import cuGestionarOperador.GUIGestionarOperador;
 
 
 /**
+* @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana de "Gestionar Cliente".
 * @author TesisGeología
+* @Version 1.0
 */
 public class MediadorGestionarCliente extends Mediador{
 
@@ -51,8 +53,8 @@ public class MediadorGestionarCliente extends Mediador{
 	}
 	
 	/**
-	 * Levanta informacion almacenada en la 
-	 * base de datos al atributo data de la clase mediador.
+	 * Levanta informacion almacenada en la base de datos
+	 * y la copia al atributo data de la clase mediador.
 	 */
 	public void cargarTablaDeCliente()throws Exception{
 		Cliente cliente = new Cliente();
@@ -79,7 +81,9 @@ public class MediadorGestionarCliente extends Mediador{
 		return GUIGestionarCliente;
 	}
 	
-	@Override
+	/**
+	 * Método que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
+	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUIGestionarCliente.getjButtonAgregar() == source||GUIGestionarCliente.getjMenuAgregar()==source){
@@ -104,7 +108,7 @@ public class MediadorGestionarCliente extends Mediador{
 	 */
 	public void modificarCliente(){
 		if (GUIGestionarCliente.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún cliente a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			String [] fila = GUIGestionarCliente.getTablePanel().getRow(GUIGestionarCliente.getTablePanel().getSelectedRow());
@@ -122,14 +126,14 @@ public class MediadorGestionarCliente extends Mediador{
 		}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Eliminar Cliente"
+	 * Acciones a realizar cuando se selecciona la opción de "Eliminar Cliente"
 	 */
 	public void eliminarCliente(){
 		if (GUIGestionarCliente.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún cliente a eliminar","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
-		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta seguro de eliminar este usuario?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta seguro de eliminar este cliente?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	        if(quitOption==JOptionPane.YES_OPTION){
 	        	try{
 	        		System.out.println(GUIGestionarCliente.getTablePanel().getSelectedRow());
@@ -143,7 +147,7 @@ public class MediadorGestionarCliente extends Mediador{
 	               	}
 	        	}
 	        	catch (Exception e) {
-	        		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+	        		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
 	        	}
 	        }
 		}
@@ -170,7 +174,7 @@ public class MediadorGestionarCliente extends Mediador{
 	 */
 	public void seleccionarCliente(){
 		if (GUIGestionarCliente.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun Cliente","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún Cliente","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			try{
@@ -179,7 +183,7 @@ public class MediadorGestionarCliente extends Mediador{
 				GUIGestionarCliente.dispose();
 			}
 			catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un Cliente invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un Cliente inválido","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}

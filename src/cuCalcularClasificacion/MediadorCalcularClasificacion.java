@@ -154,7 +154,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 		Object source = arg0.getSource();
 		if (this.GUIClasificacion.getJButtonImprimir() == source || GUIClasificacion.getImprimirMenu()==source) {
 			Object[] parameters= new Object [20];
-			parameters [0] = GUIClasificacion.getUbicacion().getText();
+			parameters [0] = GUIClasificacion.getMuestra().getText();
 			parameters [1] = GUIClasificacion.getUbicacion().getText();
 			parameters [2] = GUIClasificacion.getPeso().getText();
 			parameters [3] = GUIClasificacion.getProfundidadInicial().getText();
