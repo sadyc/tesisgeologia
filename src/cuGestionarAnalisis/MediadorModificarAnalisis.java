@@ -16,9 +16,9 @@ import comun.Mediador;
 
 
 /**
- * @author TesisGeologia
- * Implementa las interfaces de acuerdo a los eventos que necesita tratar
- * en este caso: ActionListener,MouseListener,ItemListener.
+ *@brief Clase que se utiliza para escuchar los eventos que suceden en la ventana "Alta Análisis".
+ *@author TesisGeología
+ *@version 1.0
  */
 
 public class MediadorModificarAnalisis  extends Mediador{
@@ -32,7 +32,10 @@ public class MediadorModificarAnalisis  extends Mediador{
 	private Component frame;
 	
 	/**
-	 * This is the default constructor
+	 * Constructor parametrizado de la clase. 
+	 * @param muestra, muestra a la que se le van a modificar los análisis.
+	 * @param pesoRetenido, peso retenido cargado anteriormente de modificar.
+	 * @param numeroTamiz, numero de tamiz al que se le va a modificar el análisis.
 	 */
 	public MediadorModificarAnalisis(Muestra muestra,Float pesoRetenido,String numeroTamiz) {
 		super();
@@ -49,7 +52,10 @@ public class MediadorModificarAnalisis  extends Mediador{
 		show();
 	}
 	
-		
+	
+	/**
+	 * Metodo que permite visualizar la ventana.
+	 */
 	public void show(){
 		GUIAnalisis.show();
 	}
@@ -84,7 +90,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 	}
 
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Aceptar"
+	 * Acciones a realizar cuando se selecciona la opción de "Aceptar"
 	 */
 	public void aceptar(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAceptar");
@@ -95,7 +101,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 		}
 		else{
 			if (Float.parseFloat(pesoRetenido)> muestra.getPeso()){
-				JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso de la muestra que es: "+muestra.getPeso(),"ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso de la muestra que es: "+muestra.getPeso()+" grs.","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
 				try {
@@ -103,7 +109,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 					control.recalcularAnalisis(analisis);
 					if (control.getExiste()) {
 						System.out.println("El objeto ya existe");
-						JOptionPane.showMessageDialog(frame,"El análisis de la muestra correspondiente ya tiene cargado un resultado en el Tamiz Nº: "+numeroTamiz+". Por favor ingrese otro.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(frame,"El análisis de la muestra correspondiente ya tiene cargado un resultado en el Tamiz Nº: "+numeroTamiz+". Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
 						modifico = true;
@@ -139,12 +145,6 @@ public class MediadorModificarAnalisis  extends Mediador{
 
 	public void mouseReleased(MouseEvent arg0) {
 	}
-
-
-	public String[] getData() {
-		return null;
-	}
-
 
 	@Override
 	public void keyTyped(KeyEvent e) {

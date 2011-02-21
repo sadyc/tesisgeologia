@@ -19,8 +19,9 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
 /**
-* @author TesisGeología
 * Esta clase implementa los métodos que permiten realizar y recuperar back-up de la base de datos.
+* @author TesisGeología
+* @version 1.0
 */
 public class Backup {
 	private int BUFFER = 10485760;  

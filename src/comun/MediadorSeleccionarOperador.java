@@ -2,12 +2,9 @@ package comun;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -22,10 +19,11 @@ import cuGestionarOperador.MediadorModificarOperador;
 
 
 /**
+* @brief Clase que se utiliza para escuchar los eventos que suceden en la ventana "Seleccionar Operador".
 * @author TesisGeología
+* @version 1.0
 */
 public class MediadorSeleccionarOperador extends Mediador{
-
 
 	private GUIGestionarOperador GUIGestionarOperador = null;
 	private Object [] seleccionado;
@@ -54,8 +52,8 @@ public class MediadorSeleccionarOperador extends Mediador{
 	}
 	
 	/**
-	 * Levanta informacion almacenada en la 
-	 * base de datos al atributo data de la clase mediador.
+	 * Levanta informacion almacenada en la base de datos y las copia 
+	 * al atributo data de la clase mediador.
 	 */
 	public void cargarTablaDeOperador()throws Exception{
 		OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
@@ -82,7 +80,9 @@ public class MediadorSeleccionarOperador extends Mediador{
 		return GUIGestionarOperador;
 	}
 	
-	@Override
+	/**
+	 * Método que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
+	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUIGestionarOperador.getjButtonAgregar() == source||GUIGestionarOperador.getjMenuAgregar()==source){
@@ -103,11 +103,11 @@ public class MediadorSeleccionarOperador extends Mediador{
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Modificar Operador"
+	 * Acciones a realizar cuando se selecciona la opción de "Modificar Operador"
 	 */
 	public void modificarOperador(){
 		if (GUIGestionarOperador.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			String [] fila = GUIGestionarOperador.getTablePanel().getRow(GUIGestionarOperador.getTablePanel().getSelectedRow());
@@ -118,18 +118,18 @@ public class MediadorSeleccionarOperador extends Mediador{
 					this.GUIGestionarOperador.getTablePanel().addRow(modificarOperador.getData());
 				}
 			}
-			catch (Exception e) {
+			catch (Exception e) {	
 				e.printStackTrace();
 			}
-			}
 		}
+	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Eliminar Operador"
+	 * Acciones a realizar cuando se selecciona la opción de "Eliminar Operador"
 	 */
 	public void eliminarOperador(){
 		if (GUIGestionarOperador.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a eliminar","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta seguro de eliminar este usuario?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
@@ -146,15 +146,14 @@ public class MediadorSeleccionarOperador extends Mediador{
 	               	}
 	        	}
 	        	catch (Exception e) {
-	        		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+	        		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
 	        	}
 	        }
 		}
-		
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Operador"
+	 * Acciones a realizar cuando se selecciona la opción de "Agregar Operador"
 	 */
 	public void agregarOperador(){
 		try {	
@@ -169,11 +168,11 @@ public class MediadorSeleccionarOperador extends Mediador{
 }
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Operador"
+	 * Acciones a realizar cuando se selecciona la opción de "Seleccionar Operador"
 	 */
 	public void seleccionarOperador(){
 		if (GUIGestionarOperador.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun Operador","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún Operador","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			try{
@@ -183,14 +182,18 @@ public class MediadorSeleccionarOperador extends Mediador{
 				GUIGestionarOperador.dispose();
 			}
 			catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un Operador invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un Operador inválido","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
 	
+	/**
+	 * Método que me permite visualizar la ventana.
+	 */
 	public void show(){
 		GUIGestionarOperador.show();
 	}
+	
 	/**
 	 * Metodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
@@ -228,14 +231,12 @@ public class MediadorSeleccionarOperador extends Mediador{
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
+				
 		}
 
 		@Override
 		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
+				
 		}
 
 		/**
@@ -244,6 +245,5 @@ public class MediadorSeleccionarOperador extends Mediador{
 		public boolean isSeleccionoOperador() {
 			return seleccionoOperador;
 		}
-		
-		
+			
 }

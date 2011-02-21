@@ -1,14 +1,4 @@
 package comun;
-
-
-/**
- * Created on 01-nov-2004
- *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
-
-import java.awt.Dimension;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
@@ -23,44 +13,34 @@ import javax.swing.table.TableRowSorter;
 
 
 /**
- * @author Daniel
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * @brief Clase que implementa las tablas utilizadas en el sistema. 
+ * @author TesisGeologia.
+ * @version 1.0
  */
 public class TablePanel extends JPanel {
 
-	/** table */
 	private JTable table = null; 
-	
 	private DefaultTableModel tableModel = null;
-
     private JScrollPane scrollPane = null;
+    private final TableRowSorter<TableModel> modeloOrdenado;
     
-	private final TableRowSorter<TableModel> modeloOrdenado;
-    
-   
+   /**
+    * Constructor por defecto de la clase.
+    */
 	public TablePanel(){
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		this.scrollPane = new JScrollPane();
-		//Dimension dimension = new Dimension(160,140);
- 		//scrollPane.setPreferredSize(dimension);
 		this.tableModel = new DefaultTableModel();
 		this.table = new JTable(tableModel){
-			
 			public boolean isCellEditable(int row,int column) { 
 			  return false;
 			}
-			
 		};
 		modeloOrdenado = new TableRowSorter<TableModel>(tableModel);
 		table.setRowSorter(modeloOrdenado);
 		table.getTableHeader().setReorderingAllowed(false);
-	//	table.setDefaultRenderer ( Object.class, new MyRenderer ()) ;
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.addMouseListener(null);
-		
-		
 		this.scrollPane.getViewport().add(this.table, null);
 		this.add(this.scrollPane, null);	
 	}
@@ -154,8 +134,6 @@ public class TablePanel extends JPanel {
 	public void setScrollPane(JScrollPane scrollPane) {
 		this.scrollPane = scrollPane;
 	}
-
-
 	
 
 }

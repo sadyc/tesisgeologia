@@ -1,6 +1,3 @@
-/**
- * 
- */
 package comun;
 
 import java.awt.event.ActionEvent;
@@ -14,18 +11,24 @@ import java.awt.event.MouseListener;
 /**
  * Clase que se utiliza para que cada mediador extienda a esta clase. 
  * @author TesisGeologia.
+ * @version 1.0
  */
 public abstract class Mediador implements ActionListener,MouseListener,ItemListener,KeyListener{
 	
-	public void init(){
-	}
-
+	
+	/**
+	 * Método que permite visualizar la ventana.
+	 */
 	public void show(){
 	}
-
+	/**
+	 * Método que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
+	 */
 	public void actionPerformed(ActionEvent arg0) {
 	}
-
+	/**
+	 * Método que permite realizar acciones dependiendo a los clicks realizados por el mouse en la ventana.
+	 */
 	public void mouseClicked(MouseEvent arg0) {
 	}
 

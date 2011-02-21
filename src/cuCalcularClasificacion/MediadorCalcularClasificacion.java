@@ -27,14 +27,13 @@ import cuReporte.report.ViewReport;
 /**
  * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana de clasificacion
  * @author TesisGeologia
+ * @version 1.0
  *
  */
 public class MediadorCalcularClasificacion extends Mediador{
-	private GUIClasificacion GUIClasificacion;
 	
-	private Muestra muestra = new Muestra();
+	private GUIClasificacion GUIClasificacion;
 	private Frame frame;
-	private GUIMuestraDetallada GUIMuestraDetallada;
 	private Object [][] data;
 	
 	/**
@@ -50,9 +49,9 @@ public class MediadorCalcularClasificacion extends Mediador{
 	}
 	
 	/**
-	 * 
-	 * @param titulo
-	 * @param muestra
+	 * Constructor parametrizado de la clase. 
+	 * @param titulo, titulo de la ventana.
+	 * @param muestra, muestra correspondiente a la clasificación.
 	 * @throws Exception
 	 */
 	public MediadorCalcularClasificacion(String titulo, Muestra muestra) throws Exception {
@@ -62,26 +61,25 @@ public class MediadorCalcularClasificacion extends Mediador{
 		ControlClasificacion control = new ControlClasificacion();
 		if (!(data==null)){
 			if (control.buscarAnalisis("200") && control.buscarAnalisis("40")&& control.buscarAnalisis("10")  && muestra.getIndicePlasticidad()!=0){
-				//if (muestra.getAashto()==null) {
+				if (muestra.getAashto()==null) {
 					control.calcularClasificacionAASHTO(muestra);
-				//}
+				}
 			}
 			else{
-				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificacion AASHTO, Faltan analisis para los tamices 10, 40 0 200","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación AASHTO, Faltan analisis para los tamices 10, 40 0 200","Atención!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 			}
 			if(control.buscarAnalisis("200") && control.buscarAnalisis("4") && muestra.getIndicePlasticidad()!=0){
-				//if (muestra.getSucs()==null){
+				if (muestra.getSucs()==null){
 					control.calcularClasificacionSUCS(muestra);
-				//}
+				}
 			}
 			else{
-				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificacion SUCS, Faltan analisis o indice de plasticidad","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación SUCS, Faltan analisis o indice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 				
 			}
 		}
-		
 		if (clasificar){
 			GUIClasificacion = new GUIClasificacion(muestra,data);
 			GUIClasificacion.setTitle(titulo);
@@ -90,15 +88,15 @@ public class MediadorCalcularClasificacion extends Mediador{
 			GUIClasificacion.show();
 		}
 		else{
-			new MediadorGestionarAnalisis("Gestionar Analisis", muestra);
+			new MediadorGestionarAnalisis("Gestionar Análisis", muestra);
 		}
 		
 	}
 	
 	/**
-	 * Levanta informacion almacenada en la 
-	 * base de datos al atributo data de la clase mediador.
-	 * @param nombreMuestra 
+	 * Levanta información almacenada en la base de datos y la copia 
+	 * al atributo data de la clase mediador.
+	 * @param Muestra, muestra de la que se desean obtener los análisis. 
 	 */
 	public void cargarTablaDeAnalisis(Muestra muestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
@@ -121,44 +119,40 @@ public class MediadorCalcularClasificacion extends Mediador{
 	
 	@Override
 	public void itemStateChanged(ItemEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+			
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+			
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+			
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+			
 	}
 
-	@Override
+	/**
+	 * Método que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
+	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		if (this.GUIClasificacion.getJButtonImprimir() == source) {
+		if (this.GUIClasificacion.getJButtonImprimir() == source || GUIClasificacion.getImprimirMenu()==source) {
 			Object[] parameters= new Object [20];
 			parameters [0] = GUIClasificacion.getUbicacion().getText();
 			parameters [1] = GUIClasificacion.getUbicacion().getText();
@@ -175,8 +169,8 @@ public class MediadorCalcularClasificacion extends Mediador{
 			parameters [12] = GUIClasificacion.getCoeficienteUniformidad().getText();
 			parameters [13] = GUIClasificacion.getClasificacionSucs().getText();
 			parameters [14] = GUIClasificacion.getDescripcionSucs().getText();
-			parameters [15] = GUIClasificacion.getClasificacionSucs().getText();
-			parameters [16] = GUIClasificacion.getDescripcionSucs().getText();
+			parameters [15] = GUIClasificacion.getClasificacionAashto().getText(); 
+			parameters [16] = GUIClasificacion.getDescripcionAashto().getText();
 			MakeReport makeReporte = new MakeReport();
 			makeReporte.make("report1");
 			ViewReport view = new ViewReport(data, parameters);
@@ -184,7 +178,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 			GUIClasificacion.dispose();
 				
 			}
-		if (this.GUIClasificacion.getJButtonSalir() == source){
+		if (this.GUIClasificacion.getJButtonSalir() == source || GUIClasificacion.getSalirMenu()==source){
 			GUIClasificacion.dispose();
 		}
 	}

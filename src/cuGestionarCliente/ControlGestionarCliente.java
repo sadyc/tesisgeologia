@@ -1,9 +1,7 @@
 package cuGestionarCliente;
 
 import java.util.Collection;
-
 import javax.jdo.JDOException;
-
 import persistencia.Persistencia;
 import persistencia.domain.Cliente;
 

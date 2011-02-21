@@ -23,14 +23,17 @@ import cuGestionarAnalisis.MediadorGestionarAnalisis;
 
 
 /**
+<<<<<<< .mine
+ * @brief Clase que se utiliza para escuchar los eventos que suceden en la ventana de GestionarMuestra
+=======
  * @brief Clase que se utiliza para escuchar los eventos que suceden en la ventana de GestionarMuestra.
+>>>>>>> .r290
  * @author TesisGeologia
  * @version 1.0.
  */
 public class MediadorGestionarMuestra extends Mediador{
 
 	private GUIABMMuestra GUIABMMuestra;
-	private TableRowSorter<TableModel> tablaOrdenada;
 	private Object [][] data ;
 	private Component frame;
 	private Muestra muestra;
@@ -39,7 +42,12 @@ public class MediadorGestionarMuestra extends Mediador{
 	private Object [] seleccionado = new Object [4];
 	private boolean seleccionoMuestra = false;
 		
-	
+	/**
+	 * Constructor parametrizado de la clase.
+	 * @param nombreVentana, Título de la ventana.
+	 * @param usuario, Usuario que inició sesión en el sistema.
+	 * @throws Exception
+	 */
 	/**
 	 * Contructor con pasaje de parametros.
 	 * @param nombreVentana
@@ -65,8 +73,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	
 	
 	/**
-	 * Levanta informacion almacenada en la 
-	 * base de datos al atributo data de la clase mediador.
+	 * Levanta información almacenada en la base de datos y los copia sobre el atributo data de la clase mediador.
 	 */
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
@@ -91,6 +98,9 @@ public class MediadorGestionarMuestra extends Mediador{
 		}
 	}
 			
+	/**
+	 * Método que me permite visualizar la ventana.
+	 */
 	public void show()	{
 		 GUIABMMuestra.show();
 	}
@@ -104,7 +114,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	}
 	
 	/**
-	 * Metodo que necesita definir al implementar la interface ActionListener 
+	 * Método que se necesita definir al implementar la interface ActionListener 
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
@@ -121,7 +131,7 @@ public class MediadorGestionarMuestra extends Mediador{
 
 		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || this.GUIABMMuestra.getjMenuSeleccionar() == source){
 			if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna muestra","Atencion", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna muestra","Atención", JOptionPane.WARNING_MESSAGE);
 			}else{
 				seleccionarMuestra();
 				analisis();
@@ -132,6 +142,9 @@ public class MediadorGestionarMuestra extends Mediador{
 		}
 	}
 	
+	/**
+	 * Acciones a realizar cuando se ha seleccionado una Muestra"
+	 */
 	private void analisis() {
 		GUIABMMuestra.dispose();
 		try {
@@ -153,36 +166,14 @@ public class MediadorGestionarMuestra extends Mediador{
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
-   				   		
-		}
-		
-	/**
-	 * Metodo que carga una coleccion con todas las muestas.
-	 * @param resultado
-	 */
-	private void cargarTablaDeMuestras(Collection resultado) {
-		data = new Object [resultado.size()] [6];
-		int i = 0;
-		Muestra muestra = new Muestra();
-		Iterator<Muestra> it = resultado.iterator();
-		while (it.hasNext()){
-			muestra = it.next();
-			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
-			data [i][1]= muestra.getNombreMuestra();
-			data [i][2]= muestra.getPeso();
-		    data [i][3]= muestra.getProfundidadInicial();
-		    data [i][4]= muestra.getProfundidadFinal();
-		    i++;
-		}
-		
 	}
 
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Modificar Muestra"
+	 * Acciones a realizar cuando se selecciona la opción de "Modificar Muestra"
 	 */
 	public void modificarMuestra(){
 		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
@@ -200,14 +191,14 @@ public class MediadorGestionarMuestra extends Mediador{
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Eliminar Muestra"
+	 * Acciones a realizar cuando se selecciona la opción de "Eliminar Muestra"
 	 */
 	public void eliminarMuestra(){
 		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a eliminar","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
-		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Está Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
             if(quitOption==JOptionPane.YES_OPTION){
             	try{
             		String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
@@ -221,14 +212,14 @@ public class MediadorGestionarMuestra extends Mediador{
 	               	}
             	}
             	catch (Exception e) {
-            		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+            		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
             	}
             }
 		}
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Muestra"
+	 * Acciones a realizar cuando se selecciona la opción de "Agregar Muestra"
 	 */
 	public void agregarMuestra(){
 		try {
@@ -275,12 +266,13 @@ public class MediadorGestionarMuestra extends Mediador{
 	public void mouseReleased(MouseEvent arg0) {
 	}
 
+
 	public void itemStateChanged(ItemEvent e) {
+
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
