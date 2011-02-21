@@ -23,6 +23,10 @@ import persistencia.domain.Muestra;
 import comun.TablePanel;
 
 /**
+ * Clase que define la interfaz grafica para mostrar
+ * una muestra con sus datos y poder gestionar los analisis
+ * de la misma.
+ * 
  * @author tesisGeologia.
  * 
  */
@@ -30,11 +34,6 @@ import comun.TablePanel;
  
 public class GUIMuestraDetallada extends JDialog{
 
-	/**
-	 * @param title
-	 * @throws java.awt.HeadlessException
-	 */
-	
 	private JMenuBar menu ;
 	private JMenu herramientas;
 	private JMenu ayuda;
@@ -43,8 +42,7 @@ public class GUIMuestraDetallada extends JDialog{
 	private JMenuItem eliminarMenu;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
-	private JMenuItem imprimirMenu;
-	
+		
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
 	private JPanel panelCenter=null;
@@ -69,39 +67,16 @@ public class GUIMuestraDetallada extends JDialog{
 	private JButton jButtonAgregarAnalisis;
 	private JButton jButtonEliminarAnalisis;
 	private JButton jButtonModificarAnalisis;
-	private JButton imprimir;
 	private JButton salir;
+	private JLabel descripcion2;
+	private JLabel clasificacion2;
 	
 	/**
-	 * This is the default constructor
+	 * Constructor por defecto.
 	 */
 	public GUIMuestraDetallada() {
 		super();
-		menu = new JMenuBar();
-		herramientas = new JMenu ("Archivo");
-		herramientas = new JMenu("Herramientas");
-		ayuda = new JMenu("Ayuda");
-		menu.add(herramientas);
-		menu.add(herramientas);
-		menu.add(ayuda);
-		salirMenu = new JMenuItem("Salir");
-		herramientas.add(new JSeparator());
-		herramientas.add(salirMenu);
-		versionMenu = new JMenuItem("Version");
-		ayuda.add(versionMenu);	
 		
-		agregarMenu = new JMenuItem("Agregar Análisis");
-		herramientas.add(agregarMenu);
-		modificarMenu = new JMenuItem("Modificar Análisis");
-		herramientas.add(modificarMenu);
-		eliminarMenu = new JMenuItem("Eliminar Análisis");
-		herramientas.add(eliminarMenu);
-		herramientas.add(new JSeparator());
-		
-		imprimirMenu = new JMenuItem("Imprimir");
-		herramientas.add(imprimirMenu);
-		herramientas.add(new JSeparator());
-		herramientas.add(salirMenu);
 		muestra1 = new JLabel("Muestra: ");
 		peso1 = new JLabel("Peso: ");
 		profundidadInicial1 = new JLabel("Profundidad Inicial: ");
@@ -117,67 +92,48 @@ public class GUIMuestraDetallada extends JDialog{
 		D10_1 = new JLabel("D10(mm): ");
 		coeficienteUniformidad1 = new JLabel("Coef. Uniformidad (Cu): ");
 		gradoCurvatura1 = new JLabel ("Grado de Curvatura (Cc): ");
-		jButtonAgregarAnalisis = new JButton("AGREGAR ANALISIS");
-		jButtonEliminarAnalisis = new JButton("ELIMINAR ANALISIS");
-		jButtonModificarAnalisis  = new JButton("MODIFICAR ANALISIS");
-		imprimir = new JButton("IMPRIMIR");
-		salir = new JButton("SALIR");
 		initialize();
 	}
 	
 	/**
-	 * This is the parametrized constructor used in modification
-	 * @param data1  arreglo que almacena los datos de una muestra1. 
+	 * Constructor parametrizado de la clase GUIMuestraDetallada.
+	 * @param data1 arreglo que almacena los datos de una muestra1.
+	 * @param muestra1 Muestra que se utiliza para completar la ventana. 
 	 */
 	public GUIMuestraDetallada (Muestra muestra1, Object [] [] data1) {
 		super();
 		this.data1 = data1;
-		menu = new JMenuBar();
-		herramientas = new JMenu ("Archivo");
-		herramientas = new JMenu("Herramientas");
-		ayuda = new JMenu("Ayuda");
-		menu.add(herramientas);
-		menu.add(herramientas);
-		menu.add(ayuda);
-		salirMenu = new JMenuItem("Salir");
-		versionMenu = new JMenuItem("Version");
-		ayuda.add(versionMenu);	
-		agregarMenu = new JMenuItem("Agregar Análisis");
-		herramientas.add(agregarMenu);
-		modificarMenu = new JMenuItem("Modificar Análisis");
-		herramientas.add(modificarMenu);
-		eliminarMenu = new JMenuItem("Eliminar Análisis");
-		herramientas.add(eliminarMenu);
-		herramientas.add(new JSeparator());
-		imprimirMenu = new JMenuItem("Imprimir");
-		herramientas.add(imprimirMenu);
-		herramientas.add(new JSeparator());
-		herramientas.add(salirMenu);
 		this.muestra1 = new JLabel(muestra1.getNombreMuestra());
-		this.peso1 = new JLabel("Peso: "+muestra1.getPeso().toString()+"grs");
+		this.peso1 = new JLabel("Peso: "+muestra1.getPeso().toString()+"(grs)");
 		this.profundidadInicial1= new JLabel("Profundidad Inicial: "+muestra1.getProfundidadInicial()+"mts");
 		this.profundidadFinal1 = new JLabel("Profundidad Final: "+muestra1.getProfundidadFinal()+"mts");
 		ubicacion1 = new JLabel ("Ubicacion: "+muestra1.getUbicacion().getNombreUbicacion());
-		clasificacion1 = new JLabel ("Clasificacion: ");
+		
 		if (muestra1.getSucs()==null){
+			clasificacion1 = new JLabel ("Clasificacion: ");
 			descripcion1 = new JLabel ("Descripcion: ");
+			
 		}
 		else{
+			clasificacion1 = new JLabel ("Clasificacion: "+muestra1.getSucs().getClasificacion());
 			descripcion1 = new JLabel ("Descripcion: "+muestra1.getSucs().getDescripcion());
 		}
-		limiteLiquido1 = new JLabel ("Límite Líquido (LL): ");    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
-		limitePlastico1 = new JLabel ("Límite Plástico (LP): ");	//***************************************
-		indicePlasticidad1 = new JLabel ("Íncide de Plasticidad (IP): ");
-		D60_1 = new JLabel("D60(mm): ");
-		D30_1 = new JLabel("D30(mm): "); // INFORMACION QUE SACA DEL ANALISIS PERTENECIENTE A LA MUESTRA PASADA
-		D10_1 = new JLabel("D10(mm): "); // COMO PARAMETRO.. NO SE BIEN COMO LOS SACA A ESTOS DATOS.
-		coeficienteUniformidad1 = new JLabel("Coef. Uniformidad (Cu): ");
-		gradoCurvatura1 = new JLabel ("Grado de Curvatura (Cc): ");
-		jButtonAgregarAnalisis = new JButton("AGREGAR ANALISIS");
-		jButtonEliminarAnalisis = new JButton("ELIMINAR ANALISIS");
-		jButtonModificarAnalisis  = new JButton("MODIFICAR ANALISIS");
-		imprimir = new JButton("IMPRIMIR");
-		salir = new JButton("SALIR");
+		if (muestra1.getAashto()==null){
+			clasificacion2 = new JLabel ("Clasificacion: ");
+			descripcion2 = new JLabel ("Descripcion: ");
+		}
+		else{
+			clasificacion2 = new JLabel ("Clasificacion: "+muestra1.getAashto().getClasificacion());
+			descripcion2 = new JLabel ("Descripcion: "+muestra1.getAashto().getDescripcion());
+		}
+		limiteLiquido1 = new JLabel ("Límite Líquido (LL): "+muestra1.getLimiteLiquido()); 
+		limitePlastico1 = new JLabel ("Límite Plástico (LP): "+muestra1.getLimitePlastico());
+		indicePlasticidad1 = new JLabel ("Íncide de Plasticidad (IP): "+muestra1.getIndicePlasticidad());
+		D60_1 = new JLabel("D60(mm): "+muestra1.getD60());
+		D30_1 = new JLabel("D30(mm): "+muestra1.getD30()); 
+		D10_1 = new JLabel("D10(mm): "+muestra1.getD10()); 
+		coeficienteUniformidad1 = new JLabel("Coef. Uniformidad (Cu): "+muestra1.getCoeficienteUniformidad());
+		gradoCurvatura1 = new JLabel ("Grado de Curvatura (Cc): "+muestra1.getGradoCurvatura());
 		initialize();
 	}
 	
@@ -211,21 +167,6 @@ public class GUIMuestraDetallada extends JDialog{
 
 	
 	/**
-	 * @return the imprimir
-	 */
-	public JButton getJButtonImprimir() {
-		return imprimir;
-	}
-
-
-	/**
-	 * @param imprimir the imprimir to set
-	 */
-	public void setJButtonImprimir(JButton imprimir) {
-		this.imprimir = imprimir;
-	}
-	
-	/**
 	 * @return the salir
 	 */
 	public JButton getJButtonSalir() {
@@ -245,6 +186,45 @@ public class GUIMuestraDetallada extends JDialog{
 	 * @return void
 	 */
 	private  void initialize() {
+		jButtonAgregarAnalisis = new JButton("Agregar");
+		jButtonAgregarAnalisis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png"))); // NOI18N
+		jButtonEliminarAnalisis = new JButton("Eliminar");
+		jButtonEliminarAnalisis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/list-remove-5.png"))); // NOI18N
+		jButtonModificarAnalisis  = new JButton("Modificar");
+		jButtonModificarAnalisis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-undo-4.png"))); // NOI18N
+		salir = new JButton("Salir");
+		salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
+		menu = new JMenuBar();
+		herramientas = new JMenu ("Archivo");
+		herramientas = new JMenu("Herramientas");
+		ayuda = new JMenu("Ayuda");
+		menu.add(herramientas);
+		menu.add(herramientas);
+		menu.add(ayuda);
+		salirMenu = new JMenuItem("Salir");
+		salirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
+		
+		herramientas.add(new JSeparator());
+		herramientas.add(salirMenu);
+		versionMenu = new JMenuItem("Version");
+		versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
+		ayuda.add(versionMenu);	
+		
+		agregarMenu = new JMenuItem("Agregar Análisis");
+		agregarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-add.png"))); // NOI18N
+		herramientas.add(agregarMenu);
+		modificarMenu = new JMenuItem("Modificar Análisis");
+		modificarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-undo-4.png"))); // NOI18N
+		herramientas.add(modificarMenu);
+		eliminarMenu = new JMenuItem("Eliminar Análisis");
+		eliminarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/list-remove-5.png"))); // NOI18N
+		herramientas.add(eliminarMenu);
+		herramientas.add(new JSeparator());
+		
+		
+		
+		herramientas.add(new JSeparator());
+		herramientas.add(salirMenu);
 		this.setSize(1300 , 700);
 		this.getContentPane().setLayout(new BorderLayout()); 		
 		this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
@@ -323,20 +303,38 @@ public class GUIMuestraDetallada extends JDialog{
 	 * @return Jpanel
 	 */
 	public JPanel getPanelCenter() {
+		JPanel analisis = new JPanel();
+		analisis.setLayout(new BoxLayout(analisis,BoxLayout.Y_AXIS));
+		analisis.add(this.getTablePanel1());
 		if (this.panelCenter==null) {
 			this.panelCenter = new JPanel();
-			this.panelCenter.setLayout(new BoxLayout(this.panelCenter,BoxLayout.X_AXIS));
-			JPanel muestra1 = new JPanel();
-			muestra1.setLayout(new BoxLayout(muestra1,BoxLayout.Y_AXIS));
-			muestra1.add(this.getTablePanel1());
-			muestra1.add(new JLabel("DATOS DE LA CLASIFICACION MUESTRA 1: "));
-			muestra1.add(clasificacion1);
-			muestra1.add(descripcion1);
-								
-			this.panelCenter.add(muestra1);
-		
+			GridBagLayout gridbag = new GridBagLayout();
+			GridBagConstraints gbc = new GridBagConstraints();
+			gbc.gridwidth = 1;
+			gbc.gridheight = 1;
+			gbc.weightx = 1.0;
+			gbc.weighty = 0.50;
+			gbc.gridx = 0;
+			gbc.gridy = 0;
+			gbc.fill=GridBagConstraints.HORIZONTAL;
+			this.panelCenter.setLayout(gridbag);
+			gbc.ipady = 15;
+			this.panelCenter.add(new JLabel("Clasificacion SUCS"),gbc);
+			gbc.ipady = 0;
+			gbc.gridy = 1;
+			this.panelCenter.add(clasificacion1,gbc);
+			gbc.gridy = 2;
+			this.panelCenter.add(descripcion1,gbc);
+			gbc.gridx = 1;
+			gbc.gridy = 0;
+			this.panelCenter.add(new JLabel("Clasificacion AASHTO"),gbc);
+			gbc.gridy = 1;
+			this.panelCenter.add(clasificacion2,gbc);
+			gbc.gridy = 2;
+			this.panelCenter.add(descripcion2,gbc);
 		}
-			return this.panelCenter;
+		analisis.add(panelCenter);
+			return analisis;
 	}
 	/**
 	 * Metodo que retorna el panelSur.
@@ -350,7 +348,6 @@ public class GUIMuestraDetallada extends JDialog{
 			this.panelSur.add(getjButtonAgregarAnalisis());
 			this.panelSur.add(getjButtonModificarAnalisis());
 			this.panelSur.add(getjButtonEliminarAnalisis());
-			this.panelSur.add(imprimir);
 			this.panelSur.add(salir);
 			
 			}
@@ -358,17 +355,14 @@ public class GUIMuestraDetallada extends JDialog{
 	}
 	
 	/**
-	 * Metodo que permite escuchar los botoner imprimir y cancelar.
-	 *
+	 * Metodo que permite escuchar los botones de la ventana.
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
-		imprimir.addActionListener(lis);
 		salir.addActionListener(lis);
 		jButtonAgregarAnalisis.addActionListener(lis);
 		jButtonModificarAnalisis.addActionListener(lis);
 		jButtonEliminarAnalisis.addActionListener(lis);
-		imprimirMenu.addActionListener(lis);
 		salirMenu.addActionListener(lis);
 		agregarMenu.addActionListener(lis);
 		modificarMenu.addActionListener(lis);
@@ -522,20 +516,6 @@ public class GUIMuestraDetallada extends JDialog{
 	}
 
 	/**
-	 * @return the imprimir
-	 */
-	public JButton getImprimir() {
-		return imprimir;
-	}
-
-	/**
-	 * @param imprimir the imprimir to set
-	 */
-	public void setImprimir(JButton imprimir) {
-		this.imprimir = imprimir;
-	}
-
-	/**
 	 * @return the salir
 	 */
 	public JButton getSalir() {
@@ -548,12 +528,7 @@ public class GUIMuestraDetallada extends JDialog{
 	public void setSalir(JButton salir) {
 		this.salir = salir;
 	}
-	/**
-	 * @return the imprimirMenu
-	 */
-	public JMenuItem getImprimirMenu() {
-		return imprimirMenu;
-	}
+	
 
 	/**
 	 * @return the agregarMenu
@@ -625,12 +600,4 @@ public class GUIMuestraDetallada extends JDialog{
 		this.versionMenu = versionMenu;
 	}
 
-	/**
-	 * @param imprimirMenu the imprimirMenu to set
-	 */
-	public void setImprimirMenu(JMenuItem imprimirMenu) {
-		this.imprimirMenu = imprimirMenu;
-	}
-	
-	 
 }

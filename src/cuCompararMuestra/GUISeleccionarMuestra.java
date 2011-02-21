@@ -17,8 +17,9 @@ import javax.swing.JSeparator;
 import comun.TablePanel;
 
 /**
-* @author TesisGeología
-* Esta clase implementa la ventana que me permite seleccionar una de las muestras almacenadas.
+ * Esta clase implementa la ventana que me permite seleccionar una de las muestras almacenadas.
+ * @author TesisGeología
+ * @version 1.0.
 */
 public class GUISeleccionarMuestra extends JDialog	{
 
@@ -194,4 +195,3 @@ public class GUISeleccionarMuestra extends JDialog	{
 	}
 
 }
-

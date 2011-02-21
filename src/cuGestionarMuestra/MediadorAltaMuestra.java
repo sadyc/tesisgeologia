@@ -28,7 +28,8 @@ import cuGestionarUbicacion.MediadorGestionarUbicacion;
  * @brief Clase que se utiliza para realizar los sucesos en la ventana Muestra.
  * 
  * @author TesisGeologia
- *
+ * 
+ * @version 1.0.
  */
 public class MediadorAltaMuestra extends Mediador{
 	private GUIMuestra GUIMuestra;
@@ -43,11 +44,11 @@ public class MediadorAltaMuestra extends Mediador{
 	private Usuario usuario ;
 	private java.sql.Date sqlDate;
 	private boolean altaMuestra= false;
-
 	
 	/**
+	 * Contructor con pasaje de parametros.
 	 * @param nombreVentana
-	 * Constructor con pasaje de parametros.
+	 * @param usuario
 	 */
 	public MediadorAltaMuestra(String nombreVentana, Usuario usuario) {
 		super();
@@ -56,9 +57,7 @@ public class MediadorAltaMuestra extends Mediador{
 		controlUbicacion = new ControlGestionarUbicacion();
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-	    System.out.println("utilDate:" + utilDate);
-	    System.out.println("sqlDate:" + sqlDate);
-		this.usuario = usuario;
+	    this.usuario = usuario;
 		ubicacion = new Ubicacion();
 		operador= new OperadorDeLaboratorio();
 		cliente = new Cliente();
@@ -114,6 +113,9 @@ public class MediadorAltaMuestra extends Mediador{
 		
 	}
 
+	/**
+	 * @see comun.Mediador#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
@@ -184,7 +186,6 @@ public class MediadorAltaMuestra extends Mediador{
 		try {
 			controlMuestra.insertarMuestra(muestra, ubicacion, operador, cliente,usuario);
 			if (controlMuestra.getExiste()) {
-				System.out.println("El objeto ya existe");
 				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+", ya existe. Por favor ingrese otra.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
@@ -206,8 +207,6 @@ public class MediadorAltaMuestra extends Mediador{
 			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion();
 			if((String)mediadorSelUbic.getSeleccionado()[0]!= null){
 				this.GUIMuestra.setUbicacion("(*) Ubicacion: "+(String)mediadorSelUbic.getSeleccionado()[0]);
-				System.out.println((String)mediadorSelUbic.getSeleccionado()[0]);
-				System.out.println((String)mediadorSelUbic.getSeleccionado()[1]);
 				ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
 				ubicacion.setCiudad((String)mediadorSelUbic.getSeleccionado()[1]);
 				}
@@ -254,6 +253,11 @@ public class MediadorAltaMuestra extends Mediador{
 		return data;
 	}
 	
+	
+	/** 
+	 * Metodo que no permite que ingresen datos incorrectos en los textfield.
+	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		if (GUIMuestra.getPeso().getText().length()==25){ 

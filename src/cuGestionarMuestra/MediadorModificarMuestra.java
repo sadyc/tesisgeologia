@@ -22,7 +22,7 @@ import cuGestionarCliente.MediadorSeleccionarCliente;
 import cuGestionarUbicacion.MediadorGestionarUbicacion;
 
 /**
- * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana Modificar Muestra
+ * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana Modificar Muestra.
  * @author TesisGeologia
  *
  */
@@ -35,12 +35,16 @@ public class MediadorModificarMuestra extends Mediador{
 	private String ubicacionModificar;
 	private String dniOperadorModificar;
 	private String dniClienteModificar;
-	private OperadorDeLaboratorio operador;
-	private Muestra muestra;
 	private Usuario usuario;
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
 	
 
+	/**
+	 * Constructor con pasaje de parametros.
+	 * @param fila
+	 * @param usuario
+	 * @throws Exception
+	 */
 	public MediadorModificarMuestra(String[] fila, Usuario usuario) throws Exception {
 		super();
 		this.usuario = usuario;

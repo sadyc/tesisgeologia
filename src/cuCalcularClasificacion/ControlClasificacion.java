@@ -130,12 +130,16 @@ public class ControlClasificacion {
 						//arenas limpias y con finos.
 						if ((muestra.getCoeficienteUniformidad()>=6) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3) && (IndicePlasticidad<4)){
 							//SW-SM
+							clasificacion=("SW-SM");
 						}else if ((muestra.getCoeficienteUniformidad()>=6) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3) && (IndicePlasticidad>7)){
 							//SW-SC
+							clasificacion=("SW-SC");
 						}else if (!((muestra.getCoeficienteUniformidad()>=6) && (1<=muestra.getGradoCurvatura())) && (muestra.getGradoCurvatura()<=3) && (IndicePlasticidad>7)){
 							//SP-SM
+							clasificacion=("SP-SM");
 						}else{
 							//SP-SC
+							clasificacion=("SP-SC");
 						}
 						
 					}

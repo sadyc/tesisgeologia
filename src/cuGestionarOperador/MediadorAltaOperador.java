@@ -16,6 +16,13 @@ import comun.Mediador;
 
 import persistencia.domain.OperadorDeLaboratorio;
 
+/**
+ * @brief Clase que se utiliza para realizar los sucesos en la ventana GUIOperador.
+ * 
+ * @author TesisGeologia
+ * 
+ * @version 1.0.
+ */
 public class MediadorAltaOperador extends Mediador{
 	private GUIOperador GUIOperador;
 	private String[] data = new String [6];
@@ -51,7 +58,6 @@ public class MediadorAltaOperador extends Mediador{
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -137,19 +143,9 @@ public class MediadorAltaOperador extends Mediador{
 
 	}
 	
-	/**  PARA VALIDAR EL MAIL!
-	public boolean validarEmail(String email) {
-		// Expressio regular extreta de http://regexlib.com/
-		Pattern p = Pattern.compile(\"^([0-9a-zA-Z]([_.w]*[-.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)*([a-zA-Z]{1,9}.)+[a-zA-Z]{2,3})$\");
-		Matcher m = p.matcher(email);
-		if (m.find()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	*/
-	
+	/**
+	 * @return data
+	 */
 	public String[] getData() {
 		return data;
 	}

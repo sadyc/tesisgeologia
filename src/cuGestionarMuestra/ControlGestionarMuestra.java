@@ -13,8 +13,8 @@ import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
 
 /**
- * Clase que se utiliza para gestionar los datos con persistencia en la base
- * de datos del sistema.
+ * Clase que se utiliza para gestionar los datos de una muestra 
+ * con persistencia en la base de datos del sistema.
  * 
  * @author tesisGeologia
  * @version 1.0
@@ -28,8 +28,14 @@ public class ControlGestionarMuestra {
 	public ControlGestionarMuestra(){}
 	
 	/**
-	 * Inserta una muestra con persistencia. 
-	 */ 
+	 * Inserta una muestra con persistencia.
+	 * @param mu muestra a insertar.
+	 * @param ubicacion ubicacion a la que se asocia la muestra.
+	 * @param operador operador a la que se asocia la muestra.
+	 * @param cliente cliente a la que se asocia la muestra.
+	 * @param usuario1 usuario a la que se asocia la muestra.
+	 * @throws Exception
+	 */
 	public void insertarMuestra(Muestra mu, Ubicacion ubicacion, OperadorDeLaboratorio operador, Cliente cliente, Usuario usuario1) throws Exception{
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
@@ -62,6 +68,8 @@ public class ControlGestionarMuestra {
 	}
 	
 	/**
+	 * @param nombreMuestra nombre de la muestra a eliminar
+	 * @param ubicacion ubicacion de la muestra a eliminar.
 	 * Elimina una muestra con persistencia. 
 	 */
 	public void eliminarMuestra(String nombreMuestra, String ubicacion) throws Exception {
@@ -80,6 +88,7 @@ public class ControlGestionarMuestra {
 			
 	/**
 	 * Retorna todos los elementos de la clase pasada como persistente.
+	 * @param clase clase a la que perteneceran los elementos de la coleccion.
 	 */
 	public Collection coleccionMuestras(Class clase) throws Exception {
 		Persistencia persistencia = new Persistencia();

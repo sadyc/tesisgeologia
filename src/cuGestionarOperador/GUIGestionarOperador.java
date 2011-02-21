@@ -16,13 +16,13 @@ import javax.swing.table.DefaultTableCellRenderer;
 import comun.TablePanel;
 
 /**
-* @author TesisGeología
-* Esta clase implementa la ventana que me permite seleccionar un operador de laboratorio de los almacenados.
+ * Esta clase implementa la ventana que me permite seleccionar un operador de laboratorio de los almacenados.
+ * @author TesisGeología
+ * @version 1.0
 */
 public class GUIGestionarOperador extends JDialog	{
 
-	// Variables declaration - do not modify
-    private javax.swing.JButton jButtonAgregar;
+	private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonSalir;
@@ -65,6 +65,9 @@ public class GUIGestionarOperador extends JDialog	{
 		initComponents();
 	}
 
+	/**
+	 * Inicializa todos los componentes de la ventana.
+	 */
 	private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -255,14 +258,9 @@ public class GUIGestionarOperador extends JDialog	{
         setJMenuBar(jMenuBar1);
 
         pack();
-    }// </editor-fold>
-
-    private void jTextFieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
     }
 
     private void jComboBoxBuscarActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
     }
 
 	/**
@@ -275,7 +273,7 @@ public class GUIGestionarOperador extends JDialog	{
 	}
 	
 	/**
-	 * Metodo que permite escuchar los botones Seleccionar, Buscar y Salir.
+	 * Metodo que permite escuchar los botones de la ventana.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */

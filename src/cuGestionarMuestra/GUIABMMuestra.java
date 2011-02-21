@@ -1,7 +1,5 @@
 package cuGestionarMuestra;
 
-
-
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -18,15 +16,16 @@ import comun.TablePanel;
 
 
 /**
+ * 
+ * Clase que define la interfaz para gestionar las muestras.
  * @author TesisGeologia
  * 
- * Clase que define la interfaz para dar de alta una muestra.   
+ * @version 1.0.
  */
 public class GUIABMMuestra extends JDialog{
 
 
-	 // Variables declaration - do not modify
-    private javax.swing.JButton jButtonAgregar;
+	private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonSalir;
@@ -56,8 +55,6 @@ public class GUIABMMuestra extends JDialog{
    	private String [] columName;
 	private Object [][] data;
 	private TablePanel tablePanel;
-	 // End of variables declaration
-	
 	
 
 	/**
@@ -69,13 +66,13 @@ public class GUIABMMuestra extends JDialog{
 		columName = colum;
 		setTitle(title);
 		data = datos.clone();
-		
-		
 		initComponents();
 	}
 	
-	 private void initComponents() {
-
+	/**
+	 * Inicializa los objetos que contiene la ventana.
+	 */
+	private void initComponents() {
 	        jPanel1 = new javax.swing.JPanel();
 	        jPanel5 = new javax.swing.JPanel();
 	        jButtonAgregar = new javax.swing.JButton();
@@ -325,7 +322,7 @@ public class GUIABMMuestra extends JDialog{
 	
 
 	/**
-	 * Metodo que permite escuchar los botoner Agregar, Eliminar, Modificar.
+	 * Metodo que permite escuchar los botones de la ventana.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -382,11 +379,20 @@ public class GUIABMMuestra extends JDialog{
 		
 		return this.tablePanel;
 	}
-
+	
+	
+	/**
+	 * Escucha el doble click de la tabla.
+	 * @param lis
+	 */
 	public void setMouseListener(MouseListener lis){
         tablePanel.addTableMouseListener(lis);
     }
 	
+	/**
+	 * Escuchas las tecals ingresadas por teclado.
+	 * @param lis
+	 */
 	public void setKeyListener(KeyListener lis){
         tablePanel.addTableKeyListener(lis);
         jTextFieldBuscar.addKeyListener(lis);
