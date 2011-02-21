@@ -16,8 +16,9 @@ import comun.Mediador;
 
 
 /**
+ * Clase que se utiliza para escuchar los eventos al seleccionar una muesta.
 * @author TesisGeología
-* 
+* @version 1.0.
 */
 
 public class MediadorSeleccionarMuestra extends Mediador{
@@ -36,7 +37,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	public MediadorSeleccionarMuestra() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente"};
+		String [] columAux = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente"};
 		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
@@ -129,24 +130,6 @@ public class MediadorSeleccionarMuestra extends Mediador{
 		}
 	}
 	
-	private void cargarTablaDeMuestras(Collection resultado) {
-		data = new Object [resultado.size()] [6];
-		int i = 0;
-		Muestra muestra = new Muestra();
-		Iterator<Muestra> it = resultado.iterator();
-		while (it.hasNext()){
-			muestra = it.next();
-			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
-			data [i][1]= muestra.getNombreMuestra();
-			data [i][2]= muestra.getPeso();
-		    data [i][3]= muestra.getProfundidadInicial();
-		    data [i][4]= muestra.getProfundidadFinal();
-		    i++;
-		}
-		
-	}
-	
-		
 	/**
 	 * @return the seleccionado
 	 * @throws Exception 

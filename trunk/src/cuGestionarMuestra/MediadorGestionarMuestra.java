@@ -23,8 +23,9 @@ import cuGestionarAnalisis.MediadorGestionarAnalisis;
 
 
 /**
- * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana de GestionarMuestra
+ * @brief Clase que se utiliza para escuchar los eventos que suceden en la ventana de GestionarMuestra.
  * @author TesisGeologia
+ * @version 1.0.
  */
 public class MediadorGestionarMuestra extends Mediador{
 
@@ -39,11 +40,17 @@ public class MediadorGestionarMuestra extends Mediador{
 	private boolean seleccionoMuestra = false;
 		
 	
+	/**
+	 * Contructor con pasaje de parametros.
+	 * @param nombreVentana
+	 * @param usuario
+	 * @throws Exception
+	 */
 	public MediadorGestionarMuestra(String nombreVentana, Usuario usuario) throws Exception {
 		super();
 		this.usuario=usuario;
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente"};
+		String [] columAux = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente"};
 		GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
 		GUIABMMuestra.setListenerButtons(this);
 		GUIABMMuestra.setListenerTable(this);
@@ -148,9 +155,11 @@ public class MediadorGestionarMuestra extends Mediador{
 			}
    				   		
 		}
-
-
 		
+	/**
+	 * Metodo que carga una coleccion con todas las muestas.
+	 * @param resultado
+	 */
 	private void cargarTablaDeMuestras(Collection resultado) {
 		data = new Object [resultado.size()] [6];
 		int i = 0;
@@ -201,8 +210,7 @@ public class MediadorGestionarMuestra extends Mediador{
 		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
             if(quitOption==JOptionPane.YES_OPTION){
             	try{
-            		System.out.println(GUIABMMuestra.getTablePanel().getSelectedRow());
-            	   	String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+            		String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 	            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 	            	String ubicacion = fila[0];
 	            	String nombreMuestra = fila[1];
@@ -246,6 +254,10 @@ public class MediadorGestionarMuestra extends Mediador{
 		}
 	}
 	
+	/** 
+	 * Metodo para escuchar el atajo del teclado.
+	 * @see comun.Mediador#keyPressed(java.awt.event.KeyEvent)
+	 */
 	public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_ENTER)
         	seleccionarMuestra();
@@ -262,15 +274,9 @@ public class MediadorGestionarMuestra extends Mediador{
 
 	public void mouseReleased(MouseEvent arg0) {
 	}
-	
-	/**
-	 * @returns data 
-	*/
-	
 
 	public void itemStateChanged(ItemEvent e) {
 	}
-
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {

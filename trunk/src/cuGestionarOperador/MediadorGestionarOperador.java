@@ -18,8 +18,12 @@ import persistencia.domain.OperadorDeLaboratorio;
 
 
 /**
-* @author TesisGeología
-*/
+ * @brief Clase que se utiliza para realizar los sucesos en la ventana GestionarOperador.
+ * 
+ * @author TesisGeologia
+ * 
+ * @version 1.0.
+ */
 public class MediadorGestionarOperador implements ActionListener, KeyListener, MouseListener{
 
 	private GUIGestionarOperador GUIGestionarOperador = null;

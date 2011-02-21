@@ -122,7 +122,7 @@ public class MediadorPrincipal extends Mediador{
 			backup.elegirDirectorio();
 		}
 		if (this.GUIPrincipal.getjButtonCargarBackup()==source || this.GUIPrincipal.getCargarBackupMenu()==source){
-			backup.cargarBackup();
+			backup.cargarBackUpWindowsX86();
 		}
 	}
 	

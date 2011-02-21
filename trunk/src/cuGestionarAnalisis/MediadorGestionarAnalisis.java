@@ -49,8 +49,6 @@ public class MediadorGestionarAnalisis extends Mediador{
 		GUImuestraDetallada.setTitle(titulo);
 		GUImuestraDetallada.setListenerButtons(this);
 		GUImuestraDetallada.setModal(true);
-		GUImuestraDetallada.getImprimir().setEnabled(false);
-		GUImuestraDetallada.getImprimirMenu().setEnabled(false);
 		GUImuestraDetallada.setLocationRelativeTo(null);
 		show();
 	}

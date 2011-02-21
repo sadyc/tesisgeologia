@@ -41,7 +41,8 @@ public class GUIComparacion extends JDialog{
 	private JPanel panelCenter=null;
 	
 	// DATOS MUESTRA 1
-	private JLabel muestra1;
+	private Muestra muestra1;
+	private JLabel jLabelMuestra1;
 	private JLabel peso1;
 	private JLabel profundidadInicial1;
 	private JLabel profundidadFinal1;
@@ -60,7 +61,8 @@ public class GUIComparacion extends JDialog{
 	private Object [][] data1 = new Object [3][5];
 	
 	// DATOS MUESTRA 2
-	private JLabel muestra2;
+	private Muestra muestra2;
+	private JLabel jLabelMuestra2;
 	private JLabel peso2;
 	private JLabel profundidadInicial2;
 	private JLabel profundidadFinal2;
@@ -77,26 +79,17 @@ public class GUIComparacion extends JDialog{
 	private JLabel gradoCurvatura2;
 	private TablePanel tablePanel2;
 	private Object [][] data2= new Object [3][5];
+	private JLabel descripcion4;
+	private JLabel clasificacion4;
+	private JLabel descripcion3;
+	private JLabel clasificacion3;
 
 	/**
 	 * This is the default constructor
 	 */
 	public GUIComparacion() {
 		super();
-		menu = new JMenuBar();
-		herramientas = new JMenu ("Archivo");
-		herramientas = new JMenu("Herramientas");
-		ayuda = new JMenu("Ayuda");
-		menu.add(herramientas);
-		menu.add(herramientas);
-		menu.add(ayuda);
-		cancelarMenu = new JMenuItem("Salir");
-		herramientas.add(new JSeparator());
-		herramientas.add(cancelarMenu);
-		versionMenu = new JMenuItem("Version");
-		ayuda.add(versionMenu);	
-		herramientas.add(cancelarMenu);
-		muestra1 = new JLabel("Muestra: ");
+		jLabelMuestra1 = new JLabel("Muestra: ");
 		peso1 = new JLabel("Peso: ");
 		profundidadInicial1 = new JLabel("Profundidad Inicial: ");
 		profundidadFinal1 = new JLabel("Profundidad Final: ");
@@ -112,7 +105,7 @@ public class GUIComparacion extends JDialog{
 		coeficienteUniformidad1 = new JLabel("Coef. Uniformidad (Cu): ");
 		gradoCurvatura1 = new JLabel ("Grado de Curvatura (Cc): ");
 		
-		muestra2 = new JLabel("Muestra: ");
+		jLabelMuestra2 = new JLabel("Muestra: ");
 		peso2 = new JLabel("Peso: ");
 		profundidadInicial2 = new JLabel("Profundidad Inicial: ");
 		profundidadFinal2 = new JLabel("Profundidad Final: ");
@@ -127,7 +120,6 @@ public class GUIComparacion extends JDialog{
 		D10_2 = new JLabel("D10(mm): ");
 		coeficienteUniformidad2 = new JLabel("Coef. Uniformidad (Cu): ");
 		gradoCurvatura2 = new JLabel ("Grado de Curvatura (Cc): ");
-		cancelar = new JButton("SALIR");
 		initialize();
 	}
 	
@@ -139,60 +131,67 @@ public class GUIComparacion extends JDialog{
 		super();
 		this.data1 = data1;
 		this.data2 = data2; 
-		menu = new JMenuBar();
-		herramientas = new JMenu ("Archivo");
-		herramientas = new JMenu("Herramientas");
-		ayuda = new JMenu("Ayuda");
-		menu.add(herramientas);
-		menu.add(herramientas);
-		menu.add(ayuda);
-		cancelarMenu = new JMenuItem("Salir");
-		versionMenu = new JMenuItem("Version");
-		ayuda.add(versionMenu);	
-		herramientas.add(new JSeparator());
-		herramientas.add(cancelarMenu);
-		this.muestra1 = new JLabel(muestra1.getNombreMuestra());
+		this.muestra1 = muestra1;
+		this.muestra2 = muestra2;
+		this.jLabelMuestra1 = new JLabel(muestra1.getNombreMuestra());
 		this.peso1 = new JLabel("Peso: "+muestra1.getPeso().toString()+"grs");
 		this.profundidadInicial1= new JLabel("Profundidad Inicial: "+muestra1.getProfundidadInicial()+"mts");
 		this.profundidadFinal1 = new JLabel("Profundidad Final: "+muestra1.getProfundidadFinal()+"mts");
 		ubicacion1 = new JLabel ("Ubicacion: "+muestra1.getUbicacion().getNombreUbicacion());
-		clasificacion1 = new JLabel ("Clasificacion: ");
-		if (muestra1.getSucs()!=null){
-			descripcion1 = new JLabel ("Descripcion: "+muestra1.getSucs().getDescripcion());
-		}
-		else{
+		if (muestra1.getSucs()==null){
+			clasificacion1 = new JLabel ("Clasificacion: ");
 			descripcion1 = new JLabel ("Descripcion: ");
 		}
-		limiteLiquido1 = new JLabel ("Límite Líquido (LL): ");    
-		limitePlastico1 = new JLabel ("Límite Plástico (LP): ");	
-		indicePlasticidad1 = new JLabel ("Íncide de Plasticidad (IP): ");
-		D60_1 = new JLabel("D60(mm): ");
-		D30_1 = new JLabel("D30(mm): "); 
-		D10_1 = new JLabel("D10(mm): "); 
-		coeficienteUniformidad1 = new JLabel("Coef. Uniformidad (Cu): ");
-		gradoCurvatura1 = new JLabel ("Grado de Curvatura (Cc): ");
+		else{
+			clasificacion1 = new JLabel ("Clasificacion: "+muestra1.getSucs().getClasificacion());
+			descripcion1 = new JLabel ("Descripcion: "+muestra1.getSucs().getDescripcion());
+		}
+		if (muestra1.getAashto()==null){
+			clasificacion2 = new JLabel ("Clasificacion: ");
+			descripcion2 = new JLabel ("Descripcion: ");
+		}
+		else{
+			clasificacion2 = new JLabel ("Clasificacion: "+muestra1.getAashto().getClasificacion());
+			descripcion2 = new JLabel ("Descripcion: "+muestra1.getAashto().getDescripcion());
+		}
+		limiteLiquido1 = new JLabel ("Límite Líquido (LL): "+muestra1.getLimiteLiquido()); 
+		limitePlastico1 = new JLabel ("Límite Plástico (LP): "+muestra1.getLimitePlastico());
+		indicePlasticidad1 = new JLabel ("Íncide de Plasticidad (IP): "+muestra1.getIndicePlasticidad());
+		D60_1 = new JLabel("D60(mm): "+muestra1.getD60());
+		D30_1 = new JLabel("D30(mm): "+muestra1.getD30()); 
+		D10_1 = new JLabel("D10(mm): "+muestra1.getD10()); 
+		coeficienteUniformidad1 = new JLabel("Coef. Uniformidad (Cu): "+muestra1.getCoeficienteUniformidad());
+		gradoCurvatura1 = new JLabel ("Grado de Curvatura (Cc): "+muestra1.getGradoCurvatura());
 		
-		this.muestra2 = new JLabel(muestra2.getNombreMuestra());
+		this.jLabelMuestra2 = new JLabel(muestra2.getNombreMuestra());
 		this.peso2 = new JLabel("Peso: "+muestra2.getPeso().toString()+"grs");
 		this.profundidadInicial2= new JLabel("Profundidad Inicial: "+muestra2.getProfundidadInicial()+"mts");
 		this.profundidadFinal2 = new JLabel("Profundidad Final: "+muestra2.getProfundidadFinal()+"mts");
 		ubicacion2 = new JLabel ("Ubicacion: "+muestra2.getUbicacion().getNombreUbicacion());
-		clasificacion2 = new JLabel ("Clasificacion: ");
-		if (muestra1.getSucs()!=null){
-			descripcion2 = new JLabel ("Descripcion: "+muestra2.getSucs().getDescripcion());
+		if (muestra2.getSucs()==null){
+			clasificacion3 = new JLabel ("Clasificacion: ");
+			descripcion3 = new JLabel ("Descripcion: ");
 		}
 		else{
-			descripcion2 = new JLabel ("Descripcion: ");
+			clasificacion3 = new JLabel ("Clasificacion: "+muestra2.getSucs().getClasificacion());
+			descripcion3 = new JLabel ("Descripcion: "+muestra2.getSucs().getDescripcion());
 		}
-		limiteLiquido2 = new JLabel ("Límite Líquido (LL): ");    
-		limitePlastico2 = new JLabel ("Límite Plástico (LP): ");	
-		indicePlasticidad2 = new JLabel ("Íncide de Plasticidad (IP): ");
-		D60_2 = new JLabel("D60(mm): ");
-		D30_2 = new JLabel("D30(mm): "); 
-		D10_2 = new JLabel("D10(mm): "); 
-		coeficienteUniformidad2 = new JLabel("Coef. Uniformidad (Cu): ");
-		gradoCurvatura2 = new JLabel ("Grado de Curvatura (Cc): ");
-		cancelar = new JButton("SALIR");
+		if (muestra2.getAashto()==null){
+			clasificacion4 = new JLabel ("Clasificacion: ");
+			descripcion4 = new JLabel ("Descripcion: ");
+		}
+		else{
+			clasificacion4 = new JLabel ("Clasificacion: "+muestra2.getAashto().getClasificacion());
+			descripcion4 = new JLabel ("Descripcion: "+muestra2.getAashto().getDescripcion());
+		}
+		limiteLiquido2 = new JLabel ("Límite Líquido (LL): "+muestra2.getLimiteLiquido()); 
+		limitePlastico2 = new JLabel ("Límite Plástico (LP): "+muestra2.getLimitePlastico());
+		indicePlasticidad2 = new JLabel ("Íncide de Plasticidad (IP): "+muestra2.getIndicePlasticidad());
+		D60_2 = new JLabel("D60(mm): "+muestra2.getD60());
+		D30_2 = new JLabel("D30(mm): "+muestra2.getD30()); 
+		D10_2 = new JLabel("D10(mm): "+muestra2.getD10()); 
+		coeficienteUniformidad2 = new JLabel("Coef. Uniformidad (Cu): "+muestra2.getCoeficienteUniformidad());
+		gradoCurvatura2 = new JLabel ("Grado de Curvatura (Cc): "+muestra2.getGradoCurvatura());
 		initialize();
 	}
 	
@@ -200,14 +199,14 @@ public class GUIComparacion extends JDialog{
 	 * @return the muestra1
 	 */
 	public JLabel getMuestra1() {
-		return muestra1;
+		return jLabelMuestra1;
 	}
 	
 	/**
 	 * @return the muestra2
 	 */
 	public JLabel getMuestra2() {
-		return muestra2;
+		return jLabelMuestra2;
 	}
 	
 	/**
@@ -286,6 +285,22 @@ public class GUIComparacion extends JDialog{
 	 * @return void
 	 */
 	private  void initialize() {
+		menu = new JMenuBar();
+		herramientas = new JMenu ("Archivo");
+		herramientas = new JMenu("Herramientas");
+		ayuda = new JMenu("Ayuda");
+		menu.add(herramientas);
+		menu.add(herramientas);
+		menu.add(ayuda);
+		cancelarMenu = new JMenuItem("Salir");
+		cancelarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
+		versionMenu = new JMenuItem("Version");
+		versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
+		ayuda.add(versionMenu);	
+		herramientas.add(new JSeparator());
+		herramientas.add(cancelarMenu);
+		cancelar = new JButton("Salir");
+		cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
 		this.setSize(1300 , 700);
 		this.getContentPane().setLayout(new BorderLayout()); 		
 		this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
@@ -302,7 +317,7 @@ public class GUIComparacion extends JDialog{
 	 * @return Jpanel
 	 */
 		
-	public JPanel getPanelNorte() { //PA JUGAAAAAAAAA!!!
+	public JPanel getPanelNorte() { 
 		if (this.panelNorte==null) {
 			this.panelNorte= new JPanel();
 			GridBagLayout gridbag = new GridBagLayout();
@@ -316,7 +331,7 @@ public class GUIComparacion extends JDialog{
 			gbc.fill=GridBagConstraints.HORIZONTAL;
 			this.panelNorte.setLayout(gridbag);
 			gbc.ipady = 15;
-			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA 1: "),gbc);
+			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA: "+muestra1.getNombreMuestra()),gbc);
 			gbc.ipady = 0;
 			gbc.gridy = 1;
 			this.panelNorte.add(ubicacion1,gbc);
@@ -349,11 +364,10 @@ public class GUIComparacion extends JDialog{
 			gbc.gridy = 6;
 			gbc.ipady = 10;
 			this.panelNorte.add(gradoCurvatura1,gbc);
-			
 			gbc.gridx = 3;
 			gbc.gridy = 0;
 			gbc.ipady = 15;
-			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA 2: "),gbc);
+			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA: "+muestra2.getNombreMuestra()),gbc);
 			gbc.ipady = 0;
 			gbc.gridy = 1;
 			this.panelNorte.add(ubicacion2,gbc);
@@ -402,16 +416,61 @@ public class GUIComparacion extends JDialog{
 			JPanel muestra1 = new JPanel();
 			muestra1.setLayout(new BoxLayout(muestra1,BoxLayout.Y_AXIS));
 			muestra1.add(this.getTablePanel1());
-			muestra1.add(new JLabel("DATOS DE LA CLASIFICACION MUESTRA 1: "));
-			muestra1.add(clasificacion1);
-			muestra1.add(descripcion1);
+			JPanel panelClasificacion = new JPanel();
+			GridBagLayout gridbag = new GridBagLayout();
+			GridBagConstraints gbc = new GridBagConstraints();
+			gbc.gridwidth = 1;
+			gbc.gridheight = 1;
+			gbc.weightx = 1.0;
+			gbc.weighty = 0.50;
+			gbc.gridx = 0;
+			gbc.gridy = 0;
+			gbc.fill=GridBagConstraints.HORIZONTAL;
+			panelClasificacion.setLayout(gridbag);
+			gbc.ipady = 15;
+			panelClasificacion.add(new JLabel("Clasificacion SUCS"),gbc);
+			gbc.ipady = 0;
+			gbc.gridy = 1;
+			panelClasificacion.add(clasificacion1,gbc);
+			gbc.gridy = 2;
+			panelClasificacion.add(descripcion1,gbc);
+			gbc.gridx = 4;
+			gbc.gridy = 0;
+			panelClasificacion.add(new JLabel("Clasificacion AASHTO"),gbc);
+			gbc.gridy = 1;
+			panelClasificacion.add(clasificacion2,gbc);
+			gbc.gridy = 2;
+			panelClasificacion.add(descripcion2,gbc);
+			muestra1.add(panelClasificacion);
 			
 			JPanel muestra2 = new JPanel();
 			muestra2.setLayout(new BoxLayout(muestra2,BoxLayout.Y_AXIS));
 			muestra2.add(this.getTablePanel2());
-			muestra2.add(new JLabel("DATOS DE LA CLASIFICACION MUESTRA 2: "));
-			muestra2.add(clasificacion2);
-			muestra2.add(descripcion2);
+			JPanel panelClasificacion2 = new JPanel();
+			gbc.gridwidth = 1;
+			gbc.gridheight = 1;
+			gbc.weightx = 1.0;
+			gbc.weighty = 0.50;
+			gbc.gridx = 0;
+			gbc.gridy = 0;
+			gbc.fill=GridBagConstraints.HORIZONTAL;
+			panelClasificacion2.setLayout(gridbag);
+			gbc.ipady = 15;
+			panelClasificacion2.add(new JLabel("Clasificacion SUCS"),gbc);
+			gbc.ipady = 0;
+			gbc.gridy = 1;
+			panelClasificacion2.add(clasificacion3,gbc);
+			gbc.gridy = 2;
+			panelClasificacion2.add(descripcion3,gbc);
+			gbc.gridx = 4;
+			gbc.gridy = 0;
+			panelClasificacion2.add(new JLabel("Clasificacion AASHTO"),gbc);
+			gbc.gridy = 1;
+			panelClasificacion2.add(clasificacion4,gbc);
+			gbc.gridy = 2;
+			panelClasificacion2.add(descripcion4,gbc);
+			
+			muestra2.add(panelClasificacion2);
 			
 			this.panelCenter.add(muestra1);
 			this.panelCenter.add(muestra2);

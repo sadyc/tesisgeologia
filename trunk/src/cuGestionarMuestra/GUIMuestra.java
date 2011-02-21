@@ -15,7 +15,10 @@ import javax.swing.JTextField;
 
 /**
  * Clase GUI que reprensenta la ventana para una muestra.
+ * 
  * @author TesisGeologia.
+ * 
+ * @version 1.0.
  */
 	    
 public class GUIMuestra extends javax.swing.JDialog {
@@ -53,7 +56,12 @@ public class GUIMuestra extends javax.swing.JDialog {
     
     
 
-    /** Creates new form GUIMuestra */
+    
+    /**
+     * Constructor de la clase 
+     * @param modal
+     * @param nombreUsuario
+     */
     public GUIMuestra(boolean modal, String nombreUsuario) {
         super();
         nombre = new JTextField(15);
@@ -66,9 +74,13 @@ public class GUIMuestra extends javax.swing.JDialog {
 	    setLocationRelativeTo(null);
     }
     
-    /**
-	 * This is the parametrized constructor used in modification
-	 * @param data  arreglo que almacena los datos de una muestra. 
+    
+	/**
+	 * Constructor con pasaje de parametros.
+	 * @param fila almacena todos los datos de la muesta a modificar.
+	 * @param nombreOperador.
+	 * @param nombreCliente.
+	 * @param nombreUsuario
 	 */
 	public GUIMuestra(String[] fila,String nombreOperador, String nombreCliente, String nombreUsuario) {
 	
@@ -89,8 +101,10 @@ public class GUIMuestra extends javax.swing.JDialog {
 	}
 
   
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+    
+    /**
+     * Metodo que inicializa los componentes de la ventana.
+     */
     private void initComponents() {
 
         aceptar = new javax.swing.JButton();
@@ -456,6 +470,9 @@ public class GUIMuestra extends javax.swing.JDialog {
 	        return cancelarMenu;
 	    }
 
+	    /**
+	     * @return
+	     */
 	    public JMenuItem getjMenuVersion() {
 	        return versionMenu;
 	    }
@@ -526,7 +543,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 		}
 		
 		/**
-		 * Metodo que permite escuchar los botoner aceptar y cancelar.
+		 * Metodo que permite escuchar los botoner de la ventana.
 		 *
 		 *@param lis actionEvent asignado a los botones.
 		 */
@@ -545,6 +562,10 @@ public class GUIMuestra extends javax.swing.JDialog {
 		}
 		
 		
+		/**
+		 * retorna lo que hay en los texfield de la ventana.
+		 * @return data.
+		 */
 		public String[] getData() {
 			String[] data = new String[4];
 			data[0]= nombre.getText();
@@ -554,6 +575,10 @@ public class GUIMuestra extends javax.swing.JDialog {
 			return data;
 		}
 		
+		/**
+		 * Escucha lo ingresado por teclado.
+		 * @param lis
+		 */
 		public void setKeyListener(KeyListener lis){
 			nombre.addKeyListener(lis);
 		    profundidadInicial.addKeyListener(lis);

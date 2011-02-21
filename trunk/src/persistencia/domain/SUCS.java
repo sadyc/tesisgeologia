@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Clase que se utiliza para la clasificacion de la muestra de la 
- * forma BSUCS.
+ * forma SUCS.
  * @author TesisGeologia
  * @version 1.0
  */
@@ -114,13 +114,32 @@ public class SUCS extends Clasificacion {
 																					nombreAux = "Grano Grueso - Gravas - Gravas con Finos - GP-GM";
 																					descripcionAux="Grava mal graduada con limo.";
 																				}else{
-																					nombreAux = "Grano Grueso - Gravas - Gravas con Finos - GP-GC";
-																					descripcionAux="Grava mal graduada con arcilla.";
+																					if (clasificacion.equals("GP-GC")){
+																						nombreAux = "Grano Grueso - Gravas - Gravas con Finos - GP-GC";
+																						descripcionAux="Grava mal graduada con arcilla.";
+																					}else{
+																						if (clasificacion.equals("SW-SM")){
+																							nombreAux = "Grano Grueso - Arenas - Arenas con Finos - SC";
+																							descripcionAux="Arena bien graduada con limo.";
+																						}else{
+																							if (clasificacion.equals("SW-SC")){
+																								nombreAux = "Grano Grueso - Arenas - Arenas con Finos - SC";
+																								descripcionAux="Arena bien graduada con arcilla.";
+																							}else{
+																								if (clasificacion.equals("SP-SM")){
+																									nombreAux = "Grano Grueso - Arenas - Arenas con Finos - SC";
+																									descripcionAux="Arena mal graduada con limo.";
+																								}else{
+																									nombreAux = "Grano Grueso - Arenas - Arenas con Finos - SC";
+																									descripcionAux="Arena mal graduada con arcilla.";
+																								}				
+																							}
+																						}
+																					}
 																				}
 																			}
 																		}
-																	}
-																	
+																	}																	
 																}
 															}
 														}

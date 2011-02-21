@@ -5,8 +5,18 @@ import java.util.Collection;
 import persistencia.Persistencia;
 import persistencia.domain.OperadorDeLaboratorio;
 
+
+/**
+ * Clase que se utiliza para gestionar los datos de un operador
+ * con persistencia en la base de datos del sistema.
+ * 
+ * @author TesisGeologia.
+ *
+ */
 public class ControlGestionarOperador {
+	
 	private boolean yaExiste;
+	
 	/**
 	 * Contructor por defecto
 	 */
@@ -34,7 +44,7 @@ public class ControlGestionarOperador {
 	}
 	
 	/**
-	 * Elimina una muestra con persistencia. 
+	 * Elimina un operador con persistencia. 
 	 */
 	public void eliminarOperador(String DNI) throws Exception {
 		Persistencia persistencia = new Persistencia();
@@ -51,6 +61,12 @@ public class ControlGestionarOperador {
 		}
 	}
 			
+	/**
+	 * Modifica un operador.
+	 * @param DNI se utiliza para buscar el operador a eliminar.
+	 * @param data los datos a modificar.
+	 * @throws Exception
+	 */
 	public void modificarOperador(String DNI,String[] data) throws Exception {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
