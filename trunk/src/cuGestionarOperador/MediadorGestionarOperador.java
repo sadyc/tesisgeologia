@@ -14,7 +14,7 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import persistencia.domain.GOperadorDeLaboratorio;
+import persistencia.domain.OperadorDeLaboratorio;
 
 
 /**
@@ -54,11 +54,11 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 	 * base de datos al atributo data de la clase mediador.
 	 */
 	public void cargarTablaDeOperador()throws Exception{
-		GOperadorDeLaboratorio operador = new GOperadorDeLaboratorio();
+		OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
 		Class clase = operador.getClass();
 		control = new ControlGestionarOperador();
 		Collection operadores = control.coleccionOperadores(clase);
-		Iterator<GOperadorDeLaboratorio> it = operadores.iterator();
+		Iterator<OperadorDeLaboratorio> it = operadores.iterator();
 		data = new Object [operadores.size()] [5];
 		int i = 0;
 		while (it.hasNext()){

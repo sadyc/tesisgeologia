@@ -14,7 +14,7 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import persistencia.domain.DUsuario;
+import persistencia.domain.Usuario;
 
 public class MediadorGestionarUsuario implements ActionListener, KeyListener, MouseListener{
 		
@@ -46,10 +46,10 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	 */
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarUsuario control = new ControlGestionarUsuario();
-		DUsuario usuario = new DUsuario();
+		Usuario usuario = new Usuario();
 		Class clase = usuario.getClass();
-		Collection<DUsuario> usuarios = control.coleccionUsuarios(clase);
-		Iterator<DUsuario> it = usuarios.iterator();
+		Collection<Usuario> usuarios = control.coleccionUsuarios(clase);
+		Iterator<Usuario> it = usuarios.iterator();
 		data = new Object [usuarios.size()] [7];
 		int i = 0;
 		while (it.hasNext()){
@@ -68,8 +68,8 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	private void cargarTablaDeMuestras(Collection resultado) {
 		data = new Object [resultado.size()] [7];
 		int i = 0;
-		DUsuario usuario = new DUsuario();
-		Iterator<DUsuario> it = resultado.iterator();
+		Usuario usuario = new Usuario();
+		Iterator<Usuario> it = resultado.iterator();
 		while (it.hasNext()){
 			usuario = it.next();
 			data [i][0]= usuario.getNombre();

@@ -3,7 +3,7 @@ package cuGestionarOperador;
 import java.util.Collection;
 
 import persistencia.Persistencia;
-import persistencia.domain.GOperadorDeLaboratorio;
+import persistencia.domain.OperadorDeLaboratorio;
 
 public class ControlGestionarOperador {
 	private boolean yaExiste;
@@ -15,7 +15,7 @@ public class ControlGestionarOperador {
 	/**
 	 * Inserta un operador con persistencia. 
 	 */ 
-	public void insertarOperador(GOperadorDeLaboratorio operador) throws Exception{
+	public void insertarOperador(OperadorDeLaboratorio operador) throws Exception{
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
@@ -40,8 +40,8 @@ public class ControlGestionarOperador {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
-			GOperadorDeLaboratorio operador = new GOperadorDeLaboratorio();
-			GOperadorDeLaboratorio auxOperador = (GOperadorDeLaboratorio)persistencia.buscarObjeto(operador.getClass(), "dni=='"+DNI+"'");
+			OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
+			OperadorDeLaboratorio auxOperador = (OperadorDeLaboratorio)persistencia.buscarObjeto(operador.getClass(), "dni=='"+DNI+"'");
 			persistencia.eliminarObjeto(auxOperador);
 			persistencia.cerrarTransaccion();
 		}
@@ -55,11 +55,11 @@ public class ControlGestionarOperador {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		GOperadorDeLaboratorio aux = new GOperadorDeLaboratorio();
+		OperadorDeLaboratorio aux = new OperadorDeLaboratorio();
 		try {
 			Class claseOperador = aux.getClass();
 			if (persistencia.buscarObjeto(claseOperador, "dni=='"+data[2]+"'")==null){
-				aux =(GOperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+DNI+"'");
+				aux =(OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+DNI+"'");
 				aux.setNombre(data[0]);
 				aux.setApellido(data[1]);
 				aux.setDni(data[2]);
@@ -83,12 +83,12 @@ public class ControlGestionarOperador {
 	 * @param DNI
 	 * @return
 	 */
-	public GOperadorDeLaboratorio obtenerOperador (String DNI) throws Exception{
+	public OperadorDeLaboratorio obtenerOperador (String DNI) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		GOperadorDeLaboratorio aux = new GOperadorDeLaboratorio();
+		OperadorDeLaboratorio aux = new OperadorDeLaboratorio();
 		try {
-			aux =(GOperadorDeLaboratorio)persistencia.buscarObjeto(aux.getClass(), "dni=='"+DNI+"'");
+			aux =(OperadorDeLaboratorio)persistencia.buscarObjeto(aux.getClass(), "dni=='"+DNI+"'");
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
@@ -103,7 +103,7 @@ public class ControlGestionarOperador {
 	public Collection coleccionOperadores(Class clase) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		Collection<GOperadorDeLaboratorio> aux = null;
+		Collection<OperadorDeLaboratorio> aux = null;
 		try {
 			aux = (persistencia.buscarColeccion(clase));
 			persistencia.cerrarTransaccion();

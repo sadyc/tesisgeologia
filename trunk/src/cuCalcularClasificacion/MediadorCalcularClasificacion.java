@@ -13,8 +13,8 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.IAnalisis;
-import persistencia.domain.HMuestra;
+import persistencia.domain.Analisis;
+import persistencia.domain.Muestra;
 
 import comun.Mediador;
 
@@ -32,7 +32,7 @@ import cuReporte.report.ViewReport;
 public class MediadorCalcularClasificacion extends Mediador{
 	private GUIClasificacion GUIClasificacion;
 	
-	private HMuestra muestra = new HMuestra();
+	private Muestra muestra = new Muestra();
 	private Frame frame;
 	private GUIMuestraDetallada GUIMuestraDetallada;
 	private Object [][] data;
@@ -55,7 +55,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	 * @param muestra
 	 * @throws Exception
 	 */
-	public MediadorCalcularClasificacion(String titulo, HMuestra muestra) throws Exception {
+	public MediadorCalcularClasificacion(String titulo, Muestra muestra) throws Exception {
 		super();
 		boolean clasificar = true;
 		cargarTablaDeAnalisis(muestra);
@@ -100,12 +100,12 @@ public class MediadorCalcularClasificacion extends Mediador{
 	 * base de datos al atributo data de la clase mediador.
 	 * @param nombreMuestra 
 	 */
-	public void cargarTablaDeAnalisis(HMuestra muestra)throws Exception{
+	public void cargarTablaDeAnalisis(Muestra muestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
-		IAnalisis analisis = new IAnalisis();
+		Analisis analisis = new Analisis();
 		Class clase = analisis.getClass();
 		Collection muestras = control.coleccionAnalisisDeMuestra(clase, muestra);
-		Iterator<IAnalisis> it = muestras.iterator();
+		Iterator<Analisis> it = muestras.iterator();
 		data = new Object [muestras.size()] [5];
 		int i = 0;
 		while (it.hasNext()){

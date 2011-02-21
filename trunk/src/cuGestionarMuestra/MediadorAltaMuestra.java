@@ -11,11 +11,11 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.DCliente;
-import persistencia.domain.HMuestra;
-import persistencia.domain.GOperadorDeLaboratorio;
-import persistencia.domain.FUbicacion;
-import persistencia.domain.DUsuario;
+import persistencia.domain.Cliente;
+import persistencia.domain.Muestra;
+import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.Ubicacion;
+import persistencia.domain.Usuario;
 
 import comun.Mediador;
 import comun.MediadorSeleccionarOperador;
@@ -33,14 +33,14 @@ import cuGestionarUbicacion.MediadorGestionarUbicacion;
 public class MediadorAltaMuestra extends Mediador{
 	private GUIMuestra GUIMuestra;
 	private String[] data = new String [10];
-	private HMuestra muestra ;
-	private FUbicacion ubicacion;
-	private GOperadorDeLaboratorio operador;
-	private DCliente cliente;
+	private Muestra muestra ;
+	private Ubicacion ubicacion;
+	private OperadorDeLaboratorio operador;
+	private Cliente cliente;
 	private Component frame;
 	private ControlGestionarMuestra controlMuestra;
 	private ControlGestionarUbicacion controlUbicacion;
-	private DUsuario usuario ;
+	private Usuario usuario ;
 	private java.sql.Date sqlDate;
 	private boolean altaMuestra= false;
 
@@ -49,9 +49,9 @@ public class MediadorAltaMuestra extends Mediador{
 	 * @param nombreVentana
 	 * Constructor con pasaje de parametros.
 	 */
-	public MediadorAltaMuestra(String nombreVentana, DUsuario usuario) {
+	public MediadorAltaMuestra(String nombreVentana, Usuario usuario) {
 		super();
-		muestra = new HMuestra();
+		muestra = new Muestra();
 		controlMuestra = new ControlGestionarMuestra();
 		controlUbicacion = new ControlGestionarUbicacion();
 		java.util.Date utilDate = new java.util.Date();
@@ -59,9 +59,9 @@ public class MediadorAltaMuestra extends Mediador{
 	    System.out.println("utilDate:" + utilDate);
 	    System.out.println("sqlDate:" + sqlDate);
 		this.usuario = usuario;
-		ubicacion = new FUbicacion();
-		operador= new GOperadorDeLaboratorio();
-		cliente = new DCliente();
+		ubicacion = new Ubicacion();
+		operador= new OperadorDeLaboratorio();
+		cliente = new Cliente();
 		GUIMuestra = new GUIMuestra(true, usuario.getNombreUsuario());
 		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
@@ -180,7 +180,7 @@ public class MediadorAltaMuestra extends Mediador{
 		data[6]= cliente.getNombre()+" "+cliente.getApellido();
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-	    muestra = new HMuestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,ubicacion,null,null,cliente,sqlDate);
+	    muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,ubicacion,null,null,cliente,sqlDate);
 		try {
 			controlMuestra.insertarMuestra(muestra, ubicacion, operador, cliente,usuario);
 			if (controlMuestra.getExiste()) {

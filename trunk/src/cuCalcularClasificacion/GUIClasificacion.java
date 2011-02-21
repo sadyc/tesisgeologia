@@ -8,7 +8,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.ScrollPane;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
@@ -26,7 +25,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import org.jfree.chart.ChartPanel;
 
-import persistencia.domain.HMuestra;
+import persistencia.domain.Muestra;
 
 import comun.TablePanel;
 
@@ -125,7 +124,7 @@ public class GUIClasificacion extends JDialog{
 	 * @param data  arreglo que almacena los datos de una muestra. 
 	 * @throws Exception 
 	 */
-	public GUIClasificacion(HMuestra muestra, Object [] [] data) throws Exception {
+	public GUIClasificacion(Muestra muestra, Object [] [] data) throws Exception {
 		super();
 		ControlClasificacion control = new ControlClasificacion();
 		curva = control.curvaGranulometrica(muestra);

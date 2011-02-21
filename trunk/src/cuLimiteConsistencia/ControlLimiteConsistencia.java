@@ -1,7 +1,7 @@
 package cuLimiteConsistencia;
 
 import persistencia.Persistencia;
-import persistencia.domain.HMuestra;
+import persistencia.domain.Muestra;
 
 /**
  * @author tesisGeologia
@@ -18,11 +18,11 @@ public class ControlLimiteConsistencia {
         /**
          * Inserta un analisis de consistencia con persistencia. 
          */ 
-        public void insertarConsistencia(Float limiteLiquido ,Float limitePlastico,HMuestra muestra) throws Exception{
+        public void insertarConsistencia(Float limiteLiquido ,Float limitePlastico,Muestra muestra) throws Exception{
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 try {
-                        muestra = (HMuestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+                        muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
                         muestra.setLimiteLiquido(limiteLiquido);
                         muestra.setLimitePlastico(limitePlastico);
                         muestra.calcularIndicePlasticidad();
@@ -47,8 +47,8 @@ public class ControlLimiteConsistencia {
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 try {
-                	HMuestra muestra = new HMuestra();
-        			muestra = (HMuestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"'");
+                	Muestra muestra = new Muestra();
+        			muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"'");
         			muestra.setLimitePlastico(limitePlastico);
         			muestra.setLimiteLiquido(limiteLiquido);
         			muestra.calcularIndicePlasticidad();
@@ -67,12 +67,12 @@ public class ControlLimiteConsistencia {
     	 * @param nombreMuestra
     	 * @return
     	 */
-    	public HMuestra obtenerMuestra (Class clase, String nombreMuestra) throws Exception{
+    	public Muestra obtenerMuestra (Class clase, String nombreMuestra) throws Exception{
     		Persistencia persistencia = new Persistencia();
     		persistencia.abrirTransaccion();
-    		HMuestra aux = new HMuestra();
+    		Muestra aux = new Muestra();
     		try {
-    			aux =(HMuestra)persistencia.buscarObjeto(clase, "nombreMuestra=='"+nombreMuestra+"'");
+    			aux =(Muestra)persistencia.buscarObjeto(clase, "nombreMuestra=='"+nombreMuestra+"'");
     		}
     		catch (Exception e) {
     			persistencia.realizarRollback();

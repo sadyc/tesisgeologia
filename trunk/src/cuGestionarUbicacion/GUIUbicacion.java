@@ -8,7 +8,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import persistencia.domain.FUbicacion;
+import persistencia.domain.Ubicacion;
 
 /**
  * Clase GUI que reprensenta la ventana para una ubicacion.
@@ -56,7 +56,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
     }
     
     /** Creates new form GUIUbicacion */
-    public GUIUbicacion(FUbicacion ubicacion) {
+    public GUIUbicacion(Ubicacion ubicacion) {
     	super();
     	setModal(true);
         setResizable(false);

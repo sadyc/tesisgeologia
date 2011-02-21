@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.DUsuario;
+import persistencia.domain.Usuario;
 
 import comun.MediadorPrincipal;
 
@@ -22,7 +22,7 @@ public class MediadorLogin implements ActionListener{
 	private GUILogin login;
 	private Component frame;
 	private ControlLogin control;
-	private DUsuario persona;
+	private Usuario persona;
 	
 	/**
 	 * Constructor con parametros
@@ -80,7 +80,7 @@ public class MediadorLogin implements ActionListener{
         Encriptar encriptar =new Encriptar();
         password = encriptar.hash(password);
         control = new ControlLogin(); 
-        DUsuario aux = new DUsuario();
+        Usuario aux = new Usuario();
         try {
                	
         	aux = control.obtenerUsuario(nombreUsuario, password);

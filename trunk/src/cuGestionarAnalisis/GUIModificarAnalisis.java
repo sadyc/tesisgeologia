@@ -18,8 +18,8 @@ import javax.swing.JTextField;
 
 import comun.TablePanel;
 
-import persistencia.domain.HMuestra;
-import persistencia.domain.ETamiz;
+import persistencia.domain.Muestra;
+import persistencia.domain.Tamiz;
 
 
 /**
@@ -59,7 +59,7 @@ public class GUIModificarAnalisis extends JDialog {
 	 * This is the parametrized constructor used in modification
 	 * @param data  arreglo que almacena los datos de una pesoRetenido. 
 	 */
-	public GUIModificarAnalisis(String pesoRetenido, HMuestra muestra, ETamiz tamiz) {
+	public GUIModificarAnalisis(String pesoRetenido, Muestra muestra, Tamiz tamiz) {
 		super();
 		this.pesoRetenido = new JTextField(15);
 		this.muestra = new JLabel("Muestra: "+muestra.getNombreMuestra());

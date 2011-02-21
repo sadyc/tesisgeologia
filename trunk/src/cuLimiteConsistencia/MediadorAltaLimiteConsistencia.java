@@ -5,7 +5,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-import persistencia.domain.HMuestra;
+import persistencia.domain.Muestra;
 
 import comun.Mediador;
 
@@ -19,7 +19,7 @@ import comun.Mediador;
 public class MediadorAltaLimiteConsistencia extends Mediador{
 	
 	private GUILimiteConsistencia GUILimiteConsistencia;
-	private HMuestra muestra = new HMuestra();
+	private Muestra muestra = new Muestra();
 	private ControlLimiteConsistencia control = new ControlLimiteConsistencia();
 	private String nombreMuestra;
 	private String limiteLiquido;
@@ -29,7 +29,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	/**
 	 * This is the default constructor
 	 */
-	public MediadorAltaLimiteConsistencia(HMuestra muestra2) {
+	public MediadorAltaLimiteConsistencia(Muestra muestra2) {
 		super();
 		muestra = muestra2;
 		GUILimiteConsistencia = new GUILimiteConsistencia("Limite Consistencia",muestra);

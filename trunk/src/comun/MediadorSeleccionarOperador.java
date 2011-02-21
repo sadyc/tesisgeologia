@@ -14,7 +14,7 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import persistencia.domain.GOperadorDeLaboratorio;
+import persistencia.domain.OperadorDeLaboratorio;
 import cuGestionarOperador.ControlGestionarOperador;
 import cuGestionarOperador.GUIGestionarOperador;
 import cuGestionarOperador.MediadorAltaOperador;
@@ -58,10 +58,10 @@ public class MediadorSeleccionarOperador extends Mediador{
 	 * base de datos al atributo data de la clase mediador.
 	 */
 	public void cargarTablaDeOperador()throws Exception{
-		GOperadorDeLaboratorio operador = new GOperadorDeLaboratorio();
+		OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
 		Class clase = operador.getClass();
 		Collection operadores = control.coleccionOperadores(clase);
-		Iterator<GOperadorDeLaboratorio> it = operadores.iterator();
+		Iterator<OperadorDeLaboratorio> it = operadores.iterator();
 		data = new Object [operadores.size()] [5];
 		int i = 0;
 		while (it.hasNext()){

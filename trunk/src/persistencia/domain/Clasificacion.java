@@ -4,7 +4,7 @@ import javax.jdo.annotations.PersistenceCapable;
 
 
 @PersistenceCapable
-public class AClasificacion {
+public class Clasificacion {
         
 	        protected String clasificacion;
 	        protected String nombre;
@@ -15,7 +15,7 @@ public class AClasificacion {
 	         * @param nombre
 	         * @param descripcion
 	         */
-	        public AClasificacion(String clasificacion,String nombre, String descripcion) {
+	        public Clasificacion(String clasificacion,String nombre, String descripcion) {
 	                this.clasificacion = clasificacion;
 	                this.nombre = nombre;
 	                this.descripcion = descripcion;
@@ -25,7 +25,7 @@ public class AClasificacion {
 	        /**
 	         * @brief Constructor por defecto.
 	         */
-	        public AClasificacion() {
+	        public Clasificacion() {
 	                clasificacion = new String();
 	                nombre = new String();
 	                descripcion = new String();

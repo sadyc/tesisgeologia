@@ -15,16 +15,16 @@ import javax.jdo.annotations.PrimaryKey;
  *
  */
 @PersistenceCapable
-public class ETamiz {
+public class Tamiz {
 	
 	private String numeroTamiz;
 	private Double aberturaMalla;
-	protected Collection<IAnalisis> analisis = new HashSet();
+	protected Collection<Analisis> analisis = new HashSet();
 	
 	/**
 	 * Constructor por defecto
 	 */
-	public ETamiz(){
+	public Tamiz(){
 		numeroTamiz = new String();
 		aberturaMalla = 0.0;
 	}
@@ -32,7 +32,7 @@ public class ETamiz {
 	/**
 	 * Constructor con parametros
 	 */
-	public ETamiz(String numeroTamiz, Double aberturaMalla) {
+	public Tamiz(String numeroTamiz, Double aberturaMalla) {
 		this.numeroTamiz = numeroTamiz;
 		this.aberturaMalla = aberturaMalla;
 	}
@@ -63,13 +63,13 @@ public class ETamiz {
 	/**
 	 * @return the muestras
 	 */
-	public Collection<IAnalisis> getMuestras() {
+	public Collection<Analisis> getMuestras() {
 		return analisis;
 	}
 	/**
 	 * @param muestras the muestras to set
 	 */
-	public void setAnalisisTamiz(Collection<IAnalisis> analisisTamiz) {
+	public void setAnalisisTamiz(Collection<Analisis> analisisTamiz) {
 		this.analisis = analisisTamiz;
 	}
 	
