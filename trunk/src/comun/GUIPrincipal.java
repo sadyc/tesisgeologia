@@ -1,21 +1,31 @@
 package comun;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-
-import comun.FondoJPG;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
 
 
 
 /**
-* @author TesisGeología
 * Esta clase implementa la ventana principal del programa, con los botones de sus principales funcionalidades.
+* @author TesisGeología
+* @version 1.0
 */
 public class GUIPrincipal extends JFrame {
 
-	//private final FondoJPG fondo = null;
 	private JPanel panelCentro=null;
 	private JPanel panelSur=null;
 	private JMenuBar menu = null;
@@ -46,11 +56,8 @@ public class GUIPrincipal extends JFrame {
 	private JMenuItem versionMenu;
 	private JFileChooser fileChooser = null;
 	
-	 private Image imagen;
 	 
 	  
-	 
-
 	/**
 	 * Constructor de la clase.
 	 * @param title, es el titulo que va a tener la ventana.
@@ -94,45 +101,29 @@ public class GUIPrincipal extends JFrame {
 			jButtonCrearBackup.setForeground(SystemColor.white);
 			jButtonCargarBackup.setBackground( SystemColor.darkGray);
 			jButtonCargarBackup.setForeground(SystemColor.white);
-			
-			
-			
 			jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
 	        jButtonSalir.setText("Salir");
 	        jButtonGestionarMuestra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-science-2.png"))); // NOI18N
 	        jButtonGestionarMuestra.setText("Gestionar Muestra");
-	        
-
 	        jButtonGestionarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gobby.png"))); // NOI18N
 	        jButtonGestionarUsuario.setText("Gestionar Usuario");
-	        
 	        jButtonCargarBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/update_misc.png"))); // NOI18N
 	        jButtonCargarBackup.setText("Cargar Backup");
-
 	        jButtonGestionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/system-switch-user.png"))); // NOI18N
 	        jButtonGestionarCliente.setText("Gestionar Cliente");
-	        
 	        jButtonGestionarOperador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-engineering-3.png"))); // NOI18N
 	        jButtonGestionarOperador.setText("Gesitonar Operador");
-	        
 	        jButtonGestionarLimiteConsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-office-3.png"))); // NOI18N
 	        jButtonGestionarLimiteConsistencia.setText("Gestionar Consistencia");
-	        
-	           
 	        jButtonAnalisis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/kexi.png"))); // NOI18N
 	        jButtonAnalisis.setText("Gestionar Analisis");
-	        
 	        jButtonCompararMuestras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/development-python.png"))); // NOI18N
 	        jButtonCompararMuestras.setText("Comparar Muestras");
-	        
-
 	        jButtonCrearBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/kfloppy-2.png"))); // NOI18N
 	        jButtonCrearBackup.setText("Realizar Backup");
-	        
 	        jButtonClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accessories-calculator-3.png"))); // NOI18N
 	        jButtonClasificacion.setText("Calcular Clasificacion");
-	        
-			herramientas = new JMenu("Herramientas");
+	        herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
 			menu.add(herramientas);
 			menu.add(ayuda);
@@ -152,14 +143,14 @@ public class GUIPrincipal extends JFrame {
 			herramientas.add(gestionarLimiteConsistenciaMenu);
 			herramientas.add(calcularClasificacionMenu);
 			herramientas.add(compararMuestrasMenu);
-			herramientas.add(new JSeparator()); // Una rayita separadora.
+			herramientas.add(new JSeparator());
 			herramientas.add(gestionarUsuarioMenu);
 			herramientas.add(gestionarClienteMenu);
 			herramientas.add(gestionarOperadorMenu);
-			herramientas.add(new JSeparator()); // Una rayita separadora.
+			herramientas.add(new JSeparator());
 			herramientas.add(crearBackupMenu);
 			herramientas.add(cargarBackupMenu);
-			herramientas.add(new JSeparator()); // Una rayita separadora.
+			herramientas.add(new JSeparator());
 			herramientas.add(salirMenu);
 			versionMenu = new JMenuItem("Version");
 			ayuda.add(versionMenu);
@@ -172,18 +163,13 @@ public class GUIPrincipal extends JFrame {
 
 	/**
 	 * Metodo que inicializa la interfaz.
-	 *
-	 * @return void
 	 */
 	private  void initialize() {
-		
 		this.setSize(1000,700);
 		this.getContentPane().setLayout(new BorderLayout());
 	 	this.setJMenuBar(this.getMenu());	
 	 	this.getContentPane().add(this.getPanelCentro(),BorderLayout.CENTER);
-	 	
 	 	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
-	 	//setIconImage(new ImageIcon(getClass().getResource("/src/cuReporte/report/image/LogoSCS.jpg")).getImage());
 	 	this.setLocationRelativeTo(null);
 	
 	}
@@ -227,8 +213,6 @@ public class GUIPrincipal extends JFrame {
 			this.panelCentro.add(getjButtonCrearBackup(),gbc);
 			gbc.gridx = 2;
 			this.panelCentro.add(getjButtonCargarBackup(),gbc);
-			
-			
 		}
 		return this.panelCentro;
 	}
@@ -248,12 +232,6 @@ public class GUIPrincipal extends JFrame {
 		return this.panelSur;
 	}
 
-	public JFileChooser getFileChooser() {
-        if(fileChooser == null)
-                fileChooser = new JFileChooser();
-        return fileChooser;
-}
-	
 	/**
 	 * @return the menuBar
 	 */
@@ -261,9 +239,8 @@ public class GUIPrincipal extends JFrame {
 		return menu;
 	}
 
-
 	/**
-	 * @return the gestionarMuestra
+	 * @return the jButtonGestionarMuestra
 	 */
 	public JButton getJButtonGestionarMuestra() {
 		return jButtonGestionarMuestra;
@@ -304,7 +281,6 @@ public class GUIPrincipal extends JFrame {
 		return jButtonGestionarOperador;
 	}
 
-
 	/**
 	 * @return the jButtonGestionarCliente
 	 */
@@ -342,14 +318,12 @@ public class GUIPrincipal extends JFrame {
 		return gestionarUsuarioMenu;
 	}
 
-
 	/**
 	 * @return the gestionarMuestraMenu
 	 */
 	public JMenuItem getGestionarMuestraMenu() {
 		return gestionarMuestraMenu;
 	}
-
 
 	/**
 	 * @return the gestionarAnalisisMenu
@@ -416,7 +390,6 @@ public class GUIPrincipal extends JFrame {
 		return jButtonCargarBackup;
 	}
 
-
 	/**
 	 * @return the crearBackupMenu
 	 */
@@ -432,7 +405,10 @@ public class GUIPrincipal extends JFrame {
 		return cargarBackupMenu;
 	}
 
-
+	/**
+	 * Metodo que permite escuchar los botones de la ventana.
+	 * @param lis
+	 */
 	public void setListenerButtons(ActionListener lis){
 		this.jButtonGestionarMuestra.addActionListener(lis);
 		this.jButtonAnalisis.addActionListener(lis);

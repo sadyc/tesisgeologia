@@ -30,15 +30,17 @@ import persistencia.domain.Muestra;
 import comun.TablePanel;
 
 /**
+ * @brief Clase que implementa la ventana en donde se muestra la clasificación de una muestra
+ * con sus respectivos análisis.
  * @author tesisGeologia.
- * 
+ * @version 1.0
+ */
+/**
+ * @author NAVE
+ *
  */
 public class GUIClasificacion extends JDialog{
 
-	/**
-	 * @param title
-	 * @throws java.awt.HeadlessException
-	 */
 	private JMenuBar menu ;
 	private JMenu herramientas;
 	private JMenu ayuda;
@@ -53,7 +55,6 @@ public class GUIClasificacion extends JDialog{
 	private JPanel panelEste=null;
 	private JPanel panelOeste=null;
 	private JPanel panelSucs= null;
-	private JPanel panelAashto= null;
 	private JLabel jLabelmuestra;
 	private JLabel peso;
 	private JLabel profundidadInicial;
@@ -73,8 +74,6 @@ public class GUIClasificacion extends JDialog{
 	private JLabel gradoCurvatura;
 	private ChartPanel curva;
 	private ChartPanel carta;
-	private JScrollPane scrollPane;
-		
 	private TablePanel tablePanel;
 	private Object [][] data = null;
 
@@ -148,23 +147,22 @@ public class GUIClasificacion extends JDialog{
 		peso = new JLabel("Peso: "+muestra.getPeso().toString()+"grs");
 		profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
 		profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
-		ubicacion = new JLabel ("Ubicacion: "+muestra.getUbicacion().getNombreUbicacion());
-		
+		ubicacion = new JLabel ("Ubicación: "+muestra.getUbicacion().getNombreUbicacion());
 		if (muestra.getSucs()==null){
-			descripcionSucs = new JLabel ("Descripcion: ");
-			clasificacionSucs = new JLabel ("Clasificacion: ");
+			descripcionSucs = new JLabel ("Descripción: ");
+			clasificacionSucs = new JLabel ("Clasificación: ");
 		}
 		else{
-			clasificacionSucs = new JLabel ("Clasificacion: "+muestra.getSucs().getNombre());
-			descripcionSucs = new JLabel ("Descripcion: "+muestra.getSucs().getDescripcion());
+			clasificacionSucs = new JLabel ("Clasificación: "+muestra.getSucs().getNombre());
+			descripcionSucs = new JLabel ("Descripción: "+muestra.getSucs().getDescripcion());
 		}
 		if (muestra.getAashto()==null){
-			descripcionAashto = new JLabel ("Descripcion: ");
-			clasificacionAashto = new JLabel ("Clasificacion: ");
+			descripcionAashto = new JLabel ("Descripción: ");
+			clasificacionAashto = new JLabel ("Clasificación: ");
 		}
 		else{
-			clasificacionAashto= new JLabel ("Clasificacion: "+muestra.getAashto().getNombre());
-			descripcionAashto = new JLabel ("Descripcion: "+muestra.getAashto().getDescripcion());
+			clasificacionAashto= new JLabel ("Clasificación: "+muestra.getAashto().getNombre());
+			descripcionAashto = new JLabel ("Descripción: "+muestra.getAashto().getDescripcion());
 		}
 		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    
 		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	
@@ -239,7 +237,6 @@ public class GUIClasificacion extends JDialog{
 	/**
 	 * Metodo que inicializa la interfaz.
 	 *
-	 * @return void
 	 */
 	private  void initialize() {
 		this.setSize(1000 , 700);
@@ -247,8 +244,6 @@ public class GUIClasificacion extends JDialog{
 		this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
 		this.setJMenuBar(this.getMenu());
 	  	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
-	  	
-	  	
 	  	this.getContentPane().add(this.getPanelCenter(),BorderLayout.CENTER);
 	  	this.setLocationRelativeTo(null);
 	}
@@ -312,31 +307,29 @@ public class GUIClasificacion extends JDialog{
 	}	
 
 	/**
-	 * Metodo que retorna el panelCenter.
+	 * Método que retorna el panelCenter.
 	 *
 	 * @return Jpanel
 	 */
 	public JPanel getPanelCenter() {
 		if (this.panelCenter==null) {
-			
 			this.panelCenter = new JPanel();
 			this.panelCenter.setLayout(new BoxLayout(this.panelCenter,BoxLayout.Y_AXIS));
 			this.panelCenter.add(this.getTablePanel());
 			this.panelCenter.add(getPanelEste());
 			this.panelCenter.add(getPanelOeste());
 			}
-			return this.panelCenter;
+		return this.panelCenter;
 	}
+	
 	/**
-	 * Metodo que retorna el panelCenter.
+	 * Método que retorna el panelCenter.
 	 *
 	 * @return Jpanel
 	 */
 	public JPanel getPanelSucs() {
 		if (this.panelSucs==null) {
-			
 			this.panelSucs = new JPanel();
-						
 			GridBagLayout gridbag = new GridBagLayout();
 			GridBagConstraints gbc = new GridBagConstraints();
 			gbc.gridwidth = 1;
@@ -362,11 +355,11 @@ public class GUIClasificacion extends JDialog{
 			gbc.gridy = 2;
 			this.panelSucs.add(descripcionAashto,gbc);
 			}
-			return this.panelSucs;
+		return this.panelSucs;
 	}
 	
 	/**
-	 * Metodo que retorna el panelSur.
+	 * Método que retorna el panelSur.
 	 *
 	 * @return Jpanel
 	 */
@@ -380,7 +373,7 @@ public class GUIClasificacion extends JDialog{
 			return this.panelSur;
 	}
 	/**
-	 * Metodo que retorna el panelSur.
+	 * Método que retorna el panelSur.
 	 *
 	 * @return Jpanel
 	 */
@@ -391,11 +384,11 @@ public class GUIClasificacion extends JDialog{
 			this.panelEste.add(curva);
 			this.panelEste.add(carta);
 			}
-			return this.panelEste;
+		return this.panelEste;
 	}
 	
 	/**
-	 * Metodo que retorna el panelSur.
+	 * Método que retorna el panelSur.
 	 *
 	 * @return Jpanel
 	 */
@@ -409,13 +402,15 @@ public class GUIClasificacion extends JDialog{
 	}
 	
 	/**
-	 * Metodo que permite escuchar los botoner imprimir y cancelar.
+	 * Método que permite escuchar los botoner imprimir y cancelar.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
 		this.imprimir.addActionListener(lis);
 		this.salir.addActionListener(lis);
+		this.imprimirMenu.addActionListener(lis);
+		this.salirMenu.addActionListener(lis);
 	}
 	
 	/**
@@ -429,7 +424,6 @@ public class GUIClasificacion extends JDialog{
 	 		this.tablePanel.setData(data, getColumName());
 	 		Dimension dimension = new Dimension(160,140);
 	 		tablePanel.getScrollPane().setPreferredSize(dimension);
-	 		
 	 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
 	 	    tcr.setHorizontalAlignment(SwingConstants.CENTER);
 	 	    for (int i = 0; i < 5; i++) {
@@ -685,6 +679,35 @@ public class GUIClasificacion extends JDialog{
 	public JLabel getDescripcionSucs() {
 		return descripcionSucs;
 	}
+
+	/**
+	 * @return the clasificacionAashto
+	 */
+	public JLabel getClasificacionAashto() {
+		return clasificacionAashto;
+	}
+
+	/**
+	 * @return the descripcionAashto
+	 */
+	public JLabel getDescripcionAashto() {
+		return descripcionAashto;
+	}
+
+	/**
+	 * @return the salirMenu
+	 */
+	public JMenuItem getSalirMenu() {
+		return salirMenu;
+	}
+
+	/**
+	 * @return the imprimirMenu
+	 */
+	public JMenuItem getImprimirMenu() {
+		return imprimirMenu;
+	}
+		
 	
 
 }

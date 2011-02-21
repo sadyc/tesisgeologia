@@ -18,9 +18,9 @@ import cuGestionarTamiz.MediadorSeleccionarTamiz;
 
 
 /**
- * @author TesisGeologia
- * Implementa las interfaces de acuerdo a los eventos que necesita tratar
- * en este caso: ActionListener,MouseListener,ItemListener.
+ *@brief Clase que se utiliza para escuchar los eventos que suceden en la ventana "Alta Análisis".
+ *@author TesisGeología
+ *@version 1.0
  */
 
 public class MediadorAltaAnalisis  extends Mediador{
@@ -44,7 +44,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 		this.muestra = muestra;
 		analisis = new Analisis();
 		GUIAnalisis = new GUIAltaAnalisis(muestra);
-		GUIAnalisis.setTitle("Analisis por Tamiz de una Muestra");
+		GUIAnalisis.setTitle("Análisis por Tamiz de una Muestra");
 		GUIAnalisis.setModal(true);
 		GUIAnalisis.setListenerButtons(this);
 		GUIAnalisis.setKeyListener(this);
@@ -86,7 +86,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 	}
 	
 	/**
-	 * Metodo que necesita definir al implementar la interface ActionListener 
+	 * Método que necesita definir al implementar la interface ActionListener 
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
@@ -108,7 +108,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Tamiz"
+	 * Acciones a realizar cuando se selecciona la opcion de "Seleccionar Tamíz"
 	 */
 	private void seleccionarTamiz() {
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonSeleccionarTamiz");
@@ -133,43 +133,43 @@ public class MediadorAltaAnalisis  extends Mediador{
 	}
 
 	/**
-	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Analisis"
+	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Análisis"
 	 * @throws Exception 
 	 */
 	public void agregarAnalisis() throws Exception{
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 		pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
 		if (numeroTamiz==null){
-			JOptionPane.showMessageDialog(frame,"No se seleccionó ningún Tamiz","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se seleccionó ningún Tamíz","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			if (pesoRetenido.equals("")){
-				JOptionPane.showMessageDialog(frame,"No ingresó un peso retenido","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No ingresó un peso retenido","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
 				if (Float.parseFloat(pesoRetenido)> muestra.getPeso()){
-					JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso de la muestra que es: "+muestra.getPeso(),"ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frame,"El peso retenido por el tamíz no puede superar al peso de la muestra que es: "+muestra.getPeso()+" grs.","Atención!", JOptionPane.ERROR_MESSAGE);
 				}
 				else{
 					Float pesoPasante = control.pesoPasante(muestra);
 					if (Float.parseFloat(pesoRetenido)>(muestra.getPeso()-pesoPasante)){
-						JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso pasante por el último tamiz que es: "+(muestra.getPeso()-pesoPasante),"ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso pasante por el último tamiz que es: "+(muestra.getPeso()-pesoPasante)+" grs.","Atención!", JOptionPane.ERROR_MESSAGE);
 					}
 					else{
 						analisis = new Analisis();
-						analisis.setPesoRetenido(Float.parseFloat(pesoRetenido));//PARA CREAR EL OBJETO A INSERTAR DEBEMOS PASARLE LA MUESTRA Y EL TAMIZ TAMBIEN
+						analisis.setPesoRetenido(Float.parseFloat(pesoRetenido));
 						try {
 							data = control.insertarAnalisis(analisis, muestra, numeroTamiz);
 							if (control.getExiste()) {
 								System.out.println("El objeto ya existe");
-								JOptionPane.showMessageDialog(frame,"El análisis de la muestra correspondiente ya tiene cargado un resultado en el Tamiz Nº: "+data[0]+". Por favor ingrese otro.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+								JOptionPane.showMessageDialog(frame,"El análisis de la muestra correspondiente ya tiene cargado un resultado en el Tamíz Nº: "+data[0]+". Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 							}
 							else {
 								altaAnalisis = true;
 								GUIAnalisis.dispose();
 							}
 						} catch (Exception e) {
-							JOptionPane.showMessageDialog(frame,"Asegurese que el peso retenido tiene un formato valido como por ej, 23.34 gramos.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(frame,"Asegurese que el peso retenido tiene un formato valido como por ej, 23.34 gramos.","Atención!", JOptionPane.ERROR_MESSAGE);
 							e.printStackTrace();
 						}
 						GUIAnalisis.dispose();

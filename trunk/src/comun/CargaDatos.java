@@ -15,9 +15,10 @@ import persistencia.domain.Usuario;
 import cuLogin.Encriptar;
 
 /**
- * @author TesisGeologia
  * Clase que permite la carga de ciertos datos para poder utilizar el 
- * Sistema Clasificador de Suelos 
+ * Sistema Clasificador de Suelos
+ * @author TesisGeologia
+ * @version 1.0
  */
 public class CargaDatos {
 

@@ -17,15 +17,23 @@ import cuGestionarOperador.MediadorGestionarOperador;
 import cuGestionarUsuario.MediadorGestionarUsuario;
 import cuLimiteConsistencia.MediadorAltaLimiteConsistencia;
 import cuLimiteConsistencia.MediadorConsistencia;
-
+/**
+ * @brief Clase que se utiliza para escuchar los eventos que suceden en la ventana Principal.
+ * @author TesisGeologia
+ * @version 1.0
+ */
 public class MediadorPrincipal extends Mediador{
 
 	private GUIPrincipal GUIPrincipal = null;
 	private Usuario usuario;
 	private Backup backup;
-	
-	
-
+		
+	/**
+	 * Constructor parametrizado de la clase.
+	 * @param nombreVentana, Título de la ventana.
+	 * @param usuario, Usuario que inició sesión en el sistema.
+	 * @throws Exception
+	 */
 	public MediadorPrincipal(String nombreVentana, Usuario usuario) throws Exception {
 		super();
 		this.backup=new Backup();	    
@@ -64,7 +72,9 @@ public class MediadorPrincipal extends Mediador{
 		GUIPrincipal.show();
 		
 	}
-	
+	/**
+	 * Método que permite visualizar la ventana.
+	 */
 	public void show(){
 		GUIPrincipal.show();
 	}
@@ -86,7 +96,7 @@ public class MediadorPrincipal extends Mediador{
 	
 	/**
 	 * Metodo que necesita definir al implementar la interface ActionListener 
-	 * Para tratar los eventos de acciones de los componentes 
+	 * para tratar los eventos de acciones de los componentes. 
 	 * @throws Exception
 	 */
 	public void actionPerformed(ActionEvent arg0){
@@ -220,7 +230,7 @@ public class MediadorPrincipal extends Mediador{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	    System.out.println("GestionarMediador.actionPerformed() jButtonListarMuestra"); 
+	    System.out.println("GestionarMediador.actionPerformed() jButtonCompararMuestra"); 
 	}
 	
 	/**
@@ -230,21 +240,6 @@ public class MediadorPrincipal extends Mediador{
 		try {
 			MediadorConsistencia consistencia = new MediadorConsistencia();
 			if (consistencia.seSeleccionoMuestra()){
-				/*Muestra muestra = consistencia.getSeleccionado();
-				ControlClasificacion control = new ControlClasificacion();
-				if (control.buscarAnalisis("200") && control.buscarAnalisis("40")&& control.buscarAnalisis("10")  && muestra.getIndicePlasticidad()!=0){
-					if (muestra.getAashto()==null) {
-						control.calcularClasificacionAASHTO(muestra);
-					}
-					if (muestra.getAashto().getNombre()==){
-						
-					}
-					new MediadorAltaLimiteConsistencia(consistencia.getSeleccionado());
-				}
-				else{
-					JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificacion AASHTO, Faltan analisis para los tamices 10, 40 0 200","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
-					
-				}*/
 				new MediadorAltaLimiteConsistencia(consistencia.getSeleccionado());
 			}
 		} catch (Exception e) {

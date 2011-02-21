@@ -18,13 +18,12 @@ import cuGestionarAnalisis.ControlGestionarAnalisis;
 /**
  * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana de comparacion.
  * @author TesisGeologia
- *
+ * @version 1.0
  */
 public class MediadorCompararMuestra extends Mediador{
 	private GUIComparacion GUIComparacion;
 	private Muestra muestra1 = new Muestra();
 	private Object [] [] data1;
-	
 	private Muestra muestra2 = new Muestra();
 	private Object [] [] data2;
 	
@@ -42,9 +41,10 @@ public class MediadorCompararMuestra extends Mediador{
 	}
 	
 	/**
-	 * 
-	 * @param titulo
-	 * @param muestra1
+	 * Constructor parametrizado de la clase. 
+	 * @param titulo, titulo de la ventana.
+	 * @param muestra1, una de las muestras a las que se va a mostrar.
+	 * @param muestra2, una de las muestras a las que se va a mostrar.
 	 * @throws Exception
 	 */
 	public MediadorCompararMuestra(String titulo, Muestra muestra1, Muestra muestra2) throws Exception {
@@ -61,9 +61,9 @@ public class MediadorCompararMuestra extends Mediador{
 	}
 	
 	/**
-	 * Levanta informacion almacenada en la 
-	 * base de datos al atributo data1 de la clase mediador.
-	 * @param nombreMuestra, es el nombre de la muestra de la cual se desean obtener los analisis.
+	 * Levanta información almacenada en la base de datos
+	 * que se copiará al atributo data1 de la clase mediador.
+	 * @param muestra, muestra de la cual se desean obtener los analisis.
 	 * @return data, es la tabla con los datos de los analisis correspondientes a la muestra.
 	 */
 	public Object [] [] cargarTablaDeAnalisis(Muestra muestra)throws Exception{
@@ -125,7 +125,6 @@ public class MediadorCompararMuestra extends Mediador{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		
 		if (this.GUIComparacion.getJButtonCancelar() == source || GUIComparacion.getCancelarMenu()==source){
 			System.out.println("Se presiono salir!!");
 			GUIComparacion.dispose();

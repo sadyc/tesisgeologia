@@ -30,39 +30,37 @@ import persistencia.domain.Analisis;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 
 /**
+ * @brief Clase que se utiliza para gestionar los datos con persistencia en la base de datos del sistema.
  * @author TesisGeologia
  * @version 1.0
  */
 public class ControlClasificacion {
 	 public static String BASE = (new java.io.File("")).getAbsolutePath(); 
  	 public static String PATH_SOURCE_REPORT = BASE + "/src/cuCalcularClasificacion/";
+ 	 
 	/**
 	 * Constructor por defecto de la clase.
 	 */
 	public ControlClasificacion(){}
-	
-		
+			
 	/** 
-	 * Realiza los calculos correspondientes para determinar la clasificacion de una muestra.
-	 * @param muestra 
+	 * Realiza los calculos correspondientes para determinar la clasificacion SUCS de una muestra.
+	 * @param muestra, muestra a calcularle la clasificación. 
 	 */
 	public void calcularClasificacionSUCS(Muestra muestra) throws Exception{
 		Float IndicePlasticidad = muestra.getIndicePlasticidad();
 		Float limiteLiquido = muestra.getLimiteLiquido();
 		calcularDiametro(muestra);
-		
 		muestra.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));//Coeficiente de uniformidad
 		Float gradoCurvatura = (truncaNum((muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60())));//grado de curvatura.
 		muestra.setGradoCurvatura(gradoCurvatura);
 		String clasificacion= new String(); 
-		
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try{
 			Analisis analisis = new Analisis();
 			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'"; 
 			analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='200'");
-			System.out.println(muestra.getNombreMuestra());
 			if (analisis.getPorcentajePasante()<=50){
 				//suelo de particulas gruesas
 				analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='4'");
@@ -72,35 +70,27 @@ public class ControlClasificacion {
 					if (analisis.getPorcentajePasante()<5){
 						//GravasLimpias
 						if((muestra.getCoeficienteUniformidad()>=4) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3)){
-							//GW
 							clasificacion="GW";
 						}else {
-							//GP
 							clasificacion="GP";
 						}
 					}else if (analisis.getPorcentajePasante()>12){
 						//Gravas con finos
 						if (IndicePlasticidad<4){
-							//GM
 							clasificacion="GM";
 						}
 						else if (IndicePlasticidad>7){
-							//GC
 							clasificacion=("GC");
 						}
 					}else{
 						//Gravas Limpias y con finos.
 						if ((muestra.getCoeficienteUniformidad()>=4) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3) && (IndicePlasticidad<4)){
-							//GW-GM
 							clasificacion=("GW-GM");
 						}else if(IndicePlasticidad<4 && IndicePlasticidad>7){
-							//GW-GC
 							clasificacion=("GW-GC");
 						}else if((IndicePlasticidad<4) && !((muestra.getCoeficienteUniformidad()>=4) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3))){
-							//GP-GM
 							clasificacion=("GP-GM");
 						}else{
-							//GP-GC
 							clasificacion=("GP-GC");
 						}
 					}
@@ -111,19 +101,15 @@ public class ControlClasificacion {
 					if (analisis.getPorcentajePasante()<=5){
 						//Arenas Limpias
 						if ((muestra.getCoeficienteUniformidad()>=6) && (1<=muestra.getGradoCurvatura()) && (muestra.getGradoCurvatura()<=3) ){
-							//SW
 							clasificacion=("SW");
 						}else {
-							//SP
 							clasificacion=("SP");
 						}
 					}else if (analisis.getPorcentajePasante()>12){
 						//Arenas con finos
 						if (IndicePlasticidad<4){
-							//SM
 							clasificacion=("SM");
 						}else{
-							//SC
 							clasificacion=("SC");
 						}
 					}else{
@@ -191,17 +177,15 @@ public class ControlClasificacion {
 	}
 	
 	/**
-	 * Realiza los calculos correspondientes para determinar la clasificacion de una muestra.
-	 * @param muestra 
+	 * Realiza los calculos correspondientes para determinar la clasificación AASHTO de una muestra.
+	 * @param muestra, muestra a calcularle clasificación. 
 	 */
 	public void calcularClasificacionAASHTO(Muestra muestra) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
-		
 		String clasificacion= new String();
 		calcularDiametro(muestra);
-		
-		muestra.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));//Coeficiente de uniformidad
+		muestra.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));
 		Float gradoCurvatura = (truncaNum(muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60()));//grado de curvatura.
 		muestra.setGradoCurvatura(gradoCurvatura);
 		try{
@@ -214,60 +198,48 @@ public class ControlClasificacion {
 			else{
 				analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='40'");
 				if (analisis.getPorcentajePasante()<=50){
-					//A-1-b
 					clasificacion=("A1b");
 				}
 				else{
 					analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='200'");
 					if (analisis.getPorcentajePasante()<10){
-						//A-3
 						clasificacion=("A3");
 					}
 					else{
 						if (analisis.getPorcentajePasante()<35){
-							//A-2
 							Float limiteLiquido = muestra.getLimiteLiquido();
 							if (limiteLiquido<=40){
 								if (muestra.getIndicePlasticidad()<10){
-									//A-2-4
 									clasificacion=("A24");
 								}
 								else{
-									//A-2-6
 									clasificacion=("A26");
 								}
 							}	
 							else{
 								if (muestra.getIndicePlasticidad()<10){
-									//A-2-5
 									clasificacion=("A25");
 								}
 								else{
-									//A-2-7
 									clasificacion=("A27");
 								}
 							}
 						}
 						else{
 							Float limiteLiquido = muestra.getLimiteLiquido();
-							System.out.println("adsasd"+analisis.getPorcentajePasante());
 							if (limiteLiquido<=40){
 								if (muestra.getIndicePlasticidad()<10){
-									//A-2-4
 									clasificacion=("A4");
 								}
 								else{
-									//A-2-6
 									clasificacion=("A6");
 								}
 							}	
 							else{
 								if (muestra.getIndicePlasticidad()<10){
-									//A-2-5
 									clasificacion=("A5");
 								}
 								else{
-									//A-2-7
 									clasificacion=("A7");
 								}
 							}
@@ -277,18 +249,17 @@ public class ControlClasificacion {
 			}
 			persistencia.cerrarTransaccion();
 			persistencia.abrirTransaccion();
-			
 			AASHTO clasificacionAASHTO = new AASHTO();
 			clasificacionAASHTO =((AASHTO)persistencia.buscarObjeto(clasificacionAASHTO.getClass(), "clasificacion=='"+clasificacion+"'"));
 			muestra = ((Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'"));
 			muestra.setAashto(clasificacionAASHTO);
-			muestra.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));//Coeficiente de uniformidad
+			muestra.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));
 			muestra.setGradoCurvatura(gradoCurvatura);
 			
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
-			System.out.println("No pudo insertar la clasificacion con persistencia");
+			System.out.println("No pudo insertar la clasificación con persistencia");
 			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
@@ -296,8 +267,8 @@ public class ControlClasificacion {
 	}
 	
 	/**
-	 * Metodo que calcula el D60 D30 D10 de una clasifiacion.
-	 * @param nombreMuestra
+	 * Metodo que calcula el D60 D30 D10 de una clasifiación.
+	 * @param muestra.
 	 * @throws Exception
 	 */
 	private void calcularDiametro(Muestra muestra) throws Exception {
@@ -307,57 +278,50 @@ public class ControlClasificacion {
 		List listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
 		persistencia.cerrarTransaccion();
 		int i = 0;
-		boolean d60 = false;//estas variables se ultilizan para no calcular dos veces
-		boolean d30 = false;//los diametros.
+		boolean d60 = false;
+		boolean d30 = false;
 		boolean d10 = false;
 		while (listaAnalisis.size()>i){
 			analisis = (Analisis)listaAnalisis.get(i);
 			if (analisis.getPorcentajePasante()<60 && !d60){
-				//calcular el d60
 				double pasante2 = analisis.getPorcentajePasante();
 				double abertura2 = analisis.getTamiz().getAberturaMalla();
 				analisis = (Analisis)listaAnalisis.get(i-1);
 				double pasante1 = analisis.getPorcentajePasante();
 				double abertura1 = analisis.getTamiz().getAberturaMalla();
-				double exponente = (Math.log10(abertura1)-
-						((pasante1-60)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
+				double exponente = (Math.log10(abertura1)-((pasante1-60)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 				Float calculo = new Float(Math.pow(10,exponente));
 				muestra.setD60((calculo));
 				d60 = true;
 			}
 			if (analisis.getPorcentajePasante()<30 && !d30){
-					//calcular el d30
+				double pasante2 = analisis.getPorcentajePasante();
+				double abertura2 = analisis.getTamiz().getAberturaMalla();
+				analisis = (Analisis)listaAnalisis.get(i-1);
+				double pasante1 = analisis.getPorcentajePasante();
+				double abertura1 = analisis.getTamiz().getAberturaMalla();
+				double exponente = (Math.log10(abertura1)-((pasante1-30)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
+				Float calculo = new Float(Math.pow(10,exponente));
+				muestra.setD30((calculo));
+				d30 = true;
+				analisis= (Analisis)listaAnalisis.get(i);
+				}
+				if (analisis.getPorcentajePasante()<10 && !d10){
 					double pasante2 = analisis.getPorcentajePasante();
 					double abertura2 = analisis.getTamiz().getAberturaMalla();
 					analisis = (Analisis)listaAnalisis.get(i-1);
 					double pasante1 = analisis.getPorcentajePasante();
 					double abertura1 = analisis.getTamiz().getAberturaMalla();
-					double exponente = (Math.log10(abertura1)-
-							((pasante1-30)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
+					double exponente = (Math.log10(abertura1)-((pasante1-10)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 					Float calculo = new Float(Math.pow(10,exponente));
-					muestra.setD30((calculo));
-					d30 = true;
-					analisis= (Analisis)listaAnalisis.get(i);
+					muestra.setD10((calculo));
+					d10 = true;
 				}
-				if (analisis.getPorcentajePasante()<10 && !d10){
-						//calcular el d10
-						double pasante2 = analisis.getPorcentajePasante();
-						double abertura2 = analisis.getTamiz().getAberturaMalla();
-						analisis = (Analisis)listaAnalisis.get(i-1);
-						double pasante1 = analisis.getPorcentajePasante();
-						double abertura1 = analisis.getTamiz().getAberturaMalla();
-						double exponente = (Math.log10(abertura1)-
-								((pasante1-10)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
-						Float calculo = new Float(Math.pow(10,exponente));
-						muestra.setD10((calculo));
-						d10 = true;
-					}
 				analisis = (Analisis)listaAnalisis.get(i);
 				i++;	
 		}
 		Float aberturaMalla = new Float(analisis.getTamiz().getAberturaMalla());
 		if (!d60) {
-			
 			muestra.setD60(aberturaMalla);
 		}
 		if (!d30){
@@ -374,12 +338,12 @@ public class ControlClasificacion {
 		muestraAux.setD30(muestra.getD30());
 		muestraAux.setD60(muestra.getD60());
 		persistencia.cerrarTransaccion();
-		
-	}
+}
 
 	
 	/**
-	 * Emite grafico de la clasificacion
+	 * Emite grafico de la clasificación.
+	 * @param muestra. Muestra a la que se le calcula el gráfico de curva granulométrica.
 	 * @throws Exception 
 	 */
 	public ChartPanel curvaGranulometrica(Muestra muestra) throws Exception{
@@ -393,44 +357,36 @@ public class ControlClasificacion {
 			analisis = it.next();
 			series.add(analisis.getPorcentajePasante(),analisis.getTamiz().getAberturaMalla());
 		}
-		// Add the series to your data set
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
-			
-		// Generate the graph
 		final NumberAxis rangeAxis = new NumberAxis("% Pasante");
         rangeAxis.setRange(0.0,120);
-        
-        final NumberAxis domainAxis = new LogarithmicAxis("Tamaño de Particulas en mm");
+        final NumberAxis domainAxis = new LogarithmicAxis("Tamaño de Partículas en mm");
         domainAxis.setInverted(true);
         domainAxis.setRange(0.01, 100);
         final XYItemRenderer renderer = new StandardXYItemRenderer();
-        
         final XYPlot plot1 = new XYPlot(dataset, rangeAxis,domainAxis,renderer);
         plot1.setOrientation(PlotOrientation.HORIZONTAL);
-                
         final JFreeChart chart = new JFreeChart("Curva Granulométrica", plot1);
-        //chart.setBackgroundPaint(Color.white);   
-              
         XYItemRenderer rend = chart.getXYPlot().getRenderer();
         StandardXYItemRenderer rr = (StandardXYItemRenderer)rend;
         rr.setBaseShapesVisible(true);
         rr.setSeriesPaint(0, Color.black);
-                
         plot1.setBackgroundPaint(Color.yellow);
-        //plot1.setDomainCrosshairPaint(Color.black);
-        //plot1.setDomainMinorGridlinePaint(Color.blue);
         plot1.setDomainGridlinesVisible(true);
-        
         plot1.setDomainGridlinePaint(Color.black);
         plot1.setRangeGridlinePaint(Color.black);
-        
         final ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new java.awt.Dimension(200, 350));
         exportarJPG(plot1,"curvaGranulometrica.jpg");
         return chartPanel;
     }
-	
+	/**
+	 * Metodo que permite exportar el gráfico de curva granulométrica a un archivo *.JPG
+	 * @param plot
+	 * @param fileName
+	 * @throws Exception
+	 */
 	public void exportarJPG (XYPlot plot, String fileName) throws Exception {
 		final XYPlot plot1 = (XYPlot) plot.clone();
 		if (fileName.compareTo("curvaGranulometrica.jpg")==0){
@@ -446,18 +402,16 @@ public class ControlClasificacion {
 	}
 	
 	/**
-	 * Emite grafico de la clasificacion
+	 * Emite grafico de la clasificación
 	 * @throws Exception 
 	 */
 	public ChartPanel cartaPlasticidad(Muestra muestra) throws Exception{
-	
 		final XYSeries series = new XYSeries("Linea A");
 		final XYSeries series2 = new XYSeries("Linea U");
 		final XYSeries series3 = new XYSeries("Linea B");
 		series3.add(0,50);
 		series3.add(100,50);
 		Float ll= muestra.getLimiteLiquido();
-				
 		while (ll-20<=100){
 			series.add(0.73*(ll-20),ll);
 			ll= ll + 5;
@@ -468,42 +422,28 @@ public class ControlClasificacion {
 			series2.add(0.9*(ll-8),ll);
 			ll= ll + 5;
 		}
-		// Add the series to your data set
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
 		dataset.addSeries(series2);
 		dataset.addSeries(series3);
-			
-		// Generate the graph
 		final NumberAxis rangeAxis = new NumberAxis("Indice de Plasticidad, IP");
         rangeAxis.setRange(0.0,60);
         final NumberAxis domainAxis = new NumberAxis("Limite Liquido, LL");
         domainAxis.setRange(0.0, 100);
         final XYItemRenderer renderer = new StandardXYItemRenderer();
-        
         final XYPlot plot1 = new XYPlot(dataset, rangeAxis,domainAxis,renderer);
         plot1.setOrientation(PlotOrientation.HORIZONTAL);
-                
         final JFreeChart chart = new JFreeChart("Carta de Plasticidad", plot1);
         plot1.getRenderer().setSeriesStroke(1, new BasicStroke( 
         	        2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 
         	        1.0f, new float[] {6.0f, 6.0f}, 0.0f 
         	    ));
-                      
         plot1.setBackgroundPaint(Color.YELLOW);
         XYItemRenderer rend = chart.getXYPlot().getRenderer();
         StandardXYItemRenderer rr = (StandardXYItemRenderer)rend;
-       
         rr.setSeriesPaint(0, Color.black);
         rr.setSeriesPaint(1,Color.red);
         rr.setSeriesPaint(2, Color.cyan);
-        //plot1.setDomainCrosshairPaint(Color.black);
-        //plot1.setDomainMinorGridlinePaint(Color.red);
-        //plot1.setDomainGridlinesVisible(true);
-        
-        //plot1.setDomainGridlinePaint(Color.black);
-        //plot1.setRangeGridlinePaint(Color.black);
-        
         final ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new java.awt.Dimension(200, 350));
         exportarJPG(plot1,"cartaPlasticidad.jpg");
@@ -514,7 +454,7 @@ public class ControlClasificacion {
 	 * Busca un analisis y retorna un valor booleano 
 	 * con el resultado de la busqueda.
 	 * @param tamiz
-	 * @return
+	 * @return, retorna el valor de la búsqueda del analisis correspondiente.
 	 * @throws Exception
 	 */
 	public boolean buscarAnalisis(String tamiz) throws Exception {
@@ -530,9 +470,9 @@ public class ControlClasificacion {
 	}
 	
 	/**
-    * Trunca el numero a solo una decimal.
-    * @param num
-    * @return valor
+    * Trunca el número a sólo una decimal.
+    * @param num, el número a truncar.
+    * @return valor, el número pasado como parámetro ya truncado.
     * @throws Exception
     */
 	public static Float truncaNum(Float num) throws Exception{

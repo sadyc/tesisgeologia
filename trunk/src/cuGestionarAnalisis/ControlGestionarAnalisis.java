@@ -1,7 +1,6 @@
 package cuGestionarAnalisis;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import persistencia.Persistencia;
@@ -10,68 +9,85 @@ import persistencia.domain.Muestra;
 import persistencia.domain.Tamiz;
 
 /**
+ * @brief Clase que se utiliza para gestionar los datos con persistencia en la base de datos del sistema.
  * @author tesisGeologia
  * @version 1.0
+ */
+/**
+ * @author NAVE
+ *
+ */
+/**
+ * @author NAVE
+ *
+ */
+/**
+ * @author NAVE
+ *
  */
 public class ControlGestionarAnalisis {
 
 	private boolean yaExiste;
         
-        /**
-         * Contructor por defecto
-         */
-        public ControlGestionarAnalisis(){}
+	/**
+	 * Contructor por defecto
+	 */
+	public ControlGestionarAnalisis(){}
+	
         
+	/**
+	 * Inserta un analisis con persistencia.
+	 * @param analisis, análisis que haremos persistente.
+	 * @param muestra, muestra a la que corresponde el análisis.
+	 * @param numeroTamiz, tamiz que corresponde al análisis.
+	 * @return
+	 * @throws Exception
+	 */
+	public String[] insertarAnalisis(Analisis analisis,Muestra muestra, String numeroTamiz) throws Exception{
+		yaExiste=false;
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		Tamiz tamiz= new Tamiz();
+		String[] data = new String [5];
+		List listaAnalisis = null;
+		try {
+			Class claseMuestra= muestra.getClass();
+			Muestra muestraAux = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+			analisis.setMuestra(muestraAux);
+			Class claseTamiz = tamiz.getClass();
+			analisis.setTamiz((Tamiz)persistencia.buscarObjeto(claseTamiz, "numeroTamiz=='"+numeroTamiz+"'"));
+			
+			analisis.setPorcentajeRetenidoParcial(truncaNum((analisis.getPesoRetenido()*100)/muestra.getPeso()));
+			listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+			if (listaAnalisis.isEmpty()){
+				System.out.println(analisis.getPesoRetenido()*100);
+				analisis.setPorcentajeRetenidoAcumulado(truncaNum((analisis.getPesoRetenido()*100)/muestra.getPeso()));
+				analisis.setPorcentajePasante(truncaNum(100-analisis.getPorcentajeRetenidoParcial()));
+			}else{
+				int i = listaAnalisis.size();
+				Analisis auxAnalisis = new Analisis();
+				auxAnalisis = (Analisis)listaAnalisis.get(i-1);
+				analisis.setPorcentajePasante(truncaNum(auxAnalisis.getPorcentajePasante()- analisis.getPorcentajeRetenidoParcial()));
+				analisis.setPorcentajeRetenidoAcumulado(truncaNum(auxAnalisis.getPorcentajeRetenidoAcumulado()+ analisis.getPorcentajeRetenidoParcial()));
+			}
+			data[0]=analisis.getTamiz().getNumeroTamiz();
+			data[1]=analisis.getPesoRetenido().toString();
+			data[2] = analisis.getPorcentajePasante().toString();
+			data[3] = analisis.getPorcentajeRetenidoAcumulado().toString();
+			data[4] = analisis.getPorcentajeRetenidoParcial().toString();
+			persistencia.insertarObjeto(analisis);                                      
+			persistencia.cerrarTransaccion();
+			System.out.println("Analisis insertado con persistencia");
+		} catch (Exception e) {
+			System.out.println("Error al insertar Analisis con persistencia");
+			persistencia.realizarRollback();
+		}
+		return data;
+	}
         
         /**
-         * Inserta un analisis con persistencia. 
-         */ 
-        public String[] insertarAnalisis(Analisis analisis,Muestra muestra, String numeroTamiz) throws Exception{
-        		yaExiste=false;
-                Persistencia persistencia = new Persistencia();
-                persistencia.abrirTransaccion();
-                Tamiz tamiz= new Tamiz();
-                String[] data = new String [5];
-                List listaAnalisis = null;
-                try {
-                        Class claseMuestra= muestra.getClass();
-                        Muestra muestraAux = (Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
-                        analisis.setMuestra(muestraAux);
-                        Class claseTamiz = tamiz.getClass();
-                        analisis.setTamiz((Tamiz)persistencia.buscarObjeto(claseTamiz, "numeroTamiz=='"+numeroTamiz+"'"));
-                                               
-                        analisis.setPorcentajeRetenidoParcial(truncaNum((analisis.getPesoRetenido()*100)/muestra.getPeso()));
-                        listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
-                        Integer porcentajeRetenidoAcumulado= 0;
-                        if (listaAnalisis.isEmpty()){
-                        	System.out.println(analisis.getPesoRetenido()*100);
-                        	analisis.setPorcentajeRetenidoAcumulado(truncaNum((analisis.getPesoRetenido()*100)/muestra.getPeso()));
-                        	analisis.setPorcentajePasante(truncaNum(100-analisis.getPorcentajeRetenidoParcial()));
-                        }else{
-                        	int i = listaAnalisis.size();
-                        	Analisis auxAnalisis = new Analisis();
-                        	auxAnalisis = (Analisis)listaAnalisis.get(i-1);
-                        	analisis.setPorcentajePasante(truncaNum(auxAnalisis.getPorcentajePasante()- analisis.getPorcentajeRetenidoParcial()));
-                        	analisis.setPorcentajeRetenidoAcumulado(truncaNum(auxAnalisis.getPorcentajeRetenidoAcumulado()+ analisis.getPorcentajeRetenidoParcial()));
-                        }
-                        data[0]=analisis.getTamiz().getNumeroTamiz();
-                        data[1]=analisis.getPesoRetenido().toString();
-                        data[2] = analisis.getPorcentajePasante().toString();
-                        data[3] = analisis.getPorcentajeRetenidoAcumulado().toString();
-                        data[4] = analisis.getPorcentajeRetenidoParcial().toString();
-                        persistencia.insertarObjeto(analisis);                                      
-                        persistencia.cerrarTransaccion();
-
-                        System.out.println("Analisis insertado con persistencia");
-                } catch (Exception e) {
-                	 	System.out.println("Error al insertar Analisis con persistencia");
-                		persistencia.realizarRollback();
-                }
-                return data;
-        }
-        
-        /**
-         * Elimina un analisis persistente. 
+         * Elimina un analisis persistente.
+         * @param analisis, es el análisis a eliminar.  
          */
         public void eliminarAnalisis(Analisis analisis) throws Exception {
         	Persistencia persistencia = new Persistencia();
@@ -80,7 +96,7 @@ public class ControlGestionarAnalisis {
     			Analisis aux = (Analisis) persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+analisis.getMuestra().getNombreMuestra()+"' && tamiz.numeroTamiz=='"+analisis.getTamiz().getNumeroTamiz()+"'");
     			persistencia.eliminarObjeto(aux);
     			persistencia.cerrarTransaccion();
-    			System.out.println("Muestra eliminada con persistencia");
+    			System.out.println("Análisis eliminado con persistencia");
     		}
     		catch (Exception e) {
     			System.out.println("Error al eliminar Analisis con persistencia");
@@ -89,7 +105,8 @@ public class ControlGestionarAnalisis {
     		
     	}
         /**
-         * Recalcula el analisis despues de eliminar o modificar. 
+         * Recalcula los analisis después de eliminar o modificar.
+         * @param analisis, analisis a recalcular. 
          */
         public void recalcularAnalisis(Analisis analisis) throws Exception {
         	Persistencia persistencia = new Persistencia();
@@ -104,7 +121,6 @@ public class ControlGestionarAnalisis {
     			while (listaAnalisis.size()>i){
     				if (i==0){
     					analisis = (Analisis)listaAnalisis.get(i);
-    					
     					analisis.setPorcentajeRetenidoAcumulado(truncaNum(analisis.getPesoRetenido()*100)/muestra.getPeso());
                     	analisis.setPorcentajePasante(truncaNum(100-analisis.getPorcentajeRetenidoParcial()));
                     	persistencia.insertarObjeto(analisis);
@@ -119,7 +135,6 @@ public class ControlGestionarAnalisis {
     				i++;
     			}   			
     			persistencia.cerrarTransaccion();
-    			System.out.println("Todo recalculado sin rollback");
     		}
     		catch (Exception e) {
     			System.out.println("Error al recalcular Analisis con persistencia");
@@ -129,31 +144,39 @@ public class ControlGestionarAnalisis {
     	}
                         
         /**
-         * Retorna todos los elementos persistentes de la clase pasada como parametro.
+         * Retorna todos los elementos persistentes de la clase pasada como párametro.
+         * @param muestra, muestra de la que se desean obtener los análisis.
+         * @return coleccion de analisis de una muestra.
          */
         public Collection coleccionAnalisisDeMuestra(Class clase,Muestra muestra) throws Exception {
                 Collection<Object> aux = null; 
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 try {
-                		String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'";
-                		aux = (persistencia.buscarColeccionFiltro(clase, filtro));
-                        persistencia.cerrarTransaccion();
-                        System.out.println("analisis coleccionados");
+                	String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'";
+                	aux = (persistencia.buscarColeccionFiltro(clase, filtro));
+                	persistencia.cerrarTransaccion();
                 } catch (Exception e) {
-                		System.out.println("Error al obtener coleccion Analisis con persistencia");
-                        persistencia.realizarRollback();
+                	System.out.println("Error al obtener coleccion Analisis con persistencia");
+                	persistencia.realizarRollback();
                 }
                 return aux;
         }
         
+        
+        /**
+         * Método que me permite modificar un analisis con los datos pasados como parámetros.
+         * @param pesoRetenido, nuevo peso a ser modificado del análisis.
+         * @param muestra, muestra a la que corresponde el análisis a ser modificado.
+         * @param numeroTamiz, tamiz al que se le va a modificar el análisis.
+         * @throws Exception
+         */
         public void ModificarAnalisis(Float pesoRetenido,Muestra muestra, String numeroTamiz) throws Exception {
         		yaExiste=false;
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 Analisis analisis = new Analisis();
                 try {
-                	System.out.println(numeroTamiz);
                 	analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && tamiz.numeroTamiz=='"+numeroTamiz+"'");
         			analisis.setPesoRetenido(pesoRetenido);
         			analisis.setPorcentajeRetenidoParcial(truncaNum(analisis.getPesoRetenido()*100)/muestra.getPeso());
@@ -167,9 +190,9 @@ public class ControlGestionarAnalisis {
         }
                       
     	/**
-         * Trunca el numero a solo una decimal.
-         * @param num
-         * @return valor
+         * Trunca el número a solo una decimal.
+         * @param num, número a ser truncado.
+         * @return valor, el valor pasado como parametro, pero truncado a un solo decimal.
          * @throws Exception
          */
         public static Float truncaNum(Float num) throws Exception{
@@ -182,10 +205,9 @@ public class ControlGestionarAnalisis {
         }
         
         /**
-         * Retorna el ultimo analisis cargado para la muestra
-         * pasada como paramentro.
-         * @param muestra
-         * @return
+         * Retorna el último analisis cargado para la muestra pasada como paramentro.
+         * @param muestra, muestra de la que se desea obtener el último analisis calculado.
+         * @return el último análisis calculado a la muestra pasada como parámetro.
          * @throws Exception
          */
         public Analisis ultimoAnalisis(Muestra muestra) throws Exception{
@@ -204,12 +226,17 @@ public class ControlGestionarAnalisis {
     			persistencia.cerrarTransaccion();
     		}
     		catch (Exception e) {
-    			System.out.println("Error al obtener ultimo Analisis con persistencia");
+    			System.out.println("Error al obtener último Analisis con persistencia");
     			persistencia.realizarRollback();
     		}
     		return aux;
         }
         
+        /**
+         * @param muestra
+         * @return
+         * @throws Exception
+         */
         public Float pesoPasante(Muestra muestra) throws Exception{
         	Persistencia persistencia = new Persistencia();
     		persistencia.abrirTransaccion();
