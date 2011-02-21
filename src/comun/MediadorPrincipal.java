@@ -61,7 +61,6 @@ public class MediadorPrincipal extends Mediador{
 				GUIPrincipal.getjButtonCargarBackup().setEnabled(false);
 			}
 		}
-		System.out.println(usuario.getCategoria());
 		GUIPrincipal.show();
 		
 	}
