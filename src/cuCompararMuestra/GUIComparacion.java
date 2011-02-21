@@ -24,23 +24,17 @@ import persistencia.domain.Muestra;
 import comun.TablePanel;
 
 /**
+ * @brief Clase que implementa la ventana donde se comparan dos muestras.
  * @author tesisGeologia.
- * 
+ * @version 1.0
  */
 public class GUIComparacion extends JDialog{
 
-	/**
-	 * @param title
-	 * @throws java.awt.HeadlessException 
-	 */
-	
 	private JMenuBar menu ;
 	private JMenu herramientas;
 	private JMenu ayuda;
 	private JMenuItem cancelarMenu;
 	private JMenuItem versionMenu;
-	private JMenuItem imprimirMenu;
-	private JButton imprimir;
 	private JButton cancelar;
 	private JPanel panelNorte=null;
 	private JPanel panelSur=null;
@@ -96,14 +90,11 @@ public class GUIComparacion extends JDialog{
 		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(ayuda);
-		cancelarMenu = new JMenuItem("Cancelar");
+		cancelarMenu = new JMenuItem("Salir");
 		herramientas.add(new JSeparator());
 		herramientas.add(cancelarMenu);
 		versionMenu = new JMenuItem("Version");
 		ayuda.add(versionMenu);	
-		imprimirMenu = new JMenuItem("Imprimir");
-		herramientas.add(imprimirMenu);
-		herramientas.add(new JSeparator());
 		herramientas.add(cancelarMenu);
 		muestra1 = new JLabel("Muestra: ");
 		peso1 = new JLabel("Peso: ");
@@ -136,9 +127,7 @@ public class GUIComparacion extends JDialog{
 		D10_2 = new JLabel("D10(mm): ");
 		coeficienteUniformidad2 = new JLabel("Coef. Uniformidad (Cu): ");
 		gradoCurvatura2 = new JLabel ("Grado de Curvatura (Cc): ");
-		
-		imprimir = new JButton("IMPRIMIR");
-		cancelar = new JButton("CANCELAR");
+		cancelar = new JButton("SALIR");
 		initialize();
 	}
 	
@@ -157,11 +146,9 @@ public class GUIComparacion extends JDialog{
 		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(ayuda);
-		cancelarMenu = new JMenuItem("Cancelar");
+		cancelarMenu = new JMenuItem("Salir");
 		versionMenu = new JMenuItem("Version");
 		ayuda.add(versionMenu);	
-		imprimirMenu = new JMenuItem("Imprimir");
-		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
 		herramientas.add(cancelarMenu);
 		this.muestra1 = new JLabel(muestra1.getNombreMuestra());
@@ -176,12 +163,12 @@ public class GUIComparacion extends JDialog{
 		else{
 			descripcion1 = new JLabel ("Descripcion: ");
 		}
-		limiteLiquido1 = new JLabel ("Límite Líquido (LL): ");    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
-		limitePlastico1 = new JLabel ("Límite Plástico (LP): ");	//***************************************
+		limiteLiquido1 = new JLabel ("Límite Líquido (LL): ");    
+		limitePlastico1 = new JLabel ("Límite Plástico (LP): ");	
 		indicePlasticidad1 = new JLabel ("Íncide de Plasticidad (IP): ");
 		D60_1 = new JLabel("D60(mm): ");
-		D30_1 = new JLabel("D30(mm): "); // INFORMACION QUE SACA DEL ANALISIS PERTENECIENTE A LA MUESTRA PASADA
-		D10_1 = new JLabel("D10(mm): "); // COMO PARAMETRO.. NO SE BIEN COMO LOS SACA A ESTOS DATOS.
+		D30_1 = new JLabel("D30(mm): "); 
+		D10_1 = new JLabel("D10(mm): "); 
 		coeficienteUniformidad1 = new JLabel("Coef. Uniformidad (Cu): ");
 		gradoCurvatura1 = new JLabel ("Grado de Curvatura (Cc): ");
 		
@@ -197,17 +184,15 @@ public class GUIComparacion extends JDialog{
 		else{
 			descripcion2 = new JLabel ("Descripcion: ");
 		}
-		limiteLiquido2 = new JLabel ("Límite Líquido (LL): ");    //FALTAN ASIGNARLES VALOREEEEEEEEEEES
-		limitePlastico2 = new JLabel ("Límite Plástico (LP): ");	//***************************************
+		limiteLiquido2 = new JLabel ("Límite Líquido (LL): ");    
+		limitePlastico2 = new JLabel ("Límite Plástico (LP): ");	
 		indicePlasticidad2 = new JLabel ("Íncide de Plasticidad (IP): ");
 		D60_2 = new JLabel("D60(mm): ");
-		D30_2 = new JLabel("D30(mm): "); // INFORMACION QUE SACA DEL ANALISIS PERTENECIENTE A LA MUESTRA PASADA
-		D10_2 = new JLabel("D10(mm): "); // COMO PARAMETRO.. NO SE BIEN COMO LOS SACA A ESTOS DATOS.
+		D30_2 = new JLabel("D30(mm): "); 
+		D10_2 = new JLabel("D10(mm): "); 
 		coeficienteUniformidad2 = new JLabel("Coef. Uniformidad (Cu): ");
 		gradoCurvatura2 = new JLabel ("Grado de Curvatura (Cc): ");
-		
-		imprimir = new JButton("IMPRIMIR");
-		cancelar = new JButton("CANCELAR");
+		cancelar = new JButton("SALIR");
 		initialize();
 	}
 	
@@ -267,21 +252,6 @@ public class GUIComparacion extends JDialog{
 	}
 	
 	/**
-	 * @return the imprimir
-	 */
-	public JButton getJButtonImprimir() {
-		return imprimir;
-	}
-
-
-	/**
-	 * @param imprimir the imprimir to set
-	 */
-	public void setJButtonImprimir(JButton imprimir) {
-		this.imprimir = imprimir;
-	}
-	
-	/**
 	 * @return the cancelar
 	 */
 	public JButton getJButtonCancelar() {
@@ -309,13 +279,7 @@ public class GUIComparacion extends JDialog{
 		return versionMenu;
 	}
 
-	/**
-	 * @return the imprimirMenu
-	 */
-	public JMenuItem getImprimirMenu() {
-		return imprimirMenu;
-	}
-
+	
 	/**
 	 * Metodo que inicializa la interfaz.
 	 *
@@ -463,7 +427,6 @@ public class GUIComparacion extends JDialog{
 		if (this.panelSur==null) {
 			this.panelSur = new JPanel();
 			this.panelSur.setLayout(new FlowLayout());
-			this.panelSur.add(imprimir);
 			this.panelSur.add(cancelar);
 			}
 			return this.panelSur;
@@ -475,9 +438,7 @@ public class GUIComparacion extends JDialog{
 	 *@param lis actionEvent asignado a los botones.
 	 */
 	public void setListenerButtons(ActionListener lis){
-		this.imprimir.addActionListener(lis);
 		this.cancelar.addActionListener(lis);
-		imprimirMenu.addActionListener(lis);
 		cancelarMenu.addActionListener(lis);
 		versionMenu.addActionListener(lis);
 		
