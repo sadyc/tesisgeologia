@@ -194,7 +194,6 @@ public class MediadorAltaMuestra extends Mediador{
 			}
 			
 		} catch (Exception e) {
-			System.out.println("No inserta muestra Mediador Alta Muestra");
 			e.printStackTrace();
 		}
 	}

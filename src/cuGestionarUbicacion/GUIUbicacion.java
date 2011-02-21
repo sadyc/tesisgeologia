@@ -13,12 +13,12 @@ import persistencia.domain.Ubicacion;
 /**
  * Clase GUI que reprensenta la ventana para una ubicacion.
  * @author TesisGeologia.
+ * @version 1.0.
  *
  */
 public class GUIUbicacion extends javax.swing.JDialog {
 	
-	// Variables declaration - do not modify
-    private javax.swing.JButton jButtonCancelar;
+	private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JComboBox jComboBoxProvincia;
     private javax.swing.JLabel jLabelCiudad;
@@ -40,7 +40,10 @@ public class GUIUbicacion extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     // End of variables declaration
 
-    /** Creates new form GUIUbicacion */
+    
+    /**
+     * Constructor por defecto.
+     */
     public GUIUbicacion() {
     	super();
     	setModal(true);
@@ -54,7 +57,11 @@ public class GUIUbicacion extends javax.swing.JDialog {
         
     }
     
-    /** Creates new form GUIUbicacion */
+   
+    /**
+     * Constructor con pasaje de parametros.
+     * @param ubicacion
+     */
     public GUIUbicacion(Ubicacion ubicacion) {
     	super();
     	setModal(true);
@@ -73,9 +80,9 @@ public class GUIUbicacion extends javax.swing.JDialog {
         jButtonAceptar.setText("Modificar");
     }
     
-    
-
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">
+    /**
+     * Inicializar de los objetos de la ventana.
+     */
     private void initComponents() {
 
         jButtonAceptar = new javax.swing.JButton();
@@ -245,7 +252,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
        
 

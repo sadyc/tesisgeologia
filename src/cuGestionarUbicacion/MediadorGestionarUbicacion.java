@@ -19,6 +19,13 @@ import comun.Mediador;
 import persistencia.domain.Ubicacion;
 import cuGestionarMuestra.ControlGestionarMuestra;
 
+/**
+ * @brief Clase que se utiliza para realizar los sucesos en la ventana GestionarUbicacion.
+ * 
+ * @author TesisGeologia
+ * 
+ * @version 1.0.
+ */
 public class MediadorGestionarUbicacion extends Mediador{
 
 	private GUIGestionarUbicacion GUIGestionarUbicacion = null;
@@ -27,6 +34,10 @@ public class MediadorGestionarUbicacion extends Mediador{
 	private Component frame;
 	
 	
+	/**
+	 * Constructor por defecto.
+	 * @throws Exception
+	 */
 	public MediadorGestionarUbicacion() throws Exception {
 		super();
 		cargarTablaDeMuestras();
@@ -112,15 +123,6 @@ public class MediadorGestionarUbicacion extends Mediador{
 		}
 	}
 	
-	private void buscar() {
-		try {
-   			System.out.println("Button Buscar Ubicacion");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-
 	public void show(){
 		GUIGestionarUbicacion.show();
 	}
@@ -174,8 +176,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 		    ControlGestionarUbicacion control = new ControlGestionarUbicacion(); 
             if(quitOption==JOptionPane.YES_OPTION){
             	try{
-            		System.out.println(GUIGestionarUbicacion.getTablePanel().getSelectedRow());
-            	   	String [] fila = GUIGestionarUbicacion.getTablePanel().getRow(GUIGestionarUbicacion.getTablePanel().getSelectedRow());
+            		String [] fila = GUIGestionarUbicacion.getTablePanel().getRow(GUIGestionarUbicacion.getTablePanel().getSelectedRow());
 	            	GUIGestionarUbicacion.getTablePanel().removeRow(GUIGestionarUbicacion.getTablePanel().getSelectedRow());
 	            	String nombreUbicacion = fila[0];
 	            	String ciudad = fila[1];

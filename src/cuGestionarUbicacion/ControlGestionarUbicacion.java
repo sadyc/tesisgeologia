@@ -11,6 +11,7 @@ import persistencia.domain.Ubicacion;
  * Clase que se utiliza para gestionar los datos con persistencia en la base
  * de datos del sistema.
  * @author TesisGeologia.
+ * @version 1.0
  *
  */
 public class ControlGestionarUbicacion {

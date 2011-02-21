@@ -8,6 +8,13 @@ import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
 
+/**
+ * Clase que se utiliza para gestionar los datos de un usuario 
+ * con persistencia en la base de datos del sistema.
+ * @author TesisGeologia.
+ * @version 1.0
+ *
+ */
 public class ControlGestionarUsuario {
 	private boolean yaExiste;
 	/**
@@ -16,7 +23,8 @@ public class ControlGestionarUsuario {
 	public ControlGestionarUsuario(){}
 	
 	/**
-	 * Inserta una muestra con persistencia. 
+	 * Inserta una muestra con persistencia.
+	 * @param usuario 
 	 */ 
 	public void insertarUsuario(Usuario usuario) throws Exception{
 		yaExiste=false;
@@ -31,7 +39,6 @@ public class ControlGestionarUsuario {
 			}
 			persistencia.cerrarTransaccion();
 		} catch (Exception e) {
-			System.out.println("Fatal error en ControlGestionarUsuario insertar");
 			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
@@ -54,6 +61,12 @@ public class ControlGestionarUsuario {
 		}
 	}
 			
+	/**
+	 * Permite modificar un usuario con los los parametros.
+	 * @param DNI
+	 * @param data
+	 * @throws Exception
+	 */
 	public void modificarUsuario(String DNI,String[] data) throws Exception {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
@@ -79,7 +92,6 @@ public class ControlGestionarUsuario {
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
-			System.out.println("Error al modificar");
 			e.printStackTrace();
 			persistencia.realizarRollback();
 		}		
@@ -115,7 +127,6 @@ public class ControlGestionarUsuario {
 		try {
 			aux = (persistencia.buscarColeccion(clase));
 			persistencia.cerrarTransaccion();
-			System.out.println("La coleccion ha sido cargada");
 		} catch (Exception e) {
 			persistencia.realizarRollback();
 		}

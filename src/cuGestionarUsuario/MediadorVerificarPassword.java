@@ -13,6 +13,13 @@ import javax.swing.JOptionPane;
 import persistencia.domain.Usuario;
 import cuLogin.Encriptar;
 
+/**
+ * @brief Clase que se utiliza para realizar los sucesos en la ventana de verificar password.
+ * 
+ * @author TesisGeologia
+ * @version 1.0
+ *
+ */
 public class MediadorVerificarPassword implements ActionListener, KeyListener, MouseListener {
 	private GUIVerificarPassword GUIVerificarPassword;
 	private String dni;
@@ -48,7 +55,6 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 				try {
 					password = encriptar.hash(GUIVerificarPassword.getjPasswordField1().getText());
 				} catch (Exception e1) {
-					System.out.println("El password es muy extenso!");
 					e1.printStackTrace();
 				}
 				if	(password.compareTo(usuario.getContraseña())!=0){

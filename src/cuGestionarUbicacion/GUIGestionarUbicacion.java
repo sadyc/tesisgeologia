@@ -21,6 +21,8 @@ import comun.TablePanel;
 /**
 * @author TesisGeología
 * Esta clase implementa la ventana que me permite seleccionar una ubicacion de las almacenados.
+* 
+* @version 1.0
 */
 public class GUIGestionarUbicacion extends JDialog	{
 	
@@ -258,10 +260,6 @@ public class GUIGestionarUbicacion extends JDialog	{
         setJMenuBar(jMenuBar1);
 
         pack();
-    }// </editor-fold>
-
-    private void jTextFieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
     }
 
     private void jComboBoxBuscarActionPerformed(java.awt.event.ActionEvent evt) {

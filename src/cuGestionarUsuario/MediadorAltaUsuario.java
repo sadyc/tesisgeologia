@@ -18,9 +18,10 @@ import cuGestionarMuestra.ControlGestionarMuestra;
 import cuLogin.Encriptar;
 
 /**
- * @brief Clase que se utiliza para realizar los sucesos en la ventana Muestra.
+ * @brief Clase que se utiliza para realizar los sucesos en la ventana GUIUsuario.
  * 
  * @author TesisGeologia
+ * @version 1.0
  *
  */
 public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseListener{
@@ -135,7 +136,6 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 		try {
 			password = encriptar.hash(GUIUsuario.getjPasswordField().getText());
 		} catch (Exception e1) {
-			System.out.println("El password es muy extenso!");
 			e1.printStackTrace();
 		}
 		data[7]= password;
@@ -143,7 +143,6 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 		try {
 			control.insertarUsuario(usuario);
 			if (control.getExiste()) {
-				System.out.println("El objeto ya existe");
 				JOptionPane.showMessageDialog(frame,"El usuario con DNI: "+data[2]+" ó nombre de usuario: "+data[3]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
@@ -152,7 +151,6 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 			}
 			
 		} catch (Exception e) {
-			System.out.println("No inserta Usuario Mediador Alta Usuario");
 			e.printStackTrace();
 		}
 		

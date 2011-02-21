@@ -12,6 +12,13 @@ import persistencia.domain.OperadorDeLaboratorio;
 
 import comun.Mediador;
 
+/**
+ * @brief Clase que se utiliza para realizar los sucesos en la ventana GUIOperador al modificar.
+ * 
+ * @author TesisGeologia
+ * 
+ * @version 1.0.
+ */
 public class MediadorModificarOperador extends Mediador{
 	
 	private GUIOperador GUIOperador;
@@ -22,6 +29,11 @@ public class MediadorModificarOperador extends Mediador{
 	private ControlGestionarOperador control = new ControlGestionarOperador();
 	
 
+	/**
+	 * Constructor con pasaje de parametros.
+	 * @param fila
+	 * @throws Exception
+	 */
 	public MediadorModificarOperador(String[] fila) throws Exception {
 		super();
 		operadorModificar = (control.obtenerOperador(fila[2]));
@@ -33,9 +45,7 @@ public class MediadorModificarOperador extends Mediador{
 		GUIOperador.setLocationRelativeTo(null);
 		GUIOperador.show();
 	}
-	
-
-	
+		
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
@@ -108,7 +118,6 @@ public class MediadorModificarOperador extends Mediador{
 		try {
 			control.modificarOperador(operadorModificar.getDni(),data);
 			if (control.getExiste()) {
-				System.out.println("El objeto ya existe");
 				JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
@@ -117,7 +126,6 @@ public class MediadorModificarOperador extends Mediador{
 			}
 			
 		} catch (Exception e) {
-			System.out.println("No modifica Operador Mediador Modificar Operador");
 			e.printStackTrace();
 		}
 		
