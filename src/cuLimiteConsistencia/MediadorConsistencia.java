@@ -13,6 +13,8 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
+import comun.MediadorVersion;
+
 import persistencia.domain.Muestra;
 import cuCompararMuestra.GUISeleccionarMuestra;
 import cuGestionarMuestra.ControlGestionarMuestra;
@@ -143,6 +145,9 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 		}
 		if (this.GUIABMMuestra.getjButtonSalir() == source || GUIABMMuestra.getjMenuSalir()==source){
 			GUIABMMuestra.dispose();
+		}
+		if (GUIABMMuestra.getjMenuVersion()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 	}
 	

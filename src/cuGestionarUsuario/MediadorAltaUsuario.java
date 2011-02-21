@@ -13,6 +13,8 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
+import comun.MediadorVersion;
+
 import persistencia.domain.Usuario;
 import cuGestionarMuestra.ControlGestionarMuestra;
 import cuLogin.Encriptar;
@@ -94,6 +96,9 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 		}
 		if (this.GUIUsuario.getjButtonCancelar() == source || GUIUsuario.getjMenuItemCancelar()==source){
 			GUIUsuario.dispose();
+		}
+		if (GUIUsuario.getjMenuItemVersion()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 	}
 	

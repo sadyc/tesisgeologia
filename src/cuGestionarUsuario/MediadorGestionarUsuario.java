@@ -14,6 +14,8 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import comun.MediadorVersion;
+
 import persistencia.domain.Usuario;
 
 /**
@@ -108,6 +110,9 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 		}
 		if (this.GUIGestionarUsuario.getjButtonSalir() == source || GUIGestionarUsuario.getjMenuSalir()==source){
 			GUIGestionarUsuario.dispose();
+		}
+		if (GUIGestionarUsuario.getjMenuVersion()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 	}
 	

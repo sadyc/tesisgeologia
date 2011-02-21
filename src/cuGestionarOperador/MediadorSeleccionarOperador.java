@@ -1,4 +1,4 @@
-package comun;
+package cuGestionarOperador;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -11,11 +11,10 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import comun.Mediador;
+import comun.MediadorVersion;
+
 import persistencia.domain.OperadorDeLaboratorio;
-import cuGestionarOperador.ControlGestionarOperador;
-import cuGestionarOperador.GUIGestionarOperador;
-import cuGestionarOperador.MediadorAltaOperador;
-import cuGestionarOperador.MediadorModificarOperador;
 
 
 /**
@@ -99,6 +98,9 @@ public class MediadorSeleccionarOperador extends Mediador{
 		}
 		if (this.GUIGestionarOperador.getjButtonSalir() == source || this.GUIGestionarOperador.getjMenuSalir()==source){
 			GUIGestionarOperador.dispose();
+		}
+		if (GUIGestionarOperador.getjMenuVersion()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 	}
 	

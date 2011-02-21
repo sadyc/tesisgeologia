@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 import persistencia.domain.Ubicacion;
 import cuGestionarMuestra.ControlGestionarMuestra;
@@ -120,6 +121,9 @@ public class MediadorGestionarUbicacion extends Mediador{
 		}
 		if (GUIGestionarUbicacion.getJButtonSalir() == source || GUIGestionarUbicacion.getjMenuSalir() == source){
 			GUIGestionarUbicacion.dispose();
+		}
+		if (GUIGestionarUbicacion.getjMenuVersion()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 	}
 	

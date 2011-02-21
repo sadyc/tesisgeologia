@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import persistencia.domain.Ubicacion;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 import cuCalcularClasificacion.GUIClasificacion;
 import cuGestionarMuestra.ControlGestionarMuestra;
@@ -60,6 +61,9 @@ public class MediadorAltaUbicacion extends Mediador{
 	   	}
 		if (this.GUIUbicacion.getjButtonCancelar()== source || GUIUbicacion.getjMenuItemCancelar()==source){
 			GUIUbicacion.dispose();
+		}
+		if (GUIUbicacion.getjMenuVersion()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 	}
 	

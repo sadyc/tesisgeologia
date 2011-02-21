@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import persistencia.domain.Muestra;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 
 /**
@@ -107,6 +108,9 @@ public class MediadorSeleccionarMuestra extends Mediador{
 		}
 		if (this.GUIABMMuestra.getjButtonSalir() == source || GUIABMMuestra.getjMenuSalir()==source){
 			GUIABMMuestra.dispose();
+		}
+		if (GUIABMMuestra.getjMenuVersion()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 	}
 	

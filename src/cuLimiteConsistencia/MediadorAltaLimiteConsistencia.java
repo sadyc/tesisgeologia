@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import persistencia.domain.Muestra;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 
 /**
@@ -63,6 +64,9 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 		if (this.GUILimiteConsistencia.getjButtonCancelar() == source || GUILimiteConsistencia.getCancelar()==source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			GUILimiteConsistencia.dispose();
+		}
+		if (GUILimiteConsistencia.getVersion()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 	}
 	

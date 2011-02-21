@@ -14,6 +14,8 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import comun.MediadorVersion;
+
 import persistencia.domain.OperadorDeLaboratorio;
 
 
@@ -100,6 +102,9 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 		}
 		if (this.GUIGestionarOperador.getjButtonSalir() == source || this.GUIGestionarOperador.getjMenuSalir()==source){
 			GUIGestionarOperador.dispose();
+		}
+		if (GUIGestionarOperador.getjMenuVersion()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 	}
 	

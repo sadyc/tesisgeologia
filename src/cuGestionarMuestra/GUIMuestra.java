@@ -585,5 +585,11 @@ public class GUIMuestra extends javax.swing.JDialog {
 		    profundidadFinal.addKeyListener(lis);
 		    peso.addKeyListener(lis);
 		}
-	
+		
+		 /**
+		 * @return the versionMenu
+		 */
+		public javax.swing.JMenuItem getVersionMenu() {
+			return versionMenu;
+		}	
 	}

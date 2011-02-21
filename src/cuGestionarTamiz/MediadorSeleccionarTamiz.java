@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import persistencia.domain.Tamiz;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 
 /**
@@ -82,6 +83,9 @@ public class MediadorSeleccionarTamiz extends Mediador{
 		Object source = arg0.getSource();
 		if (this.GUISeleccionarTamiz.getJButtonSeleccionar() == source || GUISeleccionarTamiz.getSeleccionarMenu()==source){
 			seleccionarTamiz();
+		}
+		if (GUISeleccionarTamiz.getVersionMenu()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 		if (this.GUISeleccionarTamiz.getJButtonCancelar() == source || GUISeleccionarTamiz.getCancelarMenu()==source){
 			GUISeleccionarTamiz.dispose();
