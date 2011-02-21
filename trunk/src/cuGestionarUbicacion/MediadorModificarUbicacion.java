@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import persistencia.domain.Ubicacion;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 /**
  * @brief Clase que se utiliza para realizar los sucesos en la ventana ModificarUbicacion.
@@ -69,6 +70,9 @@ public class MediadorModificarUbicacion extends Mediador{
 		if (this.GUIUbicacion.getjButtonCancelar()== source || GUIUbicacion.getjMenuItemCancelar()==source){
 			GUIUbicacion.dispose();
 		}
+		if (GUIUbicacion.getjMenuVersion()==source){
+			MediadorVersion version = new MediadorVersion();
+		}
 	}
 	
 	/**
@@ -92,6 +96,7 @@ public class MediadorModificarUbicacion extends Mediador{
 					data = GUIUbicacion.getData();
 				}			
 			}
+			
 		}
 		catch (NumberFormatException e){
 			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos de latitud y longitud","Atención!", JOptionPane.ERROR_MESSAGE);

@@ -134,6 +134,9 @@ public class MediadorPrincipal extends Mediador{
 		if (this.GUIPrincipal.getjButtonCargarBackup()==source || this.GUIPrincipal.getCargarBackupMenu()==source){
 			backup.cargarBackUpWindowsX86();
 		}
+		if (GUIPrincipal.getVersionMenu()==source){
+			MediadorVersion version = new MediadorVersion();
+		}
 	}
 	
 	

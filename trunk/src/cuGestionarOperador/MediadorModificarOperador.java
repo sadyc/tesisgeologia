@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import persistencia.domain.OperadorDeLaboratorio;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 /**
  * @brief Clase que se utiliza para realizar los sucesos en la ventana GUIOperador al modificar.
@@ -81,6 +82,9 @@ public class MediadorModificarOperador extends Mediador{
 		Object source = arg0.getSource();
 		if (this.GUIOperador.getjButtonAgregar() == source|| GUIOperador.getjMenuItemAgregar()==source) {
 			aceptar();
+		}
+		if (GUIOperador.getjMenuItemVersion()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 		if (this.GUIOperador.getjButtonCancelar() == source || GUIOperador.getjMenuItemCancelar()==source){
 			GUIOperador.dispose();

@@ -10,24 +10,21 @@ import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 import persistencia.domain.Muestra;
 import persistencia.domain.Usuario;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
 
 
 
 /**
-<<<<<<< .mine
+ *
  * @brief Clase que se utiliza para escuchar los eventos que suceden en la ventana de GestionarMuestra
-=======
- * @brief Clase que se utiliza para escuchar los eventos que suceden en la ventana de GestionarMuestra.
->>>>>>> .r290
+ *
  * @author TesisGeologia
  * @version 1.0.
  */
@@ -139,6 +136,9 @@ public class MediadorGestionarMuestra extends Mediador{
 		}
 		if (this.GUIABMMuestra.getjButtonSalir() == source || GUIABMMuestra.getjMenuSalir()==source){
 			GUIABMMuestra.dispose();
+		}
+		if (GUIABMMuestra.getjMenuVersion()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 	}
 	

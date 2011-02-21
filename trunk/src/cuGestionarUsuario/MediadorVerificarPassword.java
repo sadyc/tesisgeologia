@@ -10,6 +10,8 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
+import comun.MediadorVersion;
+
 import persistencia.domain.Usuario;
 import cuLogin.Encriptar;
 
@@ -80,6 +82,9 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 		}
 		if (this.GUIVerificarPassword.getjButton2() == source || this.GUIVerificarPassword.getjMenuItem2() == source){
 			GUIVerificarPassword.dispose();
+		}
+		if (GUIVerificarPassword.getjMenu2()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 	}
 		

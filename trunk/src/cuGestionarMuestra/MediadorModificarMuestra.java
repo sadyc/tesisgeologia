@@ -16,9 +16,10 @@ import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Usuario;
 
 import comun.Mediador;
-import comun.MediadorSeleccionarOperador;
+import comun.MediadorVersion;
 
 import cuGestionarCliente.MediadorSeleccionarCliente;
+import cuGestionarOperador.MediadorSeleccionarOperador;
 import cuGestionarUbicacion.MediadorGestionarUbicacion;
 
 /**
@@ -117,6 +118,9 @@ public class MediadorModificarMuestra extends Mediador{
 		}
 		if (this.GUIMuestra.getJButtonCancelar() == source || GUIMuestra.getJButtonCancelar()==source){
 			GUIMuestra.dispose();
+		}
+		if (GUIMuestra.getVersionMenu()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 	}
 

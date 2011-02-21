@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 import persistencia.domain.OperadorDeLaboratorio;
 
@@ -90,6 +91,9 @@ public class MediadorAltaOperador extends Mediador{
 		Object source = arg0.getSource();
 		if (this.GUIOperador.getjButtonAgregar() == source || this.GUIOperador.getjMenuItemAgregar()== source) {
 			aceptar();
+		}
+		if (GUIOperador.getjMenuItemVersion()==source){
+			MediadorVersion version = new MediadorVersion();
 		}
 		if (this.GUIOperador.getjButtonCancelar() == source || GUIOperador.getjMenuItemCancelar()==source){
 			GUIOperador.dispose();
