@@ -208,12 +208,12 @@ public class MediadorAltaMuestra extends Mediador{
 	public void seleccionarUbicacion(){
 		try {
 			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion();
-			if((String)mediadorSelUbic.getSeleccionado()[0]!= null){
-				this.GUIMuestra.setUbicacion("(*) Ubicacion: "+(String)mediadorSelUbic.getSeleccionado()[0]);
+			if (mediadorSelUbic.seSelecciono()){
+				this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
 				ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
 				ubicacion.setCiudad((String)mediadorSelUbic.getSeleccionado()[1]);
-				}
-			} catch (Exception e) {
+			}
+		} catch (Exception e) {
 				e.printStackTrace();
 			}
 	}
@@ -228,7 +228,7 @@ public class MediadorAltaMuestra extends Mediador{
 				this.GUIMuestra.setOperador("(*) Operador: "+(String)seleccionarOperador.getSeleccionado()[0]+" "+(String)seleccionarOperador.getSeleccionado()[1]);
 				operador.setNombre(((String)seleccionarOperador.getSeleccionado()[0]));
 				operador.setApellido(((String)seleccionarOperador.getSeleccionado()[1]));
-				this.operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
+				operador.setDni((String)seleccionarOperador.getSeleccionado()[2]);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -242,10 +242,10 @@ public class MediadorAltaMuestra extends Mediador{
 		try {
 			MediadorSeleccionarCliente seleccionarCliente = new MediadorSeleccionarCliente();
 			if (seleccionarCliente.isSeleccionoCliente()){
-			GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]);
-			cliente.setNombre(((String)seleccionarCliente.getSeleccionado()[0]));
-			cliente.setApellido(((String)seleccionarCliente.getSeleccionado()[1]));
-			cliente.setDni(((String)seleccionarCliente.getSeleccionado()[2]));
+				GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]);
+				cliente.setNombre(((String)seleccionarCliente.getSeleccionado()[0]));
+				cliente.setApellido(((String)seleccionarCliente.getSeleccionado()[1]));
+				cliente.setDni(((String)seleccionarCliente.getSeleccionado()[2]));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -2,22 +2,20 @@ package cuGestionarUbicacion;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import persistencia.domain.Ubicacion;
+
 import comun.Mediador;
 import comun.MediadorVersion;
 
-import persistencia.domain.Ubicacion;
 import cuGestionarMuestra.ControlGestionarMuestra;
 
 /**
@@ -32,6 +30,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 	private GUIGestionarUbicacion GUIGestionarUbicacion = null;
 	private Object [][] data;
 	private Object [] seleccionado = new Object [4];
+	private boolean selecciono=false;
 	private Component frame;
 	
 	
@@ -123,7 +122,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 			GUIGestionarUbicacion.dispose();
 		}
 		if (GUIGestionarUbicacion.getjMenuVersion()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 	
@@ -159,6 +158,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 			try{
 				System.out.println("Button Seleccionar Ubicacion");
 				seleccionado = GUIGestionarUbicacion.getTablePanel().getRow(GUIGestionarUbicacion.getTablePanel().getSelectedRow());
+				selecciono = true;
 				GUIGestionarUbicacion.dispose();
 			}
 			catch (Exception e) {
@@ -246,5 +246,12 @@ public class MediadorGestionarUbicacion extends Mediador{
 		if (GUIGestionarUbicacion.getjTextFieldBuscar().getText().length()==25){ 
 			arg0.consume(); 
 		}
+	}
+	
+	/**
+	 * @return the selecciono
+	 */
+	public boolean seSelecciono() {
+		return selecciono;
 	}
 }
