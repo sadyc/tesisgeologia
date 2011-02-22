@@ -2,6 +2,7 @@ package persistencia.domain;
 
 import comun.MediadorPrincipal;
 
+import cuLogin.Encriptar;
 import cuLogin.MediadorLogin;
 
  /**
@@ -24,7 +25,11 @@ public class Main {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		new MediadorLogin("Login");
+
+		//new MediadorLogin("Login");
+		Usuario usuario1 = new Usuario("Juan", "Perez", "555","admin","Administrador", "juan@perez.com", "4917015","admin");
+		new MediadorPrincipal("Sistema Clasificador de Suelos",usuario1);
+		
 		
 	}
 }

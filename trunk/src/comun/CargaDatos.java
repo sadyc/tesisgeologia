@@ -177,9 +177,10 @@ public class CargaDatos {
 		SUCS sucs20 = new SUCS("SW-SC");
 		SUCS sucs21 = new SUCS("SP-SM");
 		SUCS sucs22 = new SUCS("SP-SC");
-		
-		java.sql.Date fecha = new Date(2011,02,21);
-		java.sql.Date fecha1 = new Date(2011,01,12);
+		java.util.Date utilDate = new java.util.Date();
+	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+	    java.util.Date utilDate1 = new java.util.Date();
+	    java.sql.Date sqlDate1 = new java.sql.Date(utilDate1.getTime());
 		Encriptar encriptar = new Encriptar();
 		String a = encriptar.hash("kulmino");
 		String b = encriptar.hash("admin");
@@ -192,8 +193,8 @@ public class CargaDatos {
 		Cliente cliente2 = new Cliente("Ernesto", "Shwesteiger", "20.325.414", "ernesto@yahoo.com", "0358-4648494");
 		Cliente cliente3 = new Cliente("JUMALA SA", " ", " ", "contacto@jumala.com", "0358-4404021");
 		
-		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),null,usuario1,null,null,null,null,fecha);	
-		Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),null,usuario1,null,null,null,null,fecha1);
+		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),null,usuario1,null,null,null,null,sqlDate);	
+		Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),null,usuario1,null,null,null,null,sqlDate1);
 
 		Ubicacion ubicacion1 = new Ubicacion("ZONA 5","EL IMPENETRABLE","Chaco","0","0");
 		Ubicacion ubicacion2 = new Ubicacion("UNRC","RIO CUARTO","Cordoba","0","1");

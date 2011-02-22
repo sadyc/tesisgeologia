@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
@@ -98,6 +99,9 @@ public class MediadorAltaOperador extends Mediador{
 		if (this.GUIOperador.getjButtonCancelar() == source || GUIOperador.getjMenuItemCancelar()==source){
 			GUIOperador.dispose();
 		}
+		if(this.GUIOperador.getjMenuItemVersion() == source){
+			new MediadorVersion();
+		}
 	}
 	
 	/**
@@ -125,7 +129,13 @@ public class MediadorAltaOperador extends Mediador{
 		data[0]= GUIOperador.getjTextFieldNombre().getText().toUpperCase();
 		data[1]= GUIOperador.getjTextFieldApellido().getText().toUpperCase();
 		data[2]= GUIOperador.getjTextFieldDni().getText();
+		if (!isEmail(GUIOperador.getjTextFieldEmail().getText().toUpperCase())){
+			System.out.println("El E-mail es incorrecto!");
+			JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
+		
+		}else{
 		data[3]= GUIOperador.getjTextFieldEmail().getText().toUpperCase();
+		
 		data[4]= GUIOperador.getjTextFieldTelefono().getText();
 		operador = new OperadorDeLaboratorio(data[0],data[1],data[2],data[3],data[4]);
 		try {
@@ -143,7 +153,7 @@ public class MediadorAltaOperador extends Mediador{
 			System.out.println("No inserta Operador Mediador Alta Operador");
 			e.printStackTrace();
 		}
-		
+		}
 
 	}
 	
@@ -194,4 +204,7 @@ public class MediadorAltaOperador extends Mediador{
 		// TODO Auto-generated method stub
 		
 	}
+	
+
+     
 }

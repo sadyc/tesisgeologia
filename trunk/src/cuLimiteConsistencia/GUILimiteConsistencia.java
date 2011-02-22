@@ -58,7 +58,7 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
         jTextFieldLL = new JTextField();
         jTextFieldLP = new JTextField();
         nombreMuestra = new javax.swing.JLabel("Nombre: "+muestra.getNombreMuestra());
-        pesoMuestra  = new javax.swing.JLabel("Peso: "+muestra.getPeso());
+        pesoMuestra  = new javax.swing.JLabel("Peso: "+muestra.getPeso()+ " (gr.)");
         jTextFieldLL = new javax.swing.JTextField();
         jTextFieldLP = new javax.swing.JTextField();
         initComponents();
@@ -67,7 +67,7 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
         agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
         version.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png")));
-        show();
+       
 }
 
 /**
@@ -82,9 +82,9 @@ public GUILimiteConsistencia(String title,String limLiq, String limPlas, Muestra
         System.out.println("jaksddajskasdkjsad");
         nombreMuestra = new javax.swing.JLabel("Nombre Muestra: "+muestra.getNombreMuestra());
         System.out.println("jaksddajskasdkjsad");
-        pesoMuestra = new javax.swing.JLabel("Peso: "+muestra.getPeso());
+        pesoMuestra = new javax.swing.JLabel("Peso: "+muestra.getPeso()+ " (gr.)");
         initComponents();
-        show();
+        
 }
     /** Creates new form GUILimiteConsistencia
     public GUILimiteConsistencia(String title, Muestra mu) {

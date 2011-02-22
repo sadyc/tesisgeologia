@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.jdo.JDOException;
 import javax.swing.JOptionPane;
@@ -120,9 +122,14 @@ public class MediadorAltaCliente extends Mediador{
 		data[0]= GUICliente.getjTextFieldNombre().getText();
 		data[1]= GUICliente.getjTextFieldApellido().getText();
 		data[2]= GUICliente.getjTextFieldDni().getText();
-		data[3]= GUICliente.getjTextFieldEmail().getText();
-		data[4]= GUICliente.getjTextFieldTelefono().getText();
-		cliente = new Cliente(data[0],data[1],data[2],data[3],data[4]);
+		if (!isEmail(GUICliente.getjTextFieldEmail().getText().toUpperCase())){
+			System.out.println("El E-mail es incorrecto!");
+			JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
+		
+		}else{
+		data[4]= GUICliente.getjTextFieldEmail().getText();
+		data[3]= GUICliente.getjTextFieldTelefono().getText();
+		cliente = new Cliente(data[0],data[1],data[2],data[4],data[3]);
 		try {
 			control.insertarCliente(cliente);
 			if (control.getExiste()) {
@@ -139,7 +146,7 @@ public class MediadorAltaCliente extends Mediador{
 			e.printStackTrace();
 		}
 		
-		
+		}
 
 	}
 	
@@ -170,4 +177,5 @@ public class MediadorAltaCliente extends Mediador{
 		// TODO Auto-generated method stub
 		
 	}
+	
 }

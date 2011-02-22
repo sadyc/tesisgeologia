@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
@@ -115,6 +117,11 @@ public class MediadorModificarCliente extends Mediador{
 		data[0]= GUICliente.getjTextFieldNombre().getText();
 		data[1]= GUICliente.getjTextFieldApellido().getText();
 		data[2]= GUICliente.getjTextFieldDni().getText();
+		if (!isEmail(GUICliente.getjTextFieldEmail().getText().toUpperCase())){
+			System.out.println("El E-mail es incorrecto!");
+			JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
+		
+		}else{
 		data[3]= GUICliente.getjTextFieldEmail().getText();
 		data[4]= GUICliente.getjTextFieldTelefono().getText();
 		try {
@@ -132,6 +139,7 @@ public class MediadorModificarCliente extends Mediador{
 			e.printStackTrace();
 		}
 		
+		}
 
 	}
 	

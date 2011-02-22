@@ -1,6 +1,8 @@
 package cuLogin;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+
 
  
 /**
@@ -9,7 +11,9 @@ import java.awt.event.ActionListener;
  */
 public class GUILogin extends javax.swing.JDialog {
 
-    /** Creates new form GUILogin */
+    
+
+	/** Creates new form GUILogin */
     public GUILogin(boolean modal) {
         super();
         setTitle("Login Usuario");
@@ -90,7 +94,19 @@ public class GUILogin extends javax.swing.JDialog {
         jMenuAyuda.add(jMenuItemVersion);
 
         jMenuBar1.add(jMenuAyuda);
-
+        
+        jnombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jnombreUsuarioActionPerformed(evt);
+            }
+        });
+        
+        jpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jnombreUsuarioActionPerformed(evt);
+            }
+        });
+        
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -368,5 +384,29 @@ public class GUILogin extends javax.swing.JDialog {
 		this.jButtonCancelar.addActionListener(lis);
 		this.jMenuItemSalir.addActionListener(lis);
 		this.jMenuItemAgregar.addActionListener(lis);
+	}
+	
+	/**
+	 * @return the jTextFieldNombre
+	 */
+	public javax.swing.JTextField getjTextFieldNombreUsuario() {
+		return jnombreUsuario;
+	}
+
+	/**
+	 * @return the jTextFieldNombreUbicacion
+	 */
+	public javax.swing.JTextField getjTextFieldPassword() {
+		return jpassword;
+	}
+	
+	/**
+	 * Escucha lo ingresado por teclado.
+	 * @param lis
+	 */
+	public void setKeyListener(KeyListener lis){
+		jnombreUsuario.addKeyListener(lis);
+	    jpassword.addKeyListener(lis);
+	  
 	}
 }
