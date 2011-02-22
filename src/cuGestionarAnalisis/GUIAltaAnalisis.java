@@ -61,7 +61,7 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 		jLabelUbicacion = new JLabel("Ubicación: "+muestra.getUbicacion().getNombreUbicacion());
 		jLabelPeso = new JLabel("Peso: "+muestra.getPeso());
 		jLabelTamiz = new javax.swing.JLabel();
-		jLabelTamiz.setText("Tamíz: ");
+		jLabelTamiz.setText("Tamiz: ");
 		initComponents();
 		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
 	    cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
@@ -84,7 +84,7 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 		jLabelUbicacion = new JLabel("Ubicación: "+muestra.getUbicacion().getNombreUbicacion());
 		jLabelPeso = new JLabel("Peso: "+muestra.getPeso());
 		jLabelTamiz = new javax.swing.JLabel();
-		jLabelTamiz.setText("Tamíz: "+numeroTamiz);
+		jLabelTamiz.setText("Tamiz: "+numeroTamiz);
 		initComponents();
 		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
 	    cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
@@ -124,8 +124,8 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
         jMenuItemCancelar = new javax.swing.JMenuItem();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel4.setText("Peso retenido por el Tamíz: ");
-        jButtonSeleccionarTamiz.setText("Seleccionar Tamíz");
+        jLabel4.setText("Peso retenido por el Tamiz: ");
+        jButtonSeleccionarTamiz.setText("Seleccionar Tamiz");
         jButtonSeleccionarTamiz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSeleccionarTamizActionPerformed(evt);
@@ -141,7 +141,7 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
         jLabel6.setText("Gramos");
         jMenu1.setText("Herramientas");
         jMenuItemTamiz.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItemTamiz.setText("Seleccionar Tamíz");
+        jMenuItemTamiz.setText("Seleccionar Tamiz");
         jMenu1.add(jMenuItemTamiz);
         jMenuItemAgregar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
         jMenuItemAgregar.setText("Agregar");

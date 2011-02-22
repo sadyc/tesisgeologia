@@ -94,7 +94,7 @@ public class GUIClasificacion extends JDialog{
 		salirMenu = new JMenuItem("Salir");
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
-		versionMenu = new JMenuItem("Version");
+		versionMenu = new JMenuItem("Versión");
 		ayuda.add(versionMenu);	
 		imprimirMenu = new JMenuItem("Imprimir");
 		herramientas.add(imprimirMenu);
@@ -140,7 +140,7 @@ public class GUIClasificacion extends JDialog{
 		menu.add(herramientas);
 		menu.add(ayuda);
 		salirMenu = new JMenuItem("Salir");
-		versionMenu = new JMenuItem("Version");
+		versionMenu = new JMenuItem("Versión");
 		ayuda.add(versionMenu);	
 		imprimirMenu = new JMenuItem("Imprimir");
 		herramientas.add(imprimirMenu);
@@ -344,7 +344,7 @@ public class GUIClasificacion extends JDialog{
 			gbc.fill=GridBagConstraints.HORIZONTAL;
 			this.panelSucs.setLayout(gridbag);
 			gbc.ipady = 15;
-			this.panelSucs.add(new JLabel("DATOS DE LA CLASIFICACION S.U.C.S "),gbc);
+			this.panelSucs.add(new JLabel("DATOS DE LA CLASIFICACIÓN S.U.C.S "),gbc);
 			gbc.ipady = 0;
 			gbc.gridy = 1;
 			this.panelSucs.add(clasificacionSucs,gbc);
@@ -352,7 +352,7 @@ public class GUIClasificacion extends JDialog{
 			this.panelSucs.add(descripcionSucs,gbc);
 			gbc.gridx = 1;
 			gbc.gridy = 0;
-			this.panelSucs.add(new JLabel("DATOS DE LA CLASIFICACION A.A.S.H.T.O "),gbc);
+			this.panelSucs.add(new JLabel("DATOS DE LA CLASIFICACIÓN A.A.S.H.T.O "),gbc);
 			gbc.gridy = 1;
 			this.panelSucs.add(clasificacionAashto,gbc);
 			gbc.gridy = 2;

@@ -107,24 +107,24 @@ public class GUIMuestraDetallada extends JDialog{
 		this.peso1 = new JLabel("Peso: "+muestra1.getPeso().toString()+"(grs)");
 		this.profundidadInicial1= new JLabel("Profundidad Inicial: "+muestra1.getProfundidadInicial()+"mts");
 		this.profundidadFinal1 = new JLabel("Profundidad Final: "+muestra1.getProfundidadFinal()+"mts");
-		ubicacion1 = new JLabel ("Ubicacion: "+muestra1.getUbicacion().getNombreUbicacion());
+		ubicacion1 = new JLabel ("Ubicación: "+muestra1.getUbicacion().getNombreUbicacion());
 		
 		if (muestra1.getSucs()==null){
-			clasificacion1 = new JLabel ("Clasificacion: ");
-			descripcion1 = new JLabel ("Descripcion: ");
+			clasificacion1 = new JLabel ("Clasificación: ");
+			descripcion1 = new JLabel ("Descripción: ");
 			
 		}
 		else{
-			clasificacion1 = new JLabel ("Clasificacion: "+muestra1.getSucs().getClasificacion());
-			descripcion1 = new JLabel ("Descripcion: "+muestra1.getSucs().getDescripcion());
+			clasificacion1 = new JLabel ("Clasificación: "+muestra1.getSucs().getClasificacion());
+			descripcion1 = new JLabel ("Descripción: "+muestra1.getSucs().getDescripcion());
 		}
 		if (muestra1.getAashto()==null){
-			clasificacion2 = new JLabel ("Clasificacion: ");
-			descripcion2 = new JLabel ("Descripcion: ");
+			clasificacion2 = new JLabel ("Clasificación: ");
+			descripcion2 = new JLabel ("Descripción: ");
 		}
 		else{
-			clasificacion2 = new JLabel ("Clasificacion: "+muestra1.getAashto().getClasificacion());
-			descripcion2 = new JLabel ("Descripcion: "+muestra1.getAashto().getDescripcion());
+			clasificacion2 = new JLabel ("Clasificación: "+muestra1.getAashto().getClasificacion());
+			descripcion2 = new JLabel ("Descripción: "+muestra1.getAashto().getDescripcion());
 		}
 		limiteLiquido1 = new JLabel ("Límite Líquido (LL): "+muestra1.getLimiteLiquido()); 
 		limitePlastico1 = new JLabel ("Límite Plástico (LP): "+muestra1.getLimitePlastico());
@@ -206,7 +206,7 @@ public class GUIMuestraDetallada extends JDialog{
 		
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
-		versionMenu = new JMenuItem("Version");
+		versionMenu = new JMenuItem("Versión");
 		versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
 		ayuda.add(versionMenu);	
 		
@@ -319,7 +319,7 @@ public class GUIMuestraDetallada extends JDialog{
 			gbc.fill=GridBagConstraints.HORIZONTAL;
 			this.panelCenter.setLayout(gridbag);
 			gbc.ipady = 15;
-			this.panelCenter.add(new JLabel("Clasificacion SUCS"),gbc);
+			this.panelCenter.add(new JLabel("Clasificación SUCS"),gbc);
 			gbc.ipady = 0;
 			gbc.gridy = 1;
 			this.panelCenter.add(clasificacion1,gbc);
@@ -327,7 +327,7 @@ public class GUIMuestraDetallada extends JDialog{
 			this.panelCenter.add(descripcion1,gbc);
 			gbc.gridx = 1;
 			gbc.gridy = 0;
-			this.panelCenter.add(new JLabel("Clasificacion AASHTO"),gbc);
+			this.panelCenter.add(new JLabel("Clasificación AASHTO"),gbc);
 			gbc.gridy = 1;
 			this.panelCenter.add(clasificacion2,gbc);
 			gbc.gridy = 2;

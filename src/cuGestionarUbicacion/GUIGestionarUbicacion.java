@@ -152,7 +152,7 @@ public class GUIGestionarUbicacion extends JDialog	{
 
         jLabel1.setText("Buscar : ");
         jPanel2.add(jLabel1);
-        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Ubicacion", "Ciudad", "Provincia" }));
+        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Ubicación", "Ciudad", "Provincia" }));
         jComboBoxBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxBuscarActionPerformed(evt);
@@ -163,7 +163,7 @@ public class GUIGestionarUbicacion extends JDialog	{
         jTextFieldBuscar.setMinimumSize(new java.awt.Dimension(15, 20));
         jTextFieldBuscar.addKeyListener(new KeyAdapter() {
       	  public void keyReleased(final KeyEvent e) {
-          	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Ubicacion"){
+          	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Ubicación"){
           		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),0));
           	   }
           	   if (jComboBoxBuscar.getSelectedItem()=="Ciudad"){
@@ -252,7 +252,7 @@ public class GUIGestionarUbicacion extends JDialog	{
 
         jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
-        jMenuVersion.setText("Version");
+        jMenuVersion.setText("Versión");
         jMenu2.add(jMenuVersion);
 
         jMenuBar1.add(jMenu2);
@@ -306,7 +306,7 @@ public class GUIGestionarUbicacion extends JDialog	{
      *@return data  
     */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre Ubicacion","Ciudad","Provincia","Latitud","Longitud"};
+		String[] columnName = {"Nombre Ubicación","Ciudad","Provincia","Latitud","Longitud"};
 		return columnName;
 	}
 

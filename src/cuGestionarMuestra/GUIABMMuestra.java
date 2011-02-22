@@ -83,7 +83,7 @@ public class GUIABMMuestra extends JDialog{
 	        jButtonSalir = new javax.swing.JButton();
 	        jPanel2 = new javax.swing.JPanel();
 	        jComboBoxBuscar = new javax.swing.JComboBox();
-	        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Muestra", "Nombre Ubicacion", "Operador","Cliente" }));
+	        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Muestra", "Nombre Ubicación", "Operador","Cliente" }));
 	        jComboBoxBuscar.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
 	                jComboBoxBuscarActionPerformed(evt);
@@ -96,7 +96,7 @@ public class GUIABMMuestra extends JDialog{
 	            	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Muestra"){
 	            		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),1));
 	            	   }
-	            	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Ubicacion"){
+	            	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Ubicación"){
 	            		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),0));
 	            	   }
 	            	   if (jComboBoxBuscar.getSelectedItem()=="Operador"){
@@ -265,7 +265,7 @@ public class GUIABMMuestra extends JDialog{
 
 	        jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
 	        jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
-	        jMenuVersion.setText("Version");
+	        jMenuVersion.setText("Versión");
 	        jMenu2.add(jMenuVersion);
 
 	        jMenuBar1.add(jMenu2);

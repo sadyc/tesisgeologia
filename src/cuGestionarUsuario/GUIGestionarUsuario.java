@@ -260,7 +260,7 @@ public class GUIGestionarUsuario extends JDialog{
 
         jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
-        jMenuVersion.setText("Version");
+        jMenuVersion.setText("Versión");
         jMenu2.add(jMenuVersion);
 
         jMenuBar1.add(jMenu2);
