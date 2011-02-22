@@ -1,4 +1,4 @@
-package cuGestionarTamiz;
+package cuSeleccionarTamiz;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;

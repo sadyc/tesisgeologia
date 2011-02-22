@@ -13,18 +13,7 @@ import persistencia.domain.Tamiz;
  * @author tesisGeologia
  * @version 1.0
  */
-/**
- * @author NAVE
- *
- */
-/**
- * @author NAVE
- *
- */
-/**
- * @author NAVE
- *
- */
+
 public class ControlGestionarAnalisis {
 
 	private boolean yaExiste;

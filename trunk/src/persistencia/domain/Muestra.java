@@ -42,9 +42,9 @@ public class Muestra {
 	private Float gradoCurvatura;
 	private Float coeficienteUniformidad;
 	
-	
-	
 	protected Collection<Analisis> analisis= new HashSet();
+	
+	
 	/**
 	 * Default contructors
 	 */
