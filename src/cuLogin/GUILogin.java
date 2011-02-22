@@ -12,6 +12,7 @@ public class GUILogin extends javax.swing.JDialog {
     /** Creates new form GUILogin */
     public GUILogin(boolean modal) {
         super();
+        setTitle("Login Usuario");
         initComponents();
     }
 

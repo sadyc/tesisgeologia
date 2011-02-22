@@ -13,7 +13,7 @@ import persistencia.domain.Muestra;
 
 import comun.Mediador;
 
-import cuGestionarTamiz.MediadorSeleccionarTamiz;
+import cuSeleccionarTamiz.MediadorSeleccionarTamiz;
 
 
 

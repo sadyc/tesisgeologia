@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cuGestionarTamiz;
+package cuSeleccionarTamiz;
 
 import java.util.Collection;
 

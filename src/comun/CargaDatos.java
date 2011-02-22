@@ -3,8 +3,11 @@
  */
 package comun;
 
+import java.sql.Date;
+
 import persistencia.Persistencia;
 import persistencia.domain.AASHTO;
+import persistencia.domain.Analisis;
 import persistencia.domain.Cliente;
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
@@ -12,6 +15,13 @@ import persistencia.domain.SUCS;
 import persistencia.domain.Tamiz;
 import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
+import cuGestionarAnalisis.ControlGestionarAnalisis;
+import cuGestionarCliente.ControlGestionarCliente;
+import cuGestionarMuestra.ControlGestionarMuestra;
+import cuGestionarOperador.ControlGestionarOperador;
+import cuGestionarUbicacion.ControlGestionarUbicacion;
+import cuGestionarUsuario.ControlGestionarUsuario;
+import cuLimiteConsistencia.ControlLimiteConsistencia;
 import cuLogin.Encriptar;
 
 /**
@@ -20,53 +30,23 @@ import cuLogin.Encriptar;
  * Sistema Clasificador de Suelos 
  */
 public class CargaDatos {
-
+	private ControlGestionarMuestra controlMuestra;
+	private ControlGestionarUbicacion controlUbicacion;
+	private ControlGestionarOperador controlOperador;
+	private ControlGestionarCliente controlCliente;
+	private ControlGestionarUsuario controlUsuario;
+	private ControlGestionarAnalisis controlAnalisis;
+	private ControlLimiteConsistencia controlConsistencia;
+	
 	
 	public CargaDatos(){
-		
-		
-	}
-	
-	/**
-	 * Inserta una ubicacion con persistencia. 
-	 */ 
-	public void insertarUbicacion(Ubicacion ubicacion) throws Exception{
-		Persistencia persistencia = new Persistencia();
-		persistencia.abrirTransaccion();
-		try {
-			persistencia.insertarObjeto(ubicacion);
-			persistencia.cerrarTransaccion();
-		} catch (Exception e) {
-			persistencia.realizarRollback();
-		}
-	}
-	
-	/**
-	 * Inserta un operadorLaboratorio con persistencia. 
-	 */ 
-	public void insertarOperador(OperadorDeLaboratorio operador) throws Exception{
-		Persistencia persistencia = new Persistencia();
-		persistencia.abrirTransaccion();
-		try {
-			persistencia.insertarObjeto(operador);
-			persistencia.cerrarTransaccion();
-		} catch (Exception e) {
-			persistencia.realizarRollback();
-		}
-	}
-	
-	/**
-	 * Inserta un cliente con persistencia. 
-	 */ 
-	public void insertarCliente(Cliente cliente) throws Exception{
-		Persistencia persistencia = new Persistencia();
-		persistencia.abrirTransaccion();
-		try {
-			persistencia.insertarObjeto(cliente);
-			persistencia.cerrarTransaccion();
-		} catch (Exception e) {
-			persistencia.realizarRollback();
-		}
+		controlMuestra = new ControlGestionarMuestra();
+		controlUbicacion = new ControlGestionarUbicacion();
+		controlUsuario = new ControlGestionarUsuario();
+		controlOperador = new ControlGestionarOperador();
+		controlCliente = new ControlGestionarCliente();
+		controlAnalisis = new ControlGestionarAnalisis();
+		controlConsistencia = new ControlLimiteConsistencia();
 	}
 	
 	/**
@@ -77,34 +57,6 @@ public class CargaDatos {
 		persistencia.abrirTransaccion();
 		try {
 			persistencia.insertarObjeto(tamiz);
-			persistencia.cerrarTransaccion();
-		} catch (Exception e) {
-			persistencia.realizarRollback();
-		}
-	}
-	
-	/**
-	 * Inserta un usuario con persistencia. 
-	 */ 
-	public void insertarUsuario(Usuario usuario) throws Exception{
-		Persistencia persistencia = new Persistencia();
-		persistencia.abrirTransaccion();
-		try {
-			persistencia.insertarObjeto(usuario);
-			persistencia.cerrarTransaccion();
-		} catch (Exception e) {
-			persistencia.realizarRollback();
-		}
-	}
-	
-	/**
-	 * Inserta un usuario con persistencia. 
-	 */ 
-	public void insertarMuestra(Muestra muestra) throws Exception{
-		Persistencia persistencia = new Persistencia();
-		persistencia.abrirTransaccion();
-		try {
-			persistencia.insertarObjeto(muestra);
 			persistencia.cerrarTransaccion();
 		} catch (Exception e) {
 			persistencia.realizarRollback();
@@ -143,16 +95,9 @@ public class CargaDatos {
 	 * Carga una serie de ubicaciones para facilitar el testing.
 	 * @throws Exception 
 	 */
+
 	public void cargar () throws Exception{
 		
-
-		Ubicacion ubicacion1 = new Ubicacion("UBA","El Impenetrable","Chaco","0","0");
-		Ubicacion ubicacion2 = new Ubicacion("UNRC","Rio Cuarto","Cordoba","0","1");
-		Ubicacion ubicacion3 = new Ubicacion("Campo 1","Ushuaia","TierraDelFuego","1","0");
-
-		OperadorDeLaboratorio operador1 = new OperadorDeLaboratorio("Lionel", "Messi", "10.054.605", "lionel@messi.com", "4665458");
-		OperadorDeLaboratorio operador2 = new OperadorDeLaboratorio("Javier", "Pastore", "34.101.099", "javier@pastore.com", "4917015");
-		OperadorDeLaboratorio operador3 = new OperadorDeLaboratorio("Manuel", "Varela", "34.254.973", "manuvarel@gmail.com", "3584192871");
 		Tamiz tamiz1 = new Tamiz("4",4.75);
 		Tamiz tamiz2 = new Tamiz("5",4.0);
 		Tamiz tamiz3 = new Tamiz("6",3.35);
@@ -197,7 +142,6 @@ public class CargaDatos {
 		Tamiz tamiz42 = new Tamiz("7/16",11.20);
 		Tamiz tamiz43 = new Tamiz("7/8",22.40);
 		
-		
 		AASHTO aashto1 = new AASHTO("A1a");
 		AASHTO aashto2 = new AASHTO("A1b");
 		AASHTO aashto3 = new AASHTO("A3");
@@ -209,20 +153,7 @@ public class CargaDatos {
 		AASHTO aashto9 = new AASHTO("A5");
 		AASHTO aashto10 = new AASHTO("A6");
 		AASHTO aashto11 = new AASHTO("A7");
-		
-		insertarAashto(aashto1);
-		insertarAashto(aashto2);
-		insertarAashto(aashto3);
-		insertarAashto(aashto4);
-		insertarAashto(aashto5);
-		insertarAashto(aashto6);
-		insertarAashto(aashto7);
-		insertarAashto(aashto8);
-		insertarAashto(aashto9);
-		insertarAashto(aashto10);
-		insertarAashto(aashto11);
-		
-		
+				
 		SUCS sucs = new SUCS("ML");
 		SUCS sucs1 = new SUCS("CL");
 		SUCS sucs2 = new SUCS("OL");
@@ -242,51 +173,87 @@ public class CargaDatos {
 		SUCS sucs16 = new SUCS("GW-GC");
 		SUCS sucs17 = new SUCS("GP-GM");
 		SUCS sucs18 = new SUCS("GP-GC");
+		SUCS sucs19 = new SUCS("SW-SM");
+		SUCS sucs20 = new SUCS("SW-SC");
+		SUCS sucs21 = new SUCS("SP-SM");
+		SUCS sucs22 = new SUCS("SP-SC");
 		
-		insertarSucs(sucs);
-		insertarSucs(sucs1);
-		insertarSucs(sucs2);
-		insertarSucs(sucs3);
-		insertarSucs(sucs4);
-		insertarSucs(sucs5);
-		insertarSucs(sucs6);
-		insertarSucs(sucs7);
-		insertarSucs(sucs8);
-		insertarSucs(sucs9);
-		insertarSucs(sucs10);
-		insertarSucs(sucs11);
-		insertarSucs(sucs12);
-		insertarSucs(sucs13);
-		insertarSucs(sucs14);
-		insertarSucs(sucs15);
-		insertarSucs(sucs16);
-		insertarSucs(sucs17);
-		insertarSucs(sucs18);
-		
+		java.sql.Date fecha = new Date(2011,02,21);
+		java.sql.Date fecha1 = new Date(2011,01,12);
 		Encriptar encriptar = new Encriptar();
-		String a = encriptar.hash("ana");
+		String a = encriptar.hash("kulmino");
 		String b = encriptar.hash("admin");
+		String c = encriptar.hash("pepe");
 		Usuario usuario1 = new Usuario("Juan", "Perez", "555","admin","Administrador", "juan@perez.com", "4917015",b);
-		Usuario usuario2 = new Usuario("pepe", "grillo", "111", "pepito", "Administrador", "pepe@grillo", "444-222", "pepito el grosso");
-		Cliente cliente1 = new Cliente("Carlos", "Leoni", "453342", "email@email.com", "45678");
-		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),operador1,null,ubicacion1,null,null,cliente1,null);	
-	//	Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),operador2,null,ubicacion2,null,null,cliente1,null);	
+		Usuario usuario2 = new Usuario("José", "Álvarez", "111", "jalvarez", "Administrador", "pepe@alvarez", "444-222", c);
+		Usuario usuario3 = new Usuario("Nicolas", "Bettiol", "33.825.312", "nbettiol", "Restringido", "nicolasbettiol@gmail.com", "0358-4632587", a);
+		
+		Cliente cliente1 = new Cliente("Carlos", "Leoni", "12.980.320", "email@email.com", "3584192871");
+		Cliente cliente2 = new Cliente("Ernesto", "Shwesteiger", "20.325.414", "ernesto@yahoo.com", "0358-4648494");
+		Cliente cliente3 = new Cliente("JUMALA SA", " ", " ", "contacto@jumala.com", "0358-4404021");
+		
+		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),null,usuario1,null,null,null,null,fecha);	
+		Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),null,usuario1,null,null,null,null,fecha1);
+
+		Ubicacion ubicacion1 = new Ubicacion("ZONA 5","EL IMPENETRABLE","Chaco","0","0");
+		Ubicacion ubicacion2 = new Ubicacion("UNRC","RIO CUARTO","Cordoba","0","1");
+		Ubicacion ubicacion3 = new Ubicacion("CAMPO 1","USHUAIA","TierraDelFuego","1","0");
+		Ubicacion ubicacion4 = new Ubicacion("CAMPO 1","CANALS","Cordoba","1","1");
+
+		OperadorDeLaboratorio operador1 = new OperadorDeLaboratorio("Lionel", "Messi", "10.054.605", "lionel@messi.com", "4665458");
+		OperadorDeLaboratorio operador2 = new OperadorDeLaboratorio("Javier", "Pastore", "34.101.099", "javier@pastore.com", "4917015");
+		OperadorDeLaboratorio operador3 = new OperadorDeLaboratorio("Manuel", "Varela", "34.254.973", "manuvarel@gmail.com", "3584192871");
+		
+		Analisis analisis0 = new Analisis((float) 0, muestra3, tamiz36);
+		Analisis analisis1 = new Analisis((float) 7.2, muestra3, tamiz38);
+		Analisis analisis2 = new Analisis((float) 19.3, muestra3, tamiz1);
+		Analisis analisis3 = new Analisis((float) 9.8, muestra3, tamiz6);
+		Analisis analisis4 = new Analisis((float) 26.0, muestra3, tamiz16);
+		Analisis analisis5 = new Analisis((float) 32.9, muestra3, tamiz25);
+		
 		try {
+			System.out.println("Comienza carga ubicaciones");
+			String [] ubicacion = {ubicacion2.getNombreUbicacion(),ubicacion2.getCiudad(),ubicacion2.getProvincia(),ubicacion2.getLatitud(),ubicacion2.getLongitud()};
+			controlUbicacion.insertarUbicacion(ubicacion);
+			ubicacion[0] = ubicacion3.getNombreUbicacion();
+			ubicacion[1] = ubicacion3.getCiudad();
+			ubicacion[2] = ubicacion3.getProvincia();
+			ubicacion[3] = ubicacion3.getLatitud();
+			ubicacion[4] = ubicacion3.getLongitud();
+			controlUbicacion.insertarUbicacion(ubicacion);
+			ubicacion[0] = ubicacion1.getNombreUbicacion();
+			ubicacion[1] = ubicacion1.getCiudad();
+			ubicacion[2] = ubicacion1.getProvincia();
+			ubicacion[3] = ubicacion1.getLatitud();
+			ubicacion[4] = ubicacion1.getLongitud();
+			controlUbicacion.insertarUbicacion(ubicacion);
+			ubicacion[0] = ubicacion4.getNombreUbicacion();
+			ubicacion[1] = ubicacion4.getCiudad();
+			ubicacion[2] = ubicacion4.getProvincia();
+			ubicacion[3] = ubicacion4.getLatitud();
+			ubicacion[4] = ubicacion4.getLongitud();
+			controlUbicacion.insertarUbicacion(ubicacion);
+			
+			System.out.println("Comienza carga operadores");
+			controlOperador.insertarOperador(operador1);
+			controlOperador.insertarOperador(operador3);
+			controlOperador.insertarOperador(operador2);
+			
+		    System.out.println("Comienza carga clientes");
+			controlCliente.insertarCliente(cliente1);
+			controlCliente.insertarCliente(cliente2);
+			controlCliente.insertarCliente(cliente3);
+			
+			System.out.println("Comienza carga usuarios");
+			controlUsuario.insertarUsuario(usuario1);
+			controlUsuario.insertarUsuario(usuario2);
+			controlUsuario.insertarUsuario(usuario3);
 			
 			System.out.println("Comienza carga muestras");
-			insertarMuestra(muestra2);
-	//		insertarMuestra(muestra3);
-			//insertarUbicacion(ubicacion1);
-			//insertarUbicacion(ubicacion2);
-			insertarUbicacion(ubicacion3);
-			System.out.println("Comienza carga operadores");
-			//insertarOperador(operador1);
-		    insertarOperador(operador3);
-			//insertarOperador(operador2);
-		    System.out.println("Comienza carga clientes");
-			//insertarCliente(cliente1);
-			System.out.println("Comienza carga tamices");
+			controlMuestra.insertarMuestra(muestra2, ubicacion1, operador1, cliente1, usuario1);
+			controlMuestra.insertarMuestra(muestra3, ubicacion3, operador3, cliente2, usuario1);
 			
+			System.out.println("Comienza carga tamices");
 			insertarTamiz(tamiz1);
 			insertarTamiz(tamiz2);
 			insertarTamiz(tamiz3);
@@ -330,9 +297,55 @@ public class CargaDatos {
 			insertarTamiz(tamiz41);
 			insertarTamiz(tamiz42);
 			insertarTamiz(tamiz43);
-			System.out.println("Comienza carga usuarios");
-			insertarUsuario(usuario1); 
-			insertarUsuario(usuario2);
+			System.out.println("Comienza carga clasificaciones SUCS");
+			insertarSucs(sucs);
+			insertarSucs(sucs1);
+			insertarSucs(sucs2);
+			insertarSucs(sucs3);
+			insertarSucs(sucs4);
+			insertarSucs(sucs5);
+			insertarSucs(sucs6);
+			insertarSucs(sucs7);
+			insertarSucs(sucs8);
+			insertarSucs(sucs9);
+			insertarSucs(sucs10);
+			insertarSucs(sucs11);
+			insertarSucs(sucs12);
+			insertarSucs(sucs13);
+			insertarSucs(sucs14);
+			insertarSucs(sucs15);
+			insertarSucs(sucs16);
+			insertarSucs(sucs17);
+			insertarSucs(sucs18);
+			insertarSucs(sucs19);
+			insertarSucs(sucs20);
+			insertarSucs(sucs21);
+			insertarSucs(sucs22);
+			
+			System.out.println("Comienza carga clasificaciones AASHTO");
+			insertarAashto(aashto1);
+			insertarAashto(aashto2);
+			insertarAashto(aashto3);
+			insertarAashto(aashto4);
+			insertarAashto(aashto5);
+			insertarAashto(aashto6);
+			insertarAashto(aashto7);
+			insertarAashto(aashto8);
+			insertarAashto(aashto9);
+			insertarAashto(aashto10);
+			insertarAashto(aashto11);
+			
+			System.out.println("Comienza carga analisis");
+			controlAnalisis.insertarAnalisis(analisis0, muestra3, "2");
+			controlAnalisis.insertarAnalisis(analisis1, muestra3, "3/4");
+			controlAnalisis.insertarAnalisis(analisis2, muestra3, "4");
+			controlAnalisis.insertarAnalisis(analisis3, muestra3, "10");
+			controlAnalisis.insertarAnalisis(analisis4, muestra3, "40");
+			controlAnalisis.insertarAnalisis(analisis5, muestra3, "200");
+			
+			System.out.println("Comienza carga limite consistencia");
+			controlConsistencia.insertarConsistencia((float)29.5,(float)26.2, muestra3);
+			
 		} catch (Exception e) {
 			System.out.println("No se pudieron insertar");
 			e.printStackTrace();

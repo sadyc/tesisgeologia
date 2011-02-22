@@ -62,9 +62,9 @@ public class GUIVersion extends javax.swing.JDialog {
         jLabel1.setForeground(new java.awt.Color(51, 102, 0));
         jLabel1.setText("\"Sistema Clasificador de Suelos\" (S.C.S)");
 
-        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 11));
+        jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12));
         jLabel2.setForeground(new java.awt.Color(102, 102, 0));
-        jLabel2.setText("Version 2011 (Compliación 1.0)");
+        jLabel2.setText("Version 2011 (Compilación 1.0)");
 
         jLabel4.setForeground(new java.awt.Color(102, 102, 0));
         jLabel4.setText("Finalizado Lunes 21 de Febrero de 2011");
@@ -72,7 +72,7 @@ public class GUIVersion extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 18));
         jLabel5.setText("TesisGeología Soft.");
 
-        jLabel3.setFont(new java.awt.Font("Andalus", 1, 11));
+        jLabel3.setFont(new java.awt.Font("Andalus", 1, 12));
         jLabel3.setForeground(new java.awt.Color(0, 51, 0));
         jLabel3.setText("tesisgeologia@gmail.com");
 
