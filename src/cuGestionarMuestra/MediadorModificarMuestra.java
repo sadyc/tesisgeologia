@@ -191,7 +191,9 @@ public class MediadorModificarMuestra extends Mediador{
 	public void seleccionarUbicacion(){
 		try {
 			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion();
-			this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
+			if (mediadorSelUbic.seSelecciono()){
+				this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -216,8 +218,10 @@ public class MediadorModificarMuestra extends Mediador{
 	public void seleccionarCliente(){
 		try {
 			MediadorSeleccionarCliente seleccionarCliente = new MediadorSeleccionarCliente();
-			GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]);
-			dniClienteModificar =((String)seleccionarCliente.getSeleccionado()[2]);
+			if (seleccionarCliente.isSeleccionoCliente()){
+				GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]);
+				dniClienteModificar =((String)seleccionarCliente.getSeleccionado()[2]);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -93,10 +93,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
         jLabelLongitud = new javax.swing.JLabel();
         jComboBoxProvincia = new javax.swing.JComboBox();
         jLabelProvincia = new javax.swing.JLabel();
-        jTextFieldCiudad = new javax.swing.JTextField();
-        jTextFieldNombreUbicacion = new javax.swing.JTextField();
-        jTextFieldLongitud = new javax.swing.JTextField();
-        jTextFieldLatitud = new javax.swing.JTextField();
+        
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -138,6 +135,8 @@ public class GUIUbicacion extends javax.swing.JDialog {
               }
            }
         });
+        
+        jLabelProvincia.setText("Provincia : ");
 
         jLabelNombreUbicacion.setText("(*) Nombre Ubicación :");
 
@@ -149,11 +148,9 @@ public class GUIUbicacion extends javax.swing.JDialog {
 
         jComboBoxProvincia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Buenos Aires", "Catamarca", "Chaco", "Chubut", "Capital Federal", "Cordoba", "Corrientes", "Entre Ríos", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuquen", "Río Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago Del Estero", "Tierra Del Fuego", "Tucuman" }));
 
-        jLabelProvincia.setText("Provincia:");
+        jLabel1.setText("(grados)");
 
-        jLabel1.setText("Grados");
-
-        jLabel2.setText("Grados");
+        jLabel2.setText("(grados)");
 
         jMenu1.setText("Herramientas");
 

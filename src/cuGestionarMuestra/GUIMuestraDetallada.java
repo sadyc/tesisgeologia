@@ -103,7 +103,7 @@ public class GUIMuestraDetallada extends JDialog{
 	public GUIMuestraDetallada (Muestra muestra1, Object [] [] data1) {
 		super();
 		this.data1 = data1;
-		this.muestra1 = new JLabel(muestra1.getNombreMuestra());
+		this.muestra1 = new JLabel("DATOS DE LA MUESTRA: "+muestra1.getNombreMuestra());
 		this.peso1 = new JLabel("Peso: "+muestra1.getPeso().toString()+"(grs)");
 		this.profundidadInicial1= new JLabel("Profundidad Inicial: "+muestra1.getProfundidadInicial()+"mts");
 		this.profundidadFinal1 = new JLabel("Profundidad Final: "+muestra1.getProfundidadFinal()+"mts");
@@ -255,7 +255,7 @@ public class GUIMuestraDetallada extends JDialog{
 			gbc.fill=GridBagConstraints.HORIZONTAL;
 			this.panelNorte.setLayout(gridbag);
 			gbc.ipady = 15;
-			this.panelNorte.add(new JLabel("DATOS DE LA MUESTRA: "),gbc);
+			this.panelNorte.add(muestra1,gbc);
 			gbc.ipady = 0;
 			gbc.gridy = 1;
 			this.panelNorte.add(ubicacion1,gbc);

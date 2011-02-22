@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -40,6 +41,15 @@ public class TablePanel extends JPanel {
 		table.setRowSorter(modeloOrdenado);
 		table.getTableHeader().setReorderingAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		table.getTableHeader().setResizingAllowed(false);
+		table.getTableHeader().setReorderingAllowed(false);
+		
+		table.setUpdateSelectionOnSort(true);
+		table.setVerifyInputWhenFocusTarget(true);
+		
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+		
 		table.addMouseListener(null);
 		this.scrollPane.getViewport().add(this.table, null);
 		this.add(this.scrollPane, null);	
@@ -62,7 +72,6 @@ public class TablePanel extends JPanel {
 	 */
 	public void setData(Object[][] data, String[] columnName){
 		this.tableModel.setDataVector(data, columnName);
-//		this.table.setModel(this.tableModel);
 		this.repaint();		
 	}
 	
@@ -71,7 +80,7 @@ public class TablePanel extends JPanel {
 	 * @return
 	 */
 	public int getSelectedRow(){
-		return this.table.getSelectedRow();		
+		return table.convertRowIndexToModel(table.getSelectedRow());		
 	}
 	
 	/**
