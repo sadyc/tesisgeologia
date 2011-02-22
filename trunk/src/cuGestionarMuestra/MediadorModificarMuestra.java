@@ -11,8 +11,9 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Muestra;
+import persistencia.domain.Cliente;
 import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
 
 import comun.Mediador;
@@ -33,9 +34,9 @@ public class MediadorModificarMuestra extends Mediador{
 	private String[] data = new String [10];
 	private Component frame;
 	private String nombreMuestraModificar;
-	private String ubicacionModificar;
-	private String dniOperadorModificar;
-	private String dniClienteModificar;
+	private Ubicacion ubicacionModificar;
+	private OperadorDeLaboratorio operadorModificar;
+	private Cliente clienteModificar;
 	private Usuario usuario;
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
 	
@@ -49,13 +50,13 @@ public class MediadorModificarMuestra extends Mediador{
 	public MediadorModificarMuestra(String[] fila, Usuario usuario) throws Exception {
 		super();
 		this.usuario = usuario;
-		ubicacionModificar = fila[0];
+		ubicacionModificar = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getUbicacion();
 		nombreMuestraModificar = fila[1];
-		dniOperadorModificar = (control.obtenerMuestra(fila[1], fila[0])).getOperadorLaboratorio().getDni();
-		dniClienteModificar = (control.obtenerMuestra(fila[1], fila[0])).getCliente().getDni();
-		String nombreOperador = (control.obtenerMuestra(fila[1], fila[0])).getOperadorLaboratorio().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0]).getOperadorLaboratorio().getApellido();
-		String nombreCliente = (control.obtenerMuestra(fila[1], fila[0])).getCliente().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0]).getCliente().getApellido();
-		GUIMuestra = new GUIMuestra(fila, nombreOperador, nombreCliente,usuario.getNombreUsuario());
+		operadorModificar = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getOperadorLaboratorio();
+		clienteModificar = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getCliente();
+		String nombreOperador = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getOperadorLaboratorio().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0], fila[7]).getOperadorLaboratorio().getApellido();
+		String nombreCliente = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getCliente().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0], fila[7]).getCliente().getApellido();
+		GUIMuestra = new GUIMuestra(fila, nombreOperador, nombreCliente,usuario.getNombre()+" "+usuario.getApellido());
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
@@ -163,21 +164,28 @@ public class MediadorModificarMuestra extends Mediador{
 	 */
 	public void modificarMuestra(){
 		try {
-			data[0]= GUIMuestra.getUbicacion().getText().substring(12);
+			data[0]= ubicacionModificar.getNombreUbicacion();
 			data[1]= GUIMuestra.getNombre().getText();
 			data[2]= GUIMuestra.getPeso().getText();
 			data[3]= GUIMuestra.getProfundidadInicial().getText();
 			data[4]= GUIMuestra.getProfundidadFinal().getText();
-			data[5]= dniOperadorModificar;
-			data[6]= dniClienteModificar;
-			data[7]= usuario.getNombreUsuario();
-			control.ModificarMuestra(nombreMuestraModificar,ubicacionModificar,data);
+			data[5]= operadorModificar.getDni(); // NECESITO EL DNI PARA QUE EL CONTROL PUEDA BUSCAR EL OPERADOR
+			if (clienteModificar!= null){
+				data[6]= clienteModificar.getDni(); // NECESITO EL DNI PARA QUE EL CONTROL PUEDA BUSCAR EL OPERADOR
+			}
+			data[7]= ubicacionModificar.getCiudad();
+			data[8]= usuario.getDni();
+			control.ModificarMuestra(nombreMuestraModificar,ubicacionModificar.getNombreUbicacion(),ubicacionModificar.getCiudad(),data);
 			if (control.getExiste()) {
 				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+", ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				modificoMuestra = true;
 				GUIMuestra.dispose();
+				data[5]=operadorModificar.getNombre()+" "+operadorModificar.getApellido();
+				if (clienteModificar!= null){
+					data[6]=clienteModificar.getNombre()+" "+clienteModificar.getApellido();
+				}
 			}
 		} catch (Exception e1) {
 			e1.printStackTrace();
@@ -191,9 +199,10 @@ public class MediadorModificarMuestra extends Mediador{
 	public void seleccionarUbicacion(){
 		try {
 			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion();
-			if (mediadorSelUbic.seSelecciono()){
-				this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
-			}
+			this.GUIMuestra.setUbicacion("(*) Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
+			ubicacionModificar = new Ubicacion((String)mediadorSelUbic.getSeleccionado()[0],(String)mediadorSelUbic.getSeleccionado()[1],(String)mediadorSelUbic.getSeleccionado()[2]
+			           ,(String)mediadorSelUbic.getSeleccionado()[3],(String)mediadorSelUbic.getSeleccionado()[4]);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -205,8 +214,9 @@ public class MediadorModificarMuestra extends Mediador{
 	public void seleccionarOperador(){
 		try {
 			MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
-			GUIMuestra.setOperador("Operador : "+(String)seleccionarOperador.getSeleccionado()[0]);
-			dniOperadorModificar =((String)seleccionarOperador.getSeleccionado()[2]);
+			GUIMuestra.setOperador("(*) Operador : "+(String)seleccionarOperador.getSeleccionado()[0]+" "+(String)seleccionarOperador.getSeleccionado()[1]);
+			operadorModificar =new OperadorDeLaboratorio((String)seleccionarOperador.getSeleccionado()[0],(String)seleccionarOperador.getSeleccionado()[1],
+					(String)seleccionarOperador.getSeleccionado()[2],(String)seleccionarOperador.getSeleccionado()[3],(String)seleccionarOperador.getSeleccionado()[4]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -219,8 +229,9 @@ public class MediadorModificarMuestra extends Mediador{
 		try {
 			MediadorSeleccionarCliente seleccionarCliente = new MediadorSeleccionarCliente();
 			if (seleccionarCliente.isSeleccionoCliente()){
-				GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]);
-				dniClienteModificar =((String)seleccionarCliente.getSeleccionado()[2]);
+				GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]+" "+(String)seleccionarCliente.getSeleccionado()[1]);
+				clienteModificar = new Cliente((String)seleccionarCliente.getSeleccionado()[0],(String)seleccionarCliente.getSeleccionado()[1],(String)seleccionarCliente.getSeleccionado()[2]
+			          ,(String)seleccionarCliente.getSeleccionado()[3],(String)seleccionarCliente.getSeleccionado()[4]);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

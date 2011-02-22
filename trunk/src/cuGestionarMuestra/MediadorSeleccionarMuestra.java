@@ -119,7 +119,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	 */
 	public void seleccionarMuestra(){
 		if (GUIABMMuestra.InicializarTabla().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			System.out.println("Button Seleccionar Muestra");
@@ -128,7 +128,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 				seleccionoMuestra = true;
 				GUIABMMuestra.dispose();
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
    				   		
 		}
@@ -140,7 +140,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	 */
 	public Muestra getSeleccionado() throws Exception {
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
-		Muestra muestra = (control.obtenerMuestra((String)seleccionado[1],(String)seleccionado[0]));
+		Muestra muestra = (control.obtenerMuestra((String)seleccionado[1],(String)seleccionado[0],(String)seleccionado[7]));
 		return muestra;
 	}
 	

@@ -62,7 +62,7 @@ public class MediadorAltaMuestra extends Mediador{
 		ubicacion = new Ubicacion();
 		operador= new OperadorDeLaboratorio();
 		cliente = new Cliente();
-		GUIMuestra = new GUIMuestra(true, usuario.getNombreUsuario());
+		GUIMuestra = new GUIMuestra(true, usuario.getNombre()+" "+usuario.getApellido());
 		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
@@ -184,13 +184,14 @@ public class MediadorAltaMuestra extends Mediador{
 		data[4]= GUIMuestra.getProfundidadFinal().getText();
 		data[5]= operador.getNombre()+" "+operador.getApellido();
 		data[6]= cliente.getNombre()+" "+cliente.getApellido();
+		data[7]= ubicacion.getCiudad();
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 	    muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,ubicacion,null,null,cliente,sqlDate);
 		try {
 			controlMuestra.insertarMuestra(muestra, ubicacion, operador, cliente,usuario);
 			if (controlMuestra.getExiste()) {
-				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+", ya existe. Por favor ingrese otra.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+"+localidad de"+data[7]+", ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				altaMuestra = true;
