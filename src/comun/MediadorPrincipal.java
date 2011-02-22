@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 
-import persistencia.domain.Usuario;
 import persistencia.domain.Muestra;
+import persistencia.domain.Usuario;
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuCompararMuestra.MediadorCompararMuestra;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
@@ -14,6 +14,7 @@ import cuGestionarCliente.MediadorGestionarCliente;
 import cuGestionarMuestra.MediadorGestionarMuestra;
 import cuGestionarMuestra.MediadorSeleccionarMuestra;
 import cuGestionarOperador.MediadorGestionarOperador;
+import cuGestionarUbicacion.MediadorGestionarUbicacion;
 import cuGestionarUsuario.MediadorGestionarUsuario;
 import cuLimiteConsistencia.MediadorAltaLimiteConsistencia;
 import cuLimiteConsistencia.MediadorConsistencia;
@@ -134,6 +135,9 @@ public class MediadorPrincipal extends Mediador{
 		if (this.GUIPrincipal.getjButtonCargarBackup()==source || this.GUIPrincipal.getCargarBackupMenu()==source){
 			backup.cargarBackUpWindowsX86();
 		}
+		if (this.GUIPrincipal.getjButtonGestionarUbicacion()==source || this.GUIPrincipal.getGestionarUbicacionMenu()==source){
+			gestionarUbicacion();
+		}
 
 		if(this.GUIPrincipal.getVersionMenu() == source){
 			new MediadorVersion();
@@ -141,8 +145,17 @@ public class MediadorPrincipal extends Mediador{
 
 	}
 	
-	
-	
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Gestionar Ubicacion"
+	 */
+	private void gestionarUbicacion() {
+		try {
+			new MediadorGestionarUbicacion();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Gestionar Cliente"
 	 */
