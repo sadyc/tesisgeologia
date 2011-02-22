@@ -4,6 +4,7 @@ import java.util.Collection;
 import javax.jdo.JDOException;
 import persistencia.Persistencia;
 import persistencia.domain.Cliente;
+import persistencia.domain.OperadorDeLaboratorio;
 
 public class ControlGestionarCliente {
 	private boolean yaExiste;
@@ -61,16 +62,25 @@ public class ControlGestionarCliente {
 		Cliente aux = new Cliente();
 		try {
 			Class claseCliente = aux.getClass();
-			if (persistencia.buscarObjeto(claseCliente,"dni=='"+data[2]+"'")==null){
+			if (!DNI.equals(data[2])){
+				if (persistencia.buscarObjeto(claseCliente, "dni=='"+data[2]+"'")==null){
+					aux =(Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+DNI+"'");
+					aux.setNombre(data[0]);
+					aux.setApellido(data[1]);
+					aux.setDni(data[2]);
+					aux.setEmail(data[3]);
+					aux.setTel(data[4]);
+				}else{
+					yaExiste=true;
+				}
+			}
+			else{
 				aux =(Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+DNI+"'");
 				aux.setNombre(data[0]);
 				aux.setApellido(data[1]);
 				aux.setDni(data[2]);
 				aux.setEmail(data[3]);
 				aux.setTel(data[4]);
-			}
-			else{
-				yaExiste=true;
 			}
 			persistencia.cerrarTransaccion();
 		}
