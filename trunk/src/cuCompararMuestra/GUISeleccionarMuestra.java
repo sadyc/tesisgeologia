@@ -17,15 +17,11 @@ import javax.swing.JSeparator;
 import comun.TablePanel;
 
 /**
-<<<<<<< .mine
-* @brief  Esta clase implementa la ventana que me permite seleccionar una de las muestras almacenadas.
-* @author TesisGeología
-* @version 1.0
-=======
+
  * Esta clase implementa la ventana que me permite seleccionar una de las muestras almacenadas.
  * @author TesisGeología
  * @version 1.0.
->>>>>>> .r290
+
 */
 public class GUISeleccionarMuestra extends JDialog	{
 

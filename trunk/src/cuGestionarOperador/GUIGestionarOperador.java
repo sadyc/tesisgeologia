@@ -250,7 +250,7 @@ public class GUIGestionarOperador extends JDialog	{
 
         jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
-        jMenuVersion.setText("Version");
+        jMenuVersion.setText("Versión");
         jMenu2.add(jMenuVersion);
 
         jMenuBar1.add(jMenu2);
@@ -303,7 +303,7 @@ public class GUIGestionarOperador extends JDialog	{
      *@return data  
     */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre","Apellido","DNI","Telefono","Email"};
+		String[] columnName = {"Nombre","Apellido","DNI","Teléfono","E-mail"};
 		return columnName;
 	}
 

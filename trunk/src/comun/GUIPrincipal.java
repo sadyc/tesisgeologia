@@ -69,7 +69,7 @@ public class GUIPrincipal extends JFrame {
 			menu = new JMenuBar();
 			jButtonGestionarMuestra = new JButton("GESTIONAR MUESTRA");
 			jButtonClasificacion = new JButton("CALCULAR CLASIFICACION");
-			jButtonAnalisis  = new JButton("GESTIONAR ANALISIS");
+			jButtonAnalisis  = new JButton("GESTIONAR ANÁLISIS");
 			jButtonGestionarUsuario = new JButton("GESTIONAR USUARIO");
 			jButtonGestionarCliente = new JButton("GESTIONAR CLIENTE");
 			jButtonGestionarOperador = new JButton("GESTIONAR OPERADOR");
@@ -104,7 +104,7 @@ public class GUIPrincipal extends JFrame {
 			jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
 	        jButtonSalir.setText("Salir");
 	        jButtonGestionarMuestra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-science-2.png"))); // NOI18N
-	        jButtonGestionarMuestra.setText("Gestionar Muestra");
+	        jButtonGestionarMuestra.setText("Gestionar Muestras");
 	        jButtonGestionarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gobby.png"))); // NOI18N
 	        jButtonGestionarUsuario.setText("Gestionar Usuario");
 	        jButtonCargarBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/update_misc.png"))); // NOI18N
@@ -116,13 +116,13 @@ public class GUIPrincipal extends JFrame {
 	        jButtonGestionarLimiteConsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-office-3.png"))); // NOI18N
 	        jButtonGestionarLimiteConsistencia.setText("Gestionar Consistencia");
 	        jButtonAnalisis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/kexi.png"))); // NOI18N
-	        jButtonAnalisis.setText("Gestionar Analisis");
+	        jButtonAnalisis.setText("Gestionar Análisis");
 	        jButtonCompararMuestras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/development-python.png"))); // NOI18N
 	        jButtonCompararMuestras.setText("Comparar Muestras");
 	        jButtonCrearBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/kfloppy-2.png"))); // NOI18N
 	        jButtonCrearBackup.setText("Realizar Backup");
 	        jButtonClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accessories-calculator-3.png"))); // NOI18N
-	        jButtonClasificacion.setText("Calcular Clasificacion");
+	        jButtonClasificacion.setText("Calcular Clasificación");
 	        herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
 			menu.add(herramientas);
@@ -131,9 +131,9 @@ public class GUIPrincipal extends JFrame {
 			gestionarClienteMenu = new JMenuItem("Gestionar Cliente");
 			gestionarOperadorMenu = new JMenuItem("Gestionar Operador");
 			gestionarMuestraMenu = new JMenuItem("Gestionar Muestra");
-			gestionarAnalisisMenu = new JMenuItem("Gestionar Analisis");
+			gestionarAnalisisMenu = new JMenuItem("Gestionar Análisis");
 			gestionarLimiteConsistenciaMenu = new JMenuItem("Gestionar Limite Consistencia");
-			calcularClasificacionMenu = new JMenuItem("Calcular Clasificacion");
+			calcularClasificacionMenu = new JMenuItem("Calcular Clasificación");
 			compararMuestrasMenu = new JMenuItem("Comparar Muestras");
 			crearBackupMenu = new JMenuItem("Crear BackUp");
 			cargarBackupMenu = new JMenuItem("Cargar BackUp");

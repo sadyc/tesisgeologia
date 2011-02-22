@@ -79,9 +79,7 @@ public GUILimiteConsistencia(String title,String limLiq, String limPlas, Muestra
         setTitle(title);
         jTextFieldLL = new JTextField(limLiq);
         jTextFieldLP = new JTextField(limPlas);
-        System.out.println("jaksddajskasdkjsad");
         nombreMuestra = new javax.swing.JLabel("Nombre Muestra: "+muestra.getNombreMuestra());
-        System.out.println("jaksddajskasdkjsad");
         pesoMuestra = new javax.swing.JLabel("Peso: "+muestra.getPeso()+ " (gr.)");
         initComponents();
         
