@@ -42,11 +42,13 @@ public class GUIPrincipal extends JFrame {
 	private JButton jButtonSalir;
 	private JButton jButtonCrearBackup;
 	private JButton jButtonCargarBackup;
+	private JButton jButtonGestionarUbicacion;
 	private JMenuItem gestionarUsuarioMenu;
 	private JMenuItem gestionarClienteMenu;
 	private JMenuItem gestionarOperadorMenu;
 	private JMenuItem gestionarMuestraMenu;
 	private JMenuItem gestionarAnalisisMenu;
+	private JMenuItem gestionarUbicacionMenu;
 	private JMenuItem gestionarLimiteConsistenciaMenu;
 	private JMenuItem calcularClasificacionMenu;
 	private JMenuItem compararMuestrasMenu;
@@ -67,17 +69,19 @@ public class GUIPrincipal extends JFrame {
 		super(title);
 		if (this.menu==null) {
 			menu = new JMenuBar();
-			jButtonGestionarMuestra = new JButton("GESTIONAR MUESTRA");
-			jButtonClasificacion = new JButton("CALCULAR CLASIFICACION");
-			jButtonAnalisis  = new JButton("GESTIONAR ANÁLISIS");
-			jButtonGestionarUsuario = new JButton("GESTIONAR USUARIO");
-			jButtonGestionarCliente = new JButton("GESTIONAR CLIENTE");
-			jButtonGestionarOperador = new JButton("GESTIONAR OPERADOR");
-			jButtonCompararMuestras = new JButton("COMPARAR MUESTRAS");
-			jButtonGestionarLimiteConsistencia = new JButton("GESTIONAR LIMITE CONSISTENCIA");
-			jButtonCrearBackup = new JButton("CREAR BACKUP");
-			jButtonCargarBackup = new JButton("CARGAR BACKUP");
-			jButtonSalir  = new JButton("SALIR");
+			jButtonGestionarMuestra = new JButton();
+			jButtonClasificacion = new JButton();
+			jButtonAnalisis  = new JButton();
+			jButtonGestionarUsuario = new JButton();
+			jButtonGestionarCliente = new JButton();
+			jButtonGestionarOperador = new JButton();
+			jButtonCompararMuestras = new JButton();
+			jButtonGestionarLimiteConsistencia = new JButton();
+			jButtonCrearBackup = new JButton();
+			jButtonCargarBackup = new JButton();
+			jButtonGestionarUbicacion = new JButton();
+			jButtonSalir  = new JButton();
+
 			jButtonSalir.setBackground( SystemColor.red );
 			jButtonGestionarOperador.setBackground( SystemColor.darkGray);
 			jButtonGestionarOperador.setForeground(SystemColor.white);
@@ -101,8 +105,12 @@ public class GUIPrincipal extends JFrame {
 			jButtonCrearBackup.setForeground(SystemColor.white);
 			jButtonCargarBackup.setBackground( SystemColor.darkGray);
 			jButtonCargarBackup.setForeground(SystemColor.white);
+			jButtonGestionarUbicacion.setBackground( SystemColor.darkGray);
+			jButtonGestionarUbicacion.setForeground(SystemColor.white);
+			
 			jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
 	        jButtonSalir.setText("Salir");
+	        
 	        jButtonGestionarMuestra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-science-2.png"))); // NOI18N
 	        jButtonGestionarMuestra.setText("Gestionar Muestras");
 	        jButtonGestionarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gobby.png"))); // NOI18N
@@ -123,6 +131,9 @@ public class GUIPrincipal extends JFrame {
 	        jButtonCrearBackup.setText("Realizar Backup");
 	        jButtonClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accessories-calculator-3.png"))); // NOI18N
 	        jButtonClasificacion.setText("Calcular Clasificación");
+	        jButtonGestionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/internet-web-browser-3.png"))); // NOI18N
+	        jButtonGestionarUbicacion.setText("Gestionar Ubicación");
+	        
 	        herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
 			menu.add(herramientas);
@@ -137,6 +148,7 @@ public class GUIPrincipal extends JFrame {
 			compararMuestrasMenu = new JMenuItem("Comparar Muestras");
 			crearBackupMenu = new JMenuItem("Crear BackUp");
 			cargarBackupMenu = new JMenuItem("Cargar BackUp");
+			gestionarUbicacionMenu = new JMenuItem("Gestionar Ubicación");
 			salirMenu = new JMenuItem("Salir");
 			herramientas.add(gestionarMuestraMenu);
 			herramientas.add(gestionarAnalisisMenu);
@@ -147,6 +159,7 @@ public class GUIPrincipal extends JFrame {
 			herramientas.add(gestionarUsuarioMenu);
 			herramientas.add(gestionarClienteMenu);
 			herramientas.add(gestionarOperadorMenu);
+			herramientas.add(gestionarUbicacionMenu);
 			herramientas.add(new JSeparator());
 			herramientas.add(crearBackupMenu);
 			herramientas.add(cargarBackupMenu);
@@ -189,27 +202,29 @@ public class GUIPrincipal extends JFrame {
 			gbc.ipady = 40;
 			gbc.ipadx = 90;
 			gbc.gridx = 0;
-			gbc.gridy = 1;
+			gbc.gridy = 0;
 			this.panelCentro.setLayout(gridbag);
 			this.panelCentro.add(getJButtonGestionarMuestra(),gbc);
-			gbc.gridx = 2;
+			gbc.gridx = 1;
 			this.panelCentro.add(getJButtonAnalisis(),gbc);
-			gbc.gridx = 4;
+			gbc.gridx= 2;
+			this.panelCentro.add(getjButtonGestionarUbicacion(),gbc);
+			gbc.gridx = 3;
 			this.panelCentro.add(getJButtonGestionarLimiteConsistencia(),gbc);
-			gbc.gridy = 3;
+			gbc.gridy = 1;
 			gbc.gridx = 0;
 			this.panelCentro.add(getJButtonGestionarUsuario(),gbc);
-			gbc.gridx = 2;
+			gbc.gridx = 1;
 			this.panelCentro.add(getJButtonCompararMuestras(),gbc);
-			gbc.gridx = 4;
+			gbc.gridx = 2;
 			this.panelCentro.add(getJButtonClasificacion(),gbc);
-			gbc.gridy = 5;
+			gbc.gridx = 3;
+			this.panelCentro.add(getjButtonGestionarCliente(),gbc);
+			gbc.gridy = 2;
 			gbc.gridx = 0;
 			this.panelCentro.add(getjButtonGestionarOperador(),gbc);
-			gbc.gridx = 2;
-			this.panelCentro.add(getjButtonGestionarCliente(),gbc);
-			gbc.gridy = 7;
-			gbc.gridx = 0;
+			gbc.gridx = 1;
+			
 			this.panelCentro.add(getjButtonCrearBackup(),gbc);
 			gbc.gridx = 2;
 			this.panelCentro.add(getjButtonCargarBackup(),gbc);
@@ -404,6 +419,20 @@ public class GUIPrincipal extends JFrame {
 	public JMenuItem getCargarBackupMenu() {
 		return cargarBackupMenu;
 	}
+	
+	/**
+	 * @return the gestionarUbicacionMenu
+	 */
+	public JMenuItem getGestionarUbicacionMenu() {
+		return gestionarUbicacionMenu;
+	}
+	
+	/**
+	 * @return the jButtonGestionarUbicacion
+	 */
+	public JButton getjButtonGestionarUbicacion() {
+		return jButtonGestionarUbicacion;
+	}
 
 	/**
 	 * Metodo que permite escuchar los botones de la ventana.
@@ -411,6 +440,7 @@ public class GUIPrincipal extends JFrame {
 	 */
 	public void setListenerButtons(ActionListener lis){
 		this.jButtonGestionarMuestra.addActionListener(lis);
+		this.jButtonGestionarUbicacion.addActionListener(lis);
 		this.jButtonAnalisis.addActionListener(lis);
 		this.jButtonClasificacion.addActionListener(lis);
         this.jButtonSalir.addActionListener(lis);
@@ -433,6 +463,7 @@ public class GUIPrincipal extends JFrame {
         this.gestionarOperadorMenu.addActionListener(lis);
         this.cargarBackupMenu.addActionListener(lis);
         this.crearBackupMenu.addActionListener(lis);
+        this.gestionarUbicacionMenu.addActionListener(lis);
 	}
 
 }
