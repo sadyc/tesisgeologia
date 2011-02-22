@@ -11,6 +11,7 @@ import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 import cuCalcularClasificacion.ControlClasificacion;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
@@ -128,6 +129,9 @@ public class MediadorCompararMuestra extends Mediador{
 		if (this.GUIComparacion.getJButtonCancelar() == source || GUIComparacion.getCancelarMenu()==source){
 			System.out.println("Se presiono salir!!");
 			GUIComparacion.dispose();
+		}
+		if(this.GUIComparacion.getVersionMenu() == source){
+			new MediadorVersion();
 		}
 	}
 	public Object[][] getData1() {

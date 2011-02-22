@@ -72,6 +72,7 @@ public class ControlGestionarCliente {
 			else{
 				yaExiste=true;
 			}
+			persistencia.cerrarTransaccion();
 		}
 		catch (JDOException e) {
 			System.out.println("Error al modificar porque ya existe esa clave");

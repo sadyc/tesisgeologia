@@ -12,6 +12,7 @@ import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 import cuSeleccionarTamiz.MediadorSeleccionarTamiz;
 
@@ -105,6 +106,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			GUIAnalisis.dispose();
 		}
+		
 	}
 	
 	/**

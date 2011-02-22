@@ -1,9 +1,12 @@
 package cuLimiteConsistencia;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JOptionPane;
 
 import persistencia.domain.Muestra;
 
@@ -25,6 +28,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	private String nombreMuestra;
 	private String limiteLiquido;
 	private String limitePlastico;
+	private Component frame;
 	private boolean altaConsistencia = false;
 	
 	/**
@@ -75,8 +79,13 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	 */
 	public void aceptar(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
+		if (GUILimiteConsistencia.getjTextFieldLL().getText().isEmpty() || GUILimiteConsistencia.getjTextFieldLP().getText().isEmpty()){
+			JOptionPane.showMessageDialog(frame,"Debe ingresar el Límite Líquido y el Límite Plástico","Atencion!", JOptionPane.ERROR_MESSAGE);
+			
+		}else{
 		limiteLiquido = GUILimiteConsistencia.getjTextFieldLL().getText();
 		limitePlastico = GUILimiteConsistencia.getjTextFieldLP().getText();
+		
 		try {
 			control.insertarConsistencia(Float.parseFloat(limiteLiquido),Float.parseFloat(limitePlastico), muestra);
 			altaConsistencia= true;
@@ -84,6 +93,8 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 			e.printStackTrace();
 		}
 		GUILimiteConsistencia.dispose();
+	
+		}	
 	}
 
 	public void itemStateChanged(ItemEvent arg0) {

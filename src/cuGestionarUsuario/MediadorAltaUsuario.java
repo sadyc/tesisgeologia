@@ -5,18 +5,17 @@ package cuGestionarUsuario;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
+import persistencia.domain.Usuario;
+
+import comun.Mediador;
 import comun.MediadorVersion;
 
-import persistencia.domain.Usuario;
-import cuGestionarMuestra.ControlGestionarMuestra;
 import cuLogin.Encriptar;
 
 /**
@@ -26,7 +25,7 @@ import cuLogin.Encriptar;
  * @version 1.0
  *
  */
-public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseListener{
+public class MediadorAltaUsuario extends Mediador{
 	private GUIUsuario GUIUsuario;
 	private String[] data = new String [10];
 	private Usuario usuario ;
@@ -134,6 +133,11 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 		data[2]= GUIUsuario.getjTextFieldDni().getText();
 		data[3]= GUIUsuario.getjTextFieldNombreUsuario().getText();
 		data[4]= (String) GUIUsuario.getjComboBoxCategoria().getSelectedItem();
+		if (!isEmail(GUIUsuario.getjTextFieldEmail().getText().toUpperCase())){
+			System.out.println("El E-mail es incorrecto!");
+			JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
+		
+		}else{
 		data[5]= GUIUsuario.getjTextFieldEmail().getText();
 		data[6]= GUIUsuario.getjTextFieldTelefono().getText();
 		Encriptar encriptar = new Encriptar();
@@ -158,7 +162,7 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		}		
 
 	}
 	
@@ -180,6 +184,12 @@ public class MediadorAltaUsuario implements ActionListener, KeyListener, MouseLi
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -6,18 +6,21 @@ package cuLogin;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Usuario;
 
+import comun.Mediador;
 import comun.MediadorPrincipal;
 
 /**
  * @author TesisGeologia
  *
  */
-public class MediadorLogin implements ActionListener{
+public class MediadorLogin extends Mediador {
 	
 	private GUILogin login;
 	private Component frame;
@@ -35,7 +38,7 @@ public class MediadorLogin implements ActionListener{
 		
         login.setLocationRelativeTo(null);
 		login.setListenerButtons(this);
-		
+		login.setKeyListener(this);
 		login.show();
 	}
 
@@ -118,5 +121,22 @@ public class MediadorLogin implements ActionListener{
 			   }
 			}
 		}
+	}
+	public void keyTyped(KeyEvent arg0) {
+		if (login.getjTextFieldNombreUsuario().getText().length()==20){ 
+			arg0.consume();
+			System.out.print("\07");
+		}
+		if (login.getjTextFieldPassword().getText().length()==15){
+			arg0.consume();
+			System.out.print("\07");
+		}
+	}
+
+
+	@Override
+	public void itemStateChanged(ItemEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

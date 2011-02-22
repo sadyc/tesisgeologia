@@ -2,20 +2,18 @@ package cuGestionarUsuario;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import persistencia.domain.Usuario;
+
+import comun.Mediador;
 import comun.MediadorVersion;
 
 import cuLogin.Encriptar;
-
-import persistencia.domain.Usuario;
 
 /**
  * @brief Clase que se utiliza para realizar los sucesos en la ventana para modificar un Usuario.
@@ -24,7 +22,7 @@ import persistencia.domain.Usuario;
  * @version 1.0
  *
  */
-public class MediadorModificarUsuario implements ActionListener, KeyListener, MouseListener {
+public class MediadorModificarUsuario extends Mediador {
 	private GUIUsuario GUIUsuario;
 	private boolean modificoUsuario;
 	private String[] data = new String [10];
@@ -128,6 +126,11 @@ public class MediadorModificarUsuario implements ActionListener, KeyListener, Mo
 		data[2]= GUIUsuario.getjTextFieldDni().getText();
 		data[3]= GUIUsuario.getjTextFieldNombreUsuario().getText(); 
 		data[4]= (String)GUIUsuario.getjComboBoxCategoria().getSelectedItem();
+		if (!isEmail(GUIUsuario.getjTextFieldEmail().getText().toUpperCase())){
+			System.out.println("El E-mail es incorrecto!");
+			JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
+		
+		}else{
 		data[5]= GUIUsuario.getjTextFieldEmail().getText();
 		data[6]= GUIUsuario.getjTextFieldTelefono().getText();
 		Encriptar encriptar = new Encriptar();
@@ -152,7 +155,7 @@ public class MediadorModificarUsuario implements ActionListener, KeyListener, Mo
 			System.out.println("No modifica Usuario Mediador Modificar Usuario");
 			e.printStackTrace();
 		}
-		
+		}
 
 	}
 	
@@ -185,6 +188,14 @@ public class MediadorModificarUsuario implements ActionListener, KeyListener, Mo
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

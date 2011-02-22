@@ -9,6 +9,9 @@ import javax.swing.JTextField;
 
 import persistencia.domain.Persona;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Clase GUI que reprensenta la ventana para una muestra.
  * @author TesisGeologia.
@@ -368,5 +371,9 @@ public class GUIOperador extends javax.swing.JDialog {
 	    jTextFieldNombre.addKeyListener(lis);
 	    jTextFieldTelefono.addKeyListener(lis);
 	}
+	
+
+
+
 		 	
 }
