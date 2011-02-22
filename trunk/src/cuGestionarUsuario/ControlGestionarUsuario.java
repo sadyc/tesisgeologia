@@ -67,27 +67,56 @@ public class ControlGestionarUsuario {
 	 * @param data
 	 * @throws Exception
 	 */
-	public void modificarUsuario(String DNI,String[] data) throws Exception {
+	public void modificarUsuario(String DNI,String nombreUsuario,String[] data) throws Exception {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Usuario aux = new Usuario();
 		try {
 			Class claseUsuario = aux.getClass();
-			if(persistencia.buscarObjeto(claseUsuario, "nombreUsuario=='"+data[3]+"' || dni=='"+data[2]+"'")==null){
-				aux =(Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+DNI+"'");
-				aux.setNombre(data[0]);
-				aux.setApellido(data[1]);
-				aux.setDni(data[2]);
-				aux.setNombreUsuario(data[3]);
-				aux.setCategoria(data[4]);
-				aux.setEmail(data[5]);
-				aux.setTel(data[6]);
-				aux.setContraseña(data[7]);
-				
-			}
-			else{
-				yaExiste=true;
+			if (!DNI.equals(data[2]) && nombreUsuario.equals(data[3])){
+				if(persistencia.buscarObjeto(claseUsuario, "dni=='"+data[2]+"'")==null){
+					aux =(Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+DNI+"'");
+					aux.setNombre(data[0]);
+					aux.setApellido(data[1]);
+					aux.setDni(data[2]);
+					aux.setNombreUsuario(data[3]);
+					aux.setCategoria(data[4]);
+					aux.setEmail(data[5]);
+					aux.setTel(data[6]);
+					aux.setContraseña(data[7]);
+				}
+				else{
+					yaExiste=true;
+				}
+			}else{
+				if (DNI.equals(data[2]) && !nombreUsuario.equals(data[3])){
+					if(persistencia.buscarObjeto(claseUsuario, "nombreUsuario=='"+data[3]+"'")==null){
+						aux =(Usuario)persistencia.buscarObjeto(claseUsuario, "nombreUsuario=='"+nombreUsuario+"'");
+						aux.setNombre(data[0]);
+						aux.setApellido(data[1]);
+						aux.setDni(data[2]);
+						aux.setNombreUsuario(data[3]);
+						aux.setCategoria(data[4]);
+						aux.setEmail(data[5]);
+						aux.setTel(data[6]);
+						aux.setContraseña(data[7]);
+					}
+					else{
+						yaExiste =true;
+					}
+				}
+				else{
+					aux =(Usuario)persistencia.buscarObjeto(claseUsuario, "nombreUsuario=='"+nombreUsuario+"' && dni=='"+DNI+"'");
+					aux.setNombre(data[0]);
+					aux.setApellido(data[1]);
+					aux.setDni(data[2]);
+					aux.setNombreUsuario(data[3]);
+					aux.setCategoria(data[4]);
+					aux.setEmail(data[5]);
+					aux.setTel(data[6]);
+					aux.setContraseña(data[7]);
+				}
 			}
 			persistencia.cerrarTransaccion();
 		}

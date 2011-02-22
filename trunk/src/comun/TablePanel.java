@@ -80,7 +80,11 @@ public class TablePanel extends JPanel {
 	 * @return
 	 */
 	public int getSelectedRow(){
-		return table.convertRowIndexToModel(table.getSelectedRow());		
+		try{
+			return table.convertRowIndexToModel(table.getSelectedRow());		
+		}catch (Exception e) {
+			return -1;
+		}
 	}
 	
 	/**
