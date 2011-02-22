@@ -94,7 +94,7 @@ public class MediadorAltaOperador extends Mediador{
 			aceptar();
 		}
 		if (GUIOperador.getjMenuItemVersion()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 		if (this.GUIOperador.getjButtonCancelar() == source || GUIOperador.getjMenuItemCancelar()==source){
 			GUIOperador.dispose();
@@ -132,12 +132,10 @@ public class MediadorAltaOperador extends Mediador{
 		if (!isEmail(GUIOperador.getjTextFieldEmail().getText().toUpperCase())){
 			System.out.println("El E-mail es incorrecto!");
 			JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
-		
 		}else{
-		data[3]= GUIOperador.getjTextFieldEmail().getText().toUpperCase();
-		
-		data[4]= GUIOperador.getjTextFieldTelefono().getText();
-		operador = new OperadorDeLaboratorio(data[0],data[1],data[2],data[3],data[4]);
+			data[3]= GUIOperador.getjTextFieldTelefono().getText();
+			data[4]= GUIOperador.getjTextFieldEmail().getText().toUpperCase();
+			operador = new OperadorDeLaboratorio(data[0],data[1],data[2],data[3],data[4]);
 		try {
 			control.insertarOperador(operador);
 			if (control.getExiste()) {
