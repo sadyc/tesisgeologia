@@ -96,7 +96,12 @@ public class TablePanel extends JPanel {
 		int columnCoun = this.tableModel.getColumnCount();
 		String[] auxrow = new String[columnCoun];
 		for (int i = 0; i < columnCoun; i++) {
-			auxrow[i] =  this.tableModel.getValueAt(row, i).toString();
+			if (this.tableModel.getValueAt(row, i)!= null){
+				auxrow[i] =  this.tableModel.getValueAt(row, i).toString();
+			}
+			else{
+				auxrow[i] = null;
+			}
 		}	     	
 		return auxrow;
 	}
