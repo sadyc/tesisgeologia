@@ -136,7 +136,7 @@ public class MediadorAltaMuestra extends Mediador{
 			GUIMuestra.dispose();
 		}
 		if (GUIMuestra.getVersionMenu()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 	
@@ -183,7 +183,13 @@ public class MediadorAltaMuestra extends Mediador{
 		data[3]= GUIMuestra.getProfundidadInicial().getText();
 		data[4]= GUIMuestra.getProfundidadFinal().getText();
 		data[5]= operador.getNombre()+" "+operador.getApellido();
-		data[6]= cliente.getNombre()+" "+cliente.getApellido();
+		if (muestra.getCliente().getNombre()!=null){
+		    	data [6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
+		    }
+		else{
+			data [6]= "";
+		}
+		
 		data[7]= ubicacion.getCiudad();
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());

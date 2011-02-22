@@ -55,7 +55,10 @@ public class MediadorModificarMuestra extends Mediador{
 		operadorModificar = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getOperadorLaboratorio();
 		clienteModificar = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getCliente();
 		String nombreOperador = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getOperadorLaboratorio().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0], fila[7]).getOperadorLaboratorio().getApellido();
-		String nombreCliente = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getCliente().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0], fila[7]).getCliente().getApellido();
+		String nombreCliente = "";
+		if (control.obtenerMuestra(fila[1], fila[0], fila[7]).getCliente()!=null){
+			nombreCliente = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getCliente().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0], fila[7]).getCliente().getApellido();
+		}
 		GUIMuestra = new GUIMuestra(fila, nombreOperador, nombreCliente,usuario.getNombre()+" "+usuario.getApellido());
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
