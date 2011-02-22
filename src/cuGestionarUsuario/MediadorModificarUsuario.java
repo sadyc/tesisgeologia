@@ -142,7 +142,7 @@ public class MediadorModificarUsuario extends Mediador {
 		}
 		data[7]= password;
 		try {
-			control.modificarUsuario(usuarioModificar.getDni(),data);
+			control.modificarUsuario(usuarioModificar.getDni(),usuarioModificar.getNombreUsuario(),data);
 			if (control.getExiste()) {
 				JOptionPane.showMessageDialog(frame,"El usuario con DNI: "+data[2]+" ó nombre de usuario: "+data[3]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
