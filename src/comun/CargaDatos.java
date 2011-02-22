@@ -201,9 +201,9 @@ public class CargaDatos {
 		Ubicacion ubicacion3 = new Ubicacion("CAMPO 1","USHUAIA","TierraDelFuego","1","0");
 		Ubicacion ubicacion4 = new Ubicacion("CAMPO 1","CANALS","Cordoba","1","1");
 
-		OperadorDeLaboratorio operador1 = new OperadorDeLaboratorio("Lionel", "Messi", "10.054.605", "lionel@messi.com", "4665458");
-		OperadorDeLaboratorio operador2 = new OperadorDeLaboratorio("Javier", "Pastore", "34.101.099", "javier@pastore.com", "4917015");
-		OperadorDeLaboratorio operador3 = new OperadorDeLaboratorio("Manuel", "Varela", "34.254.973", "manuvarel@gmail.com", "3584192871");
+		OperadorDeLaboratorio operador1 = new OperadorDeLaboratorio("Lionel", "Messi", "10.054.605", "4665458", "lionel@messi.com");
+		OperadorDeLaboratorio operador2 = new OperadorDeLaboratorio("Javier", "Pastore", "34.101.099", "4917015", "javier@pastore.com");
+		OperadorDeLaboratorio operador3 = new OperadorDeLaboratorio("Manuel", "Varela", "34.254.973", "3584192871", "manuvarel@gmail.com");
 		
 		Analisis analisis0 = new Analisis((float) 0, muestra3, tamiz36);
 		Analisis analisis1 = new Analisis((float) 7.2, muestra3, tamiz38);

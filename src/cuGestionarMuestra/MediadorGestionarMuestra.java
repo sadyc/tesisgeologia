@@ -36,7 +36,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	private Muestra muestra;
 	private Usuario usuario;
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
-	private Object [] seleccionado = new Object [4];
+	private Object [] seleccionado = new Object [10];
 	private boolean seleccionoMuestra = false;
 		
 	/**
@@ -55,7 +55,7 @@ public class MediadorGestionarMuestra extends Mediador{
 		super();
 		this.usuario=usuario;
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente"};
+		String [] columAux = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad"};
 		GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
 		GUIABMMuestra.setListenerButtons(this);
 		GUIABMMuestra.setListenerTable(this);
@@ -91,6 +91,7 @@ public class MediadorGestionarMuestra extends Mediador{
 		    if (muestra.getCliente()!=null){
 		    	data [i][6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
 		    }
+		    data [i][7]= muestra.getUbicacion().getCiudad();
 		    i++;
 		}
 	}
@@ -162,7 +163,7 @@ public class MediadorGestionarMuestra extends Mediador{
 			try {
 				seleccionado = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 				seleccionoMuestra = true;
-				muestra = control.obtenerMuestra((String)seleccionado[1], (String)seleccionado[0]);
+				muestra = control.obtenerMuestra((String)seleccionado[1], (String)seleccionado[0], (String)seleccionado[7]);
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
@@ -205,8 +206,9 @@ public class MediadorGestionarMuestra extends Mediador{
 	            	GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
 	            	String ubicacion = fila[0];
 	            	String nombreMuestra = fila[1];
+	            	String ciudad = fila[7];
 	               	try {
-	               		control.eliminarMuestra(nombreMuestra,ubicacion);
+	               		control.eliminarMuestra(nombreMuestra,ubicacion,ciudad);
 	               	} catch (Exception e) {
 						e.printStackTrace();
 	               	}

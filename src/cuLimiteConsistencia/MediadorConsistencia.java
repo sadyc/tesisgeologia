@@ -30,7 +30,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 
 	private GUIABMMuestra GUIABMMuestra = null;
 	private GUISeleccionarMuestra GUISeleccionarMuestra = null;
-	private Object [] seleccionado = new Object [4];
+	private Object [] seleccionado = new Object [10];
 	private Object [][] data;
 	private boolean seleccionoMuestra = false;
 	private Component frame;
@@ -43,7 +43,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	public MediadorConsistencia() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicacion","Nombre","Peso","Profundidad Inicial","Profundidad Final","Límite Líquido","Límite Plástico","Índice de Plasticidad"};
+		String [] columAux = {"Ubicacion","Nombre","Peso","Ciudad","Profundidad Inicial","Profundidad Final","Límite Líquido","Límite Plástico","Índice de Plasticidad"};
 		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
@@ -70,18 +70,19 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	public MediadorConsistencia(Collection coleccion) {
 		super();
 		Iterator<Muestra> it = coleccion.iterator();
-		data = new Object [coleccion.size()] [8];
+		data = new Object [coleccion.size()] [10];
 		int i = 0;
 		while (it.hasNext()){
 			Muestra muestra = it.next();
 			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
 			data [i][1]= muestra.getNombreMuestra();
 			data [i][2]= muestra.getPeso();
-		    data [i][3]= muestra.getProfundidadInicial();
-		    data [i][4]= muestra.getProfundidadFinal();
-		    data [i][5]= muestra.getLimiteLiquido();
-		    data [i][6]= muestra.getLimitePlastico();
-		    data [i][7]= muestra.getIndicePlasticidad();
+			data [i][3]= muestra.getUbicacion().getCiudad();
+		    data [i][4]= muestra.getProfundidadInicial();
+		    data [i][5]= muestra.getProfundidadFinal();
+		    data [i][6]= muestra.getLimiteLiquido();
+		    data [i][7]= muestra.getLimitePlastico();
+		    data [i][8]= muestra.getIndicePlasticidad();
 		    i++;
 		}
 
@@ -97,25 +98,26 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 		Class clase = muestra.getClass();
 		Collection muestras = control.coleccionMuestras(clase);
 		Iterator<Muestra> it = muestras.iterator();
-		data = new Object [muestras.size()] [8];
+		data = new Object [muestras.size()] [10];
 		int i = 0;
 		while (it.hasNext()){
 			muestra = it.next();
 			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
 			data [i][1]= muestra.getNombreMuestra();
 			data [i][2]= muestra.getPeso();
-		    data [i][3]= muestra.getProfundidadInicial();
-		    data [i][4]= muestra.getProfundidadFinal();
+			data [i][3]= muestra.getUbicacion().getCiudad();
+		    data [i][4]= muestra.getProfundidadInicial();
+		    data [i][5]= muestra.getProfundidadFinal();
 		    if (muestra.getLimiteLiquido()==null ||muestra.getLimitePlastico()==null||muestra.getIndicePlasticidad()==null ){
-		    	data [i][5]= 0;
+		    	data [i][8]= 0;
 			    data [i][6]= 0;
 			    data [i][7]= 0;
 			    
 		    }
 		    else {
-		    data [i][5]= muestra.getLimiteLiquido();
-		    data [i][6]= muestra.getLimitePlastico();
-		    data [i][7]= muestra.getIndicePlasticidad();
+		    data [i][6]= muestra.getLimiteLiquido();
+		    data [i][7]= muestra.getLimitePlastico();
+		    data [i][8]= muestra.getIndicePlasticidad();
 		    }
 		    i++;
 		}
@@ -156,7 +158,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	 */
 	public void seleccionarMuestra(){
 		if (GUIABMMuestra.InicializarTabla().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			System.out.println("Button Seleccionar Muestra");
@@ -165,7 +167,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 				seleccionoMuestra = true;
 				GUIABMMuestra.dispose();
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
    				   		
 		}
@@ -176,7 +178,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	 */
 	public Muestra getSeleccionado() throws Exception {
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
-		Muestra muestra = (control.obtenerMuestra((String)seleccionado[1],(String)seleccionado[0]));
+		Muestra muestra = (control.obtenerMuestra((String)seleccionado[1],(String)seleccionado[0],(String)seleccionado[3]));
 		return muestra;
 	}
 	
@@ -200,7 +202,6 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_ENTER)
         	seleccionarMuestra();
-			System.out.println("ando el enter");
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {

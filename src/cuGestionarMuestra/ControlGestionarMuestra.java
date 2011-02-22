@@ -43,7 +43,7 @@ public class ControlGestionarMuestra {
 		try {
 			Usuario usuario = usuario1;
 			Class claseUbicacion = ubicacion.getClass();
-			if ((Muestra)persistencia.buscarObjeto(mu.getClass(), "nombreMuestra=='"+mu.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'")==null){
+			if ((Muestra)persistencia.buscarObjeto(mu.getClass(), "nombreMuestra=='"+mu.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"' && ubicacion.ciudad=='"+ubicacion.getCiudad()+"'")==null){
 				mu.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "ciudad=='"+ubicacion.getCiudad()+"' && nombreUbicacion=='"+ubicacion.getNombreUbicacion()+"'"));
 				Class claseOperador = operador.getClass();
 				mu.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+operador.getDni()+"'"));
@@ -72,12 +72,12 @@ public class ControlGestionarMuestra {
 	 * @param ubicacion ubicacion de la muestra a eliminar.
 	 * Elimina una muestra con persistencia. 
 	 */
-	public void eliminarMuestra(String nombreMuestra, String ubicacion) throws Exception {
+	public void eliminarMuestra(String nombreMuestra, String ubicacion, String ciudad) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
 			Muestra muestra = new Muestra();
-			Muestra auxMuestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+ubicacion+"'");
+			Muestra auxMuestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+ubicacion+"' && ubicacion.ciudad=='"+ciudad+"'");
 			persistencia.eliminarObjeto(auxMuestra);
 			persistencia.cerrarTransaccion();
 		}
@@ -111,15 +111,15 @@ public class ControlGestionarMuestra {
 	 * @param data
 	 * @throws Exception
 	 */
-	public void ModificarMuestra(String nombreMuestraModificar,String ubicacionModificar,String[] data) throws Exception {
+	public void ModificarMuestra(String nombreMuestraModificar,String ubicacionModificar, String ciudadModificar, String[] data) throws Exception {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Muestra aux = new Muestra();
 		try {
 			Class claseMuestra = aux.getClass();
-			if ((Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+data[1]+"' && ubicacion.nombreUbicacion=='"+data[0]+"'")==null){
-				aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestraModificar+"' && ubicacion.nombreUbicacion=='"+ubicacionModificar+"'");
+			if ((Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+data[1]+"' && ubicacion.nombreUbicacion=='"+data[0]+"' && ubicacion.ciudad=='"+data[7]+"'")==null){
+				aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestraModificar+"' && ubicacion.nombreUbicacion=='"+ubicacionModificar+"' && ubicacion.ciudad=='"+ciudadModificar+"'");
 				aux.setPeso(Float.parseFloat(data[2]));
 				aux.setNombreMuestra(data[1]);
 				aux.setProfundidadInicial(Float.parseFloat(data[3]));
@@ -132,10 +132,10 @@ public class ControlGestionarMuestra {
 				aux.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+data[6]+"'"));
 				Ubicacion ubicacion = new Ubicacion();
 				Class claseUbicacion = ubicacion.getClass();
-				aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+data[0]+"'"));
+				aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+data[0]+"' && ciudad=='"+data[7]+"'"));
 				Usuario usuario = new Usuario();
 				Class claseUsuario = usuario.getClass();
-				aux.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "nombreUsuario=='"+data[7]+"'"));
+				aux.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+data[8]+"'"));
 				java.util.Date utilDate = new java.util.Date();
 			    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 			    aux.setFecha(sqlDate);
@@ -156,12 +156,12 @@ public class ControlGestionarMuestra {
 	 * @param nombreMuestra
 	 * @return
 	 */
-	public Muestra obtenerMuestra (String nombreMuestra,String ubicacion) throws Exception{
+	public Muestra obtenerMuestra (String nombreMuestra,String ubicacion, String ciudad) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Muestra aux = new Muestra();
 		try {
-			aux =(Muestra)persistencia.buscarObjeto(aux.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+ubicacion+"'");
+			aux =(Muestra)persistencia.buscarObjeto(aux.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+ubicacion+"' && ubicacion.ciudad=='"+ciudad+"'");
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {
