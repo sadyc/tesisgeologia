@@ -163,7 +163,7 @@ public class MediadorModificarMuestra extends Mediador{
 	 */
 	public void modificarMuestra(){
 		try {
-			data[0]= GUIMuestra.getUbicacion().getText().substring(15);
+			data[0]= GUIMuestra.getUbicacion().getText().substring(12);
 			data[1]= GUIMuestra.getNombre().getText();
 			data[2]= GUIMuestra.getPeso().getText();
 			data[3]= GUIMuestra.getProfundidadInicial().getText();
