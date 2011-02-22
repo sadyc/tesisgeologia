@@ -74,16 +74,24 @@ public class ControlGestionarOperador {
 		OperadorDeLaboratorio aux = new OperadorDeLaboratorio();
 		try {
 			Class claseOperador = aux.getClass();
-			if (persistencia.buscarObjeto(claseOperador, "dni=='"+data[2]+"'")==null){
+			if (!DNI.equals(data[2])){
+				if (persistencia.buscarObjeto(claseOperador, "dni=='"+data[2]+"'")==null){
+					aux =(OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+DNI+"'");
+					aux.setNombre(data[0]);
+					aux.setApellido(data[1]);
+					aux.setDni(data[2]);
+					aux.setEmail(data[3]);
+					aux.setTel(data[4]);
+				}else{
+					yaExiste=true;
+				}
+			}else{
 				aux =(OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+DNI+"'");
 				aux.setNombre(data[0]);
 				aux.setApellido(data[1]);
 				aux.setDni(data[2]);
 				aux.setEmail(data[3]);
 				aux.setTel(data[4]);
-			}
-			else{
-				yaExiste=true;
 			}
 			persistencia.cerrarTransaccion();
 		}
