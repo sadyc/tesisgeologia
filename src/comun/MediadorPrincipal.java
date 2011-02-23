@@ -150,7 +150,7 @@ public class MediadorPrincipal extends Mediador{
 	 */
 	private void gestionarUbicacion() {
 		try {
-			new MediadorGestionarUbicacion();
+			new MediadorGestionarUbicacion(false,true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

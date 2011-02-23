@@ -29,21 +29,23 @@ public class MediadorGestionarUbicacion extends Mediador{
 
 	private GUIGestionarUbicacion GUIGestionarUbicacion = null;
 	private Object [][] data;
-	private Object [] seleccionado = new Object [4];
+	private String [] seleccionado = new String[4];
 	private boolean selecciono=false;
 	private Component frame;
 	
 	
 	/**
-	 * Constructor por defecto.
+	 * Constructor con pasaje de parametros.
 	 * @throws Exception
 	 */
-	public MediadorGestionarUbicacion() throws Exception {
+	public MediadorGestionarUbicacion(boolean seleccionar,boolean eliminar) throws Exception {
 		super();
 		cargarTablaDeMuestras();
 		GUIGestionarUbicacion = new GUIGestionarUbicacion(data);
 		GUIGestionarUbicacion.setTitle("Gestionar Ubicacion");
 		GUIGestionarUbicacion.setModal(true);
+		GUIGestionarUbicacion.getjButtonSeleccionar().setEnabled(seleccionar);
+		GUIGestionarUbicacion.getjButtonEliminar().setEnabled(eliminar);
 		GUIGestionarUbicacion.setListenerButtons(this);
 		GUIGestionarUbicacion.setListenerTable(this);
 		GUIGestionarUbicacion.setLocationRelativeTo(null);
@@ -81,7 +83,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 	public GUIGestionarUbicacion getGUISeleccionarUbicacion() {
 		return GUIGestionarUbicacion;
 	}
-
+	
 	/**
 	 * @param gUISeleccionarMuestra the gUISeleccionarMuestra to set
 	 */
@@ -91,10 +93,12 @@ public class MediadorGestionarUbicacion extends Mediador{
 
 		
 	/**
-	 * @return the seleccionado
+	 * retorna la ubicacion seleccionada.
+	 * @return ubicacion
 	 */
-	public Object[] getSeleccionado() {
-		return seleccionado;
+	public Ubicacion getSeleccionado() {
+		Ubicacion ubicacion= new Ubicacion(seleccionado[0],seleccionado[1],seleccionado[2],seleccionado[3],seleccionado[4]);
+		return ubicacion;
 	}
 
 
