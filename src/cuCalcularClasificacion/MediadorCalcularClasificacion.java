@@ -44,8 +44,9 @@ public class MediadorCalcularClasificacion extends Mediador{
 		super();
 		GUIClasificacion = new GUIClasificacion();
 		GUIClasificacion.setTitle(titulo);
-		GUIClasificacion.setModal(true);
 		GUIClasificacion.setListenerButtons(this);
+		GUIClasificacion.setLocationRelativeTo(null);
+		GUIClasificacion.setModal(true);
 		GUIClasificacion.show();
 	}
 	
@@ -63,7 +64,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 		if (!(data==null)){
 			if (control.buscarAnalisis("200") && control.buscarAnalisis("40")&& control.buscarAnalisis("10")  && muestra.getIndicePlasticidad()!=0){
 				if (muestra.getAashto()==null) {
-					control.calcularClasificacionAASHTO(muestra);
+					muestra.setAashto(control.calcularClasificacionAASHTO(muestra));
 				}
 			}
 			else{
@@ -72,7 +73,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 			}
 			if(control.buscarAnalisis("200") && control.buscarAnalisis("4") && muestra.getIndicePlasticidad()!=0){
 				if (muestra.getSucs()==null){
-					control.calcularClasificacionSUCS(muestra);
+					muestra.setSucs(control.calcularClasificacionSUCS(muestra));
 				}
 			}
 			else{
@@ -84,8 +85,9 @@ public class MediadorCalcularClasificacion extends Mediador{
 		if (clasificar){
 			GUIClasificacion = new GUIClasificacion(muestra,data);
 			GUIClasificacion.setTitle(titulo);
-			GUIClasificacion.setModal(true);
 			GUIClasificacion.setListenerButtons(this);
+			GUIClasificacion.setLocationRelativeTo(null);
+			GUIClasificacion.setModal(true);
 			GUIClasificacion.show();
 		}
 		else{
@@ -169,7 +171,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 			parameters [11] = GUIClasificacion.getGradoCurvatura().getText();
 			parameters [12] = GUIClasificacion.getCoeficienteUniformidad().getText();
 			parameters [13] = GUIClasificacion.getClasificacionSucs().getText();
-			parameters [14] = GUIClasificacion.getDescripcionSucs().getText();
+			parameters [14] = GUIClasificacion.getDescripcionSucs().getText().toString();
 			parameters [15] = GUIClasificacion.getClasificacionAashto().getText(); 
 			parameters [16] = GUIClasificacion.getDescripcionAashto().getText();
 			MakeReport makeReporte = new MakeReport();

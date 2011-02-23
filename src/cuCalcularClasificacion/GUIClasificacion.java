@@ -18,8 +18,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -61,9 +61,9 @@ public class GUIClasificacion extends JDialog{
 	private JLabel profundidadFinal;
 	private JLabel ubicacion;
 	private JLabel clasificacionSucs;
-	private JLabel descripcionSucs;
+	private JTextArea descripcionSucs;
 	private JLabel clasificacionAashto;
-	private JLabel descripcionAashto;
+	private JTextArea descripcionAashto;
 	private JLabel limiteLiquido;
 	private JLabel limitePlastico;
 	private JLabel indicePlasticidad;
@@ -106,7 +106,7 @@ public class GUIClasificacion extends JDialog{
 		profundidadFinal = new JLabel("Profundidad Final: ");
 		ubicacion = new JLabel ("Ubicación: ");
 		clasificacionSucs = new JLabel ("Clasificación: ");
-		descripcionSucs = new JLabel ("Descripción: ");
+		descripcionSucs = new JTextArea ("Descripción: ");
 		limiteLiquido = new JLabel ("Límite Líquido (LL): ");
 		limitePlastico = new JLabel ("Límite Plástico (LP): ");
 		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): ");
@@ -146,26 +146,28 @@ public class GUIClasificacion extends JDialog{
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
-		this.jLabelmuestra = new JLabel("Nombre muestra:"+muestra.getNombreMuestra());
+		this.jLabelmuestra = new JLabel("Nombre muestra: "+muestra.getNombreMuestra());
 		peso = new JLabel("Peso: "+muestra.getPeso().toString()+"grs");
 		profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
 		profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
 		ubicacion = new JLabel ("Ubicación: "+muestra.getUbicacion().getNombreUbicacion());
 		if (muestra.getSucs()==null){
-			descripcionSucs = new JLabel ("Descripción: ");
+			descripcionSucs = new JTextArea ("Descripción: ");
 			clasificacionSucs = new JLabel ("Clasificación: ");
 		}
 		else{
 			clasificacionSucs = new JLabel ("Clasificación: "+muestra.getSucs().getNombre());
-			descripcionSucs = new JLabel ("Descripción: "+muestra.getSucs().getDescripcion());
+			descripcionSucs = new JTextArea ("Descripción: "+muestra.getSucs().getDescripcion());
+			descripcionSucs.setEditable(false);
 		}
 		if (muestra.getAashto()==null){
-			descripcionAashto = new JLabel ("Descripción: ");
+			descripcionAashto = new JTextArea ("Descripción: ");
 			clasificacionAashto = new JLabel ("Clasificación: ");
 		}
 		else{
 			clasificacionAashto= new JLabel ("Clasificación: "+muestra.getAashto().getNombre());
-			descripcionAashto = new JLabel ("Descripción: "+muestra.getAashto().getDescripcion());
+			descripcionAashto = new JTextArea ("Descripción: "+muestra.getAashto().getDescripcion());
+			descripcionAashto.setEditable(false);
 		}
 		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    
 		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	
@@ -679,7 +681,7 @@ public class GUIClasificacion extends JDialog{
 	/**
 	 * @return the descripcionSucs
 	 */
-	public JLabel getDescripcionSucs() {
+	public JTextArea getDescripcionSucs() {
 		return descripcionSucs;
 	}
 
@@ -693,7 +695,7 @@ public class GUIClasificacion extends JDialog{
 	/**
 	 * @return the descripcionAashto
 	 */
-	public JLabel getDescripcionAashto() {
+	public JTextArea getDescripcionAashto() {
 		return descripcionAashto;
 	}
 
