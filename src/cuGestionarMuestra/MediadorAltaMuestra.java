@@ -150,12 +150,12 @@ public class MediadorAltaMuestra extends Mediador{
 	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención", JOptionPane.WARNING_MESSAGE);
 			}
 			else {
-				if (Float.parseFloat(GUIMuestra.getPeso().getText()) <= 0 || Float.parseFloat(GUIMuestra.getPeso().getText()) > 5000) {
+				if (Float.parseFloat(GUIMuestra.getPeso().getText().replace(",", ".")) <= 0 || Float.parseFloat(GUIMuestra.getPeso().getText().replace(",", ".")) > 5000) {
 					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","Atención", JOptionPane.WARNING_MESSAGE);
 				}
 				else {
 					if (!GUIMuestra.getProfundidadInicial().getText().equals("") && !GUIMuestra.getProfundidadFinal().getText().equals("")){
-						if (Float.parseFloat(GUIMuestra.getProfundidadFinal().getText()) < Float.parseFloat(GUIMuestra.getProfundidadInicial().getText())){
+						if (Float.parseFloat(GUIMuestra.getProfundidadFinal().getText().replace(",",".")) < Float.parseFloat(GUIMuestra.getProfundidadInicial().getText().replace(",","."))){
 							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","Atención", JOptionPane.WARNING_MESSAGE);
 						}
 						else{
@@ -169,6 +169,7 @@ public class MediadorAltaMuestra extends Mediador{
 			}
 		}
 		catch (NumberFormatException e){
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(frame,"El formato de uno de los números no es correcto, sólo deben poseer un punto(.)","Atención", JOptionPane.WARNING_MESSAGE);
 		}
 	}
@@ -179,9 +180,9 @@ public class MediadorAltaMuestra extends Mediador{
 	public void insertarMuestra(){
 		data[0]= ubicacion.getNombreUbicacion();
 		data[1]= GUIMuestra.getNombre().getText();
-		data[2]= GUIMuestra.getPeso().getText();
-		data[3]= GUIMuestra.getProfundidadInicial().getText();
-		data[4]= GUIMuestra.getProfundidadFinal().getText();
+		data[2]= GUIMuestra.getPeso().getText().replace(",",".");
+		data[3]= GUIMuestra.getProfundidadInicial().getText().replace(",",".");
+		data[4]= GUIMuestra.getProfundidadFinal().getText().replace(",",".");
 		data[5]= operador.getNombre()+" "+operador.getApellido();
 		if (muestra.getCliente().getNombre()!=null){
 		    	data [6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();

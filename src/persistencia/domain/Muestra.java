@@ -138,8 +138,8 @@ public class Muestra {
 	 * Metodo que permite setear profundidadInicial de la Muestra
 	 * @param profundidadInicial the profundidadInicial to set
 	 */
-	public void setProfundidadInicial(Float profundidadInicial) {
-		this.profundidadInicial = profundidadInicial;
+	public void setProfundidadInicial(String profundidadInicial) {
+		this.profundidadInicial = Float.parseFloat(profundidadInicial.replace(",","."));
 	}
 	
 	/**
@@ -154,8 +154,8 @@ public class Muestra {
 	 * Metodo que permite setear profundidadFinal de la Muestra
 	 * @param profundidadFinal the profundidadFinal to set
 	 */
-	public void setProfundidadFinal(Float profundidadFinal) {
-		this.profundidadFinal = profundidadFinal;
+	public void setProfundidadFinal(String profundidadFinal) {
+		this.profundidadFinal = Float.parseFloat(profundidadFinal.replace(",","."));
 	}
 	
 	/**
@@ -170,8 +170,8 @@ public class Muestra {
 	 * Metodo que permite setear peso de la Muestra
 	 * @param peso the peso to set
 	 */
-	public void setPeso(Float peso) {
-		this.peso = peso;
+	public void setPeso(String peso) {
+		this.peso = Float.parseFloat(peso.replace(",","."));
 	}
 	
 	/**

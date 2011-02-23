@@ -93,8 +93,9 @@ public class MediadorModificarAnalisis  extends Mediador{
 	 * Acciones a realizar cuando se selecciona la opción de "Aceptar"
 	 */
 	public void aceptar(){
+		try{
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAceptar");
-		pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
+		pesoRetenido = GUIAnalisis.getPesoRetenido().getText().replace(",",".");
 		analisis.setMuestra(muestra);
 		if (pesoRetenido.equals("")){
 			JOptionPane.showMessageDialog(frame,"No ingreso un peso retenido","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
@@ -105,7 +106,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 			}
 			else{
 				try {
-					control.ModificarAnalisis(Float.parseFloat(pesoRetenido), muestra, numeroTamiz);
+					control.ModificarAnalisis(pesoRetenido, muestra, numeroTamiz);
 					control.recalcularAnalisis(analisis);
 					if (control.getExiste()) {
 						System.out.println("El objeto ya existe");
@@ -120,6 +121,10 @@ public class MediadorModificarAnalisis  extends Mediador{
 				}
 				GUIAnalisis.dispose();
 			}
+		}
+		}
+		catch (Exception e) {
+			JOptionPane.showMessageDialog(frame,"El formato de uno de los números no es correcto, sólo deben poseer un punto(.) ó coma(,)","Atención", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 

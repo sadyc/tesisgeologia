@@ -73,8 +73,8 @@ public class Analisis {
 	/**
 	 * @param f the pesoRetenido to set
 	 */
-	public void setPesoRetenido(Float f) {
-		this.pesoRetenido = f;
+	public void setPesoRetenido(String f) {
+		this.pesoRetenido = Float.parseFloat(f.replace(",","."));
 	}
 	/**
 	 * @return the muestra

@@ -160,7 +160,7 @@ public class ControlGestionarAnalisis {
          * @param numeroTamiz, tamiz al que se le va a modificar el análisis.
          * @throws Exception
          */
-        public void ModificarAnalisis(Float pesoRetenido,Muestra muestra, String numeroTamiz) throws Exception {
+        public void ModificarAnalisis(String pesoRetenido,Muestra muestra, String numeroTamiz) throws Exception {
         		yaExiste=false;
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
