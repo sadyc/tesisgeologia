@@ -55,7 +55,7 @@ public class GUIPrincipal extends JFrame {
 	private JMenuItem cargarBackupMenu;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
-	private JFileChooser fileChooser = null;
+	
 	
 	 
 	  

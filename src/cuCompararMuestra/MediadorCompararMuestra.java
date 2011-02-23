@@ -28,18 +28,6 @@ public class MediadorCompararMuestra extends Mediador{
 	private Muestra muestra2 = new Muestra();
 	private Object [] [] data2;
 	
-	/**
-	 * Default Constructor
-	 */
-	public MediadorCompararMuestra(String titulo){
-		super();
-		this.GUIComparacion = new GUIComparacion();
-		GUIComparacion.setTitle(titulo);
-		GUIComparacion.setModal(true);
-		this.GUIComparacion.setListenerButtons(this);
-		GUIComparacion.setLocationRelativeTo(null);
-		GUIComparacion.show();
-	}
 	
 	/**
 	 * Constructor parametrizado de la clase. 
@@ -56,7 +44,6 @@ public class MediadorCompararMuestra extends Mediador{
 		data2 = cargarTablaDeAnalisis(muestra2);
 		GUIComparacion = new GUIComparacion(muestra1,data1,muestra2,data2);
 		GUIComparacion.setTitle(titulo);
-		GUIComparacion.setModal(true);
 		GUIComparacion.setListenerButtons(this);
 		GUIComparacion.setLocationRelativeTo(null);
 		GUIComparacion.show();
