@@ -192,8 +192,11 @@ public class MediadorModificarMuestra extends Mediador{
 	public void seleccionarUbicacion(){
 		try {
 			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion(true,false);
-			GUIMuestra.setUbicacion("(*) Ubicacion : "+mediadorSelUbic.getSeleccionado().getNombreUbicacion());
-			ubicacionModificar = mediadorSelUbic.getSeleccionado();
+			if (mediadorSelUbic.seSelecciono()){
+				GUIMuestra.setUbicacion("(*) Ubicacion : "+mediadorSelUbic.getSeleccionado().getNombreUbicacion());
+				ubicacionModificar = mediadorSelUbic.getSeleccionado();
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
