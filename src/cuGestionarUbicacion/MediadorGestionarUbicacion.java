@@ -136,7 +136,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 	
 	public void modificar(){
 		if (GUIGestionarUbicacion.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicacion.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicación.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			try{
@@ -148,7 +148,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 				}
 			}
 			catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado una ubicacion invalida","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado una ubicación inválida","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		
@@ -156,7 +156,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 	
 	public void seleccionar(){
 		if (GUIGestionarUbicacion.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicacion.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicación.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			try{
@@ -166,7 +166,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 				GUIGestionarUbicacion.dispose();
 			}
 			catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado una ubicacion invalida","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado una ubicación inválida","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		
@@ -177,10 +177,10 @@ public class MediadorGestionarUbicacion extends Mediador{
 	 */
 	public void eliminar(){
 		if (GUIGestionarUbicacion.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningun elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
-		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta Seguro de eliminar la ubicacion?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Está seguro de eliminar la Ubicación? Recuerde que se borrarán todas las muestras asociadas.","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 		    ControlGestionarUbicacion control = new ControlGestionarUbicacion(); 
             if(quitOption==JOptionPane.YES_OPTION){
             	try{
@@ -195,7 +195,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 	               	}
             	}
             	catch (Exception e) {
-            		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+            		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
             	}
             }
 		}
