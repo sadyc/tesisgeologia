@@ -8,7 +8,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -28,7 +28,7 @@ import comun.TablePanel;
  * @author tesisGeologia.
  * @version 1.0
  */
-public class GUIComparacion extends JFrame{
+public class GUIComparacion extends JDialog{
 
 	private JMenuBar menu ;
 	private JMenu herramientas;
@@ -165,7 +165,6 @@ public class GUIComparacion extends JFrame{
 		D10_2 = new JLabel("D10(mm): "+muestra2.getD10()); 
 		coeficienteUniformidad2 = new JLabel("Coef. Uniformidad (Cu): "+muestra2.getCoeficienteUniformidad());
 		gradoCurvatura2 = new JLabel ("Grado de Curvatura (Cc): "+muestra2.getGradoCurvatura());
-		this.setExtendedState(this.MAXIMIZED_BOTH);
 		initialize();
 	}
 	
@@ -282,8 +281,8 @@ public class GUIComparacion extends JFrame{
 		this.getContentPane().add(new JPanel(),BorderLayout.CENTER);
 		this.getContentPane().add(this.getPanelEste(),BorderLayout.EAST);
 		this.getContentPane().add(this.getPanelOeste(),BorderLayout.WEST);
-		
 		this.setLocationRelativeTo(null);
+		pack();
 	
 	}
    
