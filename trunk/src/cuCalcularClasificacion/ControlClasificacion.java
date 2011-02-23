@@ -47,7 +47,7 @@ public class ControlClasificacion {
 	 * Realiza los calculos correspondientes para determinar la clasificacion SUCS de una muestra.
 	 * @param muestra, muestra a calcularle la clasificación. 
 	 */
-	public void calcularClasificacionSUCS(Muestra muestra) throws Exception{
+	public SUCS calcularClasificacionSUCS(Muestra muestra) throws Exception{
 		Float IndicePlasticidad = muestra.getIndicePlasticidad();
 		Float limiteLiquido = muestra.getLimiteLiquido();
 		calcularDiametro(muestra);
@@ -57,6 +57,7 @@ public class ControlClasificacion {
 		String clasificacion= new String(); 
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
+		SUCS clasificacionSUCS = new SUCS();
 		try{
 			Analisis analisis = new Analisis();
 			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'"; 
@@ -162,7 +163,6 @@ public class ControlClasificacion {
 			}
 			persistencia.cerrarTransaccion();
 			persistencia.abrirTransaccion();
-			SUCS clasificacionSUCS = new SUCS();
 			System.out.println(clasificacion);
 			clasificacionSUCS =((SUCS)persistencia.buscarObjeto(clasificacionSUCS.getClass(), "clasificacion=='"+clasificacion+"'"));
 			muestra = ((Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'"));
@@ -173,17 +173,18 @@ public class ControlClasificacion {
 			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
-				
+			return clasificacionSUCS;	
 	}
 	
 	/**
 	 * Realiza los calculos correspondientes para determinar la clasificación AASHTO de una muestra.
 	 * @param muestra, muestra a calcularle clasificación. 
 	 */
-	public void calcularClasificacionAASHTO(Muestra muestra) throws Exception{
+	public AASHTO calcularClasificacionAASHTO(Muestra muestra) throws Exception{
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		String clasificacion= new String();
+		AASHTO clasificacionAASHTO = new AASHTO();
 		calcularDiametro(muestra);
 		muestra.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));
 		Float gradoCurvatura = (truncaNum(muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60()));//grado de curvatura.
@@ -249,7 +250,6 @@ public class ControlClasificacion {
 			}
 			persistencia.cerrarTransaccion();
 			persistencia.abrirTransaccion();
-			AASHTO clasificacionAASHTO = new AASHTO();
 			clasificacionAASHTO =((AASHTO)persistencia.buscarObjeto(clasificacionAASHTO.getClass(), "clasificacion=='"+clasificacion+"'"));
 			muestra = ((Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'"));
 			muestra.setAashto(clasificacionAASHTO);
@@ -263,7 +263,7 @@ public class ControlClasificacion {
 			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
-				
+		return clasificacionAASHTO;
 	}
 	
 	/**

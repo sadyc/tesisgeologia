@@ -58,6 +58,7 @@ public class MediadorCompararMuestra extends Mediador{
 		GUIComparacion.setTitle(titulo);
 		GUIComparacion.setModal(true);
 		GUIComparacion.setListenerButtons(this);
+		GUIComparacion.setLocationRelativeTo(null);
 		GUIComparacion.show();
 	}
 	
