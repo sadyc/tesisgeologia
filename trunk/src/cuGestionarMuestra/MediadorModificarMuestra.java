@@ -54,6 +54,7 @@ public class MediadorModificarMuestra extends Mediador{
 		muestra = control.obtenerMuestra(fila[1], fila[0], fila[7]);
 		ubicacionModificar = muestra.getUbicacion();
 		operadorModificar = muestra.getOperadorLaboratorio();
+		clienteModificar = muestra.getCliente();
 								
 		GUIMuestra = new GUIMuestra(muestra);
 		GUIMuestra.setTitle("Modificar Muestra");
