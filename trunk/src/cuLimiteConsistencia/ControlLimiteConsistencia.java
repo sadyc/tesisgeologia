@@ -18,14 +18,14 @@ public class ControlLimiteConsistencia {
         /**
          * Inserta un analisis de consistencia con persistencia. 
          */ 
-        public void insertarConsistencia(Float limiteLiquido ,Float limitePlastico,Muestra muestra) throws Exception{
+        public void insertarConsistencia(Muestra muestra) throws Exception{
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
                 try {
-                        muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
-                        muestra.setLimiteLiquido(limiteLiquido);
-                        muestra.setLimitePlastico(limitePlastico);
-                        muestra.calcularIndicePlasticidad();
+                        Muestra auxMuestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+                        auxMuestra.setLimiteLiquido(muestra.getLimiteLiquido().toString());
+                        auxMuestra.setLimitePlastico(muestra.getLimitePlastico().toString());
+                        auxMuestra.calcularIndicePlasticidad();
                         persistencia.cerrarTransaccion();
                         System.out.println("Consistencia insertado con persistencia");
                 } catch (Exception e) {
@@ -49,8 +49,8 @@ public class ControlLimiteConsistencia {
                 try {
                 	Muestra muestra = new Muestra();
         			muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"'");
-        			muestra.setLimitePlastico(limitePlastico);
-        			muestra.setLimiteLiquido(limiteLiquido);
+        			muestra.setLimitePlastico(limitePlastico.toString());
+        			muestra.setLimiteLiquido(limiteLiquido.toString());
         			muestra.calcularIndicePlasticidad();
         			persistencia.cerrarTransaccion();
         			System.out.println("Consistencia modificada con persistencia");

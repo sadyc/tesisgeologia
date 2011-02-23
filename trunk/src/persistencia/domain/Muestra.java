@@ -245,20 +245,6 @@ public class Muestra {
 	}
 
 	/**
-	 * @return the analisis
-	 */
-	public Collection<Analisis> getAnalisis() {
-		return analisis;
-	}
-
-	/**
-	 * @param analisis the analisis to set
-	 */
-	public void setAnalisis(Collection<Analisis> analisis) {
-		this.analisis = analisis;
-	}
-	
-	/**
 	 * Metodo que calcula el Indice de Plasticidad.
 	 */
 	public void calcularIndicePlasticidad(){
@@ -275,8 +261,8 @@ public class Muestra {
 	/**
 	 * @param limitePlastico the limitePlastico to set
 	 */
-	public void setLimitePlastico(Float limitePlastico) {
-		this.limitePlastico = limitePlastico;
+	public void setLimitePlastico(String limitePlastico) {
+		this.limitePlastico = Float.parseFloat(limitePlastico.replace(",","." ));
 	}
 
 	/**
@@ -289,8 +275,8 @@ public class Muestra {
 	/**
 	 * @param limiteLiquido the limiteLiquido to set
 	 */
-	public void setLimiteLiquido(Float limiteLiquido) {
-		this.limiteLiquido = limiteLiquido;
+	public void setLimiteLiquido(String limiteLiquido) {
+		this.limiteLiquido = Float.parseFloat(limiteLiquido.replace(",","." ));
 	}
 
 	/**

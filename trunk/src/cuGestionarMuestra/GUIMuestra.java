@@ -449,7 +449,23 @@ public class GUIMuestra extends javax.swing.JDialog {
 	        return ubicacion;
 	    }
 
-	    public JLabel getOperador() {
+	    /**
+		 * @return the cliente
+		 */
+		public javax.swing.JLabel getCliente() {
+			return cliente;
+		}
+
+
+		/**
+		 * @param cliente the cliente to set
+		 */
+		public void setCliente(javax.swing.JLabel cliente) {
+			this.cliente = cliente;
+		}
+
+
+		public JLabel getOperador() {
 	        return operador;
 	    }
 

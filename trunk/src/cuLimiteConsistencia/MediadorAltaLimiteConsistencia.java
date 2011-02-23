@@ -29,6 +29,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	private String limiteLiquido;
 	private String limitePlastico;
 	private Component frame;
+	private String [] data = new String [10];
 	private boolean altaConsistencia = false;
 	
 	/**
@@ -37,7 +38,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	public MediadorAltaLimiteConsistencia(Muestra muestra2) {
 		super();
 		muestra = muestra2;
-		GUILimiteConsistencia = new GUILimiteConsistencia("Limite Consistencia",muestra);
+		GUILimiteConsistencia = new GUILimiteConsistencia("Límite Consistencia",muestra);
 		GUILimiteConsistencia.setLocationRelativeTo(null);
 		GUILimiteConsistencia.setModal(true);
 		GUILimiteConsistencia.setListenerButtons(this);
@@ -61,13 +62,17 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
+		
 		if (this.GUILimiteConsistencia.getjButtonAgregar() == source || GUILimiteConsistencia.getAgregar()==source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
      		aceptar();
+     		
+
 		}
 		if (this.GUILimiteConsistencia.getjButtonCancelar() == source || GUILimiteConsistencia.getCancelar()==source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			GUILimiteConsistencia.dispose();
+			
 		}
 		if (GUILimiteConsistencia.getVersion()==source){
 			MediadorVersion version = new MediadorVersion();
@@ -83,11 +88,22 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 			JOptionPane.showMessageDialog(frame,"Debe ingresar el Límite Líquido y el Límite Plástico","Atencion!", JOptionPane.ERROR_MESSAGE);
 			
 		}else{
-		limiteLiquido = GUILimiteConsistencia.getjTextFieldLL().getText();
-		limitePlastico = GUILimiteConsistencia.getjTextFieldLP().getText();
-		
+			limiteLiquido = GUILimiteConsistencia.getjTextFieldLL().getText().replace(",",".");
+			limitePlastico = GUILimiteConsistencia.getjTextFieldLP().getText().replace(",",".");
+			muestra.setLimiteLiquido((limiteLiquido));
+			muestra.setLimitePlastico((limitePlastico));
+			muestra.calcularIndicePlasticidad();
+			data [0] = muestra.getUbicacion().getNombreUbicacion();
+			data [1] = muestra.getNombreMuestra();
+			data [2] = muestra.getPeso().toString();
+			data [3] = muestra.getUbicacion().getCiudad();
+			data [4] = muestra.getProfundidadInicial().toString();
+			data [5] = muestra.getProfundidadFinal().toString();
+			data [6] = limiteLiquido;
+			data [7] = limitePlastico;
+			data [8] = muestra.getIndicePlasticidad().toString();
 		try {
-			control.insertarConsistencia(Float.parseFloat(limiteLiquido),Float.parseFloat(limitePlastico), muestra);
+			control.insertarConsistencia(muestra);
 			altaConsistencia= true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -124,5 +140,8 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	public String[] getData(){
+		return data;
 	}
 }

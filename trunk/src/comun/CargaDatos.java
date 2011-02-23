@@ -195,6 +195,9 @@ public class CargaDatos {
 		
 		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),null,usuario1,null,null,null,null,sqlDate);	
 		Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),null,usuario1,null,null,null,null,sqlDate1);
+		muestra3.setLimiteLiquido("29.5");
+		muestra3.setLimitePlastico("26.2");
+		muestra3.calcularIndicePlasticidad();
 
 		Ubicacion ubicacion1 = new Ubicacion("ZONA 5","EL IMPENETRABLE","Chaco","0","0");
 		Ubicacion ubicacion2 = new Ubicacion("UNRC","RIO CUARTO","Cordoba","0","1");
@@ -344,8 +347,9 @@ public class CargaDatos {
 			controlAnalisis.insertarAnalisis(analisis4, muestra3, "40");
 			controlAnalisis.insertarAnalisis(analisis5, muestra3, "200");
 			
-			System.out.println("Comienza carga limite consistencia");
-			controlConsistencia.insertarConsistencia((float)29.5,(float)26.2, muestra3);
+			
+			
+			
 			
 		} catch (Exception e) {
 			System.out.println("No se pudieron insertar");

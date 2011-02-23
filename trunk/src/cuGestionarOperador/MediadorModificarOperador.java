@@ -122,7 +122,7 @@ public class MediadorModificarOperador extends Mediador{
 		data[0]= GUIOperador.getjTextFieldNombre().getText();
 		data[1]= GUIOperador.getjTextFieldApellido().getText();
 		data[2]= GUIOperador.getjTextFieldDni().getText();
-		if (!isEmail(GUIOperador.getjTextFieldEmail().getText())){
+		if (!isEmail(GUIOperador.getjTextFieldEmail().getText()) && (!GUIOperador.getjTextFieldEmail().getText().isEmpty())){
 			System.out.println("El E-mail es incorrecto!");
 			JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
 		
