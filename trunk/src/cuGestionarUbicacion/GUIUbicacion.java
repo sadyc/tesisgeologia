@@ -117,7 +117,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
            {
               char caracter = e.getKeyChar();
 
-              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '-'))
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '-') && (caracter != ','))
               {
                  e.consume();  // ignorar el evento de teclado
               }
@@ -129,7 +129,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
            {
               char caracter = e.getKeyChar();
 
-              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '-') && (caracter != '.'))
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '-') && (caracter != '.') && (caracter != ','))
               {
                  e.consume();  // ignorar el evento de teclado
               }

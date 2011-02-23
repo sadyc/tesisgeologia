@@ -35,7 +35,6 @@ public class MediadorModificarMuestra extends Mediador{
 	private String[] data = new String [10];
 	private Component frame;
 	private Muestra muestra;
-	private String nombreMuestraModificar;
 	private Ubicacion ubicacionModificar;
 	private OperadorDeLaboratorio operadorModificar;
 	private Cliente clienteModificar;
@@ -55,9 +54,7 @@ public class MediadorModificarMuestra extends Mediador{
 		muestra = control.obtenerMuestra(fila[1], fila[0], fila[7]);
 		ubicacionModificar = muestra.getUbicacion();
 		operadorModificar = muestra.getOperadorLaboratorio();
-		
-		nombreMuestraModificar = fila[1];
-				
+								
 		GUIMuestra = new GUIMuestra(muestra);
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
@@ -130,12 +127,12 @@ public class MediadorModificarMuestra extends Mediador{
 	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				if (Float.parseFloat(GUIMuestra.getPeso().getText()) <= 0 || Float.parseFloat(GUIMuestra.getPeso().getText()) > 5000) {
+				if (Float.parseFloat(GUIMuestra.getPeso().getText().replace(",", ".")) <= 0 || Float.parseFloat(GUIMuestra.getPeso().getText().replace(",", ".")) > 5000) {
 					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","Atención!", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
 					if (!GUIMuestra.getProfundidadInicial().getText().equals("") && !GUIMuestra.getProfundidadFinal().getText().equals("")){
-						if (Float.parseFloat(GUIMuestra.getProfundidadFinal().getText()) < Float.parseFloat(GUIMuestra.getProfundidadInicial().getText())){
+						if (Float.parseFloat(GUIMuestra.getProfundidadFinal().getText().replace(",",".")) < Float.parseFloat(GUIMuestra.getProfundidadInicial().getText().replace(",","."))){
 							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","Atención!", JOptionPane.ERROR_MESSAGE);
 						}
 						else{
@@ -161,9 +158,9 @@ public class MediadorModificarMuestra extends Mediador{
 		try {
 			data[0]= ubicacionModificar.getNombreUbicacion();
 			data[1]= GUIMuestra.getNombre().getText();
-			data[2]= GUIMuestra.getPeso().getText();
-			data[3]= GUIMuestra.getProfundidadInicial().getText();
-			data[4]= GUIMuestra.getProfundidadFinal().getText();
+			data[2]= GUIMuestra.getPeso().getText().replace(",",".");
+			data[3]= GUIMuestra.getProfundidadInicial().getText().replace(",",".");
+			data[4]= GUIMuestra.getProfundidadFinal().getText().replace(",",".");
 			data[5]= operadorModificar.getDni(); 
 			if (clienteModificar!= null){
 				data[6]= clienteModificar.getDni(); 
@@ -194,7 +191,7 @@ public class MediadorModificarMuestra extends Mediador{
 	public void seleccionarUbicacion(){
 		try {
 			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion(true,false);
-			this.GUIMuestra.setUbicacion("(*) Ubicacion : "+mediadorSelUbic.getSeleccionado().getNombreUbicacion());
+			GUIMuestra.setUbicacion("(*) Ubicacion : "+mediadorSelUbic.getSeleccionado().getNombreUbicacion());
 			ubicacionModificar = mediadorSelUbic.getSeleccionado();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -207,9 +204,12 @@ public class MediadorModificarMuestra extends Mediador{
 	public void seleccionarOperador(){
 		try {
 			MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
-			GUIMuestra.setOperador("(*) Operador : "+(String)seleccionarOperador.getSeleccionado()[0]+" "+(String)seleccionarOperador.getSeleccionado()[1]);
-			operadorModificar =new OperadorDeLaboratorio((String)seleccionarOperador.getSeleccionado()[0],(String)seleccionarOperador.getSeleccionado()[1],
-					(String)seleccionarOperador.getSeleccionado()[2],(String)seleccionarOperador.getSeleccionado()[3],(String)seleccionarOperador.getSeleccionado()[4]);
+			if (seleccionarOperador.isSeleccionoOperador()){
+				GUIMuestra.setOperador("(*) Operador : "+(String)seleccionarOperador.getSeleccionado()[0]+" "+(String)seleccionarOperador.getSeleccionado()[1]);
+				operadorModificar =new OperadorDeLaboratorio((String)seleccionarOperador.getSeleccionado()[0],(String)seleccionarOperador.getSeleccionado()[1],
+						(String)seleccionarOperador.getSeleccionado()[2],(String)seleccionarOperador.getSeleccionado()[3],(String)seleccionarOperador.getSeleccionado()[4]);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

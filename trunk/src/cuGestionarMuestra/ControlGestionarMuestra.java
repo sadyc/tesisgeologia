@@ -118,12 +118,12 @@ public class ControlGestionarMuestra {
 		Muestra aux = new Muestra();
 		try {
 			Class claseMuestra = aux.getClass();
-			if ((Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+data[1]+"' && ubicacion.nombreUbicacion=='"+data[0]+"' && ubicacion.ciudad=='"+data[7]+"'")==null){
+			if (nombreMuestraModificar.equals(data[1]) && ubicacionModificar.equals(data[0]) && ciudadModificar.equals(data[7])){
 				aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestraModificar+"' && ubicacion.nombreUbicacion=='"+ubicacionModificar+"' && ubicacion.ciudad=='"+ciudadModificar+"'");
-				aux.setPeso(Float.parseFloat(data[2]));
+				aux.setPeso(data[2]);
 				aux.setNombreMuestra(data[1]);
-				aux.setProfundidadInicial(Float.parseFloat(data[3]));
-				aux.setProfundidadFinal(Float.parseFloat(data[4]));
+				aux.setProfundidadInicial(data[3]);
+				aux.setProfundidadFinal(data[4]);
 				OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
 				Class claseOperador = operador.getClass();
 				aux.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+data[5]+"'"));
@@ -141,8 +141,32 @@ public class ControlGestionarMuestra {
 			    aux.setFecha(sqlDate);
 			}
 			else{
-				yaExiste=true;
-			}
+				if ((Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+data[1]+"' && ubicacion.nombreUbicacion=='"+data[0]+"' && ubicacion.ciudad=='"+data[7]+"'")==null){
+					aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestraModificar+"' && ubicacion.nombreUbicacion=='"+ubicacionModificar+"' && ubicacion.ciudad=='"+ciudadModificar+"'");
+					aux.setPeso(data[2]);
+					aux.setNombreMuestra(data[1]);
+					aux.setProfundidadInicial(data[3]);
+					aux.setProfundidadFinal(data[4]);
+					OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
+					Class claseOperador = operador.getClass();
+					aux.setOperadorLaboratorio((OperadorDeLaboratorio)persistencia.buscarObjeto(claseOperador, "dni=='"+data[5]+"'"));
+					Cliente cliente = new Cliente();
+					Class claseCliente = cliente.getClass();
+					aux.setCliente((Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+data[6]+"'"));
+					Ubicacion ubicacion = new Ubicacion();
+					Class claseUbicacion = ubicacion.getClass();
+					aux.setUbicacion((Ubicacion)persistencia.buscarObjeto(claseUbicacion, "nombreUbicacion=='"+data[0]+"' && ciudad=='"+data[7]+"'"));
+					Usuario usuario = new Usuario();
+					Class claseUsuario = usuario.getClass();
+					aux.setUsuario((Usuario)persistencia.buscarObjeto(claseUsuario, "dni=='"+data[8]+"'"));
+					java.util.Date utilDate = new java.util.Date();
+				    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+				    aux.setFecha(sqlDate);
+				}
+				else{
+					yaExiste=true;
+				}
+			}			
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e) {

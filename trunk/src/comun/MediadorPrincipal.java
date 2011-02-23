@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 
+import jxl.biff.drawing.Chart;
 import persistencia.domain.Muestra;
 import persistencia.domain.Usuario;
 import cuCalcularClasificacion.MediadorCalcularClasificacion;

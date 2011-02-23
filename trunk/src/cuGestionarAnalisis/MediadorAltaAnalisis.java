@@ -139,6 +139,8 @@ public class MediadorAltaAnalisis  extends Mediador{
 	 * @throws Exception 
 	 */
 	public void agregarAnalisis() throws Exception{
+		
+		try{
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 		pesoRetenido = GUIAnalisis.getPesoRetenido().getText();
 		if (numeroTamiz==null){
@@ -149,17 +151,17 @@ public class MediadorAltaAnalisis  extends Mediador{
 				JOptionPane.showMessageDialog(frame,"No ingresó un peso retenido","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				if (Float.parseFloat(pesoRetenido)> muestra.getPeso()){
+				if (Float.parseFloat(pesoRetenido.replace(",","."))> muestra.getPeso()){
 					JOptionPane.showMessageDialog(frame,"El peso retenido por el tamíz no puede superar al peso de la muestra que es: "+muestra.getPeso()+" grs.","Atención!", JOptionPane.ERROR_MESSAGE);
 				}
 				else{
 					Float pesoPasante = control.pesoPasante(muestra);
-					if (Float.parseFloat(pesoRetenido)>(muestra.getPeso()-pesoPasante)){
+					if (Float.parseFloat(pesoRetenido.replace(",","."))>(muestra.getPeso()-pesoPasante)){
 						JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso pasante por el último tamiz que es: "+(muestra.getPeso()-pesoPasante)+" grs.","Atención!", JOptionPane.ERROR_MESSAGE);
 					}
 					else{
 						analisis = new Analisis();
-						analisis.setPesoRetenido(Float.parseFloat(pesoRetenido));
+						analisis.setPesoRetenido(pesoRetenido);
 						try {
 							data = control.insertarAnalisis(analisis, muestra, numeroTamiz);
 							if (control.getExiste()) {
@@ -179,6 +181,9 @@ public class MediadorAltaAnalisis  extends Mediador{
 				}
 				
 			}	
+		}
+		}catch (Exception e) {
+			JOptionPane.showMessageDialog(frame,"El formato de uno de los números no es correcto, sólo deben poseer un punto(.)ó coma(,)","Atención", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 	
