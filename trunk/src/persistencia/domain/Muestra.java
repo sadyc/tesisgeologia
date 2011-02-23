@@ -59,6 +59,9 @@ public class Muestra {
 		ubicacion = new Ubicacion();
 		aashto = new AASHTO();
 		sucs = new SUCS();
+		limiteLiquido = new Float(0);
+		limitePlastico = new Float(0);
+		indicePlasticidad = new Float(0);
 		D60= new Float(0);
 		D30= new Float(0);
 		D10= new Float(0);

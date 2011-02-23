@@ -138,17 +138,41 @@ public class GUIPrincipal extends JFrame {
 			menu.add(herramientas);
 			menu.add(ayuda);
 			gestionarUsuarioMenu = new JMenuItem("Gestionar Usuario");
+			gestionarUsuarioMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gobby.png"))); // NOI18N
+
 			gestionarClienteMenu = new JMenuItem("Gestionar Cliente");
+			gestionarClienteMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/system-switch-user.png"))); // NOI18N
+
 			gestionarOperadorMenu = new JMenuItem("Gestionar Operador");
+			gestionarOperadorMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-engineering-3.png"))); // NOI18N
+
 			gestionarMuestraMenu = new JMenuItem("Gestionar Muestra");
+			gestionarMuestraMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-science-2.png"))); // NOI18N
+
 			gestionarAnalisisMenu = new JMenuItem("Gestionar Análisis");
+			gestionarAnalisisMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/kexi.png"))); // NOI18N
+
 			gestionarLimiteConsistenciaMenu = new JMenuItem("Gestionar Limite Consistencia");
+			gestionarLimiteConsistenciaMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-office-3.png"))); // NOI18N
+
 			calcularClasificacionMenu = new JMenuItem("Calcular Clasificación");
+			calcularClasificacionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accessories-calculator-3.png"))); // NOI18N
+
 			compararMuestrasMenu = new JMenuItem("Comparar Muestras");
+			compararMuestrasMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/development-python.png"))); // NOI18N
+
 			crearBackupMenu = new JMenuItem("Crear BackUp");
+			crearBackupMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/kfloppy-2.png"))); // NOI18N
+
 			cargarBackupMenu = new JMenuItem("Cargar BackUp");
+			cargarBackupMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/update_misc.png"))); // NOI18N
+
 			gestionarUbicacionMenu = new JMenuItem("Gestionar Ubicación");
+			gestionarUbicacionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/internet-web-browser-3.png"))); // NOI18N
+
 			salirMenu = new JMenuItem("Salir");
+			salirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
+
 			herramientas.add(gestionarMuestraMenu);
 			herramientas.add(gestionarAnalisisMenu);
 			herramientas.add(gestionarLimiteConsistenciaMenu);
@@ -164,7 +188,9 @@ public class GUIPrincipal extends JFrame {
 			herramientas.add(cargarBackupMenu);
 			herramientas.add(new JSeparator());
 			herramientas.add(salirMenu);
-			versionMenu = new JMenuItem("Version");
+			versionMenu = new JMenuItem("Versión");
+			versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
+
 			ayuda.add(versionMenu);
 		
 		}

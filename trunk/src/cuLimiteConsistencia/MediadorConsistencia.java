@@ -55,39 +55,11 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 		GUIABMMuestra.getjMenuEliminar().setEnabled(false);
 		GUIABMMuestra.getJButtonModificar().setEnabled(false);
 		GUIABMMuestra.getjMenuModificar().setEnabled(false);
-		GUIABMMuestra.getJButtonSeleccionar().setEnabled(true);
-		GUIABMMuestra.getjMenuSeleccionar().setEnabled(true);
 		GUIABMMuestra.setModal(true);
 		GUIABMMuestra.setLocationRelativeTo(null);
 		GUIABMMuestra.show();
 	}
 	
-	/**
-	 * Metodo que contruye la ventana seleccionar Muestra con las muestras
-	 * ya cargadas en una coleccion.
-	 * @param coleccion
-	 */
-	public MediadorConsistencia(Collection coleccion) {
-		super();
-		Iterator<Muestra> it = coleccion.iterator();
-		data = new Object [coleccion.size()] [10];
-		int i = 0;
-		while (it.hasNext()){
-			Muestra muestra = it.next();
-			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
-			data [i][1]= muestra.getNombreMuestra();
-			data [i][2]= muestra.getPeso();
-			data [i][3]= muestra.getUbicacion().getCiudad();
-		    data [i][4]= muestra.getProfundidadInicial();
-		    data [i][5]= muestra.getProfundidadFinal();
-		    data [i][6]= muestra.getLimiteLiquido();
-		    data [i][7]= muestra.getLimitePlastico();
-		    data [i][8]= muestra.getIndicePlasticidad();
-		    i++;
-		}
-
-	}
-
 	/**
 	 * Levanta informacion almacenada en la 
 	 * base de datos al atributo data de la clase mediador.
@@ -108,17 +80,9 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 			data [i][3]= muestra.getUbicacion().getCiudad();
 		    data [i][4]= muestra.getProfundidadInicial();
 		    data [i][5]= muestra.getProfundidadFinal();
-		    if (muestra.getLimiteLiquido()==null ||muestra.getLimitePlastico()==null||muestra.getIndicePlasticidad()==null ){
-		    	data [i][8]= 0;
-			    data [i][6]= 0;
-			    data [i][7]= 0;
-			    
-		    }
-		    else {
 		    data [i][6]= muestra.getLimiteLiquido();
 		    data [i][7]= muestra.getLimitePlastico();
 		    data [i][8]= muestra.getIndicePlasticidad();
-		    }
 		    i++;
 		}
 	}
