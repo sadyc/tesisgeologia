@@ -185,15 +185,18 @@ public class MediadorAltaMuestra extends Mediador{
 		data[4]= GUIMuestra.getProfundidadFinal().getText().replace(",",".");
 		data[5]= operador.getNombre()+" "+operador.getApellido();
 		if (muestra.getCliente().getNombre()!=null){
+			System.out.println("CLIENTE: "+muestra.getCliente().getNombre());
 		    	data [6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
 		    }
 		else{
+			System.out.println("CLIENTE: "+muestra.getCliente().getNombre());
 			data [6]= "";
 		}
-		
+		System.out.println("CLIENTE: "+muestra.getCliente().getNombre());
 		data[7]= ubicacion.getCiudad();
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+	    //GUIMuestra.get
 	    muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,ubicacion,null,null,cliente,sqlDate);
 		try {
 			controlMuestra.insertarMuestra(muestra, ubicacion, operador, cliente,usuario);
@@ -253,6 +256,7 @@ public class MediadorAltaMuestra extends Mediador{
 				cliente.setNombre(((String)seleccionarCliente.getSeleccionado()[0]));
 				cliente.setApellido(((String)seleccionarCliente.getSeleccionado()[1]));
 				cliente.setDni(((String)seleccionarCliente.getSeleccionado()[2]));
+				muestra.setCliente(cliente);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

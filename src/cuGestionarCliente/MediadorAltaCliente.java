@@ -122,7 +122,7 @@ public class MediadorAltaCliente extends Mediador{
 		data[0]= GUICliente.getjTextFieldNombre().getText();
 		data[1]= GUICliente.getjTextFieldApellido().getText();
 		data[2]= GUICliente.getjTextFieldDni().getText();
-		if (!isEmail(GUICliente.getjTextFieldEmail().getText().toUpperCase())){
+		if (!isEmail(GUICliente.getjTextFieldEmail().getText().toUpperCase()) && (!GUICliente.getjTextFieldEmail().getText().isEmpty())){
 			System.out.println("El E-mail es incorrecto!");
 			JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
 		

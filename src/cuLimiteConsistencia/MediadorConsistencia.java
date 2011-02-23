@@ -29,12 +29,11 @@ import cuGestionarMuestra.GUIABMMuestra;
 public class MediadorConsistencia implements ActionListener, KeyListener, MouseListener {
 
 	private GUIABMMuestra GUIABMMuestra = null;
-	private GUISeleccionarMuestra GUISeleccionarMuestra = null;
 	private Object [] seleccionado = new Object [10];
 	private Object [][] data;
 	private boolean seleccionoMuestra = false;
 	private Component frame;
-	
+	private ControlLimiteConsistencia control = new ControlLimiteConsistencia ();
 	
 	/**
 	 * Constructor por defecto de la clase.
@@ -43,6 +42,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	public MediadorConsistencia() throws Exception {
 		super();
 		cargarTablaDeMuestras();
+		
 		String [] columAux = {"Ubicacion","Nombre","Peso","Ciudad","Profundidad Inicial","Profundidad Final","Límite Líquido","Límite Plástico","Índice de Plasticidad"};
 		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
@@ -165,7 +165,13 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 			try {
 				seleccionado = GUIABMMuestra.InicializarTabla().getRow(GUIABMMuestra.InicializarTabla().getSelectedRow());
 				seleccionoMuestra = true;
-				GUIABMMuestra.dispose();
+				Muestra muestra1 = getSeleccionado();
+				MediadorAltaLimiteConsistencia mediadorAlta = new MediadorAltaLimiteConsistencia(muestra1);
+				if (mediadorAlta.isAltaConsistencia()){
+					GUIABMMuestra.getTablePanel().removeRow(GUIABMMuestra.getTablePanel().getSelectedRow());
+					this.GUIABMMuestra.getTablePanel().addRow(mediadorAlta.getData());
+				}
+				
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
 			}

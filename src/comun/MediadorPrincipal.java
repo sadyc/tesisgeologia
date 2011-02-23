@@ -257,10 +257,7 @@ public class MediadorPrincipal extends Mediador{
 	 */
 	public void gestionarLimiteConsistencia(){
 		try {
-			MediadorConsistencia consistencia = new MediadorConsistencia();
-			if (consistencia.seSeleccionoMuestra()){
-				new MediadorAltaLimiteConsistencia(consistencia.getSeleccionado());
-			}
+			new MediadorConsistencia();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

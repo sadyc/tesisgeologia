@@ -55,12 +55,16 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
     public GUILimiteConsistencia(String title, Muestra muestra) {
         super();
         setTitle(title);
-        jTextFieldLL = new JTextField();
-        jTextFieldLP = new JTextField();
+      
         nombreMuestra = new javax.swing.JLabel("Nombre: "+muestra.getNombreMuestra());
         pesoMuestra  = new javax.swing.JLabel("Peso: "+muestra.getPeso()+ " (gr.)");
-        jTextFieldLL = new javax.swing.JTextField();
-        jTextFieldLP = new javax.swing.JTextField();
+        if (muestra.getLimiteLiquido() == 0 && muestra.getLimitePlastico() == 0){
+        	  jTextFieldLL = new JTextField();
+              jTextFieldLP = new JTextField(); 
+        }else {
+        	jTextFieldLL = new JTextField(muestra.getLimiteLiquido().toString());
+            jTextFieldLP = new JTextField(muestra.getLimitePlastico().toString());
+        }
         initComponents();
         jButtonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
@@ -70,26 +74,8 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
        
 }
 
-/**
- * This is the parametrized constructor used in modification
- * @param limLiq  arreglo que almacena los datos de una limiteLiquido.
- */
-public GUILimiteConsistencia(String title,String limLiq, String limPlas, Muestra muestra) {
-        super();
-        setTitle(title);
-        jTextFieldLL = new JTextField(limLiq);
-        jTextFieldLP = new JTextField(limPlas);
-        nombreMuestra = new javax.swing.JLabel("Nombre Muestra: "+muestra.getNombreMuestra());
-        pesoMuestra = new javax.swing.JLabel("Peso: "+muestra.getPeso()+ " (gr.)");
-        initComponents();
-        
-}
-    /** Creates new form GUILimiteConsistencia
-    public GUILimiteConsistencia(String title, Muestra mu) {
-        super();
-        
-        initComponents();
-    } */
+
+
 
     /** This method is called from within the constructor to
      * initialize the form.
