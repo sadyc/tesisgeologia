@@ -214,11 +214,10 @@ public class MediadorAltaMuestra extends Mediador{
 	 */
 	public void seleccionarUbicacion(){
 		try {
-			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion();
+			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion(true,false);
 			if (mediadorSelUbic.seSelecciono()){
-				this.GUIMuestra.setUbicacion("Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
-				ubicacion.setNombreUbicacion((String)mediadorSelUbic.getSeleccionado()[0]);
-				ubicacion.setCiudad((String)mediadorSelUbic.getSeleccionado()[1]);
+				this.GUIMuestra.setUbicacion("Ubicacion : "+mediadorSelUbic.getSeleccionado().getNombreUbicacion());
+				ubicacion= mediadorSelUbic.getSeleccionado();
 			}
 		} catch (Exception e) {
 				e.printStackTrace();

@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Cliente;
+import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
@@ -33,6 +34,7 @@ public class MediadorModificarMuestra extends Mediador{
 	private boolean modificoMuestra;
 	private String[] data = new String [10];
 	private Component frame;
+	private Muestra muestra;
 	private String nombreMuestraModificar;
 	private Ubicacion ubicacionModificar;
 	private OperadorDeLaboratorio operadorModificar;
@@ -50,16 +52,13 @@ public class MediadorModificarMuestra extends Mediador{
 	public MediadorModificarMuestra(String[] fila, Usuario usuario) throws Exception {
 		super();
 		this.usuario = usuario;
-		ubicacionModificar = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getUbicacion();
+		muestra = control.obtenerMuestra(fila[1], fila[0], fila[7]);
+		ubicacionModificar = muestra.getUbicacion();
+		operadorModificar = muestra.getOperadorLaboratorio();
+		
 		nombreMuestraModificar = fila[1];
-		operadorModificar = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getOperadorLaboratorio();
-		clienteModificar = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getCliente();
-		String nombreOperador = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getOperadorLaboratorio().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0], fila[7]).getOperadorLaboratorio().getApellido();
-		String nombreCliente = "";
-		if (control.obtenerMuestra(fila[1], fila[0], fila[7]).getCliente()!=null){
-			nombreCliente = (control.obtenerMuestra(fila[1], fila[0], fila[7])).getCliente().getNombre()+" "+control.obtenerMuestra(fila[1], fila[0], fila[7]).getCliente().getApellido();
-		}
-		GUIMuestra = new GUIMuestra(fila, nombreOperador, nombreCliente,usuario.getNombre()+" "+usuario.getApellido());
+				
+		GUIMuestra = new GUIMuestra(muestra);
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
@@ -71,37 +70,30 @@ public class MediadorModificarMuestra extends Mediador{
 
 	@Override
 	public void itemStateChanged(ItemEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -172,13 +164,13 @@ public class MediadorModificarMuestra extends Mediador{
 			data[2]= GUIMuestra.getPeso().getText();
 			data[3]= GUIMuestra.getProfundidadInicial().getText();
 			data[4]= GUIMuestra.getProfundidadFinal().getText();
-			data[5]= operadorModificar.getDni(); // NECESITO EL DNI PARA QUE EL CONTROL PUEDA BUSCAR EL OPERADOR
+			data[5]= operadorModificar.getDni(); 
 			if (clienteModificar!= null){
-				data[6]= clienteModificar.getDni(); // NECESITO EL DNI PARA QUE EL CONTROL PUEDA BUSCAR EL OPERADOR
+				data[6]= clienteModificar.getDni(); 
 			}
 			data[7]= ubicacionModificar.getCiudad();
 			data[8]= usuario.getDni();
-			control.ModificarMuestra(nombreMuestraModificar,ubicacionModificar.getNombreUbicacion(),ubicacionModificar.getCiudad(),data);
+			control.ModificarMuestra(muestra.getNombreMuestra(),muestra.getUbicacion().getNombreUbicacion(),muestra.getUbicacion().getCiudad(),data);
 			if (control.getExiste()) {
 				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+", ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
@@ -201,11 +193,9 @@ public class MediadorModificarMuestra extends Mediador{
 	 */
 	public void seleccionarUbicacion(){
 		try {
-			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion();
-			this.GUIMuestra.setUbicacion("(*) Ubicacion : "+(String)mediadorSelUbic.getSeleccionado()[0]);
-			ubicacionModificar = new Ubicacion((String)mediadorSelUbic.getSeleccionado()[0],(String)mediadorSelUbic.getSeleccionado()[1],(String)mediadorSelUbic.getSeleccionado()[2]
-			           ,(String)mediadorSelUbic.getSeleccionado()[3],(String)mediadorSelUbic.getSeleccionado()[4]);
-
+			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion(true,false);
+			this.GUIMuestra.setUbicacion("(*) Ubicacion : "+mediadorSelUbic.getSeleccionado().getNombreUbicacion());
+			ubicacionModificar = mediadorSelUbic.getSeleccionado();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -13,6 +13,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
+import persistencia.domain.Muestra;
+
 /**
  * Clase GUI que reprensenta la ventana para una muestra.
  * 
@@ -82,18 +84,23 @@ public class GUIMuestra extends javax.swing.JDialog {
 	 * @param nombreCliente.
 	 * @param nombreUsuario
 	 */
-	public GUIMuestra(String[] fila,String nombreOperador, String nombreCliente, String nombreUsuario) {
+	public GUIMuestra(Muestra muestra) {
 	
 		super();
 		initComponents();
-		nombre.setText(fila[1]);
-		peso.setText(fila[2]);
-		profundidadInicial.setText(fila[3]);
-		profundidadFinal.setText(fila[4]);
-		ubicacion.setText("(*) Ubicación: "+ fila[0]);
-		operador.setText("(*) Operador: "+ nombreOperador);
-		cliente.setText(" Cliente: "+ nombreCliente);
-		usuario.setText("Usuario: "+ nombreUsuario);
+		nombre.setText(muestra.getNombreMuestra());
+		peso.setText(muestra.getPeso().toString());
+		profundidadInicial.setText(muestra.getProfundidadInicial().toString());
+		profundidadFinal.setText(muestra.getProfundidadFinal().toString());
+		ubicacion.setText("(*) Ubicación: "+ muestra.getUbicacion().getNombreUbicacion());
+		operador.setText("(*) Operador: "+ muestra.getOperadorLaboratorio().getNombre()+" "+muestra.getOperadorLaboratorio().getApellido());
+		if (muestra.getCliente()!=null){
+			cliente.setText(" Cliente: "+ muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido());
+		}
+		else{
+			cliente.setText(" Cliente: ");
+		}
+		usuario.setText("Usuario: "+ muestra.getUsuario().getNombreUsuario());
 		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png")));
 		aceptar.setText("Modificar");
 		setModal(true);

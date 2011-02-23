@@ -147,6 +147,7 @@ public class ControlGestionarMuestra {
 		}
 		catch (Exception e) {
 			System.out.println("Error al modificar");
+			e.printStackTrace();
 			persistencia.realizarRollback();
 		}		
 	}
