@@ -20,8 +20,8 @@ import persistencia.domain.Usuario;
 import comun.Mediador;
 import comun.MediadorVersion;
 
-import cuGestionarCliente.MediadorSeleccionarCliente;
-import cuGestionarOperador.MediadorSeleccionarOperador;
+import cuGestionarCliente.MediadorGestionarCliente;
+import cuGestionarOperador.MediadorGestionarOperador;
 import cuGestionarUbicacion.MediadorGestionarUbicacion;
 
 /**
@@ -207,8 +207,8 @@ public class MediadorModificarMuestra extends Mediador{
 	 */
 	public void seleccionarOperador(){
 		try {
-			MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
-			if (seleccionarOperador.isSeleccionoOperador()){
+			MediadorGestionarOperador seleccionarOperador = new MediadorGestionarOperador(true,false);
+			if (seleccionarOperador.isSelecciono()){
 				GUIMuestra.setOperador("(*) Operador : "+(String)seleccionarOperador.getSeleccionado()[0]+" "+(String)seleccionarOperador.getSeleccionado()[1]);
 				operadorModificar =new OperadorDeLaboratorio((String)seleccionarOperador.getSeleccionado()[0],(String)seleccionarOperador.getSeleccionado()[1],
 						(String)seleccionarOperador.getSeleccionado()[2],(String)seleccionarOperador.getSeleccionado()[3],(String)seleccionarOperador.getSeleccionado()[4]);
@@ -224,8 +224,8 @@ public class MediadorModificarMuestra extends Mediador{
 	 */
 	public void seleccionarCliente(){
 		try {
-			MediadorSeleccionarCliente seleccionarCliente = new MediadorSeleccionarCliente();
-			if (seleccionarCliente.isSeleccionoCliente()){
+			MediadorGestionarCliente seleccionarCliente = new MediadorGestionarCliente(true,false);
+			if (seleccionarCliente.isSelecciono()){
 				GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]+" "+(String)seleccionarCliente.getSeleccionado()[1]);
 				clienteModificar = new Cliente((String)seleccionarCliente.getSeleccionado()[0],(String)seleccionarCliente.getSeleccionado()[1],(String)seleccionarCliente.getSeleccionado()[2]
 			          ,(String)seleccionarCliente.getSeleccionado()[3],(String)seleccionarCliente.getSeleccionado()[4]);

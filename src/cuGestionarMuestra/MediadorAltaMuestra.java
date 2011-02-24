@@ -20,8 +20,8 @@ import persistencia.domain.Usuario;
 import comun.Mediador;
 import comun.MediadorVersion;
 
-import cuGestionarCliente.MediadorSeleccionarCliente;
-import cuGestionarOperador.MediadorSeleccionarOperador;
+import cuGestionarCliente.MediadorGestionarCliente;
+import cuGestionarOperador.MediadorGestionarOperador;
 import cuGestionarUbicacion.ControlGestionarUbicacion;
 import cuGestionarUbicacion.MediadorGestionarUbicacion;
 
@@ -233,8 +233,8 @@ public class MediadorAltaMuestra extends Mediador{
 	 */
 	public void seleccionarOperador(){
 		try {
-			MediadorSeleccionarOperador seleccionarOperador = new MediadorSeleccionarOperador();
-			if (seleccionarOperador.isSeleccionoOperador()) {
+			MediadorGestionarOperador seleccionarOperador = new MediadorGestionarOperador(true,false);
+			if (seleccionarOperador.isSelecciono()) {
 				this.GUIMuestra.setOperador("(*) Operador: "+(String)seleccionarOperador.getSeleccionado()[0]+" "+(String)seleccionarOperador.getSeleccionado()[1]);
 				operador.setNombre(((String)seleccionarOperador.getSeleccionado()[0]));
 				operador.setApellido(((String)seleccionarOperador.getSeleccionado()[1]));
@@ -250,8 +250,8 @@ public class MediadorAltaMuestra extends Mediador{
 	 */
 	public void seleccionarCliente(){
 		try {
-			MediadorSeleccionarCliente seleccionarCliente = new MediadorSeleccionarCliente();
-			if (seleccionarCliente.isSeleccionoCliente()){
+			MediadorGestionarCliente seleccionarCliente = new MediadorGestionarCliente(true,false);
+			if (seleccionarCliente.isSelecciono()){
 				GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]);
 				cliente.setNombre(((String)seleccionarCliente.getSeleccionado()[0]));
 				cliente.setApellido(((String)seleccionarCliente.getSeleccionado()[1]));

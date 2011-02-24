@@ -30,6 +30,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 
 	private GUIGestionarOperador GUIGestionarOperador = null;
 	private Object [] seleccionado;
+	private boolean selecciono= false;
 	private Object [][] data;
 	private Component frame;
 	private ControlGestionarOperador control; 
@@ -39,7 +40,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 	 * Constructor por defecto de la clase.
 	 * @throws Exception
 	 */
-	public MediadorGestionarOperador() throws Exception {
+	public MediadorGestionarOperador(boolean seleccionar,boolean eliminar) throws Exception {
 		super();
 		cargarTablaDeOperador();
 		GUIGestionarOperador = new GUIGestionarOperador(data);
@@ -48,10 +49,12 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 		GUIGestionarOperador.setListenerTable(this);
 		GUIGestionarOperador.setMouseListener(this);
 		GUIGestionarOperador.setKeyListener(this);
-		GUIGestionarOperador.getjButtonSeleccionar().setEnabled(false);
-		GUIGestionarOperador.getjMenuSeleccionar().setEnabled(false);
 		GUIGestionarOperador.setModal(true);
 		GUIGestionarOperador.setLocationRelativeTo(null);
+		GUIGestionarOperador.getjButtonSeleccionar().setEnabled(seleccionar);
+		GUIGestionarOperador.getjMenuSeleccionar().setEnabled(seleccionar);
+		GUIGestionarOperador.getjMenuEliminar().setEnabled(eliminar);
+		GUIGestionarOperador.getjButtonEliminar().setEnabled(eliminar);
 		GUIGestionarOperador.show();
 	}
 	
@@ -185,6 +188,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 		else{
 			try{
 				seleccionado = GUIGestionarOperador.getTablePanel().getRow(GUIGestionarOperador.getTablePanel().getSelectedRow());//
+				selecciono = true;
 				System.out.println("Button Seleccionar Operador");
 				GUIGestionarOperador.dispose();
 			}
@@ -194,6 +198,13 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 		}
 	}
 	
+	/**
+	 * @return the selecciono
+	 */
+	public boolean isSelecciono() {
+		return selecciono;
+	}
+
 	/**
 	 * Metodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
