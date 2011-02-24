@@ -121,28 +121,33 @@ public class MediadorModificarOperador extends Mediador{
 	public void modificarOperador(){
 		data[0]= GUIOperador.getjTextFieldNombre().getText();
 		data[1]= GUIOperador.getjTextFieldApellido().getText();
-		data[2]= GUIOperador.getjTextFieldDni().getText();
-		if (!isEmail(GUIOperador.getjTextFieldEmail().getText()) && (!GUIOperador.getjTextFieldEmail().getText().isEmpty())){
-			System.out.println("El E-mail es incorrecto!");
-			JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
-		
+		if (!isDni(GUIOperador.getjTextFieldDni().getText())){
+			System.out.println("El DNI es incorrecto!");
+			JOptionPane.showMessageDialog(frame,"El DNI ingresado es Incorrecto. Debe ser de la forma ##.###.###","Atención!", JOptionPane.ERROR_MESSAGE);
 		}else{
-		data[3]= GUIOperador.getjTextFieldEmail().getText();
-		data[4]= GUIOperador.getjTextFieldTelefono().getText();
-		try {
-			control.modificarOperador(operadorModificar.getDni(),data);
-			if (control.getExiste()) {
-				JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
-			}
-			else {
-				modificoOperador = true;
-				GUIOperador.dispose();
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			data[2]= GUIOperador.getjTextFieldDni().getText();
+			if (!isEmail(GUIOperador.getjTextFieldEmail().getText()) && (!GUIOperador.getjTextFieldEmail().getText().isEmpty())){
+				System.out.println("El E-mail es incorrecto!");
+				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
 		
+			}else{
+				data[3]= GUIOperador.getjTextFieldEmail().getText();
+				data[4]= GUIOperador.getjTextFieldTelefono().getText();
+				try {
+					control.modificarOperador(operadorModificar.getDni(),data);
+					if (control.getExiste()) {
+						JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						modificoOperador = true;
+						GUIOperador.dispose();
+					}
+			
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
+			}
 		}
 	}
 	

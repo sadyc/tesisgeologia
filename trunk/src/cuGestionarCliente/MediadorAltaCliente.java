@@ -121,33 +121,37 @@ public class MediadorAltaCliente extends Mediador{
 	public void insertarCliente(){
 		data[0]= GUICliente.getjTextFieldNombre().getText();
 		data[1]= GUICliente.getjTextFieldApellido().getText();
-		data[2]= GUICliente.getjTextFieldDni().getText();
-		if (!isEmail(GUICliente.getjTextFieldEmail().getText().toUpperCase()) && (!GUICliente.getjTextFieldEmail().getText().isEmpty())){
-			System.out.println("El E-mail es incorrecto!");
-			JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
-		
+		if (!isDni(GUICliente.getjTextFieldDni().getText())){
+			System.out.println("El DNI es incorrecto!");
+			JOptionPane.showMessageDialog(frame,"El DNI ingresado es Incorrecto. Debe ser de la forma ##.###.###","Atención!", JOptionPane.ERROR_MESSAGE);
 		}else{
-		data[4]= GUICliente.getjTextFieldEmail().getText();
-		data[3]= GUICliente.getjTextFieldTelefono().getText();
-		cliente = new Cliente(data[0],data[1],data[2],data[4],data[3]);
-		try {
-			control.insertarCliente(cliente);
-			if (control.getExiste()) {
-				System.out.println("El objeto ya existe");
-				JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
-			}
-			else {
-				altaCliente = true;
-				GUICliente.dispose();
-			}
-		}
-		catch (Exception e) {
-			System.out.println("No inserta cliente Mediador Alta cliente");
-			e.printStackTrace();
-		}
+			data[2]= GUICliente.getjTextFieldDni().getText();
+			if (!isEmail(GUICliente.getjTextFieldEmail().getText().toUpperCase()) && (!GUICliente.getjTextFieldEmail().getText().isEmpty())){
+				System.out.println("El E-mail es incorrecto!");
+				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
 		
+			}else{
+				data[4]= GUICliente.getjTextFieldEmail().getText();
+				data[3]= GUICliente.getjTextFieldTelefono().getText();
+				cliente = new Cliente(data[0],data[1],data[2],data[4],data[3]);
+				try {
+					control.insertarCliente(cliente);
+					if (control.getExiste()) {
+						System.out.println("El objeto ya existe");
+						JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						altaCliente = true;
+						GUICliente.dispose();
+					}
+				}
+				catch (Exception e) {
+					System.out.println("No inserta cliente Mediador Alta cliente");
+					e.printStackTrace();
+				}	
+		
+			}
 		}
-
 	}
 	
 	public String[] getData() {

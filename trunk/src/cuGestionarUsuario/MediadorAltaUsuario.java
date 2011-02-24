@@ -130,40 +130,44 @@ public class MediadorAltaUsuario extends Mediador{
 	public void insertarUsuario(){
 		data[0]= GUIUsuario.getjTextFieldNombre().getText();
 		data[1]= GUIUsuario.getjTextFieldApellido().getText();
-		data[2]= GUIUsuario.getjTextFieldDni().getText();
-		data[3]= GUIUsuario.getjTextFieldNombreUsuario().getText();
-		data[4]= (String) GUIUsuario.getjComboBoxCategoria().getSelectedItem();
-		if (!isEmail(GUIUsuario.getjTextFieldEmail().getText().toUpperCase()) && (!GUIUsuario.getjTextFieldEmail().getText().isEmpty())){
-			System.out.println("El E-mail es incorrecto!");
-			JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
-		
+		if (!isDni(GUIUsuario.getjTextFieldDni().getText())){
+			System.out.println("El DNI es incorrecto!");
+			JOptionPane.showMessageDialog(frame,"El DNI ingresado es Incorrecto. Debe ser de la forma ##.###.###","Atención!", JOptionPane.ERROR_MESSAGE);
 		}else{
-		data[5]= GUIUsuario.getjTextFieldEmail().getText();
-		data[6]= GUIUsuario.getjTextFieldTelefono().getText();
-		Encriptar encriptar = new Encriptar();
-		String password = "";
-		try {
-			password = encriptar.hash(GUIUsuario.getjPasswordField().getText());
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
-		data[7]= password;
-		usuario = new Usuario(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]);
-		try {
-			control.insertarUsuario(usuario);
-			if (control.getExiste()) {
-				JOptionPane.showMessageDialog(frame,"El usuario con DNI: "+data[2]+" ó nombre de usuario: "+data[3]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
-			}
-			else {
-				altaUsuario = true;
-				GUIUsuario.dispose();
-			}
+			data[2]= GUIUsuario.getjTextFieldDni().getText();
+			data[3]= GUIUsuario.getjTextFieldNombreUsuario().getText();
+			data[4]= (String) GUIUsuario.getjComboBoxCategoria().getSelectedItem();
+			if (!isEmail(GUIUsuario.getjTextFieldEmail().getText().toUpperCase()) && (!GUIUsuario.getjTextFieldEmail().getText().isEmpty())){
+				System.out.println("El E-mail es incorrecto!");
+				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
+		
+			}else{
+				data[5]= GUIUsuario.getjTextFieldEmail().getText();
+				data[6]= GUIUsuario.getjTextFieldTelefono().getText();
+				Encriptar encriptar = new Encriptar();
+				String password = "";
+				try {
+					password = encriptar.hash(GUIUsuario.getjPasswordField().getText());
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				data[7]= password;
+				usuario = new Usuario(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]);
+				try {
+					control.insertarUsuario(usuario);
+					if (control.getExiste()) {
+						JOptionPane.showMessageDialog(frame,"El usuario con DNI: "+data[2]+" ó nombre de usuario: "+data[3]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						altaUsuario = true;
+						GUIUsuario.dispose();
+					}
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}		
 		}
-		}		
-
 	}
 	
 	public String[] getData() {

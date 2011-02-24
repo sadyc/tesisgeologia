@@ -64,4 +64,29 @@ public abstract class Mediador implements ActionListener,MouseListener,ItemListe
             return false;
         }
     }
+    /**
+     * @brief Retorna si un valor de DNI es valido.
+     * metodo que retorna si un valor de DNI es valido para una clase paciente,doctor, etc. 
+     * @param dni String que sera evaluado. 
+     * @return test variable booleana que almacena el valor de la validez del dni 
+     */
+    public Boolean isDni(String dni){
+    		boolean test = true;
+    		if (dni.length()!=10){
+    			test = false;
+    		}else{
+    			if ((dni.charAt(0)>= 48 && dni.charAt(0)<= 57) && (dni.charAt(1)>= 48 && dni.charAt(1)<= 57)
+    					&& (dni.charAt(2)== 46) && (dni.charAt(3)>= 48 && dni.charAt(3)<= 57)
+    					&&(dni.charAt(4)>= 48 && dni.charAt(4)<= 57) && (dni.charAt(5)>= 48 && dni.charAt(5)<= 57)
+    					&& (dni.charAt(6)== 46) && (dni.charAt(7)>= 48 && dni.charAt(7)<= 57)
+    					&&(dni.charAt(8)>= 48 && dni.charAt(8)<= 57) && (dni.charAt(9)>= 48 && dni.charAt(9)<= 57)){
+    				test=true;
+    			}
+    			else{
+    				test = false;
+    				}
+          	
+    		}
+    		return test;
+    }
 }
