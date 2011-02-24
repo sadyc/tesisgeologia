@@ -102,9 +102,9 @@ public class ControlGestionarAnalisis {
     		persistencia.abrirTransaccion();
     		Muestra muestra = new Muestra();
     		try {
-    			String nombreMuestra = analisis.getMuestra().getNombreMuestra();
-    			muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+nombreMuestra+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
-    			List listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+nombreMuestra+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+    			muestra = analisis.getMuestra();
+    			System.out.println("muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+    			List listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && muestra.ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
     			int i=0;
     			analisis = new Analisis();
     			while (listaAnalisis.size()>i){
@@ -166,7 +166,7 @@ public class ControlGestionarAnalisis {
                 persistencia.abrirTransaccion();
                 Analisis analisis = new Analisis();
                 try {
-                	analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && tamiz.numeroTamiz=='"+numeroTamiz+"'");
+                	analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && muestra.ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"' && tamiz.numeroTamiz=='"+numeroTamiz+"'");
         			analisis.setPesoRetenido(pesoRetenido);
         			analisis.setPorcentajeRetenidoParcial(truncaNum(analisis.getPesoRetenido()*100)/muestra.getPeso());
         			persistencia.cerrarTransaccion();
