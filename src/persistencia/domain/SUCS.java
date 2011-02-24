@@ -40,11 +40,11 @@ public class SUCS extends Clasificacion {
 		String descripcionAux = new String();
 		if (clasificacion.equals("ML")) {
 				nombreAux= "Grano Fino - Limos y Arcillas con limite liquido menor a 50 - ML";
-				descripcionAux="Limos inorgánicos y arenas muy finas, limos límpios, arenas finas, limosas o arcillosa, o limos arcillosos con ligera plásticidad.";
+				descripcionAux="Limos inorgánicos, arenas muy finas y arcillosa, con ligera plásticidad.";
 			} else {
 				if (clasificacion.equals("CL")) {
 					nombreAux= "Grano Fino - Limos y Arcillas con limite liquido menor a 50 - CL";
-					descripcionAux="Arcillas inorgánicas de plasticidad baja a media, arcillas con grava, arcillas arenosas, arcillas limosas.";
+					descripcionAux="Arcillas inorgánicas de plasticidad baja a media, arcillas con grava.";
 				} else {
 					if (clasificacion.equals("OL")) {
 						nombreAux= "Grano Fino - Limos y Arcillas con limite liquido menor de 50 - OL";
@@ -52,7 +52,7 @@ public class SUCS extends Clasificacion {
 					} else {
 						if (clasificacion.equals("MH")){
 							nombreAux= "Grano Fino - Limos y Arcillas con limite liquido mayor a 50 - MH";
-							descripcionAux="Limos inorgánicos, suelos arenosos finos o limosos con mica o diatomeas, limos elásticos.";
+							descripcionAux="Limos inorgánicos, suelos arenosos finos o limosos con mica o diatomeas.";
 						}
 						else{
 							if (clasificacion.equals("CH")) {

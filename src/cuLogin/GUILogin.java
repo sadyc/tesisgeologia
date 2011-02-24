@@ -11,7 +11,22 @@ import java.awt.event.KeyListener;
  */
 public class GUILogin extends javax.swing.JDialog {
 
-    
+	 // Variables declaration - do not modify
+    private javax.swing.JButton jButtonAceptar;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JMenu jMenuAyuda;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuHerramientas;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemAceptar;
+    private javax.swing.JMenuItem jMenuItemSalir;
+    private javax.swing.JMenuItem jMenuItemVersion;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JTextField jnombreUsuario;
+    private javax.swing.JPasswordField jpassword;
+    private javax.swing.JLabel nombreUsuario;
+    private javax.swing.JLabel password;
+    // End of variables declaration
 
 	/** Creates new form GUILogin */
     public GUILogin(boolean modal) {
@@ -35,7 +50,7 @@ public class GUILogin extends javax.swing.JDialog {
         jButtonCancelar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuHerramientas = new javax.swing.JMenu();
-        jMenuItemAgregar = new javax.swing.JMenuItem();
+        jMenuItemAceptar = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSalir = new javax.swing.JMenuItem();
         jMenuAyuda = new javax.swing.JMenu();
@@ -73,10 +88,10 @@ public class GUILogin extends javax.swing.JDialog {
 
         jMenuHerramientas.setText("Herramientas");
 
-        jMenuItemAgregar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
-        jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-ok-apply-6.png"))); // NOI18N
-        jMenuItemAgregar.setText("Aceptar");
-        jMenuHerramientas.add(jMenuItemAgregar);
+        jMenuItemAceptar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
+        jMenuItemAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-ok-apply-6.png"))); // NOI18N
+        jMenuItemAceptar.setText("Aceptar");
+        jMenuHerramientas.add(jMenuItemAceptar);
         jMenuHerramientas.add(jSeparator1);
 
         jMenuItemSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
@@ -100,6 +115,7 @@ public class GUILogin extends javax.swing.JDialog {
                 jnombreUsuarioActionPerformed(evt);
             }
         });
+        
         
         jpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,22 +201,7 @@ public class GUILogin extends javax.swing.JDialog {
         });
     }
 
-    // Variables declaration - do not modify
-    private javax.swing.JButton jButtonAceptar;
-    private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JMenu jMenuAyuda;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuHerramientas;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItemAgregar;
-    private javax.swing.JMenuItem jMenuItemSalir;
-    private javax.swing.JMenuItem jMenuItemVersion;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JTextField jnombreUsuario;
-    private javax.swing.JPasswordField jpassword;
-    private javax.swing.JLabel nombreUsuario;
-    private javax.swing.JLabel password;
-    // End of variables declaration
+   
 
 
 
@@ -277,17 +278,17 @@ public class GUILogin extends javax.swing.JDialog {
 	}
 
 	/**
-	 * @return the jMenuItemAgregar
+	 * @return the jMenuItemAceptar
 	 */
 	public javax.swing.JMenuItem getjMenuItemAgregar() {
-		return jMenuItemAgregar;
+		return jMenuItemAceptar;
 	}
 
 	/**
-	 * @param jMenuItemAgregar the jMenuItemAgregar to set
+	 * @param jMenuItemAceptar the jMenuItemAceptar to set
 	 */
 	public void setjMenuItemAgregar(javax.swing.JMenuItem jMenuItemAgregar) {
-		this.jMenuItemAgregar = jMenuItemAgregar;
+		this.jMenuItemAceptar = jMenuItemAgregar;
 	}
 
 	/**
@@ -383,7 +384,7 @@ public class GUILogin extends javax.swing.JDialog {
 		this.jButtonAceptar.addActionListener(lis);
 		this.jButtonCancelar.addActionListener(lis);
 		this.jMenuItemSalir.addActionListener(lis);
-		this.jMenuItemAgregar.addActionListener(lis);
+		this.jMenuItemAceptar.addActionListener(lis);
 	}
 	
 	/**
