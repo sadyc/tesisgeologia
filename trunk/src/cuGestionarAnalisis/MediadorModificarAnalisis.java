@@ -105,21 +105,28 @@ public class MediadorModificarAnalisis  extends Mediador{
 				JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso de la muestra que es: "+muestra.getPeso()+" grs.","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				try {
-					control.ModificarAnalisis(pesoRetenido, muestra, numeroTamiz);
-					control.recalcularAnalisis(analisis);
-					if (control.getExiste()) {
-						System.out.println("El objeto ya existe");
-						JOptionPane.showMessageDialog(frame,"El análisis de la muestra correspondiente ya tiene cargado un resultado en el Tamiz Nº: "+numeroTamiz+". Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
-					}
-					else {
-						modifico = true;
-						GUIAnalisis.dispose();
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
+				Float pesoPasante = control.pesoPasante(muestra);
+				if (Float.parseFloat(pesoRetenido.replace(",","."))>(muestra.getPeso()-pesoPasante)){
+					JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso pasante por el último tamiz que es: "+(muestra.getPeso()-pesoPasante)+" grs.","Atención!", JOptionPane.ERROR_MESSAGE);
 				}
-				GUIAnalisis.dispose();
+				else{
+					try {
+						control.ModificarAnalisis(pesoRetenido, muestra, numeroTamiz);
+						control.recalcularAnalisis(analisis);
+						if (control.getExiste()) {
+							System.out.println("El objeto ya existe");
+							JOptionPane.showMessageDialog(frame,"El análisis de la muestra correspondiente ya tiene cargado un resultado en el Tamiz Nº: "+numeroTamiz+". Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
+						}
+						else {
+							modifico = true;
+							GUIAnalisis.dispose();
+						}
+					} 
+					catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				
 			}
 		}
 		}
