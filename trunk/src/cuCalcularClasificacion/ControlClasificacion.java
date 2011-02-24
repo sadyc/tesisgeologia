@@ -457,11 +457,11 @@ public class ControlClasificacion {
 	 * @return, retorna el valor de la búsqueda del analisis correspondiente.
 	 * @throws Exception
 	 */
-	public boolean buscarAnalisis(String tamiz) throws Exception {
+	public boolean buscarAnalisis(String tamiz, String nombreMuestra) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Analisis aux = new Analisis();
-		aux = (Analisis)persistencia.buscarObjeto(aux.getClass(),"tamiz.numeroTamiz=='"+tamiz+"'");
+		aux = (Analisis)persistencia.buscarObjeto(aux.getClass(),"tamiz.numeroTamiz=='"+tamiz+"' && muestra.nombreMuestra=='"+nombreMuestra+"'");
 		if(aux==null){
 			return false;
 		}else{
