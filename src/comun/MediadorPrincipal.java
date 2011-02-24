@@ -69,6 +69,8 @@ public class MediadorPrincipal extends Mediador{
 				GUIPrincipal.getCrearBackupMenu().setEnabled(false);
 				GUIPrincipal.getCargarBackupMenu().setEnabled(false);
 				GUIPrincipal.getjButtonCargarBackup().setEnabled(false);
+				GUIPrincipal.getjButtonGestionarUbicacion().setEnabled(false);
+				GUIPrincipal.getGestionarUbicacionMenu().setEnabled(false);
 			}
 		}
 		GUIPrincipal.show();

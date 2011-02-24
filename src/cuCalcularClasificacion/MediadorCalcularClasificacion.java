@@ -68,6 +68,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 				}
 			}
 			else{
+				
 				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación AASHTO, Faltan análisis para los tamices 10, 40 ó 200","Atención!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 			}
