@@ -38,7 +38,7 @@ public class AASHTO extends Clasificacion{
 		if (clasificacion.equals("A1a")|| clasificacion.equals("A1b")|| clasificacion.equals("A3")|| clasificacion.equals("A24")|| clasificacion.equals("A25")|| clasificacion.equals("A26")|| clasificacion.equals("A27")|| clasificacion.equals("A4")|| clasificacion.equals("A5")|| clasificacion.equals("A6")|| clasificacion.equals("A7")|| clasificacion.equals("A75")|| clasificacion.equals("A76")){
 			if (clasificacion.equals("A1a")|| clasificacion.equals("A1b") ) {
 				nombreAux = "Granulares - A1 - "+clasificacion;
-				descripcionAux="Suelo con fragmentos de roca, grava y arena como componente principal y con caracteristicas como subgrado de excelente a bueno";
+				descripcionAux="Suelo con fragmentos de roca, grava y arena con caracteristicas como subgrado de excelente a bueno";
 			}
 			else{
 				if (clasificacion.equals("A3")) {
@@ -48,7 +48,7 @@ public class AASHTO extends Clasificacion{
 				else {
 					if (clasificacion.equals("A24")||clasificacion.equals("A25")||clasificacion.equals("A26")||clasificacion.equals("A27")) {
 						nombreAux = "Granulares - A2 - "+clasificacion;
-						descripcionAux = "Suelo con grava y arena arcillosa o limosa como componente principal y con caracteristicas como subgrado de excelente a bueno";
+						descripcionAux = "Suelo con grava y arena arcillosa o limosa, con caracteristicas como subgrado de excelente a bueno";
 					} else {
 						if (clasificacion.equals("A4")||clasificacion.equals("A5")) {
 							nombreAux = "Limoso Arcilloso - "+clasificacion;
