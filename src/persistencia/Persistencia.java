@@ -108,7 +108,6 @@ public class Persistencia {
 		try {
 			Extent e=pmi.getExtent(clase,true);
 			Query q = pmi.newQuery(e,filtro);
-			System.out.println(filtro+"la nombre de la muestar");
 			aux = (Collection)q.execute();
 		} catch (Exception e) {
 			System.out.println("Error al cargar la collection");
