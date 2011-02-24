@@ -3,9 +3,12 @@
  */
 package cuGestionarMuestra;
 
+
 import java.util.Collection;
+import java.util.List;
 
 import persistencia.Persistencia;
+import persistencia.domain.Analisis;
 import persistencia.domain.Cliente;
 import persistencia.domain.Muestra;
 import persistencia.domain.OperadorDeLaboratorio;
@@ -111,16 +114,21 @@ public class ControlGestionarMuestra {
 	 * @param data
 	 * @throws Exception
 	 */
-	public void ModificarMuestra(String nombreMuestraModificar,String ubicacionModificar, String ciudadModificar, String[] data) throws Exception {
+	public void ModificarMuestra(Muestra muestra, String[] data) throws Exception {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Muestra aux = new Muestra();
 		try {
 			Class claseMuestra = aux.getClass();
-			if (nombreMuestraModificar.equals(data[1]) && ubicacionModificar.equals(data[0]) && ciudadModificar.equals(data[7])){
-				aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestraModificar+"' && ubicacion.nombreUbicacion=='"+ubicacionModificar+"' && ubicacion.ciudad=='"+ciudadModificar+"'");
+			if (muestra.getNombreMuestra().equals(data[1]) && muestra.getUbicacion().getNombreUbicacion().equals(data[0]) && muestra.getUbicacion().getCiudad().equals(data[7])){
+				aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
 				aux.setPeso(data[2]);
+				if (!muestra.getPeso().equals(data[2])){
+					eliminarAnalisis(muestra,persistencia);
+					aux.setAashto(null);
+					aux.setSucs(null);
+				}
 				aux.setNombreMuestra(data[1]);
 				aux.setProfundidadInicial(data[3]);
 				aux.setProfundidadFinal(data[4]);
@@ -142,8 +150,13 @@ public class ControlGestionarMuestra {
 			}
 			else{
 				if ((Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+data[1]+"' && ubicacion.nombreUbicacion=='"+data[0]+"' && ubicacion.ciudad=='"+data[7]+"'")==null){
-					aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+nombreMuestraModificar+"' && ubicacion.nombreUbicacion=='"+ubicacionModificar+"' && ubicacion.ciudad=='"+ciudadModificar+"'");
+					aux =(Muestra)persistencia.buscarObjeto(claseMuestra, "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && ubicacion.ciudad=='"+ muestra.getUbicacion().getCiudad()+"'");
 					aux.setPeso(data[2]);
+					if (!muestra.getPeso().equals(data[2])){
+						eliminarAnalisis(muestra,persistencia);
+						aux.setAashto(null);
+						aux.setSucs(null);
+					}
 					aux.setNombreMuestra(data[1]);
 					aux.setProfundidadInicial(data[3]);
 					aux.setProfundidadFinal(data[4]);
@@ -176,6 +189,20 @@ public class ControlGestionarMuestra {
 		}		
 	}
 	
+	
+	private void eliminarAnalisis(Muestra muestra, Persistencia persistencia) throws Exception {
+		Analisis analisis =new Analisis();
+		
+		List analisisLista = (List)persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && muestra.ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
+		int i = 0;
+		while (analisisLista.size()>i) {
+			analisis = (Analisis) analisisLista.get(i);
+			persistencia.eliminarObjeto(analisis);
+			i++;
+		}
+		
+	}
+
 	/**
 	 * Retorna la muestra persistente que cumpla con el nombre y ubicacion pasado como parametro.
 	 * @param nombreMuestra
