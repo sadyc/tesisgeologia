@@ -26,9 +26,9 @@ public class Main {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		//new MediadorLogin("Login");
-		Usuario usuario1 = new Usuario("Juan", "Perez", "555","admin","Administrador", "juan@perez.com", "4917015","admin");
-		new MediadorPrincipal("Sistema Clasificador de Suelos",usuario1);
+		new MediadorLogin("Login");
+		//Usuario usuario1 = new Usuario("Juan", "Perez", "555","admin","Administrador", "juan@perez.com", "4917015","admin");
+		//new MediadorPrincipal("Sistema Clasificador de Suelos",usuario1);
 		
 		
 	}

@@ -27,6 +27,7 @@ public class MediadorGestionarCliente extends Mediador{
 
 	private GUIGestionarOperador GUIGestionarCliente = null;
 	private Object [] seleccionado = new Object [5];
+	private boolean selecciono=false;
 	private Object [][] data;
 	private Component frame;
 	private ControlGestionarCliente control = new ControlGestionarCliente();
@@ -36,7 +37,7 @@ public class MediadorGestionarCliente extends Mediador{
 	 * Constructor por defecto de la clase.
 	 * @throws Exception
 	 */
-	public MediadorGestionarCliente() throws Exception {
+	public MediadorGestionarCliente(boolean seleccionar,boolean eliminar) throws Exception {
 		super();
 		cargarTablaDeCliente();
 		GUIGestionarCliente = new GUIGestionarOperador(data);
@@ -45,8 +46,10 @@ public class MediadorGestionarCliente extends Mediador{
 		GUIGestionarCliente.setListenerTable(this);
 		GUIGestionarCliente.setMouseListener(this);
 		GUIGestionarCliente.setKeyListener(this);
-		GUIGestionarCliente.getjButtonSeleccionar().setEnabled(false);
-		GUIGestionarCliente.getjMenuSeleccionar().setEnabled(false);
+		GUIGestionarCliente.getjButtonSeleccionar().setEnabled(seleccionar);
+		GUIGestionarCliente.getjMenuSeleccionar().setEnabled(seleccionar);
+		GUIGestionarCliente.getjMenuEliminar().setEnabled(eliminar);
+		GUIGestionarCliente.getjButtonEliminar().setEnabled(eliminar);
 		GUIGestionarCliente.setModal(true);
 		GUIGestionarCliente.setLocationRelativeTo(null);
 		GUIGestionarCliente.show();
@@ -180,6 +183,7 @@ public class MediadorGestionarCliente extends Mediador{
 			try{
 				seleccionado = GUIGestionarCliente.getTablePanel().getRow(GUIGestionarCliente.getTablePanel().getSelectedRow());//
 				System.out.println("Button Seleccionar Cliente");
+				selecciono = true;
 				GUIGestionarCliente.dispose();
 			}
 			catch (Exception e) {
@@ -233,5 +237,11 @@ public class MediadorGestionarCliente extends Mediador{
 		public void keyTyped(KeyEvent e) {
 			// TODO Auto-generated method stub
 			
+		}
+		/**
+		 * @return the selecciono
+		 */
+		public boolean isSelecciono() {
+			return selecciono;
 		}
 }

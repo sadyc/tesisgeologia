@@ -162,7 +162,7 @@ public class MediadorPrincipal extends Mediador{
 	 */
 	public void gestionarCliente(){
 		try {
-			new MediadorGestionarCliente();
+			new MediadorGestionarCliente(false,true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -173,7 +173,7 @@ public class MediadorPrincipal extends Mediador{
 	 */
 	public void gestionarOperador(){
 		try {
-			new MediadorGestionarOperador();
+			new MediadorGestionarOperador(false,true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
