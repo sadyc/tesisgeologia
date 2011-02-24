@@ -125,10 +125,11 @@ public class MediadorModificarCliente extends Mediador{
 					System.out.println("El E-mail es incorrecto!");
 					JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
 				}else{
-					data[3]= GUICliente.getjTextFieldEmail().getText();
-					data[4]= GUICliente.getjTextFieldTelefono().getText();
+					data[4]= GUICliente.getjTextFieldEmail().getText();
+					data[3]= GUICliente.getjTextFieldTelefono().getText();
+					Cliente cliente = new Cliente(data[0],data[1],data[2],data[4],data[3]);
 					try {	
-						control.modificarCliente(clienteModificar.getDni(),data);
+						control.modificarCliente(clienteModificar.getDni(),cliente);
 						if (control.getExiste()) {
 							System.out.println("El objeto ya existe");
 							JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);

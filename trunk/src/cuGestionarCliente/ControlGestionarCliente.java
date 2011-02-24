@@ -55,32 +55,32 @@ public class ControlGestionarCliente {
 		}
 	}
 			
-	public void modificarCliente(String DNI,String[] data) throws Exception {
+	public void modificarCliente(String DNI,Cliente data) throws Exception {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Cliente aux = new Cliente();
 		try {
 			Class claseCliente = aux.getClass();
-			if (!DNI.equals(data[2])){
-				if (persistencia.buscarObjeto(claseCliente, "dni=='"+data[2]+"'")==null){
+			if (!DNI.equals(data.getDni())){
+				if (persistencia.buscarObjeto(claseCliente, "dni=='"+data.getDni()+"'")==null){
 					aux =(Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+DNI+"'");
-					aux.setNombre(data[0]);
-					aux.setApellido(data[1]);
-					aux.setDni(data[2]);
-					aux.setEmail(data[3]);
-					aux.setTel(data[4]);
+					aux.setNombre(data.getNombre());
+					aux.setApellido(data.getApellido());
+					aux.setDni(data.getDni());
+					aux.setEmail(data.getEmail());
+					aux.setTel(data.getTel());
 				}else{
 					yaExiste=true;
 				}
 			}
 			else{
 				aux =(Cliente)persistencia.buscarObjeto(claseCliente, "dni=='"+DNI+"'");
-				aux.setNombre(data[0]);
-				aux.setApellido(data[1]);
-				aux.setDni(data[2]);
-				aux.setEmail(data[3]);
-				aux.setTel(data[4]);
+				aux.setNombre(data.getNombre());
+				aux.setApellido(data.getApellido());
+				aux.setDni(data.getDni());
+				aux.setEmail(data.getEmail());
+				aux.setTel(data.getTel());
 			}
 			persistencia.cerrarTransaccion();
 		}

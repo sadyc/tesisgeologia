@@ -131,10 +131,11 @@ public class MediadorModificarOperador extends Mediador{
 				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
 		
 			}else{
-				data[3]= GUIOperador.getjTextFieldEmail().getText();
-				data[4]= GUIOperador.getjTextFieldTelefono().getText();
+				data[3]= GUIOperador.getjTextFieldTelefono().getText();
+				data[4]= GUIOperador.getjTextFieldEmail().getText();
+				OperadorDeLaboratorio operador = new OperadorDeLaboratorio(data[0],data[1],data[2],data[3],data[4]);
 				try {
-					control.modificarOperador(operadorModificar.getDni(),data);
+					control.modificarOperador(operadorModificar.getDni(),operador);
 					if (control.getExiste()) {
 						JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 					}

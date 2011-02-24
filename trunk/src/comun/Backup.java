@@ -40,7 +40,7 @@ public class Backup {
      * Método que me permite elegir el directorio donde se va a guardar el Back-Up.
      */
     public void elegirDirectorio(){
-    	JOptionPane.showMessageDialog(null, "Por favor elija la ubicación", "Verificar",JOptionPane.INFORMATION_MESSAGE);
+    	JOptionPane.showMessageDialog(null, "Por favor elija la ubicación donde guardará el Back-Up", "Verificar",JOptionPane.INFORMATION_MESSAGE);
 		 JFileChooser directorio = new JFileChooser();
         int seleccion = directorio.showSaveDialog(new JPanel());
         directorio.setDialogType(directorio.DIRECTORIES_ONLY);
@@ -89,13 +89,13 @@ public class Backup {
      * Método que ejecuta todas las instrucciones que permiten cargar un Back-Up previamente realizado.
      */
 	public void cargarBackup(String dirMySQL, String error) {
-		 JOptionPane.showMessageDialog(null, "Por favor elija seleccione archivo.", "Verificar",JOptionPane.INFORMATION_MESSAGE);
+		 JOptionPane.showMessageDialog(null, "Por favor seleccione el archivo.", "Verificar",JOptionPane.INFORMATION_MESSAGE);
 		 JFileChooser directorio = new JFileChooser();
 	     directorio.setFileSelectionMode(JFileChooser.FILES_ONLY);
 	     int seleccion = directorio.showOpenDialog(new JPanel());
 	     directorio.setDialogType(directorio.DIRECTORIES_ONLY);
 	     if (seleccion == JFileChooser.APPROVE_OPTION){
-	    	 int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"Recuerde que al perderá aquella información almacenada \nposteriormente al último Back-Up realizado. \n¿Esta Seguro de cargar Back-Up?","Cargar Back-Up",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+	    	 int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"Recuerde que al Cargar Back-Up, perderá aquella información \nalmacenada posteriormente al último Back-Up realizado. \n¿Está Seguro de cargar Back-Up?","Cargar Back-Up",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	    	 if(quitOption==JOptionPane.YES_OPTION)	{
 	    		 try {
 	    			 eliminarDB();
