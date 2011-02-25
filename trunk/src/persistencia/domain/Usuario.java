@@ -45,16 +45,16 @@ public class Usuario extends Persona{
 		this.nombreUsuario = nombreUsuario;
 	}
 	/**
-	 * @return the contraseña
+	 * @return the contraseï¿½a
 	 */
-	public String getContraseña() {
+	public String getContrasenia() {
 		return password;
 	}
 	/**
-	 * @param contraseña the contraseña to set
+	 * @param contraseï¿½a the contraseï¿½a to set
 	 */
-	public void setContraseña(String contraseña) {
-		this.password = contraseña;
+	public void setContrasenia(String contrasenia) {
+		this.password = contrasenia;
 	}
 
 	/**
@@ -91,7 +91,7 @@ public class Usuario extends Persona{
 	}
 	
 	public String toString(){
-		return("nombre: " + nombreUsuario + "contraseña: " + password);
+		return("nombre: " + nombreUsuario + "contraseï¿½a: " + password);
 	}
 	/**
 	 * @return the categoria

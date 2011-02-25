@@ -129,7 +129,7 @@ public class GUIOperador extends javax.swing.JDialog {
 
         jLabelDni.setText("(*) DNI: ");
 
-        jLabelTelefono.setText("Teléfono: ");
+        jLabelTelefono.setText("Telï¿½fono: ");
 
         jLabelEmail.setText("E-mail: ");
 
@@ -164,7 +164,7 @@ public class GUIOperador extends javax.swing.JDialog {
 
         jMenuItemVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuItemVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        jMenuItemVersion.setText("Versión");
+        jMenuItemVersion.setText("Versiï¿½n");
         jMenuAyuda.add(jMenuItemVersion);
 
         jMenuBar1.add(jMenuAyuda);

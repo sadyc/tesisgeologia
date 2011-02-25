@@ -94,12 +94,12 @@ public class GUIComparacion extends JDialog{
                 peso1 = new JLabel("Peso: ");
                 profundidadInicial1 = new JLabel("Profundidad Inicial: ");
                 profundidadFinal1 = new JLabel("Profundidad Final: ");
-                ubicacion1 = new JLabel ("Ubicación: ");
-                clasificacion1 = new JLabel ("Clasificación: ");
-                descripcion1 = new JLabel ("Descripción: ");
-                limiteLiquido1 = new JLabel ("Límite Líquido (LL): ");
-                limitePlastico1 = new JLabel ("Límite Plástico (LP): ");
-                indicePlasticidad1 = new JLabel ("Íncide de Plasticidad (IP): ");
+                ubicacion1 = new JLabel ("Ubicaciï¿½n: ");
+                clasificacion1 = new JLabel ("Clasificaciï¿½n: ");
+                descripcion1 = new JLabel ("Descripciï¿½n: ");
+                limiteLiquido1 = new JLabel ("Lï¿½mite Lï¿½quido (LL): ");
+                limitePlastico1 = new JLabel ("Lï¿½mite Plï¿½stico (LP): ");
+                indicePlasticidad1 = new JLabel ("ï¿½ncide de Plasticidad (IP): ");
                 D60_1 = new JLabel("D60(mm): ");
                 D30_1 = new JLabel("D30(mm): ");
                 D10_1 = new JLabel("D10(mm): ");
@@ -110,12 +110,12 @@ public class GUIComparacion extends JDialog{
                 peso2 = new JLabel("Peso: ");
                 profundidadInicial2 = new JLabel("Profundidad Inicial: ");
                 profundidadFinal2 = new JLabel("Profundidad Final: ");
-                ubicacion2 = new JLabel ("Ubicación: ");
-                clasificacion2 = new JLabel ("Clasificación: ");
-                descripcion2 = new JLabel ("Descripción: ");
-                limiteLiquido2 = new JLabel ("Límite Líquido (LL): ");
-                limitePlastico2 = new JLabel ("Límite Plástico (LP): ");
-                indicePlasticidad2 = new JLabel ("Íncide de Plasticidad (IP): ");
+                ubicacion2 = new JLabel ("Ubicaciï¿½n: ");
+                clasificacion2 = new JLabel ("Clasificaciï¿½n: ");
+                descripcion2 = new JLabel ("Descripciï¿½n: ");
+                limiteLiquido2 = new JLabel ("Lï¿½mite Lï¿½quido (LL): ");
+                limitePlastico2 = new JLabel ("Lï¿½mite Plï¿½stico (LP): ");
+                indicePlasticidad2 = new JLabel ("ï¿½ncide de Plasticidad (IP): ");
                 D60_2 = new JLabel("D60(mm): ");
                 D30_2 = new JLabel("D30(mm): ");
                 D10_2 = new JLabel("D10(mm): ");
@@ -140,24 +140,24 @@ public class GUIComparacion extends JDialog{
                 this.profundidadFinal1 = new JLabel("Profundidad Final: "+muestra1.getProfundidadFinal()+"mts");
                 ubicacion1 = new JLabel ("Ubicacion: "+muestra1.getUbicacion().getNombreUbicacion());
                 if (muestra1.getSucs()==null){
-                        clasificacion1 = new JLabel ("Clasificación: ");
-                        descripcion1 = new JLabel ("Descripción: ");
+                        clasificacion1 = new JLabel ("Clasificaciï¿½n: ");
+                        descripcion1 = new JLabel ("Descripciï¿½n: ");
                 }
                 else{
-                        clasificacion1 = new JLabel ("Clasificación: "+muestra1.getSucs().getClasificacion());
-                        descripcion1 = new JLabel ("Descripción: "+muestra1.getSucs().getDescripcion());
+                        clasificacion1 = new JLabel ("Clasificaciï¿½n: "+muestra1.getSucs().getClasificacion());
+                        descripcion1 = new JLabel ("Descripciï¿½n: "+muestra1.getSucs().getDescripcion());
                 }
                 if (muestra1.getAashto()==null){
-                        clasificacion2 = new JLabel ("Clasificación: ");
-                        descripcion2 = new JLabel ("Descripción: ");
+                        clasificacion2 = new JLabel ("Clasificaciï¿½n: ");
+                        descripcion2 = new JLabel ("Descripciï¿½n: ");
                 }
                 else{
-                        clasificacion2 = new JLabel ("Clasificación: "+muestra1.getAashto().getClasificacion());
-                        descripcion2 = new JLabel ("Descripción: "+muestra1.getAashto().getDescripcion());
+                        clasificacion2 = new JLabel ("Clasificaciï¿½n: "+muestra1.getAashto().getClasificacion());
+                        descripcion2 = new JLabel ("Descripciï¿½n: "+muestra1.getAashto().getDescripcion());
                 }
-                limiteLiquido1 = new JLabel ("Límite Líquido (LL): "+muestra1.getLimiteLiquido());
-                limitePlastico1 = new JLabel ("Límite Plástico (LP): "+muestra1.getLimitePlastico());
-                indicePlasticidad1 = new JLabel ("Íncide de Plasticidad (IP): "+muestra1.getIndicePlasticidad());
+                limiteLiquido1 = new JLabel ("Lï¿½mite Lï¿½quido (LL): "+muestra1.getLimiteLiquido());
+                limitePlastico1 = new JLabel ("Lï¿½mite Plï¿½stico (LP): "+muestra1.getLimitePlastico());
+                indicePlasticidad1 = new JLabel ("ï¿½ncide de Plasticidad (IP): "+muestra1.getIndicePlasticidad());
                 D60_1 = new JLabel("D60(mm): "+muestra1.getD60());
                 D30_1 = new JLabel("D30(mm): "+muestra1.getD30());
                 D10_1 = new JLabel("D10(mm): "+muestra1.getD10());
@@ -170,24 +170,24 @@ public class GUIComparacion extends JDialog{
                 this.profundidadFinal2 = new JLabel("Profundidad Final: "+muestra2.getProfundidadFinal()+"mts");
                 ubicacion2 = new JLabel ("Ubicacion: "+muestra2.getUbicacion().getNombreUbicacion());
                 if (muestra2.getSucs()==null){
-                        clasificacion3 = new JLabel ("Clasificación: ");
-                        descripcion3 = new JLabel ("Descripción: ");
+                        clasificacion3 = new JLabel ("Clasificaciï¿½n: ");
+                        descripcion3 = new JLabel ("Descripciï¿½n: ");
                 }
                 else{
-                        clasificacion3 = new JLabel ("Clasificación: "+muestra2.getSucs().getClasificacion());
-                        descripcion3 = new JLabel ("Descripción: "+muestra2.getSucs().getDescripcion());
+                        clasificacion3 = new JLabel ("Clasificaciï¿½n: "+muestra2.getSucs().getClasificacion());
+                        descripcion3 = new JLabel ("Descripciï¿½n: "+muestra2.getSucs().getDescripcion());
                 }
                 if (muestra2.getAashto()==null){
-                        clasificacion4 = new JLabel ("Clasificación: ");
-                        descripcion4 = new JLabel ("Descripción: ");
+                        clasificacion4 = new JLabel ("Clasificaciï¿½n: ");
+                        descripcion4 = new JLabel ("Descripciï¿½n: ");
                 }
                 else{
-                        clasificacion4 = new JLabel ("Clasificación: "+muestra2.getAashto().getClasificacion());
-                        descripcion4 = new JLabel ("Descripción: "+muestra2.getAashto().getDescripcion());
+                        clasificacion4 = new JLabel ("Clasificaciï¿½n: "+muestra2.getAashto().getClasificacion());
+                        descripcion4 = new JLabel ("Descripciï¿½n: "+muestra2.getAashto().getDescripcion());
                 }
-                limiteLiquido2 = new JLabel ("Límite Líquido (LL): "+muestra2.getLimiteLiquido());
-                limitePlastico2 = new JLabel ("Límite Plástico (LP): "+muestra2.getLimitePlastico());
-                indicePlasticidad2 = new JLabel ("Íncide de Plasticidad (IP): "+muestra2.getIndicePlasticidad());
+                limiteLiquido2 = new JLabel ("Lï¿½mite Lï¿½quido (LL): "+muestra2.getLimiteLiquido());
+                limitePlastico2 = new JLabel ("Lï¿½mite Plï¿½stico (LP): "+muestra2.getLimitePlastico());
+                indicePlasticidad2 = new JLabel ("ï¿½ncide de Plasticidad (IP): "+muestra2.getIndicePlasticidad());
                 D60_2 = new JLabel("D60(mm): "+muestra2.getD60());
                 D30_2 = new JLabel("D30(mm): "+muestra2.getD30());
                 D10_2 = new JLabel("D10(mm): "+muestra2.getD10());
@@ -294,14 +294,14 @@ public class GUIComparacion extends JDialog{
                 menu.add(herramientas);
                 menu.add(ayuda);
                 cancelarMenu = new JMenuItem("Salir");
-                cancelarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
-                versionMenu = new JMenuItem("Versión");
-                versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
+                cancelarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
+                versionMenu = new JMenuItem("Versiï¿½n");
+                versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
                 ayuda.add(versionMenu);
                 herramientas.add(new JSeparator());
                 herramientas.add(cancelarMenu);
                 cancelar = new JButton("Salir");
-                cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
+                cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
                 this.setSize(1300 , 700);
                 this.getContentPane().setLayout(new BorderLayout());            
                 this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
@@ -429,8 +429,8 @@ public class GUIComparacion extends JDialog{
                         gbc.fill=GridBagConstraints.HORIZONTAL;
                         panelClasificacion.setLayout(gridbag);
                         gbc.ipady = 15;
-                        JLabel sucs = new JLabel("Clasificación SUCS");
-                        JLabel aashto = new JLabel("Clasificación AASHTO");
+                        JLabel sucs = new JLabel("Clasificaciï¿½n SUCS");
+                        JLabel aashto = new JLabel("Clasificaciï¿½n AASHTO");
                         aashto.setForeground(Color.red);
                         sucs.setForeground(Color.red);
                         panelClasificacion.add(sucs,gbc);
@@ -461,8 +461,8 @@ public class GUIComparacion extends JDialog{
                         gbc.gridy = 0;
                         gbc.fill=GridBagConstraints.HORIZONTAL;
                         panelClasificacion2.setLayout(gridbag);
-                        JLabel sucs2 = new JLabel("Clasificación SUCS");
-                        JLabel aashto2 = new JLabel("Clasificación AASHTO");
+                        JLabel sucs2 = new JLabel("Clasificaciï¿½n SUCS");
+                        JLabel aashto2 = new JLabel("Clasificaciï¿½n AASHTO");
                         aashto2.setForeground(Color.red);
                         sucs2.setForeground(Color.red);
                         gbc.ipady = 15;

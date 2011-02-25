@@ -79,7 +79,7 @@ public class GUIVerificarPassword extends javax.swing.JDialog {
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        jMenuItem3.setText("Versión");
+        jMenuItem3.setText("Versiï¿½n");
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);

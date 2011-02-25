@@ -22,7 +22,7 @@ import javax.jdo.Transaction;
  */
 public class Persistencia {
 
-	private static PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+	private static PersistenceManagerFactory pmf ;
 	private static PersistenceManager pmi = null;
 	private Transaction tx = null;
 	

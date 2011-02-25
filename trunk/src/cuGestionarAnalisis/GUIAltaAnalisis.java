@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import persistencia.domain.Muestra;
 
 /**
- * @brief Clase que define la interfaz para manipular un Análisis.
+ * @brief Clase que define la interfaz para manipular un Anï¿½lisis.
  * @author TesisGeologia
  * @version 1.0
  * 
@@ -45,51 +45,51 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
         setResizable(false);
         initComponents();
         aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
         jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-        jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+        jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
     }
     
     /**
      * Constructor parametrizado de la clase.
-     * @param muestra, muestra a la que se le cargará un análisis.
+     * @param muestra, muestra a la que se le cargarï¿½ un anï¿½lisis.
      */
     public GUIAltaAnalisis(Muestra muestra) {
 		super();
 		pesoRetenido = new JTextField(15);
 		jLabelMuestra = new JLabel("Muestra: "+muestra.getNombreMuestra());
-		jLabelUbicacion = new JLabel("Ubicación: "+muestra.getUbicacion().getNombreUbicacion());
+		jLabelUbicacion = new JLabel("Ubicaciï¿½n: "+muestra.getUbicacion().getNombreUbicacion());
 		jLabelPeso = new JLabel("Peso: "+muestra.getPeso());
 		jLabelTamiz = new javax.swing.JLabel();
 		jLabelTamiz.setText("Tamiz: ");
 		initComponents();
 		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-	    cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+	    cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
 	    jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-	    jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+	    jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
 	      
 	}
     
     /**
      * Constructor parametrizado de la clase.
-     * @param muestra, muestra a la que se le cargará un análisis.
-     * @param peso, peso que se cargará como análisis de la muestra.
-     * @param numeroTamiz, tamíz correspondiente al análisis a cargar.
+     * @param muestra, muestra a la que se le cargarï¿½ un anï¿½lisis.
+     * @param peso, peso que se cargarï¿½ como anï¿½lisis de la muestra.
+     * @param numeroTamiz, tamï¿½z correspondiente al anï¿½lisis a cargar.
      */
     public GUIAltaAnalisis(Muestra muestra,Float peso, String numeroTamiz) {
 		super();
 		pesoRetenido = new JTextField(15);
 		pesoRetenido.setText(peso.toString());
 		jLabelMuestra = new JLabel("Muestra: "+muestra.getNombreMuestra());
-		jLabelUbicacion = new JLabel("Ubicación: "+muestra.getUbicacion().getNombreUbicacion());
+		jLabelUbicacion = new JLabel("Ubicaciï¿½n: "+muestra.getUbicacion().getNombreUbicacion());
 		jLabelPeso = new JLabel("Peso: "+muestra.getPeso());
 		jLabelTamiz = new javax.swing.JLabel();
 		jLabelTamiz.setText("Tamiz: "+numeroTamiz);
 		initComponents();
 		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-	    cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+	    cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
 	    jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-	    jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+	    jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
 	      
 	}
 
