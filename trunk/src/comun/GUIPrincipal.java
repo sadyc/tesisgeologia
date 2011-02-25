@@ -20,7 +20,7 @@ import javax.swing.JSeparator;
 
 /**
 * Esta clase implementa la ventana principal del programa, con los botones de sus principales funcionalidades.
-* @author TesisGeología
+* @author TesisGeologï¿½a
 * @version 1.0
 */
 public class GUIPrincipal extends JFrame {
@@ -107,71 +107,71 @@ public class GUIPrincipal extends JFrame {
 			jButtonGestionarUbicacion.setBackground( SystemColor.darkGray);
 			jButtonGestionarUbicacion.setForeground(SystemColor.white);
 			
-			jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
+			jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
 	        jButtonSalir.setText("Salir");
 	        
-	        jButtonGestionarMuestra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-science-2.png"))); // NOI18N
+	        jButtonGestionarMuestra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-science-2.png"))); // NOI18N
 	        jButtonGestionarMuestra.setText("Gestionar Muestras");
-	        jButtonGestionarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gobby.png"))); // NOI18N
+	        jButtonGestionarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/gobby.png"))); // NOI18N
 	        jButtonGestionarUsuario.setText("Gestionar Usuario");
-	        jButtonCargarBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/update_misc.png"))); // NOI18N
+	        jButtonCargarBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/update_misc.png"))); // NOI18N
 	        jButtonCargarBackup.setText("Cargar Backup");
-	        jButtonGestionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/system-switch-user.png"))); // NOI18N
+	        jButtonGestionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/system-switch-user.png"))); // NOI18N
 	        jButtonGestionarCliente.setText("Gestionar Cliente");
-	        jButtonGestionarOperador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-engineering-3.png"))); // NOI18N
+	        jButtonGestionarOperador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-engineering-3.png"))); // NOI18N
 	        jButtonGestionarOperador.setText("Gesitonar Operador");
-	        jButtonGestionarLimiteConsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-office-3.png"))); // NOI18N
+	        jButtonGestionarLimiteConsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-office-3.png"))); // NOI18N
 	        jButtonGestionarLimiteConsistencia.setText("Gestionar Consistencia");
-	        jButtonAnalisis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/kexi.png"))); // NOI18N
-	        jButtonAnalisis.setText("Gestionar Análisis");
-	        jButtonCompararMuestras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/development-python.png"))); // NOI18N
+	        jButtonAnalisis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/kexi.png"))); // NOI18N
+	        jButtonAnalisis.setText("Gestionar Anï¿½lisis");
+	        jButtonCompararMuestras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/development-python.png"))); // NOI18N
 	        jButtonCompararMuestras.setText("Comparar Muestras");
-	        jButtonCrearBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/kfloppy-2.png"))); // NOI18N
+	        jButtonCrearBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/kfloppy-2.png"))); // NOI18N
 	        jButtonCrearBackup.setText("Realizar Backup");
-	        jButtonClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accessories-calculator-3.png"))); // NOI18N
-	        jButtonClasificacion.setText("Calcular Clasificación");
-	        jButtonGestionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/internet-web-browser-3.png"))); // NOI18N
-	        jButtonGestionarUbicacion.setText("Gestionar Ubicación");
+	        jButtonClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accessories-calculator-3.png"))); // NOI18N
+	        jButtonClasificacion.setText("Calcular Clasificaciï¿½n");
+	        jButtonGestionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
+	        jButtonGestionarUbicacion.setText("Gestionar Ubicaciï¿½n");
 	        
 	        herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
 			menu.add(herramientas);
 			menu.add(ayuda);
 			gestionarUsuarioMenu = new JMenuItem("Gestionar Usuario");
-			gestionarUsuarioMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gobby.png"))); // NOI18N
+			gestionarUsuarioMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/gobby.png"))); // NOI18N
 
 			gestionarClienteMenu = new JMenuItem("Gestionar Cliente");
-			gestionarClienteMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/system-switch-user.png"))); // NOI18N
+			gestionarClienteMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/system-switch-user.png"))); // NOI18N
 
 			gestionarOperadorMenu = new JMenuItem("Gestionar Operador");
-			gestionarOperadorMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-engineering-3.png"))); // NOI18N
+			gestionarOperadorMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-engineering-3.png"))); // NOI18N
 
 			gestionarMuestraMenu = new JMenuItem("Gestionar Muestra");
-			gestionarMuestraMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-science-2.png"))); // NOI18N
+			gestionarMuestraMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-science-2.png"))); // NOI18N
 
-			gestionarAnalisisMenu = new JMenuItem("Gestionar Análisis");
-			gestionarAnalisisMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/kexi.png"))); // NOI18N
+			gestionarAnalisisMenu = new JMenuItem("Gestionar Anï¿½lisis");
+			gestionarAnalisisMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/kexi.png"))); // NOI18N
 
 			gestionarLimiteConsistenciaMenu = new JMenuItem("Gestionar Limite Consistencia");
-			gestionarLimiteConsistenciaMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/applications-office-3.png"))); // NOI18N
+			gestionarLimiteConsistenciaMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-office-3.png"))); // NOI18N
 
-			calcularClasificacionMenu = new JMenuItem("Calcular Clasificación");
-			calcularClasificacionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accessories-calculator-3.png"))); // NOI18N
+			calcularClasificacionMenu = new JMenuItem("Calcular Clasificaciï¿½n");
+			calcularClasificacionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accessories-calculator-3.png"))); // NOI18N
 
 			compararMuestrasMenu = new JMenuItem("Comparar Muestras");
-			compararMuestrasMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/development-python.png"))); // NOI18N
+			compararMuestrasMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/development-python.png"))); // NOI18N
 
 			crearBackupMenu = new JMenuItem("Crear BackUp");
-			crearBackupMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/kfloppy-2.png"))); // NOI18N
+			crearBackupMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/kfloppy-2.png"))); // NOI18N
 
 			cargarBackupMenu = new JMenuItem("Cargar BackUp");
-			cargarBackupMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/update_misc.png"))); // NOI18N
+			cargarBackupMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/update_misc.png"))); // NOI18N
 
-			gestionarUbicacionMenu = new JMenuItem("Gestionar Ubicación");
-			gestionarUbicacionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/internet-web-browser-3.png"))); // NOI18N
+			gestionarUbicacionMenu = new JMenuItem("Gestionar Ubicaciï¿½n");
+			gestionarUbicacionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
 
 			salirMenu = new JMenuItem("Salir");
-			salirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
+			salirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
 
 			herramientas.add(gestionarMuestraMenu);
 			herramientas.add(gestionarAnalisisMenu);
@@ -188,8 +188,14 @@ public class GUIPrincipal extends JFrame {
 			herramientas.add(cargarBackupMenu);
 			herramientas.add(new JSeparator());
 			herramientas.add(salirMenu);
-			versionMenu = new JMenuItem("Versión");
-			versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
+			String sSistemaOperativo = System.getProperty("os.name");
+			System.out.println(sSistemaOperativo);
+			if (sSistemaOperativo.equals("Linux")){
+				versionMenu = new JMenuItem("VersiÃ³n");
+			}else{
+				versionMenu = new JMenuItem("Versiï¿½n");
+			}
+			versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
 
 			ayuda.add(versionMenu);
 		
