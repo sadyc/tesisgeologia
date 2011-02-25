@@ -193,7 +193,7 @@ public class GUIPrincipal extends JFrame {
 			if (sSistemaOperativo.equals("Linux")){
 				versionMenu = new JMenuItem("VersiÃ³n");
 			}else{
-				versionMenu = new JMenuItem("Versiï¿½n");
+				versionMenu = new JMenuItem("Versión");
 			}
 			versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
 
