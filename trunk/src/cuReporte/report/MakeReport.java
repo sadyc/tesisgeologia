@@ -9,7 +9,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 public class MakeReport {
 	
 	public static String BASE = (new java.io.File("")).getAbsolutePath(); 
-	public static String PATH_SOURCE_REPORT = BASE + "/src/cuReporte/report/xml/";
+	public static String PATH_SOURCE_REPORT = BASE + "\\src/cuReporte/report/xml/";
  
 	public static String PATH_OUTPUT_REPORT = BASE + "/classes/cuReporte/report/xml";
 

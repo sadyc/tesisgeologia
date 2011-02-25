@@ -76,12 +76,17 @@ public class MediadorLogin extends Mediador {
 	 * Acciones a realizar cuando se selecciona la opcion de "Aceptar"
 	 * @throws Exception 
 	 */
-	public void aceptar() throws Exception{
+	public void aceptar() {
 		System.out.println("GestionarMediador.actionPerformed() jButtonAceptar");
 		String nombreUsuario = login.getJnombreUsuario().getText();
         String password =  login.getJpassword().getText();
         Encriptar encriptar =new Encriptar();
-        password = encriptar.hash(password);
+        try{
+        	password = encriptar.hash(password);
+        }
+		catch (Exception e){
+			System.out.println("Error al encriptar password");
+		}
         control = new ControlLogin(); 
         Usuario aux = new Usuario();
         try {
@@ -133,7 +138,11 @@ public class MediadorLogin extends Mediador {
 		}
 	}
 
-
+	public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == e.VK_ENTER)
+        	aceptar();
+	}
+	
 	@Override
 	public void itemStateChanged(ItemEvent arg0) {
 		// TODO Auto-generated method stub

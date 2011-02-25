@@ -108,11 +108,11 @@ public class MediadorAltaUsuario extends Mediador{
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
 		try{
 		 	if (GUIUsuario.getjTextFieldNombre().getText().equals("") || GUIUsuario.getjTextFieldApellido().getText().equals("") || GUIUsuario.getjTextFieldDni().getText().equals("") || GUIUsuario.getjPasswordField().getText().equals("")|| GUIUsuario.getjPasswordField2().getText().equals("")|| GUIUsuario.getjTextFieldNombreUsuario().getText().equals("")){
-	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				if (GUIUsuario.getjPasswordField2().getText().compareTo(GUIUsuario.getjPasswordField().getText()) != 0){
-					JOptionPane.showMessageDialog(frame,"Los Passwords no son iguales.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frame,"Los Passwords no son iguales.","Atención!", JOptionPane.ERROR_MESSAGE);
 				}
 				else{
 					insertarUsuario();
