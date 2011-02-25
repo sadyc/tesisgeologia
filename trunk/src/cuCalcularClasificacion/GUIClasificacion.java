@@ -35,10 +35,6 @@ import comun.TablePanel;
  * @author tesisGeologia.
  * @version 1.0
  */
-/**
- * @author NAVE
- *
- */
 public class GUIClasificacion extends JDialog{
 
 	private JMenuBar menu ;
@@ -61,9 +57,9 @@ public class GUIClasificacion extends JDialog{
 	private JLabel profundidadFinal;
 	private JLabel ubicacion;
 	private JLabel clasificacionSucs;
-	private JTextArea descripcionSucs;
+	private JLabel descripcionSucs;
 	private JLabel clasificacionAashto;
-	private JTextArea descripcionAashto;
+	private JLabel descripcionAashto;
 	private JLabel limiteLiquido;
 	private JLabel limitePlastico;
 	private JLabel indicePlasticidad;
@@ -106,7 +102,7 @@ public class GUIClasificacion extends JDialog{
 		profundidadFinal = new JLabel("Profundidad Final: ");
 		ubicacion = new JLabel ("Ubicación: ");
 		clasificacionSucs = new JLabel ("Clasificación: ");
-		descripcionSucs = new JTextArea ("Descripción: ");
+		descripcionSucs = new JLabel ("Descripción: ");
 		limiteLiquido = new JLabel ("Límite Líquido (LL): ");
 		limitePlastico = new JLabel ("Límite Plástico (LP): ");
 		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): ");
@@ -152,22 +148,20 @@ public class GUIClasificacion extends JDialog{
 		profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
 		ubicacion = new JLabel ("Ubicación: "+muestra.getUbicacion().getNombreUbicacion());
 		if (muestra.getSucs()==null){
-			descripcionSucs = new JTextArea ("Descripción: ");
+			descripcionSucs = new JLabel ("Descripción: ");
 			clasificacionSucs = new JLabel ("Clasificación: ");
 		}
 		else{
 			clasificacionSucs = new JLabel ("Clasificación: "+muestra.getSucs().getNombre());
-			descripcionSucs = new JTextArea ("Descripción: "+muestra.getSucs().getDescripcion());
-			descripcionSucs.setEditable(false);
+			descripcionSucs = new JLabel ("Descripción: "+muestra.getSucs().getDescripcion());
 		}
 		if (muestra.getAashto()==null){
-			descripcionAashto = new JTextArea ("Descripción: ");
+			descripcionAashto = new JLabel ("Descripción: ");
 			clasificacionAashto = new JLabel ("Clasificación: ");
 		}
 		else{
 			clasificacionAashto= new JLabel ("Clasificación: "+muestra.getAashto().getNombre());
-			descripcionAashto = new JTextArea ("Descripción: "+muestra.getAashto().getDescripcion());
-			descripcionAashto.setEditable(false);
+			descripcionAashto = new JLabel ("Descripción: "+muestra.getAashto().getDescripcion());
 		}
 		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    
 		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	
@@ -354,6 +348,8 @@ public class GUIClasificacion extends JDialog{
 			this.panelSucs.add(descripcionSucs,gbc);
 			gbc.gridx = 1;
 			gbc.gridy = 0;
+			this.panelSucs.add(new JLabel("       "),gbc);
+			gbc.gridx = 2;
 			this.panelSucs.add(new JLabel("DATOS DE LA CLASIFICACIÓN A.A.S.H.T.O "),gbc);
 			gbc.gridy = 1;
 			this.panelSucs.add(clasificacionAashto,gbc);
@@ -681,7 +677,7 @@ public class GUIClasificacion extends JDialog{
 	/**
 	 * @return the descripcionSucs
 	 */
-	public JTextArea getDescripcionSucs() {
+	public JLabel getDescripcionSucs() {
 		return descripcionSucs;
 	}
 
@@ -695,7 +691,7 @@ public class GUIClasificacion extends JDialog{
 	/**
 	 * @return the descripcionAashto
 	 */
-	public JTextArea getDescripcionAashto() {
+	public JLabel getDescripcionAashto() {
 		return descripcionAashto;
 	}
 
