@@ -37,6 +37,7 @@ import cuGestionarAnalisis.ControlGestionarAnalisis;
 public class ControlClasificacion {
 	 public static String BASE = (new java.io.File("")).getAbsolutePath(); 
  	 public static String PATH_SOURCE_REPORT = BASE + "/src/cuCalcularClasificacion/";
+ 	 public String filtro;
  	 
 	/**
 	 * Constructor por defecto de la clase.
@@ -55,12 +56,12 @@ public class ControlClasificacion {
 		Float gradoCurvatura = (truncaNum((muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60())));//grado de curvatura.
 		muestra.setGradoCurvatura(gradoCurvatura);
 		String clasificacion= new String(); 
+		filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && muestra.ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'";
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		SUCS clasificacionSUCS = new SUCS();
 		try{
 			Analisis analisis = new Analisis();
-			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'"; 
 			analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='200'");
 			if (analisis.getPorcentajePasante()<=50){
 				//suelo de particulas gruesas
@@ -165,12 +166,11 @@ public class ControlClasificacion {
 			persistencia.abrirTransaccion();
 			System.out.println(clasificacion);
 			clasificacionSUCS =((SUCS)persistencia.buscarObjeto(clasificacionSUCS.getClass(), "clasificacion=='"+clasificacion+"'"));
-			muestra = ((Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'"));
+			muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(),"nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
 			muestra.setSucs(clasificacionSUCS);
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
-			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
 			return clasificacionSUCS;	
@@ -185,13 +185,13 @@ public class ControlClasificacion {
 		persistencia.abrirTransaccion();
 		String clasificacion= new String();
 		AASHTO clasificacionAASHTO = new AASHTO();
+		filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && muestra.ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'";
 		calcularDiametro(muestra);
 		muestra.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));
 		Float gradoCurvatura = (truncaNum(muestra.getD30()*muestra.getD30()) /(muestra.getD10()*muestra.getD60()));//grado de curvatura.
 		muestra.setGradoCurvatura(gradoCurvatura);
 		try{
 			Analisis analisis = new Analisis();
-			String filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'";
 			analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), filtro+" && tamiz.numeroTamiz=='10'");
 			if (analisis.getPorcentajePasante()<50){
 				clasificacion=("A1a");
@@ -251,16 +251,14 @@ public class ControlClasificacion {
 			persistencia.cerrarTransaccion();
 			persistencia.abrirTransaccion();
 			clasificacionAASHTO =((AASHTO)persistencia.buscarObjeto(clasificacionAASHTO.getClass(), "clasificacion=='"+clasificacion+"'"));
-			muestra = ((Muestra)persistencia.buscarObjeto(muestra.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'"));
+			muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(),"nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
 			muestra.setAashto(clasificacionAASHTO);
 			muestra.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));
 			muestra.setGradoCurvatura(gradoCurvatura);
-			
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
 			System.out.println("No pudo insertar la clasificación con persistencia");
-			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
 		return clasificacionAASHTO;
@@ -275,7 +273,8 @@ public class ControlClasificacion {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Analisis analisis = new Analisis();
-		List listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+		filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && muestra.ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'";
+		List listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), filtro);
 		persistencia.cerrarTransaccion();
 		int i = 0;
 		boolean d60 = false;
@@ -291,7 +290,8 @@ public class ControlClasificacion {
 				double abertura1 = analisis.getTamiz().getAberturaMalla();
 				double exponente = (Math.log10(abertura1)-((pasante1-60)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 				Float calculo = new Float(Math.pow(10,exponente));
-				muestra.setD60((calculo));
+				muestra.setD60(truncaNum(calculo));
+				analisis= (Analisis)listaAnalisis.get(i);
 				d60 = true;
 			}
 			if (analisis.getPorcentajePasante()<30 && !d30){
@@ -302,23 +302,23 @@ public class ControlClasificacion {
 				double abertura1 = analisis.getTamiz().getAberturaMalla();
 				double exponente = (Math.log10(abertura1)-((pasante1-30)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
 				Float calculo = new Float(Math.pow(10,exponente));
-				muestra.setD30((calculo));
+				muestra.setD30(truncaNum(calculo));
 				d30 = true;
 				analisis= (Analisis)listaAnalisis.get(i);
-				}
-				if (analisis.getPorcentajePasante()<10 && !d10){
-					double pasante2 = analisis.getPorcentajePasante();
-					double abertura2 = analisis.getTamiz().getAberturaMalla();
-					analisis = (Analisis)listaAnalisis.get(i-1);
-					double pasante1 = analisis.getPorcentajePasante();
-					double abertura1 = analisis.getTamiz().getAberturaMalla();
-					double exponente = (Math.log10(abertura1)-((pasante1-10)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
-					Float calculo = new Float(Math.pow(10,exponente));
-					muestra.setD10((calculo));
-					d10 = true;
-				}
-				analisis = (Analisis)listaAnalisis.get(i);
-				i++;	
+			}
+			if (analisis.getPorcentajePasante()<10 && !d10){
+				double pasante2 = analisis.getPorcentajePasante();
+				double abertura2 = analisis.getTamiz().getAberturaMalla();
+				analisis = (Analisis)listaAnalisis.get(i-1);
+				double pasante1 = analisis.getPorcentajePasante();
+				double abertura1 = analisis.getTamiz().getAberturaMalla();
+				double exponente = (Math.log10(abertura1)-((pasante1-10)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
+				Float calculo = new Float(Math.pow(10,exponente));
+				muestra.setD10(truncaNum(calculo));		
+				d10 = true;
+			}
+			analisis = (Analisis)listaAnalisis.get(i);
+			i++;	
 		}
 		Float aberturaMalla = new Float(analisis.getTamiz().getAberturaMalla());
 		if (!d60) {
@@ -333,7 +333,7 @@ public class ControlClasificacion {
 		Persistencia persistencia2 = new Persistencia();
 		persistencia.abrirTransaccion();
 		Muestra muestraAux = new Muestra();
-		muestraAux = (Muestra)persistencia.buscarObjeto(muestraAux.getClass(), "nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"'");
+		muestraAux = (Muestra)persistencia.buscarObjeto(muestraAux.getClass(),"nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
 		muestraAux.setD10(muestra.getD10());
 		muestraAux.setD30(muestra.getD30());
 		muestraAux.setD60(muestra.getD60());
@@ -457,11 +457,12 @@ public class ControlClasificacion {
 	 * @return, retorna el valor de la búsqueda del analisis correspondiente.
 	 * @throws Exception
 	 */
-	public boolean buscarAnalisis(String tamiz, String nombreMuestra) throws Exception {
+	public boolean buscarAnalisis(String tamiz, Muestra muestra) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
+		filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && muestra.ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'";
 		Analisis aux = new Analisis();
-		aux = (Analisis)persistencia.buscarObjeto(aux.getClass(),"tamiz.numeroTamiz=='"+tamiz+"' && muestra.nombreMuestra=='"+nombreMuestra+"'");
+		aux = (Analisis)persistencia.buscarObjeto(aux.getClass(),filtro+" && tamiz.numeroTamiz=='"+tamiz+"'");
 		if(aux==null){
 			return false;
 		}else{
@@ -478,9 +479,9 @@ public class ControlClasificacion {
 	public static Float truncaNum(Float num) throws Exception{
 		float valor = 0;
 		valor = num;
-		valor = valor*10;
+		valor = valor*1000;
         valor = java.lang.Math.round(valor);
-        valor = valor/10;
+        valor = valor/1000;
         return valor;
     }
 	
