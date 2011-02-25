@@ -61,22 +61,17 @@ public class MediadorCalcularClasificacion extends Mediador{
 		boolean clasificar = true;
 		cargarTablaDeAnalisis(muestra);
 		ControlClasificacion control = new ControlClasificacion();
-		String nombreMuestra = muestra.getNombreMuestra();
 		if (!(data==null)){
-			if (control.buscarAnalisis("200",nombreMuestra) && control.buscarAnalisis("40",nombreMuestra)&& control.buscarAnalisis("10",nombreMuestra)  && muestra.getIndicePlasticidad()!=0){
-				if (muestra.getAashto()==null) {
-					muestra.setAashto(control.calcularClasificacionAASHTO(muestra));
-				}
+			if (control.buscarAnalisis("200",muestra) && control.buscarAnalisis("40",muestra)&& control.buscarAnalisis("10",muestra)  && muestra.getIndicePlasticidad()!=0){
+				muestra.setAashto(control.calcularClasificacionAASHTO(muestra));
 			}
 			else{
 				
 				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación AASHTO, Faltan análisis para los tamices 10, 40 ó 200","Atención!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 			}
-			if(control.buscarAnalisis("200",nombreMuestra) && control.buscarAnalisis("4",nombreMuestra) && muestra.getIndicePlasticidad()!=0){
-				if (muestra.getSucs()==null){
-					muestra.setSucs(control.calcularClasificacionSUCS(muestra));
-				}
+			if(control.buscarAnalisis("200",muestra) && control.buscarAnalisis("4",muestra) && muestra.getIndicePlasticidad()!=0){
+				muestra.setSucs(control.calcularClasificacionSUCS(muestra));
 			}
 			else{
 				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación SUCS, Faltan análisis o índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
