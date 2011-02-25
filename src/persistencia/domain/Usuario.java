@@ -47,14 +47,14 @@ public class Usuario extends Persona{
 	/**
 	 * @return the contrase�a
 	 */
-	public String getContrasenia() {
+	public String getPassword() {
 		return password;
 	}
 	/**
 	 * @param contrase�a the contrase�a to set
 	 */
-	public void setContrasenia(String contrasenia) {
-		this.password = contrasenia;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	/**

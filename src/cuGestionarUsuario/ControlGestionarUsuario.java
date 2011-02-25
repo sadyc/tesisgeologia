@@ -84,7 +84,7 @@ public class ControlGestionarUsuario {
 					aux.setCategoria(data[4]);
 					aux.setEmail(data[5]);
 					aux.setTel(data[6]);
-					aux.setContrasenia(data[7]);
+					aux.setPassword(data[7]);
 				}
 				else{
 					yaExiste=true;
@@ -100,7 +100,7 @@ public class ControlGestionarUsuario {
 						aux.setCategoria(data[4]);
 						aux.setEmail(data[5]);
 						aux.setTel(data[6]);
-						aux.setContrasenia(data[7]);
+						aux.setPassword(data[7]);
 					}
 					else{
 						yaExiste =true;
@@ -115,7 +115,7 @@ public class ControlGestionarUsuario {
 					aux.setCategoria(data[4]);
 					aux.setEmail(data[5]);
 					aux.setTel(data[6]);
-					aux.setContrasenia(data[7]);
+					aux.setPassword(data[7]);
 				}
 			}
 			persistencia.cerrarTransaccion();

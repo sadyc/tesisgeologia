@@ -59,7 +59,7 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-				if	(password.compareTo(usuario.getContrasenia())!=0){
+				if	(password.compareTo(usuario.getPassword())!=0){
 					JOptionPane.showMessageDialog(frame,"La contrase�a es incorrecta.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		 		}
 		 		else{
