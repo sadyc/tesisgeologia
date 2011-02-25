@@ -103,7 +103,7 @@ public class MediadorModificarOperador extends Mediador{
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
 		try{
 		 	if (GUIOperador.getjTextFieldNombre().getText().equals("") || GUIOperador.getjTextFieldApellido().getText().equals("") || GUIOperador.getjTextFieldDni().getText().equals("")){
-	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				modificarOperador();

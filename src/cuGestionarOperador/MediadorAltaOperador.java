@@ -111,7 +111,7 @@ public class MediadorAltaOperador extends Mediador{
 		System.out.println("Operador.actionPerformed() jButtonAceptar");
 		try{
 		 	if (GUIOperador.getjTextFieldNombre().getText().equals("") || GUIOperador.getjTextFieldApellido().getText().equals("") || GUIOperador.getjTextFieldDni().getText().equals("")){
-	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				insertarUsuario();
@@ -138,7 +138,7 @@ public class MediadorAltaOperador extends Mediador{
 				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
 			}else{
 				data[3]= GUIOperador.getjTextFieldTelefono().getText();
-				data[4]= GUIOperador.getjTextFieldEmail().getText().toUpperCase();
+				data[4]= GUIOperador.getjTextFieldEmail().getText();
 				operador = new OperadorDeLaboratorio(data[0],data[1],data[2],data[3],data[4]);
 				try {
 					control.insertarOperador(operador);
