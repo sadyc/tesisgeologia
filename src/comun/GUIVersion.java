@@ -64,13 +64,13 @@ public class GUIVersion extends javax.swing.JDialog {
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12));
         jLabel2.setForeground(new java.awt.Color(102, 102, 0));
-        jLabel2.setText("Versión 2011 (Compilación 1.0)");
+        jLabel2.setText("Versiï¿½n 2011 (Compilaciï¿½n 1.0)");
 
         jLabel4.setForeground(new java.awt.Color(102, 102, 0));
         jLabel4.setText("Finalizado Lunes 21 de Febrero de 2011");
 
         jLabel5.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 18));
-        jLabel5.setText("TesisGeología Soft.");
+        jLabel5.setText("TesisGeologï¿½a Soft.");
 
         jLabel3.setFont(new java.awt.Font("Andalus", 1, 12));
         jLabel3.setForeground(new java.awt.Color(0, 51, 0));

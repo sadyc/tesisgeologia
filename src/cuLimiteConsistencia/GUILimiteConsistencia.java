@@ -67,10 +67,10 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
         }
         initComponents();
         jButtonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
         agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
-        version.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png")));
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
+        version.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png")));
        
 }
 
@@ -133,9 +133,9 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        limiteLiquido.setText("Límite Líquido (LL)");
+        limiteLiquido.setText("Lï¿½mite Lï¿½quido (LL)");
 
-        limitePlastico.setText("Límite Plástico (LP)");
+        limitePlastico.setText("Lï¿½mite Plï¿½stico (LP)");
 
        // jTextFieldLL.addActionListener(new java.awt.event.ActionListener() {
            
@@ -178,7 +178,7 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
 
         ayuda.setText("Ayuda");
 
-        version.setText("Versión");
+        version.setText("Versiï¿½n");
         ayuda.add(version);
 
         jMenuBar1.add(ayuda);

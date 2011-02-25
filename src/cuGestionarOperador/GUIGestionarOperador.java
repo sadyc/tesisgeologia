@@ -17,7 +17,7 @@ import comun.TablePanel;
 
 /**
  * Esta clase implementa la ventana que me permite seleccionar un operador de laboratorio de los almacenados.
- * @author TesisGeología
+ * @author TesisGeologï¿½a
  * @version 1.0
 */
 public class GUIGestionarOperador extends JDialog	{
@@ -100,16 +100,16 @@ public class GUIGestionarOperador extends JDialog	{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButtonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-add.png"))); // NOI18N
+        jButtonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png"))); // NOI18N
         jButtonAgregar.setText("Agregar");
 
-        jButtonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-undo-4.png"))); // NOI18N
+        jButtonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png"))); // NOI18N
         jButtonModificar.setText("Modificar");
 
-        jButtonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/list-remove-5.png"))); // NOI18N
+        jButtonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/list-remove-5.png"))); // NOI18N
         jButtonEliminar.setText("Eliminar");
 
-        jButtonSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-ok-apply-6.png"))); // NOI18N
+        jButtonSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-ok-apply-6.png"))); // NOI18N
         jButtonSeleccionar.setText("Seleccionar");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -142,7 +142,7 @@ public class GUIGestionarOperador extends JDialog	{
         jPanel1.add(jPanel5);
         jPanel1.add(jPanel6);
 
-        jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
+        jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
         jButtonSalir.setText("Salir");
         jPanel1.add(jButtonSalir);
 
@@ -217,30 +217,30 @@ public class GUIGestionarOperador extends JDialog	{
         jMenu1.setText("Herramientas");
 
         jMenuAgregar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_INSERT, 0));
-        jMenuAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-add.png"))); // NOI18N
+        jMenuAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png"))); // NOI18N
         jMenuAgregar.setText("Agregar");
         jMenu1.add(jMenuAgregar);
 
         jMenuModificar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-undo-4.png"))); // NOI18N
+        jMenuModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png"))); // NOI18N
         jMenuModificar.setText("Modificar");
         jMenu1.add(jMenuModificar);
 
         jMenuEliminar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0));
-        jMenuEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/list-remove-5.png"))); // NOI18N
+        jMenuEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/list-remove-5.png"))); // NOI18N
         jMenuEliminar.setText("Eliminar");
         jMenu1.add(jMenuEliminar);
         jMenu1.add(jSeparator2);
 
         jMenuSeleccionar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
-        jMenuSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-ok-apply-6.png"))); // NOI18N
+        jMenuSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-ok-apply-6.png"))); // NOI18N
         jMenuSeleccionar.setText("Seleccionar");
         jMenu1.add(jMenuSeleccionar);
 
         jMenu1.add(jSeparator1);
 
         jMenuSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
-        jMenuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
+        jMenuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
         jMenuSalir.setText("Salir");
         jMenu1.add(jMenuSalir);
 
@@ -249,8 +249,8 @@ public class GUIGestionarOperador extends JDialog	{
         jMenu2.setText("Ayuda");
 
         jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
-        jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
-        jMenuVersion.setText("Versión");
+        jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
+        jMenuVersion.setText("Versiï¿½n");
         jMenu2.add(jMenuVersion);
 
         jMenuBar1.add(jMenu2);
@@ -303,7 +303,7 @@ public class GUIGestionarOperador extends JDialog	{
      *@return data  
     */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre","Apellido","DNI","Teléfono","E-mail"};
+		String[] columnName = {"Nombre","Apellido","DNI","Telï¿½fono","E-mail"};
 		return columnName;
 	}
 

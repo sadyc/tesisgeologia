@@ -111,7 +111,7 @@ public class MediadorLogin extends Mediador {
 				if (control.seEncontro() == false){
 					JOptionPane.showMessageDialog(frame,"El usuario es incorrecto","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 				}else{
-					if (password.compareTo(aux.getContraseña()) != 0){
+					if (password.compareTo(aux.getContrasenia()) != 0){
 						JOptionPane.showMessageDialog(frame,"El password es incorrecto","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 					}
 					else {

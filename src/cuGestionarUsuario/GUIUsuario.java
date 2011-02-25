@@ -142,7 +142,7 @@ public class GUIUsuario extends javax.swing.JDialog {
 
         jLabelDni.setText("(*) DNI: ");
 
-        jLabelTelefono.setText("Teléfono: ");
+        jLabelTelefono.setText("Telï¿½fono: ");
 
         jLabelEmail.setText("E-mail: ");
 
@@ -165,7 +165,7 @@ public class GUIUsuario extends javax.swing.JDialog {
 
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Operador", "Restringido" }));
 
-        jLabelCategoria.setText("(*) Categoría: ");
+        jLabelCategoria.setText("(*) Categorï¿½a: ");
 
         jMenuHerramientas.setText("Herramientas");
         
@@ -186,7 +186,7 @@ public class GUIUsuario extends javax.swing.JDialog {
 
         jMenuItemVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
         
-        jMenuItemVersion.setText("Versión");
+        jMenuItemVersion.setText("Versiï¿½n");
         jMenuAyuda.add(jMenuItemVersion);
 
         jMenuBar1.add(jMenuAyuda);

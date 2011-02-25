@@ -92,7 +92,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 		peso.setText(muestra.getPeso().toString());
 		profundidadInicial.setText(muestra.getProfundidadInicial().toString());
 		profundidadFinal.setText(muestra.getProfundidadFinal().toString());
-		ubicacion.setText("(*) Ubicación: "+ muestra.getUbicacion().getNombreUbicacion());
+		ubicacion.setText("(*) Ubicaciï¿½n: "+ muestra.getUbicacion().getNombreUbicacion());
 		operador.setText("(*) Operador: "+ muestra.getOperadorLaboratorio().getNombre()+" "+muestra.getOperadorLaboratorio().getApellido());
 		if (muestra.getCliente()!=null){
 			cliente.setText(" Cliente: "+ muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido());
@@ -235,10 +235,10 @@ public class GUIMuestra extends javax.swing.JDialog {
 
         jLabel4.setText("Profundidad Final: ");
 
-        ubicacion.setText("(*) Ubicación: ");
+        ubicacion.setText("(*) Ubicaciï¿½n: ");
 
         seleccionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
-        seleccionarUbicacion.setText("Seleccionar Ubicación"); 
+        seleccionarUbicacion.setText("Seleccionar Ubicaciï¿½n"); 
 
         operador.setText("(*) Operador: ");
 
@@ -263,7 +263,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 
         jMenuItemSeleccionarUbicacion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemSeleccionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
-        jMenuItemSeleccionarUbicacion.setText("Seleccionar Ubicación");
+        jMenuItemSeleccionarUbicacion.setText("Seleccionar Ubicaciï¿½n");
         jMenu1.add(jMenuItemSeleccionarUbicacion);
 
         jMenuItemSeleccionarOperador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
@@ -292,7 +292,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 
         versionMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        versionMenu.setText("Versión");
+        versionMenu.setText("Versiï¿½n");
         jMenu2.add(versionMenu);
 
         jMenuBar1.add(jMenu2);
