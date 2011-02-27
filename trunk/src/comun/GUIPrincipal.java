@@ -149,7 +149,7 @@ public class GUIPrincipal extends JFrame {
 			gestionarMuestraMenu = new JMenuItem("Gestionar Muestra");
 			gestionarMuestraMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-science-2.png"))); // NOI18N
 
-			gestionarAnalisisMenu = new JMenuItem("Gestionar An�lisis");
+			gestionarAnalisisMenu = new JMenuItem("Gestionar Análisis");
 			gestionarAnalisisMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/kexi.png"))); // NOI18N
 
 			gestionarLimiteConsistenciaMenu = new JMenuItem("Gestionar Limite Consistencia");
@@ -167,7 +167,7 @@ public class GUIPrincipal extends JFrame {
 			cargarBackupMenu = new JMenuItem("Cargar BackUp");
 			cargarBackupMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/update_misc.png"))); // NOI18N
 
-			gestionarUbicacionMenu = new JMenuItem("Gestionar Ubicaci�n");
+			gestionarUbicacionMenu = new JMenuItem("Gestionar Ubicaciósn");
 			gestionarUbicacionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
 
 			salirMenu = new JMenuItem("Salir");
