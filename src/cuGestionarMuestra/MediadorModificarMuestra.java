@@ -56,7 +56,7 @@ public class MediadorModificarMuestra extends Mediador{
 		operadorModificar = muestra.getOperadorLaboratorio();
 		clienteModificar = muestra.getCliente();
 								
-		GUIMuestra = new GUIMuestra(muestra);
+		GUIMuestra = new GUIMuestra(muestra,usuario);
 		GUIMuestra.setTitle("Modificar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
@@ -179,6 +179,7 @@ public class MediadorModificarMuestra extends Mediador{
 				if (clienteModificar!= null){
 					data[6]=clienteModificar.getNombre()+" "+clienteModificar.getApellido();
 				}
+				data[8]=usuario.getNombre()+" "+usuario.getApellido();
 			}
 		} catch (Exception e1) {
 			e1.printStackTrace();

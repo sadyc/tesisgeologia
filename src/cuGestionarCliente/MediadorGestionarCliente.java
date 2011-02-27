@@ -28,6 +28,7 @@ public class MediadorGestionarCliente extends Mediador{
 	private GUIGestionarOperador GUIGestionarCliente = null;
 	private Object [] seleccionado = new Object [5];
 	private boolean selecciono=false;
+	private boolean seleccionar;
 	private Object [][] data;
 	private Component frame;
 	private ControlGestionarCliente control = new ControlGestionarCliente();
@@ -39,6 +40,7 @@ public class MediadorGestionarCliente extends Mediador{
 	 */
 	public MediadorGestionarCliente(boolean seleccionar,boolean eliminar) throws Exception {
 		super();
+		this.seleccionar=seleccionar;
 		cargarTablaDeCliente();
 		GUIGestionarCliente = new GUIGestionarOperador(data);
 		GUIGestionarCliente.setTitle("Gestionar Clientes");
@@ -197,13 +199,25 @@ public class MediadorGestionarCliente extends Mediador{
 	 * Para tratar los eventos de mouse 
 	 */
 	public void mouseClicked(MouseEvent e){
-		if (e.getClickCount() == 2)
-			modificarCliente();
+		if (e.getClickCount() == 2){
+			if (seleccionar) {
+				seleccionarCliente();
+			}
+			else{
+				modificarCliente();
+			}
+		}
 	}
 	
 	public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == e.VK_ENTER)
-        	modificarCliente();
+        if (e.getKeyCode() == e.VK_ENTER){
+        	if (seleccionar) {
+				seleccionarCliente();
+			}
+			else{
+				modificarCliente();
+			}
+        }
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {

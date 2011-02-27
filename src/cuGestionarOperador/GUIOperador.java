@@ -329,6 +329,21 @@ public class GUIOperador extends javax.swing.JDialog {
 		this.jTextFieldTelefono = jTextFieldTelefono;
 	}
 
+	
+	/**
+	 * @param jLabelApellido the jLabelApellido to set
+	 */
+	public void setjLabelApellido(String jLabelApellido) {
+		this.jLabelApellido.setText(jLabelApellido);
+	}
+
+	/**
+	 * @param jLabelDni the jLabelDni to set
+	 */
+	public void setjLabelDni(String jLabelDni) {
+		this.jLabelDni.setText(jLabelDni);
+	}
+
 	/**
 	 * @return the jButtonAgregar
 	 */
