@@ -155,7 +155,7 @@ public class GUIPrincipal extends JFrame {
 			gestionarLimiteConsistenciaMenu = new JMenuItem("Gestionar Limite Consistencia");
 			gestionarLimiteConsistenciaMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-office-3.png"))); // NOI18N
 
-			calcularClasificacionMenu = new JMenuItem("Calcular Clasificaci�n");
+			calcularClasificacionMenu = new JMenuItem("Calcular Clasificación");
 			calcularClasificacionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accessories-calculator-3.png"))); // NOI18N
 
 			compararMuestrasMenu = new JMenuItem("Comparar Muestras");
@@ -193,7 +193,7 @@ public class GUIPrincipal extends JFrame {
 			if (sSistemaOperativo.equals("Linux")){
 				versionMenu = new JMenuItem("Versión");
 			}else{
-				versionMenu = new JMenuItem("Versi�n");
+				versionMenu = new JMenuItem("Versi�n");
 			}
 			versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
 
