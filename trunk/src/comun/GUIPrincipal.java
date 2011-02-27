@@ -129,9 +129,9 @@ public class GUIPrincipal extends JFrame {
 	        jButtonCrearBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/kfloppy-2.png"))); // NOI18N
 	        jButtonCrearBackup.setText("Realizar Backup");
 	        jButtonClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accessories-calculator-3.png"))); // NOI18N
-	        jButtonClasificacion.setText("Calcular Clasificaci�n");
+	        jButtonClasificacion.setText("Calcular Clasificación");
 	        jButtonGestionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
-	        jButtonGestionarUbicacion.setText("Gestionar Ubicaci�n");
+	        jButtonGestionarUbicacion.setText("Gestionar Ubicación");
 	        
 	        herramientas = new JMenu("Herramientas");
 			ayuda = new JMenu("Ayuda");
