@@ -14,6 +14,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
 import persistencia.domain.Muestra;
+import persistencia.domain.Usuario;
 
 /**
  * Clase GUI que reprensenta la ventana para una muestra.
@@ -64,7 +65,7 @@ public class GUIMuestra extends javax.swing.JDialog {
      * @param modal
      * @param nombreUsuario
      */
-    public GUIMuestra(boolean modal, String nombreUsuario) {
+    public GUIMuestra(boolean modal, Usuario usuario) {
         super();
         nombre = new JTextField(15);
         profundidadInicial = new JTextField(15);
@@ -72,7 +73,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 		peso = new JTextField(15);
         setModal(modal);
 	    initComponents();
-	    usuario.setText("Usuario: "+ nombreUsuario);
+	    this.usuario.setText("Usuario: "+usuario.getNombre()+" "+usuario.getApellido());
 	    setLocationRelativeTo(null);
     }
     
@@ -84,7 +85,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 	 * @param nombreCliente.
 	 * @param nombreUsuario
 	 */
-	public GUIMuestra(Muestra muestra) {
+	public GUIMuestra(Muestra muestra, Usuario usuario) {
 	
 		super();
 		initComponents();
@@ -100,7 +101,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 		else{
 			cliente.setText(" Cliente: ");
 		}
-		usuario.setText("Usuario: "+ muestra.getUsuario().getNombreUsuario());
+		this.usuario.setText("Usuario: "+usuario.getNombre()+" "+usuario.getApellido());
 		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png")));
 		aceptar.setText("Modificar");
 		setModal(true);

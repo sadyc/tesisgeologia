@@ -62,7 +62,7 @@ public class MediadorAltaMuestra extends Mediador{
 		ubicacion = new Ubicacion();
 		operador= new OperadorDeLaboratorio();
 		cliente = new Cliente();
-		GUIMuestra = new GUIMuestra(true, usuario.getNombre()+" "+usuario.getApellido());
+		GUIMuestra = new GUIMuestra(true, usuario);
 		GUIMuestra.setTitle("Ingresar Muestra");
 		GUIMuestra.setModal(true);
 		GUIMuestra.setListenerButtons(this);
@@ -194,9 +194,9 @@ public class MediadorAltaMuestra extends Mediador{
 		}
 		System.out.println("CLIENTE: "+muestra.getCliente().getNombre());
 		data[7]= ubicacion.getCiudad();
+		data[8]= usuario.getNombre()+ " "+ usuario.getApellido();
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-	    //GUIMuestra.get
 	    muestra = new Muestra(data[1],Float.parseFloat(data[2]),Float.parseFloat(data[3]),Float.parseFloat(data[4]),operador,usuario,ubicacion,null,null,cliente,sqlDate);
 		try {
 			controlMuestra.insertarMuestra(muestra, ubicacion, operador, cliente,usuario);

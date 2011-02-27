@@ -55,7 +55,7 @@ public class MediadorGestionarMuestra extends Mediador{
 		super();
 		this.usuario=usuario;
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad"};
+		String [] columAux = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad","Usuario"};
 		GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
 		GUIABMMuestra.setListenerButtons(this);
 		GUIABMMuestra.setListenerTable(this);
@@ -92,6 +92,7 @@ public class MediadorGestionarMuestra extends Mediador{
 		    	data [i][6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
 		    }
 		    data [i][7]= muestra.getUbicacion().getCiudad();
+		    data [i][8]= muestra.getUsuario().getNombre() + " " + muestra.getUsuario().getApellido();
 		    i++;
 		}
 	}
@@ -139,7 +140,7 @@ public class MediadorGestionarMuestra extends Mediador{
 			GUIABMMuestra.dispose();
 		}
 		if (GUIABMMuestra.getjMenuVersion()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 	
@@ -165,7 +166,7 @@ public class MediadorGestionarMuestra extends Mediador{
 				seleccionoMuestra = true;
 				muestra = control.obtenerMuestra((String)seleccionado[1], (String)seleccionado[0], (String)seleccionado[7]);
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invalido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 	}
 
@@ -254,6 +255,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_ENTER)
         	seleccionarMuestra();
+    		analisis();
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {

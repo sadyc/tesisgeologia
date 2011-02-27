@@ -24,7 +24,7 @@ public class MediadorModificarCliente extends Mediador{
 	
 	private GUIOperador GUICliente;
 	private boolean modificoCliente;
-	private String[] data = new String [7];
+	private String[] data = new String [10];
 	private Component frame;
 	private Cliente clienteModificar;
 	private ControlGestionarCliente control = new ControlGestionarCliente();
@@ -43,6 +43,7 @@ public class MediadorModificarCliente extends Mediador{
 		GUICliente.setListenerButtons(this);
 		GUICliente.setModal(true);
 		GUICliente.setLocationRelativeTo(null);
+		GUICliente.setjLabelApellido("Apellido: ");
 		GUICliente.show();
 	}
 	

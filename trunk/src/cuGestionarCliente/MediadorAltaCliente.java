@@ -44,6 +44,7 @@ public class MediadorAltaCliente extends Mediador{
 		GUICliente.setListenerButtons(this);
 		GUICliente.setModal(true);
 		GUICliente.setLocationRelativeTo(null);
+		GUICliente.setjLabelApellido("Apellido: ");
 		GUICliente.show();
 	}
 	

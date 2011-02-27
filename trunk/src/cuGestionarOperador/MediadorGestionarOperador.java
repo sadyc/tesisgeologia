@@ -14,6 +14,8 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import org.apache.tools.ant.taskdefs.Sleep;
+
 import comun.MediadorVersion;
 
 import persistencia.domain.OperadorDeLaboratorio;
@@ -31,6 +33,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 	private GUIGestionarOperador GUIGestionarOperador = null;
 	private Object [] seleccionado;
 	private boolean selecciono= false;
+	private boolean seleccionar;
 	private Object [][] data;
 	private Component frame;
 	private ControlGestionarOperador control; 
@@ -42,6 +45,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 	 */
 	public MediadorGestionarOperador(boolean seleccionar,boolean eliminar) throws Exception {
 		super();
+		this.seleccionar=seleccionar;
 		cargarTablaDeOperador();
 		GUIGestionarOperador = new GUIGestionarOperador(data);
 		GUIGestionarOperador.setTitle("Seleccionar un Operador");
@@ -210,13 +214,25 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 	 * Para tratar los eventos de mouse 
 	 */
 	public void mouseClicked(MouseEvent e){
-		if (e.getClickCount() == 2)
-			modificarOperador();
+		if (e.getClickCount() == 2){
+			if (seleccionar) {
+				seleccionarOperador();
+			}
+			else{
+				modificarOperador();
+			}
+		}
 	}
 	
 	public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == e.VK_ENTER)
-        	modificarOperador();
+        if (e.getKeyCode() == e.VK_ENTER){
+        	if (seleccionar) {
+				seleccionarOperador();
+			}
+			else{
+				modificarOperador();
+			}
+        }
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {

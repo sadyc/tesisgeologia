@@ -31,6 +31,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 	private Object [][] data;
 	private String [] seleccionado = new String[4];
 	private boolean selecciono=false;
+	private boolean seleccionar;
 	private Component frame;
 	
 	
@@ -41,6 +42,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 	public MediadorGestionarUbicacion(boolean seleccionar,boolean eliminar) throws Exception {
 		super();
 		cargarTablaDeMuestras();
+		this.seleccionar=seleccionar;
 		GUIGestionarUbicacion = new GUIGestionarUbicacion(data);
 		GUIGestionarUbicacion.setTitle("Gestionar Ubicacion");
 		GUIGestionarUbicacion.setModal(true);
@@ -209,14 +211,24 @@ public class MediadorGestionarUbicacion extends Mediador{
 	 */
 	public void mouseClicked(MouseEvent e){
 		if (e.getClickCount() == 2){
-			seleccionar();
-			
+			if (seleccionar) {
+				seleccionar();
+			}
+			else{
+				modificar();
+			}
 		}
 	}
 	
 	public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == e.VK_ENTER)
-        	seleccionar();
+        if (e.getKeyCode() == e.VK_ENTER){
+        	if (seleccionar) {
+				seleccionar();
+			}
+			else{
+				modificar();
+			}
+        }
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {
