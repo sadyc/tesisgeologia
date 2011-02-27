@@ -18,7 +18,7 @@ import comun.MediadorVersion;
 
 /**
  * Clase que se utiliza para escuchar los eventos al seleccionar una muesta.
-* @author TesisGeología
+* @author TesisGeologï¿½a
 * @version 1.0.
 */
 
@@ -38,7 +38,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	public MediadorSeleccionarMuestra() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad"};
+		String [] columAux = {"Ubicaciï¿½n","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad"};
 		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
@@ -120,7 +120,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	 */
 	public void seleccionarMuestra(){
 		if (GUIABMMuestra.InicializarTabla().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningï¿½n elemento a modificar","Atenciï¿½n!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			System.out.println("Button Seleccionar Muestra");
@@ -129,7 +129,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 				seleccionoMuestra = true;
 				GUIABMMuestra.dispose();
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invï¿½lido","Atenciï¿½n!", JOptionPane.ERROR_MESSAGE);
 			}
    				   		
 		}

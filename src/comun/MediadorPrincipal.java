@@ -32,8 +32,8 @@ public class MediadorPrincipal extends Mediador{
 		
 	/**
 	 * Constructor parametrizado de la clase.
-	 * @param nombreVentana, Título de la ventana.
-	 * @param usuario, Usuario que inició sesión en el sistema.
+	 * @param nombreVentana, Tï¿½tulo de la ventana.
+	 * @param usuario, Usuario que iniciï¿½ sesiï¿½n en el sistema.
 	 * @throws Exception
 	 */
 	public MediadorPrincipal(String nombreVentana, Usuario usuario) throws Exception {
@@ -77,7 +77,7 @@ public class MediadorPrincipal extends Mediador{
 		
 	}
 	/**
-	 * Método que permite visualizar la ventana.
+	 * Mï¿½todo que permite visualizar la ventana.
 	 */
 	public void show(){
 		GUIPrincipal.show();
@@ -136,7 +136,7 @@ public class MediadorPrincipal extends Mediador{
 			backup.elegirDirectorio();
 		}
 		if (this.GUIPrincipal.getjButtonCargarBackup()==source || this.GUIPrincipal.getCargarBackupMenu()==source){
-			backup.cargarBackUpWindowsX86();
+			backup.cargarBackup();
 		}
 		if (this.GUIPrincipal.getjButtonGestionarUbicacion()==source || this.GUIPrincipal.getGestionarUbicacionMenu()==source){
 			gestionarUbicacion();
