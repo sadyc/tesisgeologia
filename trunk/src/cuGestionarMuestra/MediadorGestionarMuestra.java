@@ -22,9 +22,7 @@ import cuGestionarAnalisis.MediadorGestionarAnalisis;
 
 
 /**
- *
  * @brief Clase que se utiliza para escuchar los eventos que suceden en la ventana de GestionarMuestra
- *
  * @author TesisGeologia
  * @version 1.0.
  */
@@ -41,21 +39,15 @@ public class MediadorGestionarMuestra extends Mediador{
 		
 	/**
 	 * Constructor parametrizado de la clase.
-	 * @param nombreVentana, Título de la ventana.
-	 * @param usuario, Usuario que inició sesión en el sistema.
-	 * @throws Exception
-	 */
-	/**
-	 * Contructor con pasaje de parametros.
-	 * @param nombreVentana
-	 * @param usuario
+	 * @param nombreVentana, Tï¿½tulo de la ventana.
+	 * @param usuario, Usuario que iniciï¿½ sesiï¿½n en el sistema.
 	 * @throws Exception
 	 */
 	public MediadorGestionarMuestra(String nombreVentana, Usuario usuario) throws Exception {
 		super();
 		this.usuario=usuario;
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad","Usuario"};
+		String [] columAux = {"Ubicaciï¿½n","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad","Usuario"};
 		GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
 		GUIABMMuestra.setListenerButtons(this);
 		GUIABMMuestra.setListenerTable(this);
@@ -70,7 +62,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	
 	
 	/**
-	 * Levanta información almacenada en la base de datos y los copia sobre el atributo data de la clase mediador.
+	 * Levanta informaciï¿½n almacenada en la base de datos y los copia sobre el atributo data de la clase mediador.
 	 */
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
@@ -98,7 +90,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	}
 			
 	/**
-	 * Método que me permite visualizar la ventana.
+	 * Mï¿½todo que me permite visualizar la ventana.
 	 */
 	public void show()	{
 		 GUIABMMuestra.show();
@@ -113,7 +105,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	}
 	
 	/**
-	 * Método que se necesita definir al implementar la interface ActionListener 
+	 * Mï¿½todo que se necesita definir al implementar la interface ActionListener 
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
@@ -130,7 +122,7 @@ public class MediadorGestionarMuestra extends Mediador{
 
 		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || this.GUIABMMuestra.getjMenuSeleccionar() == source){
 			if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna muestra","Atención", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna muestra","Atenciï¿½n", JOptionPane.WARNING_MESSAGE);
 			}else{
 				seleccionarMuestra();
 				analisis();
@@ -166,16 +158,16 @@ public class MediadorGestionarMuestra extends Mediador{
 				seleccionoMuestra = true;
 				muestra = control.obtenerMuestra((String)seleccionado[1], (String)seleccionado[0], (String)seleccionado[7]);
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invï¿½lido","Atenciï¿½n!", JOptionPane.ERROR_MESSAGE);
 			}
 	}
 
 	/**
-	 * Acciones a realizar cuando se selecciona la opción de "Modificar Muestra"
+	 * Acciones a realizar cuando se selecciona la opciï¿½n de "Modificar Muestra"
 	 */
 	public void modificarMuestra(){
 		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningï¿½n elemento a modificar","Atenciï¿½n!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
@@ -193,14 +185,14 @@ public class MediadorGestionarMuestra extends Mediador{
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opción de "Eliminar Muestra"
+	 * Acciones a realizar cuando se selecciona la opciï¿½n de "Eliminar Muestra"
 	 */
 	public void eliminarMuestra(){
 		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a eliminar","Atención!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningï¿½n elemento a eliminar","Atenciï¿½n!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
-		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Está Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"ï¿½Estï¿½ Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
             if(quitOption==JOptionPane.YES_OPTION){
             	try{
             		String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
@@ -215,14 +207,14 @@ public class MediadorGestionarMuestra extends Mediador{
 	               	}
             	}
             	catch (Exception e) {
-            		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
+            		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invï¿½lido","Atenciï¿½n!", JOptionPane.ERROR_MESSAGE);
             	}
             }
 		}
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opción de "Agregar Muestra"
+	 * Acciones a realizar cuando se selecciona la opciï¿½n de "Agregar Muestra"
 	 */
 	public void agregarMuestra(){
 		try {
@@ -253,9 +245,10 @@ public class MediadorGestionarMuestra extends Mediador{
 	 * @see comun.Mediador#keyPressed(java.awt.event.KeyEvent)
 	 */
 	public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == e.VK_ENTER)
+        if (e.getKeyCode() == e.VK_ENTER){
         	seleccionarMuestra();
     		analisis();
+        }
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {

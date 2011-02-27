@@ -8,7 +8,6 @@ import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -20,7 +19,7 @@ import javax.swing.JSeparator;
 
 /**
 * Esta clase implementa la ventana principal del programa, con los botones de sus principales funcionalidades.
-* @author TesisGeolog�a
+* @author TesisGeología
 * @version 1.0
 */
 public class GUIPrincipal extends JFrame {
@@ -61,7 +60,7 @@ public class GUIPrincipal extends JFrame {
 	  
 	/**
 	 * Constructor de la clase.
-	 * @param title, es el titulo que va a tener la ventana.
+	 * @param title, es el título que va a tener la ventana.
 	 * @throws Exception
 	 */
 	public GUIPrincipal(String title) throws Exception {
@@ -167,7 +166,7 @@ public class GUIPrincipal extends JFrame {
 			cargarBackupMenu = new JMenuItem("Cargar BackUp");
 			cargarBackupMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/update_misc.png"))); // NOI18N
 
-			gestionarUbicacionMenu = new JMenuItem("Gestionar Ubicaciósn");
+			gestionarUbicacionMenu = new JMenuItem("Gestionar Ubicación");
 			gestionarUbicacionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
 
 			salirMenu = new JMenuItem("Salir");

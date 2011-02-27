@@ -146,17 +146,17 @@ public class MediadorAltaMuestra extends Mediador{
 	public void aceptar(){
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
 		try{
-		 	if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("(*) Ubicación:") || GUIMuestra.getOperador().getText().equals("(*) Operador:") ){
-	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención", JOptionPane.WARNING_MESSAGE);
+		 	if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("(*) Ubicaciï¿½n:") || GUIMuestra.getOperador().getText().equals("(*) Operador:") ){
+	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atenciï¿½n", JOptionPane.WARNING_MESSAGE);
 			}
 			else {
 				if (Float.parseFloat(GUIMuestra.getPeso().getText().replace(",", ".")) <= 0 || Float.parseFloat(GUIMuestra.getPeso().getText().replace(",", ".")) > 5000) {
-					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","Atención", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","Atenciï¿½n", JOptionPane.WARNING_MESSAGE);
 				}
 				else {
 					if (!GUIMuestra.getProfundidadInicial().getText().equals("") && !GUIMuestra.getProfundidadFinal().getText().equals("")){
 						if (Float.parseFloat(GUIMuestra.getProfundidadFinal().getText().replace(",",".")) < Float.parseFloat(GUIMuestra.getProfundidadInicial().getText().replace(",","."))){
-							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","Atención", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","Atenciï¿½n", JOptionPane.WARNING_MESSAGE);
 						}
 						else{
 							insertarMuestra();
@@ -170,7 +170,7 @@ public class MediadorAltaMuestra extends Mediador{
 		}
 		catch (NumberFormatException e){
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(frame,"El formato de uno de los números no es correcto, sólo deben poseer un punto(.)","Atención", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"El formato de uno de los nï¿½meros no es correcto, sï¿½lo deben poseer un punto(.)","Atenciï¿½n", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 	
@@ -201,7 +201,7 @@ public class MediadorAltaMuestra extends Mediador{
 		try {
 			controlMuestra.insertarMuestra(muestra, ubicacion, operador, cliente,usuario);
 			if (controlMuestra.getExiste()) {
-				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+"+localidad de"+data[7]+", ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+"+localidad de"+data[7]+", ya existe. Por favor ingrese otra.","Atenciï¿½n!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				altaMuestra = true;
