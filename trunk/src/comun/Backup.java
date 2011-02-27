@@ -8,19 +8,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.sql.DriverManager;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
-
 /**
-* Esta clase implementa los métodos que permiten realizar y recuperar back-up de la base de datos.
-* @author TesisGeología
+* Esta clase implementa los mÃ©todos que permiten realizar y recuperar back-up de la base de datos.
+* @author TesisGeologÃ­a
 * @version 1.0
 */
 public class Backup {
@@ -37,10 +33,10 @@ public class Backup {
     
     }
     /**
-     * Método que me permite elegir el directorio donde se va a guardar el Back-Up.
+     * MÃ©todo que me permite elegir el directorio donde se va a guardar el Back-Up.
      */
     public void elegirDirectorio(){
-    	JOptionPane.showMessageDialog(null, "Por favor elija la ubicación donde guardará el Back-Up", "Verificar",JOptionPane.INFORMATION_MESSAGE);
+    	JOptionPane.showMessageDialog(null, "Por favor elija la ubicaciÃ³n donde guardarÃ¡ el Back-Up", "Verificar",JOptionPane.INFORMATION_MESSAGE);
 		 JFileChooser directorio = new JFileChooser();
         int seleccion = directorio.showSaveDialog(new JPanel());
         directorio.setDialogType(directorio.DIRECTORIES_ONLY);
@@ -52,64 +48,56 @@ public class Backup {
 	                f = new File(filePath + ".sql");
 	                filePath = f.getPath();  
 	            }
-	            crearBackUpWindowsX86(); 
+	            crearBackup(); 
         }
     }
     
     /**
-     * Método que permite cargar el Back-Up tomando el directorio de MySQL 5.1 en el sitema operativo Windows de 32 bits. 
-     */
+     * MÃ©todo que permite cargar el Back-Up tomando el directorio de MySQL 5.1 en el sitema operativo Windows de 32 bits. 
+     
     public void cargarBackUpWindowsX86(){
-    	cargarBackup("C:/Program Files/MySQL/MySQL Server 5.1/bin/","Falló el backup de windows de 32 bits");
+    	cargarBackup("C:/Program Files/MySQL/MySQL Server 5.1/bin/","Fallï¿½ el backup de windows de 32 bits");
     }
     
     /**
-     * Método que permite cargar el Back-Up tomando el directorio de MySQL 5.1 en el sitema operativo Windows de 64 bits.
-     */
+     * MÃ©todo que permite cargar el Back-Up tomando el directorio de MySQL 5.1 en el sitema operativo Windows de 64 bits.
+     
     public void cargarBackUpWindowsX64(){
-    	cargarBackup("C:/Program Files (x86)/MySQL/MySQL Server 5.1/bin/","Falló el backup de windows de 64 bits");
+    	cargarBackup("C:/Program Files (x86)/MySQL/MySQL Server 5.1/bin/","Fallï¿½ el backup de windows de 64 bits");
     }
     
     /**
-     * Método que permite crear el Back-Up tomando el directorio de MySQL 5.1 en el sitema operativo Windows de 32 bits. 
-     */
+     * MÃ©todo que permite crear el Back-Up tomando el directorio de MySQL 5.1 en el sitema operativo Windows de 32 bits. 
+     
     public void crearBackUpWindowsX86(){
-    	crearBackup("C:/Program Files/MySQL/MySQL Server 5.1/bin/","Falló el backup de windows de 32 bits");
+    	crearBackup("C:/Program Files/MySQL/MySQL Server 5.1/bin/","Fallï¿½ el backup de windows de 32 bits");
     }
     
     /**
-     * Método que permite crear el Back-Up tomando el directorio de MySQL 5.1 en el sitema operativo Windows de 64 bits.
-     */
+     * MÃ©todo que permite crear el Back-Up tomando el directorio de MySQL 5.1 en el sitema operativo Windows de 64 bits.
+     
     public void crearBackUpWindowsX64(){
-    	crearBackup("C:/Program Files (x86)/MySQL/MySQL Server 5.1/bin/","Falló el backup de windows de 64 bits");
+    	crearBackup("C:/Program Files (x86)/MySQL/MySQL Server 5.1/bin/","Fallï¿½ el backup de windows de 64 bits");
     }
     
 
     /**
-     * Método que ejecuta todas las instrucciones que permiten cargar un Back-Up previamente realizado.
+     * MÃ©todo que ejecuta todas las instrucciones que permiten cargar un Back-Up previamente realizado.
      */
-	public void cargarBackup(String dirMySQL, String error) {
+	public void cargarBackup() {
 		 JOptionPane.showMessageDialog(null, "Por favor seleccione el archivo.", "Verificar",JOptionPane.INFORMATION_MESSAGE);
 		 JFileChooser directorio = new JFileChooser();
 	     directorio.setFileSelectionMode(JFileChooser.FILES_ONLY);
 	     int seleccion = directorio.showOpenDialog(new JPanel());
 	     directorio.setDialogType(directorio.DIRECTORIES_ONLY);
 	     if (seleccion == JFileChooser.APPROVE_OPTION){
-	    	 int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"Recuerde que al Cargar Back-Up, perderá aquella información \nalmacenada posteriormente al último Back-Up realizado. \n¿Está Seguro de cargar Back-Up?","Cargar Back-Up",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+	    	 int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"Recuerde que al Cargar Back-Up, perderï¿½ aquella informaciï¿½n \nalmacenada posteriormente al Ãšltimo Back-Up realizado. \n Â¿EstÃ¡ Seguro de cargar Back-Up?","Cargar Back-Up",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	    	 if(quitOption==JOptionPane.YES_OPTION)	{
-	    		 try {
-	    			 eliminarDB();
-	    		 }
-	    		 catch (Exception e){
-	    			 System.out.println("No se encontró la base de datos!!");
-	    		 }	
-	    		 finally{
-	    			 File f = directorio.getSelectedFile();
+	    		 	 File f = directorio.getSelectedFile();
 	    			 filePath = f.getPath();
 	    			 try {
-	    				 crearDB();
 	    				 // Ejecucion del cliente mysql
-	    				 Process p = Runtime.getRuntime().exec(dirMySQL+"mysql -u root -proot tesis");
+	    				 Process p = Runtime.getRuntime().exec("mysql -u root -proot tesis");
 	    				 // Lectura de la salida de error y se muestra por pantalla.
 	    				 InputStream es = p.getErrorStream();
 	    				 muestraSalidaDeError(es);
@@ -125,21 +113,15 @@ public class Backup {
 	    				 }
 	    				 os.close();
 	    				 fis.close();
-	    				 JOptionPane.showMessageDialog(null, "Se ha cargado el Back-Up con éxito", "Exito!",JOptionPane.INFORMATION_MESSAGE);
+	    				 JOptionPane.showMessageDialog(null, "Se ha cargado el Back-Up con Ã©xito", "Ã‰xito!",JOptionPane.INFORMATION_MESSAGE);
 	    			 } catch (Exception e) {	
-	    				 System.out.println(error);
-	    				 if(error.compareTo("Falló el backup de windows de 64 bits")!=0){
-	    					 cargarBackUpWindowsX64();
-	    				 }
-	    				 else{
-	    					 JOptionPane.showMessageDialog(null, "No se ha cargado el Back-Up", "Error!",JOptionPane.INFORMATION_MESSAGE);
-	    				 }
+	    				 JOptionPane.showMessageDialog(null, "No se ha cargado el Back-Up", "Error!",JOptionPane.INFORMATION_MESSAGE);
 	    			 }
 	    		 }    
 	    	 }
 	     }
 
-	}
+	
 	
 
 	 private void muestraSalidaDeError(final InputStream es) {
@@ -162,13 +144,16 @@ public class Backup {
 	    }
 	
 	/**
-	 * Método que ejecuta todas las instrucciones que permiten crear el Back-Up de la base de datos.
-	 * @param dirMySQL, directorio en donde se encuentra instalado MySQL Server 5.1.
-	 * @param error, contenido del mensaje en caso de error.
+	 * MÃ©todo que ejecuta todas las instrucciones que permiten crear el Back-Up de la base de datos.
 	 */
-	 public void crearBackup(String dirMySQL, String error){
+	 public void crearBackup(){
 		 try{       
-			 Process run = Runtime.getRuntime().exec(dirMySQL+"mysqldump --host=localhost --port=3306 --user=root --password=root tesis");
+//WINDOWS			 Process run = Runtime.getRuntime().exec(dirMySQL+"mysqldump --host=localhost --port=3306 --user=root --password=root tesis");
+		//	 Process run = Runtime.getRuntime().exec("mysqldump -u root -p --all-databases > "+dirMySQL);
+			 
+// ANDA EN CONSOLA PERO ACA NO
+			 Process run = Runtime.getRuntime().exec("mysqldump --host=localhost --port=3306 --user=root --password=root tesis");
+			 
 			 InputStream in = run.getInputStream();
 			 BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			 File backupFile = new File(filePath);
@@ -188,13 +173,10 @@ public class Backup {
 			 fichero = new FileWriter(backupFile);
 			 pw = new PrintWriter(fichero);                                         
 			 pw.println(temp.toString());  
-			 JOptionPane.showMessageDialog(null, "Se ha creado el Back-Up con éxito", "Exito!",JOptionPane.INFORMATION_MESSAGE);
+			 JOptionPane.showMessageDialog(null, "Se ha creado el Back-Up con Ã©xito", "Ã‰xito!",JOptionPane.INFORMATION_MESSAGE);
 		 }
 		 catch (Exception ex){
-			 System.out.println(error);
-			 if(error.compareTo("Falló el backup de windows de 64 bits")!=0){
-				 crearBackUpWindowsX64();
-			 }
+			 JOptionPane.showMessageDialog(null, "No se ha cargado el Back-Up", "Error!",JOptionPane.INFORMATION_MESSAGE);
 		 } finally {
 			 try {           
 				 if (null != fichero)
@@ -206,9 +188,9 @@ public class Backup {
 	 }  
 	
 	 /**
-	  * Método que permite eliminar la base de datos existente para evitar el surgimiento de conflictos.	 
+	  * MÃ©todo que permite eliminar la base de datos existente para evitar el surgimiento de conflictos.	 
 	  * @throws Exception
-	  */
+	  
 	 public void eliminarDB() throws Exception {
 			Statement stmt;
 			        Class.forName("com.mysql.jdbc.Driver");
@@ -220,9 +202,9 @@ public class Backup {
 	 }
 	 
 	 /**
-	  * Método que permite crear la base de datos para montar el back-up.
+	  * MÃ©todo que permite crear la base de datos para montar el back-up.
 	  * @throws Exception
-	  */
+	  
 	 public void crearDB() throws Exception {
 			Statement stmt;
 			Class.forName("com.mysql.jdbc.Driver");
@@ -232,4 +214,5 @@ public class Backup {
 			stmt.executeUpdate("CREATE DATABASE tesis");
 			con.close();
 	 }
+	 */
 }
