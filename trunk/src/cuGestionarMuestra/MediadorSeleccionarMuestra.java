@@ -37,6 +37,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	 * Constructor por defecto de la clase.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorSeleccionarMuestra() throws Exception {
 		super();
 		cargarTablaDeMuestras();
@@ -62,6 +63,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	 * Levanta informacion almacenada en la 
 	 * base de datos al atributo data de la clase mediador.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		Muestra muestra = new Muestra();
@@ -113,7 +115,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 			GUIABMMuestra.dispose();
 		}
 		if (GUIABMMuestra.getjMenuVersion()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 	
@@ -168,6 +170,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 			seleccionarMuestra();
 	}
 	
+	@SuppressWarnings("static-access")
 	public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_ENTER)
         	seleccionarMuestra();

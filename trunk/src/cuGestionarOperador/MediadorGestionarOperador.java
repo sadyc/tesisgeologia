@@ -14,11 +14,9 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import org.apache.tools.ant.taskdefs.Sleep;
+import persistencia.domain.OperadorDeLaboratorio;
 
 import comun.MediadorVersion;
-
-import persistencia.domain.OperadorDeLaboratorio;
 
 
 /**
@@ -43,6 +41,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 	 * Constructor por defecto de la clase.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorGestionarOperador(boolean seleccionar,boolean eliminar) throws Exception {
 		super();
 		this.seleccionar=seleccionar;
@@ -66,6 +65,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 	 * Levanta informacion almacenada en la 
 	 * base de datos al atributo data de la clase mediador.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void cargarTablaDeOperador()throws Exception{
 		OperadorDeLaboratorio operador = new OperadorDeLaboratorio();
 		Class clase = operador.getClass();
@@ -224,6 +224,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_ENTER){
         	if (seleccionar) {

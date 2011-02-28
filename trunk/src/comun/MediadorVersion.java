@@ -16,6 +16,7 @@ public class MediadorVersion extends Mediador {
 	/**
 	 *Constructor por defecto. 
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorVersion () {
 		super();
 		this.GUIVersion = new GUIVersion();

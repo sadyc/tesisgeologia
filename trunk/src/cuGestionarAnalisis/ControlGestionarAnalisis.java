@@ -32,6 +32,7 @@ public class ControlGestionarAnalisis {
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressWarnings("rawtypes")
 	public String[] insertarAnalisis(Analisis analisis,Muestra muestra, String numeroTamiz) throws Exception{
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
@@ -97,7 +98,8 @@ public class ControlGestionarAnalisis {
          * Recalcula los analisis después de eliminar o modificar.
          * @param analisis, analisis a recalcular. 
          */
-        public void recalcularAnalisis(Analisis analisis) throws Exception {
+        @SuppressWarnings("rawtypes")
+		public void recalcularAnalisis(Analisis analisis) throws Exception {
         	Persistencia persistencia = new Persistencia();
     		persistencia.abrirTransaccion();
     		Muestra muestra = new Muestra();
@@ -137,7 +139,8 @@ public class ControlGestionarAnalisis {
          * @param muestra, muestra de la que se desean obtener los an�lisis.
          * @return coleccion de analisis de una muestra.
          */
-        public Collection coleccionAnalisisDeMuestra(Class clase,Muestra muestra) throws Exception {
+        @SuppressWarnings({ "rawtypes", "unchecked" })
+		public Collection coleccionAnalisisDeMuestra(Class clase,Muestra muestra) throws Exception {
                 Collection<Object> aux = null; 
                 Persistencia persistencia = new Persistencia();
                 persistencia.abrirTransaccion();
@@ -199,7 +202,8 @@ public class ControlGestionarAnalisis {
          * @return el último análisis calculado a la muestra pasada como parámetro.
          * @throws Exception
          */
-        public Analisis ultimoAnalisis(Muestra muestra) throws Exception{
+        @SuppressWarnings("rawtypes")
+		public Analisis ultimoAnalisis(Muestra muestra) throws Exception{
         	Persistencia persistencia = new Persistencia();
     		persistencia.abrirTransaccion();
     		Analisis aux = new Analisis();
@@ -226,7 +230,8 @@ public class ControlGestionarAnalisis {
          * @return
          * @throws Exception
          */
-        public Float pesoPasante(Muestra muestra) throws Exception{
+        @SuppressWarnings("rawtypes")
+		public Float pesoPasante(Muestra muestra) throws Exception{
         	Persistencia persistencia = new Persistencia();
     		persistencia.abrirTransaccion();
     		Analisis aux = new Analisis();

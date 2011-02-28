@@ -19,7 +19,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
-import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -35,6 +34,7 @@ import comun.TablePanel;
  * @author tesisGeologia.
  * @version 1.0
  */
+@SuppressWarnings("serial")
 public class GUIClasificacion extends JDialog{
 
 	private JMenuBar menu ;
@@ -91,6 +91,7 @@ public class GUIClasificacion extends JDialog{
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
 		versionMenu = new JMenuItem("Versión");
+
 		ayuda.add(versionMenu);	
 		imprimirMenu = new JMenuItem("Imprimir");
 		herramientas.add(imprimirMenu);
@@ -100,12 +101,14 @@ public class GUIClasificacion extends JDialog{
 		peso = new JLabel("Peso: ");
 		profundidadInicial = new JLabel("Profundidad Inicial: ");
 		profundidadFinal = new JLabel("Profundidad Final: ");
+
 		ubicacion = new JLabel ("Ubicación: ");
 		clasificacionSucs = new JLabel ("Clasificación: ");
 		descripcionSucs = new JLabel ("Descripción: ");
 		limiteLiquido = new JLabel ("Límite Líquido (LL): ");
 		limitePlastico = new JLabel ("Límite Plástico (LP): ");
 		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): ");
+
 		D60 = new JLabel("D60(mm): ");
 		D30 = new JLabel("D30(mm): ");
 		D10 = new JLabel("D10(mm): ");
@@ -146,10 +149,14 @@ public class GUIClasificacion extends JDialog{
 		peso = new JLabel("Peso: "+muestra.getPeso().toString()+"grs");
 		profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
 		profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
+
 		ubicacion = new JLabel ("Ubicación: "+muestra.getUbicacion().getNombreUbicacion());
+
 		if (muestra.getSucs()==null){
+
 			descripcionSucs = new JLabel ("Descripción: ");
 			clasificacionSucs = new JLabel ("Clasificación: ");
+
 		}
 		else{
 			clasificacionSucs = new JLabel ("Clasificación: "+muestra.getSucs().getNombre());
@@ -158,14 +165,18 @@ public class GUIClasificacion extends JDialog{
 		if (muestra.getAashto()==null){
 			descripcionAashto = new JLabel ("Descripción: ");
 			clasificacionAashto = new JLabel ("Clasificación: ");
+
 		}
 		else{
+
 			clasificacionAashto= new JLabel ("Clasificación: "+muestra.getAashto().getNombre());
 			descripcionAashto = new JLabel ("Descripción: "+muestra.getAashto().getDescripcion());
+
 		}
 		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    
 		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	
 		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): "+muestra.getIndicePlasticidad());
+
 		D60 = new JLabel("D60: "+muestra.getD60()+" mm");
 		D30 = new JLabel("D30: "+muestra.getD30()+" mm"); 
 		D10 = new JLabel("D10: "+muestra.getD10()+" mm"); 
@@ -341,6 +352,7 @@ public class GUIClasificacion extends JDialog{
 			this.panelSucs.setLayout(gridbag);
 			gbc.ipady = 15;
 			this.panelSucs.add(new JLabel("DATOS DE LA CLASIFICACIÓN S.U.C.S "),gbc);
+
 			gbc.ipady = 0;
 			gbc.gridy = 1;
 			this.panelSucs.add(clasificacionSucs,gbc);

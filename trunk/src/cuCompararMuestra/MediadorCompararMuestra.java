@@ -13,7 +13,6 @@ import persistencia.domain.Muestra;
 import comun.Mediador;
 import comun.MediadorVersion;
 
-import cuCalcularClasificacion.ControlClasificacion;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 
 /**
@@ -23,9 +22,7 @@ import cuGestionarAnalisis.ControlGestionarAnalisis;
  */
 public class MediadorCompararMuestra extends Mediador{
 	private GUIComparacion GUIComparacion;
-	private Muestra muestra1 = new Muestra();
 	private Object [] [] data1;
-	private Muestra muestra2 = new Muestra();
 	private Object [] [] data2;
 	
 	
@@ -36,10 +33,9 @@ public class MediadorCompararMuestra extends Mediador{
 	 * @param muestra2, una de las muestras a las que se va a mostrar.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorCompararMuestra(String titulo, Muestra muestra1, Muestra muestra2) throws Exception {
 		super();
-		this.muestra1=muestra1;
-		this.muestra2=muestra2;
 		data1 = cargarTablaDeAnalisis(muestra1);
 		data2 = cargarTablaDeAnalisis(muestra2);
 		GUIComparacion = new GUIComparacion(muestra1,data1,muestra2,data2);
@@ -47,7 +43,7 @@ public class MediadorCompararMuestra extends Mediador{
 		GUIComparacion.setListenerButtons(this);
 		GUIComparacion.setLocationRelativeTo(null);
 		GUIComparacion.setModal(true);
-		//GUIComparacion.setResizable(false);
+		GUIComparacion.setResizable(false);
 		GUIComparacion.show();
 	}
 	
@@ -57,6 +53,7 @@ public class MediadorCompararMuestra extends Mediador{
 	 * @param muestra, muestra de la cual se desean obtener los analisis.
 	 * @return data, es la tabla con los datos de los analisis correspondientes a la muestra.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Object [] [] cargarTablaDeAnalisis(Muestra muestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
@@ -117,7 +114,6 @@ public class MediadorCompararMuestra extends Mediador{
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUIComparacion.getJButtonCancelar() == source || GUIComparacion.getCancelarMenu()==source){
-			System.out.println("Se presiono salir!!");
 			GUIComparacion.dispose();
 		}
 		if(this.GUIComparacion.getVersionMenu() == source){
@@ -134,8 +130,6 @@ public class MediadorCompararMuestra extends Mediador{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 }
 

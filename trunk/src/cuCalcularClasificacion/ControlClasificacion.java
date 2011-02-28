@@ -274,6 +274,7 @@ public class ControlClasificacion {
 		persistencia.abrirTransaccion();
 		Analisis analisis = new Analisis();
 		filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && muestra.ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'";
+		@SuppressWarnings("rawtypes")
 		List listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), filtro);
 		persistencia.cerrarTransaccion();
 		int i = 0;
@@ -330,7 +331,6 @@ public class ControlClasificacion {
 		if (!d10){
 			muestra.setD10(aberturaMalla);
 		}
-		Persistencia persistencia2 = new Persistencia();
 		persistencia.abrirTransaccion();
 		Muestra muestraAux = new Muestra();
 		muestraAux = (Muestra)persistencia.buscarObjeto(muestraAux.getClass(),"nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
@@ -342,15 +342,19 @@ public class ControlClasificacion {
 
 	
 	/**
+
 	 * Emite grafico de la clasificación.
 	 * @param muestra. Muestra a la que se le calcula el gr�fico de curva granulométrica.
 	 * @throws Exception 
 	 */
+	@SuppressWarnings("rawtypes")
 	public ChartPanel curvaGranulometrica(Muestra muestra) throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
+		
 		Class clase = analisis.getClass();
 		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(clase, muestra);
+		@SuppressWarnings("unchecked")
 		Iterator<Analisis> it = coleccionAnalisis.iterator();
 		XYSeries series = new XYSeries("Nombre: "+muestra.getNombreMuestra());
 		while (it.hasNext()){
@@ -361,7 +365,9 @@ public class ControlClasificacion {
 		dataset.addSeries(series);
 		final NumberAxis rangeAxis = new NumberAxis("% Pasante");
         rangeAxis.setRange(0.0,120);
+
         final NumberAxis domainAxis = new LogarithmicAxis("Tamaño de Partículas en mm");
+
         domainAxis.setInverted(true);
         domainAxis.setRange(0.01, 100);
         final XYItemRenderer renderer = new StandardXYItemRenderer();
@@ -390,6 +396,7 @@ public class ControlClasificacion {
 	public void exportarJPG (XYPlot plot, String fileName) throws Exception {
 		final XYPlot plot1 = (XYPlot) plot.clone();
 		if (fileName.compareTo("curvaGranulometrica.jpg")==0){
+
 			final JFreeChart chart1 = new JFreeChart("Curva Granulométrica", plot1);
 			plot1.setBackgroundPaint(Color.white);
 			ChartUtilities.saveChartAsJPEG(new File(PATH_SOURCE_REPORT+fileName), chart1, 500, 300);

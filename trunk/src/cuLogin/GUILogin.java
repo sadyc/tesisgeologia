@@ -6,9 +6,13 @@ import java.awt.event.KeyListener;
 
  
 /**
+ * Clase que implementa la interfaz grafica de la ventana de login.
  *
  * @author TesisGeologia
+ * 
+ * @version 1.0
  */
+@SuppressWarnings("serial")
 public class GUILogin extends javax.swing.JDialog {
 
 	 // Variables declaration - do not modify

@@ -31,7 +31,7 @@ import comun.TablePanel;
  * 
  */
 
- 
+@SuppressWarnings("serial")
 public class GUIMuestraDetallada extends JDialog{
 
 	private JMenuBar menu ;

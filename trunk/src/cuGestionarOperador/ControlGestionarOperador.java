@@ -67,6 +67,7 @@ public class ControlGestionarOperador {
 	 * @param data los datos a modificar.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("rawtypes")
 	public void modificarOperador(String DNI,OperadorDeLaboratorio data) throws Exception {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
@@ -124,6 +125,7 @@ public class ControlGestionarOperador {
 	/**
 	 * Retorna todos los elementos de la clase pasada como persistente.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Collection coleccionOperadores(Class clase) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();

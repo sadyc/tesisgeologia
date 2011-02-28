@@ -4,7 +4,6 @@
 package cuGestionarUbicacion;
 
 import persistencia.Persistencia;
-import persistencia.domain.Muestra;
 import persistencia.domain.Ubicacion;
 
 /**

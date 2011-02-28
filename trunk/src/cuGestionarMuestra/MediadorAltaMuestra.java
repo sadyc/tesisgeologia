@@ -22,7 +22,6 @@ import comun.MediadorVersion;
 
 import cuGestionarCliente.MediadorGestionarCliente;
 import cuGestionarOperador.MediadorGestionarOperador;
-import cuGestionarUbicacion.ControlGestionarUbicacion;
 import cuGestionarUbicacion.MediadorGestionarUbicacion;
 
 /**
@@ -41,9 +40,7 @@ public class MediadorAltaMuestra extends Mediador{
 	private Cliente cliente;
 	private Component frame;
 	private ControlGestionarMuestra controlMuestra;
-	private ControlGestionarUbicacion controlUbicacion;
 	private Usuario usuario ;
-	private java.sql.Date sqlDate;
 	private boolean altaMuestra= false;
 	
 	/**
@@ -51,13 +48,11 @@ public class MediadorAltaMuestra extends Mediador{
 	 * @param nombreVentana
 	 * @param usuario
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorAltaMuestra(String nombreVentana, Usuario usuario) {
 		super();
 		muestra = new Muestra();
 		controlMuestra = new ControlGestionarMuestra();
-		controlUbicacion = new ControlGestionarUbicacion();
-		java.util.Date utilDate = new java.util.Date();
-	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 	    this.usuario = usuario;
 		ubicacion = new Ubicacion();
 		operador= new OperadorDeLaboratorio();
@@ -192,15 +187,13 @@ public class MediadorAltaMuestra extends Mediador{
 		data[3]= GUIMuestra.getProfundidadInicial().getText().replace(",",".");
 		data[4]= GUIMuestra.getProfundidadFinal().getText().replace(",",".");
 		data[5]= operador.getNombre()+" "+operador.getApellido();
+		
 		if (muestra.getCliente().getNombre()!=null){
-			System.out.println("CLIENTE: "+muestra.getCliente().getNombre());
-		    	data [6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
-		    }
+		  	data [6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
+		}
 		else{
-			System.out.println("CLIENTE: "+muestra.getCliente().getNombre());
 			data [6]= "";
 		}
-		System.out.println("CLIENTE: "+muestra.getCliente().getNombre());
 		data[7]= ubicacion.getCiudad();
 		data[8]= usuario.getNombre()+ " "+ usuario.getApellido();
 		java.util.Date utilDate = new java.util.Date();

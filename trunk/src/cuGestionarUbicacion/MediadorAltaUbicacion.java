@@ -10,13 +10,8 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JOptionPane;
 
-import persistencia.domain.Ubicacion;
-
 import comun.Mediador;
 import comun.MediadorVersion;
-
-import cuCalcularClasificacion.GUIClasificacion;
-import cuGestionarMuestra.ControlGestionarMuestra;
 
 /**
  * @brief Clase que se utiliza para realizar los sucesos en la ventana GestionarUbicacion.
@@ -36,6 +31,7 @@ public class MediadorAltaUbicacion extends Mediador{
 	/**
 	 * Contructor por defecto.
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorAltaUbicacion() {
 		super();
 		GUIUbicacion = new GUIUbicacion();
@@ -63,7 +59,7 @@ public class MediadorAltaUbicacion extends Mediador{
 			GUIUbicacion.dispose();
 		}
 		if (GUIUbicacion.getjMenuVersion()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 	

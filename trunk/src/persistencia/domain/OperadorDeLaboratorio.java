@@ -19,6 +19,7 @@ import javax.jdo.annotations.PersistenceCapable;
 @PersistenceCapable
 public class OperadorDeLaboratorio extends Persona {
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected Collection<Muestra> muestras = new HashSet();
 	
 	/**

@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 
-import jxl.biff.drawing.Chart;
 import persistencia.domain.Muestra;
 import persistencia.domain.Usuario;
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
@@ -17,7 +16,6 @@ import cuGestionarMuestra.MediadorSeleccionarMuestra;
 import cuGestionarOperador.MediadorGestionarOperador;
 import cuGestionarUbicacion.MediadorGestionarUbicacion;
 import cuGestionarUsuario.MediadorGestionarUsuario;
-import cuLimiteConsistencia.MediadorAltaLimiteConsistencia;
 import cuLimiteConsistencia.MediadorConsistencia;
 /**
  * @brief Clase que se utiliza para escuchar los eventos que suceden en la ventana Principal.
@@ -35,6 +33,7 @@ public class MediadorPrincipal extends Mediador{
 	 * @param nombreVentana, Título de la ventana.
 	 * @param usuario, Usuario que inició sesión en el sistema.
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorPrincipal(String nombreVentana, Usuario usuario) throws Exception {
 		super();
 		this.backup=new Backup();	    
@@ -86,6 +85,7 @@ public class MediadorPrincipal extends Mediador{
 >>>>>>> .r341
 >>>>>>> .r343
 	 */
+	@SuppressWarnings("deprecation")
 	public void show(){
 		GUIPrincipal.show();
 	}

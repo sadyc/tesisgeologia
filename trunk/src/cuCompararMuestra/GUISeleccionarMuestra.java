@@ -23,6 +23,7 @@ import comun.TablePanel;
  * @version 1.0.
 
 */
+@SuppressWarnings("serial")
 public class GUISeleccionarMuestra extends JDialog	{
 
 	private JMenuBar menu = null;

@@ -1,7 +1,6 @@
 package cuLogin;
 
 import persistencia.Persistencia;
-import persistencia.domain.Muestra;
 import persistencia.domain.Usuario;
 
 public class ControlLogin {

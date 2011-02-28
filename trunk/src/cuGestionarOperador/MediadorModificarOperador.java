@@ -5,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
@@ -37,6 +35,7 @@ public class MediadorModificarOperador extends Mediador{
 	 * @param fila
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorModificarOperador(String[] fila) throws Exception {
 		super();
 		operadorModificar = (control.obtenerOperador(fila[2]));
@@ -86,7 +85,7 @@ public class MediadorModificarOperador extends Mediador{
 			aceptar();
 		}
 		if (GUIOperador.getjMenuItemVersion()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 		if (this.GUIOperador.getjButtonCancelar() == source || GUIOperador.getjMenuItemCancelar()==source){
 			GUIOperador.dispose();

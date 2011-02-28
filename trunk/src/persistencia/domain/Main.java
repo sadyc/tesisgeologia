@@ -1,16 +1,12 @@
 package persistencia.domain;
 
-import comun.MediadorPrincipal;
-
-import cuLogin.Encriptar;
 import cuLogin.MediadorLogin;
 
  /**
+ * Clase que contiene Main para ejecutar el programa. 
  * @author TesisGeologia
- *
+ * @version 1.0.
  */
- 
-
 public class Main {
 
 	/**
@@ -27,7 +23,6 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 
 		new MediadorLogin("Login");
-		//Usuario usuario1 = new Usuario("Juan", "Perez", "555","admin","Administrador", "juan@perez.com", "4917015","admin");
 		//new MediadorPrincipal("Sistema Clasificador de Suelos",usuario1);
 		
 		

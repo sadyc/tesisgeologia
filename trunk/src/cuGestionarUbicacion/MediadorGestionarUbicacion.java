@@ -39,6 +39,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 	 * Constructor con pasaje de parametros.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorGestionarUbicacion(boolean seleccionar,boolean eliminar) throws Exception {
 		super();
 		cargarTablaDeMuestras();
@@ -63,6 +64,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 	 * Levanta informacion almacenada en la 
 	 * base de datos al atributo data de la clase mediador.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		Ubicacion ubicacion = new Ubicacion();
@@ -134,10 +136,10 @@ public class MediadorGestionarUbicacion extends Mediador{
 		}
 	}
 	
-	public void show(){
-		GUIGestionarUbicacion.show();
-	}
 	
+	/**
+	 * Metodo que se realiza con el evento modificar.
+	 */
 	public void modificar(){
 		if (GUIGestionarUbicacion.getTablePanel().getSelectedRow() == -1){
 			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicación.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
@@ -158,6 +160,9 @@ public class MediadorGestionarUbicacion extends Mediador{
 		
 	}
 	
+	/**
+	 * Metodo que se realiza con el evento seleccionar.
+	 */
 	public void seleccionar(){
 		if (GUIGestionarUbicacion.getTablePanel().getSelectedRow() == -1){
 			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna ubicación.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
@@ -220,6 +225,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_ENTER){
         	if (seleccionar) {

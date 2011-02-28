@@ -5,10 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import javax.jdo.JDOException;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Cliente;
@@ -35,6 +32,7 @@ public class MediadorAltaCliente extends Mediador{
 	 * Constructor con pasaje de parametros.
 	 * @param nombreVentana
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorAltaCliente(String nombreVentana) {
 		super();
 		control = new ControlGestionarCliente();
@@ -125,12 +123,12 @@ public class MediadorAltaCliente extends Mediador{
 		if (!isDni(GUICliente.getjTextFieldDni().getText())){
 			System.out.println("El DNI es incorrecto!");
 			JOptionPane.showMessageDialog(frame,"El DNI ingresado es Incorrecto. Debe ser de la forma ##.###.###","Atención!", JOptionPane.ERROR_MESSAGE);
+
 		}else{
 			data[2]= GUICliente.getjTextFieldDni().getText();
 			if (!isEmail(GUICliente.getjTextFieldEmail().getText().toUpperCase()) && (!GUICliente.getjTextFieldEmail().getText().isEmpty())){
 				System.out.println("El E-mail es incorrecto!");
 				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
-		
 			}else{
 				data[4]= GUICliente.getjTextFieldEmail().getText();
 				data[3]= GUICliente.getjTextFieldTelefono().getText();

@@ -3,8 +3,6 @@
  */
 package persistencia.domain;
 
-import java.sql.Date;
-
 import persistencia.Persistencia;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 import cuGestionarCliente.ControlGestionarCliente;
@@ -12,13 +10,14 @@ import cuGestionarMuestra.ControlGestionarMuestra;
 import cuGestionarOperador.ControlGestionarOperador;
 import cuGestionarUbicacion.ControlGestionarUbicacion;
 import cuGestionarUsuario.ControlGestionarUsuario;
-import cuLimiteConsistencia.ControlLimiteConsistencia;
 import cuLogin.Encriptar;
 
 /**
  * @author TesisGeologia
  * Clase que permite la carga de ciertos datos para poder utilizar el 
  * Sistema Clasificador de Suelos 
+ *  
+ * @Version 1.0.
  */
 public class CargaDatos {
 	private ControlGestionarMuestra controlMuestra;
@@ -27,9 +26,11 @@ public class CargaDatos {
 	private ControlGestionarCliente controlCliente;
 	private ControlGestionarUsuario controlUsuario;
 	private ControlGestionarAnalisis controlAnalisis;
-	private ControlLimiteConsistencia controlConsistencia;
 	
 	
+	/**
+	 * Constructor por defecto.
+	 */
 	public CargaDatos(){
 		controlMuestra = new ControlGestionarMuestra();
 		controlUbicacion = new ControlGestionarUbicacion();
@@ -37,7 +38,6 @@ public class CargaDatos {
 		controlOperador = new ControlGestionarOperador();
 		controlCliente = new ControlGestionarCliente();
 		controlAnalisis = new ControlGestionarAnalisis();
-		controlConsistencia = new ControlLimiteConsistencia();
 	}
 	
 	/**

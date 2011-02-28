@@ -9,11 +9,15 @@ import java.util.HashSet;
 import javax.jdo.annotations.PersistenceCapable;
 
 /**
- * @author TesisGeologia
- *
+ * Clase que define un cliente.
+ * 
+ * @author TesisGeologia.
+ * 
+ * @version 1.0.
  */
 @PersistenceCapable
 public class Cliente extends Persona{
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected Collection<Muestra> muestras = new HashSet();
 	
 	/**

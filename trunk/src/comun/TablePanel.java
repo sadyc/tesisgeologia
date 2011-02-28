@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -18,6 +17,7 @@ import javax.swing.table.TableRowSorter;
  * @author TesisGeologia.
  * @version 1.0
  */
+@SuppressWarnings("serial")
 public class TablePanel extends JPanel {
 
 	private JTable table = null; 

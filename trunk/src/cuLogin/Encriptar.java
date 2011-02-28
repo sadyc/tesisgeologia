@@ -1,5 +1,12 @@
 package cuLogin;
 import java.security.MessageDigest;
+/**
+ * Esta clase define el metodo para encriptar un string como contraseña.
+ * 
+ * @author tesisGeologia.
+ * 
+ * @version 1.0
+ */
 public class Encriptar {
 	
     public Encriptar(){}

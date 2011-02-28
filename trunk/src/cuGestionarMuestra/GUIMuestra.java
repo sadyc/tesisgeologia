@@ -24,6 +24,7 @@ import persistencia.domain.Usuario;
  * @version 1.0.
  */
 	    
+@SuppressWarnings("serial")
 public class GUIMuestra extends javax.swing.JDialog {
 	
     private javax.swing.JLabel cliente;

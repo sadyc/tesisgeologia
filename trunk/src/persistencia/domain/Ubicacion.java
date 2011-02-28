@@ -5,10 +5,15 @@ package persistencia.domain;
 import java.util.Collection;
 import java.util.HashSet;
 
-import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.PrimaryKey;
 
+/**
+ * Esta clase define la ubicacion de una muestra con persistencia.
+ * 
+ * @author tesisGeologia
+ *
+ * @version 1.0.
+ */
 @PersistenceCapable 
 public class Ubicacion {
 	
@@ -18,6 +23,7 @@ public class Ubicacion {
 	private String nombreUbicacion;
 	public String ciudad;
 	private String provincia;
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private Collection<Muestra> muestras = new HashSet();
 	
 	/**

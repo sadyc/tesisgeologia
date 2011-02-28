@@ -4,12 +4,14 @@
 package persistencia.domain;
 
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.PrimaryKey;
 
 
 /**
+ * Clase que define un analisis de el peso retenido en el tamiz de una muestra.
+ * 
  * @author TesisGeologia
- *
+ * 
+ * @version 1.0
  */
 @PersistenceCapable
 public class Analisis {

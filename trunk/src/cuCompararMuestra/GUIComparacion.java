@@ -2,7 +2,6 @@ package cuCompararMuestra;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -29,6 +28,7 @@ import comun.TablePanel;
  * @author tesisGeologia.
  * @version 1.0
  */
+@SuppressWarnings("serial")
 public class GUIComparacion extends JDialog{
 
         private JMenuBar menu ;
