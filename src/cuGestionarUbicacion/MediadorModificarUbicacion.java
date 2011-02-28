@@ -54,7 +54,7 @@ public class MediadorModificarUbicacion extends Mediador{
 	}
 	
 	/**
-	 * Metodo que necesita definir al implementar la interface ActionListener 
+	 * M茅todo que necesita definir al implementar la interface ActionListener 
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
@@ -88,7 +88,7 @@ public class MediadorModificarUbicacion extends Mediador{
 			else {
 				control.modificarUbicacion(nombreUbicacion,ciudad,GUIUbicacion.getData());
 				if (control.getExiste()) {
-					JOptionPane.showMessageDialog(frame,"La ubicaci髇 con esas coordenadas ya existe. Por favor ingrese otra.","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frame,"La ubicaci贸n con esas coordenadas ya existe. Por favor ingrese otra.","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
 					modifico = true;
@@ -99,7 +99,7 @@ public class MediadorModificarUbicacion extends Mediador{
 			
 		}
 		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar s髄o n鷐eros en los campos de latitud y longitud","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar s贸lo n煤meros en los campos de latitud y longitud","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 		}
    	}
 

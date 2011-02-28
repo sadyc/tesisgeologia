@@ -36,7 +36,7 @@ public class Cliente extends Persona{
 	}
 	
 	/**
-	 * Metodo que permite agregar una muestra al cliente.
+	 * Método que permite agregar una muestra al cliente.
 	 * @param muestra, muestra a ser agregada al cliente.
 	 */
 	public void addMuestra (Muestra muestra){
@@ -44,7 +44,7 @@ public class Cliente extends Persona{
 	}
 	
 	/**
-	 * Metodo que permite quitar una muestra al cliente.
+	 * Método que permite quitar una muestra al cliente.
 	 * @param muestra, muestra a ser eliminada al cliente.
 	 */
 	public void removeMuesra (Muestra muestra){
@@ -53,7 +53,7 @@ public class Cliente extends Persona{
 	
 
 	/**
-	 * Metodo que me retorna las muestras correspondientes a el cliente.
+	 * Método que me retorna las muestras correspondientes a el cliente.
 	 * @return muestras, coleccion de muestras correspondientes cliente.
 	 */
 	public Collection<Muestra> getMuestras(){
@@ -61,7 +61,7 @@ public class Cliente extends Persona{
 	}
 
 	/**
-	 * Metodo que me retorna la cantidad de muestras correspondientes a el cliente.
+	 * Método que me retorna la cantidad de muestras correspondientes a el cliente.
 	 * @return la cantidad de muestras correspondientes a el cliente.
 	 */
 	public int getCantidadMuestras(){

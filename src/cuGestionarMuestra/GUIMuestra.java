@@ -93,7 +93,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 		peso.setText(muestra.getPeso().toString());
 		profundidadInicial.setText(muestra.getProfundidadInicial().toString());
 		profundidadFinal.setText(muestra.getProfundidadFinal().toString());
-		ubicacion.setText("(*) Ubicaci�n: "+ muestra.getUbicacion().getNombreUbicacion());
+		ubicacion.setText("(*) Ubicación: "+ muestra.getUbicacion().getNombreUbicacion());
 		operador.setText("(*) Operador: "+ muestra.getOperadorLaboratorio().getNombre()+" "+muestra.getOperadorLaboratorio().getApellido());
 		if (muestra.getCliente()!=null){
 			cliente.setText(" Cliente: "+ muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido());
@@ -101,7 +101,12 @@ public class GUIMuestra extends javax.swing.JDialog {
 		else{
 			cliente.setText(" Cliente: ");
 		}
+		
+		
+
 		this.usuario.setText("Usuario: "+usuario.getNombre()+" "+usuario.getApellido());
+
+		System.out.println(muestra.getUsuario().getNombreUsuario());
 		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png")));
 		aceptar.setText("Modificar");
 		setModal(true);
@@ -232,14 +237,14 @@ public class GUIMuestra extends javax.swing.JDialog {
 
         jLabel2.setText("(*) Peso: ");
 
-        jLabel3.setText("Profundidad Inicial: ");
+        jLabel3.setText("(*) Profundidad Inicial: ");
 
-        jLabel4.setText("Profundidad Final: ");
+        jLabel4.setText("(*) Profundidad Final: ");
 
-        ubicacion.setText("(*) Ubicaci�n: ");
+        ubicacion.setText("(*) Ubicación: ");
 
         seleccionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
-        seleccionarUbicacion.setText("Seleccionar Ubicaci�n"); 
+        seleccionarUbicacion.setText("Seleccionar Ubicación"); 
 
         operador.setText("(*) Operador: ");
 
@@ -264,7 +269,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 
         jMenuItemSeleccionarUbicacion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemSeleccionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
-        jMenuItemSeleccionarUbicacion.setText("Seleccionar Ubicaci�n");
+        jMenuItemSeleccionarUbicacion.setText("Seleccionar Ubicación");
         jMenu1.add(jMenuItemSeleccionarUbicacion);
 
         jMenuItemSeleccionarOperador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
@@ -293,7 +298,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 
         versionMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        versionMenu.setText("Versi�n");
+        versionMenu.setText("Versión");
         jMenu2.add(versionMenu);
 
         jMenuBar1.add(jMenu2);
@@ -567,7 +572,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 		}
 		
 		/**
-		 * Metodo que permite escuchar los botoner de la ventana.
+		 * Método que permite escuchar los botoner de la ventana.
 		 *
 		 *@param lis actionEvent asignado a los botones.
 		 */

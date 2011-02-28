@@ -24,8 +24,8 @@ import cuGestionarMuestra.GUIMuestraDetallada;
 
 
 /**
- *@brief Clase que se utiliza para escuchar los eventos que suceden en la ventana "Gestionar Análisis".
- *@author TesisGeología
+ *@brief Clase que se utiliza para escuchar los eventos que suceden en la ventana "Gestionar AnÃ¡lisis".
+ *@author TesisGeologÃ­a
  *@version 1.0
  */
 
@@ -76,7 +76,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 		}
 	}
 	/**
-	 * Metodo que permite visualizar la ventana. 
+	 * MÃ©todo que permite visualizar la ventana. 
 	 */
 	public void show(){
 		GUImuestraDetallada.show();
@@ -91,7 +91,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 	}	
 	
 	/**
-	 * Metodo que necesita definir al implementar la interface ActionListener 
+	 * MÃ©todo que necesita definir al implementar la interface ActionListener 
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
@@ -111,15 +111,15 @@ public class MediadorGestionarAnalisis extends Mediador{
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opción de "Eliminar Analisis"
+	 * Acciones a realizar cuando se selecciona la opciÃ³n de "Eliminar Analisis"
 	 */
 	public void eliminarAnalisis(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonEliminar");
 		if (GUImuestraDetallada.getTablePanel1().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a eliminar","Atención!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningÃºn elemento a eliminar","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
-		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Está Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"Â¿EstÃ¡ Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
             if(quitOption==JOptionPane.YES_OPTION){
             	ControlGestionarAnalisis control = new ControlGestionarAnalisis();
             	String [] fila = GUImuestraDetallada.getTablePanel1().getRow(GUImuestraDetallada.getTablePanel1().getSelectedRow());
@@ -130,7 +130,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 					control.eliminarAnalisis(analisis);
 					control.recalcularAnalisis(analisis);
 					GUImuestraDetallada.dispose();
-					new MediadorGestionarAnalisis("Análisis de la muestra "+ muestra.getNombreMuestra(), muestra);
+					new MediadorGestionarAnalisis("AnÃ¡lisis de la muestra "+ muestra.getNombreMuestra(), muestra);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}              	    	
@@ -139,19 +139,19 @@ public class MediadorGestionarAnalisis extends Mediador{
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opción de "Modificar Analisis"
+	 * Acciones a realizar cuando se selecciona la opciÃ³n de "Modificar Analisis"
 	 */
 	public void modificarAnalisis(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");
 		if (GUImuestraDetallada.getTablePanel1().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningï¿½n elemento a modificar","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			String [] fila = GUImuestraDetallada.getTablePanel1().getRow(GUImuestraDetallada.getTablePanel1().getSelectedRow());
 			new MediadorModificarAnalisis(muestra,Float.parseFloat(fila[1]),(String)fila[0]);
 			GUImuestraDetallada.dispose();
 			try {
-				new MediadorGestionarAnalisis("Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
+				new MediadorGestionarAnalisis("AnÃ¡lisis de la muestra "+muestra.getNombreMuestra(), muestra);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
@@ -159,7 +159,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 	}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opción de "Agregar Analisis"
+	 * Acciones a realizar cuando se selecciona la opciÃ³n de "Agregar Analisis"
 	 */
 	public void agregarAnalisis(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");

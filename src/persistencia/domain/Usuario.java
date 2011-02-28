@@ -45,13 +45,13 @@ public class Usuario extends Persona{
 		this.nombreUsuario = nombreUsuario;
 	}
 	/**
-	 * @return the contrase�a
+	 * @return the contraseña
 	 */
 	public String getPassword() {
 		return password;
 	}
 	/**
-	 * @param contrase�a the contrase�a to set
+	 * @param contrase�a the contraseña to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;

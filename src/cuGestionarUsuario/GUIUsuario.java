@@ -142,7 +142,7 @@ public class GUIUsuario extends javax.swing.JDialog {
 
         jLabelDni.setText("(*) DNI: ");
 
-        jLabelTelefono.setText("Tel�fono: ");
+        jLabelTelefono.setText("Teléfono: ");
 
         jLabelEmail.setText("E-mail: ");
 
@@ -165,7 +165,7 @@ public class GUIUsuario extends javax.swing.JDialog {
 
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Operador", "Restringido" }));
 
-        jLabelCategoria.setText("(*) Categor�a: ");
+        jLabelCategoria.setText("(*) Categoría: ");
 
         jMenuHerramientas.setText("Herramientas");
         
@@ -186,7 +186,7 @@ public class GUIUsuario extends javax.swing.JDialog {
 
         jMenuItemVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
         
-        jMenuItemVersion.setText("Versi�n");
+        jMenuItemVersion.setText("Versión");
         jMenuAyuda.add(jMenuItemVersion);
 
         jMenuBar1.add(jMenuAyuda);
@@ -296,7 +296,7 @@ public class GUIUsuario extends javax.swing.JDialog {
     }                                               
 
 	/**
-	 * Metodo que permite escuchar los botoner aceptar y cancelar.
+	 * Método que permite escuchar los botoner aceptar y cancelar.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */

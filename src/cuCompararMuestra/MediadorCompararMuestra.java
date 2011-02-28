@@ -52,8 +52,8 @@ public class MediadorCompararMuestra extends Mediador{
 	}
 	
 	/**
-	 * Levanta informaciÛn almacenada en la base de datos
-	 * que se copiar· al atributo data1 de la clase mediador.
+	 * Levanta informaci√≥n almacenada en la base de datos
+	 * que se copiar√° al atributo data1 de la clase mediador.
 	 * @param muestra, muestra de la cual se desean obtener los analisis.
 	 * @return data, es la tabla con los datos de los analisis correspondientes a la muestra.
 	 */

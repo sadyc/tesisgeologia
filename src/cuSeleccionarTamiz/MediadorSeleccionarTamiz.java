@@ -97,7 +97,7 @@ public class MediadorSeleccionarTamiz extends Mediador{
 	 */
 	public void seleccionarTamiz(){
 		if (GUISeleccionarTamiz.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ning�n Tamiz","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún Tamiz","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			seleccionado = (String)GUISeleccionarTamiz.getTablePanel().getRow(GUISeleccionarTamiz.getTablePanel().getSelectedRow())[0];//
@@ -110,7 +110,7 @@ public class MediadorSeleccionarTamiz extends Mediador{
 		GUISeleccionarTamiz.show();
 	}
 	/**
-	 * Metodos que necesita definir al implementar la interface MouseListener 
+	 * Métodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
 	 */
 	

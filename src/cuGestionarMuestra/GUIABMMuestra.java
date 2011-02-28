@@ -83,7 +83,7 @@ public class GUIABMMuestra extends JDialog{
 	        jButtonSalir = new javax.swing.JButton();
 	        jPanel2 = new javax.swing.JPanel();
 	        jComboBoxBuscar = new javax.swing.JComboBox();
-	        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Muestra", "Nombre Ubicaci�n", "Operador","Cliente" }));
+	        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Muestra", "Nombre Ubicación", "Operador","Cliente" }));
 	        jComboBoxBuscar.addActionListener(new java.awt.event.ActionListener() {
 	            public void actionPerformed(java.awt.event.ActionEvent evt) {
 	                jComboBoxBuscarActionPerformed(evt);
@@ -96,7 +96,7 @@ public class GUIABMMuestra extends JDialog{
 	            	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Muestra"){
 	            		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),1));
 	            	   }
-	            	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Ubicaci�n"){
+	            	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Ubicación"){
 	            		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),0));
 	            	   }
 	            	   if (jComboBoxBuscar.getSelectedItem()=="Operador"){
@@ -265,7 +265,7 @@ public class GUIABMMuestra extends JDialog{
 
 	        jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
 	        jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-	        jMenuVersion.setText("Versi�n");
+	        jMenuVersion.setText("Versión");
 	        jMenu2.add(jMenuVersion);
 
 	        jMenuBar1.add(jMenu2);
@@ -322,7 +322,7 @@ public class GUIABMMuestra extends JDialog{
 	
 
 	/**
-	 * Metodo que permite escuchar los botones de la ventana.
+	 * Método que permite escuchar los botones de la ventana.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -341,7 +341,7 @@ public class GUIABMMuestra extends JDialog{
 	}
 	
 	/**
-	 * Metodo que permite escuchar la tabla panel.
+	 * Método que permite escuchar la tabla panel.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -362,7 +362,7 @@ public class GUIABMMuestra extends JDialog{
 	}
 	
 	/**
-	 * Metodo que retorna la tabla panel.
+	 * Método que retorna la tabla panel.
 	 *
 	 * @return TablePanel
 	 */

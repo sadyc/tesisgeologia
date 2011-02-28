@@ -1,11 +1,20 @@
 /**
  * 
  */
-package persistencia.domain;
+package comun;
 
 import java.sql.Date;
 
 import persistencia.Persistencia;
+import persistencia.domain.AASHTO;
+import persistencia.domain.Analisis;
+import persistencia.domain.Cliente;
+import persistencia.domain.Muestra;
+import persistencia.domain.OperadorDeLaboratorio;
+import persistencia.domain.SUCS;
+import persistencia.domain.Tamiz;
+import persistencia.domain.Ubicacion;
+import persistencia.domain.Usuario;
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 import cuGestionarCliente.ControlGestionarCliente;
 import cuGestionarMuestra.ControlGestionarMuestra;
@@ -176,8 +185,8 @@ public class CargaDatos {
 		String a = encriptar.hash("kulmino");
 		String b = encriptar.hash("admin");
 		String c = encriptar.hash("pepe");
-		Usuario usuario1 = new Usuario("Juan", "Perez", "555","admin","Administrador", "juan@perez.com", "4917015",b);
-		Usuario usuario2 = new Usuario("José", "Álvarez", "111", "jalvarez", "Administrador", "pepe@alvarez", "444-222", c);
+		Usuario usuario1 = new Usuario("Juan", "Perez", "23.456.213","admin","Administrador", "juan@perez.com", "4917015",b);
+		Usuario usuario2 = new Usuario("José", "Álvarez", "05.554.665", "jalvarez", "Administrador", "pepe@alvarez", "444-222", c);
 		Usuario usuario3 = new Usuario("Nicolas", "Bettiol", "33.825.312", "nbettiol", "Restringido", "nicolasbettiol@gmail.com", "0358-4632587", a);
 		
 		Cliente cliente1 = new Cliente("Carlos", "Leoni", "12.980.320", "email@email.com", "3584192871");
@@ -347,9 +356,5 @@ public class CargaDatos {
 			e.printStackTrace();
 		}
 		
-	}
-	public static void main(String[] args) throws Exception {
-		CargaDatos cargaDatos = new CargaDatos();
-        cargaDatos.cargar();
 	}
 }

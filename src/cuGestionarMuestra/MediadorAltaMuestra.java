@@ -146,17 +146,23 @@ public class MediadorAltaMuestra extends Mediador{
 	public void aceptar(){
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
 		try{
-		 	if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("(*) Ubicaci�n:") || GUIMuestra.getOperador().getText().equals("(*) Operador:") ){
-	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atenci�n", JOptionPane.WARNING_MESSAGE);
+
+		 	if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getProfundidadInicial().getText().equals("(*) Profundidad Inicial:") ||GUIMuestra.getProfundidadFinal().getText().equals("(*) Profundidad Final:") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("(*) Ubicación:") || GUIMuestra.getOperador().getText().equals("(*) Operador:") ){
+	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.WARNING_MESSAGE);
+
 			}
 			else {
 				if (Float.parseFloat(GUIMuestra.getPeso().getText().replace(",", ".")) <= 0 || Float.parseFloat(GUIMuestra.getPeso().getText().replace(",", ".")) > 5000) {
-					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","Atenci�n", JOptionPane.WARNING_MESSAGE);
+
+					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","Atención!", JOptionPane.WARNING_MESSAGE);
+
 				}
 				else {
 					if (!GUIMuestra.getProfundidadInicial().getText().equals("") && !GUIMuestra.getProfundidadFinal().getText().equals("")){
 						if (Float.parseFloat(GUIMuestra.getProfundidadFinal().getText().replace(",",".")) < Float.parseFloat(GUIMuestra.getProfundidadInicial().getText().replace(",","."))){
-							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","Atenci�n", JOptionPane.WARNING_MESSAGE);
+
+							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","Atención!", JOptionPane.WARNING_MESSAGE);
+
 						}
 						else{
 							insertarMuestra();
@@ -170,7 +176,9 @@ public class MediadorAltaMuestra extends Mediador{
 		}
 		catch (NumberFormatException e){
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(frame,"El formato de uno de los n�meros no es correcto, s�lo deben poseer un punto(.)","Atenci�n", JOptionPane.WARNING_MESSAGE);
+
+			JOptionPane.showMessageDialog(frame,"El formato de uno de los números no es correcto, sólo deben poseer un punto(.) o coma (,)","Atención!", JOptionPane.WARNING_MESSAGE);
+
 		}
 	}
 	
@@ -201,7 +209,9 @@ public class MediadorAltaMuestra extends Mediador{
 		try {
 			controlMuestra.insertarMuestra(muestra, ubicacion, operador, cliente,usuario);
 			if (controlMuestra.getExiste()) {
-				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+"+localidad de"+data[7]+", ya existe. Por favor ingrese otra.","Atenci�n!", JOptionPane.ERROR_MESSAGE);
+
+				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+" localidad de "+data[7]+", ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
+
 			}
 			else {
 				altaMuestra = true;
@@ -220,7 +230,7 @@ public class MediadorAltaMuestra extends Mediador{
 		try {
 			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion(true,false);
 			if (mediadorSelUbic.seSelecciono()){
-				this.GUIMuestra.setUbicacion("Ubicacion : "+mediadorSelUbic.getSeleccionado().getNombreUbicacion());
+				this.GUIMuestra.setUbicacion("Ubicación : "+mediadorSelUbic.getSeleccionado().getNombreUbicacion());
 				ubicacion= mediadorSelUbic.getSeleccionado();
 			}
 		} catch (Exception e) {
@@ -269,7 +279,7 @@ public class MediadorAltaMuestra extends Mediador{
 	
 	
 	/** 
-	 * Metodo que no permite que ingresen datos incorrectos en los textfield.
+	 * Método que no permite que ingresen datos incorrectos en los textfield.
 	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 */
 	@Override

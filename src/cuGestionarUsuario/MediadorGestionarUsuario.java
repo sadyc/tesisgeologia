@@ -96,7 +96,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	
 	
 	/**
-	 * Metodo que necesita definir al implementar la interface ActionListener 
+	 * MÃ©todo que necesita definir al implementar la interface ActionListener 
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
@@ -124,7 +124,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	 */
 	public void modificarUsuario(){
 		if (GUIGestionarUsuario.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningÃºn elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			String [] fila = GUIGestionarUsuario.getTablePanel().getRow(GUIGestionarUsuario.getTablePanel().getSelectedRow());
@@ -149,10 +149,10 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	 */
 	public void eliminarUsuario(){
 		if (GUIGestionarUsuario.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningÃºn elemento a eliminar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
-		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Está seguro de eliminar este Usuario? Recuerde que se borrarán todas las muestras asociadas.","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"Â¿EstÃ¡ seguro de eliminar este Usuario? Recuerde que se borrarÃ¡n todas las muestras asociadas.","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	        if(quitOption==JOptionPane.YES_OPTION){
 	        	try{
 	        		String [] fila = GUIGestionarUsuario.getTablePanel().getRow(GUIGestionarUsuario.getTablePanel().getSelectedRow());
@@ -165,7 +165,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	               	}
 	        	}
 	        	catch (Exception e) {
-	        		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+	        		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invÃ¡lido","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 	        	}
 	        }
 		}

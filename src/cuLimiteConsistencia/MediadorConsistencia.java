@@ -22,7 +22,7 @@ import cuGestionarMuestra.GUIABMMuestra;
 
 
 /**
-* @author TesisGeologÌa
+* @author TesisGeolog√≠a
 * 
 */
 
@@ -43,7 +43,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 		super();
 		cargarTablaDeMuestras();
 		
-		String [] columAux = {"Ubicacion","Nombre","Peso","Ciudad","Profundidad Inicial","Profundidad Final","LÌmite LÌquido","LÌmite Pl·stico","Õndice de Plasticidad"};
+		String [] columAux = {"Ubicaci√≥n","Nombre","Peso","Ciudad","Profundidad Inicial","Profundidad Final","L√≠mite L√≠quido","L√≠mite Pl√°stico","√çndice de Plasticidad"};
 		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
@@ -122,7 +122,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	 */
 	public void seleccionarMuestra(){
 		if (GUIABMMuestra.InicializarTabla().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ning˙n elemento a modificar","AtenciÛn!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ning√∫n elemento a modificar","Atenci√≥n!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			System.out.println("Button Seleccionar Muestra");
@@ -137,7 +137,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 				}
 				
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inv·lido","AtenciÛn!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inv√°lido","Atenci√≥n!", JOptionPane.ERROR_MESSAGE);
 			}
    				   		
 		}
@@ -160,7 +160,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	}
 
 	/**
-	 * Metodos que necesita definir al implementar la interface MouseListener 
+	 * M√©todos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
 	 */
 		

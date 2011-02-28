@@ -17,7 +17,7 @@ import comun.TablePanel;
 
 /**
  * Esta clase implementa la ventana que me permite seleccionar un operador de laboratorio de los almacenados.
- * @author TesisGeolog�a
+ * @author TesisGeología
  * @version 1.0
 */
 public class GUIGestionarOperador extends JDialog	{
@@ -250,7 +250,7 @@ public class GUIGestionarOperador extends JDialog	{
 
         jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        jMenuVersion.setText("Versi�n");
+        jMenuVersion.setText("Versión");
         jMenu2.add(jMenuVersion);
 
         jMenuBar1.add(jMenu2);
@@ -273,7 +273,7 @@ public class GUIGestionarOperador extends JDialog	{
 	}
 	
 	/**
-	 * Metodo que permite escuchar los botones de la ventana.
+	 * Método que permite escuchar los botones de la ventana.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -290,7 +290,7 @@ public class GUIGestionarOperador extends JDialog	{
 	    jMenuVersion.addActionListener(lis);
 	}
 	/**
-	 * Metodo que permite escuchar la tabla panel.
+	 * Método que permite escuchar la tabla panel.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -303,12 +303,12 @@ public class GUIGestionarOperador extends JDialog	{
      *@return data  
     */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre","Apellido","DNI","Tel�fono","E-mail"};
+		String[] columnName = {"Nombre","Apellido","DNI","Teléfono","E-mail"};
 		return columnName;
 	}
 
 	/**
-	 * Metodo que retorna la tabla panel.
+	 * Método que retorna la tabla panel.
 	 *
 	 * @return TablePanel
 	 */

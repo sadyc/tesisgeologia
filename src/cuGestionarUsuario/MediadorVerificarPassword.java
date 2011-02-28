@@ -48,7 +48,7 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 		System.out.println("Verificar.actionPerformed() jButtonAceptar");
 		try{
 		 	if (GUIVerificarPassword.getjPasswordField1().getText().equals("")){
-	 			JOptionPane.showMessageDialog(frame,"El password no puede ser vacio.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+	 			JOptionPane.showMessageDialog(frame,"El password no puede ser vacío.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 		 	else{
 		 		Usuario usuario = control.obtenerUsuario(dni);
@@ -60,7 +60,7 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 					e1.printStackTrace();
 				}
 				if	(password.compareTo(usuario.getPassword())!=0){
-					JOptionPane.showMessageDialog(frame,"La contrase�a es incorrecta.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frame,"La contraseña es incorrecta.","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		 		}
 		 		else{
 		 			correcto = true;

@@ -124,17 +124,23 @@ public class MediadorModificarMuestra extends Mediador{
 	public void aceptar(){
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
 		try{
-		 	if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("Ubicaci�n(*) : ") || GUIMuestra.getOperador().getText().equals("Operador(*) :") ){
-	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atenci�n!", JOptionPane.ERROR_MESSAGE);
+
+			if (GUIMuestra.getNombre().getText().equals("") || GUIMuestra.getProfundidadInicial().getText().equals("") ||GUIMuestra.getProfundidadFinal().getText().equals("") || GUIMuestra.getPeso().getText().equals("") || GUIMuestra.getUbicacion().getText().equals("(*) Ubicación:") || GUIMuestra.getOperador().getText().equals("(*) Operador:") ){
+		 		JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.ERROR_MESSAGE);
+
 			}
 			else {
 				if (Float.parseFloat(GUIMuestra.getPeso().getText().replace(",", ".")) <= 0 || Float.parseFloat(GUIMuestra.getPeso().getText().replace(",", ".")) > 5000) {
-					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","Atenci�n!", JOptionPane.ERROR_MESSAGE);
+
+					JOptionPane.showMessageDialog(frame,"El peso de la muestra debe ser mayor a 0 y no puede superar los 5000 gramos","Atención!", JOptionPane.ERROR_MESSAGE);
+
 				}
 				else {
 					if (!GUIMuestra.getProfundidadInicial().getText().equals("") && !GUIMuestra.getProfundidadFinal().getText().equals("")){
 						if (Float.parseFloat(GUIMuestra.getProfundidadFinal().getText().replace(",",".")) < Float.parseFloat(GUIMuestra.getProfundidadInicial().getText().replace(",","."))){
-							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","Atenci�n!", JOptionPane.ERROR_MESSAGE);
+
+							JOptionPane.showMessageDialog(frame,"La Profundidad Final debe ser mayor o igual que la Profundidad Inicial","Atención!", JOptionPane.ERROR_MESSAGE);
+
 						}
 						else{
 							modificarMuestra();
@@ -147,7 +153,9 @@ public class MediadorModificarMuestra extends Mediador{
 			}
 		}
 		catch (Exception e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo n�meros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","Atenci�n!", JOptionPane.ERROR_MESSAGE);
+
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar solo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","Atención!", JOptionPane.ERROR_MESSAGE);
+
 		}
 
 	}
@@ -170,7 +178,9 @@ public class MediadorModificarMuestra extends Mediador{
 			data[8]= usuario.getDni();
 			control.ModificarMuestra(muestra,data);
 			if (control.getExiste()) {
-				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+", ya existe. Por favor ingrese otra.","Atenci�n!", JOptionPane.ERROR_MESSAGE);
+
+				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+", ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
+
 			}
 			else {
 				modificoMuestra = true;

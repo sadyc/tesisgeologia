@@ -36,7 +36,9 @@ public class Backup {
      * Método que me permite elegir el directorio donde se va a guardar el Back-Up.
      */
     public void elegirDirectorio(){
+
     	JOptionPane.showMessageDialog(null, "Por favor elija la ubicación donde guardará el Back-Up", "Verificar",JOptionPane.INFORMATION_MESSAGE);
+
 		 JFileChooser directorio = new JFileChooser();
         int seleccion = directorio.showSaveDialog(new JPanel());
         directorio.setDialogType(directorio.DIRECTORIES_ONLY);
@@ -52,33 +54,6 @@ public class Backup {
         }
     }
     
-    /**
-     * Método que permite cargar el Back-Up tomando el directorio de MySQL 5.1 en el sitema operativo Windows de 32 bits. 
-     
-    public void cargarBackUpWindowsX86(){
-    	cargarBackup("C:/Program Files/MySQL/MySQL Server 5.1/bin/","Fall� el backup de windows de 32 bits");
-    }
-    
-    /**
-     * Método que permite cargar el Back-Up tomando el directorio de MySQL 5.1 en el sitema operativo Windows de 64 bits.
-     
-    public void cargarBackUpWindowsX64(){
-    	cargarBackup("C:/Program Files (x86)/MySQL/MySQL Server 5.1/bin/","Fall� el backup de windows de 64 bits");
-    }
-    
-    /**
-     * Método que permite crear el Back-Up tomando el directorio de MySQL 5.1 en el sitema operativo Windows de 32 bits. 
-     
-    public void crearBackUpWindowsX86(){
-    	crearBackup("C:/Program Files/MySQL/MySQL Server 5.1/bin/","Fall� el backup de windows de 32 bits");
-    }
-    
-    /**
-     * Método que permite crear el Back-Up tomando el directorio de MySQL 5.1 en el sitema operativo Windows de 64 bits.
-     
-    public void crearBackUpWindowsX64(){
-    	crearBackup("C:/Program Files (x86)/MySQL/MySQL Server 5.1/bin/","Fall� el backup de windows de 64 bits");
-    }
     
 
     /**
@@ -91,9 +66,11 @@ public class Backup {
 	     int seleccion = directorio.showOpenDialog(new JPanel());
 	     directorio.setDialogType(directorio.DIRECTORIES_ONLY);
 	     if (seleccion == JFileChooser.APPROVE_OPTION){
-	    	 int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"Recuerde que al Cargar Back-Up, perder� aquella informaci�n \nalmacenada posteriormente al Último Back-Up realizado. \n ¿Está Seguro de cargar Back-Up?","Cargar Back-Up",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+	    	 int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"Recuerde que al Cargar Back-Up, perderá aquella información \nalmacenada posteriormente al último Back-Up realizado. \n¿Está Seguro de cargar Back-Up?","Cargar Back-Up",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	    	 if(quitOption==JOptionPane.YES_OPTION)	{
+
 	    		 	 File f = directorio.getSelectedFile();
+
 	    			 filePath = f.getPath();
 	    			 try {
 	    				 // Ejecucion del cliente mysql
@@ -113,9 +90,13 @@ public class Backup {
 	    				 }
 	    				 os.close();
 	    				 fis.close();
-	    				 JOptionPane.showMessageDialog(null, "Se ha cargado el Back-Up con éxito", "Éxito!",JOptionPane.INFORMATION_MESSAGE);
+
+	    				 JOptionPane.showMessageDialog(null, "Se ha cargado el Back-Up con Éxito", "Éxito!",JOptionPane.INFORMATION_MESSAGE);
+
 	    			 } catch (Exception e) {	
+
 	    				 JOptionPane.showMessageDialog(null, "No se ha cargado el Back-Up", "Error!",JOptionPane.INFORMATION_MESSAGE);
+
 	    			 }
 	    		 }    
 	    	 }
@@ -144,7 +125,13 @@ public class Backup {
 	    }
 	
 	/**
+<<<<<<< .mine
 	 * Método que ejecuta todas las instrucciones que permiten crear el Back-Up de la base de datos.
+	 * @param dirMySQL, directorio en donde se encuentra instalado MySQL Server 5.1.
+	 * @param error, contenido del mensaje en caso de error.
+=======
+	 * Método que ejecuta todas las instrucciones que permiten crear el Back-Up de la base de datos.
+>>>>>>> .r341
 	 */
 	 public void crearBackup(){
 		 try{       
@@ -173,10 +160,13 @@ public class Backup {
 			 fichero = new FileWriter(backupFile);
 			 pw = new PrintWriter(fichero);                                         
 			 pw.println(temp.toString());  
-			 JOptionPane.showMessageDialog(null, "Se ha creado el Back-Up con éxito", "Éxito!",JOptionPane.INFORMATION_MESSAGE);
+			 JOptionPane.showMessageDialog(null, "Se ha creado el Back-Up con Éxito", "Éxito!",JOptionPane.INFORMATION_MESSAGE);
+
 		 }
 		 catch (Exception ex){
+
 			 JOptionPane.showMessageDialog(null, "No se ha cargado el Back-Up", "Error!",JOptionPane.INFORMATION_MESSAGE);
+
 		 } finally {
 			 try {           
 				 if (null != fichero)

@@ -26,9 +26,9 @@ public class ControlGestionarAnalisis {
         
 	/**
 	 * Inserta un analisis con persistencia.
-	 * @param analisis, análisis que haremos persistente.
-	 * @param muestra, muestra a la que corresponde el análisis.
-	 * @param numeroTamiz, tamiz que corresponde al análisis.
+	 * @param analisis, anÃ¡lisis que haremos persistente.
+	 * @param muestra, muestra a la que corresponde el anÃ¡lisis.
+	 * @param numeroTamiz, tamiz que corresponde al anÃ¡lisis.
 	 * @return
 	 * @throws Exception
 	 */
@@ -75,8 +75,8 @@ public class ControlGestionarAnalisis {
 	}
         
         /**
-         * Elimina un analisis persistente.
-         * @param analisis, es el análisis a eliminar.  
+         * Elimina un anÃ¡lisis persistente.
+         * @param anÃ¡lisis, es el anÃ¡lisis a eliminar.  
          */
         public void eliminarAnalisis(Analisis analisis) throws Exception {
         	Persistencia persistencia = new Persistencia();
@@ -85,7 +85,7 @@ public class ControlGestionarAnalisis {
     			Analisis aux = (Analisis) persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+analisis.getMuestra().getNombreMuestra()+"' && tamiz.numeroTamiz=='"+analisis.getTamiz().getNumeroTamiz()+"'");
     			persistencia.eliminarObjeto(aux);
     			persistencia.cerrarTransaccion();
-    			System.out.println("Análisis eliminado con persistencia");
+    			System.out.println("AnÃ¡lisis eliminado con persistencia");
     		}
     		catch (Exception e) {
     			System.out.println("Error al eliminar Analisis con persistencia");
@@ -94,7 +94,7 @@ public class ControlGestionarAnalisis {
     		
     	}
         /**
-         * Recalcula los analisis después de eliminar o modificar.
+         * Recalcula los analisis despuÃ©s de eliminar o modificar.
          * @param analisis, analisis a recalcular. 
          */
         public void recalcularAnalisis(Analisis analisis) throws Exception {
@@ -133,8 +133,8 @@ public class ControlGestionarAnalisis {
     	}
                         
         /**
-         * Retorna todos los elementos persistentes de la clase pasada como párametro.
-         * @param muestra, muestra de la que se desean obtener los análisis.
+         * Retorna todos los elementos persistentes de la clase pasada como parÃ¡metro.
+         * @param muestra, muestra de la que se desean obtener los anï¿½lisis.
          * @return coleccion de analisis de una muestra.
          */
         public Collection coleccionAnalisisDeMuestra(Class clase,Muestra muestra) throws Exception {
@@ -154,10 +154,10 @@ public class ControlGestionarAnalisis {
         
         
         /**
-         * Método que me permite modificar un analisis con los datos pasados como parámetros.
-         * @param pesoRetenido, nuevo peso a ser modificado del análisis.
-         * @param muestra, muestra a la que corresponde el análisis a ser modificado.
-         * @param numeroTamiz, tamiz al que se le va a modificar el análisis.
+         * MÃ©todo que me permite modificar un analisis con los datos pasados como parï¿½metros.
+         * @param pesoRetenido, nuevo peso a ser modificado del anï¿½lisis.
+         * @param muestra, muestra a la que corresponde el anï¿½lisis a ser modificado.
+         * @param numeroTamiz, tamiz al que se le va a modificar el anï¿½lisis.
          * @throws Exception
          */
         public void ModificarAnalisis(String pesoRetenido,Muestra muestra, String numeroTamiz) throws Exception {
@@ -179,8 +179,8 @@ public class ControlGestionarAnalisis {
         }
                       
     	/**
-         * Trunca el número a solo una decimal.
-         * @param num, número a ser truncado.
+         * Trunca el nÃºmero a solo una decimal.
+         * @param num, nÃºmero a ser truncado.
          * @return valor, el valor pasado como parametro, pero truncado a un solo decimal.
          * @throws Exception
          */
@@ -194,9 +194,9 @@ public class ControlGestionarAnalisis {
         }
         
         /**
-         * Retorna el último analisis cargado para la muestra pasada como paramentro.
-         * @param muestra, muestra de la que se desea obtener el último analisis calculado.
-         * @return el último análisis calculado a la muestra pasada como parámetro.
+         * Retorna el Ãºltimo analisis cargado para la muestra pasada como paramentro.
+         * @param muestra, muestra de la que se desea obtener el Ãºltimo analisis calculado.
+         * @return el Ãºltimo anÃ¡lisis calculado a la muestra pasada como parÃ¡metro.
          * @throws Exception
          */
         public Analisis ultimoAnalisis(Muestra muestra) throws Exception{
@@ -215,7 +215,7 @@ public class ControlGestionarAnalisis {
     			persistencia.cerrarTransaccion();
     		}
     		catch (Exception e) {
-    			System.out.println("Error al obtener último Analisis con persistencia");
+    			System.out.println("Error al obtener Ãºltimo Analisis con persistencia");
     			persistencia.realizarRollback();
     		}
     		return aux;

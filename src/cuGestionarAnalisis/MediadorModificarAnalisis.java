@@ -16,8 +16,8 @@ import comun.Mediador;
 
 
 /**
- *@brief Clase que se utiliza para escuchar los eventos que suceden en la ventana "Alta Análisis".
- *@author TesisGeología
+ *@brief Clase que se utiliza para escuchar los eventos que suceden en la ventana "Alta AnÃ¡lisis".
+ *@author TesisGeologÃ­a
  *@version 1.0
  */
 
@@ -33,9 +33,9 @@ public class MediadorModificarAnalisis  extends Mediador{
 	
 	/**
 	 * Constructor parametrizado de la clase. 
-	 * @param muestra, muestra a la que se le van a modificar los análisis.
+	 * @param muestra, muestra a la que se le van a modificar los anÃ¡lisis.
 	 * @param pesoRetenido, peso retenido cargado anteriormente de modificar.
-	 * @param numeroTamiz, numero de tamiz al que se le va a modificar el análisis.
+	 * @param numeroTamiz, numero de tamiz al que se le va a modificar el anÃ¡lisis.
 	 */
 	public MediadorModificarAnalisis(Muestra muestra,Float pesoRetenido,String numeroTamiz) {
 		super();
@@ -75,7 +75,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 	}	
 	
 	/**
-	 * Metodo que necesita definir al implementar la interface ActionListener 
+	 * MÃ©todo que necesita definir al implementar la interface ActionListener 
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
@@ -90,7 +90,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 	}
 
 	/**
-	 * Acciones a realizar cuando se selecciona la opción de "Aceptar"
+	 * Acciones a realizar cuando se selecciona la opciÃ³n de "Aceptar"
 	 */
 	public void aceptar(){
 		try{
@@ -98,16 +98,16 @@ public class MediadorModificarAnalisis  extends Mediador{
 		pesoRetenido = GUIAnalisis.getPesoRetenido().getText().replace(",",".");
 		analisis.setMuestra(muestra);
 		if (pesoRetenido.equals("")){
-			JOptionPane.showMessageDialog(frame,"No ingreso un peso retenido","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No ingresÃ³ un peso retenido","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			if (Float.parseFloat(pesoRetenido)> muestra.getPeso()){
-				JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso de la muestra que es: "+muestra.getPeso()+" grs.","Atención!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso de la muestra que es: "+muestra.getPeso()+" grs.","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
 				Float pesoPasante = control.pesoPasante(muestra);
 				if (Float.parseFloat(pesoRetenido.replace(",","."))>(muestra.getPeso()-pesoPasante)){
-					JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso pasante por el último tamiz que es: "+(muestra.getPeso()-pesoPasante)+" grs.","Atención!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso pasante por el Ãºltimo tamiz que es: "+(muestra.getPeso()-pesoPasante)+" grs.","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 				}
 				else{
 					try {
@@ -115,7 +115,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 						control.recalcularAnalisis(analisis);
 						if (control.getExiste()) {
 							System.out.println("El objeto ya existe");
-							JOptionPane.showMessageDialog(frame,"El análisis de la muestra correspondiente ya tiene cargado un resultado en el Tamiz Nº: "+numeroTamiz+". Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(frame,"El anÃ¡lisis de la muestra correspondiente ya tiene cargado un resultado en el Tamiz NÂ°: "+numeroTamiz+". Por favor ingrese otro.","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 						}
 						else {
 							modifico = true;
@@ -131,7 +131,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 		}
 		}
 		catch (Exception e) {
-			JOptionPane.showMessageDialog(frame,"El formato de uno de los números no es correcto, sólo deben poseer un punto(.) ó coma(,)","Atención", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"El formato de uno de los nÃºmeros no es correcto, sÃ³lo deben poseer un punto(.) o coma(,)","AtenciÃ³n", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 

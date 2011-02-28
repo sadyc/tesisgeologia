@@ -112,7 +112,7 @@ public class MediadorModificarUsuario extends Mediador {
 			}
 		}
 		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sÃ³lo nÃºmeros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -125,14 +125,14 @@ public class MediadorModificarUsuario extends Mediador {
 		data[1]= GUIUsuario.getjTextFieldApellido().getText();
 		if (!isDni(GUIUsuario.getjTextFieldDni().getText())){
 			System.out.println("El DNI es incorrecto!");
-			JOptionPane.showMessageDialog(frame,"El DNI ingresado es Incorrecto. Debe ser de la forma ##.###.###","Atención!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"El DNI ingresado es Incorrecto. Debe ser de la forma ##.###.###","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 		}else{
 			data[2]= GUIUsuario.getjTextFieldDni().getText();
 			data[3]= GUIUsuario.getjTextFieldNombreUsuario().getText(); 
 			data[4]= (String)GUIUsuario.getjComboBoxCategoria().getSelectedItem();
 			if (!isEmail(GUIUsuario.getjTextFieldEmail().getText().toUpperCase()) && (!GUIUsuario.getjTextFieldEmail().getText().isEmpty())){
 				System.out.println("El E-mail es incorrecto!");
-				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 		
 			}else{
 				data[5]= GUIUsuario.getjTextFieldEmail().getText();
@@ -148,7 +148,7 @@ public class MediadorModificarUsuario extends Mediador {
 				try {
 					control.modificarUsuario(usuarioModificar.getDni(),usuarioModificar.getNombreUsuario(),data);
 					if (control.getExiste()) {
-						JOptionPane.showMessageDialog(frame,"El usuario con DNI: "+data[2]+" ó nombre de usuario: "+data[3]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(frame,"El usuario con DNI: "+data[2]+" y nombre de usuario: "+data[3]+" ya existe. Por favor ingrese otro.","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
 						modificoUsuario = true;

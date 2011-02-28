@@ -28,7 +28,7 @@ public class MediadorLogin extends Mediador {
 	private Usuario persona;
 	
 	/**
-	 * Constructor con parametros
+	 * Constructor con parámetros
 	 * @param nombreVentana
 	 * @throws Exception
 	 */
@@ -49,7 +49,7 @@ public class MediadorLogin extends Mediador {
 	}
 	
 	/**
-	 * Metodo que necesita definir al implementar la interface ActionListener 
+	 * Método que necesita definir al implementar la interface ActionListener 
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
@@ -117,7 +117,7 @@ public class MediadorLogin extends Mediador {
 					else {
 	        		        	
 						try {
-							new MediadorPrincipal("SISTEMA DE CLASIFICACION DE SUELOS",aux);
+							new MediadorPrincipal("SISTEMA DE CLASIFICACIÓN DE SUELOS",aux);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

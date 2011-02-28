@@ -129,7 +129,7 @@ public class GUIOperador extends javax.swing.JDialog {
 
         jLabelDni.setText("(*) DNI: ");
 
-        jLabelTelefono.setText("Tel�fono: ");
+        jLabelTelefono.setText("Teléfono: ");
 
         jLabelEmail.setText("E-mail: ");
 
@@ -164,7 +164,7 @@ public class GUIOperador extends javax.swing.JDialog {
 
         jMenuItemVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuItemVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        jMenuItemVersion.setText("Versi�n");
+        jMenuItemVersion.setText("Versión");
         jMenuAyuda.add(jMenuItemVersion);
 
         jMenuBar1.add(jMenuAyuda);
@@ -246,7 +246,7 @@ public class GUIOperador extends javax.swing.JDialog {
     }                                               
 
 	/**
-	 * Metodo que permite escuchar los botones de la ventana.
+	 * Método que permite escuchar los botones de la ventana.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */

@@ -20,7 +20,7 @@ import cuGestionarOperador.GUIGestionarOperador;
 
 /**
 * @brief Clase que se utiliza para escuchar los sucesos que suceden en la ventana de "Gestionar Cliente".
-* @author TesisGeología
+* @author TesisGeologÃ­a
 * @Version 1.0
 */
 public class MediadorGestionarCliente extends Mediador{
@@ -87,7 +87,7 @@ public class MediadorGestionarCliente extends Mediador{
 	}
 	
 	/**
-	 * Método que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
+	 * MÃ©todo que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
@@ -113,7 +113,7 @@ public class MediadorGestionarCliente extends Mediador{
 	 */
 	public void modificarCliente(){
 		if (GUIGestionarCliente.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún cliente a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningÃºn cliente a modificar","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			String [] fila = GUIGestionarCliente.getTablePanel().getRow(GUIGestionarCliente.getTablePanel().getSelectedRow());
@@ -131,14 +131,14 @@ public class MediadorGestionarCliente extends Mediador{
 		}
 	
 	/**
-	 * Acciones a realizar cuando se selecciona la opción de "Eliminar Cliente"
+	 * Acciones a realizar cuando se selecciona la opciÃ³n de "Eliminar Cliente"
 	 */
 	public void eliminarCliente(){
 		if (GUIGestionarCliente.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún cliente a eliminar","Atención!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningÃºn cliente a eliminar","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
-		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Esta seguro de eliminar este cliente?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"Â¿EstÃ¡ seguro de eliminar este cliente?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 	        if(quitOption==JOptionPane.YES_OPTION){
 	        	try{
 	        		System.out.println(GUIGestionarCliente.getTablePanel().getSelectedRow());
@@ -152,7 +152,7 @@ public class MediadorGestionarCliente extends Mediador{
 	               	}
 	        	}
 	        	catch (Exception e) {
-	        		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
+	        		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento invÃ¡lido","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 	        	}
 	        }
 		}
@@ -179,7 +179,7 @@ public class MediadorGestionarCliente extends Mediador{
 	 */
 	public void seleccionarCliente(){
 		if (GUIGestionarCliente.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún Cliente","Atención!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningÃºn Cliente","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			try{
@@ -189,13 +189,13 @@ public class MediadorGestionarCliente extends Mediador{
 				GUIGestionarCliente.dispose();
 			}
 			catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un Cliente inválido","Atención!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un Cliente invÃ¡lido","AtenciÃ³n!", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
 	
 	/**
-	 * Metodos que necesita definir al implementar la interface MouseListener 
+	 * MÃ©todos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
 	 */
 	public void mouseClicked(MouseEvent e){

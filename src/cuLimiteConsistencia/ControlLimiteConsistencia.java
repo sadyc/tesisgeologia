@@ -16,7 +16,7 @@ public class ControlLimiteConsistencia {
         public ControlLimiteConsistencia(){}
         
         /**
-         * Inserta un analisis de consistencia con persistencia. 
+         * Inserta un análisis de consistencia con persistencia. 
          */ 
         public void insertarConsistencia(Muestra muestra) throws Exception{
                 Persistencia persistencia = new Persistencia();
@@ -36,7 +36,7 @@ public class ControlLimiteConsistencia {
 	        
                
        /**
-        * Permite modificar un analisis de consistencia persistente.                 
+        * Permite modificar un análisis de consistencia persistente.                 
         * @param limitePlastico
         * @param nombreMuestra
         * @param numeroTamiz

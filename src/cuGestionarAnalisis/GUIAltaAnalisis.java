@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import persistencia.domain.Muestra;
 
 /**
- * @brief Clase que define la interfaz para manipular un An�lisis.
+ * @brief Clase que define la interfaz para manipular un Análisis.
  * @author TesisGeologia
  * @version 1.0
  * 
@@ -52,7 +52,7 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
     
     /**
      * Constructor parametrizado de la clase.
-     * @param muestra, muestra a la que se le cargar� un an�lisis.
+     * @param muestra, muestra a la que se le cargará un análisis.
      */
     public GUIAltaAnalisis(Muestra muestra) {
 		super();
@@ -72,16 +72,16 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
     
     /**
      * Constructor parametrizado de la clase.
-     * @param muestra, muestra a la que se le cargar� un an�lisis.
-     * @param peso, peso que se cargar� como an�lisis de la muestra.
-     * @param numeroTamiz, tam�z correspondiente al an�lisis a cargar.
+     * @param muestra, muestra a la que se le cargará un análisis.
+     * @param peso, peso que se cargará como análisis de la muestra.
+     * @param numeroTamiz, tamiz correspondiente al análisis a cargar.
      */
     public GUIAltaAnalisis(Muestra muestra,Float peso, String numeroTamiz) {
 		super();
 		pesoRetenido = new JTextField(15);
 		pesoRetenido.setText(peso.toString());
 		jLabelMuestra = new JLabel("Muestra: "+muestra.getNombreMuestra());
-		jLabelUbicacion = new JLabel("Ubicaci�n: "+muestra.getUbicacion().getNombreUbicacion());
+		jLabelUbicacion = new JLabel("Ubicación: "+muestra.getUbicacion().getNombreUbicacion());
 		jLabelPeso = new JLabel("Peso: "+muestra.getPeso());
 		jLabelTamiz = new javax.swing.JLabel();
 		jLabelTamiz.setText("Tamiz: "+numeroTamiz);
