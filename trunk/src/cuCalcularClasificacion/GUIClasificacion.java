@@ -4,6 +4,7 @@
 package cuCalcularClasificacion;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -249,13 +250,14 @@ public class GUIClasificacion extends JDialog{
 	 *
 	 */
 	private  void initialize() {
-		this.setSize(1000 , 700);
+		this.setSize(1000 , 800);
 		this.getContentPane().setLayout(new BorderLayout()); 		
 		this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
 		this.setJMenuBar(this.getMenu());
 	  	this.getContentPane().add(this.getPanelSur(),BorderLayout.SOUTH);
 	  	this.getContentPane().add(this.getPanelCenter(),BorderLayout.CENTER);
 	  	this.setLocationRelativeTo(null);
+	  	this.setResizable(false);
 	}
    
 	
@@ -342,6 +344,10 @@ public class GUIClasificacion extends JDialog{
 			this.panelSucs = new JPanel();
 			GridBagLayout gridbag = new GridBagLayout();
 			GridBagConstraints gbc = new GridBagConstraints();
+			JLabel sucs = new JLabel("DATOS DE LA CLASIFICACIÓN S.U.C.S ");
+            JLabel aashto = new JLabel("DATOS DE LA CLASIFICACIÓN A.A.S.H.T.O ");
+            aashto.setForeground(Color.red);
+            sucs.setForeground(Color.red);
 			gbc.gridwidth = 1;
 			gbc.gridheight = 1;
 			gbc.weightx = 1.0;
@@ -351,21 +357,19 @@ public class GUIClasificacion extends JDialog{
 			gbc.fill=GridBagConstraints.HORIZONTAL;
 			this.panelSucs.setLayout(gridbag);
 			gbc.ipady = 15;
-			this.panelSucs.add(new JLabel("DATOS DE LA CLASIFICACIÓN S.U.C.S "),gbc);
-
+			this.panelSucs.add(sucs,gbc);
 			gbc.ipady = 0;
 			gbc.gridy = 1;
 			this.panelSucs.add(clasificacionSucs,gbc);
 			gbc.gridy = 2;
 			this.panelSucs.add(descripcionSucs,gbc);
-			gbc.gridx = 1;
-			gbc.gridy = 0;
-			this.panelSucs.add(new JLabel("       "),gbc);
-			gbc.gridx = 2;
-			this.panelSucs.add(new JLabel("DATOS DE LA CLASIFICACIÓN A.A.S.H.T.O "),gbc);
-			gbc.gridy = 1;
+			gbc.gridy = 3;
+			gbc.ipady = 15;
+			this.panelSucs.add(aashto,gbc);
+			gbc.ipady = 0;
+			gbc.gridy = 4;
 			this.panelSucs.add(clasificacionAashto,gbc);
-			gbc.gridy = 2;
+			gbc.gridy = 5;
 			this.panelSucs.add(descripcionAashto,gbc);
 			}
 		return this.panelSucs;
