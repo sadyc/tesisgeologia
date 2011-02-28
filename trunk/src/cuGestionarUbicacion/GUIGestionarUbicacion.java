@@ -152,7 +152,7 @@ public class GUIGestionarUbicacion extends JDialog	{
 
         jLabel1.setText("Buscar : ");
         jPanel2.add(jLabel1);
-        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Ubicaci�n", "Ciudad", "Provincia" }));
+        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Ubicación", "Ciudad", "Provincia" }));
         jComboBoxBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxBuscarActionPerformed(evt);
