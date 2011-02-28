@@ -46,7 +46,7 @@ public class ControlClasificacion {
 			
 	/** 
 	 * Realiza los calculos correspondientes para determinar la clasificacion SUCS de una muestra.
-	 * @param muestra, muestra a calcularle la clasificaciÛn. 
+	 * @param muestra, muestra a calcularle la clasificaci√≥n. 
 	 */
 	public SUCS calcularClasificacionSUCS(Muestra muestra) throws Exception{
 		Float IndicePlasticidad = muestra.getIndicePlasticidad();
@@ -177,8 +177,8 @@ public class ControlClasificacion {
 	}
 	
 	/**
-	 * Realiza los calculos correspondientes para determinar la clasificaciÛn AASHTO de una muestra.
-	 * @param muestra, muestra a calcularle clasificaciÛn. 
+	 * Realiza los calculos correspondientes para determinar la clasificaci√≥n AASHTO de una muestra.
+	 * @param muestra, muestra a calcularle clasificaci√≥n. 
 	 */
 	public AASHTO calcularClasificacionAASHTO(Muestra muestra) throws Exception{
 		Persistencia persistencia = new Persistencia();
@@ -258,14 +258,14 @@ public class ControlClasificacion {
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
-			System.out.println("No pudo insertar la clasificaciÛn con persistencia");
+			System.out.println("No pudo insertar la clasificaciÔøΩn con persistencia");
 			persistencia.realizarRollback();
 		}
 		return clasificacionAASHTO;
 	}
 	
 	/**
-	 * Metodo que calcula el D60 D30 D10 de una clasifiaciÛn.
+	 * Metodo que calcula el D60 D30 D10 de una clasifiaci√≥n.
 	 * @param muestra.
 	 * @throws Exception
 	 */
@@ -342,8 +342,8 @@ public class ControlClasificacion {
 
 	
 	/**
-	 * Emite grafico de la clasificaciÛn.
-	 * @param muestra. Muestra a la que se le calcula el gr·fico de curva granulomÈtrica.
+	 * Emite grafico de la clasificaci√≥n.
+	 * @param muestra. Muestra a la que se le calcula el grÔøΩfico de curva granulom√©trica.
 	 * @throws Exception 
 	 */
 	public ChartPanel curvaGranulometrica(Muestra muestra) throws Exception{
@@ -361,13 +361,13 @@ public class ControlClasificacion {
 		dataset.addSeries(series);
 		final NumberAxis rangeAxis = new NumberAxis("% Pasante");
         rangeAxis.setRange(0.0,120);
-        final NumberAxis domainAxis = new LogarithmicAxis("TamaÒo de PartÌculas en mm");
+        final NumberAxis domainAxis = new LogarithmicAxis("Tama√±o de Part√≠culas en mm");
         domainAxis.setInverted(true);
         domainAxis.setRange(0.01, 100);
         final XYItemRenderer renderer = new StandardXYItemRenderer();
         final XYPlot plot1 = new XYPlot(dataset, rangeAxis,domainAxis,renderer);
         plot1.setOrientation(PlotOrientation.HORIZONTAL);
-        final JFreeChart chart = new JFreeChart("Curva GranulomÈtrica", plot1);
+        final JFreeChart chart = new JFreeChart("Curva Granulom√©trica", plot1);
         XYItemRenderer rend = chart.getXYPlot().getRenderer();
         StandardXYItemRenderer rr = (StandardXYItemRenderer)rend;
         rr.setBaseShapesVisible(true);
@@ -382,7 +382,7 @@ public class ControlClasificacion {
         return chartPanel;
     }
 	/**
-	 * Metodo que permite exportar el gr·fico de curva granulomÈtrica a un archivo *.JPG
+	 * Metodo que permite exportar el grÔøΩfico de curva granulomÔøΩtrica a un archivo *.JPG
 	 * @param plot
 	 * @param fileName
 	 * @throws Exception
@@ -390,7 +390,7 @@ public class ControlClasificacion {
 	public void exportarJPG (XYPlot plot, String fileName) throws Exception {
 		final XYPlot plot1 = (XYPlot) plot.clone();
 		if (fileName.compareTo("curvaGranulometrica.jpg")==0){
-			final JFreeChart chart1 = new JFreeChart("Curva GranulomÈtrica", plot1);
+			final JFreeChart chart1 = new JFreeChart("Curva Granulom√©trica", plot1);
 			plot1.setBackgroundPaint(Color.white);
 			ChartUtilities.saveChartAsJPEG(new File(PATH_SOURCE_REPORT+fileName), chart1, 500, 300);
 		}
@@ -402,7 +402,7 @@ public class ControlClasificacion {
 	}
 	
 	/**
-	 * Emite grafico de la clasificaciÛn
+	 * Emite grafico de la clasificaci√≥n
 	 * @throws Exception 
 	 */
 	public ChartPanel cartaPlasticidad(Muestra muestra) throws Exception{
@@ -426,9 +426,9 @@ public class ControlClasificacion {
 		dataset.addSeries(series);
 		dataset.addSeries(series2);
 		dataset.addSeries(series3);
-		final NumberAxis rangeAxis = new NumberAxis("Indice de Plasticidad, IP");
+		final NumberAxis rangeAxis = new NumberAxis("√çndice de Plasticidad, IP");
         rangeAxis.setRange(0.0,60);
-        final NumberAxis domainAxis = new NumberAxis("Limite Liquido, LL");
+        final NumberAxis domainAxis = new NumberAxis("L√≠mite L√≠quido, LL");
         domainAxis.setRange(0.0, 100);
         final XYItemRenderer renderer = new StandardXYItemRenderer();
         final XYPlot plot1 = new XYPlot(dataset, rangeAxis,domainAxis,renderer);
@@ -454,7 +454,7 @@ public class ControlClasificacion {
 	 * Busca un analisis y retorna un valor booleano 
 	 * con el resultado de la busqueda.
 	 * @param tamiz
-	 * @return, retorna el valor de la b˙squeda del analisis correspondiente.
+	 * @return, retorna el valor de la b√∫squeda del analisis correspondiente.
 	 * @throws Exception
 	 */
 	public boolean buscarAnalisis(String tamiz, Muestra muestra) throws Exception {
@@ -471,9 +471,9 @@ public class ControlClasificacion {
 	}
 	
 	/**
-    * Trunca el n˙mero a sÛlo una decimal.
-    * @param num, el n˙mero a truncar.
-    * @return valor, el n˙mero pasado como par·metro ya truncado.
+    * Trunca el n√∫mero a s√≥lo un decimal.
+    * @param num, el n√∫mero a truncar.
+    * @return valor, el n√∫mero pasado como par√°metro ya truncado.
     * @throws Exception
     */
 	public static Float truncaNum(Float num) throws Exception{

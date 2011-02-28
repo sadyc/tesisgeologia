@@ -39,15 +39,19 @@ public class MediadorGestionarMuestra extends Mediador{
 		
 	/**
 	 * Constructor parametrizado de la clase.
-	 * @param nombreVentana, T�tulo de la ventana.
-	 * @param usuario, Usuario que inici� sesi�n en el sistema.
+<<<<<<< .mine
+	 * @param nombreVentana, Título de la ventana.
+	 * @param usuario, Usuario que inició sesión en el sistema.
+
 	 * @throws Exception
 	 */
 	public MediadorGestionarMuestra(String nombreVentana, Usuario usuario) throws Exception {
 		super();
 		this.usuario=usuario;
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicaci�n","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad","Usuario"};
+
+		String [] columAux = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad","Usuario"};
+
 		GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
 		GUIABMMuestra.setListenerButtons(this);
 		GUIABMMuestra.setListenerTable(this);
@@ -62,7 +66,11 @@ public class MediadorGestionarMuestra extends Mediador{
 	
 	
 	/**
+<<<<<<< .mine
+	 * Levanta información almacenada en la base de datos y los copia sobre el atributo data de la clase mediador.
+=======
 	 * Levanta informaci�n almacenada en la base de datos y los copia sobre el atributo data de la clase mediador.
+>>>>>>> .r341
 	 */
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
@@ -90,7 +98,11 @@ public class MediadorGestionarMuestra extends Mediador{
 	}
 			
 	/**
+<<<<<<< .mine
+	 * Método que me permite visualizar la ventana.
+=======
 	 * M�todo que me permite visualizar la ventana.
+>>>>>>> .r341
 	 */
 	public void show()	{
 		 GUIABMMuestra.show();
@@ -105,7 +117,11 @@ public class MediadorGestionarMuestra extends Mediador{
 	}
 	
 	/**
+<<<<<<< .mine
+	 * Método que se necesita definir al implementar la interface ActionListener 
+=======
 	 * M�todo que se necesita definir al implementar la interface ActionListener 
+>>>>>>> .r341
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
@@ -122,7 +138,9 @@ public class MediadorGestionarMuestra extends Mediador{
 
 		if (this.GUIABMMuestra.getJButtonSeleccionar() == source || this.GUIABMMuestra.getjMenuSeleccionar() == source){
 			if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna muestra","Atenci�n", JOptionPane.WARNING_MESSAGE);
+
+				JOptionPane.showMessageDialog(frame,"No se ha seleccionado ninguna muestra","Atención!", JOptionPane.WARNING_MESSAGE);
+
 			}else{
 				seleccionarMuestra();
 				analisis();
@@ -142,7 +160,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	private void analisis() {
 		GUIABMMuestra.dispose();
 		try {
-			new MediadorGestionarAnalisis("Gestionar Analisis",muestra);
+			new MediadorGestionarAnalisis("Gestionar Análisis",muestra);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
@@ -158,16 +176,22 @@ public class MediadorGestionarMuestra extends Mediador{
 				seleccionoMuestra = true;
 				muestra = control.obtenerMuestra((String)seleccionado[1], (String)seleccionado[0], (String)seleccionado[7]);
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inv�lido","Atenci�n!", JOptionPane.ERROR_MESSAGE);
+
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
+
 			}
 	}
 
 	/**
-	 * Acciones a realizar cuando se selecciona la opci�n de "Modificar Muestra"
+
+	 * Acciones a realizar cuando se selecciona la opción de "Modificar Muestra"
+
 	 */
 	public void modificarMuestra(){
 		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ning�n elemento a modificar","Atenci�n!", JOptionPane.ERROR_MESSAGE);
+
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
+
 		}
 		else{
 			String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
@@ -189,10 +213,14 @@ public class MediadorGestionarMuestra extends Mediador{
 	 */
 	public void eliminarMuestra(){
 		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ning�n elemento a eliminar","Atenci�n!", JOptionPane.ERROR_MESSAGE);
+
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a eliminar","Atención!", JOptionPane.ERROR_MESSAGE);
+
 		}
 		else{
-		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"�Est� Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+
+		    int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Está Seguro de eliminar la fila?","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+
             if(quitOption==JOptionPane.YES_OPTION){
             	try{
             		String [] fila = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
@@ -207,14 +235,20 @@ public class MediadorGestionarMuestra extends Mediador{
 	               	}
             	}
             	catch (Exception e) {
-            		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inv�lido","Atenci�n!", JOptionPane.ERROR_MESSAGE);
+
+            		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
+
             	}
             }
 		}
 	}
 	
 	/**
+<<<<<<< .mine
+	 * Acciones a realizar cuando se selecciona la opción de "Agregar Muestra"
+=======
 	 * Acciones a realizar cuando se selecciona la opci�n de "Agregar Muestra"
+>>>>>>> .r341
 	 */
 	public void agregarMuestra(){
 		try {
@@ -230,7 +264,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	}
 	
 	/**
-	 * Metodos que necesita definir al implementar la interface MouseListener 
+	 * Métodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
 	 */
 	public void mouseClicked(MouseEvent e){

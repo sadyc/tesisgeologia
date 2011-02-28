@@ -47,7 +47,7 @@ public class MediadorAltaUbicacion extends Mediador{
 	}
 	
 	/**
-	 * Metodo que necesita definir al implementar la interface ActionListener 
+	 * M茅todo que necesita definir al implementar la interface ActionListener 
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
@@ -75,12 +75,12 @@ public class MediadorAltaUbicacion extends Mediador{
 		try {
 			System.out.println("Muestra.actionPerformed() jButtonAceptar");
 			if (GUIUbicacion.getjTextFieldCiudad().getText().equals("") || GUIUbicacion.getjTextFieldNombreUbicacion().getText().equals("")){
-		 		JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+		 		JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				control.insertarUbicacion(GUIUbicacion.getData());
 				if (control.getExiste()) {
-					JOptionPane.showMessageDialog(frame,"La ubicaci髇 con ese nombre y esa ciudad ya existe. Por favor ingrese otra.","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frame,"La ubicaci贸n con ese nombre y esa ciudad ya existe. Por favor ingrese otra.","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
 					alta = true;
@@ -90,7 +90,7 @@ public class MediadorAltaUbicacion extends Mediador{
 		}
 		catch (NumberFormatException e){
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar s髄o n鷐eros en los campos de latitud y longitud","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar s贸lo n煤meros en los campos de latitud y longitud","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 		}
    	}
 

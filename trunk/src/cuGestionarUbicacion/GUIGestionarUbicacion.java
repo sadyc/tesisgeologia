@@ -19,7 +19,7 @@ import comun.TablePanel;
 
 
 /**
-* @author TesisGeolog�a
+* @author TesisGeología
 * Esta clase implementa la ventana que me permite seleccionar una ubicacion de las almacenados.
 * 
 * @version 1.0
@@ -163,7 +163,7 @@ public class GUIGestionarUbicacion extends JDialog	{
         jTextFieldBuscar.setMinimumSize(new java.awt.Dimension(15, 20));
         jTextFieldBuscar.addKeyListener(new KeyAdapter() {
       	  public void keyReleased(final KeyEvent e) {
-          	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Ubicaci�n"){
+          	   if (jComboBoxBuscar.getSelectedItem()=="Nombre Ubicación"){
           		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),0));
           	   }
           	   if (jComboBoxBuscar.getSelectedItem()=="Ciudad"){
@@ -252,7 +252,7 @@ public class GUIGestionarUbicacion extends JDialog	{
 
         jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        jMenuVersion.setText("Versi�n");
+        jMenuVersion.setText("Versión");
         jMenu2.add(jMenuVersion);
 
         jMenuBar1.add(jMenu2);
@@ -276,7 +276,7 @@ public class GUIGestionarUbicacion extends JDialog	{
 	}
 	
 	/**
-	 * Metodo que permite escuchar los botones Seleccionar, Buscar y Salir.
+	 * Método que permite escuchar los botones Seleccionar, Buscar y Salir.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -293,7 +293,7 @@ public class GUIGestionarUbicacion extends JDialog	{
 	    jMenuVersion.addActionListener(lis);
 	}
 	/**
-	 * Metodo que permite escuchar la tabla panel.
+	 * Método que permite escuchar la tabla panel.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -306,12 +306,12 @@ public class GUIGestionarUbicacion extends JDialog	{
      *@return data  
     */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre Ubicaci�n","Ciudad","Provincia","Latitud","Longitud"};
+		String[] columnName = {"Nombre Ubicación","Ciudad","Provincia","Latitud","Longitud"};
 		return columnName;
 	}
 
 	/**
-	 * Metodo que retorna la tabla panel.
+	 * Método que retorna la tabla panel.
 	 *
 	 * @return TablePanel
 	 */

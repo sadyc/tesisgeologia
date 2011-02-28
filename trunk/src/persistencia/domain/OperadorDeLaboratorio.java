@@ -11,7 +11,7 @@ import javax.jdo.annotations.PersistenceCapable;
 
   
 /**
- * Implementacion de la clase que define un operadorLaboratorio de laboratorio
+ * Implementación de la clase que define un operadorLaboratorio de laboratorio
  * de manera persistente.
  * @author TesisGeologia
  * @version 1.0  24/09/2010

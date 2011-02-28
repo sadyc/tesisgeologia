@@ -117,7 +117,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
            {
               char caracter = e.getKeyChar();
 
-              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '-') && (caracter != ','))
+              if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE) && (caracter != '-') && (caracter != ',') && (caracter != '.') )
               {
                  e.consume();  // ignorar el evento de teclado
               }
@@ -138,7 +138,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
         
         jLabelProvincia.setText("Provincia : ");
 
-        jLabelNombreUbicacion.setText("(*) Nombre UbicaciÛn :");
+        jLabelNombreUbicacion.setText("(*) Nombre Ubicaci√≥n :");
 
         jLabelCiudad.setText("(*) Ciudad:");
 
@@ -146,7 +146,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
 
         jLabelLongitud.setText("Longitud:");
 
-        jComboBoxProvincia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Buenos Aires", "Catamarca", "Chaco", "Chubut", "Capital Federal", "Cordoba", "Corrientes", "Entre RÌos", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuquen", "RÌo Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago Del Estero", "Tierra Del Fuego", "Tucuman" }));
+        jComboBoxProvincia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Buenos Aires", "Catamarca", "Chaco", "Chubut", "Capital Federal", "C√≥rdoba", "Corrientes", "Entre R√≠os", "Formosa", "Jujuy", "La Pampa", "La Rioja", "Mendoza", "Misiones", "Neuqu√©n", "R√≠o Negro", "Salta", "San Juan", "San Luis", "Santa Cruz", "Santa Fe", "Santiago Del Estero", "Tierra Del Fuego", "Tucuman" }));
 
         jLabel1.setText("(grados)");
 
@@ -170,7 +170,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
 
         jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
-        jMenuVersion.setText("VersiÛn");
+        jMenuVersion.setText("Versi√≥n");
         jMenu2.add(jMenuVersion);
 
         jMenuBar1.add(jMenu2);
@@ -256,7 +256,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
        
     
     /**
-	 * Metodo que permite escuchar los botones y los item
+	 * M√©todo que permite escuchar los botones y los item
 	 * del menu.
 	 *
 	 *@param mediadorModificarUbicacion actionEvent asignado a los botones.

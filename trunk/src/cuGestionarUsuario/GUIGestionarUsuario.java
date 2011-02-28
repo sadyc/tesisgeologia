@@ -154,7 +154,7 @@ public class GUIGestionarUsuario extends JDialog{
 
         jLabel1.setText("Buscar : ");
         jPanel2.add(jLabel1);
-        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Usuario","Nombre", "Apellido", "DNI","Categor�a" }));
+        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre Usuario","Nombre", "Apellido", "DNI","Categoría" }));
         jComboBoxBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxBuscarActionPerformed(evt);
@@ -177,7 +177,7 @@ public class GUIGestionarUsuario extends JDialog{
           	   if (jComboBoxBuscar.getSelectedItem()=="DNI"){
         		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),2));
         	   }
-          	   if (jComboBoxBuscar.getSelectedItem()=="Categor�a"){
+          	   if (jComboBoxBuscar.getSelectedItem()=="Categoría"){
           		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),4));
       	   }
           	 }
@@ -260,7 +260,7 @@ public class GUIGestionarUsuario extends JDialog{
 
         jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        jMenuVersion.setText("Versi�n");
+        jMenuVersion.setText("Versión");
         jMenu2.add(jMenuVersion);
 
         jMenuBar1.add(jMenu2);
@@ -284,7 +284,7 @@ public class GUIGestionarUsuario extends JDialog{
 	}
 	
 	/**
-	 * Metodo que permite escuchar los botones Seleccionar, Buscar y Salir.
+	 * Método que permite escuchar los botones Seleccionar, Buscar y Salir.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -314,7 +314,7 @@ public class GUIGestionarUsuario extends JDialog{
      *@return data  
     */
 	public static String[] getColumName(){
-		String [] columAux = {"Nombre","Apellido","DNI","Nombre Usuario","Categoria","E-mail","Tel�fono"};
+		String [] columAux = {"Nombre","Apellido","DNI","Nombre Usuario","Categoría","E-mail","Teléfono"};
 		return columAux;
 	}
 

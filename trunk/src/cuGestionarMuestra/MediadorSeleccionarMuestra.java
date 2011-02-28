@@ -18,7 +18,9 @@ import comun.MediadorVersion;
 
 /**
  * Clase que se utiliza para escuchar los eventos al seleccionar una muesta.
-* @author TesisGeolog�a
+
+* @author TesisGeología
+
 * @version 1.0.
 */
 
@@ -38,7 +40,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	public MediadorSeleccionarMuestra() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicaci�n","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad"};
+		String [] columAux = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad"};
 		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
@@ -120,7 +122,9 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	 */
 	public void seleccionarMuestra(){
 		if (GUIABMMuestra.InicializarTabla().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ning�n elemento a modificar","Atenci�n!", JOptionPane.ERROR_MESSAGE);
+
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
+
 		}
 		else{
 			System.out.println("Button Seleccionar Muestra");
@@ -129,7 +133,9 @@ public class MediadorSeleccionarMuestra extends Mediador{
 				seleccionoMuestra = true;
 				GUIABMMuestra.dispose();
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inv�lido","Atenci�n!", JOptionPane.ERROR_MESSAGE);
+
+				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
+
 			}
    				   		
 		}
@@ -153,7 +159,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	}
 
 	/**
-	 * Metodos que necesita definir al implementar la interface MouseListener 
+	 * Métodos que necesita definir al implementar la interface MouseListener 
 	 * Para tratar los eventos de mouse 
 	 */
 		

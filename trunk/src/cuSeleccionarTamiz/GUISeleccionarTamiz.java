@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import comun.TablePanel;
 
 /**
-* @author TesisGeolog�a
+* @author TesisGeología
 * Esta clase implementa la ventana que me permite seleccionar un tamiz de los almacenados.
 * 
 * @version 1.0.
@@ -57,7 +57,7 @@ public class GUISeleccionarTamiz extends JDialog	{
 			herramientas.add(seleccionarMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
 			herramientas.add(cancelarMenu);
-			versionMenu = new JMenuItem("Versi�n");
+			versionMenu = new JMenuItem("Versión");
 			ayuda.add(versionMenu);
 			jButtonSeleccionarTamiz  = new JButton("SELECCIONAR");
 			jButtonCancelar  = new JButton("CANCELAR");
@@ -65,7 +65,7 @@ public class GUISeleccionarTamiz extends JDialog	{
 		initialize();
 	}
 	/**
-	 * Metodo que inicializa la interfaz.
+	 * Método que inicializa la interfaz.
 	 *
 	 * @return void
 	 */
@@ -118,7 +118,7 @@ public class GUISeleccionarTamiz extends JDialog	{
 		return versionMenu;
 	}
 	/**
-	 * Metodo que permite escuchar los botones Seleccionar y Buscar.
+	 * Método que permite escuchar los botones Seleccionar y Buscar.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -131,7 +131,7 @@ public class GUISeleccionarTamiz extends JDialog	{
 	
 	}
 	/**
-	 * Metodo que permite escuchar la tabla panel.
+	 * Método que permite escuchar la tabla panel.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -149,7 +149,7 @@ public class GUISeleccionarTamiz extends JDialog	{
 	}
 
 	/**
-	 * Metodo que retorna el panelSur.
+	 * Método que retorna el panelSur.
 	 *
 	 * @return Jpanel
 	 */
@@ -164,7 +164,7 @@ public class GUISeleccionarTamiz extends JDialog	{
 	}
 
 	/**
-	 * Metodo que retorna la tabla panel.
+	 * Método que retorna la tabla panel.
 	 *
 	 * @return TablePanel
 	 */

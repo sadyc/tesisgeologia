@@ -39,37 +39,37 @@ public class SUCS extends Clasificacion {
 		String nombreAux = new String();
 		String descripcionAux = new String();
 		if (clasificacion.equals("ML")) {
-				nombreAux= "Grano Fino - Limos y Arcillas con limite liquido menor a 50 - ML";
-				descripcionAux="Limos inorg�nicos, arenas muy finas y arcillosa, con ligera pl�sticidad.";
+				nombreAux= "Grano Fino - Limos y Arcillas con límite líquido menor a 50 - ML";
+				descripcionAux="Limos inorgánicos, arenas muy finas y arcillosa, con ligera plasticidad.";
 			} else {
 				if (clasificacion.equals("CL")) {
-					nombreAux= "Grano Fino - Limos y Arcillas con limite liquido menor a 50 - CL";
-					descripcionAux="Arcillas inorg�nicas de plasticidad baja a media, arcillas con grava.";
+					nombreAux= "Grano Fino - Limos y Arcillas con límite líquido menor a 50 - CL";
+					descripcionAux="Arcillas inorgánicas de plasticidad baja a media, arcillas con grava.";
 				} else {
 					if (clasificacion.equals("OL")) {
-						nombreAux= "Grano Fino - Limos y Arcillas con limite liquido menor de 50 - OL";
-						descripcionAux="Limos org�nicos y arcillas org�nicas limosas de baja plasticidad.";
+						nombreAux= "Grano Fino - Limos y Arcillas con límite líquido menor de 50 - OL";
+						descripcionAux="Limos orgánicos y arcillas orgánicas limosas de baja plasticidad.";
 					} else {
 						if (clasificacion.equals("MH")){
-							nombreAux= "Grano Fino - Limos y Arcillas con limite liquido mayor a 50 - MH";
-							descripcionAux="Limos inorg�nicos, suelos arenosos finos o limosos con mica o diatomeas.";
+							nombreAux= "Grano Fino - Limos y Arcillas con límite líquido mayor a 50 - MH";
+							descripcionAux="Limos inorgánicos, suelos arenosos finos o limosos con mica o diatomeas.";
 						}
 						else{
 							if (clasificacion.equals("CH")) {
-								nombreAux= "Grano Fino - Limos y Arcillas con limite liquido mayor a 50 - CH";
-								descripcionAux="Arcillas inorg�nicas de plasticidad alta.";
+								nombreAux= "Grano Fino - Limos y Arcillas con límite líquido mayor a 50 - CH";
+								descripcionAux="Arcillas inorgánicas de plasticidad alta.";
 							} else {
 								if (clasificacion.equals("OH")) {
-									nombreAux= "Grano Fino - Limos y Arcillas con limite liquido mayor a 50 - OH";
-									descripcionAux="Arcillas org�nicas de plasticidad media a elevada; limos org�nicos.";
+									nombreAux= "Grano Fino - Limos y Arcillas con límite líquido mayor a 50 - OH";
+									descripcionAux="Arcillas orgánicas de plasticidad media a elevada; limos orgánicos.";
 								} else {
 									if (clasificacion.equals("PT")) {
 										nombreAux= "Muy Organicos - PT";
-										descripcionAux= "Turba y otros suelos de alto contenido org�nico.";
+										descripcionAux= "Turba y otros suelos de alto contenido orgánico.";
 									} else {
 										if (clasificacion.equals("SW")) {
 											nombreAux= "Grano Grueso - Arenas - Arenas Limpias - SW";
-											descripcionAux="Arenas bien graduadas, arenas con grava, pocos finos o  sin finos.";
+											descripcionAux="Arenas bien graduadas, arenas con grava, pocos finos o sin finos.";
 										} else {
 											if (clasificacion.equals("SP")) {
 												nombreAux= "Grano Grueso - Arenas - Arenas Limpias - SP";
@@ -85,7 +85,7 @@ public class SUCS extends Clasificacion {
 													} else {
 														if (clasificacion.equals("GW")) {
 															nombreAux= "Grano Grueso - Gravas - Gravas Limpias - GW";
-															descripcionAux="Gravas, bien graduadas, mezclas grava-arena, pocos finos  o sin finos.";
+															descripcionAux="Gravas, bien graduadas, mezclas grava-arena, pocos finos o sin finos.";
 														} else {
 															if (clasificacion.equals("GP")) {
 																nombreAux= "Grano Grueso - Gravas - Gravas Limpias - GP";

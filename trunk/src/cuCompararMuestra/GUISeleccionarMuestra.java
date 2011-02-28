@@ -19,7 +19,7 @@ import comun.TablePanel;
 /**
 
  * Esta clase implementa la ventana que me permite seleccionar una de las muestras almacenadas.
- * @author TesisGeología
+ * @author TesisGeologï¿½a
  * @version 1.0.
 
 */
@@ -41,7 +41,7 @@ public class GUISeleccionarMuestra extends JDialog	{
 	
 	/**
 	 * Constructor de la clase.
-	 * @param datos, contiene la información de las muestras almacenadas en el sistema.
+	 * @param datos, contiene la informaciÃ³n de las muestras almacenadas en el sistema.
 	 */
 	public GUISeleccionarMuestra(Object [][] datos) {
 		super();
@@ -60,7 +60,7 @@ public class GUISeleccionarMuestra extends JDialog	{
 			herramientas.add(buscarMenu);
 			herramientas.add(new JSeparator());
 			herramientas.add(cancelarMenu);
-			versionMenu = new JMenuItem("Versión");
+			versionMenu = new JMenuItem("VersiÃ³n");
 			ayuda.add(versionMenu);
 			jButtonBuscarMuestra = new JButton("BUSCAR");
 			jButtonSeleccionarMuestra  = new JButton("SELECCIONAR");
@@ -70,7 +70,7 @@ public class GUISeleccionarMuestra extends JDialog	{
 	}
 	
 	/**
-	 * Metodo que inicializa la interfaz.
+	 * MÃ©todo que inicializa la interfaz.
 	 *
 	 * @return void
 	 */
@@ -113,7 +113,7 @@ public class GUISeleccionarMuestra extends JDialog	{
 	}
 	
 	/**
-	 * Método que permite escuchar los botones Seleccionar y Buscar.
+	 * MÃ©todo que permite escuchar los botones Seleccionar y Buscar.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -127,7 +127,7 @@ public class GUISeleccionarMuestra extends JDialog	{
 	
 	}
 	/**
-	 * Método que permite escuchar la tabla panel.
+	 * MÃ©todo que permite escuchar la tabla panel.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -140,12 +140,12 @@ public class GUISeleccionarMuestra extends JDialog	{
      *@return data  
      * */
 	public static String[] getColumName(){
-		String[] columnName = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
+		String[] columnName = {"UbicaciÃ³n","Nombre","Peso","Profundidad Inicial","Profundidad Final"};
 		return columnName;
 	}
 
 	/**
-	 * Método que retorna el panelSur.
+	 * MÃ©todo que retorna el panelSur.
 	 *
 	 * @return Jpanel
 	 */
@@ -161,7 +161,7 @@ public class GUISeleccionarMuestra extends JDialog	{
 	}
 
 	/**
-	 * Método que retorna la tabla panel.
+	 * MÃ©todo que retorna la tabla panel.
 	 *
 	 * @return TablePanel
 	 */

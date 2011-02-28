@@ -37,7 +37,7 @@ public class GUILogin extends javax.swing.JDialog {
 
    
     /**
-     * Metodo que inicializa los componentes de la ventana.
+     * Método que inicializa los componentes de la ventana.
      */
     private void initComponents() {
 
@@ -105,7 +105,7 @@ public class GUILogin extends javax.swing.JDialog {
 
         jMenuItemVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         jMenuItemVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        jMenuItemVersion.setText("Versi�n");
+        jMenuItemVersion.setText("Versión");
         jMenuAyuda.add(jMenuItemVersion);
 
         jMenuBar1.add(jMenuAyuda);
@@ -376,7 +376,7 @@ public class GUILogin extends javax.swing.JDialog {
 	}
 
 	/**
-	 * Metodo que permite escuchar los botoner aceptar y cancelar.
+	 * Método que permite escuchar los botoner aceptar y cancelar.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */

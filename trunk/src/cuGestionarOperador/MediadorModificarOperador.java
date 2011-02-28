@@ -103,14 +103,14 @@ public class MediadorModificarOperador extends Mediador{
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
 		try{
 		 	if (GUIOperador.getjTextFieldNombre().getText().equals("") || GUIOperador.getjTextFieldApellido().getText().equals("") || GUIOperador.getjTextFieldDni().getText().equals("")){
-	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				modificarOperador();
 				}
 			}
 		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar s髄o n鷐eros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar s贸lo n煤meros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -123,12 +123,12 @@ public class MediadorModificarOperador extends Mediador{
 		data[1]= GUIOperador.getjTextFieldApellido().getText();
 		if (!isDni(GUIOperador.getjTextFieldDni().getText())){
 			System.out.println("El DNI es incorrecto!");
-			JOptionPane.showMessageDialog(frame,"El DNI ingresado es Incorrecto. Debe ser de la forma ##.###.###","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"El DNI ingresado es Incorrecto. Debe ser de la forma ##.###.###","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 		}else{
 			data[2]= GUIOperador.getjTextFieldDni().getText();
 			if (!isEmail(GUIOperador.getjTextFieldEmail().getText()) && (!GUIOperador.getjTextFieldEmail().getText().isEmpty())){
 				System.out.println("El E-mail es incorrecto!");
-				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 		
 			}else{
 				data[3]= GUIOperador.getjTextFieldTelefono().getText();
@@ -137,7 +137,7 @@ public class MediadorModificarOperador extends Mediador{
 				try {
 					control.modificarOperador(operadorModificar.getDni(),operador);
 					if (control.getExiste()) {
-						JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
 						modificoOperador = true;

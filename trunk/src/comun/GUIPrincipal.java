@@ -122,7 +122,7 @@ public class GUIPrincipal extends JFrame {
 	        jButtonGestionarLimiteConsistencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-office-3.png"))); // NOI18N
 	        jButtonGestionarLimiteConsistencia.setText("Gestionar Consistencia");
 	        jButtonAnalisis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/kexi.png"))); // NOI18N
-	        jButtonAnalisis.setText("Gestionar An�lisis");
+	        jButtonAnalisis.setText("Gestionar Análisis");
 	        jButtonCompararMuestras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/development-python.png"))); // NOI18N
 	        jButtonCompararMuestras.setText("Comparar Muestras");
 	        jButtonCrearBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/kfloppy-2.png"))); // NOI18N
@@ -192,7 +192,7 @@ public class GUIPrincipal extends JFrame {
 			if (sSistemaOperativo.equals("Linux")){
 				versionMenu = new JMenuItem("Versión");
 			}else{
-				versionMenu = new JMenuItem("Versi�n");
+				versionMenu = new JMenuItem("Versión");
 			}
 			versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
 

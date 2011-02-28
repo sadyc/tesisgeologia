@@ -63,7 +63,7 @@ public class AASHTO extends Clasificacion{
 			}
 		}
 		else{
-			JOptionPane.showMessageDialog(frame,"Estan mal pasados los nombres de la clasificacion","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Estan mal pasados los nombres de la clasificación","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		this.clasificacion = clasificacion;
 		this.nombre =nombreAux;

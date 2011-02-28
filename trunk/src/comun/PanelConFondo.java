@@ -8,8 +8,8 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 /**
-* @brief Clase que se utiliza para crear un panel con una imagen que se utilizará como fondo de la ventana principal.
-* @author TesisGeología
+* @brief Clase que se utiliza para crear un panel con una imagen que se utilizarÃ¡ como fondo de la ventana principal.
+* @author TesisGeologï¿½a
 * @version 1.0
 */
 public class PanelConFondo extends JPanel {

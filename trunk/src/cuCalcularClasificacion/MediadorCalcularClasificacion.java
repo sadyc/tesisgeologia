@@ -53,7 +53,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	/**
 	 * Constructor parametrizado de la clase. 
 	 * @param titulo, titulo de la ventana.
-	 * @param muestra, muestra correspondiente a la clasificaciÛn.
+	 * @param muestra, muestra correspondiente a la clasificaci√≥n.
 	 * @throws Exception
 	 */
 	public MediadorCalcularClasificacion(String titulo, Muestra muestra) throws Exception {
@@ -67,14 +67,14 @@ public class MediadorCalcularClasificacion extends Mediador{
 			}
 			else{
 				
-				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificaciÛn AASHTO, Faltan an·lisis para los tamices 10, 40 Û 200","AtenciÛn!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificaci√≥n AASHTO, Faltan an√°lisis para los tamices 10, 40 √≥ 200","Atenci√≥n!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 			}
 			if(control.buscarAnalisis("200",muestra) && control.buscarAnalisis("4",muestra) && muestra.getIndicePlasticidad()!=0){
 				muestra.setSucs(control.calcularClasificacionSUCS(muestra));
 			}
 			else{
-				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificaciÛn SUCS, Faltan an·lisis o Ìndice de plasticidad","AtenciÛn!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificaci√≥n SUCS, Faltan an√°lisis o √≠ndice de plasticidad","Atenci√≥n!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 				
 			}
@@ -88,15 +88,15 @@ public class MediadorCalcularClasificacion extends Mediador{
 			GUIClasificacion.show();
 		}
 		else{
-			new MediadorGestionarAnalisis("Gestionar An·lisis", muestra);
+			new MediadorGestionarAnalisis("Gestionar An√°lisis", muestra);
 		}
 		
 	}
 	
 	/**
-	 * Levanta informaciÛn almacenada en la base de datos y la copia 
+	 * Levanta informaci√≥n almacenada en la base de datos y la copia 
 	 * al atributo data de la clase mediador.
-	 * @param Muestra, muestra de la que se desean obtener los an·lisis. 
+	 * @param Muestra, muestra de la que se desean obtener los anÔøΩlisis. 
 	 */
 	public void cargarTablaDeAnalisis(Muestra muestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
@@ -148,7 +148,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	}
 
 	/**
-	 * MÈtodo que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
+	 * M√©todo que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();

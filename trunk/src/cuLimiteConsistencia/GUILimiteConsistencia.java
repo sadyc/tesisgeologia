@@ -133,9 +133,9 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        limiteLiquido.setText("L�mite L�quido (LL)");
+        limiteLiquido.setText("Límite Líquido (LL)");
 
-        limitePlastico.setText("L�mite Pl�stico (LP)");
+        limitePlastico.setText("Límite Plástico (LP)");
 
        // jTextFieldLL.addActionListener(new java.awt.event.ActionListener() {
            
@@ -178,7 +178,7 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
 
         ayuda.setText("Ayuda");
 
-        version.setText("Versi�n");
+        version.setText("Versión");
         ayuda.add(version);
 
         jMenuBar1.add(ayuda);

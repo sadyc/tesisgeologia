@@ -86,7 +86,7 @@ public class MediadorAltaCliente extends Mediador{
 	}
 
 	/**
-	 * M閠odo que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
+	 * M茅todo que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
@@ -105,14 +105,14 @@ public class MediadorAltaCliente extends Mediador{
 		System.out.println("cliente.actionPerformed() jButtonAceptar");
 		try{
 		 	if (GUICliente.getjTextFieldNombre().getText().equals("") || GUICliente.getjTextFieldDni().getText().equals("")){
-	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
 				insertarCliente();
 				}
 		}
 		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar s髄o n鷐eros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar s贸lo n煤meros en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
@@ -124,12 +124,12 @@ public class MediadorAltaCliente extends Mediador{
 		data[1]= GUICliente.getjTextFieldApellido().getText();
 		if (!isDni(GUICliente.getjTextFieldDni().getText())){
 			System.out.println("El DNI es incorrecto!");
-			JOptionPane.showMessageDialog(frame,"El DNI ingresado es Incorrecto. Debe ser de la forma ##.###.###","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"El DNI ingresado es Incorrecto. Debe ser de la forma ##.###.###","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 		}else{
 			data[2]= GUICliente.getjTextFieldDni().getText();
 			if (!isEmail(GUICliente.getjTextFieldEmail().getText().toUpperCase()) && (!GUICliente.getjTextFieldEmail().getText().isEmpty())){
 				System.out.println("El E-mail es incorrecto!");
-				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 		
 			}else{
 				data[4]= GUICliente.getjTextFieldEmail().getText();
@@ -139,7 +139,7 @@ public class MediadorAltaCliente extends Mediador{
 					control.insertarCliente(cliente);
 					if (control.getExiste()) {
 						System.out.println("El objeto ya existe");
-						JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atenci髇!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atenci贸n!", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
 						altaCliente = true;

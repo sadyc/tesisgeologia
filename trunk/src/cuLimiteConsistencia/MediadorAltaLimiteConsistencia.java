@@ -38,7 +38,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	public MediadorAltaLimiteConsistencia(Muestra muestra2) {
 		super();
 		muestra = muestra2;
-		GUILimiteConsistencia = new GUILimiteConsistencia("LÌmite Consistencia",muestra);
+		GUILimiteConsistencia = new GUILimiteConsistencia("L√≠mite Consistencia",muestra);
 		GUILimiteConsistencia.setLocationRelativeTo(null);
 		GUILimiteConsistencia.setModal(true);
 		GUILimiteConsistencia.setListenerButtons(this);
@@ -57,7 +57,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	}
 	
 	/**
-	 * Metodo que necesita definir al implementar la interface ActionListener 
+	 * M√©todo que necesita definir al implementar la interface ActionListener 
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
@@ -85,7 +85,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	public void aceptar(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 		if (GUILimiteConsistencia.getjTextFieldLL().getText().isEmpty() || GUILimiteConsistencia.getjTextFieldLP().getText().isEmpty()){
-			JOptionPane.showMessageDialog(frame,"Debe ingresar el LÌmite LÌquido y el LÌmite Pl·stico","Atencion!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Debe ingresar el L√≠mite L√≠quido y el L√≠mite Pl√°stico","Atenci√≥n!", JOptionPane.ERROR_MESSAGE);
 			
 		}else{
 			limiteLiquido = GUILimiteConsistencia.getjTextFieldLL().getText().replace(",",".");

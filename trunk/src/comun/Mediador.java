@@ -19,17 +19,17 @@ public abstract class Mediador implements ActionListener,MouseListener,ItemListe
 	
 	
 	/**
-	 * Método que permite visualizar la ventana.
+	 * MÃ©todo que permite visualizar la ventana.
 	 */
 	public void show(){
 	}
 	/**
-	 * Método que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
+	 * MÃ©todo que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 	}
 	/**
-	 * Método que permite realizar acciones dependiendo a los clicks realizados por el mouse en la ventana.
+	 * MÃ©todo que permite realizar acciones dependiendo a los clicks realizados por el mouse en la ventana.
 	 */
 	public void mouseClicked(MouseEvent arg0) {
 	}
@@ -66,7 +66,6 @@ public abstract class Mediador implements ActionListener,MouseListener,ItemListe
     }
     /**
      * @brief Retorna si un valor de DNI es valido.
-     * metodo que retorna si un valor de DNI es valido para una clase paciente,doctor, etc. 
      * @param dni String que sera evaluado. 
      * @return test variable booleana que almacena el valor de la validez del dni 
      */
