@@ -136,10 +136,10 @@ public class GUIVersion extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>                        
+    }                        
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        // TODO add your handling code here:
+      
     }                                               
 
     public void setListenerButtons(ActionListener lis){

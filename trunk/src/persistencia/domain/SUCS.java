@@ -96,7 +96,7 @@ public class SUCS extends Clasificacion {
 																	if (clasificacion.equals("GC")){
 																		nombreAux= "Grano Grueso - Gravas - Gravas con Finos - GC";
 																		descripcionAux="Gravas arcillosas, mezclas grava-arena-arcilla.";
-																		//clasificacion.equals("GW-GM")clasificacion.equals("GW-GC")clasificacion.equals("GP-GM")clasificacion.equals("GP-GC");
+																		
 																	}else{
 																		if (clasificacion.equals("GW-GM")) {
 																			nombreAux= "Grano Grueso - Gravas - Gravas con Finos - GW-GM";

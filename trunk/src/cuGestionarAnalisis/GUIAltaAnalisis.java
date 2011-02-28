@@ -212,7 +212,7 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
 
         pack();
-    }// </editor-fold>
+    }
 
     private void jButtonSeleccionarTamizActionPerformed(java.awt.event.ActionEvent evt) {
     }

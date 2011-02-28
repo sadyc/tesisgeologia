@@ -127,22 +127,11 @@ public class Backup {
 	    }
 	
 	/**
-<<<<<<< .mine
 	 * Método que ejecuta todas las instrucciones que permiten crear el Back-Up de la base de datos.
-	 * @param dirMySQL, directorio en donde se encuentra instalado MySQL Server 5.1.
-	 * @param error, contenido del mensaje en caso de error.
-=======
-	 * Método que ejecuta todas las instrucciones que permiten crear el Back-Up de la base de datos.
->>>>>>> .r341
 	 */
 	 public void crearBackup(){
 		 try{       
-//WINDOWS			 Process run = Runtime.getRuntime().exec(dirMySQL+"mysqldump --host=localhost --port=3306 --user=root --password=root tesis");
-		//	 Process run = Runtime.getRuntime().exec("mysqldump -u root -p --all-databases > "+dirMySQL);
-			 
-// ANDA EN CONSOLA PERO ACA NO
 			 Process run = Runtime.getRuntime().exec("mysqldump --host=localhost --port=3306 --user=root --password=root tesis");
-			 
 			 InputStream in = run.getInputStream();
 			 BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			 File backupFile = new File(filePath);
@@ -179,32 +168,4 @@ public class Backup {
 		 }   
 	 }  
 	
-	 /**
-	  * Método que permite eliminar la base de datos existente para evitar el surgimiento de conflictos.	 
-	  * @throws Exception
-	  
-	 public void eliminarDB() throws Exception {
-			Statement stmt;
-			        Class.forName("com.mysql.jdbc.Driver");
-			        String url = "jdbc:mysql://localhost:3306/mysql";
-			        Connection con = (Connection) DriverManager.getConnection(url,"root", "root");
-			        stmt = (Statement) con.createStatement();
-			        stmt.executeUpdate("DROP DATABASE tesis");
-			        con.close();
-	 }
-	 
-	 /**
-	  * Método que permite crear la base de datos para montar el back-up.
-	  * @throws Exception
-	  
-	 public void crearDB() throws Exception {
-			Statement stmt;
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/mysql";
-			Connection con = (Connection) DriverManager.getConnection(url,"root", "root");
-			stmt = (Statement) con.createStatement();
-			stmt.executeUpdate("CREATE DATABASE tesis");
-			con.close();
-	 }
-	 */
 }

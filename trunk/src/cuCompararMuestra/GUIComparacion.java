@@ -294,14 +294,14 @@ public class GUIComparacion extends JDialog{
                 menu.add(herramientas);
                 menu.add(ayuda);
                 cancelarMenu = new JMenuItem("Salir");
-                cancelarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
+                cancelarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); 
                 versionMenu = new JMenuItem("Versión");
-                versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
+                versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); 
                 ayuda.add(versionMenu);
                 herramientas.add(new JSeparator());
                 herramientas.add(cancelarMenu);
                 cancelar = new JButton("Salir");
-                cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
+                cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); 
                 this.setSize(1300 , 700);
                 this.getContentPane().setLayout(new BorderLayout());            
                 this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
