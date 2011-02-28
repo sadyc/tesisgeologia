@@ -12,7 +12,6 @@ import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
 
 import comun.Mediador;
-import comun.MediadorVersion;
 
 import cuSeleccionarTamiz.MediadorSeleccionarTamiz;
 
@@ -54,6 +53,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 	}
 	
 		
+	@SuppressWarnings("deprecation")
 	public void show(){
 		GUIAnalisis.show();
 	}

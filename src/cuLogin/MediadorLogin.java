@@ -5,7 +5,6 @@ package cuLogin;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 
@@ -25,13 +24,14 @@ public class MediadorLogin extends Mediador {
 	private GUILogin login;
 	private Component frame;
 	private ControlLogin control;
-	private Usuario persona;
+	
 	
 	/**
 	 * Constructor con parámetros
 	 * @param nombreVentana
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorLogin (String nombreVentana) throws Exception {
 		super();
 		login = new GUILogin(true);
@@ -39,15 +39,10 @@ public class MediadorLogin extends Mediador {
         login.setLocationRelativeTo(null);
 		login.setListenerButtons(this);
 		login.setKeyListener(this);
-		login.show();
-	}
-
-	
-	public void show()	{
 		login.pack();
 		login.show();
 	}
-	
+
 	/**
 	 * Método que necesita definir al implementar la interface ActionListener 
 	 * Para tratar los eventos de acciones de los componentes 
@@ -58,7 +53,6 @@ public class MediadorLogin extends Mediador {
 			try {
 				aceptar();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -76,6 +70,7 @@ public class MediadorLogin extends Mediador {
 	 * Acciones a realizar cuando se selecciona la opcion de "Aceptar"
 	 * @throws Exception 
 	 */
+	@SuppressWarnings("deprecation")
 	public void aceptar() {
 		System.out.println("GestionarMediador.actionPerformed() jButtonAceptar");
 		String nombreUsuario = login.getJnombreUsuario().getText();
@@ -138,6 +133,7 @@ public class MediadorLogin extends Mediador {
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_ENTER)
         	aceptar();

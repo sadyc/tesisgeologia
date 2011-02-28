@@ -22,6 +22,7 @@ import javax.swing.JSeparator;
 * @author TesisGeología
 * @version 1.0
 */
+@SuppressWarnings("serial")
 public class GUIPrincipal extends JFrame {
 
 	private JPanel panelCentro=null;
@@ -63,6 +64,7 @@ public class GUIPrincipal extends JFrame {
 	 * @param title, es el título que va a tener la ventana.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("static-access")
 	public GUIPrincipal(String title) throws Exception {
 		super(title);
 		if (this.menu==null) {

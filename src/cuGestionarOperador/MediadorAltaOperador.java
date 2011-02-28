@@ -2,21 +2,16 @@ package cuGestionarOperador;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
+import persistencia.domain.OperadorDeLaboratorio;
+
 import comun.Mediador;
 import comun.MediadorVersion;
-
-import persistencia.domain.OperadorDeLaboratorio;
 
 /**
  * @brief Clase que se utiliza para realizar los sucesos en la ventana GUIOperador.
@@ -38,6 +33,7 @@ public class MediadorAltaOperador extends Mediador{
 	 * @param nombreVentana
 	 * Constructor con pasaje de parametros.
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorAltaOperador(String nombreVentana) {
 		super();
 		control = new ControlGestionarOperador();

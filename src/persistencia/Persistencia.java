@@ -8,7 +8,6 @@ import java.util.List;
 
 import javax.jdo.Extent;
 import javax.jdo.JDOException;
-import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
@@ -17,6 +16,8 @@ import javax.jdo.Transaction;
 
 
 /**
+ * Clase que implementa el intermediario entre el singleton y los controles 
+ * para el manejo de la informacion que se va a almacenar en la base de datos.
  * @author TesisGeologia
  * @version 1.0
  */
@@ -79,6 +80,7 @@ public class Persistencia {
 	 * Busca un elemento generico. Retorna lo encontrado.
 	 *
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Object buscarObjeto (Class clase, String filtro) throws Exception{
 		Object aux = new Object();
 		try {
@@ -102,6 +104,7 @@ public class Persistencia {
 	 * Busca un elemento generico. Retorna coleccion encontrada.
 	 *
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Collection buscarColeccionFiltro(Class clase, String filtro) throws Exception{
 		Collection<Object> aux = null;
 		try {
@@ -120,6 +123,7 @@ public class Persistencia {
 	 * Retorna la lista de analisis ordenadas por porcentaje retenido acumulado.
 	 *
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List buscarListaFiltro(Class clase, String filtro) throws Exception{
 		List aux = null;
 		try {
@@ -136,6 +140,7 @@ public class Persistencia {
 		return aux;
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Collection buscarColeccion (Class clase)throws Exception{
 		Collection<Object> aux = null; 
 		try {
@@ -168,5 +173,5 @@ public class Persistencia {
 		pmi.close();
 	}
 
-	//metodos particulares de busqueda.
+	
 }

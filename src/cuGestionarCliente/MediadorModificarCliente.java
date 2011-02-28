@@ -5,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
@@ -35,6 +33,7 @@ public class MediadorModificarCliente extends Mediador{
 	 * @param fila, arreglo que contiene los datos del cliente.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorModificarCliente(String[] fila) throws Exception {
 		super();
 		clienteModificar = (control.obtenerCliente(fila[2]));
@@ -120,6 +119,7 @@ public class MediadorModificarCliente extends Mediador{
 		if (!isDni(GUICliente.getjTextFieldDni().getText())){
 			System.out.println("El DNI es incorrecto!");
 			JOptionPane.showMessageDialog(frame,"El DNI ingresado es Incorrecto. Debe ser de la forma ##.###.###","Atención!", JOptionPane.ERROR_MESSAGE);
+
 			}else{
 				data[2]= GUICliente.getjTextFieldDni().getText();
 				if (!isEmail(GUICliente.getjTextFieldEmail().getText().toUpperCase()) && (!GUICliente.getjTextFieldEmail().getText().isEmpty())){

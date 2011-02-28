@@ -35,16 +35,14 @@ public class MediadorGestionarMuestra extends Mediador{
 	private Usuario usuario;
 	private ControlGestionarMuestra control = new ControlGestionarMuestra();
 	private Object [] seleccionado = new Object [10];
-	private boolean seleccionoMuestra = false;
-		
+	
 	/**
 	 * Constructor parametrizado de la clase.
-<<<<<<< .mine
 	 * @param nombreVentana, Título de la ventana.
 	 * @param usuario, Usuario que inició sesión en el sistema.
-
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorGestionarMuestra(String nombreVentana, Usuario usuario) throws Exception {
 		super();
 		this.usuario=usuario;
@@ -66,12 +64,9 @@ public class MediadorGestionarMuestra extends Mediador{
 	
 	
 	/**
-<<<<<<< .mine
-	 * Levanta información almacenada en la base de datos y los copia sobre el atributo data de la clase mediador.
-=======
 	 * Levanta informaci�n almacenada en la base de datos y los copia sobre el atributo data de la clase mediador.
->>>>>>> .r341
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		Muestra muestra = new Muestra();
@@ -96,13 +91,9 @@ public class MediadorGestionarMuestra extends Mediador{
 		    i++;
 		}
 	}
-			
+
 	/**
-<<<<<<< .mine
-	 * Método que me permite visualizar la ventana.
-=======
 	 * M�todo que me permite visualizar la ventana.
->>>>>>> .r341
 	 */
 	public void show()	{
 		 GUIABMMuestra.show();
@@ -117,11 +108,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	}
 	
 	/**
-<<<<<<< .mine
-	 * Método que se necesita definir al implementar la interface ActionListener 
-=======
 	 * M�todo que se necesita definir al implementar la interface ActionListener 
->>>>>>> .r341
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
@@ -173,7 +160,6 @@ public class MediadorGestionarMuestra extends Mediador{
 			System.out.println("Button Seleccionar Muestra");
 			try {
 				seleccionado = GUIABMMuestra.getTablePanel().getRow(GUIABMMuestra.getTablePanel().getSelectedRow());
-				seleccionoMuestra = true;
 				muestra = control.obtenerMuestra((String)seleccionado[1], (String)seleccionado[0], (String)seleccionado[7]);
 			} catch (Exception e) {
 
@@ -183,9 +169,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	}
 
 	/**
-
 	 * Acciones a realizar cuando se selecciona la opción de "Modificar Muestra"
-
 	 */
 	public void modificarMuestra(){
 		if (GUIABMMuestra.getTablePanel().getSelectedRow() == -1){
@@ -244,11 +228,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	}
 	
 	/**
-<<<<<<< .mine
-	 * Acciones a realizar cuando se selecciona la opción de "Agregar Muestra"
-=======
 	 * Acciones a realizar cuando se selecciona la opci�n de "Agregar Muestra"
->>>>>>> .r341
 	 */
 	public void agregarMuestra(){
 		try {
@@ -278,6 +258,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	 * Metodo para escuchar el atajo del teclado.
 	 * @see comun.Mediador#keyPressed(java.awt.event.KeyEvent)
 	 */
+	@SuppressWarnings("static-access")
 	public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_ENTER){
         	seleccionarMuestra();

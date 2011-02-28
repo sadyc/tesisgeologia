@@ -1,6 +1,5 @@
 package cuGestionarOperador;
 
-import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -20,6 +19,7 @@ import comun.TablePanel;
  * @author TesisGeología
  * @version 1.0
 */
+@SuppressWarnings("serial")
 public class GUIGestionarOperador extends JDialog	{
 
 	private javax.swing.JButton jButtonAgregar;

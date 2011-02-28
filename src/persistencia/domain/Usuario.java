@@ -11,14 +11,18 @@ import javax.jdo.annotations.PersistenceCapable;
 
 
 /**
+ * Esta clase define un usuario con persistencia.
+ * 
  * @author TesisGeologia
- *
+ * 
+ * @version 1.0.
  */
 @PersistenceCapable
 public class Usuario extends Persona{
 	private String nombreUsuario;
 	private String password;
 	private String categoria;
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected Collection<Muestra> muestras = new HashSet();
 	
 	public Usuario (){
@@ -78,6 +82,7 @@ public class Usuario extends Persona{
 	 * Metodo que me retorna las muestras tomadas por el usuario.
 	 * @return muestras, coleccion de muestras tomadas por el usuario.
 	 */
+	@SuppressWarnings("rawtypes")
 	public Collection getMuestras(){
 		return (muestras);
 	}

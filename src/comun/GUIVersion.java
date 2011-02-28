@@ -2,21 +2,14 @@ package comun;
 
 import java.awt.event.ActionListener;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * GUIVersion.java
- *
- * Created on 20/02/2011, 04:44:17
- */
-
 /**
- *
- * @author franco
+ * Clase que implementa la interfaz de la ventana "Versión".
+ * 
+ * @author tesisGeologia.
+ * 
+ * @version 1.0.
  */
+@SuppressWarnings("serial")
 public class GUIVersion extends javax.swing.JDialog {
 
 	                    
@@ -148,24 +141,6 @@ public class GUIVersion extends javax.swing.JDialog {
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
     }                                               
-
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                GUIVersion dialog = new GUIVersion();
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-                  
 
     public void setListenerButtons(ActionListener lis){
 		this.jButtonCancelar.addActionListener(lis);

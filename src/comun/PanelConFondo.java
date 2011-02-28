@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 * @author TesisGeolog�a
 * @version 1.0
 */
+@SuppressWarnings("serial")
 public class PanelConFondo extends JPanel {
     private Image imagen;
 

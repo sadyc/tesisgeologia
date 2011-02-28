@@ -24,6 +24,7 @@ import comun.TablePanel;
 * 
 * @version 1.0
 */
+@SuppressWarnings("serial")
 public class GUIGestionarUbicacion extends JDialog	{
 	
 	// Variables declaration - do not modify

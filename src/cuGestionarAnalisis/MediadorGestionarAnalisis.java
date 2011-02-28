@@ -2,12 +2,9 @@ package cuGestionarAnalisis;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -19,6 +16,7 @@ import persistencia.domain.Muestra;
 import persistencia.domain.Tamiz;
 
 import comun.Mediador;
+
 import cuGestionarMuestra.GUIMuestraDetallada;
 
 
@@ -57,6 +55,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 	 * Levanta informacion almacenada en la base de datos
 	 * y la copia al atributo data de la clase mediador.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void cargarTablaDeAnalisis()throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
@@ -78,6 +77,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 	/**
 	 * Método que permite visualizar la ventana. 
 	 */
+	@SuppressWarnings("deprecation")
 	public void show(){
 		GUImuestraDetallada.show();
 	}
@@ -195,20 +195,15 @@ public class MediadorGestionarAnalisis extends Mediador{
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

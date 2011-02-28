@@ -35,6 +35,7 @@ public class MediadorModificarUbicacion extends Mediador{
 	/**
 	 * Contructor por defecto.
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorModificarUbicacion(String[] data) {
 		super();
 		Ubicacion ubicacion = new Ubicacion();
@@ -71,7 +72,7 @@ public class MediadorModificarUbicacion extends Mediador{
 			GUIUbicacion.dispose();
 		}
 		if (GUIUbicacion.getjMenuVersion()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 	

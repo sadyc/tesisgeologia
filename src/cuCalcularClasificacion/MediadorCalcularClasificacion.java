@@ -17,11 +17,9 @@ import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
 
 import comun.Mediador;
-import comun.MediadorVersion;
 
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
-import cuGestionarMuestra.GUIMuestraDetallada;
 import cuReporte.report.MakeReport;
 import cuReporte.report.ViewReport;
 
@@ -40,6 +38,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	/**
 	 * Default Constructor
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorCalcularClasificacion(String titulo){
 		super();
 		GUIClasificacion = new GUIClasificacion();
@@ -56,6 +55,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	 * @param muestra, muestra correspondiente a la clasificación.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorCalcularClasificacion(String titulo, Muestra muestra) throws Exception {
 		super();
 		boolean clasificar = true;
@@ -66,6 +66,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 				muestra.setAashto(control.calcularClasificacionAASHTO(muestra));
 			}
 			else{
+
 				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación AASHTO, Faltan análisis para los tamices 10, 40 ó 200","Atención!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 			}
@@ -97,6 +98,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	 * al atributo data de la clase mediador.
 	 * @param Muestra, muestra de la que se desean obtener los an�lisis. 
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void cargarTablaDeAnalisis(Muestra muestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
@@ -149,6 +151,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	/**
 	 * Método que permite permite realizar acciones dependiendo a los eventos que ocurren en la ventana.
 	 */
+	@SuppressWarnings("static-access")
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
 		if (this.GUIClasificacion.getJButtonImprimir() == source || GUIClasificacion.getImprimirMenu()==source) {
@@ -188,8 +191,6 @@ public class MediadorCalcularClasificacion extends Mediador{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 		
 }

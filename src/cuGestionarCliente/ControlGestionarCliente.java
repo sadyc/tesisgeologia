@@ -1,13 +1,23 @@
 package cuGestionarCliente;
 
 import java.util.Collection;
+
 import javax.jdo.JDOException;
+
 import persistencia.Persistencia;
 import persistencia.domain.Cliente;
-import persistencia.domain.OperadorDeLaboratorio;
 
+/**
+ * Clase que implementa el manejo de informacion de los clientes con persistencia.
+ * 
+ * @author tesisGeologia
+ * 
+ * @version 1.0
+ */
 public class ControlGestionarCliente {
+	
 	private boolean yaExiste;
+	
 	/**
 	 * Contructor por defecto
 	 */
@@ -55,6 +65,7 @@ public class ControlGestionarCliente {
 		}
 	}
 			
+	@SuppressWarnings("rawtypes")
 	public void modificarCliente(String DNI,Cliente data) throws Exception {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
@@ -117,6 +128,7 @@ public class ControlGestionarCliente {
 	/**
 	 * Retorna todos los elementos de la clase pasada como persistente.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Collection coleccionClientes(Class clase) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();

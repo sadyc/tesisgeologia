@@ -27,7 +27,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 	private String pesoRetenido;
 	private Analisis analisis;
 	private String numeroTamiz;
-	private boolean modifico = false;
+	private boolean modifico;
 	private ControlGestionarAnalisis control ;
 	private Component frame;
 	
@@ -56,6 +56,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 	/**
 	 * Metodo que permite visualizar la ventana.
 	 */
+	@SuppressWarnings("deprecation")
 	public void show(){
 		GUIAnalisis.show();
 	}
@@ -160,7 +161,13 @@ public class MediadorModificarAnalisis  extends Mediador{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
+	/**
+	 * @return the modifico
+	 */
+	public boolean isModifico() {
+		return modifico;
+	}
+
+	
 }

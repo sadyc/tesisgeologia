@@ -39,6 +39,7 @@ public class ControlGestionarMuestra {
 	 * @param usuario1 usuario a la que se asocia la muestra.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("rawtypes")
 	public void insertarMuestra(Muestra mu, Ubicacion ubicacion, OperadorDeLaboratorio operador, Cliente cliente, Usuario usuario1) throws Exception{
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
@@ -93,6 +94,7 @@ public class ControlGestionarMuestra {
 	 * Retorna todos los elementos de la clase pasada como persistente.
 	 * @param clase clase a la que perteneceran los elementos de la coleccion.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Collection coleccionMuestras(Class clase) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
@@ -114,6 +116,7 @@ public class ControlGestionarMuestra {
 	 * @param data
 	 * @throws Exception
 	 */
+	@SuppressWarnings("rawtypes")
 	public void ModificarMuestra(Muestra muestra, String[] data) throws Exception {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();
@@ -190,6 +193,7 @@ public class ControlGestionarMuestra {
 	}
 	
 	
+	@SuppressWarnings("rawtypes")
 	private void eliminarAnalisis(Muestra muestra, Persistencia persistencia) throws Exception {
 		Analisis analisis =new Analisis();
 		

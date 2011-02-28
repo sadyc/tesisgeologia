@@ -3,8 +3,6 @@
  */
 package comun;
 
-import java.sql.Date;
-
 import persistencia.Persistencia;
 import persistencia.domain.AASHTO;
 import persistencia.domain.Analisis;
@@ -21,7 +19,6 @@ import cuGestionarMuestra.ControlGestionarMuestra;
 import cuGestionarOperador.ControlGestionarOperador;
 import cuGestionarUbicacion.ControlGestionarUbicacion;
 import cuGestionarUsuario.ControlGestionarUsuario;
-import cuLimiteConsistencia.ControlLimiteConsistencia;
 import cuLogin.Encriptar;
 
 /**
@@ -36,9 +33,7 @@ public class CargaDatos {
 	private ControlGestionarCliente controlCliente;
 	private ControlGestionarUsuario controlUsuario;
 	private ControlGestionarAnalisis controlAnalisis;
-	private ControlLimiteConsistencia controlConsistencia;
-	
-	
+		
 	public CargaDatos(){
 		controlMuestra = new ControlGestionarMuestra();
 		controlUbicacion = new ControlGestionarUbicacion();
@@ -46,7 +41,6 @@ public class CargaDatos {
 		controlOperador = new ControlGestionarOperador();
 		controlCliente = new ControlGestionarCliente();
 		controlAnalisis = new ControlGestionarAnalisis();
-		controlConsistencia = new ControlLimiteConsistencia();
 	}
 	
 	/**

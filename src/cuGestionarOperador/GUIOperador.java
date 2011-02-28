@@ -9,14 +9,12 @@ import javax.swing.JTextField;
 
 import persistencia.domain.Persona;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * Clase GUI que reprensenta la ventana para una muestra.
  * @author TesisGeologia.
  * @verion 1.0.
  */
+@SuppressWarnings("serial")
 public class GUIOperador extends javax.swing.JDialog {
 		   
     private javax.swing.JButton jButtonAgregar;
@@ -32,7 +30,7 @@ public class GUIOperador extends javax.swing.JDialog {
     private javax.swing.JMenuItem jMenuItemAgregar;
     private javax.swing.JMenuItem jMenuItemCancelar;
     private javax.swing.JMenuItem jMenuItemVersion;
-    private javax.swing.JSeparator jSeparator1;
+   
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldDni;
@@ -74,7 +72,6 @@ public class GUIOperador extends javax.swing.JDialog {
      */
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
         jLabelNombre = new javax.swing.JLabel();
         jLabelApellido = new javax.swing.JLabel();
         jLabelDni = new javax.swing.JLabel();
@@ -239,10 +236,10 @@ public class GUIOperador extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>         
+    }//         
 
     private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        // TODO add your handling code here:
+        
     }                                               
 
 	/**

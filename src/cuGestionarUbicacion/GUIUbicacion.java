@@ -16,6 +16,7 @@ import persistencia.domain.Ubicacion;
  * @version 1.0.
  *
  */
+@SuppressWarnings("serial")
 public class GUIUbicacion extends javax.swing.JDialog {
 	
 	private javax.swing.JButton jButtonCancelar;

@@ -38,6 +38,7 @@ public class MediadorGestionarCliente extends Mediador{
 	 * Constructor por defecto de la clase.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorGestionarCliente(boolean seleccionar,boolean eliminar) throws Exception {
 		super();
 		this.seleccionar=seleccionar;
@@ -61,6 +62,7 @@ public class MediadorGestionarCliente extends Mediador{
 	 * Levanta informacion almacenada en la base de datos
 	 * y la copia al atributo data de la clase mediador.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void cargarTablaDeCliente()throws Exception{
 		Cliente cliente = new Cliente();
 		Class clase = cliente.getClass();
@@ -152,6 +154,7 @@ public class MediadorGestionarCliente extends Mediador{
 	               	}
 	        	}
 	        	catch (Exception e) {
+
 	        		JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
 	        	}
 	        }
@@ -209,6 +212,7 @@ public class MediadorGestionarCliente extends Mediador{
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == e.VK_ENTER){
         	if (seleccionar) {

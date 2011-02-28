@@ -12,12 +12,14 @@ import javax.swing.JOptionPane;
 
 
 /**
+ * Clase que define una clasificacion aashto.
  * @author TesisGeologia.
  * @version 1.0.
  */
 @PersistenceCapable
 public class AASHTO extends Clasificacion{
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected Collection<Muestra> muestras = new HashSet();
 	
 	/**

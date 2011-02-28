@@ -22,6 +22,7 @@ import comun.TablePanel;
  * 
  * @version 1.0.
  */
+@SuppressWarnings("serial")
 public class GUIABMMuestra extends JDialog{
 
 

@@ -7,11 +7,13 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.PrimaryKey;
 
 
 /**
+ * Clase que define las caracteristicas de un tamiz.
+ * 
  * @author TesisGeologia
+ * @version 1.0.
  *
  */
 @PersistenceCapable
@@ -19,6 +21,7 @@ public class Tamiz {
 	
 	private String numeroTamiz;
 	private Double aberturaMalla;
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected Collection<Analisis> analisis = new HashSet();
 	
 	/**

@@ -48,6 +48,7 @@ public class MediadorModificarMuestra extends Mediador{
 	 * @param usuario
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorModificarMuestra(String[] fila, Usuario usuario) throws Exception {
 		super();
 		this.usuario = usuario;
@@ -114,7 +115,7 @@ public class MediadorModificarMuestra extends Mediador{
 			GUIMuestra.dispose();
 		}
 		if (GUIMuestra.getVersionMenu()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 

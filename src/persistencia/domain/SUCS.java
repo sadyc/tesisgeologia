@@ -3,12 +3,10 @@
  */
 package persistencia.domain;
 
-import java.awt.Frame;
 import java.util.Collection;
 import java.util.HashSet;
 
 import javax.jdo.annotations.PersistenceCapable;
-import javax.swing.JOptionPane;
 
 
 /**
@@ -20,6 +18,7 @@ import javax.swing.JOptionPane;
 @PersistenceCapable
 public class SUCS extends Clasificacion {
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	protected Collection<Muestra> muestras = new HashSet();
 	
 	/**
@@ -34,7 +33,6 @@ public class SUCS extends Clasificacion {
 	 * @param clasificacion.
 	 */
 	public SUCS(String clasificacion){
-		Frame frame = new Frame();
 		
 		String nombreAux = new String();
 		String descripcionAux = new String();
