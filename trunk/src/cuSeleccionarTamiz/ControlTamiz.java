@@ -25,6 +25,7 @@ public class ControlTamiz {
 	/**
 	 * Retorna todos los elementos de la clase pasada como parametro.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Collection coleccionTamicesFiltro(Double abertura) throws Exception {
 		Tamiz tamiz = new Tamiz();
 		Collection<Tamiz> aux = null;

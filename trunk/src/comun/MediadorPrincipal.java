@@ -32,14 +32,8 @@ public class MediadorPrincipal extends Mediador{
 		
 	/**
 	 * Constructor parametrizado de la clase.
-<<<<<<< .mine
 	 * @param nombreVentana, Título de la ventana.
 	 * @param usuario, Usuario que inició sesión en el sistema.
-=======
-	 * @param nombreVentana, T�tulo de la ventana.
-	 * @param usuario, Usuario que inici� sesi�n en el sistema.
->>>>>>> .r341
-	 * @throws Exception
 	 */
 	public MediadorPrincipal(String nombreVentana, Usuario usuario) throws Exception {
 		super();
@@ -83,10 +77,14 @@ public class MediadorPrincipal extends Mediador{
 	}
 	/**
 <<<<<<< .mine
+	 * M�todo que permite visualizar la ventana.
+=======
+<<<<<<< .mine
 	 * Método que permite visualizar la ventana.
 =======
 	 * M�todo que permite visualizar la ventana.
 >>>>>>> .r341
+>>>>>>> .r343
 	 */
 	public void show(){
 		GUIPrincipal.show();

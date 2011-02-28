@@ -39,6 +39,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	 * @param nombreVentana
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorGestionarUsuario(String nombreVentana) throws Exception {
 		super();
 		cargarTablaDeMuestras();
@@ -60,6 +61,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	 * Levanta informacion almacenada en la 
 	 * base de datos al atributo data de la clase mediador.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarUsuario control = new ControlGestionarUsuario();
 		Usuario usuario = new Usuario();
@@ -81,6 +83,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 		}
 	}
 				
+	@SuppressWarnings("deprecation")
 	public void show()	{
 		 GUIGestionarUsuario.show();
 	}
@@ -114,7 +117,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 			GUIGestionarUsuario.dispose();
 		}
 		if (GUIGestionarUsuario.getjMenuVersion()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 	
@@ -197,9 +200,11 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	public void keyPressed(KeyEvent e) {
-	    if (e.getKeyCode() == e.VK_ENTER)
+	    if (e.getKeyCode() == e.VK_ENTER){
 	    	modificarUsuario();
+	    }
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {
@@ -214,25 +219,20 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	public void mouseReleased(MouseEvent arg0) {
 	}
 	
-	/**
-	 * @returns data 
-	*/
-	
-	
 	public void itemStateChanged(ItemEvent e) {
 	}
 	
 	
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+	
 		
 	}
 	
 	
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+	
 		
 	}
 	

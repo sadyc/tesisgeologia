@@ -3,9 +3,6 @@ package cuGestionarUsuario;
 import java.util.Collection;
 
 import persistencia.Persistencia;
-import persistencia.domain.Muestra;
-import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
 
 /**
@@ -67,6 +64,7 @@ public class ControlGestionarUsuario {
 	 * @param data
 	 * @throws Exception
 	 */
+	@SuppressWarnings("rawtypes")
 	public void modificarUsuario(String DNI,String nombreUsuario,String[] data) throws Exception {
 		yaExiste=false;
 		Persistencia persistencia = new Persistencia();

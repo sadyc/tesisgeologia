@@ -15,6 +15,7 @@ import persistencia.domain.Usuario;
  * @version 1.0.
  *
  */
+@SuppressWarnings("serial")
 public class GUIUsuario extends javax.swing.JDialog {
 		   
     private javax.swing.JButton jButtonAgregar;
@@ -37,7 +38,6 @@ public class GUIUsuario extends javax.swing.JDialog {
     private javax.swing.JMenuItem jMenuItemVersion;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldDni;
@@ -81,7 +81,6 @@ public class GUIUsuario extends javax.swing.JDialog {
      */
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
         jLabelNombre = new javax.swing.JLabel();
         jLabelApellido = new javax.swing.JLabel();
         jLabelDni = new javax.swing.JLabel();

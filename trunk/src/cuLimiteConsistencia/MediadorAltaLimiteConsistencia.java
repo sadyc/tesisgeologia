@@ -18,6 +18,7 @@ import comun.MediadorVersion;
  * @author TesisGeologia
  * Implementa las interfaces de acuerdo a los eventos que necesita tratar
  * en este caso: ActionListener,MouseListener,ItemListener.
+ * @version 1.0
  */
 
 public class MediadorAltaLimiteConsistencia extends Mediador{
@@ -25,7 +26,6 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	private GUILimiteConsistencia GUILimiteConsistencia;
 	private Muestra muestra = new Muestra();
 	private ControlLimiteConsistencia control = new ControlLimiteConsistencia();
-	private String nombreMuestra;
 	private String limiteLiquido;
 	private String limitePlastico;
 	private Component frame;
@@ -45,6 +45,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 		show();
 	}
 			
+	@SuppressWarnings("deprecation")
 	public void show(){
 		GUILimiteConsistencia.show();
 	}
@@ -75,7 +76,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 			
 		}
 		if (GUILimiteConsistencia.getVersion()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 	
@@ -86,8 +87,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 		if (GUILimiteConsistencia.getjTextFieldLL().getText().isEmpty() || GUILimiteConsistencia.getjTextFieldLP().getText().isEmpty()){
 			JOptionPane.showMessageDialog(frame,"Debe ingresar el Límite Líquido y el Límite Plástico","Atención!", JOptionPane.ERROR_MESSAGE);
-			
-		}else{
+	}else{
 			limiteLiquido = GUILimiteConsistencia.getjTextFieldLL().getText().replace(",",".");
 			limitePlastico = GUILimiteConsistencia.getjTextFieldLP().getText().replace(",",".");
 			muestra.setLimiteLiquido((limiteLiquido));
@@ -138,8 +138,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+				
 	}
 	public String[] getData(){
 		return data;

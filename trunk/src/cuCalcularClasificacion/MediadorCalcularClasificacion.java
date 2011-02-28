@@ -66,7 +66,6 @@ public class MediadorCalcularClasificacion extends Mediador{
 				muestra.setAashto(control.calcularClasificacionAASHTO(muestra));
 			}
 			else{
-				
 				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación AASHTO, Faltan análisis para los tamices 10, 40 ó 200","Atención!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 			}
@@ -174,7 +173,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 			MakeReport makeReporte = new MakeReport();
 			makeReporte.make("report1");
 			ViewReport view = new ViewReport(data, parameters);
-			view.viewPersons();
+			view.viewClasificacion();
 			GUIClasificacion.dispose();
 				
 			}
