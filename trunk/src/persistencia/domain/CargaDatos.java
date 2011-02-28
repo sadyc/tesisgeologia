@@ -176,8 +176,8 @@ public class CargaDatos {
 		String a = encriptar.hash("kulmino");
 		String b = encriptar.hash("admin");
 		String c = encriptar.hash("pepe");
-		Usuario usuario1 = new Usuario("Juan", "Perez", "555","admin","Administrador", "juan@perez.com", "4917015",b);
-		Usuario usuario2 = new Usuario("José", "Álvarez", "111", "jalvarez", "Administrador", "pepe@alvarez", "444-222", c);
+		Usuario usuario1 = new Usuario("Juan", "Perez", "05.255.333","admin","Administrador", "juan@perez.com", "4917015",b);
+		Usuario usuario2 = new Usuario("José", "Álvarez", "11.121.321", "jalvarez", "Administrador", "pepe@alvarez", "444-222", c);
 		Usuario usuario3 = new Usuario("Nicolas", "Bettiol", "33.825.312", "nbettiol", "Restringido", "nicolasbettiol@gmail.com", "0358-4632587", a);
 		
 		Cliente cliente1 = new Cliente("Carlos", "Leoni", "12.980.320", "email@email.com", "3584192871");
