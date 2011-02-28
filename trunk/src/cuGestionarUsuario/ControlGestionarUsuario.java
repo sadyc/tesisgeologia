@@ -147,6 +147,7 @@ public class ControlGestionarUsuario {
 	/**
 	 * Retorna todos los elementos de la clase pasada como persistente.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Collection coleccionUsuarios(Class clase) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();

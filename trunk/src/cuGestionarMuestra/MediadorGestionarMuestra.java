@@ -92,13 +92,6 @@ public class MediadorGestionarMuestra extends Mediador{
 		}
 	}
 
-	/**
-	 * M�todo que me permite visualizar la ventana.
-	 */
-	public void show()	{
-		 GUIABMMuestra.show();
-	}
-	
 	public GUIABMMuestra getGestionarMuestra() {
 		return GUIABMMuestra;
 	}
