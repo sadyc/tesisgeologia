@@ -429,8 +429,8 @@ public class GUIComparacion extends JDialog{
                         gbc.fill=GridBagConstraints.HORIZONTAL;
                         panelClasificacion.setLayout(gridbag);
                         gbc.ipady = 15;
-                        JLabel sucs = new JLabel("Clasificaci�n SUCS");
-                        JLabel aashto = new JLabel("Clasificaci�n AASHTO");
+                        JLabel sucs = new JLabel("Clasificación SUCS");
+                        JLabel aashto = new JLabel("Clasificación AASHTO");
                         aashto.setForeground(Color.red);
                         sucs.setForeground(Color.red);
                         panelClasificacion.add(sucs,gbc);
