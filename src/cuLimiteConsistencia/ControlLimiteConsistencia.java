@@ -67,7 +67,8 @@ public class ControlLimiteConsistencia {
     	 * @param nombreMuestra
     	 * @return
     	 */
-    	public Muestra obtenerMuestra (Class clase, String nombreMuestra) throws Exception{
+    	@SuppressWarnings("rawtypes")
+		public Muestra obtenerMuestra (Class clase, String nombreMuestra) throws Exception{
     		Persistencia persistencia = new Persistencia();
     		persistencia.abrirTransaccion();
     		Muestra aux = new Muestra();

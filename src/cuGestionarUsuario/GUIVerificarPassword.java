@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
  * @version 1.0.
  *
  */
+@SuppressWarnings("serial")
 public class GUIVerificarPassword extends javax.swing.JDialog {
 	
 	  

@@ -33,6 +33,7 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 	 * Contructor por default.
 	 * 
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorVerificarPassword (String DNI, String nombreUsuario){
 		super();
 		dni = DNI;
@@ -44,6 +45,7 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 		GUIVerificarPassword.show();
 	}
 	
+	@SuppressWarnings("deprecation")
 	private void buscar() {
 		System.out.println("Verificar.actionPerformed() jButtonAceptar");
 		try{
@@ -84,7 +86,7 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
 			GUIVerificarPassword.dispose();
 		}
 		if (GUIVerificarPassword.getjMenu2()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 		

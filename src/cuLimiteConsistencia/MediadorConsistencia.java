@@ -13,17 +13,18 @@ import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
+import persistencia.domain.Muestra;
+
 import comun.MediadorVersion;
 
-import persistencia.domain.Muestra;
-import cuCompararMuestra.GUISeleccionarMuestra;
 import cuGestionarMuestra.ControlGestionarMuestra;
 import cuGestionarMuestra.GUIABMMuestra;
 
 
 /**
+* @brief Clase que se utiliza para escuchar los eventos que suceden en la ventana.
 * @author TesisGeología
-* 
+* @version 1.0
 */
 
 public class MediadorConsistencia implements ActionListener, KeyListener, MouseListener {
@@ -33,16 +34,15 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	private Object [][] data;
 	private boolean seleccionoMuestra = false;
 	private Component frame;
-	private ControlLimiteConsistencia control = new ControlLimiteConsistencia ();
 	
 	/**
 	 * Constructor por defecto de la clase.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorConsistencia() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		
 		String [] columAux = {"Ubicación","Nombre","Peso","Ciudad","Profundidad Inicial","Profundidad Final","Límite Líquido","Límite Plástico","Índice de Plasticidad"};
 		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
@@ -64,6 +64,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	 * Levanta informacion almacenada en la 
 	 * base de datos al atributo data de la clase mediador.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void cargarTablaDeMuestras()throws Exception{
 		ControlGestionarMuestra control = new ControlGestionarMuestra();
 		Muestra muestra = new Muestra();
@@ -113,7 +114,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 			GUIABMMuestra.dispose();
 		}
 		if (GUIABMMuestra.getjMenuVersion()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 	
@@ -169,9 +170,11 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 			seleccionarMuestra();
 	}
 	
+	@SuppressWarnings("static-access")
 	public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == e.VK_ENTER)
+        if (e.getKeyCode() == e.VK_ENTER){
         	seleccionarMuestra();
+        }
 	}
 	
 	public void mouseEntered(MouseEvent arg0) {
@@ -191,13 +194,10 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+			
 	}
 }

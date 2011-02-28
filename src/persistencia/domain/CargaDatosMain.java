@@ -3,6 +3,9 @@
  */
 package persistencia.domain;
 
+import comun.CargaDatos;
+
+
 
 /**
  * @author NAVE

@@ -36,6 +36,7 @@ public class MediadorModificarUsuario extends Mediador {
 	 * @param fila
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorModificarUsuario(String[] fila) throws Exception {
 		super();
 		usuarioModificar = (control.obtenerUsuario(fila[2]));
@@ -51,32 +52,27 @@ public class MediadorModificarUsuario extends Mediador {
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+			
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+				
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+				
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+				
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+				
 	}
 
 	@Override
@@ -89,13 +85,14 @@ public class MediadorModificarUsuario extends Mediador {
 			GUIUsuario.dispose();
 		}
 		if (GUIUsuario.getjMenuItemVersion()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Aceptar"
 	 */
+	@SuppressWarnings("deprecation")
 	public void aceptar(){
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
 		try{
@@ -120,6 +117,7 @@ public class MediadorModificarUsuario extends Mediador {
 	/**
 	 * Una vez verificados que los datos modificados son correctos se procede a la carga de los mismos al sistema.
 	 */
+	@SuppressWarnings("deprecation")
 	public void modificarUsuario(){
 		data[0]= GUIUsuario.getjTextFieldNombre().getText();
 		data[1]= GUIUsuario.getjTextFieldApellido().getText();
@@ -133,7 +131,6 @@ public class MediadorModificarUsuario extends Mediador {
 			if (!isEmail(GUIUsuario.getjTextFieldEmail().getText().toUpperCase()) && (!GUIUsuario.getjTextFieldEmail().getText().isEmpty())){
 				System.out.println("El E-mail es incorrecto!");
 				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
-		
 			}else{
 				data[5]= GUIUsuario.getjTextFieldEmail().getText();
 				data[6]= GUIUsuario.getjTextFieldTelefono().getText();
@@ -178,29 +175,24 @@ public class MediadorModificarUsuario extends Mediador {
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+
 		
 	}
-
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
-
-
 	@Override
 	public void itemStateChanged(ItemEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 

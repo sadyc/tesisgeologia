@@ -38,6 +38,7 @@ public class MediadorAltaUsuario extends Mediador{
 	 * @param nombreVentana
 	 * Constructor con pasaje de parametros.
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorAltaUsuario(String nombreVentana) {
 		super();
 		control = new ControlGestionarUsuario();
@@ -97,13 +98,14 @@ public class MediadorAltaUsuario extends Mediador{
 			GUIUsuario.dispose();
 		}
 		if (GUIUsuario.getjMenuItemVersion()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 	}
 	
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Aceptar"
 	 */
+	@SuppressWarnings("deprecation")
 	public void aceptar(){
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
 		try{
@@ -127,6 +129,7 @@ public class MediadorAltaUsuario extends Mediador{
 	/**
 	 * Una vez verificados que los datos ingresados son correctos se procede a la carga de los mismos al sistema.
 	 */
+	@SuppressWarnings("deprecation")
 	public void insertarUsuario(){
 		data[0]= GUIUsuario.getjTextFieldNombre().getText();
 		data[1]= GUIUsuario.getjTextFieldApellido().getText();
@@ -140,7 +143,6 @@ public class MediadorAltaUsuario extends Mediador{
 			if (!isEmail(GUIUsuario.getjTextFieldEmail().getText().toUpperCase()) && (!GUIUsuario.getjTextFieldEmail().getText().isEmpty())){
 				System.out.println("El E-mail es incorrecto!");
 				JOptionPane.showMessageDialog(frame,"El e-mail ingresado es Incorrecto. Debe ser de la forma XX@XX.XX","Atención!", JOptionPane.ERROR_MESSAGE);
-		
 			}else{
 				data[5]= GUIUsuario.getjTextFieldEmail().getText();
 				data[6]= GUIUsuario.getjTextFieldTelefono().getText();

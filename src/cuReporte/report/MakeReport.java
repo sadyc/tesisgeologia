@@ -13,6 +13,7 @@ public class MakeReport {
  
 	public static String PATH_OUTPUT_REPORT = BASE + "/classes/cuReporte/report/xml";
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void make(String nameReport) {
 		try {
 			System.setProperty("org.xml.sax.driver","org.apache.xerces.parsers.SAXParser");
