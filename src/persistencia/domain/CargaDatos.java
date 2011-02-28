@@ -223,7 +223,7 @@ public class CargaDatos {
 		Cliente cliente1 = new Cliente("Carlos", "Leoni", "12.980.320", "email@email.com", "3584192871");
 		Cliente cliente2 = new Cliente("Ernesto", "Shwesteiger", "20.325.414", "ernesto@yahoo.com", "0358-4648494");
 		Cliente cliente4 = new Cliente("Francisca", "Arighini", "25.338.977", "fran_ari@hotmail.com", "0358-4917014");
-		Cliente cliente3 = new Cliente("JUMALA SA", " ", "01183", "contacto@jumala.com", "0358-4404021");
+		Cliente cliente3 = new Cliente("JUMALA SA", " ","00.001.183", "contacto@jumala.com", "0358-4404021");
 		
 		Muestra muestra2 = new Muestra("M1",new Float(100),new Float(1),new Float(2),null,usuario1,null,null,null,null,sqlDate1);	
 		Muestra muestra3 = new Muestra("M2",new Float(250),new Float(2),new Float(6),null,usuario0,null,null,null,null,sqlDate1);
