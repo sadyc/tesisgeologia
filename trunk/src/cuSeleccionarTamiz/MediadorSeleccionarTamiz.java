@@ -36,6 +36,7 @@ public class MediadorSeleccionarTamiz extends Mediador{
 	 * @param abertura
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public MediadorSeleccionarTamiz(Double abertura) throws Exception {
 		super();
 		cargarTablaDeTamiz(abertura);
@@ -55,10 +56,11 @@ public class MediadorSeleccionarTamiz extends Mediador{
 	 * base de datos al atributo data de la clase mediador.
 	 * @param abertura 
 	 */
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void cargarTablaDeTamiz(Double abertura)throws Exception{
 		ControlTamiz control = new ControlTamiz();
 		Tamiz tamiz = new Tamiz();
-		Class clase = tamiz.getClass();
 		Collection tamices = control.coleccionTamicesFiltro(abertura);
 		Iterator<Tamiz> it = tamices.iterator();
 		data =  new Object [tamices.size()] [2];
@@ -85,7 +87,7 @@ public class MediadorSeleccionarTamiz extends Mediador{
 			seleccionarTamiz();
 		}
 		if (GUISeleccionarTamiz.getVersionMenu()==source){
-			MediadorVersion version = new MediadorVersion();
+			new MediadorVersion();
 		}
 		if (this.GUISeleccionarTamiz.getJButtonCancelar() == source || GUISeleccionarTamiz.getCancelarMenu()==source){
 			GUISeleccionarTamiz.dispose();
@@ -106,6 +108,7 @@ public class MediadorSeleccionarTamiz extends Mediador{
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void show(){
 		GUISeleccionarTamiz.show();
 	}
@@ -139,9 +142,11 @@ public class MediadorSeleccionarTamiz extends Mediador{
 
 	
 	
+	@SuppressWarnings("static-access")
 	public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == e.VK_ENTER)
+        if (e.getKeyCode() == e.VK_ENTER){
         	seleccionarTamiz();
+        }
 	}
 
 	@Override
