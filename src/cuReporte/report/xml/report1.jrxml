@@ -239,7 +239,7 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="33" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField" x="1" y="5" width="80" height="15"/>
 				<box>
@@ -314,52 +314,52 @@
 		<band/>
 	</pageFooter>
 	<summary>
-		<band height="265" splitType="Stretch">
+		<band height="289" splitType="Stretch">
 			<textField>
-				<reportElement x="6" y="25" width="238" height="33"/>
+				<reportElement x="6" y="36" width="238" height="33"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{clasificacionSucs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="6" y="63" width="238" height="44"/>
+				<reportElement x="6" y="74" width="238" height="33"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{detallesSucs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="272" y="25" width="238" height="33"/>
+				<reportElement x="272" y="36" width="238" height="33"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{clasificacionAashto}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="271" y="63" width="238" height="44"/>
+				<reportElement x="271" y="74" width="238" height="33"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{detallesAashto}]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement x="8" y="113" width="238" height="146"/>
+			<image vAlign="Bottom">
+				<reportElement x="1" y="107" width="264" height="177"/>
 				<imageExpression class="java.lang.String"><![CDATA[$P{pathSistema}+"\\src\\cuCalcularClasificacion\\curvaGranulometrica.jpg"]]></imageExpression>
 			</image>
-			<image>
-				<reportElement x="271" y="113" width="238" height="146"/>
+			<image vAlign="Bottom">
+				<reportElement x="271" y="138" width="238" height="146"/>
 				<imageExpression class="java.lang.String"><![CDATA[$P{pathSistema}+"\\src\\cuCalcularClasificacion\\cartaPlasticidad.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="8" y="2" width="236" height="20"/>
+				<reportElement x="8" y="13" width="236" height="20"/>
 				<textElement>
 					<font isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[CLASIFICACION SUCS:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="272" y="2" width="237" height="20"/>
+				<reportElement x="272" y="13" width="237" height="20"/>
 				<textElement>
 					<font isUnderline="true"/>
 				</textElement>
