@@ -191,9 +191,9 @@ public class CargaDatos {
 		muestra3.calcularIndicePlasticidad();
 
 		Ubicacion ubicacion1 = new Ubicacion("ZONA 5","EL IMPENETRABLE","Chaco","0","0");
-		Ubicacion ubicacion2 = new Ubicacion("UNRC","RIO CUARTO","Cordoba","0","1");
+		Ubicacion ubicacion2 = new Ubicacion("UNRC","RIO CUARTO","Córdoba","0","1");
 		Ubicacion ubicacion3 = new Ubicacion("CAMPO 1","USHUAIA","TierraDelFuego","1","0");
-		Ubicacion ubicacion4 = new Ubicacion("CAMPO 1","CANALS","Cordoba","1","1");
+		Ubicacion ubicacion4 = new Ubicacion("CAMPO 1","CANALS","Córdoba","1","1");
 
 		OperadorDeLaboratorio operador1 = new OperadorDeLaboratorio("Lionel", "Messi", "10.054.605", "4665458", "lionel@messi.com");
 		OperadorDeLaboratorio operador2 = new OperadorDeLaboratorio("Javier", "Pastore", "34.101.099", "4917015", "javier@pastore.com");
