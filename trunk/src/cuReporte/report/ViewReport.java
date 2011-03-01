@@ -39,7 +39,7 @@ public class ViewReport {
 	public void viewClasificacion() {
 
 		Object[][] tablaAux =tabla ; 
-		Object[][] parameters = {{ "reportTitle", "Sistema Clasificador de Suelos" }, {"nombre",(String)datos[0]},{"ubicacion",(String)datos[1]},{"peso",(String)datos[2]},{"profundidadInicial",(String)datos[3]},{"profundidadFinal",(String)datos[4]},{"limiteLiquido", (String)datos[5]},{"limitePlastico",(String)datos[6]},{"indicePlasticidad",(String)datos[7]},{"D60",(String)datos[8]},{"D30",(String)datos[9]},{"D10",(String)datos[10]},{"gradoCurvatura",(String)datos[11]},{"coeficienteUniformidad",(String)datos[12]},{"clasificacionSucs",(String)datos[13]},{"detallesSucs",(String)datos[14]},{"clasificacionAashto",(String)datos[15]},{"detallesAashto",(String)datos[16]},{"pathSistema",BASE}};
+		Object[][] parameters = {{ "reportTitle", "Sistema Clasificador de Suelos" }, {"nombre",(String)datos[0]},{"ubicacion",(String)datos[1]},{"peso",(String)datos[2]},{"profundidadInicial",(String)datos[3]},{"profundidadFinal",(String)datos[4]},{"limiteLiquido", (String)datos[5]},{"limitePlastico",(String)datos[6]},{"indicePlasticidad",(String)datos[7]},{"D60",(String)datos[8]},{"D30",(String)datos[9]},{"D10",(String)datos[10]},{"gradoCurvatura",(String)datos[11]},{"coeficienteUniformidad",(String)datos[12]},{"clasificacionSucs",(String)datos[13]},{"detallesSucs",(String)datos[14]},{"clasificacionAashto",(String)datos[15]},{"detallesAashto",(String)datos[16]},{"pathSistema",BASE},{"tituloAashto","CLASIFICACIÓN AASHTO"},{"tituloSucs","CLASIFICACIÓN SUCS"}};
      	String[] filedXml = {"NumeroTamiz", "AberturaMalla", "%Pasante", "%RetenidoAcumulado", "%RetenidoParcial"};
  		String nameReport = "report1";
 		this.viewReport(parameters, filedXml, nameReport, tablaAux);
