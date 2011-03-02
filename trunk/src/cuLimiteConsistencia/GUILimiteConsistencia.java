@@ -17,10 +17,8 @@ import persistencia.domain.Muestra;
 public class GUILimiteConsistencia extends javax.swing.JDialog {
 
 	
-	
-	// Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem agregar;
-    private javax.swing.JMenu ayuda;
+    private javax.swing.JMenu menuVersion;
     private javax.swing.JMenuItem cancelar;
     private javax.swing.JMenu herramientas;
     private javax.swing.JButton jButtonAgregar;
@@ -37,7 +35,8 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
     private javax.swing.JLabel nombreMuestra;
     private javax.swing.JLabel pesoMuestra;
     private javax.swing.JMenuItem version;
-    // End of variables declaration//GEN-END:variables
+    
+    
    
     public GUILimiteConsistencia(String title, Muestra muestra) {
         super();
@@ -82,7 +81,7 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
         agregar = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         cancelar = new javax.swing.JMenuItem();
-        ayuda = new javax.swing.JMenu();
+        menuVersion = new javax.swing.JMenu();
         version = new javax.swing.JMenuItem();
         
         jTextFieldLL.addKeyListener(new KeyAdapter()
@@ -116,52 +115,32 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
         limiteLiquido.setText("Límite Líquido (LL)");
 
         limitePlastico.setText("Límite Plástico (LP)");
-
-       // jTextFieldLL.addActionListener(new java.awt.event.ActionListener() {
-           
-        	//public void actionPerformed(java.awt.event.ActionEvent evt) {
-              //  jTextFieldLLActionPerformed(evt);
-            //}
-       // });
-
+        
         jLabel3.setText("ml.");
 
         jLabel4.setText("ml.");
 
         jButtonAgregar.setText("Agregar");
-        //jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
-          //  public void actionPerformed(java.awt.event.ActionEvent evt) {
-            //    jButtonAgregarActionPerformed(evt);
-            //}
-        //});
-
-        jButtonCancelar.setText("Cancelar");
-        //jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-          //  public void actionPerformed(java.awt.event.ActionEvent evt) {
-            //    jButtonCancelarActionPerformed(evt);
-           // }
-       // });
-
         
+        jButtonCancelar.setText("Cancelar");
+                
         herramientas.setText("Herramientas");
 
-        //agregar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
         agregar.setText("Agregar");
         herramientas.add(agregar);
         herramientas.add(jSeparator2);
 
-        //cancelar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
         cancelar.setText("Cancelar");
         herramientas.add(cancelar);
 
         jMenuBar1.add(herramientas);
 
-        ayuda.setText("Ayuda");
+        menuVersion.setText("Versión");
 
-        version.setText("Versión");
-        ayuda.add(version);
+        version.setText("Acerca de SCS");
+        menuVersion.add(version);
 
-        jMenuBar1.add(ayuda);
+        jMenuBar1.add(menuVersion);
 
         setJMenuBar(jMenuBar1);
 
@@ -219,22 +198,7 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-  //  private void jTextFieldLLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLLActionPerformed
-        // TODO add your handling code here:
-    //}//GEN-LAST:event_jTextFieldLLActionPerformed
-
-    //private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
-        // TODO add your handling code here:
-    //}//GEN-LAST:event_jButtonAgregarActionPerformed
-
-    //private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        // TODO add your handling code here:
-   // }//GEN-LAST:event_jButtonCancelarActionPerformed
-
-    
-    
+    }
     
     /**
 	 * @return the agregar
@@ -251,17 +215,17 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
 	}
 
 	/**
-	 * @return the ayuda
+	 * @return the menuVersion
 	 */
 	public javax.swing.JMenu getAyuda() {
-		return ayuda;
+		return menuVersion;
 	}
 
 	/**
-	 * @param ayuda the ayuda to set
+	 * @param menuVersion the menuVersion to set
 	 */
 	public void setAyuda(javax.swing.JMenu ayuda) {
-		this.ayuda = ayuda;
+		this.menuVersion = ayuda;
 	}
 
 	/**

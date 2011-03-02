@@ -22,6 +22,7 @@ public class MediadorVersion extends Mediador {
 		this.GUIVersion = new GUIVersion();
 		this.GUIVersion.setListenerButtons(this);
 		this.GUIVersion.setModal(true);
+		this.GUIVersion.setResizable(false);
 		this.GUIVersion.show();
 	}
 	

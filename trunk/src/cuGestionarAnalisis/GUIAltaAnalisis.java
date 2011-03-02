@@ -59,7 +59,7 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 		super();
 		pesoRetenido = new JTextField(15);
 		jLabelMuestra = new JLabel("Muestra: "+muestra.getNombreMuestra());
-		jLabelUbicacion = new JLabel("Ubicaci�n: "+muestra.getUbicacion().getNombreUbicacion());
+		jLabelUbicacion = new JLabel("Ubicación: "+muestra.getUbicacion().getNombreUbicacion());
 		jLabelPeso = new JLabel("Peso: "+muestra.getPeso());
 		jLabelTamiz = new javax.swing.JLabel();
 		jLabelTamiz.setText("Tamiz: ");

@@ -28,7 +28,7 @@ public class GUISeleccionarMuestra extends JDialog	{
 
 	private JMenuBar menu = null;
 	private JMenu herramientas;
-	private JMenu ayuda;
+	private JMenu version;
 	private JButton jButtonBuscarMuestra;
 	private JButton jButtonSeleccionarMuestra;
 	private JButton jButtonCancelar;
@@ -51,9 +51,9 @@ public class GUISeleccionarMuestra extends JDialog	{
 			tablePanel = getTablePanel();
 			menu = new JMenuBar();
 			herramientas = new JMenu("Herramientas");
-			ayuda = new JMenu("Ayuda");
+			version = new JMenu("Versión");
 			menu.add(herramientas);
-			menu.add(ayuda);
+			menu.add(version);
 			buscarMenu = new JMenuItem("Buscar");
 			seleccionarMenu = new JMenuItem("Seleccionar");
 			cancelarMenu = new JMenuItem("Cancelar");
@@ -61,8 +61,8 @@ public class GUISeleccionarMuestra extends JDialog	{
 			herramientas.add(buscarMenu);
 			herramientas.add(new JSeparator());
 			herramientas.add(cancelarMenu);
-			versionMenu = new JMenuItem("Versión");
-			ayuda.add(versionMenu);
+			versionMenu = new JMenuItem("Acerca de SCS");
+			version.add(versionMenu);
 			jButtonBuscarMuestra = new JButton("BUSCAR");
 			jButtonSeleccionarMuestra  = new JButton("SELECCIONAR");
 			jButtonCancelar  = new JButton("CANCELAR");

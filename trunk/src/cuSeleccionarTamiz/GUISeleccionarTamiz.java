@@ -28,7 +28,7 @@ public class GUISeleccionarTamiz extends JDialog	{
 
 	private JMenuBar menu = null;
 	private JMenu herramientas;
-	private JMenu ayuda;
+	private JMenu version;
 	private JButton jButtonSeleccionarTamiz;
 	private JButton jButtonCancelar;
 	private JMenuItem seleccionarMenu;
@@ -49,16 +49,16 @@ public class GUISeleccionarTamiz extends JDialog	{
 			tablePanel = getTablePanel();
 			menu = new JMenuBar();
 			herramientas = new JMenu("Herramientas");
-			ayuda = new JMenu("Ayuda");
+			version = new JMenu("Versión");
 			menu.add(herramientas);
-			menu.add(ayuda);
+			menu.add(version);
 			seleccionarMenu = new JMenuItem("Seleccionar");
 			cancelarMenu = new JMenuItem("Cancelar");
 			herramientas.add(seleccionarMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
 			herramientas.add(cancelarMenu);
-			versionMenu = new JMenuItem("Versión");
-			ayuda.add(versionMenu);
+			versionMenu = new JMenuItem("Acerca de SCS");
+			version.add(versionMenu);
 			jButtonSeleccionarTamiz  = new JButton("SELECCIONAR");
 			jButtonCancelar  = new JButton("CANCELAR");
 		}

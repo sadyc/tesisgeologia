@@ -28,8 +28,10 @@ public class GUIPrincipal extends JFrame {
 	private JPanel panelCentro=null;
 	private JPanel panelSur=null;
 	private JMenuBar menu = null;
-	private JMenu herramientas;
-	private JMenu ayuda;
+	private JMenu muestra;
+	private JMenu gestionar;
+	private JMenu sistema;
+	private JMenu version;
 	private JButton jButtonGestionarUsuario;
 	private JButton jButtonGestionarCliente;
 	private JButton jButtonGestionarOperador;
@@ -39,8 +41,6 @@ public class GUIPrincipal extends JFrame {
 	private JButton jButtonAnalisis;
 	private JButton jButtonCompararMuestras;
 	private JButton jButtonSalir;
-	private JButton jButtonCrearBackup;
-	private JButton jButtonCargarBackup;
 	private JButton jButtonGestionarUbicacion;
 	private JMenuItem gestionarUsuarioMenu;
 	private JMenuItem gestionarClienteMenu;
@@ -77,8 +77,6 @@ public class GUIPrincipal extends JFrame {
 			jButtonGestionarOperador = new JButton();
 			jButtonCompararMuestras = new JButton();
 			jButtonGestionarLimiteConsistencia = new JButton();
-			jButtonCrearBackup = new JButton();
-			jButtonCargarBackup = new JButton();
 			jButtonGestionarUbicacion = new JButton();
 			jButtonSalir  = new JButton();
 
@@ -101,10 +99,6 @@ public class GUIPrincipal extends JFrame {
 			jButtonCompararMuestras.setForeground(SystemColor.white);
 			jButtonGestionarLimiteConsistencia.setBackground( SystemColor.darkGray);
 			jButtonGestionarLimiteConsistencia.setForeground(SystemColor.white);
-			jButtonCrearBackup.setBackground( SystemColor.darkGray);
-			jButtonCrearBackup.setForeground(SystemColor.white);
-			jButtonCargarBackup.setBackground( SystemColor.darkGray);
-			jButtonCargarBackup.setForeground(SystemColor.white);
 			jButtonGestionarUbicacion.setBackground( SystemColor.darkGray);
 			jButtonGestionarUbicacion.setForeground(SystemColor.white);
 			
@@ -115,8 +109,6 @@ public class GUIPrincipal extends JFrame {
 	        jButtonGestionarMuestra.setText("Gestionar Muestras");
 	        jButtonGestionarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/gobby.png"))); // NOI18N
 	        jButtonGestionarUsuario.setText("Gestionar Usuario");
-	        jButtonCargarBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/update_misc.png"))); // NOI18N
-	        jButtonCargarBackup.setText("Cargar Backup");
 	        jButtonGestionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/system-switch-user.png"))); // NOI18N
 	        jButtonGestionarCliente.setText("Gestionar Cliente");
 	        jButtonGestionarOperador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/applications-engineering-3.png"))); // NOI18N
@@ -127,17 +119,21 @@ public class GUIPrincipal extends JFrame {
 	        jButtonAnalisis.setText("Gestionar Análisis");
 	        jButtonCompararMuestras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/development-python.png"))); // NOI18N
 	        jButtonCompararMuestras.setText("Comparar Muestras");
-	        jButtonCrearBackup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/kfloppy-2.png"))); // NOI18N
-	        jButtonCrearBackup.setText("Realizar Backup");
 	        jButtonClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accessories-calculator-3.png"))); // NOI18N
 	        jButtonClasificacion.setText("Calcular Clasificación");
 	        jButtonGestionarUbicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/internet-web-browser-3.png"))); // NOI18N
 	        jButtonGestionarUbicacion.setText("Gestionar Ubicación");
 	        
-	        herramientas = new JMenu("Herramientas");
-			ayuda = new JMenu("Ayuda");
-			menu.add(herramientas);
-			menu.add(ayuda);
+	        muestra = new JMenu("Muestra");
+			version = new JMenu("Versión");
+			sistema = new JMenu("Sistema");
+			gestionar = new JMenu("Gestionar");
+				
+			menu.add(muestra);
+			menu.add(gestionar);
+			menu.add(sistema);
+			menu.add(version);
+			
 			gestionarUsuarioMenu = new JMenuItem("Gestionar Usuario");
 			gestionarUsuarioMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/gobby.png"))); // NOI18N
 
@@ -174,31 +170,22 @@ public class GUIPrincipal extends JFrame {
 			salirMenu = new JMenuItem("Salir");
 			salirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
 
-			herramientas.add(gestionarMuestraMenu);
-			herramientas.add(gestionarAnalisisMenu);
-			herramientas.add(gestionarLimiteConsistenciaMenu);
-			herramientas.add(calcularClasificacionMenu);
-			herramientas.add(compararMuestrasMenu);
-			herramientas.add(new JSeparator());
-			herramientas.add(gestionarUsuarioMenu);
-			herramientas.add(gestionarClienteMenu);
-			herramientas.add(gestionarOperadorMenu);
-			herramientas.add(gestionarUbicacionMenu);
-			herramientas.add(new JSeparator());
-			herramientas.add(crearBackupMenu);
-			herramientas.add(cargarBackupMenu);
-			herramientas.add(new JSeparator());
-			herramientas.add(salirMenu);
-			String sSistemaOperativo = System.getProperty("os.name");
-			System.out.println(sSistemaOperativo);
-			if (sSistemaOperativo.equals("Linux")){
-				versionMenu = new JMenuItem("Versión");
-			}else{
-				versionMenu = new JMenuItem("Versión");
-			}
+			muestra.add(gestionarMuestraMenu);
+			muestra.add(gestionarAnalisisMenu);
+			muestra.add(gestionarLimiteConsistenciaMenu);
+			muestra.add(calcularClasificacionMenu);
+			muestra.add(compararMuestrasMenu);
+			gestionar.add(gestionarUsuarioMenu);
+			gestionar.add(gestionarClienteMenu);
+			gestionar.add(gestionarOperadorMenu);
+			gestionar.add(gestionarUbicacionMenu);
+			sistema.add(crearBackupMenu);
+			sistema.add(cargarBackupMenu);
+			muestra.add(new JSeparator());
+			muestra.add(salirMenu);
+			versionMenu = new JMenuItem("Acerca de SCS");
 			versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-
-			ayuda.add(versionMenu);
+			version.add(versionMenu);
 		
 		}
 		this.setExtendedState(this.MAXIMIZED_BOTH);
@@ -250,16 +237,11 @@ public class GUIPrincipal extends JFrame {
 			this.panelCentro.add(getJButtonCompararMuestras(),gbc);
 			gbc.gridx = 2;
 			this.panelCentro.add(getJButtonClasificacion(),gbc);
-			gbc.gridx = 3;
-			this.panelCentro.add(getjButtonGestionarCliente(),gbc);
 			gbc.gridy = 2;
 			gbc.gridx = 0;
 			this.panelCentro.add(getjButtonGestionarOperador(),gbc);
 			gbc.gridx = 1;
-			
-			this.panelCentro.add(getjButtonCrearBackup(),gbc);
-			gbc.gridx = 2;
-			this.panelCentro.add(getjButtonCargarBackup(),gbc);
+			this.panelCentro.add(getjButtonGestionarCliente(),gbc);
 		}
 		return this.panelCentro;
 	}
@@ -423,21 +405,6 @@ public class GUIPrincipal extends JFrame {
 	}
 	
 	/**
-	 * @return the jButtonCrearBackup
-	 */
-	public JButton getjButtonCrearBackup() {
-		return jButtonCrearBackup;
-	}
-
-
-	/**
-	 * @return the jButtonCargarBackup
-	 */
-	public JButton getjButtonCargarBackup() {
-		return jButtonCargarBackup;
-	}
-
-	/**
 	 * @return the crearBackupMenu
 	 */
 	public JMenuItem getCrearBackupMenu() {
@@ -481,8 +448,6 @@ public class GUIPrincipal extends JFrame {
         this.jButtonGestionarLimiteConsistencia.addActionListener(lis);
         this.jButtonGestionarOperador.addActionListener(lis);
         this.jButtonGestionarCliente.addActionListener(lis);
-        this.jButtonCargarBackup.addActionListener(lis);
-        this.jButtonCrearBackup.addActionListener(lis);
         this.salirMenu.addActionListener(lis);
         this.gestionarUsuarioMenu.addActionListener(lis);
         this.gestionarClienteMenu.addActionListener(lis);

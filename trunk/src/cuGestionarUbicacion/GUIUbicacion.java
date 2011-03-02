@@ -27,8 +27,8 @@ public class GUIUbicacion extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelLongitud;
     private javax.swing.JLabel jLabelNombreUbicacion;
     private javax.swing.JLabel jLabelProvincia;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu menuHerramientas;
+    private javax.swing.JMenu menuVersion;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuVersion;
     private javax.swing.JMenuItem jMenuItemAgregar;
@@ -39,7 +39,6 @@ public class GUIUbicacion extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldNombreUbicacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    // End of variables declaration
 
     
     /**
@@ -98,10 +97,10 @@ public class GUIUbicacion extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuHerramientas = new javax.swing.JMenu();
         jMenuItemAgregar = new javax.swing.JMenuItem();
         jMenuItemCancelar = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuVersion = new javax.swing.JMenu();
         jMenuVersion = new javax.swing.JMenuItem();
         
 
@@ -153,28 +152,28 @@ public class GUIUbicacion extends javax.swing.JDialog {
 
         jLabel2.setText("(grados)");
 
-        jMenu1.setText("Herramientas");
+        menuHerramientas.setText("Herramientas");
 
         jMenuItemAgregar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
         jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-add.png"))); // NOI18N
         jMenuItemAgregar.setText("Agregar");
-        jMenu1.add(jMenuItemAgregar);
+        menuHerramientas.add(jMenuItemAgregar);
 
         jMenuItemCancelar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
         jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
         jMenuItemCancelar.setText("Cancelar");
-        jMenu1.add(jMenuItemCancelar);
+        menuHerramientas.add(jMenuItemCancelar);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuHerramientas);
 
-        jMenu2.setText("Ayuda");
+        menuVersion.setText("Versión");
 
         jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
-        jMenuVersion.setText("Versión");
-        jMenu2.add(jMenuVersion);
+        jMenuVersion.setText("Acerca de SCS");
+        menuVersion.add(jMenuVersion);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuVersion);
 
         setJMenuBar(jMenuBar1);
 

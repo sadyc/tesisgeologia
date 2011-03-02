@@ -35,7 +35,7 @@ public class GUIABMMuestra extends JDialog{
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu version;
     private javax.swing.JMenuItem jMenuAgregar;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuEliminar;
@@ -125,7 +125,7 @@ public class GUIABMMuestra extends JDialog{
 	        jMenuSeleccionar = new javax.swing.JMenuItem();
 	        jSeparator1 = new javax.swing.JPopupMenu.Separator();
 	        jMenuSalir = new javax.swing.JMenuItem();
-	        jMenu2 = new javax.swing.JMenu();
+	        version = new javax.swing.JMenu();
 	        jMenuVersion = new javax.swing.JMenuItem();
 
 	        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -262,14 +262,14 @@ public class GUIABMMuestra extends JDialog{
 
 	        jMenuBar1.add(jMenu1);
 
-	        jMenu2.setText("Ayuda");
+	        version.setText("Versión");
 
 	        jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
 	        jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-	        jMenuVersion.setText("Versión");
-	        jMenu2.add(jMenuVersion);
+	        jMenuVersion.setText("Acerca de SCS");
+	        version.add(jMenuVersion);
 
-	        jMenuBar1.add(jMenu2);
+	        jMenuBar1.add(version);
 
 	        setJMenuBar(jMenuBar1);
 

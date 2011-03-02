@@ -40,7 +40,7 @@ public class GUIClasificacion extends JDialog{
 
 	private JMenuBar menu ;
 	private JMenu herramientas;
-	private JMenu ayuda;
+	private JMenu version;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
 	private JMenuItem imprimirMenu;
@@ -84,16 +84,16 @@ public class GUIClasificacion extends JDialog{
 		muestra= new Muestra();
 		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
-		ayuda = new JMenu("Ayuda");
+		version = new JMenu("Versión");
 		menu.add(herramientas);
 		menu.add(herramientas);
-		menu.add(ayuda);
+		menu.add(version);
 		salirMenu = new JMenuItem("Salir");
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
-		versionMenu = new JMenuItem("Versión");
+		versionMenu = new JMenuItem("Acerca de SCS");
 
-		ayuda.add(versionMenu);	
+		version.add(versionMenu);	
 		imprimirMenu = new JMenuItem("Imprimir");
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
@@ -135,13 +135,13 @@ public class GUIClasificacion extends JDialog{
 		menu = new JMenuBar();
 		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
-		ayuda = new JMenu("Ayuda");
+		version = new JMenu("Versión");
 		menu.add(herramientas);
 		menu.add(herramientas);
-		menu.add(ayuda);
+		menu.add(version);
 		salirMenu = new JMenuItem("Salir");
-		versionMenu = new JMenuItem("Versi�n");
-		ayuda.add(versionMenu);	
+		versionMenu = new JMenuItem("Acerca de SCS");
+		version.add(versionMenu);	
 		imprimirMenu = new JMenuItem("Imprimir");
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
@@ -250,7 +250,7 @@ public class GUIClasificacion extends JDialog{
 	 *
 	 */
 	private  void initialize() {
-		this.setSize(1000 , 800);
+		this.setSize(1000 , 700);
 		this.getContentPane().setLayout(new BorderLayout()); 		
 		this.getContentPane().add(this.getPanelNorte(),BorderLayout.NORTH);
 		this.setJMenuBar(this.getMenu());
