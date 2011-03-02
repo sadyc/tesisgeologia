@@ -24,7 +24,7 @@ public class GUIOperador extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelTelefono;
-    private javax.swing.JMenu jMenuAyuda;
+    private javax.swing.JMenu jMenuVersion;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuHerramientas;
     private javax.swing.JMenuItem jMenuItemAgregar;
@@ -115,7 +115,7 @@ public class GUIOperador extends javax.swing.JDialog {
         jMenuItemAgregar = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemCancelar = new javax.swing.JMenuItem();
-        jMenuAyuda = new javax.swing.JMenu();
+        jMenuVersion = new javax.swing.JMenu();
         jMenuItemVersion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -157,14 +157,14 @@ public class GUIOperador extends javax.swing.JDialog {
 
         jMenuBar1.add(jMenuHerramientas);
 
-        jMenuAyuda.setText("Ayuda");
+        jMenuVersion.setText("Versión");
 
         jMenuItemVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuItemVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        jMenuItemVersion.setText("Versión");
-        jMenuAyuda.add(jMenuItemVersion);
+        jMenuItemVersion.setText("Acerca de SCS");
+        jMenuVersion.add(jMenuItemVersion);
 
-        jMenuBar1.add(jMenuAyuda);
+        jMenuBar1.add(jMenuVersion);
 
         setJMenuBar(jMenuBar1);
 

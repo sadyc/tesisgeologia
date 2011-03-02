@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import persistencia.domain.Muestra;
 import persistencia.domain.Usuario;
 import cuCalcularClasificacion.MediadorCalcularClasificacion;
@@ -43,10 +46,8 @@ public class MediadorPrincipal extends Mediador{
 		if (usuario.getCategoria().compareTo("Operador") == 0){
 			GUIPrincipal.getJButtonGestionarUsuario().setEnabled(false);
 			GUIPrincipal.getGestionarUsuarioMenu().setEnabled(false);
-			GUIPrincipal.getjButtonCrearBackup().setEnabled(false);
 			GUIPrincipal.getCrearBackupMenu().setEnabled(false);
 			GUIPrincipal.getCargarBackupMenu().setEnabled(false);
-			GUIPrincipal.getjButtonCargarBackup().setEnabled(false);
 		}else{
 			if(usuario.getCategoria().compareTo("Restringido") == 0){
 				GUIPrincipal.getJButtonGestionarMuestra().setEnabled(false);
@@ -63,10 +64,8 @@ public class MediadorPrincipal extends Mediador{
 				GUIPrincipal.getGestionarOperadorMenu().setEnabled(false);
 				GUIPrincipal.getGestionarUsuarioMenu().setEnabled(false);
 				GUIPrincipal.getCalcularClasificacionMenu().setEnabled(false);
-				GUIPrincipal.getjButtonCrearBackup().setEnabled(false);
 				GUIPrincipal.getCrearBackupMenu().setEnabled(false);
 				GUIPrincipal.getCargarBackupMenu().setEnabled(false);
-				GUIPrincipal.getjButtonCargarBackup().setEnabled(false);
 				GUIPrincipal.getjButtonGestionarUbicacion().setEnabled(false);
 				GUIPrincipal.getGestionarUbicacionMenu().setEnabled(false);
 			}
@@ -75,15 +74,7 @@ public class MediadorPrincipal extends Mediador{
 		
 	}
 	/**
-<<<<<<< .mine
-	 * M�todo que permite visualizar la ventana.
-=======
-<<<<<<< .mine
 	 * Método que permite visualizar la ventana.
-=======
-	 * M�todo que permite visualizar la ventana.
->>>>>>> .r341
->>>>>>> .r343
 	 */
 	@SuppressWarnings("deprecation")
 	public void show(){
@@ -137,12 +128,15 @@ public class MediadorPrincipal extends Mediador{
 			gestionarLimiteConsistencia();
 		}
 		if (this.GUIPrincipal.getJButtonSalir() == source || this.GUIPrincipal.getSalirMenu()== source){
-			GUIPrincipal.dispose();
+			 int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Está seguro que desea salir?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		        if(quitOption==JOptionPane.YES_OPTION){
+		        	GUIPrincipal.dispose();
+		        }
 		}
-		if (this.GUIPrincipal.getjButtonCrearBackup()==source || this.GUIPrincipal.getCrearBackupMenu()==source){
+		if (this.GUIPrincipal.getCrearBackupMenu()==source){
 			backup.elegirDirectorio();
 		}
-		if (this.GUIPrincipal.getjButtonCargarBackup()==source || this.GUIPrincipal.getCargarBackupMenu()==source){
+		if (this.GUIPrincipal.getCargarBackupMenu()==source){
 			backup.cargarBackup();
 		}
 		if (this.GUIPrincipal.getjButtonGestionarUbicacion()==source || this.GUIPrincipal.getGestionarUbicacionMenu()==source){
@@ -283,13 +277,13 @@ public class MediadorPrincipal extends Mediador{
 
 	@Override
 	public void itemStateChanged(ItemEvent arg0) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
+
 		
 	}
 	

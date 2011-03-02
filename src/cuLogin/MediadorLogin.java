@@ -14,6 +14,7 @@ import persistencia.domain.Usuario;
 
 import comun.Mediador;
 import comun.MediadorPrincipal;
+import comun.MediadorVersion;
 
 /**
  * @author TesisGeologia
@@ -34,9 +35,8 @@ public class MediadorLogin extends Mediador {
 	@SuppressWarnings("deprecation")
 	public MediadorLogin (String nombreVentana) throws Exception {
 		super();
-		login = new GUILogin(true);
-		
-        login.setLocationRelativeTo(null);
+		login = new GUILogin();
+		login.setLocationRelativeTo(null);
 		login.setListenerButtons(this);
 		login.setKeyListener(this);
 		login.pack();
@@ -56,14 +56,13 @@ public class MediadorLogin extends Mediador {
 				e.printStackTrace();
 			}
 		}
-		if (this.login.getjMenuItemSalir() == source){
+		if (this.login.getjMenuItemSalir() == source || this.login.getjButtonCancelar() == source){
 			System.out.println("GestionarMediador.actionPerformed() jMenuItemSalir");
 			login.dispose();
 		}
-		if (this.login.getjButtonCancelar() == source){
-	   		System.out.println("GestionarMediador.actionPerformed() jButtonCancelar");
-	   		login.dispose();	
-	   	}
+		if (this.login.getjMenuItemVersion()==source){
+			new MediadorVersion();
+		}
 	}
 	
 	/**

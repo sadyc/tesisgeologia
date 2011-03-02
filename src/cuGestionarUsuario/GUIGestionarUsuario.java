@@ -31,8 +31,8 @@ public class GUIGestionarUsuario extends JDialog{
     private javax.swing.JComboBox jComboBoxBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu herramientasMenu;
+    private javax.swing.JMenu versionMenu;
     private javax.swing.JMenuItem jMenuAgregar;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuEliminar;
@@ -85,7 +85,7 @@ public class GUIGestionarUsuario extends JDialog{
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        herramientasMenu = new javax.swing.JMenu();
         jMenuAgregar = new javax.swing.JMenuItem();
         jMenuModificar = new javax.swing.JMenuItem();
         jMenuEliminar = new javax.swing.JMenuItem();
@@ -93,7 +93,7 @@ public class GUIGestionarUsuario extends JDialog{
         jMenuSeleccionar = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuSalir = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        versionMenu = new javax.swing.JMenu();
         jMenuVersion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -218,54 +218,53 @@ public class GUIGestionarUsuario extends JDialog{
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.LINE_END);
 
-        jMenu1.setText("Herramientas");
+        herramientasMenu.setText("Herramientas");
 
         jMenuAgregar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_INSERT, 0));
         jMenuAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png"))); // NOI18N
         jMenuAgregar.setText("Agregar");
-        jMenu1.add(jMenuAgregar);
+        herramientasMenu.add(jMenuAgregar);
 
         jMenuModificar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         jMenuModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png"))); // NOI18N
         jMenuModificar.setText("Modificar");
-        jMenu1.add(jMenuModificar);
+        herramientasMenu.add(jMenuModificar);
 
         jMenuEliminar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0));
         jMenuEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/list-remove-5.png"))); // NOI18N
         jMenuEliminar.setText("Eliminar");
-        jMenu1.add(jMenuEliminar);
-        jMenu1.add(jSeparator2);
+        herramientasMenu.add(jMenuEliminar);
+        herramientasMenu.add(jSeparator2);
 
         jMenuSeleccionar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
         jMenuSeleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-ok-apply-6.png"))); // NOI18N
         jMenuSeleccionar.setText("Seleccionar");
-        jMenu1.add(jMenuSeleccionar);
+        herramientasMenu.add(jMenuSeleccionar);
 
-        jMenu1.add(jSeparator1);
+        herramientasMenu.add(jSeparator1);
 
         jMenuSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
         jMenuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
         jMenuSalir.setText("Salir");
-        jMenu1.add(jMenuSalir);
+        herramientasMenu.add(jMenuSalir);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(herramientasMenu);
 
-        jMenu2.setText("Ayuda");
+        versionMenu.setText("Versión");
 
         jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        jMenuVersion.setText("Versión");
-        jMenu2.add(jMenuVersion);
+        jMenuVersion.setText("Acerca de SCS");
+        versionMenu.add(jMenuVersion);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(versionMenu);
 
         setJMenuBar(jMenuBar1);
 
         pack();
-    }// </editor-fold>
+    }
 
     private void jComboBoxBuscarActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
     }
 
 	/**

@@ -33,7 +33,7 @@ public class GUIComparacion extends JDialog{
 
         private JMenuBar menu ;
         private JMenu herramientas;
-        private JMenu ayuda;
+        private JMenu version;
         private JMenuItem cancelarMenu;
         private JMenuItem versionMenu;
         private JButton cancelar;
@@ -289,15 +289,15 @@ public class GUIComparacion extends JDialog{
                 menu = new JMenuBar();
                 herramientas = new JMenu ("Archivo");
                 herramientas = new JMenu("Herramientas");
-                ayuda = new JMenu("Ayuda");
+                version = new JMenu("Versión");
                 menu.add(herramientas);
                 menu.add(herramientas);
-                menu.add(ayuda);
+                menu.add(version);
                 cancelarMenu = new JMenuItem("Salir");
                 cancelarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); 
-                versionMenu = new JMenuItem("Versión");
+                versionMenu = new JMenuItem("Acerca de SCS");
                 versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); 
-                ayuda.add(versionMenu);
+                version.add(versionMenu);
                 herramientas.add(new JSeparator());
                 herramientas.add(cancelarMenu);
                 cancelar = new JButton("Salir");

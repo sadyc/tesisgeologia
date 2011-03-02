@@ -15,10 +15,9 @@ import java.awt.event.KeyListener;
 @SuppressWarnings("serial")
 public class GUILogin extends javax.swing.JDialog {
 
-	 // Variables declaration - do not modify
-    private javax.swing.JButton jButtonAceptar;
+	private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JMenu jMenuAyuda;
+    private javax.swing.JMenu jMenuVersion;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuHerramientas;
     private javax.swing.JMenuItem jMenuItem1;
@@ -30,10 +29,9 @@ public class GUILogin extends javax.swing.JDialog {
     private javax.swing.JPasswordField jpassword;
     private javax.swing.JLabel nombreUsuario;
     private javax.swing.JLabel password;
-    // End of variables declaration
-
-	/** Creates new form GUILogin */
-    public GUILogin(boolean modal) {
+    
+    
+    public GUILogin() {
         super();
         setTitle("Login Usuario");
         initComponents();
@@ -57,7 +55,7 @@ public class GUILogin extends javax.swing.JDialog {
         jMenuItemAceptar = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSalir = new javax.swing.JMenuItem();
-        jMenuAyuda = new javax.swing.JMenu();
+        jMenuVersion = new javax.swing.JMenu();
         jMenuItemVersion = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
@@ -83,7 +81,7 @@ public class GUILogin extends javax.swing.JDialog {
         });
 
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
-        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.setText("Salir");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
@@ -105,14 +103,14 @@ public class GUILogin extends javax.swing.JDialog {
 
         jMenuBar1.add(jMenuHerramientas);
 
-        jMenuAyuda.setText("Ayuda");
+        jMenuVersion.setText("Versión");
 
         jMenuItemVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         jMenuItemVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        jMenuItemVersion.setText("Versión");
-        jMenuAyuda.add(jMenuItemVersion);
+        jMenuItemVersion.setText("Acerca de SCS");
+        jMenuVersion.add(jMenuItemVersion);
 
-        jMenuBar1.add(jMenuAyuda);
+        jMenuBar1.add(jMenuVersion);
         
         jnombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,43 +172,21 @@ public class GUILogin extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
     private void jnombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
+    
     }                                              
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
+    
     }                                              
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        // TODO add your handling code here:
+    
     }                                               
 
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                GUILogin dialog = new GUILogin(true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-
-   
-
-
-
-   
-	
+    	
 	/**
 	 * @return the jButtonAceptar
 	 */
@@ -240,17 +216,17 @@ public class GUILogin extends javax.swing.JDialog {
 	}
 
 	/**
-	 * @return the jMenuAyuda
+	 * @return the jMenuVersion
 	 */
 	public javax.swing.JMenu getjMenuAyuda() {
-		return jMenuAyuda;
+		return jMenuVersion;
 	}
 
 	/**
-	 * @param jMenuAyuda the jMenuAyuda to set
+	 * @param jMenuVersion the jMenuVersion to set
 	 */
 	public void setjMenuAyuda(javax.swing.JMenu jMenuAyuda) {
-		this.jMenuAyuda = jMenuAyuda;
+		this.jMenuVersion = jMenuAyuda;
 	}
 
 	/**
@@ -389,6 +365,7 @@ public class GUILogin extends javax.swing.JDialog {
 		this.jButtonCancelar.addActionListener(lis);
 		this.jMenuItemSalir.addActionListener(lis);
 		this.jMenuItemAceptar.addActionListener(lis);
+		this.jMenuItemVersion.addActionListener(lis);
 	}
 	
 	/**

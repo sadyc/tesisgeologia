@@ -40,7 +40,7 @@ public class GUIMuestra extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu version;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem aceptarMenu;
     private javax.swing.JMenuItem cancelarMenu;
@@ -149,7 +149,7 @@ public class GUIMuestra extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         aceptarMenu = new javax.swing.JMenuItem();
         cancelarMenu = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        version = new javax.swing.JMenu();
         versionMenu = new javax.swing.JMenuItem();
         peso.addKeyListener(new KeyAdapter()
         {
@@ -295,14 +295,14 @@ public class GUIMuestra extends javax.swing.JDialog {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Ayuda");
+        version.setText("Versión");
 
         versionMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        versionMenu.setText("Versión");
-        jMenu2.add(versionMenu);
+        versionMenu.setText("Acerca de SCS");
+        version.add(versionMenu);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(version);
 
         setJMenuBar(jMenuBar1);
 
@@ -485,7 +485,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 	    }
 
 	    public JMenu getjMenu2() {
-	        return jMenu2;
+	        return version;
 	    }
 
 	    public JMenuBar getjMenuBar1() {
