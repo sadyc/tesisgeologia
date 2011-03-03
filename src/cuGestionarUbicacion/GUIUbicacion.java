@@ -3,10 +3,13 @@
  */
 package cuGestionarUbicacion;
 
+import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.JOptionPane;
 
 import persistencia.domain.Ubicacion;
 
@@ -51,13 +54,14 @@ public class GUIUbicacion extends javax.swing.JDialog {
 	    private javax.swing.JTextField jTextFieldCiudad;
 	    private javax.swing.JTextField jTextFieldGradLong;
 	    private javax.swing.JTextField jTextFieldGradoLat;
-	    private javax.swing.JTextField jTextFieldLatitud;
-	    private javax.swing.JTextField jTextFieldLongitud;
+	    private javax.swing.JTextField jTextFieldDecimalLatitud;
+	    private javax.swing.JTextField jTextFieldDecimalLongitud;
 	    private javax.swing.JTextField jTextFieldMinLat;
 	    private javax.swing.JTextField jTextFieldMinLong;
 	    private javax.swing.JTextField jTextFieldNombreUbicacion;
 	    private javax.swing.JTextField jTextFieldSegLat;
 	    private javax.swing.JTextField jTextFieldSegLong;
+		private Component frame;
 
     
     /**
@@ -70,8 +74,8 @@ public class GUIUbicacion extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         jTextFieldCiudad = new javax.swing.JTextField();
         jTextFieldNombreUbicacion = new javax.swing.JTextField();
-        jTextFieldLongitud = new javax.swing.JTextField();
-        jTextFieldLatitud = new javax.swing.JTextField();
+        jTextFieldDecimalLongitud = new javax.swing.JTextField();
+        jTextFieldDecimalLatitud = new javax.swing.JTextField();
         initComponents();
         
     }
@@ -88,16 +92,31 @@ public class GUIUbicacion extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         jTextFieldCiudad = new javax.swing.JTextField();
         jTextFieldNombreUbicacion = new javax.swing.JTextField();
-        jTextFieldLongitud = new javax.swing.JTextField();
-        jTextFieldLatitud = new javax.swing.JTextField();
+        jTextFieldDecimalLongitud = new javax.swing.JTextField();
+        jTextFieldDecimalLatitud = new javax.swing.JTextField();
+        initComponents();
+        String latitudModificar = ubicacion.getLatitud();
+        String longitudModificar = ubicacion.getLongitud();
+        if (latitudModificar.indexOf("º")==-1){
+        	jTextFieldDecimalLongitud.setText(longitudModificar);
+            jTextFieldDecimalLatitud.setText(latitudModificar);
+        }
+        else{
+        	jTextFieldGradoLat.setText(latitudModificar.substring(0,2));
+        	jTextFieldMinLat.setText(latitudModificar.substring(4,6));
+        	jTextFieldSegLat.setText(latitudModificar.substring(8,latitudModificar.lastIndexOf(" ")-2));
+        	
+        	jTextFieldGradLong.setText(longitudModificar.substring(0,longitudModificar.indexOf("º")));
+        	jTextFieldMinLong.setText(longitudModificar.substring(longitudModificar.indexOf("º")+2,longitudModificar.indexOf("'")));
+        	jTextFieldSegLong.setText(longitudModificar.substring(longitudModificar.indexOf("'")+2,longitudModificar.lastIndexOf(" ")-2));
+        
+        }
         jTextFieldCiudad.setText(ubicacion.getCiudad());
         jTextFieldNombreUbicacion.setText(ubicacion.getNombreUbicacion());
-        jTextFieldLongitud.setText(ubicacion.getLongitud().toString());
-        jTextFieldLatitud.setText(ubicacion.getLatitud().toString());
-        initComponents();
+        
         jButtonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png")));
         jButtonAceptar.setText("Modificar");
-    }
+     }
     
     /**
      * Inicializar de los objetos de la ventana.
@@ -204,9 +223,9 @@ public class GUIUbicacion extends javax.swing.JDialog {
          jPanel1 = new javax.swing.JPanel();
          jLabel1 = new javax.swing.JLabel();
          jLabel2 = new javax.swing.JLabel();
-         jTextFieldLatitud = new javax.swing.JTextField();
-         jTextFieldLongitud = new javax.swing.JTextField();
-         jTextFieldLongitud.addKeyListener(new KeyAdapter()
+         jTextFieldDecimalLatitud = new javax.swing.JTextField();
+         jTextFieldDecimalLongitud = new javax.swing.JTextField();
+         jTextFieldDecimalLongitud.addKeyListener(new KeyAdapter()
          {
             public void keyTyped(KeyEvent e)
             {
@@ -218,7 +237,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
                }
             }
          });
-         jTextFieldLatitud.addKeyListener(new KeyAdapter()
+         jTextFieldDecimalLatitud.addKeyListener(new KeyAdapter()
          {
             public void keyTyped(KeyEvent e)
             {
@@ -277,9 +296,9 @@ public class GUIUbicacion extends javax.swing.JDialog {
          jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
          jLabel10.setText("''");
 
-         jComboBoxLatitud.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Norte", "Sur" }));
+         jComboBoxLatitud.setModel(new javax.swing.DefaultComboBoxModel(new String[] {  "Sur","Norte" }));
 
-         jComboBoxLongitud.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Este", "Oeste" }));
+         jComboBoxLongitud.setModel(new javax.swing.DefaultComboBoxModel(new String[] {  "Oeste","Este" }));
 
          javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
          jPanel2.setLayout(jPanel2Layout);
@@ -369,8 +388,8 @@ public class GUIUbicacion extends javax.swing.JDialog {
                      .addComponent(jLabel1))
                  .addGap(89, 89, 89)
                  .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                     .addComponent(jTextFieldLongitud)
-                     .addComponent(jTextFieldLatitud, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
+                     .addComponent(jTextFieldDecimalLongitud)
+                     .addComponent(jTextFieldDecimalLatitud, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
                  .addContainerGap())
          );
          jPanel1Layout.setVerticalGroup(
@@ -379,11 +398,11 @@ public class GUIUbicacion extends javax.swing.JDialog {
                  .addContainerGap()
                  .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                      .addComponent(jLabel1)
-                     .addComponent(jTextFieldLatitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                     .addComponent(jTextFieldDecimalLatitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                  .addGap(18, 18, 18)
                  .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                      .addComponent(jLabel2)
-                     .addComponent(jTextFieldLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                     .addComponent(jTextFieldDecimalLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                  .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
          );
 
@@ -497,14 +516,19 @@ public class GUIUbicacion extends javax.swing.JDialog {
 		data[0]= jTextFieldNombreUbicacion.getText();
 		data[1]= jTextFieldCiudad.getText();
 		data[2]= jComboBoxProvincia.getSelectedItem().toString();
-		if (jTextFieldLongitud.getText().equals(""))
-			data[3]="0";
+		if (jTextFieldDecimalLongitud.getText().equals("")){
+			data[3]=jTextFieldGradLong.getText()+"º "+ jTextFieldMinLong.getText() +"' "+ jTextFieldSegLong.getText()+"'' "+jComboBoxLongitud.getSelectedItem().toString();
+			data[4]=jTextFieldGradoLat.getText()+"º "+ jTextFieldMinLat.getText() +"' "+ jTextFieldSegLat.getText()+"'' "+jComboBoxLatitud.getSelectedItem().toString();
+		}
 		else
-			data[3]= jTextFieldLongitud.getText();
-		if (jTextFieldLatitud.getText().equals(""))
-			data[4]="0";
+			data[3]= jTextFieldDecimalLongitud.getText();
+		if (jTextFieldDecimalLatitud.getText().equals("")){
+			data[3]=jTextFieldGradLong.getText()+"º "+ jTextFieldMinLong.getText() +"' "+ jTextFieldSegLong.getText()+"'' "+jComboBoxLongitud.getSelectedItem().toString();
+			data[4]=jTextFieldGradoLat.getText()+"º "+ jTextFieldMinLat.getText() +"' "+ jTextFieldSegLat.getText()+"'' "+jComboBoxLatitud.getSelectedItem().toString();
+		
+		}
 		else
-			data[4]= jTextFieldLatitud.getText();
+			data[4]= jTextFieldDecimalLatitud.getText();
 		return data;
 	}
 	
@@ -514,6 +538,80 @@ public class GUIUbicacion extends javax.swing.JDialog {
 	}
 
 
+	/**
+	 * Comprueba si el valor de los grados es correcto o no.
+	 * @return si el valor de los grados es correcto o no.
+	 */
+	public boolean gradosCorrectos(){
+		int valorLong = Integer.valueOf(jTextFieldGradLong.getText());
+		int valorLat = Integer.valueOf(jTextFieldGradoLat.getText());
+		if (valorLong<=180 && valorLong>=0 && valorLat<=90 && valorLat>=0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	/**
+	 * Comprueba si el valor de los minutos es correcto o no.
+	 * @return si el valor de los minutos es correcto o no.
+	 */
+	public boolean minutosCorrectos(){
+		int valorLong = Integer.valueOf(jTextFieldMinLong.getText());
+		int valorLat = Integer.valueOf(jTextFieldMinLat.getText());
+		if (valorLong<=60 && valorLong>=0 && valorLat<=60 && valorLat>=0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	/**
+	 * Comprueba si el valor de los segundos es correcto o no.
+	 * @return si el valor de los segundos es correcto o no.
+	 */
+	public boolean segundosCorrectos(){
+		float valorLong = Float.valueOf(jTextFieldSegLong.getText());
+		float valorLat = Float.valueOf(jTextFieldSegLat.getText());
+		if (valorLong<=60 && valorLong>=0 && valorLat<=60 && valorLat>=0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	
+	public boolean coordenadasGradosCorrectas(){
+		boolean res = false;
+		if(!gradosCorrectos()){
+			JOptionPane.showMessageDialog(frame,"Recuerde que los grados de latitud debe comprender" +
+												"\nun valor entre 0º y 90º y los grados de longitud entre 0º y 180º","Atención!", JOptionPane.ERROR_MESSAGE);
+		}
+		else {
+			if(!minutosCorrectos()){
+				JOptionPane.showMessageDialog(frame,"Recuerde que los minutos deben comprender un valor entre 0º y 60º","Atención!", JOptionPane.ERROR_MESSAGE);
+
+			}
+			else {
+				if (!segundosCorrectos()) {
+					JOptionPane.showMessageDialog(frame,"Recuerde que los segundos deben comprender un valor entre 0º y 60º","Atención!", JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+					res = true;
+				}
+			}
+		}
+		return res;
+	}
+	
+	
+	public boolean coordenadasDecimalesCorrectas(){
+		return jTextFieldDecimalLatitud.getText().compareTo("")!=0 && jTextFieldDecimalLongitud.getText().compareTo("")!=0;
+	}
+	
     /**
 	 * @return the jButtonCancelar
 	 */
@@ -567,14 +665,14 @@ public class GUIUbicacion extends javax.swing.JDialog {
 	 * @return the jTextFieldLongitud
 	 */
 	public javax.swing.JTextField getjTextFieldLongitud() {
-		return jTextFieldLongitud;
+		return jTextFieldDecimalLongitud;
 	}
 
 	/**
 	 * @return the jTextFieldLatitud
 	 */
 	public javax.swing.JTextField getjTextFieldLatitud() {
-		return jTextFieldLatitud;
+		return jTextFieldDecimalLatitud;
 	}
 
 	/**

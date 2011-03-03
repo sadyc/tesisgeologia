@@ -154,6 +154,7 @@ public class MediadorGestionarUbicacion extends Mediador{
 				}
 			}
 			catch (Exception e) {
+				e.printStackTrace();
 				JOptionPane.showMessageDialog(frame,"Se ha seleccionado una ubicación inválida","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 		}
