@@ -102,15 +102,19 @@ public class GUIUbicacion extends javax.swing.JDialog {
             jTextFieldDecimalLatitud.setText(latitudModificar);
         }
         else{
-        	jTextFieldGradoLat.setText(latitudModificar.substring(0,2));
-        	jTextFieldMinLat.setText(latitudModificar.substring(4,6));
-        	jTextFieldSegLat.setText(latitudModificar.substring(8,latitudModificar.lastIndexOf(" ")-2));
+        	jTextFieldGradoLat.setText(latitudModificar.substring(0,latitudModificar.indexOf("º")));
+        	jTextFieldMinLat.setText(latitudModificar.substring(latitudModificar.indexOf("º")+2,latitudModificar.indexOf("'")));
+        	jTextFieldSegLat.setText(latitudModificar.substring(latitudModificar.indexOf("'")+2,latitudModificar.lastIndexOf(" ")-2));
+        	jComboBoxLatitud.setSelectedItem(latitudModificar.substring(latitudModificar.lastIndexOf(" ")+1));
         	
         	jTextFieldGradLong.setText(longitudModificar.substring(0,longitudModificar.indexOf("º")));
         	jTextFieldMinLong.setText(longitudModificar.substring(longitudModificar.indexOf("º")+2,longitudModificar.indexOf("'")));
         	jTextFieldSegLong.setText(longitudModificar.substring(longitudModificar.indexOf("'")+2,longitudModificar.lastIndexOf(" ")-2));
-        
+        	jComboBoxLongitud.setSelectedItem(longitudModificar.substring(longitudModificar.lastIndexOf(" ")+1));
+        	
+      
         }
+        
         jTextFieldCiudad.setText(ubicacion.getCiudad());
         jTextFieldNombreUbicacion.setText(ubicacion.getNombreUbicacion());
         
@@ -517,18 +521,18 @@ public class GUIUbicacion extends javax.swing.JDialog {
 		data[1]= jTextFieldCiudad.getText();
 		data[2]= jComboBoxProvincia.getSelectedItem().toString();
 		if (jTextFieldDecimalLongitud.getText().equals("")){
-			data[3]=jTextFieldGradLong.getText()+"º "+ jTextFieldMinLong.getText() +"' "+ jTextFieldSegLong.getText()+"'' "+jComboBoxLongitud.getSelectedItem().toString();
-			data[4]=jTextFieldGradoLat.getText()+"º "+ jTextFieldMinLat.getText() +"' "+ jTextFieldSegLat.getText()+"'' "+jComboBoxLatitud.getSelectedItem().toString();
+			data[4]=jTextFieldGradLong.getText()+"º "+ jTextFieldMinLong.getText() +"' "+ jTextFieldSegLong.getText()+"'' "+jComboBoxLongitud.getSelectedItem().toString();
+			data[3]=jTextFieldGradoLat.getText()+"º "+ jTextFieldMinLat.getText() +"' "+ jTextFieldSegLat.getText()+"'' "+jComboBoxLatitud.getSelectedItem().toString();
 		}
 		else
-			data[3]= jTextFieldDecimalLongitud.getText();
+			data[4]= jTextFieldDecimalLongitud.getText();
 		if (jTextFieldDecimalLatitud.getText().equals("")){
-			data[3]=jTextFieldGradLong.getText()+"º "+ jTextFieldMinLong.getText() +"' "+ jTextFieldSegLong.getText()+"'' "+jComboBoxLongitud.getSelectedItem().toString();
-			data[4]=jTextFieldGradoLat.getText()+"º "+ jTextFieldMinLat.getText() +"' "+ jTextFieldSegLat.getText()+"'' "+jComboBoxLatitud.getSelectedItem().toString();
+			data[4]=jTextFieldGradLong.getText()+"º "+ jTextFieldMinLong.getText() +"' "+ jTextFieldSegLong.getText()+"'' "+jComboBoxLongitud.getSelectedItem().toString();
+			data[3]=jTextFieldGradoLat.getText()+"º "+ jTextFieldMinLat.getText() +"' "+ jTextFieldSegLat.getText()+"'' "+jComboBoxLatitud.getSelectedItem().toString();
 		
 		}
 		else
-			data[4]= jTextFieldDecimalLatitud.getText();
+			data[3]= jTextFieldDecimalLatitud.getText();
 		return data;
 	}
 	
