@@ -33,14 +33,12 @@ public class Backup {
     
     }
     /**
-     * Método que me permite elegir el directorio donde se va a guardar el Back-Up.
+     * Metodo que me permite elegir el directorio donde se va a guardar el Back-Up.
      */
     @SuppressWarnings("static-access")
 	public void elegirDirectorio(){
-
-    	JOptionPane.showMessageDialog(null, "Por favor elija la ubicación donde guardará el Back-Up", "Verificar",JOptionPane.INFORMATION_MESSAGE);
-
-		 JFileChooser directorio = new JFileChooser();
+    	JOptionPane.showMessageDialog(null, "Por favor elija la ubicaci�n donde guardar� el Back-Up", "Verificar",JOptionPane.INFORMATION_MESSAGE);
+    	JFileChooser directorio = new JFileChooser();
         int seleccion = directorio.showSaveDialog(new JPanel());
         directorio.setDialogType(directorio.DIRECTORIES_ONLY);
         if (seleccion == JFileChooser.APPROVE_OPTION){
@@ -58,7 +56,7 @@ public class Backup {
     
 
     /**
-     * Método que ejecuta todas las instrucciones que permiten cargar un Back-Up previamente realizado.
+     * Metodo que ejecuta todas las instrucciones que permiten cargar un Back-Up previamente realizado.
      */
 	@SuppressWarnings("static-access")
 	public void cargarBackup() {
