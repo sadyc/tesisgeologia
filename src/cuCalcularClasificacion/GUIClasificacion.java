@@ -30,11 +30,12 @@ import persistencia.domain.Muestra;
 import comun.TablePanel;
 
 /**
- * @brief Clase que implementa la ventana en donde se muestra la clasificación de una muestra
- * con sus respectivos análisis.
+ * @brief Clase que implementa la ventana en donde se muestra la clasificaciÃ³n de una muestra
+ * con sus respectivos anÃ¡lisis.
  * @author tesisGeologia.
  * @version 1.0
  */
+
 @SuppressWarnings("serial")
 public class GUIClasificacion extends JDialog{
 
@@ -84,7 +85,7 @@ public class GUIClasificacion extends JDialog{
 		muestra= new Muestra();
 		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
-		version = new JMenu("Versión");
+		version = new JMenu("VersiÃ³n");
 		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(version);
@@ -103,12 +104,12 @@ public class GUIClasificacion extends JDialog{
 		profundidadInicial = new JLabel("Profundidad Inicial: ");
 		profundidadFinal = new JLabel("Profundidad Final: ");
 
-		ubicacion = new JLabel ("Ubicación: ");
-		clasificacionSucs = new JLabel ("Clasificación: ");
-		descripcionSucs = new JLabel ("Descripción: ");
-		limiteLiquido = new JLabel ("Límite Líquido (LL): ");
-		limitePlastico = new JLabel ("Límite Plástico (LP): ");
-		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): ");
+		ubicacion = new JLabel ("UbicaciÃ³n: ");
+		clasificacionSucs = new JLabel ("ClasificaciÃ³n: ");
+		descripcionSucs = new JLabel ("DescripciÃ³n: ");
+		limiteLiquido = new JLabel ("LÃ­mite LÃ­quido (LL): ");
+		limitePlastico = new JLabel ("LÃ­mite PlÃ¡stico (LP): ");
+		indicePlasticidad = new JLabel ("Ã�ncide de Plasticidad (IP): ");
 
 		D60 = new JLabel("D60(mm): ");
 		D30 = new JLabel("D30(mm): ");
@@ -135,7 +136,7 @@ public class GUIClasificacion extends JDialog{
 		menu = new JMenuBar();
 		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
-		version = new JMenu("Versión");
+		version = new JMenu("VersiÃ³n");
 		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(version);
@@ -151,32 +152,32 @@ public class GUIClasificacion extends JDialog{
 		profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
 		profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
 
-		ubicacion = new JLabel ("Ubicación: "+muestra.getUbicacion().getNombreUbicacion());
+		ubicacion = new JLabel ("UbicaciÃ³n: "+muestra.getUbicacion().getNombreUbicacion());
 
 		if (muestra.getSucs()==null){
 
-			descripcionSucs = new JLabel ("Descripción: ");
-			clasificacionSucs = new JLabel ("Clasificación: ");
+			descripcionSucs = new JLabel ("DescripciÃ³n: ");
+			clasificacionSucs = new JLabel ("ClasificaciÃ³n: ");
 
 		}
 		else{
-			clasificacionSucs = new JLabel ("Clasificación: "+muestra.getSucs().getNombre());
-			descripcionSucs = new JLabel ("Descripción: "+muestra.getSucs().getDescripcion());
+			clasificacionSucs = new JLabel ("ClasificaciÃ³n: "+muestra.getSucs().getNombre());
+			descripcionSucs = new JLabel ("DescripciÃ³n: "+muestra.getSucs().getDescripcion());
 		}
 		if (muestra.getAashto()==null){
-			descripcionAashto = new JLabel ("Descripción: ");
-			clasificacionAashto = new JLabel ("Clasificación: ");
+			descripcionAashto = new JLabel ("DescripciÃ³n: ");
+			clasificacionAashto = new JLabel ("ClasificaciÃ³n: ");
 
 		}
 		else{
 
-			clasificacionAashto= new JLabel ("Clasificación: "+muestra.getAashto().getNombre());
-			descripcionAashto = new JLabel ("Descripción: "+muestra.getAashto().getDescripcion());
+			clasificacionAashto= new JLabel ("ClasificaciÃ³n: "+muestra.getAashto().getNombre());
+			descripcionAashto = new JLabel ("DescripciÃ³n: "+muestra.getAashto().getDescripcion());
 
 		}
-		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    
-		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	
-		indicePlasticidad = new JLabel ("Íncide de Plasticidad (IP): "+muestra.getIndicePlasticidad());
+		limiteLiquido = new JLabel ("LÃ­mite LÃ­quido (LL): "+muestra.getLimiteLiquido());    
+		limitePlastico = new JLabel ("LÃ­mite PlÃ¡stico (LP): "+ muestra.getLimitePlastico());	
+		indicePlasticidad = new JLabel ("Ã�ncide de Plasticidad (IP): "+muestra.getIndicePlasticidad());
 
 		D60 = new JLabel("D60: "+muestra.getD60()+" mm");
 		D30 = new JLabel("D30: "+muestra.getD30()+" mm"); 
@@ -319,7 +320,7 @@ public class GUIClasificacion extends JDialog{
 	}	
 
 	/**
-	 * Método que retorna el panelCenter.
+	 * MÃ©todo que retorna el panelCenter.
 	 *
 	 * @return Jpanel
 	 */
@@ -335,7 +336,7 @@ public class GUIClasificacion extends JDialog{
 	}
 	
 	/**
-	 * Método que retorna el panelCenter.
+	 * MÃ©todo que retorna el panelCenter.
 	 *
 	 * @return Jpanel
 	 */
@@ -344,8 +345,8 @@ public class GUIClasificacion extends JDialog{
 			this.panelSucs = new JPanel();
 			GridBagLayout gridbag = new GridBagLayout();
 			GridBagConstraints gbc = new GridBagConstraints();
-			JLabel sucs = new JLabel("DATOS DE LA CLASIFICACIÓN S.U.C.S ");
-            JLabel aashto = new JLabel("DATOS DE LA CLASIFICACIÓN A.A.S.H.T.O ");
+			JLabel sucs = new JLabel("DATOS DE LA CLASIFICACIÃ“N S.U.C.S ");
+            JLabel aashto = new JLabel("DATOS DE LA CLASIFICACIÃ“N A.A.S.H.T.O ");
             aashto.setForeground(Color.red);
             sucs.setForeground(Color.red);
 			gbc.gridwidth = 1;
@@ -376,7 +377,7 @@ public class GUIClasificacion extends JDialog{
 	}
 	
 	/**
-	 * Método que retorna el panelSur.
+	 * MÃ©todo que retorna el panelSur.
 	 *
 	 * @return Jpanel
 	 */
@@ -390,7 +391,7 @@ public class GUIClasificacion extends JDialog{
 			return this.panelSur;
 	}
 	/**
-	 * M�todo que retorna el panelSur.
+	 * Mï¿½todo que retorna el panelSur.
 	 *
 	 * @return Jpanel
 	 */
@@ -405,7 +406,7 @@ public class GUIClasificacion extends JDialog{
 	}
 	
 	/**
-	 * Método que retorna el panelSur.
+	 * MÃ©todo que retorna el panelSur.
 	 *
 	 * @return Jpanel
 	 */
@@ -419,7 +420,7 @@ public class GUIClasificacion extends JDialog{
 	}
 	
 	/**
-	 * Método que permite escuchar los botoner imprimir y cancelar.
+	 * MÃ©todo que permite escuchar los botoner imprimir y cancelar.
 	 *
 	 *@param lis actionEvent asignado a los botones.
 	 */
@@ -431,7 +432,7 @@ public class GUIClasificacion extends JDialog{
 	}
 	
 	/**
-	 * Método que retorna la tabla panel.
+	 * MÃ©todo que retorna la tabla panel.
 	 *
 	 * @return TablePanel
 	 */
