@@ -52,7 +52,12 @@ public abstract class Mediador implements ActionListener,MouseListener,ItemListe
 	public void keyReleased(KeyEvent arg0) {
 		
 	}
-	  //metodo para validar correo electronio
+	/**
+	 * @Brief Metodo para validar correo electronico.
+	 * @param correo, es la direccion de correo electronico a verificar si esa correctamente construida. 
+	 * @return si la direccion de correo electronico cumple con la estructura de una direccion de e-mail.
+	 */
+	
     public boolean isEmail(String correo) {
         Pattern pat = null;
         Matcher mat = null;
@@ -66,8 +71,8 @@ public abstract class Mediador implements ActionListener,MouseListener,ItemListe
     }
     /**
      * @brief Retorna si un valor de DNI es valido.
-     * @param dni String que sera evaluado. 
-     * @return test variable booleana que almacena el valor de la validez del dni 
+     * @param dni, String que sera evaluado. 
+     * @return test, variable booleana que almacena el valor de la validez del dni 
      */
     public Boolean isDni(String dni){
     		boolean test = true;
