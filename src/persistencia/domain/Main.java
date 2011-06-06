@@ -18,12 +18,15 @@ public class Main {
 
 	/**
 	 * @param args
-	 * @throws Exception 
 	 */
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
+		try {
+			new MediadorLogin("Login");
+			//new MediadorPrincipal("Sistema Clasificador de Suelos",usuario1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		new MediadorLogin("Login");
-		//new MediadorPrincipal("Sistema Clasificador de Suelos",usuario1);
 		
 		
 	}

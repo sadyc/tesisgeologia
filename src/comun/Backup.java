@@ -37,7 +37,7 @@ public class Backup {
      */
     @SuppressWarnings("static-access")
 	public void elegirDirectorio(){
-    	JOptionPane.showMessageDialog(null, "Por favor elija la ubicaciÛn donde guardar· el Back-Up", "Verificar",JOptionPane.INFORMATION_MESSAGE);
+    	JOptionPane.showMessageDialog(null, "Por favor elija la ubicaci√≥n donde guardar√° el Back-Up", "Verificar",JOptionPane.INFORMATION_MESSAGE);
     	JFileChooser directorio = new JFileChooser();
         int seleccion = directorio.showSaveDialog(new JPanel());
         directorio.setDialogType(directorio.DIRECTORIES_ONLY);
