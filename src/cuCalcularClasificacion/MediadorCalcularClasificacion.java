@@ -17,6 +17,7 @@ import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
@@ -182,6 +183,9 @@ public class MediadorCalcularClasificacion extends Mediador{
 			}
 		if (this.GUIClasificacion.getJButtonSalir() == source || GUIClasificacion.getSalirMenu()==source){
 			GUIClasificacion.dispose();
+		}
+		if(this.GUIClasificacion.getVersionMenu() == source){
+			new MediadorVersion();
 		}
 	
 	}

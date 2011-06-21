@@ -53,6 +53,6 @@ set classpath=%classpath%;%dpro%\classes
 cd..
 rem ejecuta 
 
-%djav%\bin\java -cp %classpath%  persistencia.domain.Main
+%djav%\bin\java -cp %classpath%  comun.Main
 
 pause

@@ -157,11 +157,11 @@ public class GUIOperador extends javax.swing.JDialog {
 
         jMenuBar1.add(jMenuHerramientas);
 
-        jMenuVersion.setText("Versión");
+        jMenuVersion.setText("Acerca de SCS");
 
         jMenuItemVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuItemVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        jMenuItemVersion.setText("Acerca de SCS");
+        jMenuItemVersion.setText("Versión");
         jMenuVersion.add(jMenuItemVersion);
 
         jMenuBar1.add(jMenuVersion);
@@ -375,6 +375,7 @@ public class GUIOperador extends javax.swing.JDialog {
 	public javax.swing.JMenuItem getjMenuItemVersion() {
 		return jMenuItemVersion;
 	}
+	
 	
 	public void setKeyListener(KeyListener lis){
 		jTextFieldDni.addKeyListener(lis);

@@ -20,7 +20,7 @@ set classpath=%classpath%;%dpro%\classes
 cd..
 rem ejecuta 
 
-%djav%\bin\java -cp %classpath%  persistencia.domain.CargaDatos
+%djav%\bin\java -cp %classpath%  comun.CargaDatos
 
 pause
 

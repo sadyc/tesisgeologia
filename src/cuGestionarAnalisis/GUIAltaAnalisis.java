@@ -7,6 +7,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
 import persistencia.domain.Muestra;
@@ -36,6 +38,8 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
     private javax.swing.JMenuItem jMenuItemCancelar;
     private javax.swing.JMenuItem jMenuItemTamiz;
     private javax.swing.JTextField pesoRetenido;
+	private JMenu version;
+	private JMenuItem versionMenu;
 
     /**
      * Constructor por defecto de la clase.
@@ -45,10 +49,6 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
         setModal(true);
         setResizable(false);
         initComponents();
-        aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
-        jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-        jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
     }
     
     /**
@@ -64,11 +64,6 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 		jLabelTamiz = new javax.swing.JLabel();
 		jLabelTamiz.setText("Tamiz: ");
 		initComponents();
-		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-	    cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
-	    jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-	    jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
-	      
 	}
     
     /**
@@ -87,18 +82,18 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 		jLabelTamiz = new javax.swing.JLabel();
 		jLabelTamiz.setText("Tamiz: "+numeroTamiz);
 		initComponents();
-		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-	    cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
-	    jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
-	    jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
-	      
 	}
 
     /**
      * Inicializa los componentes de la ventana. 
      */
     private void initComponents() {
-        jLabel4 = new javax.swing.JLabel();
+    	version = new JMenu("Acerca de SCS");
+    	versionMenu = new JMenuItem("Versión");
+	    versionMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png")));
+		version.add(versionMenu);
+    	jLabel4 = new javax.swing.JLabel();
         jButtonSeleccionarTamiz = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
@@ -120,7 +115,13 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
         jMenuItemTamiz = new javax.swing.JMenuItem();
         jMenuItemAgregar = new javax.swing.JMenuItem();
         jMenuItemCancelar = new javax.swing.JMenuItem();
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
+	    cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
+	    jButtonSeleccionarTamiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/kexi.png")));
+	    jMenuItemTamiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/kexi.png")));
+	    jMenuItemAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-add.png")));
+	    jMenuItemCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
+	    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel4.setText("Peso retenido por el Tamiz: ");
         jButtonSeleccionarTamiz.setText("Seleccionar Tamiz");
@@ -148,6 +149,7 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
         jMenuItemCancelar.setText("Salir");
         jMenu1.add(jMenuItemCancelar);
         jMenuBar1.add(jMenu1);
+        jMenuBar1.add(version);
         setJMenuBar(jMenuBar1);
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -227,6 +229,7 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 	    jMenuItemAgregar.addActionListener(lis);
 	    jMenuItemCancelar.addActionListener(lis);
 	    jMenuItemTamiz.addActionListener(lis);
+	    versionMenu.addActionListener(lis);
 	}
 	/**
 	 * @return the aceptar
@@ -240,6 +243,20 @@ public class GUIAltaAnalisis extends javax.swing.JDialog {
 	 */
 	public javax.swing.JButton getJButtonCancelar() {
 		return cancelar;
+	}
+	
+	/**
+	 * @return the versionMenu
+	 */
+	public JMenuItem getVersionMenu() {
+		return versionMenu;
+	}
+
+	/**
+	 * @param versionMenu the versionMenu to set
+	 */
+	public void setVersionMenu(JMenuItem versionMenu) {
+		this.versionMenu = versionMenu;
 	}
 
 	/**

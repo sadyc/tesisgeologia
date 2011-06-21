@@ -125,7 +125,7 @@ public class GUIPrincipal extends JFrame {
 	        jButtonGestionarUbicacion.setText("Gestionar Ubicación");
 	        
 	        muestra = new JMenu("Muestra");
-			version = new JMenu("Versión");
+			version = new JMenu("Acerca de SCS");
 			sistema = new JMenu("Sistema");
 			gestionar = new JMenu("Gestionar");
 				
@@ -183,7 +183,7 @@ public class GUIPrincipal extends JFrame {
 			sistema.add(cargarBackupMenu);
 			muestra.add(new JSeparator());
 			muestra.add(salirMenu);
-			versionMenu = new JMenuItem("Acerca de SCS");
+			versionMenu = new JMenuItem("Versión");
 			versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
 			version.add(versionMenu);
 		

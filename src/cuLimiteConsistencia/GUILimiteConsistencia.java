@@ -135,9 +135,9 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
 
         jMenuBar1.add(herramientas);
 
-        menuVersion.setText("Versión");
+        menuVersion.setText("Acerca de SCS");
 
-        version.setText("Acerca de SCS");
+        version.setText("Versión");
         menuVersion.add(version);
 
         jMenuBar1.add(menuVersion);
