@@ -164,7 +164,7 @@ public class MediadorAltaAnalisis  extends Mediador{
 						analisis.setPesoRetenido(pesoRetenido);
 						try {
 							data = control.insertarAnalisis(analisis, muestra, numeroTamiz);
-							if (control.getExiste()) {
+							if (control.yaExiste()) {
 								System.out.println("El objeto ya existe");
 								JOptionPane.showMessageDialog(frame,"El análisis de la muestra correspondiente ya tiene cargado un resultado en el Tamiz N° "+data[0]+". Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 							}

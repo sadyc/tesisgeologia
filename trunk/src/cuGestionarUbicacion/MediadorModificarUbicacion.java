@@ -88,7 +88,7 @@ public class MediadorModificarUbicacion extends Mediador{
 			}
 			else {
 				control.modificarUbicacion(nombreUbicacion,ciudad,GUIUbicacion.getData());
-				if (control.getExiste()) {
+				if (control.yaExiste()) {
 					JOptionPane.showMessageDialog(frame,"La ubicación con esas coordenadas ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
 				}
 				else {

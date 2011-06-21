@@ -114,7 +114,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 					try {
 						control.ModificarAnalisis(pesoRetenido, muestra, numeroTamiz);
 						control.recalcularAnalisis(analisis);
-						if (control.getExiste()) {
+						if (control.yaExiste()) {
 							System.out.println("El objeto ya existe");
 							JOptionPane.showMessageDialog(frame,"El análisis de la muestra correspondiente ya tiene cargado un resultado en el Tamiz N°: "+numeroTamiz+". Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 						}

@@ -138,7 +138,7 @@ public class MediadorAltaOperador extends Mediador{
 				operador = new OperadorDeLaboratorio(data[0],data[1],data[2],data[3],data[4]);
 				try {
 					control.insertarOperador(operador);
-					if (control.getExiste()) {
+					if (control.yaExiste()) {
 						System.out.println("El objeto ya existe");
 						JOptionPane.showMessageDialog(frame,"El Operador de Laboratorio con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 					}
