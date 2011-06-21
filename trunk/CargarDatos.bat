@@ -1,6 +1,6 @@
 cls
 set dpro=%cd%
-set djav="C:\Program Files\Java\jdk1.6.0_16"
+set djav="C:\Program Files\Java\jdk1.6.0_23"
 set dlib=%dpro%\lib
 
 
@@ -20,7 +20,7 @@ set classpath=%classpath%;%dpro%\classes
 cd..
 rem ejecuta 
 
-%djav%\bin\java -cp %classpath%  persistencia.domain.CargaDatosMain
+%djav%\bin\java -cp %classpath%  persistencia.domain.CargaDatos
 
 pause
 

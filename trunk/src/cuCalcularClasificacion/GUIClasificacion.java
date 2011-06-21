@@ -30,8 +30,8 @@ import persistencia.domain.Muestra;
 import comun.TablePanel;
 
 /**
- * @brief Clase que implementa la ventana en donde se muestra la clasificaciÃ³n de una muestra
- * con sus respectivos anÃ¡lisis.
+ * @brief Clase que implementa la ventana en donde se muestra la clasificación de una muestra
+ * con sus respectivos análisis.
  * @author tesisGeologia.
  * @version 1.0
  */
@@ -85,7 +85,7 @@ public class GUIClasificacion extends JDialog{
 		muestra= new Muestra();
 		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
-		version = new JMenu("VersiÃ³n");
+		version = new JMenu("Versión");
 		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(version);
@@ -104,12 +104,12 @@ public class GUIClasificacion extends JDialog{
 		profundidadInicial = new JLabel("Profundidad Inicial: ");
 		profundidadFinal = new JLabel("Profundidad Final: ");
 
-		ubicacion = new JLabel ("UbicaciÃ³n: ");
-		clasificacionSucs = new JLabel ("ClasificaciÃ³n: ");
-		descripcionSucs = new JLabel ("DescripciÃ³n: ");
-		limiteLiquido = new JLabel ("LÃ­mite LÃ­quido (LL): ");
-		limitePlastico = new JLabel ("LÃ­mite PlÃ¡stico (LP): ");
-		indicePlasticidad = new JLabel ("Ã�ncide de Plasticidad (IP): ");
+		ubicacion = new JLabel ("Ubicación: ");
+		clasificacionSucs = new JLabel ("Clasificación: ");
+		descripcionSucs = new JLabel ("Descripción: ");
+		limiteLiquido = new JLabel ("Límite Líquido (LL): ");
+		limitePlastico = new JLabel ("Límite Plástico (LP): ");
+		indicePlasticidad = new JLabel ("Índice de Plasticidad (IP): ");
 
 		D60 = new JLabel("D60(mm): ");
 		D30 = new JLabel("D30(mm): ");
@@ -136,14 +136,17 @@ public class GUIClasificacion extends JDialog{
 		menu = new JMenuBar();
 		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
-		version = new JMenu("VersiÃ³n");
+		version = new JMenu("Versión");
 		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(version);
 		salirMenu = new JMenuItem("Salir");
+		salirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
 		versionMenu = new JMenuItem("Acerca de SCS");
-		version.add(versionMenu);	
+		versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png")));
 		imprimirMenu = new JMenuItem("Imprimir");
+		imprimirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/printer-5.png")));
+		version.add(versionMenu);
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
@@ -152,32 +155,32 @@ public class GUIClasificacion extends JDialog{
 		profundidadInicial= new JLabel("Profundidad Inicial: "+muestra.getProfundidadInicial()+"mts");
 		profundidadFinal = new JLabel("Profundidad Final: "+muestra.getProfundidadFinal()+"mts");
 
-		ubicacion = new JLabel ("UbicaciÃ³n: "+muestra.getUbicacion().getNombreUbicacion());
+		ubicacion = new JLabel ("Ubicación: "+muestra.getUbicacion().getNombreUbicacion());
 
 		if (muestra.getSucs()==null){
 
-			descripcionSucs = new JLabel ("DescripciÃ³n: ");
-			clasificacionSucs = new JLabel ("ClasificaciÃ³n: ");
+			descripcionSucs = new JLabel ("Descripción: ");
+			clasificacionSucs = new JLabel ("Clasificación: ");
 
 		}
 		else{
-			clasificacionSucs = new JLabel ("ClasificaciÃ³n: "+muestra.getSucs().getNombre());
-			descripcionSucs = new JLabel ("DescripciÃ³n: "+muestra.getSucs().getDescripcion());
+			clasificacionSucs = new JLabel ("Clasificación: "+muestra.getSucs().getNombre());
+			descripcionSucs = new JLabel ("Descripción: "+muestra.getSucs().getDescripcion());
 		}
 		if (muestra.getAashto()==null){
-			descripcionAashto = new JLabel ("DescripciÃ³n: ");
-			clasificacionAashto = new JLabel ("ClasificaciÃ³n: ");
+			descripcionAashto = new JLabel ("Descripción: ");
+			clasificacionAashto = new JLabel ("Clasificación: ");
 
 		}
 		else{
 
-			clasificacionAashto= new JLabel ("ClasificaciÃ³n: "+muestra.getAashto().getNombre());
-			descripcionAashto = new JLabel ("DescripciÃ³n: "+muestra.getAashto().getDescripcion());
+			clasificacionAashto= new JLabel ("Clasificación: "+muestra.getAashto().getNombre());
+			descripcionAashto = new JLabel ("Descripción: "+muestra.getAashto().getDescripcion());
 
 		}
-		limiteLiquido = new JLabel ("LÃ­mite LÃ­quido (LL): "+muestra.getLimiteLiquido());    
-		limitePlastico = new JLabel ("LÃ­mite PlÃ¡stico (LP): "+ muestra.getLimitePlastico());	
-		indicePlasticidad = new JLabel ("Ã�ncide de Plasticidad (IP): "+muestra.getIndicePlasticidad());
+		limiteLiquido = new JLabel ("Límite Líquido (LL): "+muestra.getLimiteLiquido());    
+		limitePlastico = new JLabel ("Límite Plástico (LP): "+ muestra.getLimitePlastico());	
+		indicePlasticidad = new JLabel ("Índice de Plasticidad (IP): "+muestra.getIndicePlasticidad());
 
 		D60 = new JLabel("D60: "+muestra.getD60()+" mm");
 		D30 = new JLabel("D30: "+muestra.getD30()+" mm"); 
@@ -185,8 +188,10 @@ public class GUIClasificacion extends JDialog{
 		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): "+muestra.getCoeficienteUniformidad());
 		gradoCurvatura = new JLabel ("Grado de Curvatura (Cc): "+muestra.getGradoCurvatura());
 		imprimir = new JButton("Imprimir");
+		imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/printer-5.png")));
 		salir = new JButton("Cancelar");
-		initialize();
+		salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
+        initialize();
 	}
 	
 	/**
@@ -345,8 +350,8 @@ public class GUIClasificacion extends JDialog{
 			this.panelSucs = new JPanel();
 			GridBagLayout gridbag = new GridBagLayout();
 			GridBagConstraints gbc = new GridBagConstraints();
-			JLabel sucs = new JLabel("DATOS DE LA CLASIFICACIÃ“N S.U.C.S ");
-            JLabel aashto = new JLabel("DATOS DE LA CLASIFICACIÃ“N A.A.S.H.T.O ");
+			JLabel sucs = new JLabel("DATOS DE LA CLASIFICACIÓN S.U.C.S ");
+            JLabel aashto = new JLabel("DATOS DE LA CLASIFICACIÓN A.A.S.H.T.O ");
             aashto.setForeground(Color.red);
             sucs.setForeground(Color.red);
 			gbc.gridwidth = 1;
