@@ -98,7 +98,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	 * al atributo data de la clase mediador.
 	 * @param Muestra, muestra de la que se desean obtener los an�lisis. 
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "unchecked" })
 	public void cargarTablaDeAnalisis(Muestra muestra)throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
