@@ -272,12 +272,12 @@ public class ControlClasificacion extends Control {
 	 * @param muestra.
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	private void calcularDiametro(Muestra muestra) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		Analisis analisis = new Analisis();
 		filtro = "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && muestra.ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'";
-		@SuppressWarnings("rawtypes")
 		List listaAnalisis = persistencia.buscarListaFiltro(analisis.getClass(), filtro);
 		persistencia.cerrarTransaccion();
 		int i = 0;
@@ -350,14 +350,13 @@ public class ControlClasificacion extends Control {
 	 * @param muestra. Muestra a la que se le calcula el grï¿½fico de curva granulomÃ©trica.
 	 * @throws Exception 
 	 */
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "unchecked" })
 	public ChartPanel curvaGranulometrica(Muestra muestra) throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
 		
 		Class clase = analisis.getClass();
 		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(clase, muestra);
-		@SuppressWarnings("unchecked")
 		Iterator<Analisis> it = coleccionAnalisis.iterator();
 		XYSeries series = new XYSeries("Nombre: "+muestra.getNombreMuestra());
 		while (it.hasNext()){
