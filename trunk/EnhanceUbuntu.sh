@@ -1,0 +1,1 @@
+java -cp ./lib/datanucleus-enhancer-2.1.0-release.jar:./lib/jdo2-api-2.3-eb.jar:./lib/datanucleus-core-2.2.0-m1.jar:./lib/log4j-1.2.7.jar:./lib/asm-3.1.jar:./classes/:.  -Dlog4j.configuration=file:log4j.properties org.datanucleus.enhancer.DataNucleusEnhancer ./classes/persistencia/domain/*.class
