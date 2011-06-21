@@ -295,11 +295,11 @@ public class GUIMuestra extends javax.swing.JDialog {
 
         jMenuBar1.add(jMenu1);
 
-        version.setText("Versión");
+        version.setText("Acerca de SCS");
 
         versionMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-        versionMenu.setText("Acerca de SCS");
+        versionMenu.setText("Versión");
         version.add(versionMenu);
 
         jMenuBar1.add(version);

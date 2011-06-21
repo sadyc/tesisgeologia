@@ -197,7 +197,7 @@ public class GUIMuestraDetallada extends JDialog{
 		menu = new JMenuBar();
 		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
-		version = new JMenu("Versión");
+		version = new JMenu("Acerca de SCS");
 		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(version);
@@ -206,7 +206,7 @@ public class GUIMuestraDetallada extends JDialog{
 		
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
-		versionMenu = new JMenuItem("Acerca de SCS");
+		versionMenu = new JMenuItem("Versión");
 		versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
 		version.add(versionMenu);	
 		

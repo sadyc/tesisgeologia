@@ -16,6 +16,7 @@ import persistencia.domain.Muestra;
 import persistencia.domain.Tamiz;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 import cuGestionarMuestra.GUIMuestraDetallada;
 
@@ -107,6 +108,9 @@ public class MediadorGestionarAnalisis extends Mediador{
 		}
 		if (this.GUImuestraDetallada.getJButtonSalir() == source || GUImuestraDetallada.getSalirMenu()==source){
 			GUImuestraDetallada.dispose();
+		}
+		if(this.GUImuestraDetallada.getVersionMenu() == source){
+			new MediadorVersion();
 		}
 	}
 	

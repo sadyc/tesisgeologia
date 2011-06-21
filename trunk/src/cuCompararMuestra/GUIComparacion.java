@@ -289,13 +289,13 @@ public class GUIComparacion extends JDialog{
                 menu = new JMenuBar();
                 herramientas = new JMenu ("Archivo");
                 herramientas = new JMenu("Herramientas");
-                version = new JMenu("Versión");
+                version = new JMenu("Acerca de SCS");
                 menu.add(herramientas);
                 menu.add(herramientas);
                 menu.add(version);
                 cancelarMenu = new JMenuItem("Salir");
                 cancelarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); 
-                versionMenu = new JMenuItem("Acerca de SCS");
+                versionMenu = new JMenuItem("Versión");
                 versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); 
                 version.add(versionMenu);
                 herramientas.add(new JSeparator());

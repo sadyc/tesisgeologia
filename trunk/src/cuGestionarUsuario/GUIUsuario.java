@@ -181,11 +181,11 @@ public class GUIUsuario extends javax.swing.JDialog {
 
         jMenuBar1.add(jMenuHerramientas);
 
-        jMenuVersion.setText("Versión");
+        jMenuVersion.setText("Acerca de SCS");
 
         jMenuItemVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
         
-        jMenuItemVersion.setText("Acerca de SCS");
+        jMenuItemVersion.setText("Versión");
         jMenuVersion.add(jMenuItemVersion);
 
         jMenuBar1.add(jMenuVersion);

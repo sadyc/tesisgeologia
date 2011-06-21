@@ -429,11 +429,11 @@ public class GUIUbicacion extends javax.swing.JDialog {
 
          jMenuBar1.add(jMenu1);
 
-         jMenu2.setText("Versión");
+         jMenu2.setText("Acerca de SCS");
 
          jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
          jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png"))); // NOI18N
-         jMenuVersion.setText("Acerca de SCS");
+         jMenuVersion.setText("Versión");
          jMenu2.add(jMenuVersion);
 
          jMenuBar1.add(jMenu2);

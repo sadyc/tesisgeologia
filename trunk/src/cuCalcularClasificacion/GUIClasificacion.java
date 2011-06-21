@@ -85,14 +85,14 @@ public class GUIClasificacion extends JDialog{
 		muestra= new Muestra();
 		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
-		version = new JMenu("Versión");
+		version = new JMenu("Acerca de SCS");
 		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(version);
 		salirMenu = new JMenuItem("Salir");
 		herramientas.add(new JSeparator());
 		herramientas.add(salirMenu);
-		versionMenu = new JMenuItem("Acerca de SCS");
+		versionMenu = new JMenuItem("Versión");
 
 		version.add(versionMenu);	
 		imprimirMenu = new JMenuItem("Imprimir");
@@ -136,13 +136,13 @@ public class GUIClasificacion extends JDialog{
 		menu = new JMenuBar();
 		herramientas = new JMenu ("Archivo");
 		herramientas = new JMenu("Herramientas");
-		version = new JMenu("Versión");
+		version = new JMenu("Acerca de SCS");
 		menu.add(herramientas);
 		menu.add(herramientas);
 		menu.add(version);
 		salirMenu = new JMenuItem("Salir");
 		salirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
-		versionMenu = new JMenuItem("Acerca de SCS");
+		versionMenu = new JMenuItem("Versión");
 		versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png")));
 		imprimirMenu = new JMenuItem("Imprimir");
 		imprimirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/printer-5.png")));
@@ -729,6 +729,13 @@ public class GUIClasificacion extends JDialog{
 	 */
 	public JMenuItem getImprimirMenu() {
 		return imprimirMenu;
+	}
+
+	/**
+	 * @return the versionMenu
+	 */
+	public JMenuItem getVersionMenu() {
+		return versionMenu;
 	}
 		
 	

@@ -12,6 +12,7 @@ import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 
 
@@ -85,8 +86,10 @@ public class MediadorModificarAnalisis  extends Mediador{
 			aceptar();
 		}
 		if (this.GUIAnalisis.getJButtonCancelar() == source || GUIAnalisis.getjMenuItemCancelar()==source){
-			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			GUIAnalisis.dispose();
+		}
+		if(this.GUIAnalisis.getVersionMenu() == source){
+			new MediadorVersion();
 		}
 	}
 
@@ -95,7 +98,6 @@ public class MediadorModificarAnalisis  extends Mediador{
 	 */
 	public void aceptar(){
 		try{
-		System.out.println("GestionarAnalisis.actionPerformed() jButtonAceptar");
 		pesoRetenido = GUIAnalisis.getPesoRetenido().getText().replace(",",".");
 		analisis.setMuestra(muestra);
 		if (pesoRetenido.equals("")){

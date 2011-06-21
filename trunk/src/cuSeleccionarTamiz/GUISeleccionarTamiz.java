@@ -49,18 +49,26 @@ public class GUISeleccionarTamiz extends JDialog	{
 			tablePanel = getTablePanel();
 			menu = new JMenuBar();
 			herramientas = new JMenu("Herramientas");
-			version = new JMenu("Versión");
+			version = new JMenu("Acerca de SCS");
 			menu.add(herramientas);
 			menu.add(version);
 			seleccionarMenu = new JMenuItem("Seleccionar");
+			seleccionarMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
+			seleccionarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-ok-apply-6.png")));
 			cancelarMenu = new JMenuItem("Cancelar");
+			cancelarMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+			cancelarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
 			herramientas.add(seleccionarMenu);
 			herramientas.add(new JSeparator()); // Una rayita separadora.
 			herramientas.add(cancelarMenu);
-			versionMenu = new JMenuItem("Acerca de SCS");
+			versionMenu = new JMenuItem("Versión");
+		    versionMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+	        versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png")));
 			version.add(versionMenu);
 			jButtonSeleccionarTamiz  = new JButton("SELECCIONAR");
 			jButtonCancelar  = new JButton("CANCELAR");
+			jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+			jButtonSeleccionarTamiz.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-ok-apply-6.png")));
 		}
 		initialize();
 	}

@@ -12,6 +12,7 @@ import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 import cuSeleccionarTamiz.MediadorSeleccionarTamiz;
 
@@ -98,6 +99,9 @@ public class MediadorAltaAnalisis  extends Mediador{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+	   	if (GUIAnalisis.getVersionMenu()==source){
+			new MediadorVersion();
 		}
 	   	if (this.GUIAnalisis.getJButtonSeleccionarTamiz() == source || GUIAnalisis.getjMenuItemTamiz()==source){
 			seleccionarTamiz();

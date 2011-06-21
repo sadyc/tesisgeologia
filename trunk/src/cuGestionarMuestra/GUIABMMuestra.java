@@ -262,11 +262,11 @@ public class GUIABMMuestra extends JDialog{
 
 	        jMenuBar1.add(jMenu1);
 
-	        version.setText("Versión");
+	        version.setText("Acerca de SCS");
 
 	        jMenuVersion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
 	        jMenuVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
-	        jMenuVersion.setText("Acerca de SCS");
+	        jMenuVersion.setText("Versión");
 	        version.add(jMenuVersion);
 
 	        jMenuBar1.add(version);
