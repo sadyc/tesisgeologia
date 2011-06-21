@@ -76,7 +76,7 @@ public class MediadorAltaUbicacion extends Mediador{
 			else {
 				if (GUIUbicacion.coordenadasDecimalesCorrectas() || GUIUbicacion.coordenadasGradosCorrectas()){
 					control.insertarUbicacion(GUIUbicacion.getData());
-					if (control.getExiste()) {
+					if (control.yaExiste()) {
 						JOptionPane.showMessageDialog(frame,"La ubicación con ese nombre y esa ciudad ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
 					}
 					else {

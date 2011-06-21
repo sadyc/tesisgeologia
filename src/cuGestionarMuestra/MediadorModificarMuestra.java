@@ -178,7 +178,7 @@ public class MediadorModificarMuestra extends Mediador{
 			data[7]= ubicacionModificar.getCiudad();
 			data[8]= usuario.getDni();
 			control.ModificarMuestra(muestra,data);
-			if (control.getExiste()) {
+			if (control.yaExiste()) {
 
 				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+", ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
 

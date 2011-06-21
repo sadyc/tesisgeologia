@@ -135,7 +135,7 @@ public class MediadorAltaCliente extends Mediador{
 				cliente = new Cliente(data[0],data[1],data[2],data[4],data[3]);
 				try {
 					control.insertarCliente(cliente);
-					if (control.getExiste()) {
+					if (control.yaExiste()) {
 						System.out.println("El objeto ya existe");
 						JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 					}

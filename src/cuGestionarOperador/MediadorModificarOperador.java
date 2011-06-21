@@ -135,7 +135,7 @@ public class MediadorModificarOperador extends Mediador{
 				OperadorDeLaboratorio operador = new OperadorDeLaboratorio(data[0],data[1],data[2],data[3],data[4]);
 				try {
 					control.modificarOperador(operadorModificar.getDni(),operador);
-					if (control.getExiste()) {
+					if (control.yaExiste()) {
 						JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
