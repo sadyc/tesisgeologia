@@ -5,6 +5,8 @@ import java.util.Collection;
 import persistencia.Persistencia;
 import persistencia.domain.Usuario;
 
+import comun.Control;
+
 /**
  * Clase que se utiliza para gestionar los datos de un usuario 
  * con persistencia en la base de datos del sistema.
@@ -12,8 +14,8 @@ import persistencia.domain.Usuario;
  * @version 1.0
  *
  */
-public class ControlGestionarUsuario {
-	private boolean yaExiste;
+public class ControlGestionarUsuario extends Control {
+	
 	/**
 	 * Contructor por defecto
 	 */
@@ -159,13 +161,5 @@ public class ControlGestionarUsuario {
 			persistencia.realizarRollback();
 		}
 		return aux;
-	}
-	
-	/**
-	 * Retorna si un objeto a insertar ya existe en la base de datos.
-	 * @return yaExiste
-	 */
-	public boolean getExiste(){
-		return yaExiste;
 	}
 }

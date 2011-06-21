@@ -8,16 +8,16 @@ import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
 import persistencia.domain.Tamiz;
 
+import comun.Control;
+
 /**
  * @brief Clase que se utiliza para gestionar los datos con persistencia en la base de datos del sistema.
  * @author tesisGeologia
  * @version 1.0
  */
 
-public class ControlGestionarAnalisis {
+public class ControlGestionarAnalisis extends Control {
 
-	private boolean yaExiste;
-        
 	/**
 	 * Contructor por defecto
 	 */
@@ -254,13 +254,5 @@ public class ControlGestionarAnalisis {
     		}
     		return resultado;
         }
-        
-        /**
-    	 * Retorna si un objeto a insertar ya existe en la base de datos.
-    	 * @return yaExiste
-    	 */
-    	public boolean getExiste(){
-    		return yaExiste;
-    	}
 }
 

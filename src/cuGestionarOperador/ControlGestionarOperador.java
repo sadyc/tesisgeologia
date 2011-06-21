@@ -5,6 +5,8 @@ import java.util.Collection;
 import persistencia.Persistencia;
 import persistencia.domain.OperadorDeLaboratorio;
 
+import comun.Control;
+
 
 /**
  * Clase que se utiliza para gestionar los datos de un operador
@@ -13,9 +15,7 @@ import persistencia.domain.OperadorDeLaboratorio;
  * @author TesisGeologia.
  *
  */
-public class ControlGestionarOperador {
-	
-	private boolean yaExiste;
+public class ControlGestionarOperador extends Control{
 	
 	/**
 	 * Contructor por defecto
@@ -138,13 +138,5 @@ public class ControlGestionarOperador {
 			persistencia.realizarRollback();
 		}
 		return aux;
-	}
-	
-	/**
-	 * Retorna si un objeto a insertar ya existe en la base de datos.
-	 * @return yaExiste
-	 */
-	public boolean getExiste(){
-		return yaExiste;
 	}
 }

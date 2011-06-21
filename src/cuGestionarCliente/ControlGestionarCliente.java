@@ -7,6 +7,8 @@ import javax.jdo.JDOException;
 import persistencia.Persistencia;
 import persistencia.domain.Cliente;
 
+import comun.Control;
+
 /**
  * Clase que implementa el manejo de informacion de los clientes con persistencia.
  * 
@@ -14,9 +16,7 @@ import persistencia.domain.Cliente;
  * 
  * @version 1.0
  */
-public class ControlGestionarCliente {
-	
-	private boolean yaExiste;
+public class ControlGestionarCliente extends Control {
 	
 	/**
 	 * Contructor por defecto
@@ -141,13 +141,5 @@ public class ControlGestionarCliente {
 			persistencia.realizarRollback();
 		}
 		return aux;
-	}
-	
-	/**
-	 * Retorna si un objeto a insertar ya existe en la base de datos.
-	 * @return yaExiste
-	 */
-	public boolean getExiste(){
-		return yaExiste;
 	}
 }

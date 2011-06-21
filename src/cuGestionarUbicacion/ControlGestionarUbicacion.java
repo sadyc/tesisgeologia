@@ -6,6 +6,8 @@ package cuGestionarUbicacion;
 import persistencia.Persistencia;
 import persistencia.domain.Ubicacion;
 
+import comun.Control;
+
 /**
  * Clase que se utiliza para gestionar los datos con persistencia en la base
  * de datos del sistema.
@@ -13,8 +15,7 @@ import persistencia.domain.Ubicacion;
  * @version 1.0
  *
  */
-public class ControlGestionarUbicacion {
-	private boolean yaExiste;
+public class ControlGestionarUbicacion extends Control {
 	
 	/**
 	 * Contructor por defecto.
@@ -128,13 +129,4 @@ public class ControlGestionarUbicacion {
 		}
 		return aux;
 	}
-
-	/**
-	 * Retorna si un objeto a insertar ya existe en la base de datos.
-	 * @return yaExiste
-	 */
-	public boolean getExiste(){
-		return yaExiste;
-	}
-	
 }

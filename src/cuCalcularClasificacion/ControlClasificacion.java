@@ -24,9 +24,12 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 import persistencia.Persistencia;
 import persistencia.domain.AASHTO;
-import persistencia.domain.SUCS;
-import persistencia.domain.Muestra;
 import persistencia.domain.Analisis;
+import persistencia.domain.Muestra;
+import persistencia.domain.SUCS;
+
+import comun.Control;
+
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 
 /**
@@ -34,7 +37,7 @@ import cuGestionarAnalisis.ControlGestionarAnalisis;
  * @author TesisGeologia
  * @version 1.0
  */
-public class ControlClasificacion {
+public class ControlClasificacion extends Control {
 	 public static String BASE = (new java.io.File("")).getAbsolutePath(); 
  	 public static String PATH_SOURCE_REPORT = BASE + "/src/cuCalcularClasificacion/";
  	 public String filtro;
@@ -46,7 +49,7 @@ public class ControlClasificacion {
 			
 	/** 
 	 * Realiza los calculos correspondientes para determinar la clasificacion SUCS de una muestra.
-	 * @param muestra, muestra a calcularle la clasificación. 
+	 * @param muestra, muestra a calcularle la clasificaciÃ³n. 
 	 */
 	public SUCS calcularClasificacionSUCS(Muestra muestra) throws Exception{
 		Float IndicePlasticidad = muestra.getIndicePlasticidad();
@@ -177,8 +180,8 @@ public class ControlClasificacion {
 	}
 	
 	/**
-	 * Realiza los calculos correspondientes para determinar la clasificación AASHTO de una muestra.
-	 * @param muestra, muestra a calcularle clasificación. 
+	 * Realiza los calculos correspondientes para determinar la clasificaciÃ³n AASHTO de una muestra.
+	 * @param muestra, muestra a calcularle clasificaciÃ³n. 
 	 */
 	public AASHTO calcularClasificacionAASHTO(Muestra muestra) throws Exception{
 		Persistencia persistencia = new Persistencia();
@@ -258,14 +261,14 @@ public class ControlClasificacion {
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
-			System.out.println("No pudo insertar la clasificaci�n con persistencia");
+			System.out.println("No pudo insertar la clasificaciï¿½n con persistencia");
 			persistencia.realizarRollback();
 		}
 		return clasificacionAASHTO;
 	}
 	
 	/**
-	 * Metodo que calcula el D60 D30 D10 de una clasifiación.
+	 * Metodo que calcula el D60 D30 D10 de una clasifiaciÃ³n.
 	 * @param muestra.
 	 * @throws Exception
 	 */
@@ -343,8 +346,8 @@ public class ControlClasificacion {
 	
 	/**
 
-	 * Emite grafico de la clasificación.
-	 * @param muestra. Muestra a la que se le calcula el gr�fico de curva granulométrica.
+	 * Emite grafico de la clasificaciÃ³n.
+	 * @param muestra. Muestra a la que se le calcula el grï¿½fico de curva granulomÃ©trica.
 	 * @throws Exception 
 	 */
 	@SuppressWarnings("rawtypes")
@@ -366,14 +369,14 @@ public class ControlClasificacion {
 		final NumberAxis rangeAxis = new NumberAxis("% Pasante");
         rangeAxis.setRange(0.0,120);
 
-        final NumberAxis domainAxis = new LogarithmicAxis("Tamaño de Partículas en mm");
+        final NumberAxis domainAxis = new LogarithmicAxis("TamaÃ±o de PartÃ­culas en mm");
 
         domainAxis.setInverted(true);
         domainAxis.setRange(0.01, 100);
         final XYItemRenderer renderer = new StandardXYItemRenderer();
         final XYPlot plot1 = new XYPlot(dataset, rangeAxis,domainAxis,renderer);
         plot1.setOrientation(PlotOrientation.HORIZONTAL);
-        final JFreeChart chart = new JFreeChart("Curva Granulométrica", plot1);
+        final JFreeChart chart = new JFreeChart("Curva GranulomÃ©trica", plot1);
         XYItemRenderer rend = chart.getXYPlot().getRenderer();
         StandardXYItemRenderer rr = (StandardXYItemRenderer)rend;
         rr.setBaseShapesVisible(true);
@@ -388,7 +391,7 @@ public class ControlClasificacion {
         return chartPanel;
     }
 	/**
-	 * Metodo que permite exportar el gr�fico de curva granulom�trica a un archivo *.JPG
+	 * Metodo que permite exportar el grï¿½fico de curva granulomï¿½trica a un archivo *.JPG
 	 * @param plot
 	 * @param fileName
 	 * @throws Exception
@@ -397,7 +400,7 @@ public class ControlClasificacion {
 		final XYPlot plot1 = (XYPlot) plot.clone();
 		if (fileName.compareTo("curvaGranulometrica.jpg")==0){
 
-			final JFreeChart chart1 = new JFreeChart("Curva Granulométrica", plot1);
+			final JFreeChart chart1 = new JFreeChart("Curva GranulomÃ©trica", plot1);
 			plot1.setBackgroundPaint(Color.white);
 			ChartUtilities.saveChartAsJPEG(new File(PATH_SOURCE_REPORT+fileName), chart1, 500, 300);
 		}
@@ -409,7 +412,7 @@ public class ControlClasificacion {
 	}
 	
 	/**
-	 * Emite grafico de la clasificación
+	 * Emite grafico de la clasificaciÃ³n
 	 * @throws Exception 
 	 */
 	public ChartPanel cartaPlasticidad(Muestra muestra) throws Exception{
@@ -433,9 +436,9 @@ public class ControlClasificacion {
 		dataset.addSeries(series);
 		dataset.addSeries(series2);
 		dataset.addSeries(series3);
-		final NumberAxis rangeAxis = new NumberAxis("Índice de Plasticidad, IP");
+		final NumberAxis rangeAxis = new NumberAxis("Ã�ndice de Plasticidad, IP");
         rangeAxis.setRange(0.0,60);
-        final NumberAxis domainAxis = new NumberAxis("Límite Líquido, LL");
+        final NumberAxis domainAxis = new NumberAxis("LÃ­mite LÃ­quido, LL");
         domainAxis.setRange(0.0, 100);
         final XYItemRenderer renderer = new StandardXYItemRenderer();
         final XYPlot plot1 = new XYPlot(dataset, rangeAxis,domainAxis,renderer);
@@ -461,7 +464,7 @@ public class ControlClasificacion {
 	 * Busca un analisis y retorna un valor booleano 
 	 * con el resultado de la busqueda.
 	 * @param tamiz
-	 * @return, retorna el valor de la búsqueda del analisis correspondiente.
+	 * @return, retorna el valor de la bÃºsqueda del analisis correspondiente.
 	 * @throws Exception
 	 */
 	public boolean buscarAnalisis(String tamiz, Muestra muestra) throws Exception {
@@ -478,9 +481,9 @@ public class ControlClasificacion {
 	}
 	
 	/**
-    * Trunca el número a sólo un decimal.
-    * @param num, el número a truncar.
-    * @return valor, el número pasado como parámetro ya truncado.
+    * Trunca el nÃºmero a sÃ³lo un decimal.
+    * @param num, el nÃºmero a truncar.
+    * @return valor, el nÃºmero pasado como parÃ¡metro ya truncado.
     * @throws Exception
     */
 	public static Float truncaNum(Float num) throws Exception{
