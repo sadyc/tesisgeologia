@@ -5,6 +5,8 @@ package cuSeleccionarTamiz;
 
 import java.util.Collection;
 
+import comun.Control;
+
 import persistencia.Persistencia;
 import persistencia.domain.Tamiz;
 
@@ -15,7 +17,7 @@ import persistencia.domain.Tamiz;
  * @author tesisGeologia
  * @version 1.0
  */
-public class ControlTamiz {
+public class ControlTamiz extends Control{
 
 	/**
 	 * Contructor por defecto

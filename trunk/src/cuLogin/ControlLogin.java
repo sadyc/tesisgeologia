@@ -1,14 +1,16 @@
 package cuLogin;
 
+import comun.Control;
+
 import persistencia.Persistencia;
 import persistencia.domain.Usuario;
 
-public class ControlLogin {
+public class ControlLogin extends Control{
 
-	private boolean encontrado;
+	
 	
 	public ControlLogin(){
-		encontrado = true;
+		yaExiste = true;
 	}
 	
 	/**
@@ -24,7 +26,7 @@ public class ControlLogin {
 		try {
 			aux =(Usuario)persistencia.buscarObjeto(aux.getClass(), "nombreUsuario=='"+nombreUsuario+"'");
 			if (aux==null){
-				encontrado = false;
+				yaExiste = false;
 			}
 			persistencia.cerrarTransaccion();
 		}
@@ -35,23 +37,5 @@ public class ControlLogin {
 		}
 		
 		return aux;
-		
-		
 	}
-
-	/**
-	 * @return the encontrado
-	 */
-	public boolean seEncontro() {
-		return encontrado;
-	}
-
-	/**
-	 * @param encontrado the encontrado to set
-	 */
-	public void setEncontrado(boolean encontrado) {
-		this.encontrado = encontrado;
-	}
-	
-	
 }

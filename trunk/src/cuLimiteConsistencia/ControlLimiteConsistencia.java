@@ -3,11 +3,13 @@ package cuLimiteConsistencia;
 import persistencia.Persistencia;
 import persistencia.domain.Muestra;
 
+import comun.Control;
+
 /**
  * @author tesisGeologia
  * @version 1.0
  */
-public class ControlLimiteConsistencia {
+public class ControlLimiteConsistencia extends Control{
 
         
         /**

@@ -15,6 +15,8 @@ import persistencia.domain.OperadorDeLaboratorio;
 import persistencia.domain.Ubicacion;
 import persistencia.domain.Usuario;
 
+import comun.Control;
+
 /**
  * Clase que se utiliza para gestionar los datos de una muestra 
  * con persistencia en la base de datos del sistema.
@@ -22,8 +24,8 @@ import persistencia.domain.Usuario;
  * @author tesisGeologia
  * @version 1.0
  */
-public class ControlGestionarMuestra {
-	private boolean yaExiste;
+public class ControlGestionarMuestra extends Control {
+	//private boolean yaExiste;
 	
 	/**
 	 * Contructor por defecto
@@ -224,14 +226,6 @@ public class ControlGestionarMuestra {
 			persistencia.realizarRollback();
 		}
 		return aux;
-	}
-	
-	/**
-	 * Retorna si un objeto a insertar ya existe en la base de datos.
-	 * @return yaExiste
-	 */
-	public boolean getExiste(){
-		return yaExiste;
 	}
 }
 	

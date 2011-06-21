@@ -102,7 +102,7 @@ public class MediadorLogin extends Mediador {
 				JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Password'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
-				if (control.seEncontro() == false){
+				if (control.yaExiste() == false){
 					JOptionPane.showMessageDialog(frame,"El usuario es incorrecto","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
 				}else{
 					if (password.compareTo(aux.getPassword()) != 0){
