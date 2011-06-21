@@ -446,7 +446,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
              layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                  .addContainerGap(89, Short.MAX_VALUE)
-                 .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                 .addComponent(jButtonAceptar)
                  .addGap(121, 121, 121)
                  .addComponent(jButtonCancelar)
                  .addGap(74, 74, 74))
