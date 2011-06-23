@@ -1,20 +1,11 @@
 /**
  * 
  */
-package comun;
+package persistencia.domain;
 
 import java.sql.DriverManager;
 
 import persistencia.Persistencia;
-import persistencia.domain.AASHTO;
-import persistencia.domain.Analisis;
-import persistencia.domain.Cliente;
-import persistencia.domain.Muestra;
-import persistencia.domain.OperadorDeLaboratorio;
-import persistencia.domain.SUCS;
-import persistencia.domain.Tamiz;
-import persistencia.domain.Ubicacion;
-import persistencia.domain.Usuario;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;

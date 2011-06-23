@@ -1,4 +1,4 @@
-package comun;
+package persistencia.domain;
 
 import cuLogin.MediadorLogin;
 
