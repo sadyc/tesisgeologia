@@ -367,14 +367,14 @@ public class ControlClasificacion extends Control {
 		final NumberAxis rangeAxis = new NumberAxis("% Pasante");
         rangeAxis.setRange(0.0,120);
 
-        final NumberAxis domainAxis = new LogarithmicAxis("TamaÃ±o de PartÃ­culas en mm");
+        final NumberAxis domainAxis = new LogarithmicAxis("Tamaño de Partí­culas en mm");
 
         domainAxis.setInverted(true);
         domainAxis.setRange(0.01, 100);
         final XYItemRenderer renderer = new StandardXYItemRenderer();
         final XYPlot plot1 = new XYPlot(dataset, rangeAxis,domainAxis,renderer);
         plot1.setOrientation(PlotOrientation.HORIZONTAL);
-        final JFreeChart chart = new JFreeChart("Curva GranulomÃ©trica", plot1);
+        final JFreeChart chart = new JFreeChart("Curva Granulométrica", plot1);
         XYItemRenderer rend = chart.getXYPlot().getRenderer();
         StandardXYItemRenderer rr = (StandardXYItemRenderer)rend;
         rr.setBaseShapesVisible(true);
@@ -398,7 +398,7 @@ public class ControlClasificacion extends Control {
 		final XYPlot plot1 = (XYPlot) plot.clone();
 		if (fileName.compareTo("curvaGranulometrica.jpg")==0){
 
-			final JFreeChart chart1 = new JFreeChart("Curva GranulomÃ©trica", plot1);
+			final JFreeChart chart1 = new JFreeChart("Curva Granulométrica", plot1);
 			plot1.setBackgroundPaint(Color.white);
 			ChartUtilities.saveChartAsJPEG(new File(PATH_SOURCE_REPORT+fileName), chart1, 500, 300);
 		}
@@ -434,9 +434,9 @@ public class ControlClasificacion extends Control {
 		dataset.addSeries(series);
 		dataset.addSeries(series2);
 		dataset.addSeries(series3);
-		final NumberAxis rangeAxis = new NumberAxis("Ã�ndice de Plasticidad, IP");
+		final NumberAxis rangeAxis = new NumberAxis("Índice de Plasticidad, IP");
         rangeAxis.setRange(0.0,60);
-        final NumberAxis domainAxis = new NumberAxis("LÃ­mite LÃ­quido, LL");
+        final NumberAxis domainAxis = new NumberAxis("Lí­mite LÃ­quido, LL");
         domainAxis.setRange(0.0, 100);
         final XYItemRenderer renderer = new StandardXYItemRenderer();
         final XYPlot plot1 = new XYPlot(dataset, rangeAxis,domainAxis,renderer);

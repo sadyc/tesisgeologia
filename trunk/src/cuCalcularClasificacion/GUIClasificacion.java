@@ -141,11 +141,11 @@ public class GUIClasificacion extends JDialog{
 		menu.add(herramientas);
 		menu.add(version);
 		salirMenu = new JMenuItem("Salir");
-		salirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png")));
+		salirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png")));
 		versionMenu = new JMenuItem("Versión");
-		versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/IconoSCS.png")));
+		versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png")));
 		imprimirMenu = new JMenuItem("Imprimir");
-		imprimirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/printer-5.png")));
+		imprimirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/printer-5.png")));
 		version.add(versionMenu);
 		herramientas.add(imprimirMenu);
 		herramientas.add(new JSeparator());
@@ -188,9 +188,9 @@ public class GUIClasificacion extends JDialog{
 		coeficienteUniformidad = new JLabel("Coef. Uniformidad (Cu): "+muestra.getCoeficienteUniformidad());
 		gradoCurvatura = new JLabel ("Grado de Curvatura (Cc): "+muestra.getGradoCurvatura());
 		imprimir = new JButton("Imprimir");
-		imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/printer-5.png")));
+		imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/printer-5.png")));
 		salir = new JButton("Cancelar");
-		salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/dialog-no.png"))); // NOI18N
+		salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
         initialize();
 	}
 	
