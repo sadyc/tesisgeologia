@@ -1,15 +1,9 @@
-/**
- * 
- */
 package persistencia.domain;
 
 import java.sql.DriverManager;
-
 import persistencia.Persistencia;
-
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
-
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 import cuGestionarCliente.ControlGestionarCliente;
 import cuGestionarMuestra.ControlGestionarMuestra;
@@ -98,7 +92,7 @@ public class CargaDatos {
     	String url = "jdbc:mysql://localhost:3306/mysql";
     	Connection con = (Connection) DriverManager.getConnection(url,"root", "root");
     	stmt = (Statement) con.createStatement();
-    	stmt.executeUpdate("DROP DATABASE tesis");
+    	stmt.executeUpdate("DROP DATABASE SistemaClasificadorDeSuelos");
     	con.close();
     }	
     
@@ -112,7 +106,7 @@ public class CargaDatos {
     	String url = "jdbc:mysql://localhost:3306/mysql";
     	Connection con = (Connection) DriverManager.getConnection(url,"root", "root");
     	stmt = (Statement) con.createStatement();
-    	stmt.executeUpdate("CREATE DATABASE tesis");
+    	stmt.executeUpdate("CREATE DATABASE SistemaClasificadorDeSuelos");
     	con.close();
     }	
     
@@ -429,14 +423,14 @@ public class CargaDatos {
 	}
 	public static void main(String[] args) throws Exception {
 		CargaDatos cargaDatos = new CargaDatos();
-		System.out.println("Se elimina la Base de Datos: 'tesis'");
+		System.out.println("Se elimina la Base de Datos: 'SistemaClasificadorDeSuelos'");
 		try {
 			cargaDatos.eliminarDB();
 		}
 		catch(Exception e){
-			System.out.println("La base de datos no existia. Se procede a crearla con el nombre de 'tesis'.");
+			System.out.println("La base de datos no existia. Se procede a crearla con el nombre de 'SistemaClasificadorDeSuelos'.");
 		}
-		System.out.println("Se crea la Base de Datos: 'tesis'");
+		System.out.println("Se crea la Base de Datos: 'SistemaClasificadorDeSuelos'");
 		cargaDatos.crearDB();
 		System.out.println("Comienza carga de datos");
 		cargaDatos.cargar();

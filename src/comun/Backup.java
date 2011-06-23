@@ -74,7 +74,7 @@ public class Backup {
 	    			 filePath = f.getPath();
 	    			 try {
 	    				 // Ejecucion del cliente mysql
-	    				 Process p = Runtime.getRuntime().exec("mysql -u root -proot tesis");
+	    				 Process p = Runtime.getRuntime().exec("mysql -u root -proot SistemaClasificadorDeSuelos");
 	    				 // Lectura de la salida de error y se muestra por pantalla.
 	    				 InputStream es = p.getErrorStream();
 	    				 muestraSalidaDeError(es);
@@ -129,7 +129,7 @@ public class Backup {
 	 */
 	 public void crearBackup(){
 		 try{       
-			 Process run = Runtime.getRuntime().exec("mysqldump --host=localhost --port=3306 --user=root --password=root tesis");
+			 Process run = Runtime.getRuntime().exec("mysqldump --host=localhost --port=3306 --user=root --password=root SistemaClasificadorDeSuelos");
 			 InputStream in = run.getInputStream();
 			 BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			 File backupFile = new File(filePath);

@@ -272,7 +272,7 @@ public class ControlClasificacion extends Control {
 	 * @param muestra.
 	 * @throws Exception
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private void calcularDiametro(Muestra muestra) throws Exception {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
@@ -350,11 +350,10 @@ public class ControlClasificacion extends Control {
 	 * @param muestra. Muestra a la que se le calcula el grï¿½fico de curva granulomÃ©trica.
 	 * @throws Exception 
 	 */
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "unchecked","rawtypes" })
 	public ChartPanel curvaGranulometrica(Muestra muestra) throws Exception{
 		ControlGestionarAnalisis control = new ControlGestionarAnalisis();
 		Analisis analisis = new Analisis();
-		
 		Class clase = analisis.getClass();
 		Collection coleccionAnalisis = control.coleccionAnalisisDeMuestra(clase, muestra);
 		Iterator<Analisis> it = coleccionAnalisis.iterator();
