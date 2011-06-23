@@ -1,6 +1,8 @@
 package cuReporte.report;
 
 
+import java.awt.Dialog.ModalExclusionType;
+
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.view.JasperViewer;
@@ -31,7 +33,9 @@ public class ViewReport {
 			}
 			DataSourceJasper data = new DataSourceJasper(values, ht);
 			String fileNameReport = MakeReport.PATH_OUTPUT_REPORT + nameReport + ".jasper";
-			JasperViewer.viewReport(JasperFillManager.fillReport(fileNameReport, parameters, data));
+			JasperViewer reporte = new JasperViewer(JasperFillManager.fillReport(fileNameReport, parameters, data));
+			reporte.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+            reporte.show();
 		} catch (JRException exc) {
 			exc.printStackTrace(System.out);
 		}
