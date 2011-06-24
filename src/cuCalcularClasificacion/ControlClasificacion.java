@@ -39,7 +39,7 @@ import cuGestionarAnalisis.ControlGestionarAnalisis;
  */
 public class ControlClasificacion extends Control {
 	 public static String BASE = (new java.io.File("")).getAbsolutePath(); 
- 	 public static String PATH_SOURCE_REPORT = BASE + "/src/cuCalcularClasificacion/";
+ 	 public static String PATH_SOURCE_REPORT = BASE+"/" ;
  	 public String filtro;
  	 
 	/**
@@ -261,7 +261,7 @@ public class ControlClasificacion extends Control {
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
-			System.out.println("No pudo insertar la clasificaciï¿½n con persistencia");
+			System.out.println("No pudo insertar la clasificación con persistencia");
 			persistencia.realizarRollback();
 		}
 		return clasificacionAASHTO;
@@ -389,7 +389,7 @@ public class ControlClasificacion extends Control {
         return chartPanel;
     }
 	/**
-	 * Metodo que permite exportar el grï¿½fico de curva granulomï¿½trica a un archivo *.JPG
+	 * Metodo que permite exportar el gráfico de curva granulométrica a un archivo *.JPG
 	 * @param plot
 	 * @param fileName
 	 * @throws Exception
@@ -410,7 +410,7 @@ public class ControlClasificacion extends Control {
 	}
 	
 	/**
-	 * Emite grafico de la clasificaciÃ³n
+	 * Emite grafico de la clasificación
 	 * @throws Exception 
 	 */
 	public ChartPanel cartaPlasticidad(Muestra muestra) throws Exception{
@@ -436,7 +436,7 @@ public class ControlClasificacion extends Control {
 		dataset.addSeries(series3);
 		final NumberAxis rangeAxis = new NumberAxis("Índice de Plasticidad, IP");
         rangeAxis.setRange(0.0,60);
-        final NumberAxis domainAxis = new NumberAxis("Lí­mite LÃ­quido, LL");
+        final NumberAxis domainAxis = new NumberAxis("Lí­mite Lí­quido, LL");
         domainAxis.setRange(0.0, 100);
         final XYItemRenderer renderer = new StandardXYItemRenderer();
         final XYPlot plot1 = new XYPlot(dataset, rangeAxis,domainAxis,renderer);
@@ -479,9 +479,9 @@ public class ControlClasificacion extends Control {
 	}
 	
 	/**
-    * Trunca el nÃºmero a sÃ³lo un decimal.
-    * @param num, el nÃºmero a truncar.
-    * @return valor, el nÃºmero pasado como parÃ¡metro ya truncado.
+    * Trunca el número a sólo un decimal.
+    * @param num, el número a truncar.
+    * @return valor, el número pasado como parámetro ya truncado.
     * @throws Exception
     */
 	public static Float truncaNum(Float num) throws Exception{
