@@ -131,6 +131,7 @@ public class MediadorPrincipal extends Mediador{
 			 int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Está seguro que desea salir?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 		        if(quitOption==JOptionPane.YES_OPTION){
 		        	GUIPrincipal.dispose();
+		        	System.exit(0);
 		        }
 		}
 		if (this.GUIPrincipal.getCrearBackupMenu()==source){
