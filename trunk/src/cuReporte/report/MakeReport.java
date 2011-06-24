@@ -9,25 +9,13 @@ import net.sf.jasperreports.engine.JasperFillManager;
 public class MakeReport {
 	
 	public static String BASE = (new java.io.File("")).getAbsolutePath(); 
-	public static String PATH_SOURCE_REPORT = BASE + "/src/cuReporte/report/xml/";
- 
-	public static String PATH_OUTPUT_REPORT = BASE + "/classes/cuReporte/report/xml/";
+	
+	public static String PATH_SOURCE_REPORT = BASE +"/";
+ 	public static String PATH_OUTPUT_REPORT = BASE +"/";
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void make(String nameReport) {
 		try {
-			
-			String osName = System.getProperty("os.name" );
-			System.out.println(osName);
-            if (osName.equals("Linux")) {
-                    PATH_SOURCE_REPORT = BASE + "/src/cuReporte/report/xml/";
-                    PATH_OUTPUT_REPORT = BASE + "/classes/cuReporte/report/xml/";
-            }
-            else {
-                    PATH_SOURCE_REPORT = BASE + "\\src\\cuReporte\\report\\xml\\";
-                    PATH_OUTPUT_REPORT = BASE + "\\classes\\cuReporte\\report\\xml\\";
-                    
-            }
 			System.setProperty("org.xml.sax.driver","org.apache.xerces.parsers.SAXParser");
 			String fileXML = PATH_SOURCE_REPORT + nameReport + ".xml";
 			String fileJASPER = PATH_OUTPUT_REPORT + nameReport + ".jasper";
@@ -42,7 +30,7 @@ public class MakeReport {
 			System.out.println("Compiling time : "+ (System.currentTimeMillis() - start) + "\n");
 			System.out.println("Fill Report to File : " + fileJRPRINT);
 			HashMap directorio = new HashMap();
-			directorio.put("pathSistema", BASE);//  ACA TA LA COSA FEA
+			directorio.put("pathSistema", BASE);
 			JasperFillManager.fillReportToFile(fileJASPER, fileJRPRINT, directorio,new JREmptyDataSource());
 			System.out.println("Filling time : "+ (System.currentTimeMillis() - start) + "\n");
 
