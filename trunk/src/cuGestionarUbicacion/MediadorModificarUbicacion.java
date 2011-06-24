@@ -47,6 +47,7 @@ public class MediadorModificarUbicacion extends Mediador{
 		ubicacion.setLatitud(data[3]);
 		ubicacion.setLongitud(data[4]);
 		GUIUbicacion = new GUIUbicacion(ubicacion);
+		GUIUbicacion.setTitle("Modificar ubicacion");
 		GUIUbicacion.setListenerButtons(this);
 		GUIUbicacion.setKeyListener(this);
 		GUIUbicacion.setLocationRelativeTo(null);
