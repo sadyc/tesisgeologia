@@ -19,7 +19,7 @@ public class ViewReport {
             this.datos = datos.clone();
             
     }
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "rawtypes", "unchecked", "deprecation" })
 	public void viewReport(Object[][] param, String[] fieldXml,
 			String nameReport, Object[][] values) {
 		try {
