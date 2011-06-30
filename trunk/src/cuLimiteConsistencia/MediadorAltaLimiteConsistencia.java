@@ -22,7 +22,7 @@ import comun.MediadorVersion;
  */
 
 public class MediadorAltaLimiteConsistencia extends Mediador{
-	
+
 	private GUILimiteConsistencia GUILimiteConsistencia;
 	private Muestra muestra = new Muestra();
 	private ControlLimiteConsistencia control = new ControlLimiteConsistencia();
@@ -31,7 +31,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 	private Component frame;
 	private String [] data = new String [10];
 	private boolean altaConsistencia = false;
-	
+
 	/**
 	 * This is the default constructor
 	 */
@@ -44,42 +44,42 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 		GUILimiteConsistencia.setListenerButtons(this);
 		show();
 	}
-			
+
 	@SuppressWarnings("deprecation")
 	public void show(){
 		GUILimiteConsistencia.show();
 	}
-	
+
 	/**
 	 * @return the altaConsistencia
 	 */
 	public boolean isAltaConsistencia() {
 		return altaConsistencia;
 	}
-	
+
 	/**
 	 * Método que necesita definir al implementar la interface ActionListener 
 	 * Para tratar los eventos de acciones de los componentes 
 	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
-		
+
 		if (this.GUILimiteConsistencia.getjButtonAgregar() == source || GUILimiteConsistencia.getAgregar()==source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
-     		aceptar();
-     		
+			aceptar();
+
 
 		}
 		if (this.GUILimiteConsistencia.getjButtonCancelar() == source || GUILimiteConsistencia.getCancelar()==source){
 			System.out.println("GestionarAnalisis.actionPerformed() jButtonCancelar");
 			GUILimiteConsistencia.dispose();
-			
+
 		}
 		if (GUILimiteConsistencia.getVersion()==source){
 			new MediadorVersion();
 		}
 	}
-	
+
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Consistencia"
 	 */
@@ -87,29 +87,32 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonAgregar");
 		if (GUILimiteConsistencia.getjTextFieldLL().getText().isEmpty() || GUILimiteConsistencia.getjTextFieldLP().getText().isEmpty()){
 			JOptionPane.showMessageDialog(frame,"Debe ingresar el Límite Líquido y el Límite Plástico","Atención!", JOptionPane.ERROR_MESSAGE);
-	}else{
+		}else{
 			limiteLiquido = GUILimiteConsistencia.getjTextFieldLL().getText().replace(",",".");
 			limitePlastico = GUILimiteConsistencia.getjTextFieldLP().getText().replace(",",".");
-			muestra.setLimiteLiquido((limiteLiquido));
-			muestra.setLimitePlastico((limitePlastico));
-			muestra.calcularIndicePlasticidad();
-			data [0] = muestra.getUbicacion().getNombreUbicacion();
-			data [1] = muestra.getNombreMuestra();
-			data [2] = muestra.getPeso().toString();
-			data [3] = muestra.getUbicacion().getCiudad();
-			data [4] = muestra.getProfundidadInicial().toString();
-			data [5] = muestra.getProfundidadFinal().toString();
-			data [6] = limiteLiquido;
-			data [7] = limitePlastico;
-			data [8] = muestra.getIndicePlasticidad().toString();
-		try {
-			control.insertarConsistencia(muestra);
-			altaConsistencia= true;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		GUILimiteConsistencia.dispose();
-	
+			if (Float.parseFloat(limiteLiquido)<Float.parseFloat(limitePlastico)) {
+				JOptionPane.showMessageDialog(frame,"El limite liquido debe ser mayor al limite plastico","Atención!", JOptionPane.ERROR_MESSAGE);
+			}else{
+				muestra.setLimiteLiquido((limiteLiquido));
+				muestra.setLimitePlastico((limitePlastico));
+				muestra.calcularIndicePlasticidad();
+				data [0] = muestra.getUbicacion().getNombreUbicacion();
+				data [1] = muestra.getNombreMuestra();
+				data [2] = muestra.getPeso().toString();
+				data [3] = muestra.getUbicacion().getCiudad();
+				data [4] = muestra.getProfundidadInicial().toString();
+				data [5] = muestra.getProfundidadFinal().toString();
+				data [6] = limiteLiquido;
+				data [7] = limitePlastico;
+				data [8] = muestra.getIndicePlasticidad().toString();
+				try {
+					control.insertarConsistencia(muestra);
+					altaConsistencia= true;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				GUILimiteConsistencia.dispose();
+			}
 		}	
 	}
 
@@ -138,7 +141,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-				
+
 	}
 	public String[] getData(){
 		return data;
