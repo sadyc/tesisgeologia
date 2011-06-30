@@ -68,14 +68,14 @@ public class MediadorCalcularClasificacion extends Mediador{
 			}
 			else{
 
-				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación AASHTO, Faltan análisis para los tamices 10, 40 ó 200","Atención!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación AASHTO, Faltan análisis para los tamices 10, 40 y 200","Atención!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 			}
 			if(control.buscarAnalisis("200",muestra) && control.buscarAnalisis("4",muestra) && muestra.getIndicePlasticidad()!=0){
 				muestra.setSucs(control.calcularClasificacionSUCS(muestra));
 			}
 			else{
-				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación SUCS, Faltan análisis o índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación SUCS, Faltan análisis y índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 				
 			}
