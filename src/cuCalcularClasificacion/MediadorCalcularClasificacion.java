@@ -75,7 +75,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 				muestra.setSucs(control.calcularClasificacionSUCS(muestra));
 			}
 			else{
-				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación SUCS, Faltan análisis y índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación SUCS, faltan análisis e índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
 				clasificar = false;
 				
 			}
