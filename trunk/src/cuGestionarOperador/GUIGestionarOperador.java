@@ -149,7 +149,7 @@ public class GUIGestionarOperador extends JDialog	{
 
         jLabel1.setText("Buscar : ");
         jPanel2.add(jLabel1);
-        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre","Apellido","DNI"}));
+        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre","Apellido","DNI o CUIL"}));
         jComboBoxBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxBuscarActionPerformed(evt);
