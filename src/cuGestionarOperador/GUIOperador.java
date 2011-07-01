@@ -124,7 +124,7 @@ public class GUIOperador extends javax.swing.JDialog {
 
         jLabelApellido.setText("(*) Apellido: ");
 
-        jLabelDni.setText("(*) DNI: ");
+        jLabelDni.setText("(*) DNI ó CUIL: ");
 
         jLabelTelefono.setText("Teléfono: ");
 
