@@ -13,8 +13,6 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
-
-
 /**
  * Clase que implementa el intermediario entre el singleton y los controles 
  * para el manejo de la informacion que se va a almacenar en la base de datos.
@@ -68,7 +66,6 @@ public class Persistencia {
 	public void eliminarObjeto (Object objeto) throws Exception {
 		try{
 			pmi.deletePersistent(objeto);
-			System.out.println("Objeto eliminado con persistencia");
 		}	
 		catch (Exception e){
 			System.out.println("No se elimino con persistencia");
@@ -88,10 +85,6 @@ public class Persistencia {
 			Query q = pmi.newQuery(e,filtro);
 			q.setUnique (true);
 			aux = (Object)q.execute();
-			if (aux != null)
-				System.out.println("Objeto encontrado en buscar objeto");
-			else
-				System.out.println("Objeto NO encontrado en buscar objeto");
 		} catch (Exception e) {
 			System.out.println("Error en buscar objeto");
 			e.printStackTrace();
@@ -131,7 +124,6 @@ public class Persistencia {
 			Query q = pmi.newQuery(e,filtro);
 			q.setOrdering("porcentajeRetenidoAcumulado ascending");
 			aux = (List)q.execute();
-			System.out.println("Coleccion encontrada y cargada");
 		} catch (Exception e) {
 			System.out.println("Error en cargar la lista");
 			e.printStackTrace();
@@ -147,8 +139,6 @@ public class Persistencia {
 			Extent e=pmi.getExtent(clase,true);
 			Query q = pmi.newQuery(e,"");
 			aux = (Collection) q.execute();
-			System.out.println("Coleccion cargada");
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			realizarRollback();
