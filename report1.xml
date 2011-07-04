@@ -2,9 +2,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50">
 	<property name="ireport.scriptlethandling" value="0"/>
 	<property name="ireport.encoding" value="UTF-8"/>
-	<property name="ireport.zoom" value="2.3579476910000023"/>
+	<property name="ireport.zoom" value="1.6105100000000014"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="112"/>
+	<property name="ireport.y" value="0"/>
 	<import value="net.sf.jasperreports.engine.*"/>
 	<import value="java.util.*"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
@@ -173,7 +173,7 @@
 				<textElement>
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[Departamento de Geología]]></text>
+				<text><![CDATA[Departamento de Geologia]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="12" width="265" height="13"/>
@@ -380,7 +380,7 @@
 				<imageExpression class="java.lang.String"><![CDATA[$P{pathSistema}+"/curvaGranulometrica.jpg"]]></imageExpression>
 			</image>
 			<image vAlign="Bottom">
-				<reportElement x="271" y="123" width="238" height="146"/>
+				<reportElement x="271" y="138" width="238" height="146"/>
 				<imageExpression class="java.lang.String"><![CDATA[$P{pathSistema}+"/cartaPlasticidad.jpg"]]></imageExpression>
 			</image>
 			<textField>
