@@ -34,6 +34,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	
 	private GUIClasificacion GUIClasificacion;
 	private Frame frame;
+	private Muestra muestra;
 	private Object [][] data;
 	
 	/**
@@ -59,6 +60,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	@SuppressWarnings("deprecation")
 	public MediadorCalcularClasificacion(String titulo, Muestra muestra) throws Exception {
 		super();
+		this.muestra=muestra;
 		boolean clasificar = true;
 		cargarTablaDeAnalisis(muestra);
 		ControlClasificacion control = new ControlClasificacion();
@@ -174,6 +176,8 @@ public class MediadorCalcularClasificacion extends Mediador{
 			parameters [14] = GUIClasificacion.getDescripcionSucs().getText().toString();
 			parameters [15] = GUIClasificacion.getClasificacionAashto().getText(); 
 			parameters [16] = GUIClasificacion.getDescripcionAashto().getText();
+			parameters [17] = muestra.getOperadorLaboratorio().getNombre()+" "+muestra.getOperadorLaboratorio().getApellido();
+			parameters [18] = muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
 			MakeReport makeReporte = new MakeReport();
 			makeReporte.make("report1");
 			ViewReport view = new ViewReport(data, parameters);

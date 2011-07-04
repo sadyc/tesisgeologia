@@ -410,10 +410,7 @@ public class CargaDatos {
 			controlAnalisis.insertarAnalisis(analisis9, muestra1, "10");
 			controlAnalisis.insertarAnalisis(analisis10, muestra1, "40");
 			controlAnalisis.insertarAnalisis(analisis11, muestra1, "200");
-			
-			
-			
-			
+	
 			
 		} catch (Exception e) {
 			System.out.println("No se pudieron insertar");
@@ -421,7 +418,7 @@ public class CargaDatos {
 		}
 		
 	}
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		CargaDatos cargaDatos = new CargaDatos();
 		System.out.println("Se elimina la Base de Datos: 'SistemaClasificadorDeSuelos'");
 		try {
@@ -430,10 +427,19 @@ public class CargaDatos {
 		catch(Exception e){
 			System.out.println("La base de datos no existia. Se procede a crearla con el nombre de 'SistemaClasificadorDeSuelos'.");
 		}
-		System.out.println("Se crea la Base de Datos: 'SistemaClasificadorDeSuelos'");
-		cargaDatos.crearDB();
+		System.out.println("Se crea la Base de Datos: 'SistemaClasificadorDeSuelos'.");
+		try {
+			cargaDatos.crearDB();	
+		} catch (Exception e) {
+			System.out.println("Error al crear la base de datos.");
+			e.printStackTrace();
+		}
 		System.out.println("Comienza carga de datos");
-		cargaDatos.cargar();
+		try {
+			cargaDatos.cargar();	
+		} catch (Exception e) {
+			System.out.println("Error en la carga de datos.");
+		}
 		
 		
 	}
