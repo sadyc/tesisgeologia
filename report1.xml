@@ -180,7 +180,7 @@
 				<textElement>
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[FCEFQyN, Universidad Nacional de Río Cuarto]]></text>
+				<text><![CDATA[FCEFQyN, Universidad Nacional de Rio Cuarto]]></text>
 			</staticText>
 			<textField pattern="dd MMMMM yyyy">
 				<reportElement x="0" y="24" width="100" height="13"/>
