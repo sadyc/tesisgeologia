@@ -35,6 +35,7 @@ public class MediadorAltaUbicacion extends Mediador{
 	public MediadorAltaUbicacion() {
 		super();
 		GUIUbicacion = new GUIUbicacion();
+		GUIUbicacion.setTitle("Alta Ubicación");
 		GUIUbicacion.setListenerButtons(this);
 		GUIUbicacion.setKeyListener(this);
 		GUIUbicacion.setLocationRelativeTo(null);
