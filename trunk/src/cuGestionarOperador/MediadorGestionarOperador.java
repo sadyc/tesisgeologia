@@ -47,7 +47,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 		this.seleccionar=seleccionar;
 		cargarTablaDeOperador();
 		GUIGestionarOperador = new GUIGestionarOperador(data);
-		GUIGestionarOperador.setTitle("Seleccionar un Operador");
+		GUIGestionarOperador.setTitle("Gestionar Operador");
 		GUIGestionarOperador.setListenerButtons(this);
 		GUIGestionarOperador.setListenerTable(this);
 		GUIGestionarOperador.setMouseListener(this);
@@ -136,8 +136,8 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 			catch (Exception e) {
 				e.printStackTrace();
 			}
-			}
 		}
+	}
 	
 	/**
 	 * Acciones a realizar cuando se selecciona la opcion de "Eliminar Operador"
@@ -156,7 +156,7 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 	               	try {
 	               		control.eliminarOperador(dni);
 	               	} catch (Exception e) {
-						e.printStackTrace();
+	               		e.printStackTrace();
 	               	}
 	        	}
 	        	catch (Exception e) {
@@ -174,9 +174,9 @@ public class MediadorGestionarOperador implements ActionListener, KeyListener, M
 		try {	
 			System.out.println("Button Agregar Usuario");
 			MediadorAltaOperador altaOperador = new MediadorAltaOperador("Ingresar Operador de Laboratorio");	
-		if (altaOperador.esAltaOperador()){  
-			this.GUIGestionarOperador.getTablePanel().addRow(altaOperador.getData());
-		}
+			if (altaOperador.esAltaOperador()){  
+				this.GUIGestionarOperador.getTablePanel().addRow(altaOperador.getData());
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

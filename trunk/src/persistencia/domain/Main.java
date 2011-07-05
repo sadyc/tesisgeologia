@@ -1,6 +1,6 @@
 package persistencia.domain;
 
-import cuLogin.MediadorLogin;
+import comun.MediadorPrincipal;
 
  /**
  * Clase que contiene Main para ejecutar el programa. 
@@ -14,7 +14,9 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		try {
-			new MediadorLogin("Login");
+			//new MediadorLogin("Login");
+			Usuario jose= new Usuario("","","","","Administrador","","","");
+			new MediadorPrincipal("hola",jose);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
