@@ -533,7 +533,7 @@ public class GUIComparacion extends JDialog{
                         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
                     tcr.setHorizontalAlignment(SwingConstants.CENTER);
                     for (int i = 0; i < 5; i++) {
-                        tablePanel1.getTable().getColumnModel().getColumn(i).setCellRenderer(tcr);
+                        tablePanel2.getTable().getColumnModel().getColumn(i).setCellRenderer(tcr);
                        
                         }
                 }

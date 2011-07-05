@@ -124,9 +124,9 @@ public class MediadorAltaCliente extends Mediador{
 	public void insertarCliente(){
 		data[0]= GUICliente.getjTextFieldNombre().getText();
 		data[1]= GUICliente.getjTextFieldApellido().getText();
-		if (!isDni(GUICliente.getjTextFieldDni().getText())){
-			System.out.println("El DNI es incorrecto!");
-			JOptionPane.showMessageDialog(frame,"El DNI ingresado es Incorrecto. Debe ser de la forma ##.###.###","Atención!", JOptionPane.ERROR_MESSAGE);
+		if (!isDni(GUICliente.getjTextFieldDni().getText())&&!isCuit(GUICliente.getjTextFieldDni().getText())){
+			System.out.println("El DNI/CUIT/CUIL es incorrecto!");
+			JOptionPane.showMessageDialog(frame,"Recuerde que el DNI ingresado debe respetar el formato '##.###.###' \no el CUIT/CUIL ser de la forma '(30 ó 33)-########-#'","Atención!", JOptionPane.ERROR_MESSAGE);
 
 		}else{
 			data[2]= GUICliente.getjTextFieldDni().getText();
@@ -141,7 +141,7 @@ public class MediadorAltaCliente extends Mediador{
 					control.insertarCliente(cliente);
 					if (control.yaExiste()) {
 						System.out.println("El objeto ya existe");
-						JOptionPane.showMessageDialog(frame,"El cliente con DNI: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(frame,"El cliente con DNI/CUIT/CUIL: "+data[2]+" ya existe. Por favor ingrese otro.","Atención!", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
 						altaCliente = true;

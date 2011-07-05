@@ -149,7 +149,7 @@ public class GUIGestionarOperador extends JDialog	{
 
         jLabel1.setText("Buscar : ");
         jPanel2.add(jLabel1);
-        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre","Apellido","DNI o CUIL"}));
+        jComboBoxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre","Apellido","DNI/CUIT/CUIL"}));
         jComboBoxBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxBuscarActionPerformed(evt);
@@ -166,7 +166,7 @@ public class GUIGestionarOperador extends JDialog	{
           	   if (jComboBoxBuscar.getSelectedItem()=="Apellido"){
           		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),1));
           	   }
-          	   if (jComboBoxBuscar.getSelectedItem()=="DNI"){
+          	   if (jComboBoxBuscar.getSelectedItem()=="DNI/CUIT/CUIL"){
           		   tablePanel.getSorter().setRowFilter(RowFilter.regexFilter(jTextFieldBuscar.getText(),2));
           	   }
           	 }
@@ -302,7 +302,7 @@ public class GUIGestionarOperador extends JDialog	{
      *@return data  
     */
 	public static String[] getColumName(){
-		String[] columnName = {"Nombre","Apellido","DNI","Teléfono","E-mail"};
+		String[] columnName = {"Nombre","Apellido","DNI/CUIT/CUIL","Teléfono","E-mail"};
 		return columnName;
 	}
 

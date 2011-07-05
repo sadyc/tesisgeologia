@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package cuCalcularClasificacion;
 
 import java.awt.Frame;
