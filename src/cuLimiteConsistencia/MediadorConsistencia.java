@@ -43,7 +43,7 @@ public class MediadorConsistencia implements ActionListener, KeyListener, MouseL
 	public MediadorConsistencia() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicación","Nombre","Peso","Ciudad","Profundidad Inicial","Profundidad Final","Límite Líquido","Límite Plástico","Índice de Plasticidad"};
+		String [] columAux = {"Ubicación","Nombre","Peso (gr)","Ciudad","Profundidad Inicial (m)","Profundidad Final (m)","Límite Líquido %","Límite Plástico %","Índice de Plasticidad %"};
 		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
