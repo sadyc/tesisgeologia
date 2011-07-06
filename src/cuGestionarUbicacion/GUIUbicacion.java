@@ -786,4 +786,13 @@ public class GUIUbicacion extends javax.swing.JDialog {
 	}
 
 
+	/**
+	 * @return the jTabbedPane1
+	 */
+	public javax.swing.JTabbedPane getjTabbedPane1() {
+		return jTabbedPane1;
+	}
+
+	
+
 }

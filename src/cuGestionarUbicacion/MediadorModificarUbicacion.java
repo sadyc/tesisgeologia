@@ -63,7 +63,12 @@ public class MediadorModificarUbicacion extends Mediador{
 		Object source = arg0.getSource();
 		if (this.GUIUbicacion.getjButtonAceptar() == source||GUIUbicacion.getjMenuItemAgregar()==source){
 			try {
-				aceptar();
+				if (GUIUbicacion.getjTabbedPane1().getSelectedIndex()==1){
+					aceptarDecimal();	
+				}
+				else{
+					aceptarGrados();
+				}
 				GUIUbicacion.dispose();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -81,24 +86,52 @@ public class MediadorModificarUbicacion extends Mediador{
 	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Ubicacion".
 	 * @throws Exception 
 	 */
-	public void aceptar() throws Exception{
+	public void aceptarDecimal() throws Exception{
 		try {
-			System.out.println("Muestra.actionPerformed() jButtonAceptar");
 			if (GUIUbicacion.getjTextFieldCiudad().getText().equals("") || GUIUbicacion.getjTextFieldNombreUbicacion().getText().equals("")){
-		 		JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+		 		JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				control.modificarUbicacion(nombreUbicacion,ciudad,GUIUbicacion.getData());
-				if (control.yaExiste()) {
-					JOptionPane.showMessageDialog(frame,"La ubicación con esas coordenadas ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
+				if (GUIUbicacion.coordenadasDecimalesCorrectas()){
+					control.modificarUbicacion(nombreUbicacion,ciudad,GUIUbicacion.getData());
+					if (control.yaExiste()) {
+						JOptionPane.showMessageDialog(frame,"La ubicación con esas coordenadas ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						modifico = true;
+						GUIUbicacion.dispose();
+						data = GUIUbicacion.getData();
+					}			
 				}
-				else {
-					modifico = true;
-					GUIUbicacion.dispose();
-					data = GUIUbicacion.getData();
-				}			
 			}
-			
+		}
+		catch (NumberFormatException e){
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos de latitud y longitud","Atención!", JOptionPane.ERROR_MESSAGE);
+		}
+   	}
+
+	/**
+	 * Acciones a realizar cuando se selecciona la opcion de "Agregar Ubicacion".
+	 * @throws Exception 
+	 */
+	public void aceptarGrados() throws Exception{
+		try {
+			if (GUIUbicacion.getjTextFieldCiudad().getText().equals("") || GUIUbicacion.getjTextFieldNombreUbicacion().getText().equals("")){
+		 		JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.ERROR_MESSAGE);
+			}
+			else {
+				if (GUIUbicacion.coordenadasGradosCorrectas()){
+					control.modificarUbicacion(nombreUbicacion,ciudad,GUIUbicacion.getData());
+					if (control.yaExiste()) {
+						JOptionPane.showMessageDialog(frame,"La ubicación con esas coordenadas ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						modifico = true;
+						GUIUbicacion.dispose();
+						data = GUIUbicacion.getData();
+					}			
+				}
+			}
 		}
 		catch (NumberFormatException e){
 			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos de latitud y longitud","Atención!", JOptionPane.ERROR_MESSAGE);
