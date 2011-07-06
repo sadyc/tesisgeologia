@@ -48,7 +48,7 @@ public class MediadorGestionarMuestra extends Mediador{
 		this.usuario=usuario;
 		cargarTablaDeMuestras();
 
-		String [] columAux = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad","Usuario"};
+		String [] columAux = {"Ubicación","Nombre","Peso (gr)","Profundidad Inicial (mts)","Profundidad Final (mts)","Operador de Laboratorio","Cliente","Ciudad","Usuario"};
 
 		GUIABMMuestra = new GUIABMMuestra(nombreVentana,data,columAux);
 		GUIABMMuestra.setListenerButtons(this);

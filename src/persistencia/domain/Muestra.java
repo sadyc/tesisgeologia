@@ -414,5 +414,13 @@ public class Muestra {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	
+	/**
+	 * Retorna los analisis correspondientes a la muestra.
+	 * @return los analisis correspondientes a la muestra.
+	 */
+	public Collection<Analisis> getAnalisis(){
+		return analisis;
+	}
 
 }
