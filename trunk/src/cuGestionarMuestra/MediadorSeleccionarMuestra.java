@@ -41,7 +41,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	public MediadorSeleccionarMuestra() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicación","Nombre","Peso","Profundidad Inicial","Profundidad Final","Operador de Laboratorio","Cliente","Ciudad"};
+		String [] columAux = {"Ubicación","Nombre","Peso (gr)","Profundidad Inicial(m)","Profundidad Final (m)","Operador de Laboratorio","Cliente","Ciudad"};
 		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
