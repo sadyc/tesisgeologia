@@ -41,7 +41,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	public MediadorSeleccionarMuestra() throws Exception {
 		super();
 		cargarTablaDeMuestras();
-		String [] columAux = {"Ubicación","Nombre","Peso (gr)","Profundidad Inicial(m)","Profundidad Final (m)","Operador de Laboratorio","Cliente","Ciudad"};
+		String [] columAux = {"Ubicación","Nombre","Peso (gr)","Profundidad Inicial (mts)","Profundidad Final (mts)","Operador de Laboratorio","Cliente","Ciudad","Tamizado Cargado","SUCS / AASHTO"};
 		this.GUIABMMuestra = new GUIABMMuestra("Seleccionar una muestra",data,columAux);
 		this.GUIABMMuestra.setListenerButtons(this);
 		this.GUIABMMuestra.setListenerTable(this);
@@ -74,6 +74,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 		int i = 0;
 		while (it.hasNext()){
 			muestra = it.next();
+			String clasificaciones = new String();
 			data [i][0]= muestra.getUbicacion().getNombreUbicacion();
 			data [i][1]= muestra.getNombreMuestra();
 			data [i][2]= muestra.getPeso();
@@ -84,6 +85,21 @@ public class MediadorSeleccionarMuestra extends Mediador{
 		    	data [i][6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
 		    }
 		    data [i][7]= muestra.getUbicacion().getCiudad();
+		    if (muestra.getAnalisis().isEmpty()) {
+		    	data [i][8]= "NO";
+			} else {
+				data [i][8]= "SI";
+			}
+		    if (muestra.getSucs()!=null){
+		    	clasificaciones= muestra.getSucs().getClasificacion()+" / ";
+		    }
+		    else{
+		    	clasificaciones= " / ";
+		    }
+		    if (muestra.getAashto()!=null){
+		    	clasificaciones+= muestra.getAashto().getClasificacion();
+		    }
+		    data [i][9] = clasificaciones;
 		    i++;
 		}
 	}
@@ -124,9 +140,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 	 */
 	public void seleccionarMuestra(){
 		if (GUIABMMuestra.InicializarTabla().getSelectedRow() == -1){
-
 			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
-
 		}
 		else{
 			System.out.println("Button Seleccionar Muestra");
@@ -135,9 +149,7 @@ public class MediadorSeleccionarMuestra extends Mediador{
 				seleccionoMuestra = true;
 				GUIABMMuestra.dispose();
 			} catch (Exception e) {
-
 				JOptionPane.showMessageDialog(frame,"Se ha seleccionado un elemento inválido","Atención!", JOptionPane.ERROR_MESSAGE);
-
 			}
    				   		
 		}

@@ -256,7 +256,7 @@ public class GUIGestionarOperador extends JDialog	{
 
         setJMenuBar(jMenuBar1);
 
-        pack();
+        this.setSize(800 , 650);
     }
 
     private void jComboBoxBuscarActionPerformed(java.awt.event.ActionEvent evt) {

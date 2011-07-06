@@ -273,7 +273,7 @@ public class GUIABMMuestra extends JDialog{
 
 	        setJMenuBar(jMenuBar1);
 
-	        pack();
+	        
 	        this.setSize(1300 , 700);
 	    }
 	 
@@ -373,9 +373,12 @@ public class GUIABMMuestra extends JDialog{
 	 		this.tablePanel.setData(data, columName);
 	 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
 	 	    tcr.setHorizontalAlignment(SwingConstants.CENTER);
-	 	    for (int i = 0; i < 7; i++) {
+	 	    for (int i = 0; i < tablePanel.getTable().getColumnCount(); i++) {
 	 	    	tablePanel.getTable().getColumnModel().getColumn(i).setCellRenderer(tcr);
+	 	    	
 			}
+	 	    tablePanel.getTable().getColumnModel().getColumn(1).setPreferredWidth(10);
+	 	    tablePanel.getTable().getColumnModel().getColumn(2).setPreferredWidth(10);
 		}
 		
 		return this.tablePanel;
