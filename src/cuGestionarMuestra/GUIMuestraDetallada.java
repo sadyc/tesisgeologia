@@ -67,6 +67,7 @@ public class GUIMuestraDetallada extends JDialog{
 	private JButton jButtonAgregarAnalisis;
 	private JButton jButtonEliminarAnalisis;
 	private JButton jButtonModificarAnalisis;
+	private JButton jButtonCalcularClasificacion;
 	private JButton salir;
 	private JLabel descripcion2;
 	private JLabel clasificacion2;
@@ -111,8 +112,7 @@ public class GUIMuestraDetallada extends JDialog{
 		
 		if (muestra1.getSucs()==null){
 			clasificacion1 = new JLabel ("Clasificación: ");
-			descripcion1 = new JLabel ("Descripción: ");
-			
+			descripcion1 = new JLabel ("Descripción: ");			
 		}
 		else{
 			clasificacion1 = new JLabel ("Clasificación: "+muestra1.getSucs().getClasificacion());
@@ -167,6 +167,13 @@ public class GUIMuestraDetallada extends JDialog{
 
 	
 	/**
+	 * @return the jButtonCalcularClasificacion
+	 */
+	public JButton getjButtonCalcularClasificacion() {
+		return jButtonCalcularClasificacion;
+	}
+
+	/**
 	 * @return the salir
 	 */
 	public JButton getJButtonSalir() {
@@ -192,6 +199,8 @@ public class GUIMuestraDetallada extends JDialog{
 		jButtonEliminarAnalisis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/list-remove-5.png"))); // NOI18N
 		jButtonModificarAnalisis  = new JButton("Modificar");
 		jButtonModificarAnalisis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png"))); // NOI18N
+		jButtonCalcularClasificacion  = new JButton("Calcular Clasificación");
+		jButtonCalcularClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accessories-calculator-3.png"))); // NOI18N
 		salir = new JButton("Salir");
 		salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
 		menu = new JMenuBar();
@@ -348,6 +357,7 @@ public class GUIMuestraDetallada extends JDialog{
 			this.panelSur.add(getjButtonAgregarAnalisis());
 			this.panelSur.add(getjButtonModificarAnalisis());
 			this.panelSur.add(getjButtonEliminarAnalisis());
+			this.panelSur.add(getjButtonCalcularClasificacion());
 			this.panelSur.add(salir);
 			
 			}
@@ -363,6 +373,7 @@ public class GUIMuestraDetallada extends JDialog{
 		jButtonAgregarAnalisis.addActionListener(lis);
 		jButtonModificarAnalisis.addActionListener(lis);
 		jButtonEliminarAnalisis.addActionListener(lis);
+		jButtonCalcularClasificacion.addActionListener(lis);
 		salirMenu.addActionListener(lis);
 		agregarMenu.addActionListener(lis);
 		modificarMenu.addActionListener(lis);

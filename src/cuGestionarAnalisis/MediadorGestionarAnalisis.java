@@ -18,6 +18,7 @@ import persistencia.domain.Tamiz;
 import comun.Mediador;
 import comun.MediadorVersion;
 
+import cuCalcularClasificacion.MediadorCalcularClasificacion;
 import cuGestionarMuestra.GUIMuestraDetallada;
 
 
@@ -111,6 +112,14 @@ public class MediadorGestionarAnalisis extends Mediador{
 		}
 		if(this.GUImuestraDetallada.getVersionMenu() == source){
 			new MediadorVersion();
+		}
+		if(this.GUImuestraDetallada.getjButtonCalcularClasificacion() == source){
+			try {
+				GUImuestraDetallada.dispose();
+				new MediadorCalcularClasificacion("Clasificacion de la muestra "+muestra.getNombreMuestra(),muestra);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

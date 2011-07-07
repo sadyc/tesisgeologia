@@ -2,6 +2,7 @@
 package cuCalcularClasificacion;
 
 import java.awt.Frame;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
@@ -9,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.util.Collection;
 import java.util.Iterator;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import persistencia.domain.Analisis;
@@ -19,6 +21,7 @@ import comun.MediadorVersion;
 
 import cuGestionarAnalisis.ControlGestionarAnalisis;
 import cuGestionarAnalisis.MediadorGestionarAnalisis;
+import cuLimiteConsistencia.MediadorAltaLimiteConsistencia;
 import cuReporte.report.MakeReport;
 import cuReporte.report.ViewReport;
 
@@ -29,12 +32,14 @@ import cuReporte.report.ViewReport;
  *
  */
 public class MediadorCalcularClasificacion extends Mediador{
-	
+
 	private GUIClasificacion GUIClasificacion;
 	private Frame frame;
 	private Muestra muestra;
+	private boolean clasificoA;
+	private boolean clasificoS;
 	private Object [][] data;
-	
+
 	/**
 	 * Default Constructor
 	 */
@@ -50,6 +55,36 @@ public class MediadorCalcularClasificacion extends Mediador{
 	}
 	
 	/**
+	 * @throws HeadlessException
+	 * @throws Exception
+	 */
+	public void realizarClasificaciones() throws HeadlessException, Exception{
+		ControlClasificacion control = new ControlClasificacion();
+		if(control.buscarAnalisis("200",muestra) && control.buscarAnalisis("4",muestra)){
+			muestra.setSucs(control.calcularClasificacionSUCS(muestra));
+		}
+		else{
+			int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion SUCS faltan análisis /n para los tamices 4 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+			if(quitOption==JOptionPane.YES_OPTION){
+				new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
+			}else{
+				clasificoS=false;
+			}
+		}
+		if (control.buscarAnalisis("200",muestra) && control.buscarAnalisis("40",muestra)&& control.buscarAnalisis("10",muestra)  && muestra.getIndicePlasticidad()!=0){
+			muestra.setAashto(control.calcularClasificacionAASHTO(muestra));
+		}
+		else{
+			int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion AASHTO faltan análisis /n para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+			if(quitOption==JOptionPane.YES_OPTION){
+				new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
+			}else{
+				clasificoA=false;
+			}
+		}
+	}
+
+	/**
 	 * Constructor parametrizado de la clase. 
 	 * @param titulo, titulo de la ventana.
 	 * @param muestra, muestra correspondiente a la clasificación.
@@ -59,44 +94,36 @@ public class MediadorCalcularClasificacion extends Mediador{
 	public MediadorCalcularClasificacion(String titulo, Muestra muestra) throws Exception {
 		super();
 		this.muestra=muestra;
-		boolean clasificar = true;
+		clasificoA = true;
+		clasificoS = true;
 		cargarTablaDeAnalisis(muestra);
-		ControlClasificacion control = new ControlClasificacion();
 		if (!(data==null)){
-			if (control.buscarAnalisis("200",muestra) && control.buscarAnalisis("40",muestra)&& control.buscarAnalisis("10",muestra)  && muestra.getIndicePlasticidad()!=0){
-				muestra.setAashto(control.calcularClasificacionAASHTO(muestra));
-			}
-			else{
-				JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación AASHTO, Faltan análisis para los tamices 10, 40 y 200","Atención!", JOptionPane.ERROR_MESSAGE);
-				clasificar = false;
-			}
-			if(control.buscarAnalisis("200",muestra) && control.buscarAnalisis("4",muestra) && muestra.getIndicePlasticidad()!=0){
-				muestra.setSucs(control.calcularClasificacionSUCS(muestra));
-			}
-			else{
-				if(muestra.getIndicePlasticidad()==0){
-					JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación SUCS, falta índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
-					clasificar = false;
+			if(muestra.getIndicePlasticidad()==0){
+				JOptionPane.showMessageDialog(frame,"No se puede calcular ninguna clasificación, falta índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
+				MediadorAltaLimiteConsistencia mediadorAlta = new MediadorAltaLimiteConsistencia(muestra);
+				if (mediadorAlta.isAltaConsistencia()){
+					realizarClasificaciones();
 				}else{
-					JOptionPane.showMessageDialog(frame,"No se puede realizar la clasificación SUCS, faltan análisis para los tamices 200 y 4","Atención!", JOptionPane.ERROR_MESSAGE);
-					clasificar = false;
+					clasificoA = false;
+					clasificoS = false;
 				}
+			}else{
+				realizarClasificaciones();
 			}
+			if (clasificoA || clasificoS){
+				GUIClasificacion = new GUIClasificacion(muestra,data);
+				GUIClasificacion.setTitle(titulo);
+				GUIClasificacion.setListenerButtons(this);
+				GUIClasificacion.setLocationRelativeTo(null);
+				GUIClasificacion.setModal(true);
+				GUIClasificacion.show();
+			}
+		}else{
+			JOptionPane.showMessageDialog(frame,"No se puede calcular ninguna clasificación, falta índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
+			new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
 		}
-		if (clasificar){
-			GUIClasificacion = new GUIClasificacion(muestra,data);
-			GUIClasificacion.setTitle(titulo);
-			GUIClasificacion.setListenerButtons(this);
-			GUIClasificacion.setLocationRelativeTo(null);
-			GUIClasificacion.setModal(true);
-			GUIClasificacion.show();
-		}
-		else{
-			new MediadorGestionarAnalisis("Gestionar Análisis", muestra);
-		}
-		
 	}
-	
+
 	/**
 	 * Levanta información almacenada en la base de datos y la copia 
 	 * al atributo data de la clase mediador.
@@ -116,40 +143,40 @@ public class MediadorCalcularClasificacion extends Mediador{
 			data [i][0]= analisis.getTamiz().getNumeroTamiz();
 			data [i][1]= analisis.getPesoRetenido();
 			data [i][2]= analisis.getPorcentajePasante();
-		    data [i][3]= analisis.getPorcentajeRetenidoAcumulado();		        
-		    data [i][4]= analisis.getPorcentajeRetenidoParcial();
-		    i++;
+			data [i][3]= analisis.getPorcentajeRetenidoAcumulado();		        
+			data [i][4]= analisis.getPorcentajeRetenidoParcial();
+			i++;
 		}
 	}
-	
+
 	@Override
 	public void itemStateChanged(ItemEvent arg0) {
-		
+
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-			
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-			
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-			
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-			
+
 	}
 
 	/**
@@ -184,15 +211,15 @@ public class MediadorCalcularClasificacion extends Mediador{
 			ViewReport view = new ViewReport(data, parameters);
 			view.viewClasificacion();
 			GUIClasificacion.dispose();
-				
-			}
+
+		}
 		if (this.GUIClasificacion.getJButtonSalir() == source || GUIClasificacion.getSalirMenu()==source){
 			GUIClasificacion.dispose();
 		}
 		if(this.GUIClasificacion.getVersionMenu() == source){
 			new MediadorVersion();
 		}
-	
+
 	}
 	public Object[][] getData() {
 		return data;
@@ -201,6 +228,6 @@ public class MediadorCalcularClasificacion extends Mediador{
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
-		
+
 }
 
