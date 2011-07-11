@@ -75,7 +75,7 @@ public class MediadorAltaUbicacion extends Mediador{
 		 		JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				if (GUIUbicacion.coordenadasDecimalesCorrectas() || GUIUbicacion.coordenadasGradosCorrectas()){
+				if (GUIUbicacion.coordenadasGradosCorrectas()){
 					control.insertarUbicacion(GUIUbicacion.getData());
 					if (control.yaExiste()) {
 						JOptionPane.showMessageDialog(frame,"La ubicación con ese nombre y esa ciudad ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
@@ -83,6 +83,18 @@ public class MediadorAltaUbicacion extends Mediador{
 					else {
 						alta = true;
 						GUIUbicacion.dispose();
+					}
+				}
+				else{
+					if (GUIUbicacion.coordenadasDecimalesCorrectas()){
+						control.insertarUbicacion(GUIUbicacion.getData());
+						if (control.yaExiste()) {
+							JOptionPane.showMessageDialog(frame,"La ubicación con ese nombre y esa ciudad ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
+						}
+						else {
+							alta = true;
+							GUIUbicacion.dispose();
+						}
 					}
 				}
 			}

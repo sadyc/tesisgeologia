@@ -67,6 +67,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
 
 	/**
 	 * Constructor por defecto.
+	 * 
 	 */
 	public GUIUbicacion() {
 		super();
@@ -100,7 +101,24 @@ public class GUIUbicacion extends javax.swing.JDialog {
 		String longitudModificar = ubicacion.getLongitud();
 		if (latitudModificar.indexOf("º")==-1){
 			jTextFieldDecimalLongitud.setText(longitudModificar);
-			jTextFieldDecimalLatitud.setText(latitudModificar);
+            jTextFieldDecimalLatitud.setText(latitudModificar);
+            
+			String[] data = decimalACoordenadas(latitudModificar);
+			if (Double.valueOf(latitudModificar)<0)
+				jComboBoxLatitud.setSelectedItem("Sur");
+			else
+				jComboBoxLatitud.setSelectedItem("Norte");
+			jTextFieldGradoLat.setText(data[0]);
+			jTextFieldMinLat.setText(data[1]);
+			jTextFieldSegLat.setText(data[2]);
+			data = decimalACoordenadas(longitudModificar); 
+			if (Double.valueOf(longitudModificar)<0)
+				jComboBoxLongitud.setSelectedItem("Oeste");
+			else
+				jComboBoxLongitud.setSelectedItem("Este");
+			jTextFieldGradLong.setText(data[0]);
+			jTextFieldMinLong.setText(data[1]);
+			jTextFieldSegLong.setText(data[2]);
 		}
 		else{
 			jTextFieldGradoLat.setText(latitudModificar.substring(0,latitudModificar.indexOf("º")));
@@ -113,6 +131,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
 			jTextFieldSegLong.setText(longitudModificar.substring(longitudModificar.indexOf("'")+2,longitudModificar.lastIndexOf(" ")-2));
 			jComboBoxLongitud.setSelectedItem(longitudModificar.substring(longitudModificar.lastIndexOf(" ")+1));
 		}
+		jComboBoxProvincia.setSelectedItem(ubicacion.getProvincia());
 		jTextFieldCiudad.setText(ubicacion.getCiudad());
 		jTextFieldNombreUbicacion.setText(ubicacion.getNombreUbicacion());
 		jButtonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png")));
