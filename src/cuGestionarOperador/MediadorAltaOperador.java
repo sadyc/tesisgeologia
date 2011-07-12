@@ -175,19 +175,11 @@ public class MediadorAltaOperador extends Mediador{
 	}
 
 	public void keyTyped(KeyEvent arg0) {
-		if (GUIOperador.getjTextFieldNombre().getText().length()==25){ 
+		if (GUIOperador.getjTextFieldDni().getText().length()==30){ 
 			arg0.consume();
 			System.out.print("\07");
 		}
-		if (GUIOperador.getjTextFieldApellido().getText().length()==25){ 
-			arg0.consume();
-			System.out.print("\07");
-		}
-		if (GUIOperador.getjTextFieldDni().getText().length()==25){ 
-			arg0.consume();
-			System.out.print("\07");
-		}
-		if (GUIOperador.getjTextFieldEmail().getText().length()==25){ 
+		if (GUIOperador.getjTextFieldEmail().getText().length()==30){ 
 			arg0.consume(); 
 			System.out.print("\07");
 		}
