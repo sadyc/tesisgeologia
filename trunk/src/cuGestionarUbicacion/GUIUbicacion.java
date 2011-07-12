@@ -86,8 +86,9 @@ public class GUIUbicacion extends javax.swing.JDialog {
 	/**
 	 * Constructor con pasaje de parametros.
 	 * @param ubicacion
+	 * @throws Exception 
 	 */
-	public GUIUbicacion(Ubicacion ubicacion) {
+	public GUIUbicacion(Ubicacion ubicacion) throws Exception {
 		super();
 		setModal(true);
 		setResizable(false);
@@ -183,7 +184,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
 		jLabel5 = new javax.swing.JLabel();
 		jTextFieldMinLat = new javax.swing.JTextField();
 		jLabel6 = new javax.swing.JLabel();
-		jTextFieldSegLat = new javax.swing.JTextField();
+		jTextFieldSegLat = new javax.swing.JTextField(6);
 		jTextFieldMinLat.addKeyListener(new KeyAdapter()
 		{
 			public void keyTyped(KeyEvent e)
@@ -211,7 +212,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
 		jLabel7 = new javax.swing.JLabel();
 		jLabel8 = new javax.swing.JLabel();
 		jTextFieldMinLong = new javax.swing.JTextField();
-		jTextFieldSegLong = new javax.swing.JTextField();
+		jTextFieldSegLong = new javax.swing.JTextField(6);
 		jTextFieldMinLong.addKeyListener(new KeyAdapter()
 		{
 			public void keyTyped(KeyEvent e)
@@ -529,7 +530,12 @@ public class GUIUbicacion extends javax.swing.JDialog {
 		this.jMenuVersion.addActionListener(lis);
 		jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jTabbedPane1MouseClicked(evt);
+				try {
+					jTabbedPane1MouseClicked(evt);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}
@@ -538,14 +544,15 @@ public class GUIUbicacion extends javax.swing.JDialog {
 	 * Metodo que implementa el pasaje de decimal a coordenadas geograficas
 	 * @param cadena
 	 * @return data
+	 * @throws Exception 
 	 */
-	private String[] decimalACoordenadas(String cadena){
+	private String[] decimalACoordenadas(String cadena) throws Exception{
 		String[] data = new String[3];
 		double valor = Math.abs(Double.valueOf(cadena));
 		int entera = (int)valor;
 		int grados = entera;  
-		int minutos = (int)((valor - entera)* 60);  
-		int segundos= (int)((((valor - entera)*60- minutos))*60);
+		int minutos = (int)((valor - entera)* 60);
+		double segundos= truncaNum(((((valor - entera)*60- minutos))*60));
 		data[0] = String.valueOf(grados);
 		data[1] = String.valueOf(minutos);
 		data[2] = String.valueOf(segundos);
@@ -556,8 +563,9 @@ public class GUIUbicacion extends javax.swing.JDialog {
 	 * Implementa el metodo necesario para cuando se pasan los valores
 	 * de decimal a coordenadas geograficas y visceversa.
 	 * @param evt
+	 * @throws Exception 
 	 */
-	private void jTabbedPane1MouseClicked(MouseEvent evt) {
+	private void jTabbedPane1MouseClicked(MouseEvent evt) throws Exception {
 		System.out.println(jTabbedPane1.getSelectedIndex());
 		if(jTabbedPane1.getSelectedIndex()==0){
 			if  (!jTextFieldDecimalLatitud.getText().equals("")||!jTextFieldDecimalLongitud.getText().equals("")){
@@ -587,6 +595,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
 					double grado = Double.valueOf(jTextFieldGradoLat.getText());
 					double minutos = Double.valueOf(jTextFieldMinLat.getText());
 					double segundos = Double.valueOf(jTextFieldSegLat.getText());
+					System.out.println(grado+"---"+minutos/60+"---"+segundos/3600);
 					double latitud = grado + (minutos/60)+ (segundos/3600);
 					if (jComboBoxLatitud.getSelectedItem()=="Sur"){
 						latitud = latitud*(-1);
@@ -812,6 +821,18 @@ public class GUIUbicacion extends javax.swing.JDialog {
 		return jTabbedPane1;
 	}
 
-	
-
+	/**
+	    * Trunca el número a sólo un decimal.
+	    * @param num, el número a truncar.
+	    * @return valor, el número pasado como parámetro ya truncado.
+	    * @throws Exception
+	    */
+		public static double truncaNum(double num) throws Exception{
+			double valor = 0;
+			valor = num;
+			valor = valor*1000;
+	        valor = java.lang.Math.round(valor);
+	        valor = valor/1000;
+	        return valor;
+	    }
 }

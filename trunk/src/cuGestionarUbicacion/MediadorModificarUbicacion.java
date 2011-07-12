@@ -34,9 +34,10 @@ public class MediadorModificarUbicacion extends Mediador{
 	
 	/**
 	 * Contructor por defecto.
+	 * @throws Exception 
 	 */
 	@SuppressWarnings("deprecation")
-	public MediadorModificarUbicacion(String[] data) {
+	public MediadorModificarUbicacion(String[] data) throws Exception {
 		super();
 		Ubicacion ubicacion = new Ubicacion();
 		nombreUbicacion = data[0];
