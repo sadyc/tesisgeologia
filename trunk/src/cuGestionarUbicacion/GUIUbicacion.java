@@ -212,7 +212,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
 		jLabel7 = new javax.swing.JLabel();
 		jLabel8 = new javax.swing.JLabel();
 		jTextFieldMinLong = new javax.swing.JTextField();
-		jTextFieldSegLong = new javax.swing.JTextField(6);
+		jTextFieldSegLong = new javax.swing.JTextField();
 		jTextFieldMinLong.addKeyListener(new KeyAdapter()
 		{
 			public void keyTyped(KeyEvent e)
@@ -595,7 +595,6 @@ public class GUIUbicacion extends javax.swing.JDialog {
 					double grado = Double.valueOf(jTextFieldGradoLat.getText());
 					double minutos = Double.valueOf(jTextFieldMinLat.getText());
 					double segundos = Double.valueOf(jTextFieldSegLat.getText());
-					System.out.println(grado+"---"+minutos/60+"---"+segundos/3600);
 					double latitud = grado + (minutos/60)+ (segundos/3600);
 					if (jComboBoxLatitud.getSelectedItem()=="Sur"){
 						latitud = latitud*(-1);
@@ -623,19 +622,14 @@ public class GUIUbicacion extends javax.swing.JDialog {
 		data[0]= jTextFieldNombreUbicacion.getText();
 		data[1]= jTextFieldCiudad.getText();
 		data[2]= jComboBoxProvincia.getSelectedItem().toString();
-		if (jTextFieldDecimalLongitud.getText().equals("")){
+		if (!jTextFieldGradoLat.getText().equals("") && !jTextFieldGradLong.getText().equals("")){
 			data[4]=jTextFieldGradLong.getText()+"º "+ jTextFieldMinLong.getText() +"' "+ jTextFieldSegLong.getText()+"'' "+jComboBoxLongitud.getSelectedItem().toString();
 			data[3]=jTextFieldGradoLat.getText()+"º "+ jTextFieldMinLat.getText() +"' "+ jTextFieldSegLat.getText()+"'' "+jComboBoxLatitud.getSelectedItem().toString();
 		}
-		else
+		else{
 			data[4]= jTextFieldDecimalLongitud.getText();
-		if (jTextFieldDecimalLatitud.getText().equals("")){
-			data[4]=jTextFieldGradLong.getText()+"º "+ jTextFieldMinLong.getText() +"' "+ jTextFieldSegLong.getText()+"'' "+jComboBoxLongitud.getSelectedItem().toString();
-			data[3]=jTextFieldGradoLat.getText()+"º "+ jTextFieldMinLat.getText() +"' "+ jTextFieldSegLat.getText()+"'' "+jComboBoxLatitud.getSelectedItem().toString();
-
-		}
-		else
 			data[3]= jTextFieldDecimalLatitud.getText();
+		}
 		return data;
 	}
 
@@ -643,7 +637,6 @@ public class GUIUbicacion extends javax.swing.JDialog {
 		jTextFieldCiudad.addKeyListener(lis);
 		jTextFieldNombreUbicacion.addKeyListener(lis);
 	}
-
 
 	/**
 	 * Comprueba si el valor de los grados es correcto o no.
