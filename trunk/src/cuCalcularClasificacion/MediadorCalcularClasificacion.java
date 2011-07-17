@@ -97,30 +97,25 @@ public class MediadorCalcularClasificacion extends Mediador{
 		clasificoA = true;
 		clasificoS = true;
 		cargarTablaDeAnalisis(muestra);
-		if (!(data==null)){
-			if(muestra.getIndicePlasticidad()==0){
-				JOptionPane.showMessageDialog(frame,"No se puede calcular ninguna clasificación, falta índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
-				MediadorAltaLimiteConsistencia mediadorAlta = new MediadorAltaLimiteConsistencia(muestra);
-				if (mediadorAlta.isAltaConsistencia()){
-					realizarClasificaciones();
-				}else{
-					clasificoA = false;
-					clasificoS = false;
-				}
-			}else{
+		if(muestra.getIndicePlasticidad()==0){
+			JOptionPane.showMessageDialog(frame,"No se puede calcular ninguna clasificación, falta índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
+			MediadorAltaLimiteConsistencia mediadorAlta = new MediadorAltaLimiteConsistencia(muestra);
+			if (mediadorAlta.isAltaConsistencia()){
 				realizarClasificaciones();
-			}
-			if (clasificoA || clasificoS){
-				GUIClasificacion = new GUIClasificacion(muestra,data);
-				GUIClasificacion.setTitle(titulo);
-				GUIClasificacion.setListenerButtons(this);
-				GUIClasificacion.setLocationRelativeTo(null);
-				GUIClasificacion.setModal(true);
-				GUIClasificacion.show();
+			}else{
+				clasificoA = false;
+				clasificoS = false;
 			}
 		}else{
-			JOptionPane.showMessageDialog(frame,"No se puede calcular ninguna clasificación, falta índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
-			new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
+			realizarClasificaciones();
+		}
+		if (clasificoA || clasificoS){
+			GUIClasificacion = new GUIClasificacion(muestra,data);
+			GUIClasificacion.setTitle(titulo);
+			GUIClasificacion.setListenerButtons(this);
+			GUIClasificacion.setLocationRelativeTo(null);
+			GUIClasificacion.setModal(true);
+			GUIClasificacion.show();
 		}
 	}
 
