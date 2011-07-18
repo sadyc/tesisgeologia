@@ -1,6 +1,3 @@
-/**
- * 
- */
 package comun;
 
 import java.awt.Graphics;
