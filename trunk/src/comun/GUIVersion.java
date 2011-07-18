@@ -18,7 +18,6 @@ public class GUIVersion extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     // End of variables declaration    
@@ -42,7 +41,6 @@ public class GUIVersion extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -58,9 +56,6 @@ public class GUIVersion extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12));
         jLabel2.setForeground(new java.awt.Color(102, 102, 0));
         jLabel2.setText("Versión 2011 (Compilación 1.0)");
-
-        jLabel4.setForeground(new java.awt.Color(102, 102, 0));
-        jLabel4.setText("Finalizado Viernes 24 de Junio de 2011");
 
         jLabel5.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 18));
         jLabel5.setText("TesisGeología Soft.");
@@ -95,8 +90,7 @@ public class GUIVersion extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(117, 117, 117)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel2))
                 .addContainerGap(153, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(116, 116, 116)
@@ -125,7 +119,6 @@ public class GUIVersion extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
