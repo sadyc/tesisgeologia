@@ -20,6 +20,7 @@ import cuGestionarOperador.MediadorGestionarOperador;
 import cuGestionarUbicacion.MediadorGestionarUbicacion;
 import cuGestionarUsuario.MediadorGestionarUsuario;
 import cuLimiteConsistencia.MediadorConsistencia;
+import cuLogin.MediadorLogin;
 /**
  * @brief Clase que se utiliza para escuchar los eventos que suceden en la ventana Principal.
  * @author TesisGeologia
@@ -132,6 +133,13 @@ public class MediadorPrincipal extends Mediador{
 		        if(quitOption==JOptionPane.YES_OPTION){
 		        	GUIPrincipal.dispose();
 		        	System.exit(0);
+		        }
+		}
+		if (this.GUIPrincipal.getCerrarSesionMenu()==source){
+			 int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Está seguro que desea cerrar la sesión de '"+ usuario.getNombreUsuario()+"'?","Cerrar sesión",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+		        if(quitOption==JOptionPane.YES_OPTION){
+		        	GUIPrincipal.dispose();
+		        	MediadorLogin login = new MediadorLogin();
 		        }
 		}
 		if (this.GUIPrincipal.getCrearBackupMenu()==source){

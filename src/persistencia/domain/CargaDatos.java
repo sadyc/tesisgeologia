@@ -232,7 +232,7 @@ public class CargaDatos {
 
 		Ubicacion ubicacion1 = new Ubicacion("ZONA 5","RESISTENCIA","Chaco","-27.4683210","-58.919685");
 		Ubicacion ubicacion2 = new Ubicacion("UNRC","RÍO CUARTO","Córdoba","-33.113188","-64.299924");
-		Ubicacion ubicacion3 = new Ubicacion("CAMPO 1","USHUAIA","TierraDelFuego","-54.759158","-68.275968");
+		Ubicacion ubicacion3 = new Ubicacion("CAMPO 1","USHUAIA","Tierra Del Fuego","-54.759158","-68.275968");
 		Ubicacion ubicacion4 = new Ubicacion("CAMPO 1","CANALS","Córdoba","-33.555915","-62.878930");
 		Ubicacion ubicacion5 = new Ubicacion("ALBERDI 8","RÍO CUARTO","Córdoba","-34.335110","-64.336640");
 		Ubicacion ubicacion6 = new Ubicacion("CAMPO 1","SANTA ROSA","La Pampa","-36.6122522","-64.302319");

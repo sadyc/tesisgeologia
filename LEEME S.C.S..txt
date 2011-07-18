@@ -2,9 +2,7 @@
 
 						--PROYECTO FINAL CARRERA ANALISTA EN COMPUTACION--
 
-					     --IMPLEMENTACIÓN DE LOS 3 CASOS DE USOS MAS IMPORTANTES--
-
-							  --MATERIA: PROYECTO (1998)--
+					     		  --MATERIA: PROYECTO (1998)--
 
 						    --SISTEMA DE CLASIFICACION DE SUELOS--
 
@@ -13,16 +11,33 @@
 
 
 
-ANTES DE INSTALAR EL PROGRAMA:
+1- ANTES DE INSTALAR EL PROGRAMA:
 
 
-1- CREAR EN MYSQL LA BASE DE DATOS CON EL NOMBRE "tesis".
+	1-1- Deberá dirigirse a la carpeta Herramientas
 
+	1-2- Dirigirse a la carpeta MYSQL
 
-DESPUES DE INSTALAR DIRIGIRSE AL DIRECCTORIO DONDE INSTALO EL SISTEMA Y REALICE LOS SIGUIENTES PASOS:
+	1-3- Instalar en primer lugar el archivo "mysql-essential-5.1.48-win32"
 
+		1-3-1- No olvidar de tildar la Opción "Include Bin Directory in Windows PATH" solicitada en la instalación
 
-1- EDITAR "EJECUTAR.BAT" ACTUALIZANDO EN LA 3ER LINEA LA VERSION DE JAVA QUE POSEE SU SISTEMA.
+	1-4- Posteriormente Instalar el archivo "mysql-gui-tools-5.0-r17-win32"
 
 
 2- EJECUTAR SCS.EXE
+
+	2-1- Seguir los pasos correspondientes para concluir la instalación del Sistema Clasificador de Suelos.
+
+		2-1-1- En caso de no tener instalada una máquina virtual de JAVA, instalar la que el Sistema Clasificador de Suelos provee, sino, cancelar la instalación de la misma y realizar el punto 2-1-2-
+
+		2-1-2- Ingrese a la carpeta donde se instaló el sistema y edite los archivos con extensión .bat "CargarDatos.bat" y "Ejecutar.bat" colocando la versión de JAVA que su sistema posee en la ruta correspondiente.
+
+
+3- SI YA POSEE UNA VERSION DE JAVA Y NO DESEA INSTALAR "JAVA DEVELOPMENT KIT"
+
+	3-1- Una vez instalado "SCS", editar el archivo "Ejecutar.bat" en la tercera linea, escribiendo aquí el directorio en
+		donde se encuentra instalada la versión de java que usted posee.
+
+
+4- PARA INGRESAR AL SISTEMA, EL NOMBRE DE USUARIO Y CONTRASEÑA POR DEFECTO SON: Nombre de Usuario: admin  Contraseña: admin

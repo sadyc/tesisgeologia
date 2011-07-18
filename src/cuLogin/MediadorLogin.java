@@ -29,11 +29,10 @@ public class MediadorLogin extends Mediador {
 	
 	/**
 	 * Constructor con parámetros
-	 * @param nombreVentana
 	 * @throws Exception
 	 */
 	@SuppressWarnings("deprecation")
-	public MediadorLogin (String nombreVentana) throws Exception {
+	public MediadorLogin () {
 		super();
 		login = new GUILogin();
 		login.setLocationRelativeTo(null);
@@ -57,8 +56,8 @@ public class MediadorLogin extends Mediador {
 			}
 		}
 		if (this.login.getjMenuItemSalir() == source || this.login.getjButtonCancelar() == source){
-			System.out.println("GestionarMediador.actionPerformed() jMenuItemSalir");
 			login.dispose();
+			System.exit(0);
 		}
 		if (this.login.getjMenuItemVersion()==source){
 			new MediadorVersion();
@@ -88,25 +87,25 @@ public class MediadorLogin extends Mediador {
         	aux = control.obtenerUsuario(nombreUsuario, password);
       
         } catch (Exception e1) {
-			JOptionPane.showMessageDialog(frame,"El usuario es incorrecto","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"El usuario es incorrecto","Atención!", JOptionPane.ERROR_MESSAGE);
 			e1.printStackTrace();
 			
 		}
         
    		if (login.getJnombreUsuario().getText().equals("")) {
-			JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Nombre Usuario'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Nombre Usuario'","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else {
 			if (login.getJpassword().getText().equals("")) {
 			
-				JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Password'","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"Debe completar el campo de 'Password'","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else{
 				if (control.yaExiste() == false){
-					JOptionPane.showMessageDialog(frame,"El usuario es incorrecto","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frame,"El usuario es incorrecto","Atención!", JOptionPane.ERROR_MESSAGE);
 				}else{
 					if (password.compareTo(aux.getPassword()) != 0){
-						JOptionPane.showMessageDialog(frame,"El password es incorrecto","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(frame,"El password es incorrecto","Atención!", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
 	        		        	

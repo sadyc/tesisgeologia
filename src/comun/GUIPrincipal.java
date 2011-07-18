@@ -55,6 +55,7 @@ public class GUIPrincipal extends JFrame {
 	private JMenuItem cargarBackupMenu;
 	private JMenuItem salirMenu;
 	private JMenuItem versionMenu;
+	private JMenuItem cerrarSesionMenu;
 	
 	
 	 
@@ -169,7 +170,10 @@ public class GUIPrincipal extends JFrame {
 
 			salirMenu = new JMenuItem("Salir");
 			salirMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/dialog-no.png"))); // NOI18N
-
+			
+			cerrarSesionMenu = new JMenuItem("Cerrar sesión");
+			cerrarSesionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/task-recurring.png")));
+			
 			muestra.add(gestionarMuestraMenu);
 			muestra.add(gestionarAnalisisMenu);
 			muestra.add(gestionarLimiteConsistenciaMenu);
@@ -182,6 +186,7 @@ public class GUIPrincipal extends JFrame {
 			sistema.add(crearBackupMenu);
 			sistema.add(cargarBackupMenu);
 			muestra.add(new JSeparator());
+			muestra.add(cerrarSesionMenu);
 			muestra.add(salirMenu);
 			versionMenu = new JMenuItem("Versión");
 			versionMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/IconoSCS.png"))); // NOI18N
@@ -389,6 +394,13 @@ public class GUIPrincipal extends JFrame {
 		return salirMenu;
 	}
 
+	/**
+	 * @return the cerrarSesionMenu
+	 */
+	public JMenuItem getCerrarSesionMenu() {
+		return cerrarSesionMenu;
+	}
+
 
 	/**
 	 * @return the versionMenu
@@ -448,6 +460,7 @@ public class GUIPrincipal extends JFrame {
         this.jButtonGestionarLimiteConsistencia.addActionListener(lis);
         this.jButtonGestionarOperador.addActionListener(lis);
         this.jButtonGestionarCliente.addActionListener(lis);
+        this.cerrarSesionMenu.addActionListener(lis);
         this.salirMenu.addActionListener(lis);
         this.gestionarUsuarioMenu.addActionListener(lis);
         this.gestionarClienteMenu.addActionListener(lis);
