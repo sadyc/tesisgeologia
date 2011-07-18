@@ -21,7 +21,7 @@ public class PanelConFondo extends JPanel {
 	 * Constructor por defecto de la clase.
 	 */
     public PanelConFondo() {
-        imagen = new ImageIcon(getClass().getResource("/imagenes/fondo.png")).getImage();
+        imagen = new ImageIcon(getClass().getResource("/imagenes/Fondo.png")).getImage();
         
     }
 
