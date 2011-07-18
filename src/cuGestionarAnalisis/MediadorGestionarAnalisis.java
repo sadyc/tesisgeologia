@@ -39,6 +39,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 	
 	/**
 	 * This is the default constructor
+	 * @param botonClasificar 
 	 * @throws Exception 
 	 */
 	public MediadorGestionarAnalisis(String titulo, Muestra muestra) throws Exception {

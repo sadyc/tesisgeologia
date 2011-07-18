@@ -170,10 +170,13 @@ public class ControlClasificacion extends Control {
 			System.out.println(clasificacion);
 			clasificacionSUCS =((SUCS)persistencia.buscarObjeto(clasificacionSUCS.getClass(), "clasificacion=='"+clasificacion+"'"));
 			muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(),"nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
+			
 			muestra.setSucs(clasificacionSUCS);
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
+			System.out.println("No pudo insertar la clasificación con persistencia");
+			e.printStackTrace();
 			persistencia.realizarRollback();
 		}
 			return clasificacionSUCS;	
@@ -289,7 +292,7 @@ public class ControlClasificacion extends Control {
 			if (analisis.getPorcentajePasante()<60 && !d60){
 				double pasante2 = analisis.getPorcentajePasante();
 				double abertura2 = analisis.getTamiz().getAberturaMalla();
-				analisis = (Analisis)listaAnalisis.get(i-1);
+				analisis = (Analisis)listaAnalisis.get(i+1);
 				double pasante1 = analisis.getPorcentajePasante();
 				double abertura1 = analisis.getTamiz().getAberturaMalla();
 				double exponente = (Math.log10(abertura1)-((pasante1-60)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
@@ -301,7 +304,7 @@ public class ControlClasificacion extends Control {
 			if (analisis.getPorcentajePasante()<30 && !d30){
 				double pasante2 = analisis.getPorcentajePasante();
 				double abertura2 = analisis.getTamiz().getAberturaMalla();
-				analisis = (Analisis)listaAnalisis.get(i-1);
+				analisis = (Analisis)listaAnalisis.get(i+1);
 				double pasante1 = analisis.getPorcentajePasante();
 				double abertura1 = analisis.getTamiz().getAberturaMalla();
 				double exponente = (Math.log10(abertura1)-((pasante1-30)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
@@ -313,7 +316,7 @@ public class ControlClasificacion extends Control {
 			if (analisis.getPorcentajePasante()<10 && !d10){
 				double pasante2 = analisis.getPorcentajePasante();
 				double abertura2 = analisis.getTamiz().getAberturaMalla();
-				analisis = (Analisis)listaAnalisis.get(i-1);
+				analisis = (Analisis)listaAnalisis.get(i+1);
 				double pasante1 = analisis.getPorcentajePasante();
 				double abertura1 = analisis.getTamiz().getAberturaMalla();
 				double exponente = (Math.log10(abertura1)-((pasante1-10)*(Math.log10(abertura1)-Math.log10(abertura2))/(pasante1-pasante2)));
