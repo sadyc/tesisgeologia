@@ -76,17 +76,13 @@ public class MediadorCalcularClasificacion extends Mediador{
 				int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion AASHTO faltan análisis /n para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 				if(quitOption==JOptionPane.YES_OPTION){
 					MediadorGestionarAnalisis analisis = new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
-					clasificoS=false;
 				}else{
-					clasificoA=false;
-					if (clasificoA || clasificoS){
-						GUIClasificacion = new GUIClasificacion(muestra,data);
-						GUIClasificacion.setTitle(titulo);
-						GUIClasificacion.setListenerButtons(this);
-						GUIClasificacion.setLocationRelativeTo(null);
-						GUIClasificacion.setModal(true);
-						GUIClasificacion.show();
-					}
+					GUIClasificacion = new GUIClasificacion(muestra,data);
+					GUIClasificacion.setTitle(titulo);
+					GUIClasificacion.setListenerButtons(this);
+					GUIClasificacion.setLocationRelativeTo(null);
+					GUIClasificacion.setModal(true);
+					GUIClasificacion.show();
 				}
 			}
 		}
