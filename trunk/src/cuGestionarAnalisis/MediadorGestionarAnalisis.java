@@ -46,7 +46,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 		super();
 		this.muestra = muestra;
 		cargarTablaDeAnalisis();
-		GUImuestraDetallada = new GUIMuestraDetallada(muestra,data);
+		GUImuestraDetallada = new GUIMuestraDetallada(this.muestra,data);
 		GUImuestraDetallada.setTitle(titulo);
 		GUImuestraDetallada.setListenerButtons(this);
 		GUImuestraDetallada.setModal(true);
