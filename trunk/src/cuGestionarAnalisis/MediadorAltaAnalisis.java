@@ -125,13 +125,18 @@ public class MediadorAltaAnalisis  extends Mediador{
 			if (analisis.getTamiz().getAberturaMalla()==0){
 				Double aux = new Double(65);
 				MediadorSeleccionarTamiz seleccionarTamiz = new MediadorSeleccionarTamiz(aux);
-				GUIAnalisis.setTamiz(seleccionarTamiz.getSeleccionado());
-				numeroTamiz = seleccionarTamiz.getSeleccionado();
+				if (seleccionarTamiz.seSeleccionoTamiz()) {
+					GUIAnalisis.setTamiz(seleccionarTamiz.getSeleccionado());
+					numeroTamiz = seleccionarTamiz.getSeleccionado();
+				}
 			}
 			else{
 				MediadorSeleccionarTamiz seleccionarTamiz = new MediadorSeleccionarTamiz(analisis.getTamiz().getAberturaMalla());
-				GUIAnalisis.setTamiz(seleccionarTamiz.getSeleccionado());
-				numeroTamiz = seleccionarTamiz.getSeleccionado();
+				if (seleccionarTamiz.seSeleccionoTamiz()) {
+					GUIAnalisis.setTamiz(seleccionarTamiz.getSeleccionado());
+					numeroTamiz = seleccionarTamiz.getSeleccionado();
+				}
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -26,6 +26,7 @@ import comun.MediadorVersion;
 public class MediadorSeleccionarTamiz extends Mediador{
 
 	private GUISeleccionarTamiz GUISeleccionarTamiz = null;
+	private boolean seleccionoTamiz = false;
 	private String seleccionado = new String();
 	private Object [][] data ;
 	private Component frame;
@@ -80,6 +81,13 @@ public class MediadorSeleccionarTamiz extends Mediador{
 		return GUISeleccionarTamiz;
 	}
 	
+	/**
+	 * @return the seleccionoTamiz
+	 */
+	public boolean seSeleccionoTamiz() {
+		return seleccionoTamiz;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
@@ -103,8 +111,8 @@ public class MediadorSeleccionarTamiz extends Mediador{
 		}
 		else{
 			seleccionado = (String)GUISeleccionarTamiz.getTablePanel().getRow(GUISeleccionarTamiz.getTablePanel().getSelectedRow())[0];//
-			System.out.println("Button Seleccionar Tamiz");
-   			GUISeleccionarTamiz.dispose();	   		
+			seleccionoTamiz = true;
+			GUISeleccionarTamiz.dispose();	   		
 		}
 	}
 	
