@@ -121,7 +121,6 @@ public class MediadorAltaAnalisis  extends Mediador{
 		try {
 			analisis = new Analisis();
 			analisis = control.ultimoAnalisis(muestra);
-			System.out.println(analisis.getTamiz().getAberturaMalla());
 			if (analisis.getTamiz().getAberturaMalla()==0){
 				Double aux = new Double(65);
 				MediadorSeleccionarTamiz seleccionarTamiz = new MediadorSeleccionarTamiz(aux);
