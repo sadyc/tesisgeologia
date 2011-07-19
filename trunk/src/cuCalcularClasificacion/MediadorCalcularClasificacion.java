@@ -53,15 +53,42 @@ public class MediadorCalcularClasificacion extends Mediador{
 		GUIClasificacion.setModal(true);
 		GUIClasificacion.show();
 	}
-	
+
 	/**
+	 * @param titulo 
 	 * @throws HeadlessException
 	 * @throws Exception
 	 */
-	public void realizarClasificaciones() throws HeadlessException, Exception{
+	public void realizarClasificaciones(String titulo) throws HeadlessException, Exception{
 		ControlClasificacion control = new ControlClasificacion();
 		if(control.buscarAnalisis("200",muestra) && control.buscarAnalisis("4",muestra)){
-			muestra.setSucs(control.calcularClasificacionSUCS(muestra));
+			control.calcularClasificacionSUCS(muestra);
+			if (control.buscarAnalisis("200",muestra) && control.buscarAnalisis("40",muestra)&& control.buscarAnalisis("10",muestra)  && muestra.getIndicePlasticidad()!=0){
+				control.calcularClasificacionAASHTO(muestra);
+				GUIClasificacion = new GUIClasificacion(muestra,data);
+				GUIClasificacion.setTitle(titulo);
+				GUIClasificacion.setListenerButtons(this);
+				GUIClasificacion.setLocationRelativeTo(null);
+				GUIClasificacion.setModal(true);
+				GUIClasificacion.show();
+			}
+			else{
+				int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion AASHTO faltan análisis /n para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+				if(quitOption==JOptionPane.YES_OPTION){
+					MediadorGestionarAnalisis analisis = new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
+					clasificoS=false;
+				}else{
+					clasificoA=false;
+					if (clasificoA || clasificoS){
+						GUIClasificacion = new GUIClasificacion(muestra,data);
+						GUIClasificacion.setTitle(titulo);
+						GUIClasificacion.setListenerButtons(this);
+						GUIClasificacion.setLocationRelativeTo(null);
+						GUIClasificacion.setModal(true);
+						GUIClasificacion.show();
+					}
+				}
+			}
 		}
 		else{
 			int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion SUCS faltan análisis /n para los tamices 4 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
@@ -70,20 +97,29 @@ public class MediadorCalcularClasificacion extends Mediador{
 				clasificoS=false;
 			}else{
 				clasificoS=false;
+				if (control.buscarAnalisis("200",muestra) && control.buscarAnalisis("40",muestra)&& control.buscarAnalisis("10",muestra)  && muestra.getIndicePlasticidad()!=0){
+					control.calcularClasificacionAASHTO(muestra);
+				}
+				else{
+					quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion AASHTO faltan análisis /n para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+					if(quitOption==JOptionPane.YES_OPTION){
+						MediadorGestionarAnalisis analisis = new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
+						clasificoS=false;
+					}else{
+						clasificoA=false;
+						if (clasificoA || clasificoS){
+							GUIClasificacion = new GUIClasificacion(muestra,data);
+							GUIClasificacion.setTitle(titulo);
+							GUIClasificacion.setListenerButtons(this);
+							GUIClasificacion.setLocationRelativeTo(null);
+							GUIClasificacion.setModal(true);
+							GUIClasificacion.show();
+						}
+					}
+				}
 			}
 		}
-		if (control.buscarAnalisis("200",muestra) && control.buscarAnalisis("40",muestra)&& control.buscarAnalisis("10",muestra)  && muestra.getIndicePlasticidad()!=0){
-			muestra.setAashto(control.calcularClasificacionAASHTO(muestra));
-		}
-		else{
-			int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion AASHTO faltan análisis /n para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-			if(quitOption==JOptionPane.YES_OPTION){
-				MediadorGestionarAnalisis analisis = new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
-				clasificoS=false;
-			}else{
-				clasificoA=false;
-			}
-		}
+
 	}
 
 	/**
@@ -103,22 +139,15 @@ public class MediadorCalcularClasificacion extends Mediador{
 			JOptionPane.showMessageDialog(frame,"No se puede calcular ninguna clasificación, falta índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
 			MediadorAltaLimiteConsistencia mediadorAlta = new MediadorAltaLimiteConsistencia(muestra);
 			if (mediadorAlta.isAltaConsistencia()){
-				realizarClasificaciones();
+				realizarClasificaciones(titulo);
 			}else{
 				clasificoA = false;
 				clasificoS = false;
 			}
 		}else{
-			realizarClasificaciones();
+			realizarClasificaciones(titulo);
 		}
-		if (clasificoA || clasificoS){
-			GUIClasificacion = new GUIClasificacion(muestra,data);
-			GUIClasificacion.setTitle(titulo);
-			GUIClasificacion.setListenerButtons(this);
-			GUIClasificacion.setLocationRelativeTo(null);
-			GUIClasificacion.setModal(true);
-			GUIClasificacion.show();
-		}
+
 	}
 
 	/**
