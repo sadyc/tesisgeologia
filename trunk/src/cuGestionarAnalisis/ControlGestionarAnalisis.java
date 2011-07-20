@@ -4,8 +4,10 @@ import java.util.Collection;
 import java.util.List;
 
 import persistencia.Persistencia;
+import persistencia.domain.AASHTO;
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
+import persistencia.domain.SUCS;
 import persistencia.domain.Tamiz;
 
 import comun.Control;
@@ -82,7 +84,9 @@ public class ControlGestionarAnalisis extends Control {
 		Persistencia persistencia = new Persistencia();
 		persistencia.abrirTransaccion();
 		try {
-			Analisis aux = (Analisis) persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+analisis.getMuestra().getNombreMuestra()+"' && tamiz.numeroTamiz=='"+analisis.getTamiz().getNumeroTamiz()+"'");
+			Analisis aux = (Analisis) persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+analisis.getMuestra().getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+analisis.getMuestra().getUbicacion().getNombreUbicacion()+"' && muestra.ubicacion.ciudad=='"+analisis.getMuestra().getUbicacion().getCiudad()+"' && tamiz.numeroTamiz=='"+analisis.getTamiz().getNumeroTamiz()+"'");
+			aux.getMuestra().setAashto(new AASHTO());
+			aux.getMuestra().setSucs(new SUCS());
 			persistencia.eliminarObjeto(aux);
 			persistencia.cerrarTransaccion();
 		}

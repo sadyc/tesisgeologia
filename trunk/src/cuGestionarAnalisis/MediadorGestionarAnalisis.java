@@ -11,8 +11,10 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import persistencia.domain.AASHTO;
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
+import persistencia.domain.SUCS;
 import persistencia.domain.Tamiz;
 
 import comun.Mediador;
@@ -144,6 +146,8 @@ public class MediadorGestionarAnalisis extends Mediador{
 					control.eliminarAnalisis(analisis);
 					control.recalcularAnalisis(analisis);
 					GUImuestraDetallada.dispose();
+					muestra.setAashto(new AASHTO());
+					muestra.setSucs(new SUCS());
 					new MediadorGestionarAnalisis("Análisis de la muestra "+ muestra.getNombreMuestra(), muestra);
 				} catch (Exception e1) {
 					e1.printStackTrace();
