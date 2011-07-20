@@ -46,6 +46,7 @@ public class MediadorAltaUsuario extends Mediador{
 		GUIUsuario = new GUIUsuario();
 		GUIUsuario.setTitle(nombreVentana);
 		GUIUsuario.setListenerButtons(this);
+		GUIUsuario.getjButtonModifPassword().setEnabled(false);
 		GUIUsuario.setModal(true);
 		GUIUsuario.setLocationRelativeTo(null);
 		GUIUsuario.show();
@@ -199,4 +200,9 @@ public class MediadorAltaUsuario extends Mediador{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public static void main (String args[]){
+		new MediadorAltaUsuario("jose");
+	}
+	
 }
