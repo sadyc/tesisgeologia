@@ -165,11 +165,14 @@ public class ControlClasificacion extends Control {
 					}
 				}
 			}
-			
+			persistencia.cerrarTransaccion();
+			persistencia.abrirTransaccion();
+			 
 			System.out.println(clasificacion);
 			clasificacionSUCS =((SUCS)persistencia.buscarObjeto(clasificacionSUCS.getClass(), "clasificacion=='"+clasificacion+"'"));
-			//muestra = (Muestra)persistencia.buscarObjeto(muestra.getClass(),"nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
+			Muestra muestra2 = (Muestra)persistencia.buscarObjeto(muestra.getClass(),"nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
 			muestra.setSucs(clasificacionSUCS);
+			muestra2.setSucs(clasificacionSUCS);
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
@@ -251,11 +254,16 @@ public class ControlClasificacion extends Control {
 					}
 				}
 			}
-			
+			persistencia.cerrarTransaccion();
+			persistencia.abrirTransaccion();
 			clasificacionAASHTO =((AASHTO)persistencia.buscarObjeto(clasificacionAASHTO.getClass(), "clasificacion=='"+clasificacion+"'"));
+			Muestra muestra2 = (Muestra)persistencia.buscarObjeto(muestra.getClass(),"nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
 			muestra.setAashto(clasificacionAASHTO);
 			muestra.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));
 			muestra.setGradoCurvatura(gradoCurvatura);
+			muestra2.setAashto(clasificacionAASHTO);
+			muestra2.setCoeficienteUniformidad(truncaNum(muestra.getD60()/muestra.getD10()));
+			muestra2.setGradoCurvatura(gradoCurvatura);
 			persistencia.cerrarTransaccion();
 		}
 		catch (Exception e){
