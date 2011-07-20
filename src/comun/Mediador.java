@@ -112,4 +112,26 @@ public abstract class Mediador implements ActionListener,MouseListener,ItemListe
 		}
 		return test;
 	}
+    
+    
+    public Boolean isCuil (String cuil){
+    	boolean test = true;
+    	if (cuil.length()!=13){
+    		test = false;
+    	}
+    	else{
+    		String num = cuil.substring(0, 1);
+      		if (((num.compareTo("30")==0) || (num.compareTo("33")==0))&& (cuil.charAt(2) ==45) && (cuil.charAt(3) >=48 && cuil.charAt(3)<=57)
+      				&& (cuil.charAt(4) >=48 && cuil.charAt(4)<=57)&& (cuil.charAt(5) >=48 && cuil.charAt(5)<=57)&& (cuil.charAt(6) >=48 && cuil.charAt(6)<=57)
+      				&& (cuil.charAt(7) >=48 && cuil.charAt(7)<=57)&& (cuil.charAt(8) >=48 && cuil.charAt(8)<=57)&& (cuil.charAt(9) >=48 && cuil.charAt(9)<=57)
+      				&& (cuil.charAt(10) >=48 && cuil.charAt(10)<=57) && (cuil.charAt(11) ==45) && (cuil.charAt(12) >=48 && cuil.charAt(12)<=57)){
+    			test = true;
+    		}
+      		else{
+      			test = false;
+      		}
+    	}
+    	return test;
+    }
+    
 }
