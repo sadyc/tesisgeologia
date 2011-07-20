@@ -231,8 +231,6 @@ public class MediadorCalcularClasificacion extends Mediador{
 			makeReporte.make("report1");
 			ViewReport view = new ViewReport(data, parameters);
 			view.viewClasificacion();
-			GUIClasificacion.dispose();
-
 		}
 		if (this.GUIClasificacion.getJButtonSalir() == source || GUIClasificacion.getSalirMenu()==source){
 			GUIClasificacion.dispose();
