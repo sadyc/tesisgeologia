@@ -95,9 +95,7 @@ public class MediadorAltaOperador extends Mediador{
 		if (this.GUIOperador.getjButtonCancelar() == source || GUIOperador.getjMenuItemCancelar()==source){
 			GUIOperador.dispose();
 		}
-		if(this.GUIOperador.getjMenuItemVersion() == source){
-			new MediadorVersion();
-		}
+		
 	}
 	
 	/**
