@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import persistencia.domain.Cliente;
 
 import comun.Mediador;
+import comun.MediadorVersion;
 
 import cuGestionarOperador.GUIOperador;
 /**
@@ -88,6 +89,9 @@ public class MediadorModificarCliente extends Mediador{
 		}
 		if (this.GUICliente.getjButtonCancelar() == source || GUICliente.getjMenuItemCancelar()==source){
 			GUICliente.dispose();
+		}
+		if(this.GUICliente.getjMenuItemVersion() == source){
+			new MediadorVersion();
 		}
 	}
 

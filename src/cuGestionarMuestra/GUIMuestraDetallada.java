@@ -378,6 +378,7 @@ public class GUIMuestraDetallada extends JDialog{
 		agregarMenu.addActionListener(lis);
 		modificarMenu.addActionListener(lis);
 		eliminarMenu.addActionListener(lis);
+		versionMenu.addActionListener(lis);
 	}
 	
 	/**

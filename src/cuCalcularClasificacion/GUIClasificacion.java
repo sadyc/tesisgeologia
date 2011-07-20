@@ -433,6 +433,7 @@ public class GUIClasificacion extends JDialog{
 		this.imprimir.addActionListener(lis);
 		this.salir.addActionListener(lis);
 		this.imprimirMenu.addActionListener(lis);
+		this.versionMenu.addActionListener(lis);
 		this.salirMenu.addActionListener(lis);
 	}
 	
