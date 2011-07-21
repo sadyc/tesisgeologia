@@ -127,7 +127,7 @@ public class MediadorGestionarUsuario implements ActionListener, KeyListener, Mo
 	 */
 	public void modificarUsuario(){
 		if (GUIGestionarUsuario.getTablePanel().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","ERROR!!!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			String [] fila = GUIGestionarUsuario.getTablePanel().getRow(GUIGestionarUsuario.getTablePanel().getSelectedRow());

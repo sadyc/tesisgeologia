@@ -60,7 +60,9 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
                                         e1.printStackTrace();
                                 }
                                 if      (password.compareTo(usuario.getPassword())!=0){
-                                        JOptionPane.showMessageDialog(frame,"La contraseña es incorrecta.","Atención!", JOptionPane.ERROR_MESSAGE);
+                                			System.out.println("password cargado "+password);
+                                			System.out.println("password usuario "+usuario.getPassword().toString());
+                                			JOptionPane.showMessageDialog(frame,"La contraseña es incorrecta.","Atención!", JOptionPane.ERROR_MESSAGE);
                                 }
                                 else{
                                         correcto = true;
@@ -142,9 +144,6 @@ public class MediadorVerificarPassword implements ActionListener, KeyListener, M
         public void keyTyped(KeyEvent arg0) {
                 // TODO Auto-generated method stub
                 
-        }
-        public static void main (String args[]){
-        	new MediadorVerificarPassword("33", "nbettiol");
         }
         
 }

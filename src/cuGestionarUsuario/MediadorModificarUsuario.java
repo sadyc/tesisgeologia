@@ -103,7 +103,7 @@ public class MediadorModificarUsuario extends Mediador {
 	public void aceptar(){
 		System.out.println("Muestra.actionPerformed() jButtonAceptar");
 		try{
-		 	if (GUIUsuario.getjTextFieldNombre().getText().equals("") || GUIUsuario.getjTextFieldApellido().getText().equals("") || GUIUsuario.getjTextFieldDni().getText().equals("") || GUIUsuario.getjPasswordField().getText().equals("")|| GUIUsuario.getjPasswordField2().getText().equals("")|| GUIUsuario.getjTextFieldNombreUsuario().getText().equals("")){
+		 	if (GUIUsuario.getjTextFieldNombre().getText().equals("") || GUIUsuario.getjTextFieldApellido().getText().equals("") || GUIUsuario.getjTextFieldDni().getText().equals("") || GUIUsuario.getjTextFieldNombreUsuario().getText().equals("")){
 	 			JOptionPane.showMessageDialog(frame,"Los campos con (*) son obligatorios","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
@@ -116,7 +116,7 @@ public class MediadorModificarUsuario extends Mediador {
 			}
 		}
 		catch (NumberFormatException e){
-			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"Recuerde ingresar sólo números en los campos correspondientes y que estos mismos no excedan la cantidad de caracteres","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -141,12 +141,17 @@ public class MediadorModificarUsuario extends Mediador {
 			}else{
 				data[5]= GUIUsuario.getjTextFieldEmail().getText();
 				data[6]= GUIUsuario.getjTextFieldTelefono().getText();
-				Encriptar encriptar = new Encriptar();
 				String password = "";
-				try {
-					password = encriptar.hash(GUIUsuario.getjPasswordField().getText());
-				} catch (Exception e1) {
-					e1.printStackTrace();
+				if (!(GUIUsuario.getjPasswordField().getText().compareTo("")==0)){
+					Encriptar encriptar = new Encriptar();
+					try {
+						password = encriptar.hash(GUIUsuario.getjPasswordField().getText());
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+				}
+				else{
+					password=usuarioModificar.getPassword();
 				}
 				data[7]= password;
 				try {
