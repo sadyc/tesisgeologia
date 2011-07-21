@@ -201,5 +201,4 @@ public class MediadorAltaUsuario extends Mediador{
 		
 	}
 		
-	
 }
