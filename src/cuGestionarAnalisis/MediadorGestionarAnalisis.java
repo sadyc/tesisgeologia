@@ -51,6 +51,9 @@ public class MediadorGestionarAnalisis extends Mediador{
 		GUImuestraDetallada = new GUIMuestraDetallada(this.muestra,data);
 		GUImuestraDetallada.setTitle(titulo);
 		GUImuestraDetallada.setListenerButtons(this);
+		GUImuestraDetallada.setListenerTable(this);
+		GUImuestraDetallada.setMouseListener(this);
+		GUImuestraDetallada.setKeyListener(this);
 		GUImuestraDetallada.setModal(true);
 		GUImuestraDetallada.setLocationRelativeTo(null);
 		show();
@@ -187,14 +190,27 @@ public class MediadorGestionarAnalisis extends Mediador{
 		}
 	}
 
-
+	/**
+	 * Metodos que necesita definir al implementar la interface MouseListener 
+	 * Para tratar los eventos de mouse 
+	 */
+	public void mouseClicked(MouseEvent e){
+		if (e.getClickCount() == 2){
+			modificarAnalisis();
+		}
+	}
+	
+	@SuppressWarnings("static-access")
+	public void keyPressed(KeyEvent e) {
+	    if (e.getKeyCode() == e.VK_ENTER){
+	    	modificarAnalisis();
+	    }
+	}
 	public void itemStateChanged(ItemEvent arg0) {
 	}
 
 
-	public void mouseClicked(MouseEvent arg0) {
-	}
-
+	
 
 	public void mouseEntered(MouseEvent arg0) {
 	}
@@ -211,9 +227,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 	public void mouseReleased(MouseEvent arg0) {
 	}
 
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-	}
+
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
