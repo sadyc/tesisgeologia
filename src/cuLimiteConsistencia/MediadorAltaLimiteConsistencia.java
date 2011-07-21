@@ -91,7 +91,7 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 			limiteLiquido = GUILimiteConsistencia.getjTextFieldLL().getText().replace(",",".");
 			limitePlastico = GUILimiteConsistencia.getjTextFieldLP().getText().replace(",",".");
 			if (Float.parseFloat(limiteLiquido)<Float.parseFloat(limitePlastico)) {
-				JOptionPane.showMessageDialog(frame,"El limite liquido debe ser mayor al limite plastico","Atención!", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame,"El Límite Líquido debe ser mayor al Límite Plástico","Atención!", JOptionPane.ERROR_MESSAGE);
 			}else{
 				muestra.setLimiteLiquido((limiteLiquido));
 				muestra.setLimitePlastico((limitePlastico));
