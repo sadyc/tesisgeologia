@@ -162,7 +162,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 	public void modificarAnalisis(){
 		System.out.println("GestionarAnalisis.actionPerformed() jButtonModificar");
 		if (GUImuestraDetallada.getTablePanel1().getSelectedRow() == -1){
-			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ning�n elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			String [] fila = GUImuestraDetallada.getTablePanel1().getRow(GUImuestraDetallada.getTablePanel1().getSelectedRow());
