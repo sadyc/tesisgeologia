@@ -59,6 +59,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 	 * @throws HeadlessException
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public void realizarClasificaciones(String titulo) throws HeadlessException, Exception{
 		ControlClasificacion control = new ControlClasificacion();
 		if(control.buscarAnalisis("200",muestra) && control.buscarAnalisis("4",muestra)){
@@ -73,9 +74,9 @@ public class MediadorCalcularClasificacion extends Mediador{
 				GUIClasificacion.show();
 			}
 			else{
-				int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificación AASHTO.\nDebe previamente cargar los Análisis para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+				int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificación AASHTO.\nDebe tener cargado previamente los Análisis para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 				if(quitOption==JOptionPane.YES_OPTION){
-					MediadorGestionarAnalisis analisis = new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
+					new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
 				}else{
 					GUIClasificacion = new GUIClasificacion(muestra,data);
 					GUIClasificacion.setTitle(titulo);
@@ -87,9 +88,9 @@ public class MediadorCalcularClasificacion extends Mediador{
 			}
 		}
 		else{
-			int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion SUCS.\nDebe previamente cargar los Análisis para los tamices 4 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+			int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion SUCS.\nDebe tener cargado previamente los Análisis para los tamices 4 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 			if(quitOption==JOptionPane.YES_OPTION){
-				MediadorGestionarAnalisis analisis = new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
+				new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
 				clasificoS=false;
 			}else{
 				clasificoS=false;
@@ -97,9 +98,9 @@ public class MediadorCalcularClasificacion extends Mediador{
 					control.calcularClasificacionAASHTO(muestra);
 				}
 				else{
-					quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion AASHTO.\nDebe previamente cargar los Análisis para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+					quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion AASHTO.\nDebe tener cargado previamente los Análisis para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 					if(quitOption==JOptionPane.YES_OPTION){
-						MediadorGestionarAnalisis analisis = new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
+						new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
 						clasificoS=false;
 					}else{
 						clasificoA=false;
@@ -123,7 +124,6 @@ public class MediadorCalcularClasificacion extends Mediador{
 	 * @param muestra, muestra correspondiente a la clasificación.
 	 * @throws Exception
 	 */
-	@SuppressWarnings("deprecation")
 	public MediadorCalcularClasificacion(String titulo, Muestra muestra) throws Exception {
 		super();
 		this.muestra=muestra;
