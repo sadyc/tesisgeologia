@@ -51,6 +51,8 @@ public class MediadorModificarAnalisis  extends Mediador{
 		GUIAnalisis.getJButtonSeleccionarTamiz().setEnabled(false);
 		GUIAnalisis.setListenerButtons(this);
 		GUIAnalisis.setLocationRelativeTo(null);
+		GUIAnalisis.getJButtonAceptar().setText("Modificar");
+		GUIAnalisis.getJButtonAceptar().setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png"))); // NOI18N
 		ultimoPeso = GUIAnalisis.getPesoRetenido().getText().replace(",",".");
 		show();
 	}
