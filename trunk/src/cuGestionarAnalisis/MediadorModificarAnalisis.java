@@ -31,6 +31,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 	private boolean modifico;
 	private ControlGestionarAnalisis control ;
 	private Component frame;
+	private String ultimoPeso;
 	
 	/**
 	 * Constructor parametrizado de la clase. 
@@ -50,6 +51,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 		GUIAnalisis.getJButtonSeleccionarTamiz().setEnabled(false);
 		GUIAnalisis.setListenerButtons(this);
 		GUIAnalisis.setLocationRelativeTo(null);
+		ultimoPeso = GUIAnalisis.getPesoRetenido().getText().replace(",",".");
 		show();
 	}
 	
@@ -101,7 +103,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 		pesoRetenido = GUIAnalisis.getPesoRetenido().getText().replace(",",".");
 		analisis.setMuestra(muestra);
 		if (pesoRetenido.equals("")){
-			JOptionPane.showMessageDialog(frame,"No ingresó un peso retenido","ERROR!!!!!!!", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame,"No ingresó un peso retenido","Atencion!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
 			if (Float.parseFloat(pesoRetenido)> muestra.getPeso()){
@@ -109,8 +111,8 @@ public class MediadorModificarAnalisis  extends Mediador{
 			}
 			else{
 				Float pesoPasante = control.pesoPasante(muestra);
-				if (Float.parseFloat(pesoRetenido.replace(",","."))>(muestra.getPeso()-pesoPasante)){
-					JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso pasante por el último tamiz que es: "+(muestra.getPeso()-pesoPasante)+" grs.","Atención!", JOptionPane.ERROR_MESSAGE);
+				if (Float.parseFloat(pesoRetenido.replace(",","."))>(muestra.getPeso()-pesoPasante+Float.parseFloat(ultimoPeso))){
+					JOptionPane.showMessageDialog(frame,"El peso retenido por el tamiz no puede superar al peso pasante por el último tamiz que es: "+(muestra.getPeso()-pesoPasante+Float.parseFloat(ultimoPeso))+" grs.","Atención!", JOptionPane.ERROR_MESSAGE);
 				}
 				else{
 					try {
