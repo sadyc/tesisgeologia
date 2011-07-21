@@ -44,11 +44,11 @@ public class MediadorGestionarAnalisis extends Mediador{
 	 * @param botonClasificar 
 	 * @throws Exception 
 	 */
-	public MediadorGestionarAnalisis(String titulo, Muestra muestra) throws Exception {
+	public MediadorGestionarAnalisis(String titulo, Muestra muestra,boolean mostrarClasificacion) throws Exception {
 		super();
 		this.muestra = muestra;
 		cargarTablaDeAnalisis();
-		GUImuestraDetallada = new GUIMuestraDetallada(this.muestra,data);
+		GUImuestraDetallada = new GUIMuestraDetallada(this.muestra,data,mostrarClasificacion);
 		GUImuestraDetallada.setTitle(titulo);
 		GUImuestraDetallada.setListenerButtons(this);
 		GUImuestraDetallada.setListenerTable(this);
@@ -149,9 +149,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 					control.eliminarAnalisis(analisis);
 					control.recalcularAnalisis(analisis);
 					GUImuestraDetallada.dispose();
-					muestra.setAashto(new AASHTO());
-					muestra.setSucs(new SUCS());
-					new MediadorGestionarAnalisis("Análisis de la muestra "+ muestra.getNombreMuestra(), muestra);
+					new MediadorGestionarAnalisis("Análisis de la muestra "+ muestra.getNombreMuestra(), analisis.getMuestra(),false);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}              	    	
@@ -168,13 +166,20 @@ public class MediadorGestionarAnalisis extends Mediador{
 			JOptionPane.showMessageDialog(frame,"No se ha seleccionado ningún elemento a modificar","Atención!", JOptionPane.ERROR_MESSAGE);
 		}
 		else{
-			String [] fila = GUImuestraDetallada.getTablePanel1().getRow(GUImuestraDetallada.getTablePanel1().getSelectedRow());
-			new MediadorModificarAnalisis(muestra,Float.parseFloat(fila[1]),(String)fila[0]);
-			GUImuestraDetallada.dispose();
-			try {
-				new MediadorGestionarAnalisis("Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
-			} catch (Exception e) {
-				e.printStackTrace();
+			int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Está seguro de modificar el Análisis?\nRecuerde que se eliminarán las Clasificaciones asociadas a la Muestra","Eliminar",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+			if (quitOption==JOptionPane.YES_OPTION){
+				String [] fila = GUImuestraDetallada.getTablePanel1().getRow(GUImuestraDetallada.getTablePanel1().getSelectedRow());
+            	Tamiz tamiz = new Tamiz();
+            	tamiz.setNumeroTamiz(fila[0]);
+              	analisis = new Analisis(Float.parseFloat(fila[1]),muestra,tamiz);
+				//String [] fila = GUImuestraDetallada.getTablePanel1().getRow(GUImuestraDetallada.getTablePanel1().getSelectedRow());
+				new MediadorModificarAnalisis(analisis);
+				GUImuestraDetallada.dispose();
+				try {
+					new MediadorGestionarAnalisis("Análisis de la muestra "+muestra.getNombreMuestra(), analisis.getMuestra(),false);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}	
 		}
 	}

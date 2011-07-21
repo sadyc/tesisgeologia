@@ -140,7 +140,7 @@ public class MediadorGestionarMuestra extends Mediador{
 	private void analisis() {
 		GUIABMMuestra.dispose();
 		try {
-			new MediadorGestionarAnalisis("Gestionar Análisis",muestra);
+			new MediadorGestionarAnalisis("Gestionar Análisis",muestra,true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
