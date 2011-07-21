@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -406,6 +408,23 @@ public class GUIMuestraDetallada extends JDialog{
 	public static String[] getColumName(){
 		String[] columnName = {"Nro Tamiz","Peso Retenido (grs.)","% Pasante","% Retenido Acumulado","% Retenido Parcial"};
 		return columnName;
+	}
+	
+	/**
+	 * Metodo que permite escuchar la tabla panel.
+	 *
+	 *@param lis actionEvent asignado a los botones.
+	 */
+	public void setListenerTable(MouseListener lis){
+		this.tablePanel1.addMouseListener(lis);
+	}
+	
+	public void setMouseListener(MouseListener lis){
+        tablePanel1.addTableMouseListener(lis);
+    }
+	
+	public void setKeyListener(KeyListener lis){
+        tablePanel1.addTableKeyListener(lis);
 	}
 	
 	/**
