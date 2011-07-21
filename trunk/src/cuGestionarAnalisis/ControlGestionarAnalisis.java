@@ -96,6 +96,31 @@ public class ControlGestionarAnalisis extends Control {
 		}
 
 	}
+	
+	/**
+	 * Método que me permite modificar un analisis con los datos pasados como par�metros.
+	 * @param pesoRetenido, nuevo peso a ser modificado del an�lisis.
+	 * @param muestra, muestra a la que corresponde el an�lisis a ser modificado.
+	 * @param numeroTamiz, tamiz al que se le va a modificar el an�lisis.
+	 * @throws Exception
+	 */
+	public void ModificarAnalisis(Analisis analisis,String pesoRetenido) throws Exception {
+		yaExiste=false;
+		Persistencia persistencia = new Persistencia();
+		persistencia.abrirTransaccion();
+		try {
+			Analisis aux = (Analisis) persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+analisis.getMuestra().getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+analisis.getMuestra().getUbicacion().getNombreUbicacion()+"' && muestra.ubicacion.ciudad=='"+analisis.getMuestra().getUbicacion().getCiudad()+"' && tamiz.numeroTamiz=='"+analisis.getTamiz().getNumeroTamiz()+"'");
+			aux.setPesoRetenido(pesoRetenido);
+			aux.setPorcentajeRetenidoParcial(truncaNum(analisis.getPesoRetenido()*100)/analisis.getMuestra().getPeso());
+			aux.getMuestra().setAashto(new AASHTO());
+			aux.getMuestra().setSucs(new SUCS());
+			persistencia.cerrarTransaccion();
+		}
+		catch (Exception e) {
+			System.out.println("Error al modificar Analisis con persistencia");
+			persistencia.realizarRollback();
+		}               
+	}
 	/**
 	 * Recalcula los analisis después de eliminar o modificar.
 	 * @param analisis, analisis a recalcular. 
@@ -157,29 +182,7 @@ public class ControlGestionarAnalisis extends Control {
 	}
 
 
-	/**
-	 * Método que me permite modificar un analisis con los datos pasados como par�metros.
-	 * @param pesoRetenido, nuevo peso a ser modificado del an�lisis.
-	 * @param muestra, muestra a la que corresponde el an�lisis a ser modificado.
-	 * @param numeroTamiz, tamiz al que se le va a modificar el an�lisis.
-	 * @throws Exception
-	 */
-	public void ModificarAnalisis(String pesoRetenido,Muestra muestra, String numeroTamiz) throws Exception {
-		yaExiste=false;
-		Persistencia persistencia = new Persistencia();
-		persistencia.abrirTransaccion();
-		Analisis analisis = new Analisis();
-		try {
-			analisis = (Analisis)persistencia.buscarObjeto(analisis.getClass(), "muestra.nombreMuestra=='"+muestra.getNombreMuestra()+"' && muestra.ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && muestra.ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"' && tamiz.numeroTamiz=='"+numeroTamiz+"'");
-			analisis.setPesoRetenido(pesoRetenido);
-			analisis.setPorcentajeRetenidoParcial(truncaNum(analisis.getPesoRetenido()*100)/muestra.getPeso());
-			persistencia.cerrarTransaccion();
-		}
-		catch (Exception e) {
-			System.out.println("Error al modificar Analisis con persistencia");
-			persistencia.realizarRollback();
-		}               
-	}
+	
 
 	/**
 	 * Trunca el número a solo una decimal.

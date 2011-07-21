@@ -209,7 +209,7 @@ public class MediadorPrincipal extends Mediador{
 		try {
 			MediadorSeleccionarMuestra seleccion = new MediadorSeleccionarMuestra();
 			if (seleccion.seSeleccionoMuestra()){
-				new MediadorGestionarAnalisis("Analisis de la muestra "+seleccion.getSeleccionado().getNombreMuestra(), seleccion.getSeleccionado());
+				new MediadorGestionarAnalisis("Analisis de la muestra "+seleccion.getSeleccionado().getNombreMuestra(), seleccion.getSeleccionado(),true);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

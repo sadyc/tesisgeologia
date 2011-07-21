@@ -76,7 +76,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 			else{
 				int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificación AASHTO.\nDebe tener cargado previamente los Análisis para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 				if(quitOption==JOptionPane.YES_OPTION){
-					new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
+					new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra,true);
 				}else{
 					GUIClasificacion = new GUIClasificacion(muestra,data);
 					GUIClasificacion.setTitle(titulo);
@@ -90,7 +90,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 		else{
 			int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion SUCS.\nDebe tener cargado previamente los Análisis para los tamices 4 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 			if(quitOption==JOptionPane.YES_OPTION){
-				new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
+				new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra,true);
 				clasificoS=false;
 			}else{
 				clasificoS=false;
@@ -100,7 +100,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 				else{
 					quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion AASHTO.\nDebe tener cargado previamente los Análisis para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 					if(quitOption==JOptionPane.YES_OPTION){
-						new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra);
+						new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra, true);
 						clasificoS=false;
 					}else{
 						clasificoA=false;

@@ -8,8 +8,10 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 
+import persistencia.domain.AASHTO;
 import persistencia.domain.Analisis;
 import persistencia.domain.Muestra;
+import persistencia.domain.SUCS;
 
 import comun.Mediador;
 import comun.MediadorVersion;
@@ -39,13 +41,13 @@ public class MediadorModificarAnalisis  extends Mediador{
 	 * @param pesoRetenido, peso retenido cargado anteriormente de modificar.
 	 * @param numeroTamiz, numero de tamiz al que se le va a modificar el análisis.
 	 */
-	public MediadorModificarAnalisis(Muestra muestra,Float pesoRetenido,String numeroTamiz) {
+	public MediadorModificarAnalisis(Analisis analisis) {
 		super();
-		this.muestra = muestra;
+		this.analisis = analisis;
+		this.muestra = analisis.getMuestra();
 		control = new ControlGestionarAnalisis();
-		this.numeroTamiz = numeroTamiz;
-		analisis = new Analisis();
-		GUIAnalisis = new GUIAltaAnalisis(muestra,pesoRetenido,numeroTamiz);
+		this.numeroTamiz = analisis.getTamiz().getNumeroTamiz();
+		GUIAnalisis = new GUIAltaAnalisis(muestra,analisis.getPesoRetenido(),numeroTamiz);
 		GUIAnalisis.setTitle("Modificar el peso retenido del tamizado de la muestra: "+muestra.getNombreMuestra());
 		GUIAnalisis.setModal(true);
 		GUIAnalisis.getJButtonSeleccionarTamiz().setEnabled(false);
@@ -103,7 +105,6 @@ public class MediadorModificarAnalisis  extends Mediador{
 	public void aceptar(){
 		try{
 		pesoRetenido = GUIAnalisis.getPesoRetenido().getText().replace(",",".");
-		analisis.setMuestra(muestra);
 		if (pesoRetenido.equals("")){
 			JOptionPane.showMessageDialog(frame,"No ingresó un peso retenido","Atencion!!!!!!!", JOptionPane.ERROR_MESSAGE);
 		}
@@ -118,7 +119,7 @@ public class MediadorModificarAnalisis  extends Mediador{
 				}
 				else{
 					try {
-						control.ModificarAnalisis(pesoRetenido, muestra, numeroTamiz);
+						control.ModificarAnalisis(analisis, pesoRetenido);
 						control.recalcularAnalisis(analisis);
 						if (control.yaExiste()) {
 							System.out.println("El objeto ya existe");

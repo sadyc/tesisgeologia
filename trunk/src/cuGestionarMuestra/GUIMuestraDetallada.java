@@ -102,8 +102,9 @@ public class GUIMuestraDetallada extends JDialog{
 	 * Constructor parametrizado de la clase GUIMuestraDetallada.
 	 * @param data1 arreglo que almacena los datos de una muestra1.
 	 * @param muestra1 Muestra que se utiliza para completar la ventana. 
+	 * @param clasificacion 
 	 */
-	public GUIMuestraDetallada (Muestra muestra1, Object [] [] data1) {
+	public GUIMuestraDetallada (Muestra muestra1, Object [] [] data1, boolean mostrarClasificacion) {
 		super();
 		this.data1 = data1;
 		this.muestra1 = new JLabel("DATOS DE LA MUESTRA: "+muestra1.getNombreMuestra());
@@ -112,7 +113,7 @@ public class GUIMuestraDetallada extends JDialog{
 		this.profundidadFinal1 = new JLabel("Profundidad Final: "+muestra1.getProfundidadFinal()+"mts");
 		ubicacion1 = new JLabel ("Ubicación: "+muestra1.getUbicacion().getNombreUbicacion());
 		
-		if (muestra1.getSucs()==null){
+		if (muestra1.getSucs()==null || !mostrarClasificacion){
 			clasificacion1 = new JLabel ("Clasificación: ");
 			descripcion1 = new JLabel ("Descripción: ");			
 		}
@@ -120,7 +121,7 @@ public class GUIMuestraDetallada extends JDialog{
 			clasificacion1 = new JLabel ("Clasificación: "+muestra1.getSucs().getClasificacion());
 			descripcion1 = new JLabel ("Descripción: "+muestra1.getSucs().getDescripcion());
 		}
-		if (muestra1.getAashto()==null){
+		if (muestra1.getAashto()==null || !mostrarClasificacion){
 			clasificacion2 = new JLabel ("Clasificación: ");
 			descripcion2 = new JLabel ("Descripción: ");
 		}
