@@ -73,6 +73,10 @@ public class GUIUsuario extends javax.swing.JDialog {
     	jComboBoxCategoria.setSelectedItem(usuario.getCategoria());
         jButtonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png"))); // NOI18N
     	jButtonAgregar.setText("Modificar");
+    	jLabelPassword.setText("Password: ");
+    	jLabelRePassword.setText("Reingrese Password: ");
+    	jPasswordField.enable(false);
+    	jPasswordField2.enable(false);
     	setResizable(false);
         setLocationRelativeTo(null);
     }
@@ -121,9 +125,7 @@ public class GUIUsuario extends javax.swing.JDialog {
         });
         jTextFieldNombreUsuario = new javax.swing.JTextField();
         jPasswordField = new javax.swing.JPasswordField();
-        jPasswordField.enable(false);
         jPasswordField2 = new javax.swing.JPasswordField();
-        jPasswordField2.enable(false);
         jButtonAgregar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jButtonModifPassword = new javax.swing.JButton();
@@ -170,6 +172,7 @@ public class GUIUsuario extends javax.swing.JDialog {
 
         
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Operador", "Restringido" }));
+        jComboBoxCategoria.setSelectedItem("Restringido");
 
         jLabelCategoria.setText("(*) Categoría: ");
 
