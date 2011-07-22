@@ -144,24 +144,34 @@ public class ControlClasificacion extends Control {
 					if ((IndicePlasticidad>7)){
 						//CL
 						clasificacion=("CL");
-					}else if (IndicePlasticidad<4){
-						//ML
-						clasificacion=("ML");
-					}else if (limiteLiquido<0.75){
+					}else{ 
+						if (limiteLiquido<0.75){
 						//OL
 						clasificacion=("OL");
+						}else{
+							if (IndicePlasticidad<4){
+								//ML
+								clasificacion=("ML");
+							}else{
+								clasificacion=("ML");
+							}
+						}
 					}
 				}else {
 					//limos y arcilla > 50
 					if ((IndicePlasticidad>7)){
 						//CH
 						clasificacion=("CH");
-					}else if (IndicePlasticidad<4){
-						//MH
-						clasificacion=("MH");
 					}else if (limiteLiquido<0.75){
-						//OH
+						//MH
 						clasificacion=("OH");
+					}else{
+						if (IndicePlasticidad<4){
+							//OH
+							clasificacion=("MH");
+						}else{
+							clasificacion=("MH");
+						}
 					}
 				}
 			}
