@@ -149,7 +149,7 @@ public class MediadorGestionarAnalisis extends Mediador{
 					control.eliminarAnalisis(analisis);
 					control.recalcularAnalisis(analisis);
 					GUImuestraDetallada.dispose();
-					new MediadorGestionarAnalisis("Análisis de la muestra "+ muestra.getNombreMuestra(), analisis.getMuestra(),false);
+					new MediadorGestionarAnalisis("Análisis de la muestra "+ muestra.getNombreMuestra(), control.actualizarMuestra(muestra),false);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}              	    	
@@ -172,7 +172,6 @@ public class MediadorGestionarAnalisis extends Mediador{
             	Tamiz tamiz = new Tamiz();
             	tamiz.setNumeroTamiz(fila[0]);
               	analisis = new Analisis(Float.parseFloat(fila[1]),muestra,tamiz);
-				//String [] fila = GUImuestraDetallada.getTablePanel1().getRow(GUImuestraDetallada.getTablePanel1().getSelectedRow());
 				new MediadorModificarAnalisis(analisis);
 				GUImuestraDetallada.dispose();
 				try {
