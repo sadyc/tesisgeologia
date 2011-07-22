@@ -70,7 +70,9 @@ public class MediadorModificarUbicacion extends Mediador{
 				else{
 					aceptarGrados();
 				}
-				GUIUbicacion.dispose();
+				if (modifico){
+					GUIUbicacion.dispose();
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

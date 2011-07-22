@@ -239,8 +239,6 @@ public class MediadorCalcularClasificacion extends Mediador{
 		}
 		if (this.GUIClasificacion.getJButtonSalir() == source || GUIClasificacion.getSalirMenu()==source){
 			GUIClasificacion.dispose();
-			java.io.File file = new java.io.File("cartaPlasticidad.jpg");  
-			file.delete();  
 		}
 		if(this.GUIClasificacion.getVersionMenu() == source){
 			new MediadorVersion();
