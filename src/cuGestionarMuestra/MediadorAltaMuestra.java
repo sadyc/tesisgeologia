@@ -187,7 +187,6 @@ public class MediadorAltaMuestra extends Mediador{
 		data[3]= GUIMuestra.getProfundidadInicial().getText().replace(",",".");
 		data[4]= GUIMuestra.getProfundidadFinal().getText().replace(",",".");
 		data[5]= operador.getNombre()+" "+operador.getApellido();
-		
 		if (muestra.getCliente().getNombre()!=null){
 		  	data [6]= muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
 		}
@@ -202,15 +201,12 @@ public class MediadorAltaMuestra extends Mediador{
 		try {
 			controlMuestra.insertarMuestra(muestra, ubicacion, operador, cliente,usuario);
 			if (controlMuestra.yaExiste()) {
-
 				JOptionPane.showMessageDialog(frame,"La muestra con nombre: "+data[1]+" que se ubica en "+data[0]+" localidad de "+data[7]+", ya existe. Por favor ingrese otra.","Atención!", JOptionPane.ERROR_MESSAGE);
-
 			}
 			else {
 				altaMuestra = true;
 				GUIMuestra.dispose();
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -223,7 +219,7 @@ public class MediadorAltaMuestra extends Mediador{
 		try {
 			MediadorGestionarUbicacion mediadorSelUbic = new MediadorGestionarUbicacion(true,false);
 			if (mediadorSelUbic.seSelecciono()){
-				this.GUIMuestra.setUbicacion("Ubicación : "+mediadorSelUbic.getSeleccionado().getNombreUbicacion());
+				this.GUIMuestra.setUbicacion("(*) Ubicación : "+mediadorSelUbic.getSeleccionado().getNombreUbicacion());
 				ubicacion= mediadorSelUbic.getSeleccionado();
 			}
 		} catch (Exception e) {
@@ -255,7 +251,7 @@ public class MediadorAltaMuestra extends Mediador{
 		try {
 			MediadorGestionarCliente seleccionarCliente = new MediadorGestionarCliente(true,false);
 			if (seleccionarCliente.isSelecciono()){
-				GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]);
+				GUIMuestra.setCliente("Cliente : "+(String)seleccionarCliente.getSeleccionado()[0]+" "+(String)seleccionarCliente.getSeleccionado()[1]);
 				cliente.setNombre(((String)seleccionarCliente.getSeleccionado()[0]));
 				cliente.setApellido(((String)seleccionarCliente.getSeleccionado()[1]));
 				cliente.setDni(((String)seleccionarCliente.getSeleccionado()[2]));

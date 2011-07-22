@@ -102,12 +102,7 @@ public class GUIMuestra extends javax.swing.JDialog {
 		else{
 			cliente.setText(" Cliente: ");
 		}
-		
-		
-
 		this.usuario.setText("Usuario: "+usuario.getNombre()+" "+usuario.getApellido());
-
-		System.out.println(muestra.getUsuario().getNombreUsuario());
 		aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit-undo-4.png")));
 		aceptar.setText("Modificar");
 		setModal(true);
