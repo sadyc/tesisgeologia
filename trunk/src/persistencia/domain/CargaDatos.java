@@ -202,7 +202,7 @@ public class CargaDatos {
 	    java.util.Date utilDate1 = new java.util.Date();
 	    java.sql.Date sqlDate1 = new java.sql.Date(utilDate1.getTime());
 		Encriptar encriptar = new Encriptar();
-		String nico = encriptar.hash("kulmino");
+		String nico = encriptar.hash("niconico");
 		String jperez = encriptar.hash("raton");
 		String jalvarez = encriptar.hash("pepe");
 		String leo = encriptar.hash("bicicleta");
@@ -210,7 +210,7 @@ public class CargaDatos {
 		
 		Usuario usuario0 = new Usuario("SCS", "Soft", "00.000.000","admin","Administrador", "tesisgeologia@gmail.com", "0358-4665458",admin);
 		Usuario usuario1 = new Usuario("Juan", "Perez", "05.255.333","jperez","Operador", "juan@perez.com", "4917015",jperez);
-		Usuario usuario2 = new Usuario("José", "Álvarez", "11.121.321", "jalvarez", "Administrador", "pepe@alvarez", "444-222", jalvarez);
+		Usuario usuario2 = new Usuario("José", "Álvarez", "11.121.321", "jalvarez", "Administrador", "pepe@alvarez.com", "444-222", jalvarez);
 		Usuario usuario3 = new Usuario("Nicolas", "Bettiol", "33.825.312", "nbettiol", "Restringido", "nicolasbettiol@gmail.com", "0358-4632587", nico);
 		Usuario usuario4 = new Usuario("Leonardo", "Mármol", "34.414.426", "lmarmol", "Operador", "macyerba@hotmail.com", "0358-4642667", leo);
 		

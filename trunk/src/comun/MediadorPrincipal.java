@@ -132,14 +132,14 @@ public class MediadorPrincipal extends Mediador{
 			 int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Está seguro que desea salir?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 		        if(quitOption==JOptionPane.YES_OPTION){
 		        	GUIPrincipal.dispose();
-		        	System.exit(0);
+		          	System.exit(0);
 		        }
 		}
 		if (this.GUIPrincipal.getCerrarSesionMenu()==source){
 			 int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"¿Está seguro que desea cerrar la sesión de '"+ usuario.getNombreUsuario()+"'?","Cerrar sesión",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 		        if(quitOption==JOptionPane.YES_OPTION){
 		        	GUIPrincipal.dispose();
-		        	MediadorLogin login = new MediadorLogin();
+		        	new MediadorLogin();
 		        }
 		}
 		if (this.GUIPrincipal.getCrearBackupMenu()==source){
