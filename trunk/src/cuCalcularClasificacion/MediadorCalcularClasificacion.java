@@ -96,6 +96,12 @@ public class MediadorCalcularClasificacion extends Mediador{
 				clasificoS=false;
 				if (control.buscarAnalisis("200",muestra) && control.buscarAnalisis("40",muestra)&& control.buscarAnalisis("10",muestra)  && muestra.getIndicePlasticidad()!=0){
 					control.calcularClasificacionAASHTO(control.actualizarMuestra(muestra));
+					GUIClasificacion = new GUIClasificacion(control.actualizarMuestra(muestra),data);
+					GUIClasificacion.setTitle(titulo);
+					GUIClasificacion.setListenerButtons(this);
+					GUIClasificacion.setLocationRelativeTo(null);
+					GUIClasificacion.setModal(true);
+					GUIClasificacion.show();
 				}
 				else{
 					quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion AASHTO.\nDebe tener cargado previamente los Análisis para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
