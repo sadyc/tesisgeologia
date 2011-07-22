@@ -2,9 +2,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50">
 	<property name="ireport.scriptlethandling" value="0"/>
 	<property name="ireport.encoding" value="UTF-8"/>
-	<property name="ireport.zoom" value="1.9487171000000014"/>
-	<property name="ireport.x" value="19"/>
-	<property name="ireport.y" value="129"/>
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="139"/>
 	<import value="net.sf.jasperreports.engine.*"/>
 	<import value="java.util.*"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
@@ -132,38 +132,38 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{indicePlasticidad}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="376" y="119" width="139" height="14"/>
+				<reportElement x="361" y="119" width="153" height="21"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{D60}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="376" y="139" width="139" height="14"/>
+				<reportElement x="361" y="139" width="153" height="21"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{D30}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="376" y="161" width="139" height="14"/>
+				<reportElement x="361" y="161" width="153" height="21"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{D10}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="376" y="181" width="139" height="1"/>
+				<reportElement x="361" y="183" width="153" height="1"/>
 			</line>
 			<textField>
-				<reportElement x="376" y="186" width="139" height="20"/>
+				<reportElement x="361" y="186" width="153" height="21"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{coeficienteUniformidad}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="376" y="206" width="139" height="20"/>
+				<reportElement x="361" y="206" width="153" height="27"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
