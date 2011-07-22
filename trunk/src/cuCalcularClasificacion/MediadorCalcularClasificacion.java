@@ -226,7 +226,12 @@ public class MediadorCalcularClasificacion extends Mediador{
 			parameters [15] = GUIClasificacion.getClasificacionAashto().getText(); 
 			parameters [16] = GUIClasificacion.getDescripcionAashto().getText();
 			parameters [17] = muestra.getOperadorLaboratorio().getNombre()+" "+muestra.getOperadorLaboratorio().getApellido();
-			parameters [18] = muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();
+			if (muestra.getCliente()==null){
+				parameters [18] = "Sin cliente";
+			}
+			else{
+				parameters [18] = muestra.getCliente().getNombre()+" "+muestra.getCliente().getApellido();	
+			}
 			MakeReport makeReporte = new MakeReport();
 			makeReporte.make("report1");
 			ViewReport view = new ViewReport(data, parameters);
