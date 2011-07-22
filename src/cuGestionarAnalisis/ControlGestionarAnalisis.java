@@ -98,6 +98,22 @@ public class ControlGestionarAnalisis extends Control {
 	}
 	
 	/**
+	 * @param muestra
+	 */
+	public Muestra actualizarMuestra(Muestra muestra){
+		Persistencia persistencia = new Persistencia();
+		Muestra aux = new Muestra();
+		try {
+			persistencia.abrirTransaccion();
+			aux = (Muestra)persistencia.buscarObjeto(muestra.getClass(),"nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
+			persistencia.cerrarTransaccion();
+		} catch (Exception e) {
+			System.out.println("no se actualizo la muestra");
+			e.printStackTrace();
+		}
+		return aux;
+	}	
+	/**
 	 * Método que me permite modificar un analisis con los datos pasados como par�metros.
 	 * @param pesoRetenido, nuevo peso a ser modificado del an�lisis.
 	 * @param muestra, muestra a la que corresponde el an�lisis a ser modificado.

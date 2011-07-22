@@ -466,10 +466,27 @@ public class ControlClasificacion extends Control {
     }
 	
 	/**
+	 * @param muestra
+	 */
+	public Muestra actualizarMuestra(Muestra muestra){
+		Persistencia persistencia = new Persistencia();
+		Muestra aux = new Muestra();
+		try {
+			persistencia.abrirTransaccion();
+			aux = (Muestra)persistencia.buscarObjeto(muestra.getClass(),"nombreMuestra=='"+muestra.getNombreMuestra()+"' && ubicacion.nombreUbicacion=='"+muestra.getUbicacion().getNombreUbicacion()+"' && ubicacion.ciudad=='"+muestra.getUbicacion().getCiudad()+"'");
+			persistencia.cerrarTransaccion();
+		} catch (Exception e) {
+			System.out.println("no se actualizo la muestra");
+			e.printStackTrace();
+		}
+		return aux;
+	}
+	
+	/**
 	 * Busca un analisis y retorna un valor booleano 
 	 * con el resultado de la busqueda.
 	 * @param tamiz
-	 * @return, retorna el valor de la bÃºsqueda del analisis correspondiente.
+	 * @return, retorna el valor de la búsqueda del analisis correspondiente.
 	 * @throws Exception
 	 */
 	public boolean buscarAnalisis(String tamiz, Muestra muestra) throws Exception {

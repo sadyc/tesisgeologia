@@ -66,7 +66,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 			control.calcularClasificacionSUCS(muestra);
 			if (control.buscarAnalisis("200",muestra) && control.buscarAnalisis("40",muestra)&& control.buscarAnalisis("10",muestra)  && muestra.getIndicePlasticidad()!=0){
 				control.calcularClasificacionAASHTO(muestra);
-				GUIClasificacion = new GUIClasificacion(muestra,data);
+				GUIClasificacion = new GUIClasificacion(control.actualizarMuestra(muestra),data);
 				GUIClasificacion.setTitle(titulo);
 				GUIClasificacion.setListenerButtons(this);
 				GUIClasificacion.setLocationRelativeTo(null);
@@ -76,9 +76,9 @@ public class MediadorCalcularClasificacion extends Mediador{
 			else{
 				int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificación AASHTO.\nDebe tener cargado previamente los Análisis para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 				if(quitOption==JOptionPane.YES_OPTION){
-					new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra,true);
+					new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(),control.actualizarMuestra(muestra),true);
 				}else{
-					GUIClasificacion = new GUIClasificacion(muestra,data);
+					GUIClasificacion = new GUIClasificacion(control.actualizarMuestra(muestra),data);
 					GUIClasificacion.setTitle(titulo);
 					GUIClasificacion.setListenerButtons(this);
 					GUIClasificacion.setLocationRelativeTo(null);
@@ -90,22 +90,22 @@ public class MediadorCalcularClasificacion extends Mediador{
 		else{
 			int quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion SUCS.\nDebe tener cargado previamente los Análisis para los tamices 4 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 			if(quitOption==JOptionPane.YES_OPTION){
-				new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra,true);
+				new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(),control.actualizarMuestra(muestra),true);
 				clasificoS=false;
 			}else{
 				clasificoS=false;
 				if (control.buscarAnalisis("200",muestra) && control.buscarAnalisis("40",muestra)&& control.buscarAnalisis("10",muestra)  && muestra.getIndicePlasticidad()!=0){
-					control.calcularClasificacionAASHTO(muestra);
+					control.calcularClasificacionAASHTO(control.actualizarMuestra(muestra));
 				}
 				else{
 					quitOption = JOptionPane.showConfirmDialog(new JFrame(),"No se puede realizar la clasificacion AASHTO.\nDebe tener cargado previamente los Análisis para los tamices 10, 40 y 200 ¿Desea cargarlos?","Salir",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
 					if(quitOption==JOptionPane.YES_OPTION){
-						new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(), muestra, true);
+						new MediadorGestionarAnalisis("Gestionar Análisis de la muestra "+muestra.getNombreMuestra(),control.actualizarMuestra(muestra), true);
 						clasificoS=false;
 					}else{
 						clasificoA=false;
 						if (clasificoA || clasificoS){
-							GUIClasificacion = new GUIClasificacion(muestra,data);
+							GUIClasificacion = new GUIClasificacion(control.actualizarMuestra(muestra),data);
 							GUIClasificacion.setTitle(titulo);
 							GUIClasificacion.setListenerButtons(this);
 							GUIClasificacion.setLocationRelativeTo(null);
