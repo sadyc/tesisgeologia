@@ -1,5 +1,6 @@
 package cuLimiteConsistencia;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -74,13 +75,17 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButtonAgregar = new javax.swing.JButton();
+     
         jButtonCancelar = new javax.swing.JButton();
         
         jMenuBar1 = new javax.swing.JMenuBar();
         herramientas = new javax.swing.JMenu();
         agregar = new javax.swing.JMenuItem();
+        agregar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER, 0));
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         cancelar = new javax.swing.JMenuItem();
+        cancelar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+
         menuVersion = new javax.swing.JMenu();
         version = new javax.swing.JMenuItem();
         
@@ -451,6 +456,10 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
 	public void setVersion(javax.swing.JMenuItem version) {
 		this.version = version;
 	}
+	
+	  private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {                                               
+		    
+	    }     
 
 	/**
 	 * Metodo que permite escuchar los botoner aceptar y cancelar.
@@ -465,6 +474,6 @@ public class GUILimiteConsistencia extends javax.swing.JDialog {
 		version.addActionListener(lis);
 	}
 
-    
+
 
 }
