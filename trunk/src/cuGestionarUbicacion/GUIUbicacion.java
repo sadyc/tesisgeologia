@@ -566,7 +566,6 @@ public class GUIUbicacion extends javax.swing.JDialog {
 	 * @throws Exception 
 	 */
 	private void jTabbedPane1MouseClicked(MouseEvent evt) throws Exception {
-		System.out.println(jTabbedPane1.getSelectedIndex());
 		if(jTabbedPane1.getSelectedIndex()==0){
 			if  (!jTextFieldDecimalLatitud.getText().equals("")||!jTextFieldDecimalLongitud.getText().equals("")){
 				if (coordenadasDecimalesCorrectas()){
@@ -691,7 +690,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
 	public boolean coordenadasGradosCorrectas(){
 		boolean res = false;
 		if (jTextFieldGradoLat.getText().equals("")||jTextFieldGradLong.getText().equals("")||jTextFieldMinLat.getText().equals("")||jTextFieldMinLong.getText().equals("")||jTextFieldSegLat.getText().equals("")||jTextFieldSegLong.getText().equals("")){
-			JOptionPane.showMessageDialog(frame,"Debe completar los campos grados, minutos y segundos","Atención!", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(frame,"Debe completar los campos grados, minutos y segundos","Atención!", JOptionPane.WARNING_MESSAGE);
 		}else{
 			if(!gradosCorrectos()){
 				JOptionPane.showMessageDialog(frame,"Recuerde que los grados de latitud debe comprender" +
@@ -699,12 +698,12 @@ public class GUIUbicacion extends javax.swing.JDialog {
 			}
 			else {
 				if(!minutosCorrectos()){
-					JOptionPane.showMessageDialog(frame,"Recuerde que los minutos deben comprender un valor entre 0º y 60º","Atención!", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(frame,"Recuerde que los minutos deben comprender un valor entre 0º y 60º","Atención!", JOptionPane.WARNING_MESSAGE);
 
 				}
 				else {
 					if (!segundosCorrectos()) {
-						JOptionPane.showMessageDialog(frame,"Recuerde que los segundos deben comprender un valor entre 0º y 60º","Atención!", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(frame,"Recuerde que los segundos deben comprender un valor entre 0º y 60º","Atención!", JOptionPane.WARNING_MESSAGE);
 					}
 					else{
 						res = true;
@@ -722,7 +721,7 @@ public class GUIUbicacion extends javax.swing.JDialog {
 	 */
 	public boolean coordenadasDecimalesCorrectas(){
 		if (jTextFieldDecimalLatitud.getText().equals("")|| jTextFieldDecimalLongitud.getText().equals("")){
-			JOptionPane.showMessageDialog(frame,"Debe Completar latitud y longitud","Atención!", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(frame,"Debe Completar latitud y longitud","Atención!", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}else{
 			double latitud = Double.valueOf(jTextFieldDecimalLatitud.getText());

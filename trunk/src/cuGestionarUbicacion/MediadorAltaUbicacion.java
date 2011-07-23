@@ -86,6 +86,7 @@ public class MediadorAltaUbicacion extends Mediador{
 					}
 				}
 				else{
+					
 					if (GUIUbicacion.coordenadasDecimalesCorrectas()){
 						control.insertarUbicacion(GUIUbicacion.getData());
 						if (control.yaExiste()) {
@@ -95,6 +96,8 @@ public class MediadorAltaUbicacion extends Mediador{
 							alta = true;
 							GUIUbicacion.dispose();
 						}
+					}else{
+						JOptionPane.showMessageDialog(frame,"Debe completar los campos grados, minutos y segundos","Atención!", JOptionPane.WARNING_MESSAGE);
 					}
 				}
 			}
