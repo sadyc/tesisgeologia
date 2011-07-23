@@ -90,30 +90,35 @@ public class MediadorAltaLimiteConsistencia extends Mediador{
 		}else{
 			limiteLiquido = GUILimiteConsistencia.getjTextFieldLL().getText().replace(",",".");
 			limitePlastico = GUILimiteConsistencia.getjTextFieldLP().getText().replace(",",".");
-			if (Float.parseFloat(limiteLiquido)<Float.parseFloat(limitePlastico)) {
-				JOptionPane.showMessageDialog(frame,"El Límite Líquido debe ser mayor al Límite Plástico","Atención!", JOptionPane.ERROR_MESSAGE);
-			}else{
-				muestra.setLimiteLiquido((limiteLiquido));
-				muestra.setLimitePlastico((limitePlastico));
-				muestra.calcularIndicePlasticidad();
-				data [0] = muestra.getUbicacion().getNombreUbicacion();
-				data [1] = muestra.getNombreMuestra();
-				data [2] = muestra.getPeso().toString();
-				data [3] = muestra.getUbicacion().getCiudad();
-				data [4] = muestra.getProfundidadInicial().toString();
-				data [5] = muestra.getProfundidadFinal().toString();
-				data [6] = limiteLiquido;
-				data [7] = limitePlastico;
-				data [8] = muestra.getIndicePlasticidad().toString();
-				try {
-					control.insertarConsistencia(muestra);
-					altaConsistencia= true;
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				GUILimiteConsistencia.dispose();
+			if (Float.parseFloat(limiteLiquido)<0 || Float.parseFloat(limitePlastico)<0){
+				JOptionPane.showMessageDialog(frame,"El Límite Líquido y el Límite Plástico deben ser valores Positivos","Atención!", JOptionPane.ERROR_MESSAGE);
 			}
-		}	
+			else{
+				if (Float.parseFloat(limiteLiquido)<Float.parseFloat(limitePlastico)) {
+					JOptionPane.showMessageDialog(frame,"El Límite Líquido debe ser mayor al Límite Plástico","Atención!", JOptionPane.ERROR_MESSAGE);
+				}else{
+					muestra.setLimiteLiquido((limiteLiquido));
+					muestra.setLimitePlastico((limitePlastico));
+					muestra.calcularIndicePlasticidad();
+					data [0] = muestra.getUbicacion().getNombreUbicacion();
+					data [1] = muestra.getNombreMuestra();
+					data [2] = muestra.getPeso().toString();
+					data [3] = muestra.getUbicacion().getCiudad();
+					data [4] = muestra.getProfundidadInicial().toString();
+					data [5] = muestra.getProfundidadFinal().toString();
+					data [6] = limiteLiquido;
+					data [7] = limitePlastico;
+					data [8] = muestra.getIndicePlasticidad().toString();
+					try {
+						control.insertarConsistencia(muestra);
+						altaConsistencia= true;
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					GUILimiteConsistencia.dispose();
+				}
+			}	
+		}
 	}
 
 	public void itemStateChanged(ItemEvent arg0) {
