@@ -136,7 +136,7 @@ public class MediadorCalcularClasificacion extends Mediador{
 		clasificoA = true;
 		clasificoS = true;
 		cargarTablaDeAnalisis(muestra);
-		if(muestra.getIndicePlasticidad()==0){
+		if(muestra.getLimiteLiquido()==0 && muestra.getLimitePlastico()==0){
 			JOptionPane.showMessageDialog(frame,"No se puede calcular ninguna clasificación, falta índice de plasticidad","Atención!", JOptionPane.ERROR_MESSAGE);
 			MediadorAltaLimiteConsistencia mediadorAlta = new MediadorAltaLimiteConsistencia(muestra);
 			if (mediadorAlta.isAltaConsistencia()){
