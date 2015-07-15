@@ -1,0 +1,1 @@
+Es un sistema que clasifica los suelos según el sistema SUCS y también el de ASSHTO.
